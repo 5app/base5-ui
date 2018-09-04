@@ -4,6 +4,10 @@
   "description": "5app's reusable UI component library",
   "main": "index.js",
   "scripts": {
+    "babel": "babel src -d dist",
+    "copypackage": "cp -rf package.json dist",
+    "predist": "npm run copypackage",
+    "dist": "cd dist && npm publish",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +23,11 @@
   },
   "homepage": "https://github.com/5app/base5-ui#readme",
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "classnames": "^2.2.6",
     "docz": "^0.10.3",
     "eslint-config-airbnb": "^17.1.0",
