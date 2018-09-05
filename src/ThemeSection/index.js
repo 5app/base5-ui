@@ -29,7 +29,10 @@ function ThemeSection(props) {
 }
 
 ThemeSection.propTypes = {
-	baseTheme: PropTypes.object,
+	baseTheme: PropTypes.shape({
+		globals: PropTypes.object.isRequired,
+		sections: PropTypes.object.isRequired,
+	}),
 	colorBlock: PropTypes.string,
 	hasBgImage: PropTypes.bool,
 	name: PropTypes.string.isRequired,
