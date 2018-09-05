@@ -9,7 +9,7 @@ function ThemeSection(props) {
 	const constructLocalTheme = (parentTheme = props.baseTheme) => {
 
 		const colorBlockOverrides = getReadableColorblock(
-			parentTheme,
+			parentTheme.globals.colorBlocks,
 			props.colorBlock,
 			props.hasBgImage
 		);
