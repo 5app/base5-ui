@@ -22,7 +22,7 @@ const Wrapper = styled(({buttonRef, round, square, fullWidth, color, size, align
 	`}
 	padding: ${pxToRem(12)};
 
-	font-size: ${p => console.log(p.theme) || p.theme.globals.typeScale.m};
+	font-size: ${p => p.theme.globals.typeScale.m};
 	font-weight: 600;
 	line-height: 1;
 	text-align: ${p => p.align || 'center'};
