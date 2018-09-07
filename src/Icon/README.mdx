@@ -4,11 +4,43 @@ name: Icon
 
 import { Playground } from 'docz'
 import Icon from './';
+import AndroidIcon from 'base5-icons/Android';
+import PlusIcon from 'base5-icons/Plus';
 
 # Icon
 
 An image says more than a thousand words. See the [base5-icons repository](https://github.com/5app/base5-icons/tree/master/src/svg) for a list of all available icons.
 
+## Using the Wrapper component
+
+Using the `<Icon />` wrapper component allows you to dynamically display icons by their (kebab-cased, not CamelCased) name. Using the Icon component will bundle the whole base5 icon set with your app. See the next section if you only need a few icons from the set.
+
 <Playground>
 	<Icon name="android" />
+	<Icon name="plus" />
+</Playground>
+
+## Using individual icons
+
+If you don't want to bundle the whole icon set with your app, import the icons individually:
+
+```js
+import AndroidIcon from 'base5-icons/Android';
+import PlusIcon from 'base5-icons/Plus';
+```
+
+and use them directly:
+
+<Playground>
+	<AndroidIcon />
+	<PlusIcon />
+</Playground>
+
+## Aligning icons with text
+
+When placed next to or inside of text, square icons tend to sit a bit too low compared to the text's baseline. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text.
+
+<Playground>
+	<PlusIcon /> Without vAlign<br /><br />
+	<PlusIcon vAlign /> With vAlign
 </Playground>
