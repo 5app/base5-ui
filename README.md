@@ -12,7 +12,7 @@ npm i base5-ui styled-components
 
 ## Running the component library
 
-base5-UI comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out, clone this repo to your local machine and run the following command:
+base5-UI comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out, clone this repo to your local machine, install all needed dependencies using `npm i` and then run the following command:
 
 ```
 npm run docz:dev
