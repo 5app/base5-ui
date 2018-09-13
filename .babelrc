@@ -4,6 +4,7 @@
 	],
 	"plugins": [
 		"@babel/transform-react-jsx",
-		"@babel/proposal-object-rest-spread"
+		"@babel/proposal-object-rest-spread",
+		"babel-plugin-styled-components"
 	]
 }
