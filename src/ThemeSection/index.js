@@ -6,14 +6,13 @@ import getReadableColorblock from './getReadableColorblock';
 
 function ThemeSection(props) {
 
-	const constructLocalTheme = (parentTheme = props.baseTheme) => {
-
+	function constructLocalTheme(parentTheme = props.baseTheme) {
 		const colorBlockOverrides = getReadableColorblock(
 			parentTheme.globals.colorBlocks,
 			props.colorBlock,
 			props.hasBgImage
 		);
-		
+
 		return {
 			...parentTheme,
 			...parentTheme.sections[props.name],
