@@ -1,56 +1,9 @@
 ---
 name: Introduction
 route: /
-order: 50
+order: 1
 ---
 
-# Introduction
+import ReadMe from '../README.md'
 
-Welcome to base5-UI, 5app's library of reusable React components. base5-UI's focus is on providing easy-to-use base & layout components for building highly themeable pages.
-
-## Installation
-
-base5-UI is built on styled-components, so if you're not using it already, install it along with base5-UI.
-
-```
-npm i base5-ui styled-components
-```
-
-## Running the component library
-
-base5-UI comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out, clone this repo to your local machine, install all needed dependencies using `npm i` and then run the following command:
-
-```
-npm run docz:dev
-```
-
-The documentation environment will then be available at https://localhost:3000, letting you browse available components to inspect their API and see usage examples.
-
-## Basic usage
-
-Before you can use base5-UI's components, your app needs to be wrapped in a `<ThemeSection>` which is passed an object containing the theme of your app. All nested components will then have access to the theme.
-
-A basic app setup for base5-UI looks like the below. For this example, we're importing the default base5-UI theme, but you'll probably want to create your own or modify it. A guide on theming will be provided soon.
-
-```jsx
-import React from "react";
-import ReactDOM from "react-dom";
-
-import ThemeSection from 'base5-icons/ThemeSection';
-import Button from 'base5-icons/Button';
-
-import theme from 'base5-icons/theme';
-
-function App() {
-  return (
-    <ThemeSection name="page" baseTheme={theme}>
-    	<Button>Hello world!</Button>
-    </ThemeSection>
-  );
-}
-
-const rootElement = document.getElementById("root");
-
-ReactDOM.render(<App />, rootElement);
-```
-
+<ReadMe />
