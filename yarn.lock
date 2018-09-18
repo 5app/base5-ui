@@ -2148,9 +2148,9 @@ base5-icons@^0.1.0:
   dependencies:
     react "^16.3.1"
 
-base5-icons@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/base5-icons/-/base5-icons-1.0.9.tgz#b5a241288bdf62a02cd41b107becc073d99190e6"
+base5-icons@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/base5-icons/-/base5-icons-1.0.10.tgz#f66bb8e8d14411083bbd7444abd74a8c977ebb72"
   dependencies:
     base5-ui "0.0.6"
     react "^16.4.2"
