@@ -27,14 +27,14 @@ const Wrapper = styled.ul`
 			padding-bottom: ${p => p.theme.globals.spacing[p.spacing]};
 		`}
 
-		${p => p.splitByComma && css`
+		${p => p.splitBy === 'comma' && css`
 			&:not(:last-of-type)::after {
 				content: ',';
 				margin-right: 0.3em;
 			}
 		`}
 
-		${p => p.splitByDot && css`
+		${p => p.splitBy === 'dot' && css`
 			&:not(:last-of-type)::after {
 				content: '·';
 				margin: 0 0.35em;
@@ -42,12 +42,6 @@ const Wrapper = styled.ul`
 		`}
 	}
 `;
-Wrapper.propTypes = {
-	align: PropTypes.string,
-	spacing: PropTypes.string,
-	splitByComma: PropTypes.bool,
-	splitByDot: PropTypes.bool,
-};
 
 const InlineList = ({children, ...otherProps}) => {
 	return (
@@ -59,6 +53,11 @@ const InlineList = ({children, ...otherProps}) => {
 			})}
 		</Wrapper>
 	);
+};
+InlineList.propTypes = {
+	align: PropTypes.string,
+	spacing: PropTypes.string,
+	splitBy: PropTypes.oneOf(['comma', 'dot']),
 };
 
 InlineList.Wrapper = Wrapper;
