@@ -5,6 +5,14 @@ const passThroughValues = ['auto'];
 function getSpacing(shortCode) {
 
 	if (
+		shortCode === undefined ||
+		shortCode === null ||
+		shortCode === false
+	) {
+		return shortCode;
+	}
+
+	if (
 		(typeof shortCode !== 'number' &&
 		typeof shortCode !== 'string') ||
 		shortCode === '0'
