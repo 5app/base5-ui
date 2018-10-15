@@ -2463,6 +2463,15 @@ base5-icons@^2.0.0:
     react "^16.4.2"
     react-dom "^16.4.2"
 
+base5-icons@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/base5-icons/-/base5-icons-2.0.1.tgz#492f04592ad9fa2edeb6d9bc37667dd3be04d608"
+  integrity sha512-KGK6mCMRuygZk77FYxz6lhzLiL7bdLI34mUhvu1Bm+N5nV/JrvE8E+kMFY7JTEr9xllus+WaqRvxWGwY7dluUg==
+  dependencies:
+    base5-ui "^1.0.0"
+    react "^16.4.2"
+    react-dom "^16.4.2"
+
 base5-ui@0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/base5-ui/-/base5-ui-0.0.6.tgz#f6776ddc953090eda3366c3b42b0d560ea57c049"
@@ -2471,6 +2480,16 @@ base5-ui@0.0.6:
     base5-icons "^0.1.0"
     chroma-js "^1.3.7"
     classnames "^2.2.6"
+
+base5-ui@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/base5-ui/-/base5-ui-1.0.0.tgz#0ba12dfd693b96f4919fa12c034026eb10c9884f"
+  integrity sha512-UcEm1BW4UX7wACaTQ/h8dBkIme7citGrW7Orr4rZqtJjplpB2PDJau/Vm8QUbPmgWBnZC1zHAF3eeotoQEqGIA==
+  dependencies:
+    base5-icons "^2.0.0"
+    chroma-js "^1.3.7"
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
 
 base64-js@^1.0.2:
   version "1.3.0"
