@@ -62,7 +62,7 @@ const ButtonCore = React.forwardRef((props, ref) => {
 	return (
 		<Clickable
 			{...otherProps}
-			innerRef={ref}
+			ref={ref}
 			as={as}
 			type={defaultType}
 			disabled={isDisabled || disabled}
