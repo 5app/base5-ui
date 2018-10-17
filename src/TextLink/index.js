@@ -24,8 +24,8 @@ const textLinkStyles = css`
 	}
 `;
 
-const Wrapper = styled(({component, bold, stealthy, ...otherProps}) =>
-	<ButtonCore as={component} {...otherProps} />
+const Wrapper = styled(({linkRef, component, bold, stealthy, ...otherProps}) =>
+	<ButtonCore ref={linkRef} as={component} {...otherProps} />
 )`
 	display: inline;
 	vertical-align: baseline;
@@ -42,7 +42,7 @@ const TextLink = React.forwardRef((props, ref) => {
 	return (
 		<Wrapper
 			{...otherProps}
-			ref={ref}
+			linkRef={ref}
 			component={as || 'a'}
 		/>
 	);
