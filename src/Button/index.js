@@ -9,8 +9,8 @@ import {fillParent, ellipsis} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
-const Wrapper = styled(({buttonRef, round, square, fullWidth, color, size, align, ...otherProps}) =>
-	<ButtonCore ref={buttonRef} {...otherProps} />
+const Wrapper = styled(({buttonRef, component, round, square, fullWidth, color, size, align, ...otherProps}) =>
+	<ButtonCore ref={buttonRef} as={component} {...otherProps} />
 )`
 	/* Structure, size & spacing */
 
@@ -164,11 +164,12 @@ const Subtitle = styled.span`
 
 const Button = React.forwardRef((props, ref) => {
 	const {
+		as,
+		children,
 		icon,
 		iconRight,
 		subline,
 		title,
-		children,
 		...otherProps
 	} = props;
 
@@ -176,6 +177,7 @@ const Button = React.forwardRef((props, ref) => {
 
 	return (
 		<Wrapper
+			component={as}
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
 			{...otherProps}

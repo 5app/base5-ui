@@ -24,14 +24,29 @@ const textLinkStyles = css`
 	}
 `;
 
-const TextLink = styled(({bold, stealthy, ...otherProps}) =>
-	<ButtonCore as="a" {...otherProps} />
+const Wrapper = styled(({component, bold, stealthy, ...otherProps}) =>
+	<ButtonCore as={component} {...otherProps} />
 )`
 	display: inline;
 	vertical-align: baseline;
 
 	${textLinkStyles}
 `;
+
+const TextLink = React.forwardRef((props, ref) => {
+	const {
+		as,
+		...otherProps
+	} = props;
+
+	return (
+		<Wrapper
+			{...otherProps}
+			ref={ref}
+			component={as || 'a'}
+		/>
+	);
+});
 
 // Allow components to re-use simple text link styles
 export {textLinkStyles};

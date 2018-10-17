@@ -4,9 +4,7 @@ import classNames from 'classnames';
 
 import focusController from './focusController';
 
-import Base from '../Base';
-
-const Clickable = styled(Base)`
+const Clickable = styled.button`
 	display: inline-block;
 	margin: 0;
 	padding: 0;
