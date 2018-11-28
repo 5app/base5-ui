@@ -36,6 +36,7 @@ import Link from 'base5-icons/Link';
 import Logout from 'base5-icons/Logout';
 import NavLeft from 'base5-icons/NavLeft';
 import NavRight from 'base5-icons/NavRight';
+import Offline from 'base5-icons/Offline';
 import Ok from 'base5-icons/Ok';
 import Pause from 'base5-icons/Pause';
 import Pin from 'base5-icons/Pin';
@@ -98,6 +99,7 @@ const iconMap = {
 	'logout': Logout,
 	'nav-left': NavLeft,
 	'nav-right': NavRight,
+	'offline': Offline,
 	'ok': Ok,
 	'pause': Pause,
 	'pin': Pin,
