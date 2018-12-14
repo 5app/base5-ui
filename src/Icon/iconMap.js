@@ -19,6 +19,7 @@ import Box from 'base5-icons/Box';
 import Chat from 'base5-icons/Chat';
 import Chevron from 'base5-icons/Chevron';
 import Collection from 'base5-icons/Collection';
+import Disk from 'base5-icons/Disk';
 import Download from 'base5-icons/Download';
 import Dropbox from 'base5-icons/Dropbox';
 import Edit from 'base5-icons/Edit';
@@ -82,6 +83,7 @@ const iconMap = {
 	'chat': Chat,
 	'chevron': Chevron,
 	'collection': Collection,
+	'disk': Disk,
 	'download': Download,
 	'dropbox': Dropbox,
 	'edit': Edit,
