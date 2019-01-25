@@ -2468,10 +2468,10 @@ base5-icons@^2.0.0:
     react "^16.4.2"
     react-dom "^16.4.2"
 
-base5-icons@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/base5-icons/-/base5-icons-2.2.0.tgz#f9b04f92eee640aae4c2c370447f0ac8acf34572"
-  integrity sha512-cHQBmf/mmCjqbLORPFR20irtxJ29mTu3lDvMjOAHHuOxN8solktHXETOZ84qlWcv5kUPV1kmYZgXxTRJtlt+JA==
+base5-icons@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/base5-icons/-/base5-icons-2.3.0.tgz#19ad4ec966351bc8050823fa835c14a14afaba53"
+  integrity sha512-GMBYHJgLjvA7gvmKjwp328uNdNf2NdpgfLWQKHQ6dAzooGuVJk/wv933l4NZkKS5gi0uI/LO+4e+97lJlrBDGg==
   dependencies:
     base5-ui "^1.0.0"
     react "^16.4.2"
