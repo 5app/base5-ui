@@ -48,3 +48,12 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
+## Updating the repo
+
+Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.md) before continuing here.
+
+To publish changes to the components in this repo, please follow these steps:
+
+1. Bump the version number using `npm version [patch|minor|major]`
+2. Run `npm run compile` to compile all code within `src` to the `dist` folder
+3. Run `npm run dist` to publish the `dist` folder to NPM

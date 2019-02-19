@@ -1,131 +1,67 @@
-import Android from 'base5-icons/Android'
-import Apple from 'base5-icons/Apple'
-import Appstore from 'base5-icons/Appstore'
-import Arrow from 'base5-icons/Arrow'
-import Asset from 'base5-icons/Asset'
-import AssetAudio from 'base5-icons/AssetAudio'
-import AssetDefault from 'base5-icons/AssetDefault'
-import AssetDiagram from 'base5-icons/AssetDiagram'
-import AssetEbook from 'base5-icons/AssetEbook'
-import AssetFolder from 'base5-icons/AssetFolder'
-import AssetImage from 'base5-icons/AssetImage'
-import AssetLink from 'base5-icons/AssetLink'
-import AssetPdf from 'base5-icons/AssetPdf'
-import AssetPresentation from 'base5-icons/AssetPresentation'
-import AssetSpreadsheet from 'base5-icons/AssetSpreadsheet'
-import AssetText from 'base5-icons/AssetText'
-import AssetVideo from 'base5-icons/AssetVideo'
-import Box from 'base5-icons/Box'
-import Chat from 'base5-icons/Chat'
-import Chevron from 'base5-icons/Chevron'
-import Collection from 'base5-icons/Collection'
-import Disk from 'base5-icons/Disk'
-import Download from 'base5-icons/Download'
-import Dropbox from 'base5-icons/Dropbox'
-import Edit from 'base5-icons/Edit'
-import Ellipsis from 'base5-icons/Ellipsis'
-import External from 'base5-icons/External'
-import EyeClosed from 'base5-icons/EyeClosed'
-import EyeOpen from 'base5-icons/EyeOpen'
-import Favourite from 'base5-icons/Favourite'
-import Flag from 'base5-icons/Flag'
-import Fullscreen from 'base5-icons/Fullscreen'
-import Hierarchy from 'base5-icons/Hierarchy'
-import Home from 'base5-icons/Home'
-import Info from 'base5-icons/Info'
-import Link from 'base5-icons/Link'
-import Logout from 'base5-icons/Logout'
-import Menu from 'base5-icons/Menu'
-import NavLeft from 'base5-icons/NavLeft'
-import NavRight from 'base5-icons/NavRight'
-import Offline from 'base5-icons/Offline'
-import Ok from 'base5-icons/Ok'
-import Pause from 'base5-icons/Pause'
-import Pin from 'base5-icons/Pin'
-import Play from 'base5-icons/Play'
-import Playlist from 'base5-icons/Playlist'
-import Plus from 'base5-icons/Plus'
-import Search from 'base5-icons/Search'
-import Send from 'base5-icons/Send'
-import Settings from 'base5-icons/Settings'
-import Share from 'base5-icons/Share'
-import Spinnerdot from 'base5-icons/Spinnerdot'
-import Star from 'base5-icons/Star'
-import Tag from 'base5-icons/Tag'
-import Team from 'base5-icons/Team'
-import Time from 'base5-icons/Time'
-import Tools from 'base5-icons/Tools'
-import Trending from 'base5-icons/Trending'
-import Undo from 'base5-icons/Undo'
-import Unpin from 'base5-icons/Unpin'
-import Upload from 'base5-icons/Upload'
-import User from 'base5-icons/User'
-import X from 'base5-icons/X'
-
 const iconMap = {
-	android: Android,
-	apple: Apple,
-	appstore: Appstore,
-	arrow: Arrow,
-	asset: Asset,
-	'asset-audio': AssetAudio,
-	'asset-default': AssetDefault,
-	'asset-diagram': AssetDiagram,
-	'asset-ebook': AssetEbook,
-	'asset-folder': AssetFolder,
-	'asset-image': AssetImage,
-	'asset-link': AssetLink,
-	'asset-pdf': AssetPdf,
-	'asset-presentation': AssetPresentation,
-	'asset-spreadsheet': AssetSpreadsheet,
-	'asset-text': AssetText,
-	'asset-video': AssetVideo,
-	box: Box,
-	chat: Chat,
-	chevron: Chevron,
-	collection: Collection,
-	disk: Disk,
-	download: Download,
-	dropbox: Dropbox,
-	edit: Edit,
-	ellipsis: Ellipsis,
-	external: External,
-	'eye-closed': EyeClosed,
-	'eye-open': EyeOpen,
-	favourite: Favourite,
-	flag: Flag,
-	fullscreen: Fullscreen,
-	hierarchy: Hierarchy,
-	home: Home,
-	info: Info,
-	link: Link,
-	logout: Logout,
-	menu: Menu,
-	'nav-left': NavLeft,
-	'nav-right': NavRight,
-	offline: Offline,
-	ok: Ok,
-	pause: Pause,
-	pin: Pin,
-	play: Play,
-	playlist: Playlist,
-	plus: Plus,
-	search: Search,
-	send: Send,
-	settings: Settings,
-	share: Share,
-	spinnerdot: Spinnerdot,
-	star: Star,
-	tag: Tag,
-	team: Team,
-	time: Time,
-	tools: Tools,
-	trending: Trending,
-	undo: Undo,
-	unpin: Unpin,
-	upload: Upload,
-	user: User,
-	x: X,
-}
+	android: require('../icons/Android').default,
+	apple: require('../icons/Apple').default,
+	appstore: require('../icons/Appstore').default,
+	arrow: require('../icons/Arrow').default,
+	asset: require('../icons/AssetDefault').default,
+	'asset-audio': require('../icons/AssetAudio').default,
+	'asset-default': require('../icons/AssetDefault').default,
+	'asset-diagram': require('../icons/AssetDiagram').default,
+	'asset-ebook': require('../icons/AssetEbook').default,
+	'asset-folder': require('../icons/AssetFolder').default,
+	'asset-image': require('../icons/AssetImage').default,
+	'asset-link': require('../icons/AssetLink').default,
+	'asset-pdf': require('../icons/AssetPdf').default,
+	'asset-presentation': require('../icons/AssetPresentation').default,
+	'asset-spreadsheet': require('../icons/AssetSpreadsheet').default,
+	'asset-text': require('../icons/AssetText').default,
+	'asset-video': require('../icons/AssetVideo').default,
+	box: require('../icons/Box').default,
+	chat: require('../icons/Chat').default,
+	chevron: require('../icons/Chevron').default,
+	collection: require('../icons/Collection').default,
+	disk: require('../icons/Disk').default,
+	download: require('../icons/Download').default,
+	dropbox: require('../icons/Dropbox').default,
+	edit: require('../icons/Edit').default,
+	ellipsis: require('../icons/Ellipsis').default,
+	external: require('../icons/External').default,
+	'eye-closed': require('../icons/EyeClosed').default,
+	'eye-open': require('../icons/EyeOpen').default,
+	favourite: require('../icons/Favourite').default,
+	flag: require('../icons/Flag').default,
+	fullscreen: require('../icons/Fullscreen').default,
+	hierarchy: require('../icons/Hierarchy').default,
+	home: require('../icons/Home').default,
+	info: require('../icons/Info').default,
+	link: require('../icons/Link').default,
+	logout: require('../icons/Logout').default,
+	menu: require('../icons/Menu').default,
+	'nav-left': require('../icons/NavLeft').default,
+	'nav-right': require('../icons/NavRight').default,
+	offline: require('../icons/Offline').default,
+	ok: require('../icons/Ok').default,
+	pause: require('../icons/Pause').default,
+	pin: require('../icons/Pin').default,
+	play: require('../icons/Play').default,
+	playlist: require('../icons/Playlist').default,
+	plus: require('../icons/Plus').default,
+	search: require('../icons/Search').default,
+	send: require('../icons/Send').default,
+	settings: require('../icons/Settings').default,
+	share: require('../icons/Share').default,
+	spinnerdot: require('../icons/Spinnerdot').default,
+	star: require('../icons/Star').default,
+	tag: require('../icons/Tag').default,
+	team: require('../icons/Team').default,
+	time: require('../icons/Time').default,
+	tools: require('../icons/Tools').default,
+	trending: require('../icons/Trending').default,
+	undo: require('../icons/Undo').default,
+	unpin: require('../icons/Unpin').default,
+	upload: require('../icons/Upload').default,
+	user: require('../icons/User').default,
+	x: require('../icons/X').default,
+};
 
-export default iconMap
+export default iconMap;

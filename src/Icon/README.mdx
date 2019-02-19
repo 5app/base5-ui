@@ -5,13 +5,15 @@ menu: Components
 
 import { Playground } from 'docz'
 import Icon from './';
-import AndroidIcon from 'base5-icons/Android';
-import PlusIcon from 'base5-icons/Plus';
-import SearchIcon from 'base5-icons/Search';
+import AndroidIcon from '../icons/Android';
+import PlusIcon from '../icons/Plus';
+import SearchIcon from '../icons/Search';
 
 # Icon
 
-An image says more than a thousand words. See the [base5-icons repository](https://github.com/5app/base5-icons/tree/master/src/svg) for a list of all available icons.
+An image says more than a thousand words. ;)
+
+See the Icons Overview page for a list of all available icons.
 
 ## Using the Wrapper component
 
@@ -28,9 +30,9 @@ Using the `<Icon />` wrapper component allows you to dynamically display icons b
 If you don't want to bundle the whole icon set with your app, import the icons individually:
 
 ```js
-import AndroidIcon from 'base5-icons/Android';
-import PlusIcon from 'base5-icons/Plus';
-import SearchIcon from 'base5-icons/Search';
+import AndroidIcon from 'base5-ui/icons/Android';
+import PlusIcon from 'base5-ui/icons/Plus';
+import SearchIcon from 'base5-ui/icons/Search';
 ```
 
 and use them directly:
@@ -40,6 +42,27 @@ and use them directly:
 	<PlusIcon />
 	<SearchIcon />
 </Playground>
+
+## Props
+
+The following props are available on both the individual icon components as well as the `<Icon />` component:
+
+### `scale`
+
+Number. By default, icons are sized at `1em`, scaling along with their surrounding text. The `scale` prop lets you define a scaling factor to size the icon, i.e. a value of `2` will make the icon twice as large.
+
+### `color`
+
+String. By default, icons use the colour of their containing element (`currentcolor`). You can change this to any valid color value here.
+
+### `spacingLeft` / `spacingRight`
+
+String. Add some left or right margin to the icon. Accepts any valid CSS length value, a unit must be included.
+
+### `vAlign`
+
+Boolean. Nudge the icon up by a few pixels to visually align it with its surrounding text, see the next section for an example.
+
 
 ## Aligning icons with text
 
