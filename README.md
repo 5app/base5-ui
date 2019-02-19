@@ -50,7 +50,7 @@ ReactDOM.render(<App />, rootElement);
 
 ## Updating the repo
 
-Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.md) before continuing here.
+Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.mdx) before continuing here.
 
 To publish changes to the components in this repo, please follow these steps:
 
