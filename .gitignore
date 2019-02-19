@@ -1,9 +1,5 @@
 dist
 node_modules
 .DS_Store
-src/icons/*
-!src/icons/BaseSvg.js
-!src/icons/README.md
-!src/icons/index.js
 
 .docz/**

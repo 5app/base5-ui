@@ -1,0 +1,91 @@
+---
+name: Icon Overview
+menu: Components
+---
+
+import { Playground } from 'docz'
+import Icon from '../Icon';
+import DiskIcon from './Disk';
+
+# Icon Overview
+
+5app's SVG icons as React components, powered by styled-components.
+
+## Adding new icons
+
+1. Add new SVG icons to [src-icons/svg](/src-icons/svg)
+2. Add any new icons as an export inside of [src/icons/index.js](src/icons/index.js)
+3. To make new icons available from the `<Icon />` component, define a `string` name for them in the icon map in [src/Icon/iconMap.js](src/Icon/iconMap.js)
+4. Add new icons to this README for documentation
+
+Once that's done, run `npm run build-icons` to convert the SVGs to standalone React components inside of [src/icons](/src/icons).
+
+After that, you can follow the normal instructions for updating/publishing this repo found in the base5-UI Introduction.
+
+## Overview
+
+<Playground>
+  <Icon name="android" />
+  <Icon name="apple" />
+  <Icon name="appstore" />
+  <Icon name="arrow" />
+  <Icon name="asset" />
+  <Icon name="asset-audio" />
+  <Icon name="asset-default" />
+  <Icon name="asset-diagram" />
+  <Icon name="asset-ebook" />
+  <Icon name="asset-folder" />
+  <Icon name="asset-image" />
+  <Icon name="asset-link" />
+  <Icon name="asset-pdf" />
+  <Icon name="asset-presentation" />
+  <Icon name="asset-spreadsheet" />
+  <Icon name="asset-text" />
+  <Icon name="asset-video" />
+  <Icon name="box" />
+  <Icon name="chat" />
+  <Icon name="chevron" />
+  <Icon name="collection" />
+  <Icon name="disk" />
+  <Icon name="download" />
+  <Icon name="dropbox" />
+  <Icon name="edit" />
+  <Icon name="ellipsis" />
+  <Icon name="external" />
+  <Icon name="eye-closed" />
+  <Icon name="eye-open" />
+  <Icon name="favourite" />
+  <Icon name="flag" />
+  <Icon name="fullscreen" />
+  <Icon name="hierarchy" />
+  <Icon name="home" />
+  <Icon name="info" />
+  <Icon name="link" />
+  <Icon name="logout" />
+  <Icon name="menu" />
+  <Icon name="nav-left" />
+  <Icon name="nav-right" />
+  <Icon name="offline" />
+  <Icon name="ok" />
+  <Icon name="pause" />
+  <Icon name="pin" />
+  <Icon name="play" />
+  <Icon name="playlist" />
+  <Icon name="plus" />
+  <Icon name="search" />
+  <Icon name="send" />
+  <Icon name="settings" />
+  <Icon name="share" />
+  <Icon name="spinnerdot" />
+  <Icon name="star" />
+  <Icon name="tag" />
+  <Icon name="team" />
+  <Icon name="time" />
+  <Icon name="tools" />
+  <Icon name="trending" />
+  <Icon name="undo" />
+  <Icon name="unpin" />
+  <Icon name="upload" />
+  <Icon name="user" />
+  <Icon name="x" />
+</Playground>
