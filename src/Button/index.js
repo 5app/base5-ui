@@ -27,7 +27,6 @@ const Wrapper = styled(({buttonRef, component, round, square, fullWidth, color, 
 	line-height: 1;
 	text-align: ${p => p.align || 'center'};
 	text-decoration: none;
-	text-transform: uppercase;
 
 	${p => !p.square && css`
 		border-radius: ${p.round ? '2rem' : pxToRem(p.theme.globals.borderRadius.buttons)};
@@ -44,7 +43,6 @@ const Wrapper = styled(({buttonRef, component, round, square, fullWidth, color, 
 
 	${p => p.size === 'small' && css`
 		padding: ${pxToRem(5)};
-		text-transform: initial;
 		font-size: ${p => p.theme.globals.typeScale.xs};
 	`}
 
@@ -156,8 +154,6 @@ const Subtitle = styled.span`
 	padding: ${p => p.theme.globals.spacing.xxxs} ${p => p.theme.globals.spacing.xxs};
 	${ellipsis}
 	opacity: ${p => p.theme.textDimStrength};
-
-	text-transform: none;
 
 	font-size: ${p => p.theme.globals.typeScale.s};
 `;
