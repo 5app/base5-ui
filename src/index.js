@@ -10,3 +10,4 @@ export {default as Icon} from './Icon';
 export {default as InlineList} from './InlineList';
 export {default as TextLink} from './TextLink';
 export {default as ThemeSection} from './ThemeSection';
+export {default as Switch} from './Switch';

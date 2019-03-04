@@ -1,0 +1,21 @@
+---
+name: Switch
+menu: Components
+---
+import {Playground} from 'docz'
+
+import InlineList from '../InlineList'
+import Switch from './'
+
+# Switch
+
+Simple accessible mobile-style switch that can be used like an `<input type="checkbox" />` element.
+
+<Playground>
+	<InlineList spacing="s">
+		On: <Switch checked />
+		Disabled On: <Switch checked disabled />
+		Off: <Switch checked={false} />
+		Disabled Off: <Switch disabled />
+	</InlineList>
+</Playground>
