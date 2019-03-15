@@ -20,7 +20,7 @@ const AssetSpreadsheetIcon = React.forwardRef((props, ref) => {
 			fillRule="evenodd"
 			clipRule="evenodd"
 		>
-			<path d="M12,15l0,-2l3,0l0,2l-3,0ZM12,10l3,0l0,2l-3,0l0,-2ZM12,7l3,0l0,2l-3,0l0,-2ZM12,4l3,0l0,2l-3,0l0,-2ZM8,6l0,-2l3,0l0,2l-3,0ZM3,13l4,0l0,2l-4,0l0,-2ZM3,10l4,0l0,2l-4,0l0,-2ZM3,7l4,0l0,2l-4,0l0,-2ZM3,4l4,0l0,2l-4,0l0,-2ZM11,9l-3,0l0,-2l3,0l0,2ZM11,12l-3,0l0,-2l3,0l0,2ZM11,15l-3,0l0,-2l3,0l0,2Z" />
+			<path d="M11.947,15l0,-2l3,0l0,2l-3,0Zm0,-5l3,0l0,2l-3,0l0,-2Zm0,-7l3,0l0,2l-3,0l0,-2Zm-8,10l3,0l0,2l-3,0l0,-2Zm0,-3l3,0l0,2l-3,0l0,-2Zm0,-7l3,0l0,2l-3,0l0,-2Zm-1,3l11,0l0,3l-11,0l0,-3Zm8,-1l-3,0l0,-2l3,0l0,2Zm0,7l-3,0l0,-2l3,0l0,2Zm0,3l-3,0l0,-2l3,0l0,2Z" />
 		</Svg>
 	);
 });
