@@ -14,6 +14,7 @@ const iconMap = {
 	'asset-infographic': require('../icons/AssetInfographic').default,
 	'asset-link': require('../icons/AssetLink').default,
 	'asset-pdf': require('../icons/AssetPdf').default,
+	'asset-podcast': require('../icons/AssetPodcast').default,
 	'asset-presentation': require('../icons/AssetPresentation').default,
 	'asset-quiz': require('../icons/AssetQuiz').default,
 	'asset-spreadsheet': require('../icons/AssetSpreadsheet').default,

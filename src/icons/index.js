@@ -15,6 +15,7 @@ export {default as AssetImage} from './AssetImage';
 export {default as AssetInfographic} from './AssetInfographic';
 export {default as AssetLink} from './AssetLink';
 export {default as AssetPdf} from './AssetPdf';
+export {default as AssetPodcast} from './AssetPodcast';
 export {default as AssetPresentation} from './AssetPresentation';
 export {default as AssetQuiz} from './AssetQuiz';
 export {default as AssetSpreadsheet} from './AssetSpreadsheet';
