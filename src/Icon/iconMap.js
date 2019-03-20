@@ -5,6 +5,7 @@ const iconMap = {
 	arrow: require('../icons/Arrow').default,
 	asset: require('../icons/AssetDefault').default,
 	'asset-audio': require('../icons/AssetAudio').default,
+	'asset-article': require('../icons/AssetText').default,
 	'asset-default': require('../icons/AssetDefault').default,
 	'asset-diagram': require('../icons/AssetDiagram').default,
 	'asset-ebook': require('../icons/AssetEbook').default,
