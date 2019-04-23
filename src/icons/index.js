@@ -22,6 +22,7 @@ export {default as AssetSpreadsheet} from './AssetSpreadsheet';
 export {default as AssetText} from './AssetText';
 export {default as AssetVideo} from './AssetVideo';
 export {default as Box} from './Box';
+export {default as Captions} from './Captions';
 export {default as Chat} from './Chat';
 export {default as Chevron} from './Chevron';
 export {default as Collection} from './Collection';

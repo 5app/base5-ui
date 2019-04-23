@@ -22,6 +22,7 @@ const iconMap = {
 	'asset-text': require('../icons/AssetText').default,
 	'asset-video': require('../icons/AssetVideo').default,
 	box: require('../icons/Box').default,
+	captions: require('../icons/Captions').default,
 	chat: require('../icons/Chat').default,
 	chevron: require('../icons/Chevron').default,
 	collection: require('../icons/Collection').default,
