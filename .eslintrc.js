@@ -1,5 +1,8 @@
 module.exports = {
     "extends": ["5app", "plugin:react/recommended"],
+    "env": {
+        "browser": true,
+    },
     "rules": {
         "arrow-parens": [0, "as-needed"],
         "prefer-template": 0,
