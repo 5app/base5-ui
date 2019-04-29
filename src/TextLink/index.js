@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import styled, {css} from 'styled-components';
 
 import ButtonCore from '../ButtonCore';
@@ -33,7 +33,7 @@ const Wrapper = styled(({linkRef, component, bold, stealthy, ...otherProps}) =>
 	${textLinkStyles}
 `;
 
-const TextLink = React.forwardRef((props, ref) => {
+function TextLink(props, ref) {
 	const {
 		as,
 		...otherProps
@@ -46,8 +46,8 @@ const TextLink = React.forwardRef((props, ref) => {
 			component={as || 'a'}
 		/>
 	);
-});
+}
 
 // Allow components to re-use simple text link styles
 export {textLinkStyles};
-export default TextLink;
+export default forwardRef(TextLink);

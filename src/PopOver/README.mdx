@@ -1,0 +1,43 @@
+---
+name: PopOver
+menu: Components
+---
+import {Playground, Props} from 'docz'
+
+import PopOver from './'
+
+# PopOver
+
+PopOver is a low-level building block used to attach an element (the 'popover') to another element (the 'reference element').
+
+It's a wrapper around `react-popper`.
+
+<Playground>
+	<PopOver
+		isOpen
+		content="I'm a pop over with a custom renderer. I'll try to always stay visible."
+		placement="top-start"
+		renderer={popover =>
+			<span ref={popover.ref} style={{
+				background: 'black',
+				color: 'white',
+				borderRadius: '3px',
+				padding: '5px 10px',
+				...popover.style
+			}}>
+				{popover.content}
+				{popover.arrow}
+			</span>
+		}
+	>
+		{popover =>
+			<span ref={popover.ref}>
+				I'm a reference element
+			</span>
+		}
+	</PopOver>
+</Playground>
+
+## Props
+
+<Props of={PopOver} />
