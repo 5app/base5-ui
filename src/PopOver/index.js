@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import useResizeAware from 'react-resize-aware';
 import PropTypes from 'prop-types';
+import {useTransition, interpolate} from 'react-spring';
 
 import Arrow from './Arrow';
 
@@ -29,7 +30,7 @@ function PopOver(props) {
 		content,
 		distance,
 		innerRef,
-		isOpen,
+		// isOpen,
 		offset,
 		placement,
 		positionFixed,
@@ -38,18 +39,31 @@ function PopOver(props) {
 	} = props;
 
 	const autoDistance = +arrowSize / 2 + +distance;
+	const [isOpen, setOpen] = React.useState(true);
+
+	const transition = useTransition(isOpen, null, {
+		from: {opacity: 0, top: -5, left: 0},
+		enter: {opacity: 1, top: 0, left: 0},
+		leave: {opacity: 0, top: -5, left: 0},
+		config: {mass: 1, tension: 500, friction: 20},
+	});
 
 	return (
 		<Manager>
-			<Reference innerRef={innerRef}>
-				{children}
-			</Reference>
-			{isOpen &&
-				<Portal targetElement={targetElement}>
+			<button type="button" onClick={() => setOpen(!isOpen)}>
+				<Reference innerRef={innerRef}>
+					{children}
+				</Reference>
+			</button>
+			{transition.map(({item: open, key, props: transitionStyle}) => open &&
+				<Portal key={key} targetElement={targetElement}>
 					<Popper
 						positionFixed={positionFixed}
 						placement={placement}
-						modifiers={{offset: {offset: `${offset}, ${autoDistance}`}}}
+						modifiers={{
+							offset: {offset: `${offset}, ${autoDistance}`},
+							computeStyle: {gpuAcceleration: false},
+						}}
 					>
 						{({ref, style, placement, arrowProps, scheduleUpdate}) => {
 							const arrow = arrowSize > 0 && (
@@ -61,11 +75,19 @@ function PopOver(props) {
 								/>
 							);
 
+							const combinedStyle = {
+								position: style.position,
+								top: 0,
+								left: 0,
+								opacity: transitionStyle.opacity,
+								transform: interpolate([transitionStyle.left, transitionStyle.top], (left, top) => `translate3d(${style.left + left}px, ${style.top + top}px, 0)`),
+							};
+
 							const resizeWatcher = <ResizeAware onResize={scheduleUpdate} />;
 
 							return renderer({
 								ref,
-								style,
+								style: combinedStyle,
 								content,
 								arrow,
 								resizeWatcher,
@@ -73,7 +95,7 @@ function PopOver(props) {
 						}}
 					</Popper>
 				</Portal>
-			}
+			)}
 		</Manager>
 	);
 }
