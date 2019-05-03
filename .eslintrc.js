@@ -11,7 +11,7 @@ module.exports = {
 
         "jsx-quotes": [2, "prefer-double"],
         "react/jsx-indent": [2, "tab"],
-        "react/jsx-no-bind": [2, {"ignoreRefs": true}],
+        "react/jsx-no-bind": [2, {"allowArrowFunctions": true, "ignoreRefs": true}],
         "react/prop-types": 0
     },
     "settings": {
