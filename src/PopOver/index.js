@@ -1,27 +1,17 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {Manager, Reference, Popper, placements} from 'react-popper';
-import useResizeAware from 'react-resize-aware';
 import PropTypes from 'prop-types';
 import {useTransition, interpolate} from 'react-spring';
 
 import Arrow from './Arrow';
+import ResizeAware from './ResizeAware';
 
 const Portal = ({targetElement, children}) => {
 	if (!targetElement) return children;
 
 	return ReactDOM.createPortal(children, targetElement);
 };
-
-function ResizeAware({onResize}) {
-	const [resizeListener, {width, height}] = useResizeAware();
-
-	useEffect(() => {
-		onResize();
-	}, [width, height]);
-
-	return resizeListener;
-}
 
 function PopOver(props) {
 	const {
