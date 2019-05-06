@@ -1,14 +1,6 @@
 import React from 'react';
 
-function getPrimaryPlacement(placement) {
-	if (placement.indexOf('-') > -1) {
-		const primaryPlacement = placement.split('-')[0];
-		return primaryPlacement;
-	}
-	else {
-		return placement;
-	}
-}
+import getPrimaryPlacement from './getPrimaryPlacement';
 
 const transformMap = {
 	top: 'translateY(-50%) rotate(135deg)',

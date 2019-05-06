@@ -5,7 +5,6 @@ menu: Components
 import {Playground, Props} from 'docz'
 
 import PopOver from './'
-import {animated} from 'react-spring';
 
 # PopOver
 
@@ -16,20 +15,20 @@ It's a wrapper around `react-popper`.
 <Playground>
 	<PopOver
 		isOpen
-		content="I'm a pop over with a custom renderer. I'll try to always stay visible."
+		content="I'm a popover with a custom renderer. I'll try to always stay visible."
 		placement="top-start"
-		renderer={popover =>
-			<animated.span ref={popover.ref} style={{
+		renderer={({ref, style, Component, content, arrow, resizeWatcher}) =>
+			<Component ref={ref} style={{
 				background: 'black',
 				color: 'white',
 				borderRadius: '3px',
 				padding: '5px 10px',
-				...popover.style
+				...style
 			}}>
-				{popover.content}
-				{popover.arrow}
-				{popover.resizeWatcher}
-			</animated.span>
+				{content}
+				{arrow}
+				{resizeWatcher}
+			</Component>
 		}
 	>
 		{popover =>
