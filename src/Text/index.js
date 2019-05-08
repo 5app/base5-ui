@@ -1,10 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {textProps, spacingProps} from 'src/styleProps';
 
-const Wrapper = styled.span`
+const Text = styled.span`
 	${props => textProps({
 		...props,
 		textAlign: props.align,
@@ -12,18 +11,6 @@ const Wrapper = styled.span`
 	})}
 	${spacingProps}
 `;
-
-// This JSX wrapper is only needed to make
-// the Docz <Props /> table parsing work.
-// It should be removed when the related
-// Docz issue has been resolved:
-// https://github.com/pedronauck/docz/issues/568
-
-function Text(props) {
-	return (
-		<Wrapper {...props} />
-	);
-}
 
 Text.propTypes = {
 	bold: PropTypes.bool,

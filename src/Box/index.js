@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -10,25 +9,13 @@ import {
 	textProps,
 } from 'src/styleProps';
 
-const Wrapper = styled.div`
+const Box = styled.div`
 	${positionProps}
 	${flexProps}
 	${spacingProps}
 	${borderProps}
 	${textProps}
 `;
-
-// This JSX wrapper is only needed to make
-// the Docz <Props /> table parsing work.
-// It should be removed when the related
-// Docz issue has been resolved:
-// https://github.com/pedronauck/docz/issues/568
-
-function Box(props) {
-	return (
-		<Wrapper {...props} />
-	);
-}
 
 Box.propTypes = {
 	position: PropTypes.oneOf([
