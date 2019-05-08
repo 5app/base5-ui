@@ -2,11 +2,11 @@ module.exports = ({
 	name,
 	viewBox,
 	pathData
-}) => `import React from 'react';
+}) => `import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const ${name}Icon = React.forwardRef((props, ref) => {
+const ${name}Icon = forwardRef((props, ref) => {
 	const {
 		size,
 		color,

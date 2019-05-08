@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import styled, {css} from 'styled-components';
 
 import {alpha, contrast} from '../utils/colors';
@@ -22,6 +22,7 @@ const Wrapper = styled.label`
 	border-radius: 1.4rem;
 
 	transition: all 250ms linear;
+	box-sizing: border-box;
 
 	${p => !p.disabled && css`
 		&:focus-within,
@@ -76,11 +77,12 @@ const SwitchIcon = styled(OkIcon)`
 	`}
 `;
 
-function Switch({checked, disabled, id, ...otherProps}) {
+function Switch({checked, disabled, id, ...otherProps}, ref) {
 	return (
 		<Wrapper htmlFor={id} disabled={disabled}>
 			<Input
 				type="checkbox"
+				ref={ref}
 				id={id}
 				checked={checked}
 				disabled={disabled}
@@ -93,4 +95,4 @@ function Switch({checked, disabled, id, ...otherProps}) {
 	);
 }
 
-export default Switch;
+export default forwardRef(Switch);

@@ -1,28 +1,38 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {ThemeProvider} from 'styled-components';
 
 import getReadableColorblock from './getReadableColorblock';
 
 function ThemeSection(props) {
+	const {
+		baseTheme,
+		children,
+		colorBlock,
+		hasBgImage,
+		name,
+	} = props;
 
-	function constructLocalTheme(parentTheme = props.baseTheme) {
-		const colorBlockOverrides = getReadableColorblock(
-			parentTheme.globals.colorBlocks,
-			props.colorBlock,
-			props.hasBgImage
-		);
+	const constructLocalTheme = useCallback(
+		(parentTheme = baseTheme) => {
+			const colorBlockOverrides = getReadableColorblock(
+				parentTheme.globals.colorBlocks,
+				colorBlock,
+				hasBgImage
+			);
 
-		return {
-			...parentTheme,
-			...parentTheme.sections[props.name],
-			...colorBlockOverrides,
-		};
-	}
+			return {
+				...parentTheme,
+				...parentTheme.sections[name],
+				...colorBlockOverrides,
+			};
+		},
+		[baseTheme, colorBlock, hasBgImage, name]
+	);
 
 	return (
 		<ThemeProvider theme={constructLocalTheme}>
-			{props.children}
+			{children}
 		</ThemeProvider>
 	);
 }
