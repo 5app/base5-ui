@@ -3,6 +3,9 @@ module.exports = {
     "env": {
         "browser": true,
     },
+    "plugins": [
+        "react-hooks"
+    ],
     "rules": {
         "arrow-parens": [0, "as-needed"],
         "prefer-template": 0,
@@ -12,7 +15,9 @@ module.exports = {
         "jsx-quotes": [2, "prefer-double"],
         "react/jsx-indent": [2, "tab"],
         "react/jsx-no-bind": [2, {"allowArrowFunctions": true, "ignoreRefs": true}],
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
     },
     "settings": {
         "react": {

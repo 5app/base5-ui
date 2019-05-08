@@ -37,6 +37,7 @@
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-jsx-a11y": "^6.1.1",
 		"eslint-plugin-react": "^7.11.1",
+		"eslint-plugin-react-hooks": "^1.6.0",
 		"pixo": "^1.1.2",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.1",
