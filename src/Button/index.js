@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
@@ -158,7 +158,7 @@ const Subtitle = styled.span`
 	font-size: ${p => p.theme.globals.typeScale.s};
 `;
 
-const Button = React.forwardRef((props, ref) => {
+const Button = forwardRef((props, ref) => {
 	const {
 		as,
 		children,
@@ -195,6 +195,8 @@ const Button = React.forwardRef((props, ref) => {
 		</Wrapper>
 	);
 });
+
+Button.displayName = 'Button';
 
 Button.defaultProps = {
 	color: 'default',

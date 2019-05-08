@@ -1,0 +1,46 @@
+---
+name: Text
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import Text from './'
+
+# Text
+
+`Text` is a helper component for formatting text.
+
+- Margin and padding
+- Text styles (bold, dimmed, fontSize, lineHeight, textAlign, overflow, caps)
+
+In addition to the `fontSize` and `textAlign` props, this component also supports the shortcuts `size` and `align`.
+
+## Examples
+
+<Playground>
+	<Text as="div" bold>
+		Bold text
+	</Text>
+	<Text as="div" dimmed lineHeight={2}>
+		Dimmed text with a line height of 2
+	</Text>
+	<Text as="h1" size="xl">
+		Extra-large text
+	</Text>
+	<Text as="div" caps="all">
+		this text is all-lowercase, but displays in uppercase
+	</Text>
+	<Text as="div" caps="first">
+		this text is all-lowercase, but is displayed in title-case
+	</Text>
+	<Text as="div" overflow="wrap" mt="m">
+		An overflow value of 'wrap' will make long words with no spaces break into a new line.
+	</Text>
+	<Text as="div" overflow="ellipsis" mt="m">
+		An overflow value of 'ellipsis' will prevent line-breaks and cut off overflowing text with an ellipsis (…)
+	</Text>
+</Playground>
+
+## Props
+
+<Props of={Text} />

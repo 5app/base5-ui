@@ -1,9 +1,7 @@
-import {css} from 'styled-components';
-
-const ellipsis = css`
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-`;
+const ellipsis = {
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap',
+};
 
 export default ellipsis;

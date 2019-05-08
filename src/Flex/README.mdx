@@ -1,0 +1,28 @@
+---
+name: Flex
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import Flex, {Box} from './'
+
+# Flex
+
+`Flex` is a container component for building simple layouts using CSS flexbox. It's especially useful when used with the `Box` component which provides controls for laying out the children.
+
+## Examples
+
+<Playground>
+	<Flex align="top">
+		<Box grow shrink>
+			I take up all the space and push other Boxes away! 👉
+		</Box>
+		<Box>
+			👀 I'm smol.
+		</Box>
+	</Flex>
+</Playground>
+
+## Props
+
+<Props of={Flex} />

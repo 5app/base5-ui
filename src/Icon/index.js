@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
+import {withTheme} from 'styled-components';
 
 import {getSpacing} from '../utils/spacing';
 
@@ -12,13 +13,14 @@ const sizeMap = {
 	huge: 6,
 };
 
-const Icon = React.forwardRef((props, ref) => {
+function Icon(props, ref) {
 	const {
 		name,
 		scale,
 		size,
 		spacingLeft,
 		spacingRight,
+		theme,
 		...otherProps
 	} = props;
 
@@ -28,11 +30,11 @@ const Icon = React.forwardRef((props, ref) => {
 		<Glyph
 			ref={ref}
 			scale={scale || sizeMap[size]}
-			spacingLeft={getSpacing(spacingLeft)}
-			spacingRight={getSpacing(spacingRight)}
+			spacingLeft={getSpacing(spacingLeft, theme)}
+			spacingRight={getSpacing(spacingRight, theme)}
 			{...otherProps}
 		/>
 	);
-});
+}
 
-export default Icon;
+export default withTheme(forwardRef(Icon));

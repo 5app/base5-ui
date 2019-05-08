@@ -2,7 +2,7 @@ import {pxToRem} from './units';
 
 const passThroughValues = ['auto'];
 
-function getSpacing(shortCode) {
+function getSpacing(shortCode, theme) {
 
 	if (
 		shortCode === undefined ||
@@ -29,10 +29,10 @@ function getSpacing(shortCode) {
 	}
 
 	if (shortCode.charAt(0) === '-') {
-		return (props) => '-' + props.theme.globals.spacing[shortCode.substring(1)];
+		return '-' + theme.globals.spacing[shortCode.substring(1)];
 	}
 	else {
-		return (props) => props.theme.globals.spacing[shortCode];
+		return theme.globals.spacing[shortCode];
 	}
 }
 

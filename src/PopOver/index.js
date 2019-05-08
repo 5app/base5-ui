@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 import {animated, useTransition, interpolate} from 'react-spring';
+
+import Portal from 'src/Portal';
 
 import Arrow from './Arrow';
 import ResizeAware from './ResizeAware';
@@ -24,11 +25,7 @@ const transitionOrigins = {
 	},
 };
 
-const Portal = ({targetElement, children}) => {
-	if (!targetElement) return children;
 
-	return ReactDOM.createPortal(children, targetElement);
-};
 
 function PopOver(props) {
 	const {
