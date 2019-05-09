@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {textProps, spacingProps} from 'src/styleProps';
+import {textProps, spacingProps} from '../styleProps';
 
 const Text = styled.span`
 	${props => textProps({

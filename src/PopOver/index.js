@@ -3,7 +3,7 @@ import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 import {animated, useTransition, interpolate} from 'react-spring';
 
-import Portal from 'src/Portal';
+import Portal from '../Portal';
 
 import Arrow from './Arrow';
 import ResizeAware from './ResizeAware';

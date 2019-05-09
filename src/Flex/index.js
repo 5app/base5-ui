@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {spacingProps} from 'src/styleProps';
-import {alignMap} from 'src/styleProps/flexProps';
+import {spacingProps} from '../styleProps';
+import {alignMap} from '../styleProps/flexProps';
 
 import Box from '../Box';
 

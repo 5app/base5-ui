@@ -1,4 +1,4 @@
-import {getSpacing} from 'src/utils/spacing';
+import {getSpacing} from '../utils/spacing';
 
 function spacingProps(props) {
 	const {

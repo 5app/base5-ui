@@ -1,6 +1,6 @@
-import {alpha} from 'src/utils/colors';
+import {alpha} from '../utils/colors';
 
-import {ellipsis, overflowWrap} from 'src/mixins';
+import {ellipsis, overflowWrap} from '../mixins';
 
 const textTransformMap = {
 	all: 'uppercase',

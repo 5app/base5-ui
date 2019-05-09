@@ -7,7 +7,7 @@ import {
 	spacingProps,
 	borderProps,
 	textProps,
-} from 'src/styleProps';
+} from '../styleProps';
 
 const Box = styled.div`
 	${positionProps}

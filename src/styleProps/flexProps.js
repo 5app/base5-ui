@@ -1,4 +1,4 @@
-import {pxToRem} from 'src/utils/units';
+import {pxToRem} from '../utils/units';
 
 export const alignMap = {
 	top: 'flex-start',

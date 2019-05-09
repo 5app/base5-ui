@@ -1,4 +1,4 @@
-import {alpha} from 'src/utils/colors';
+import {alpha} from '../utils/colors';
 
 const borderKeys = {
 	top: 'borderTop',
