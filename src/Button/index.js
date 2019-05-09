@@ -75,6 +75,10 @@ const Wrapper = styled(({buttonRef, component, round, square, fullWidth, color, 
 		}
 	`}
 
+	&.focus-visible {
+		outline: none;
+	}
+
 	&.is-disabled {
 		color: white;
 		background-color: ${alpha('black', 0.3)};
@@ -92,21 +96,30 @@ const Wrapper = styled(({buttonRef, component, round, square, fullWidth, color, 
 	}
 `;
 
+const ThreePx = pxToRem(3);
+
 const FocusRing = styled.span`
 	${fillParent}
 	border-radius: inherit;
 
-	${p => !p.color && css`
-		border: 1px solid ${p => alpha(p.theme.shade, p.theme.lineStrength)};
-	`}
-
-	box-shadow: 0 0 0 ${pxToRem(3)} ${p => alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
+	box-shadow: 0 0 0 ${ThreePx} ${p => alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
 
 	opacity: 0;
 	transition: opacity 250ms linear;
 	will-change: opacity;
 
-	${Wrapper}.is-focused > &,
+	${Wrapper}.focus-visible > & {
+		top: -${ThreePx};
+		left: -${ThreePx};
+		bottom: -${ThreePx};
+		right: -${ThreePx};
+
+		box-shadow: 0 0 0 ${ThreePx} ${p => ((p.color === 'primary' || p.color === 'important') ? p.theme.globals.buttons[p.color].background : p.theme.links)};
+
+		opacity: 1;
+		transition-duration: 50ms;
+	}
+
 	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 1;
 		transition-duration: 50ms;
@@ -117,7 +130,7 @@ const HoverShade = styled.span`
 	${fillParent}
 	border-radius: inherit;
 
-	background-color: ${p => alpha(p.theme.shade, Math.min(p.theme.shadeStrength, 0.15))};
+	background-color: ${p => alpha(p.theme.shade, Math.min(p.theme.shadeStrength, 0.12))};
 
 	opacity: 0;
 	transition: opacity 250ms linear;
@@ -125,7 +138,7 @@ const HoverShade = styled.span`
 
 	${Wrapper}.is-active > & {
 		opacity: 0.666;
-		box-shadow: inset 0 0 ${pxToRem(5)} ${alpha('black', 0.5)};
+		box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.5);
 	}
 
 	${Wrapper}:not(.is-disabled):hover > & {
@@ -162,6 +175,7 @@ const Button = forwardRef((props, ref) => {
 	const {
 		as,
 		children,
+		color,
 		icon,
 		iconRight,
 		subline,
@@ -176,10 +190,11 @@ const Button = forwardRef((props, ref) => {
 			component={as}
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
+			color={color}
 			{...otherProps}
 		>
 			<HoverShade />
-			<FocusRing />
+			<FocusRing color={color} />
 			<Content>
 				{!iconRight && iconEl}
 				{children &&
