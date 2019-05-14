@@ -2,6 +2,7 @@
 name: PopOver
 menu: Components
 ---
+import {useEffect} from 'react'
 import {Playground, Props} from 'docz'
 
 import PopOver from './'
@@ -15,26 +16,13 @@ It's a wrapper around `react-popper`.
 <Playground>
 	<PopOver
 		isOpen
-		content="I'm a popover with a custom renderer. I'll try to always stay visible."
+		content="I'm a popover. I'll try to always stay visible."
 		placement="top-start"
-		renderer={({ref, style, Component, content, arrow, resizeWatcher}) =>
-			<Component ref={ref} style={{
-				background: 'black',
-				color: 'white',
-				borderRadius: '3px',
-				padding: '5px 10px',
-				...style
-			}}>
-				{content}
-				{arrow}
-				{resizeWatcher}
-			</Component>
-		}
 	>
 		{popover =>
-			<span ref={popover.ref}>
+			<button type="button" ref={popover.ref}>
 				I'm a reference element
-			</span>
+			</button>
 		}
 	</PopOver>
 </Playground>

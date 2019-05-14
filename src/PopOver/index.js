@@ -2,27 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
-import {animated, useTransition, interpolate} from 'react-spring';
 
 import Arrow from './Arrow';
 import ResizeAware from './ResizeAware';
-
-import getPrimaryPlacement from './getPrimaryPlacement';
-
-const transitionOrigins = {
-	top: {
-		top: 3, left: 0
-	},
-	bottom: {
-		top: -3, left: 0
-	},
-	left: {
-		top: 0, left: 3
-	},
-	right: {
-		top: 0, left: -3
-	},
-};
 
 const Portal = ({targetElement, children}) => {
 	if (!targetElement) return children;
@@ -41,84 +23,69 @@ function PopOver(props) {
 		offset,
 		placement,
 		positionFixed,
-		targetElement,
-		renderer,
-		withTransition,
+		renderer: PopOverRenderer,
 	} = props;
 
 	const autoDistance = +arrowSize / 2 + +distance;
-
-	const primaryPlacement = getPrimaryPlacement(placement);
-
-	const transition = useTransition(isOpen, null, {
-		from: {opacity: 0, ...transitionOrigins[primaryPlacement]},
-		leave: {opacity: 0, ...transitionOrigins[primaryPlacement]},
-		enter: {opacity: 1, top: 0, left: 0},
-		config: {mass: 1, tension: 700, friction: 30},
-	});
 
 	return (
 		<Manager>
 			<Reference innerRef={innerRef}>
 				{children}
 			</Reference>
-			{transition.map(({item: open, key, props: transitionStyle}) => (withTransition ? open : isOpen) &&
-				<Portal key={key} targetElement={targetElement}>
-					<Popper
-						positionFixed={positionFixed}
-						placement={placement}
-						modifiers={{
-							offset: {offset: `${offset}, ${autoDistance}`},
-							computeStyle: {gpuAcceleration: !withTransition},
-						}}
-					>
-						{({ref, style, placement, arrowProps, scheduleUpdate}) => {
-							const arrow = arrowSize > 0 && (
-								<Arrow
-									size={arrowSize}
-									placement={placement}
-									ref={arrowProps.ref}
-									style={arrowProps.style}
-								/>
-							);
+			<Popper
+				positionFixed={positionFixed}
+				placement={placement}
+				modifiers={{
+					offset: {offset: `${offset}, ${autoDistance}`},
+					computeStyle: {gpuAcceleration: false},
+				}}
+			>
+				{({ref, style, placement, arrowProps, scheduleUpdate}) => {
+					const arrow = arrowSize > 0 && (
+						<Arrow
+							size={arrowSize}
+							placement={placement}
+							ref={arrowProps.ref}
+							style={arrowProps.style}
+						/>
+					);
 
-							const computedStyle = withTransition ? {
-								position: style.position,
-								top: 0,
-								left: 0,
-								opacity: transitionStyle.opacity,
-								transform: interpolate(
-									[transitionStyle.left, transitionStyle.top],
-									(left, top) =>
-										`translate3d(${style.left + left}px, ${style.top + top}px, 0)`
-								),
-							} : style;
+					const resizeWatcher = <ResizeAware onResize={scheduleUpdate} />;
 
-							const resizeWatcher = <ResizeAware onResize={scheduleUpdate} />;
-
-							return renderer({
-								Component: withTransition ? animated.span : 'span',
-								ref,
-								style: computedStyle,
-								content,
-								arrow,
-								resizeWatcher,
-							});
-						}}
-					</Popper>
-				</Portal>
-			)}
+					return (
+						<PopOverRenderer
+							popOverRef={ref}
+							style={style}
+							isOpen={isOpen}
+							content={content}
+							arrow={arrow}
+							resizeWatcher={resizeWatcher}
+						/>
+					);
+				}}
+			</Popper>
 		</Manager>
 	);
 }
 
-function DefaultPopover({Component, ref, style, content, arrow, resizeWatcher}) {
+function DefaultPopover({popOverRef, isOpen, style, content, arrow, resizeWatcher}) {
+	if (!isOpen) return null;
+
 	return (
-		<Component ref={ref} style={style}>
-			{content}
-			{arrow}
-			{resizeWatcher}
-		</Component>
+		<Portal targetElement={document.body}>
+			<span ref={popOverRef} style={{
+				background: 'black',
+				color: 'white',
+				borderRadius: '3px',
+				padding: '5px 10px',
+				...style
+			}}>
+				{content}
+				{arrow}
+				{resizeWatcher}
+			</span>
+		</Portal>
 	);
 }
 
@@ -128,9 +95,7 @@ PopOver.defaultProps = {
 	offset: 0,
 	placement: 'top',
 	positionFixed: true,
-	targetElement: document.body,
 	renderer: DefaultPopover,
-	withTransition: true,
 };
 
 PopOver.propTypes = {
@@ -156,11 +121,7 @@ PopOver.propTypes = {
 	/** Control whether the popover should be positioned using "position: absolute" or "position: fixed" */
 	positionFixed: PropTypes.bool,
 	/** Customise popover rendering (e.g. for custom styling) */
-	renderer: PropTypes.func,
-	/** Choose the element that popovers should be rendered into. Set to `null` to render directly below the reference element. */
-	targetElement: PropTypes.object,
-	/** Allows turning off the popover's fade-in animation */
-	withTransition: PropTypes.bool,
+	renderer: PropTypes.elementType,
 };
 
 PopOver.Arrow = Arrow;
