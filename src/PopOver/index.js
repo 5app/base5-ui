@@ -1,16 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 
+import Portal from '../Portal';
+
 import Arrow from './Arrow';
 import ResizeAware from './ResizeAware';
-
-const Portal = ({targetElement, children}) => {
-	if (!targetElement) return children;
-
-	return ReactDOM.createPortal(children, targetElement);
-};
 
 function PopOver(props) {
 	const {
