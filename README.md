@@ -30,10 +30,10 @@ A basic app setup using the default base5-UI theme looks like this:
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ThemeSection from 'base5-icons/ThemeSection';
-import Button from 'base5-icons/Button';
+import ThemeSection from 'base5-ui/ThemeSection';
+import Button from 'base5-ui/Button';
 
-import theme from 'base5-icons/theme';
+import theme from 'base5-ui/theme';
 
 function App() {
   return (
