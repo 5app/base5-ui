@@ -12,6 +12,7 @@
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
 		"postpublish": "cp -r dist/package.json .",
+		"semantic-release": "semantic-release",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
