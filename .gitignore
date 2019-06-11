@@ -4,3 +4,4 @@ node_modules
 
 .docz/**
 yarn-error.log
+package-lock.json
