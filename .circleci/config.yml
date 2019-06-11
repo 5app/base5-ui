@@ -29,7 +29,7 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: build dist
+          name: Compile the files using Babel
           command: npm run compile
       - persist_to_workspace:
           root: ~/repo
@@ -44,7 +44,7 @@ jobs:
           at: ~/repo
       - checkout
       - run:
-          name: Copy core files
+          name: Copy core files to the /dist folder
           command: npm run copypackage
       - run: npm run semantic-release
 
