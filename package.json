@@ -65,7 +65,10 @@
 		"branch": "master",
 		"prepare": [
 			"@semantic-release/changelog",
-			"@semantic-release/npm",
+			{
+				"path": "@semantic-release/npm",
+				"pkgRoot": "dist"
+			},
 			{
 				"path": "@semantic-release/git",
 				"assets": [
