@@ -29,6 +29,9 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Run tests
+          command: npm test
+      - run:
           name: Compile the files using Babel
           command: npm run compile
       - persist_to_workspace:
