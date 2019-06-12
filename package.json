@@ -87,7 +87,15 @@
 					"pkgRoot": "dist"
 				}
 			],
-			"@semantic-release/github"
+			[
+				"@semantic-release/github",
+				{
+					"assets": [
+						"package.json",
+						"CHANGELOG.md"
+					]
+				}
+			]
 		]
 	}
 }
