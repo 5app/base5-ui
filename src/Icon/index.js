@@ -35,4 +35,7 @@ const Icon = React.forwardRef((props, ref) => {
 	);
 });
 
+Icon.displayName = 'Icon';
+
+
 export default Icon;

@@ -200,6 +200,8 @@ Button.defaultProps = {
 	color: 'default',
 };
 
+Button.displayName = 'Button';
+
 Button.propTypes = {
 	icon: PropTypes.string,
 	iconRight: PropTypes.bool,

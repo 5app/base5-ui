@@ -11,9 +11,10 @@
 		"dist": "cd dist && npm publish",
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
+		"lint": "eslint ./",
 		"postpublish": "cp -r dist/package.json .",
 		"semantic-release": "semantic-release",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "npm run lint"
 	},
 	"repository": {
 		"type": "git",
@@ -33,6 +34,7 @@
 		"@babel/preset-env": "^7.0.0",
 		"@semantic-release/changelog": "^3.0.2",
 		"@semantic-release/git": "^7.0.8",
+		"babel-eslint": "^10.0.1",
 		"babel-plugin-styled-components": "^1.8.0",
 		"docz": "^1.0.4",
 		"docz-theme-default": "^1.0.4",

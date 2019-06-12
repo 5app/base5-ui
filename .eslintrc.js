@@ -1,5 +1,14 @@
 module.exports = {
     "extends": ["5app", "plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "allowImportExportEverywhere": true,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
     "env": {
         "browser": true,
     },
