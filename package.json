@@ -12,7 +12,7 @@
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
 		"lint": "eslint ./",
-		"postpublish": "pwd && cp -r package.json ../",
+		"postversion": "pwd && cp -r package.json ../",
 		"semantic-release": "semantic-release",
 		"test": "npm run lint"
 	},
