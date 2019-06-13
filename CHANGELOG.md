@@ -1,3 +1,10 @@
+## [1.14.13](https://github.com/5app/base5-ui/compare/v1.14.12...v1.14.13) (2019-06-13)
+
+
+### Bug Fixes
+
+* **deploy:** tidy config semantic-release ([a0153b5](https://github.com/5app/base5-ui/commit/a0153b5))
+
 ## [1.14.12](https://github.com/5app/base5-ui/compare/v1.14.11...v1.14.12) (2019-06-13)
 
 
