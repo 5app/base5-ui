@@ -6,7 +6,7 @@
 	"scripts": {
 		"build-icons": "pixo src-icons/svg --out-dir src/icons --template src-icons/template.js",
 		"compile": "babel src --out-dir dist",
-		"copypackage": "cp -rf package.json dist",
+		"copypackage": "cp -rf package.json README.md dist",
 		"predist": "npm run copypackage",
 		"dist": "cd dist && npm publish",
 		"docz:dev": "docz dev",
