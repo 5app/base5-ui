@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "1.14.3",
+	"version": "1.14.12",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -88,7 +88,6 @@
 				}
 			],
 			"@semantic-release/github"
-
 		]
 	}
 }
