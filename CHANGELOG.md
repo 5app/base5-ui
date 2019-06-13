@@ -1,3 +1,10 @@
+## [1.14.6](https://github.com/5app/base5-ui/compare/v1.14.5...v1.14.6) (2019-06-12)
+
+
+### Bug Fixes
+
+* **deploy:** config semantic-release ([a18bee3](https://github.com/5app/base5-ui/commit/a18bee3))
+
 ## [1.14.5](https://github.com/5app/base5-ui/compare/v1.14.4...v1.14.5) (2019-06-12)
 
 
