@@ -1,3 +1,10 @@
+## [1.14.14](https://github.com/5app/base5-ui/compare/v1.14.13...v1.14.14) (2019-06-13)
+
+
+### Bug Fixes
+
+* **deploy:** copy README to npm package ([6adc257](https://github.com/5app/base5-ui/commit/6adc257))
+
 ## [1.14.13](https://github.com/5app/base5-ui/compare/v1.14.12...v1.14.13) (2019-06-13)
 
 
