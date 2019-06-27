@@ -51,6 +51,14 @@ jobs:
           command: npm run copypackage
       - run: npm run semantic-release
 
+  publish-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - checkout
+      - run: npm run deploy-docs
+
 workflows:
   version: 2
   build:
@@ -63,3 +71,7 @@ workflows:
           context: org-global
           requires:
             - test
+      - publish-docs:
+          context: org-global
+          requires:
+            - release
