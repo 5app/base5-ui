@@ -54,10 +54,19 @@ ReactDOM.render(<App />, rootElement);
 
 Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.mdx) before continuing here.
 
-To publish changes to the components in this repo, please follow these steps:
+To publish changes to the components in this repo, please follow these steps. The docs will automatically be updated after the changes were published.
 
-1. Commit your changes
-2. Bump the version number using `npm version [patch|minor|major]`
-3. Run `npm run compile` to compile all code within `src` to the `dist` folder
-4. Run `npm run dist` to publish the `dist` folder to NPM
-5. Push to git
+- Commit your changes using semantic versioning prefixes:
+  1. `fix:` or `refactor:` for a patch release (x.x.+1)
+  2. `feat:` for a minor release (x.+1.0)
+  3. Add `BREAKING CHANGE:` to the beginning of the commit message's body for a major release: +1.0.0)
+  4. Use `chore:` or `style:` for housekeeping tasks that don't require a release
+- Submit a PR or push to the `master` branch
+
+## Updating just the docs
+
+If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base-5-ui), follow these steps:
+
+1. Commit your changes using the prefix `docs:`
+2. Push to the `master` branch
+3. Run `npm run deploy-docs`
