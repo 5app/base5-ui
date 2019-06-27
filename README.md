@@ -65,8 +65,4 @@ To publish changes to the components in this repo, please follow these steps. Th
 
 ## Updating just the docs
 
-If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base-5-ui), follow these steps:
-
-1. Commit your changes using the prefix `docs:`
-2. Push to the `master` branch
-3. Run `npm run deploy-docs`
+If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base-5-ui), just submit a PR or push to the `master` branch directly using a `docs:` prefix for the commit message.
