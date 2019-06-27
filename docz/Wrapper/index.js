@@ -19,10 +19,7 @@ const GlobalStyle = createGlobalStyle`
 const Wrapper = ({children}) => (
 	<>
 		<GlobalStyle />
-		<ThemeSection
-			name="page"
-			baseTheme={theme}
-		>
+		<ThemeSection name="page" baseTheme={theme}>
 			{children}
 		</ThemeSection>
 	</>

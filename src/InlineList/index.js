@@ -13,33 +13,41 @@ const Wrapper = styled.ul`
     padding: 0;
 	margin-left: 0;
 
-	${p => p.spacing && css`
-		/* Compensate for Item's padding */
-		margin-left: -${p => p.theme.globals.spacing[p.spacing]};
-		margin-bottom: -${p => p.theme.globals.spacing[p.spacing]};
-	`}
+	${p =>
+		p.spacing &&
+		css`
+			/* Compensate for Item's padding */
+			margin-left: -${p => p.theme.globals.spacing[p.spacing]};
+			margin-bottom: -${p => p.theme.globals.spacing[p.spacing]};
+		`}
 
 	& > ${Item} {
 		vertical-align: ${p => p.align || 'top'};
 
-		${p => p.spacing && css`
-			padding-left: ${p => p.theme.globals.spacing[p.spacing]};
-			padding-bottom: ${p => p.theme.globals.spacing[p.spacing]};
-		`}
+		${p =>
+			p.spacing &&
+			css`
+				padding-left: ${p => p.theme.globals.spacing[p.spacing]};
+				padding-bottom: ${p => p.theme.globals.spacing[p.spacing]};
+			`}
 
-		${p => p.splitBy === 'comma' && css`
-			&:not(:last-of-type)::after {
-				content: ',';
-				margin-right: 0.3em;
-			}
-		`}
+		${p =>
+			p.splitBy === 'comma' &&
+			css`
+				&:not(:last-of-type)::after {
+					content: ',';
+					margin-right: 0.3em;
+				}
+			`}
 
-		${p => p.splitBy === 'dot' && css`
-			&:not(:last-of-type)::after {
-				content: '·';
-				margin: 0 0.35em;
-			}
-		`}
+		${p =>
+			p.splitBy === 'dot' &&
+			css`
+				&:not(:last-of-type)::after {
+					content: '·';
+					margin: 0 0.35em;
+				}
+			`}
 	}
 `;
 

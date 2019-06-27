@@ -3,11 +3,7 @@ import React from 'react';
 import Svg from './BaseSvg';
 
 const DiskIcon = React.forwardRef((props, ref) => {
-	const {
-		size,
-		color,
-		...otherProps
-	} = props;
+	const {size, color, ...otherProps} = props;
 
 	return (
 		<Svg
@@ -29,7 +25,7 @@ DiskIcon.displayName = 'DiskIcon';
 
 DiskIcon.defaultProps = {
 	size: 18,
-	color: 'currentcolor'
+	color: 'currentcolor',
 };
 
 export default DiskIcon;

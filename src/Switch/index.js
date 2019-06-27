@@ -24,12 +24,14 @@ const Wrapper = styled.label`
 	transition: all 250ms linear;
 	box-sizing: border-box;
 
-	${p => !p.disabled && css`
-		&:focus-within,
-		&:hover {
-			background: ${p => alpha(p.theme.shade, p.theme.shadeStrength)};
-		}
-	`}
+	${p =>
+		!p.disabled &&
+		css`
+			&:focus-within,
+			&:hover {
+				background: ${p => alpha(p.theme.shade, p.theme.shadeStrength)};
+			}
+		`}
 
 	&:focus-within {
 		border-color: ${p => p.theme.links};
@@ -67,14 +69,15 @@ const SwitchIcon = styled(OkIcon)`
 	opacity: 0;
 	transform: translateY(-100%) rotate(45deg);
 	will-change: transform, opacity;
-	transition: transform 0s linear 150ms,
-				opacity 100ms linear;
+	transition: transform 0s linear 150ms, opacity 100ms linear;
 
-	${p => p.checked && css`
-		opacity: 1;
-		transform: none;
-		transition: all 100ms ease-out 150ms;
-	`}
+	${p =>
+		p.checked &&
+		css`
+			opacity: 1;
+			transform: none;
+			transition: all 100ms ease-out 150ms;
+		`}
 `;
 
 function Switch({checked, disabled, id, ...otherProps}, ref) {

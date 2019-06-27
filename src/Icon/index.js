@@ -37,4 +37,4 @@ function Icon(props, ref) {
 	);
 }
 
-export default withTheme(forwardRef(Icon));;
+export default withTheme(forwardRef(Icon));

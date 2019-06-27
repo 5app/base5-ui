@@ -4,10 +4,4 @@ import positionProps from './positionProps';
 import spacingProps from './spacingProps';
 import textProps from './textProps';
 
-export {
-	borderProps,
-	flexProps,
-	positionProps,
-	spacingProps,
-	textProps,
-};
+export {borderProps, flexProps, positionProps, spacingProps, textProps};

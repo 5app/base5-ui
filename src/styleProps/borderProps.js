@@ -8,17 +8,17 @@ const borderKeys = {
 };
 
 function borderProps(props) {
-	const {
-		border,
-		theme,
-	} = props;
+	const {border, theme} = props;
 
 	if (!borderKeys[border]) {
 		return null;
 	}
 
 	return {
-		[borderKeys[border]]: `1px solid ${alpha(theme.shade, theme.lineStrength)}`,
+		[borderKeys[border]]: `1px solid ${alpha(
+			theme.shade,
+			theme.lineStrength
+		)}`,
 	};
 }
 

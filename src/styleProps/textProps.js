@@ -11,7 +11,7 @@ const overflowStylesMap = {
 	ellipsis,
 	wrap: {
 		display: 'block',
-		...overflowWrap
+		...overflowWrap,
 	},
 };
 

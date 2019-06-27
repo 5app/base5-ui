@@ -3,18 +3,12 @@ import {pxToRem} from './units';
 const passThroughValues = ['auto'];
 
 function getSpacing(shortCode, theme) {
-
-	if (
-		shortCode === undefined ||
-		shortCode === null ||
-		shortCode === false
-	) {
+	if (shortCode === undefined || shortCode === null || shortCode === false) {
 		return shortCode;
 	}
 
 	if (
-		(typeof shortCode !== 'number' &&
-		typeof shortCode !== 'string') ||
+		(typeof shortCode !== 'number' && typeof shortCode !== 'string') ||
 		shortCode === '0'
 	) {
 		return '0';
@@ -30,12 +24,9 @@ function getSpacing(shortCode, theme) {
 
 	if (shortCode.charAt(0) === '-') {
 		return '-' + theme.globals.spacing[shortCode.substring(1)];
-	}
-	else {
+	} else {
 		return theme.globals.spacing[shortCode];
 	}
 }
 
-export {
-	getSpacing,
-};
+export {getSpacing};

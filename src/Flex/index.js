@@ -9,11 +9,15 @@ import Box from '../Box';
 const Flex = styled.div`
 	display: flex;
 
-	${p => p.wrap && `
+	${p =>
+		p.wrap &&
+		`
 		flex-wrap: wrap;
 	`}
 
-	${p => p.column && `
+	${p =>
+		p.column &&
+		`
 		flex-direction: column;
 		align-items: stretch;
 
@@ -31,13 +35,7 @@ Flex.defaultProps = {
 
 Flex.propTypes = {
 	/** Align children on the cross axis */
-	alignItems: PropTypes.oneOf([
-		'top',
-		'left',
-		'center',
-		'bottom',
-		'right',
-	]),
+	alignItems: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
 	/** Arrange children in a column instead of a row.
 	 * Setting this also sets the wrapper's height to `100%` */
 	column: PropTypes.bool,
@@ -45,8 +43,6 @@ Flex.propTypes = {
 	wrap: PropTypes.bool,
 };
 
-export {
-	Box,
-};
+export {Box};
 
 export default Flex;

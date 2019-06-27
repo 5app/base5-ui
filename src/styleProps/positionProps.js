@@ -1,16 +1,7 @@
 import {getSpacing} from '../utils/spacing';
 
 function positionProps(props) {
-	const {
-		pos,
-		position,
-		top,
-		left,
-		bottom,
-		right,
-		z,
-		theme,
-	} = props;
+	const {pos, position, top, left, bottom, right, z, theme} = props;
 
 	return {
 		position: pos || position || undefined,

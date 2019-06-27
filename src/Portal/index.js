@@ -2,10 +2,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 function canUseDom() {
-	return Boolean(
-		typeof window !== 'undefined' &&
-		window.document
-	);
+	return Boolean(typeof window !== 'undefined' && window.document);
 }
 
 function Portal({targetElement, children}) {

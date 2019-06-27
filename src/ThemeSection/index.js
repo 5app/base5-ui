@@ -5,13 +5,7 @@ import {ThemeProvider} from 'styled-components';
 import getReadableColorblock from './getReadableColorblock';
 
 function ThemeSection(props) {
-	const {
-		baseTheme,
-		children,
-		colorBlock,
-		hasBgImage,
-		name,
-	} = props;
+	const {baseTheme, children, colorBlock, hasBgImage, name} = props;
 
 	const constructLocalTheme = useCallback(
 		(parentTheme = baseTheme) => {
@@ -31,9 +25,7 @@ function ThemeSection(props) {
 	);
 
 	return (
-		<ThemeProvider theme={constructLocalTheme}>
-			{children}
-		</ThemeProvider>
+		<ThemeProvider theme={constructLocalTheme}>{children}</ThemeProvider>
 	);
 }
 

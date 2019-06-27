@@ -1,7 +1,7 @@
 module.exports = ({
 	name,
 	viewBox,
-	pathData
+	pathData,
 }) => `import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';

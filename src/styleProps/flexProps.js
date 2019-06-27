@@ -9,12 +9,7 @@ export const alignMap = {
 };
 
 function flexProps(props) {
-	const {
-		flexAlign,
-		basis,
-		grow,
-		shrink,
-	} = props;
+	const {flexAlign, basis, grow, shrink} = props;
 
 	return {
 		/* Reset flex to */
