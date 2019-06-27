@@ -2,7 +2,7 @@
 
 Welcome to base5-UI, 5app's library of reusable React components. base5-UI's focus lies on providing easy-to-use base & layout components for building highly themeable pages.
 
-[View the component library online](https://5app.github.io/base-5-ui)
+[View the component library online](https://5app.github.io/base5-ui)
 
 ## Installation
 
@@ -65,4 +65,4 @@ To publish changes to the components in this repo, please follow these steps. Th
 
 ## Updating just the docs
 
-If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base-5-ui), just submit a PR or push to the `master` branch directly using a `docs:` prefix for the commit message.
+If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base5-ui), just submit a PR or push to the `master` branch directly using a `docs:` prefix for the commit message.
