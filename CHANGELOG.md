@@ -1,3 +1,10 @@
+## [1.14.18](https://github.com/5app/base5-ui/compare/v1.14.17...v1.14.18) (2019-06-27)
+
+
+### Bug Fixes
+
+* **publish:** Only run on master branch ([929ed34](https://github.com/5app/base5-ui/commit/929ed34))
+
 ## [1.14.17](https://github.com/5app/base5-ui/compare/v1.14.16...v1.14.17) (2019-06-27)
 
 
