@@ -11,9 +11,8 @@
 		"dist": "cd dist && npm publish",
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
-		"deploy-docs": "gh-pages -d .docz/dist",
+		"deploy-docs": "npm run docz:build && gh-pages -d .docz/dist",
 		"lint": "eslint ./",
-		"preversion": "npm run docz:build && npm run deploy-docs",
 		"postversion": "pwd && cp -r package.json ../",
 		"semantic-release": "semantic-release",
 		"test": "npm run lint"

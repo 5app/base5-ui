@@ -51,6 +51,19 @@ jobs:
           command: npm run copypackage
       - run: npm run semantic-release
 
+  publish-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - checkout
+      - run: 
+          name: Set names
+          command: git config --global user.email "bot@5app.com" && git config --global user.name "UI release bot"
+      - run:
+          name: Build & deploy docs to gh-pages
+          command: npm run deploy-docs
+
 workflows:
   version: 2
   build:
@@ -63,3 +76,7 @@ workflows:
           context: org-global
           requires:
             - test
+      - publish-docs:
+          context: org-global
+          requires:
+            - release
