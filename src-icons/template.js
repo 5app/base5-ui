@@ -1,8 +1,4 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData
-}) => `import React from 'react';
+module.exports = ({name, viewBox, pathData}) => `import React from 'react';
 
 import Svg from './BaseSvg';
 

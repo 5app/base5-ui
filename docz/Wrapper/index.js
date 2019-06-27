@@ -4,10 +4,7 @@ import ThemeSection from '../../src/ThemeSection';
 import theme from '../../src/theme';
 
 const Wrapper = ({children}) => (
-	<ThemeSection
-		name="page"
-		baseTheme={theme}
-	>
+	<ThemeSection name="page" baseTheme={theme}>
 		{children}
 	</ThemeSection>
 );

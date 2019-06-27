@@ -9,19 +9,19 @@ import {fillParent, ellipsis} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
-const Wrapper = styled(
-	({
-		buttonRef,
-		component,
-		round,
-		square,
-		fullWidth,
-		color,
-		size,
-		align,
-		...otherProps
-	}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />
-)`
+const FilterButtonProps = ({
+	buttonRef,
+	component,
+	round,
+	square,
+	fullWidth,
+	color,
+	size,
+	align,
+	...otherProps
+}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />;
+
+const Wrapper = styled(FilterButtonProps)`
 	/* Structure, size & spacing */
 
 	position: relative;
