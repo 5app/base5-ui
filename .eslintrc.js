@@ -12,8 +12,7 @@ module.exports = {
 	env: {
 		browser: true,
 	},
-	plugins: ['react-hooks'],
-	plugins: ['prettier'],
+	plugins: ['react-hooks', 'prettier'],
 	rules: {
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
 		'prefer-template': 0,
