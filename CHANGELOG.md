@@ -1,3 +1,11 @@
+## [1.14.15](https://github.com/5app/base5-ui/compare/v1.14.14...v1.14.15) (2019-06-27)
+
+
+### Bug Fixes
+
+* Deploy docs prior to versioning ([e0444bd](https://github.com/5app/base5-ui/commit/e0444bd))
+* Fix docz publishing ([482e8a6](https://github.com/5app/base5-ui/commit/482e8a6))
+
 ## [1.14.14](https://github.com/5app/base5-ui/compare/v1.14.13...v1.14.14) (2019-06-13)
 
 
