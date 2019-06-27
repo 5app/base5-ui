@@ -1,3 +1,10 @@
+## [1.14.16](https://github.com/5app/base5-ui/compare/v1.14.15...v1.14.16) (2019-06-27)
+
+
+### Bug Fixes
+
+* Fix docz publishing ([f9621a9](https://github.com/5app/base5-ui/commit/f9621a9))
+
 ## [1.14.15](https://github.com/5app/base5-ui/compare/v1.14.14...v1.14.15) (2019-06-27)
 
 
