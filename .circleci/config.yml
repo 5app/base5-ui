@@ -1,0 +1,88 @@
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.4.0
+
+version: 2
+jobs:
+  checkout_code:
+    <<: *defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies with npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Run tests
+          command: npm test
+      - run:
+          name: Compile the files using Babel
+          command: npm run compile
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - node_modules
+            - dist
+
+  release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - checkout
+      - run:
+          name: Copy core files to the /dist folder
+          command: npm run copypackage
+      - run: npm run semantic-release
+
+  publish-docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+             - "12:bf:d1:9d:22:ec:c3:4f:72:44:50:77:61:70:a0:1e"
+      - run: 
+          name: Set names
+          command: git config --global user.email "bot@5app.com" && git config --global user.name "UI release bot"
+      - run:
+          name: Build & deploy docs to gh-pages
+          command: npm run deploy-docs
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - checkout_code
+      - test:
+          requires:
+            - checkout_code
+      - release:
+          context: org-global
+          requires:
+            - test
+      - publish-docs:
+          context: org-global
+          requires:
+            - test
+          filters:
+            branches:
+              only: master

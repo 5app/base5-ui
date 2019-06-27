@@ -171,7 +171,7 @@ const Subtitle = styled.span`
 	font-size: ${p => p.theme.globals.typeScale.s};
 `;
 
-const Button = forwardRef((props, ref) => {
+function Button(props, ref) {
 	const {
 		as,
 		children,
@@ -209,9 +209,7 @@ const Button = forwardRef((props, ref) => {
 			</Content>
 		</Wrapper>
 	);
-});
-
-Button.displayName = 'Button';
+}
 
 Button.defaultProps = {
 	color: 'default',
@@ -240,4 +238,4 @@ Button.propTypes = {
 	align: PropTypes.string,
 };
 
-export default Button;
+export default forwardRef(Button);
