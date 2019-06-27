@@ -57,7 +57,15 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - checkout
-      - run: npm run deploy-docs
+      - add_ssh_keys:
+          fingerprints:
+             - "12:bf:d1:9d:22:ec:c3:4f:72:44:50:77:61:70:a0:1e"
+      - run: 
+          name: Set names
+          command: git config --global user.email "bot@5app.com" && git config --global user.name "UI release bot"
+      - run:
+          name: Build & deploy docs to gh-pages
+          command: npm run deploy-docs
 
 workflows:
   version: 2
@@ -74,4 +82,7 @@ workflows:
       - publish-docs:
           context: org-global
           requires:
-            - release
+            - test
+          filters:
+            branches:
+              only: master
