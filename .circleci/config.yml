@@ -82,4 +82,7 @@ workflows:
       - publish-docs:
           context: org-global
           requires:
-            - release
+            - test
+          filters:
+            branches:
+              only: master
