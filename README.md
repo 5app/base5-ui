@@ -2,6 +2,8 @@
 
 Welcome to base5-UI, 5app's library of reusable React components. base5-UI's focus lies on providing easy-to-use base & layout components for building highly themeable pages.
 
+[View the component library online](https://5app.github.io/base-5-ui)
+
 ## Installation
 
 base5-UI is built on styled-components, so if you're not using it already, install it along with base5-UI.
@@ -10,9 +12,9 @@ base5-UI is built on styled-components, so if you're not using it already, insta
 npm i base5-ui styled-components
 ```
 
-## Running the component library
+## Running the component library locally
 
-base5-UI comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out, clone this repo to your local machine, install all needed dependencies using `yarn` (Docz is currently [buggy when using plain old npm](https://github.com/pedronauck/docz/issues/276)) and then run:
+base5-UI comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out locally, clone this repo to your local machine, install all needed dependencies using `yarn` (Docz is currently [buggy when using plain old npm](https://github.com/pedronauck/docz/issues/276)) and then run:
 
 ```
 yarn docz:dev
