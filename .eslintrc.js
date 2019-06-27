@@ -1,5 +1,5 @@
 module.exports = {
-    "extends": ["5app", "plugin:react/recommended"],
+    "extends": ["5app", "plugin:react/recommended", "prettier"],
     "parser": "babel-eslint",
     "parserOptions": {
         "allowImportExportEverywhere": true,
@@ -12,6 +12,7 @@ module.exports = {
     "env": {
         "browser": true,
     },
+    "plugins": ["prettier"],
     "rules": {
         "arrow-parens": [0, "as-needed"],
         "prefer-template": 0,
@@ -21,7 +22,8 @@ module.exports = {
         "jsx-quotes": [2, "prefer-double"],
         "react/jsx-indent": [2, "tab"],
         "react/jsx-no-bind": [2, {"allowArrowFunctions": true, "ignoreRefs": true}],
-        "react/prop-types": 0
+        "react/prop-types": 0,
+        "prettier/prettier": "error"
     },
     "settings": {
         "react": {

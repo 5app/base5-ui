@@ -32,11 +32,7 @@ const getArrowStyles = (placement, arrowSize) => {
 };
 
 const Arrow = React.forwardRef((props, ref) => {
-	const {
-		placement,
-		size,
-		style
-	} = props;
+	const {placement, size, style} = props;
 
 	const magicStyle = getArrowStyles(placement, size);
 	const arrowStyle = {

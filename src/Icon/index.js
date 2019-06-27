@@ -13,14 +13,7 @@ const sizeMap = {
 };
 
 const Icon = React.forwardRef((props, ref) => {
-	const {
-		name,
-		scale,
-		size,
-		spacingLeft,
-		spacingRight,
-		...otherProps
-	} = props;
+	const {name, scale, size, spacingLeft, spacingRight, ...otherProps} = props;
 
 	const Glyph = iconMap[name] || iconMap.x;
 
@@ -36,6 +29,5 @@ const Icon = React.forwardRef((props, ref) => {
 });
 
 Icon.displayName = 'Icon';
-
 
 export default Icon;

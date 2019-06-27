@@ -25,9 +25,7 @@ function PopOver(props) {
 
 	return (
 		<Manager>
-			<Reference innerRef={innerRef}>
-				{children}
-			</Reference>
+			<Reference innerRef={innerRef}>{children}</Reference>
 			<Popper
 				positionFixed={positionFixed}
 				placement={placement}
@@ -46,7 +44,9 @@ function PopOver(props) {
 						/>
 					);
 
-					const resizeWatcher = <ResizeAware onResize={scheduleUpdate} />;
+					const resizeWatcher = (
+						<ResizeAware onResize={scheduleUpdate} />
+					);
 
 					return (
 						<PopOverRenderer
@@ -64,18 +64,28 @@ function PopOver(props) {
 	);
 }
 
-function DefaultPopover({popOverRef, isOpen, style, content, arrow, resizeWatcher}) {
+function DefaultPopover({
+	popOverRef,
+	isOpen,
+	style,
+	content,
+	arrow,
+	resizeWatcher,
+}) {
 	if (!isOpen) return null;
 
 	return (
 		<Portal targetElement={document.body}>
-			<span ref={popOverRef} style={{
-				background: 'black',
-				color: 'white',
-				borderRadius: '3px',
-				padding: '5px 10px',
-				...style
-			}}>
+			<span
+				ref={popOverRef}
+				style={{
+					background: 'black',
+					color: 'white',
+					borderRadius: '3px',
+					padding: '5px 10px',
+					...style,
+				}}
+			>
 				{content}
 				{arrow}
 				{resizeWatcher}
@@ -103,10 +113,7 @@ PopOver.propTypes = {
 	/** Control the popover's distance from its reference element */
 	distance: PropTypes.number,
 	/** Access the reference component's ref */
-	innerRef: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.func,
-	]),
+	innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 	/** Control whether the popover is shown or not */
 	isOpen: PropTypes.bool,
 	/** Shift the popover along the corss-axix */

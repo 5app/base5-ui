@@ -5,7 +5,6 @@ import {ThemeProvider} from 'styled-components';
 import getReadableColorblock from './getReadableColorblock';
 
 function ThemeSection(props) {
-
 	function constructLocalTheme(parentTheme = props.baseTheme) {
 		const colorBlockOverrides = getReadableColorblock(
 			parentTheme.globals.colorBlocks,

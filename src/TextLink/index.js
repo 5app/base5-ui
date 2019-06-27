@@ -4,7 +4,9 @@ import styled, {css} from 'styled-components';
 import ButtonCore from '../ButtonCore';
 
 const textLinkStyles = css`
-	${p => p.bold && `
+	${p =>
+		p.bold &&
+		`
 		font-weight: bold;
 	`}
 
@@ -16,7 +18,9 @@ const textLinkStyles = css`
 	&:hover,
 	&:active,
 	&:focus {
-		${p => p.stealthy && `
+		${p =>
+			p.stealthy &&
+			`
 			color: ${p.theme.links};
 		`}
 		text-decoration: underline;
@@ -24,8 +28,10 @@ const textLinkStyles = css`
 	}
 `;
 
-const Wrapper = styled(({linkRef, component, bold, stealthy, ...otherProps}) =>
-	<ButtonCore ref={linkRef} as={component} {...otherProps} />
+const Wrapper = styled(
+	({linkRef, component, bold, stealthy, ...otherProps}) => (
+		<ButtonCore ref={linkRef} as={component} {...otherProps} />
+	)
 )`
 	display: inline;
 	vertical-align: baseline;
@@ -34,18 +40,9 @@ const Wrapper = styled(({linkRef, component, bold, stealthy, ...otherProps}) =>
 `;
 
 function TextLink(props, ref) {
-	const {
-		as,
-		...otherProps
-	} = props;
+	const {as, ...otherProps} = props;
 
-	return (
-		<Wrapper
-			{...otherProps}
-			linkRef={ref}
-			component={as || 'a'}
-		/>
-	);
+	return <Wrapper {...otherProps} linkRef={ref} component={as || 'a'} />;
 }
 
 // Allow components to re-use simple text link styles

@@ -2,10 +2,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 function canUseDom() {
-	return Boolean(
-		typeof window !== 'undefined' &&
-		window.document
-	);
+	return Boolean(typeof window !== 'undefined' && window.document);
 }
 
 function Portal({targetElement, children}) {
@@ -20,7 +17,8 @@ Portal.defaultProps = {
 };
 
 Portal.propTypes = {
-	/** Element to render the Portal's children into.
+	/**
+	 * Element to render the Portal's children into.
 	 * Must be an object, e.g. the result of a getElementById() call
 	 */
 	targetElement: PropTypes.object,

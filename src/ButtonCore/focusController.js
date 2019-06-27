@@ -4,14 +4,14 @@ import React, {Component} from 'react';
 // to normalise behaviour across browsers (Chrome issue)
 // See http://marcysutton.com/button-focus-hell/
 
-const focusController = (PassedComponent) => {
+const focusController = PassedComponent => {
 	class FocusController extends Component {
 		constructor(props) {
 			super(props);
 
 			this.state = {
 				mouseActive: false,
-				isFocused: false
+				isFocused: false,
 			};
 
 			this.handleMouseDown = this.handleMouseDown.bind(this);
@@ -58,8 +58,10 @@ const focusController = (PassedComponent) => {
 				<PassedComponent
 					{...otherProps}
 					ref={innerRef}
-					isFocused={isFocused || (this.state.isFocused && !this.state.mouseActive)}
-
+					isFocused={
+						isFocused ||
+						(this.state.isFocused && !this.state.mouseActive)
+					}
 					onMouseDown={this.handleMouseDown}
 					onFocus={this.handleFocus}
 					onBlur={this.handleBlur}
@@ -82,7 +84,8 @@ const focusController = (PassedComponent) => {
 
 	// Give this component a more helpful display name in DevTools.
 	// e.g. "ForwardRef(logProps(MyComponent))"
-	forwardRef.displayName = `focusController(${Component.displayName || Component.name})`;
+	forwardRef.displayName = `focusController(${Component.displayName ||
+		Component.name})`;
 
 	return React.forwardRef(forwardRef);
 };

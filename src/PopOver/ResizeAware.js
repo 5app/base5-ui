@@ -22,9 +22,7 @@ function ResizeAware({onResize}) {
 		onResize();
 	}, [width, height]);
 
-	return (
-		<Measurer ref={ref} />
-	);
+	return <Measurer ref={ref} />;
 }
 
 ResizeAware.propTypes = {
