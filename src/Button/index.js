@@ -9,19 +9,19 @@ import {fillParent, ellipsis} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
-const Wrapper = styled(
-	({
-		buttonRef,
-		component,
-		round,
-		square,
-		fullWidth,
-		color,
-		size,
-		align,
-		...otherProps
-	}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />
-)`
+const PropFilteringWrapper = ({
+	buttonRef,
+	component,
+	round,
+	square,
+	fullWidth,
+	color,
+	size,
+	align,
+	...otherProps
+}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />;
+
+const Wrapper = styled(PropFilteringWrapper)`
 	/* Structure, size & spacing */
 
 	position: relative;
@@ -159,8 +159,8 @@ const FocusRing = styled.span`
 		opacity: 1;
 		transition-duration: 50ms;
 	}
-
-	${Wrapper}:not (.is-disabled):active > & {
+	/* prettier-ignore */
+	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
@@ -181,13 +181,13 @@ const HoverShade = styled.span`
 		opacity: 0.666;
 		box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.5);
 	}
-
-	${Wrapper}:not (.is-disabled):hover > & {
+	/* prettier-ignore */
+	${Wrapper}:not(.is-disabled):hover > & {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
-
-	${Wrapper}:not (.is-disabled):active > & {
+	/* prettier-ignore */
+	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 0;
 		transition-duration: 250ms;
 	}
