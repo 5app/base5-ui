@@ -16,20 +16,27 @@ const Svg = styled.svg.attrs({
 	width: 1em;
 	height: 1em;
 
-	${p => p.spacingLeft && css`
-		margin-left: ${p.spacingLeft};
-	`}
-	${p => p.spacingRight && css`
-		margin-right: ${p.spacingRight};
-	`}
+	${p =>
+		p.spacingLeft &&
+		css`
+			margin-left: ${p.spacingLeft};
+		`}
+	${p =>
+		p.spacingRight &&
+		css`
+			margin-right: ${p.spacingRight};
+		`}
 
-	font-size: ${p => (p.scale !== 0 ? pxToEm(iconSize * p.scale) : pxToRem(iconSize))};
+	font-size: ${p =>
+		p.scale !== 0 ? pxToEm(iconSize * p.scale) : pxToRem(iconSize)};
 
-	${p => p.vAlign && css`
-		/* Use to align icons with surrounding body text */
-		position: relative;
-		top: -0.12em;
-	`}
+	${p =>
+		p.vAlign &&
+		css`
+			/* Use to align icons with surrounding body text */
+			position: relative;
+			top: -0.12em;
+		`}
 `;
 
 Svg.defaultProps = {
@@ -39,14 +46,8 @@ Svg.defaultProps = {
 Svg.propTypes = {
 	scale: PropTypes.number,
 	vAlign: PropTypes.bool,
-	spacingLeft: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.func,
-	]),
-	spacingRight: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.func,
-	]),
+	spacingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+	spacingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 export default Svg;

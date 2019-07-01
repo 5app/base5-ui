@@ -3,11 +3,7 @@ import React from 'react';
 import Svg from './BaseSvg';
 
 const SendIcon = React.forwardRef((props, ref) => {
-	const {
-		size,
-		color,
-		...otherProps
-	} = props;
+	const {size, color, ...otherProps} = props;
 
 	return (
 		<Svg
@@ -29,7 +25,7 @@ SendIcon.displayName = 'SendIcon';
 
 SendIcon.defaultProps = {
 	size: 18,
-	color: 'currentcolor'
+	color: 'currentcolor',
 };
 
 export default SendIcon;

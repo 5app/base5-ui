@@ -9,8 +9,8 @@ const sections = {
 		highlight: colors.pink,
 		textDimStrength: 0.75,
 		shadeStrength: 0.12,
-		lineStrength: 0.2
-	}
+		lineStrength: 0.2,
+	},
 };
 
 export default sections;

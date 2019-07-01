@@ -5,12 +5,14 @@ function getReadableColorblock(colorBlocks, colorBlockName, hasBgImage) {
 		return {};
 	}
 
-	const readableColor = hasBgImage ? 'white' : contrast(colorBlocks[colorBlockName]);
+	const readableColor = hasBgImage
+		? 'white'
+		: contrast(colorBlocks[colorBlockName]);
 
 	return {
 		text: readableColor,
 		links: readableColor,
-		background: colorBlocks[colorBlockName]
+		background: colorBlocks[colorBlockName],
 	};
 }
 

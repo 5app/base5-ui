@@ -1,4 +1,3 @@
-
 import {rootFontSize, pxToEm, pxToRem} from '../utils/units';
 
 import colors from './colors';
@@ -64,14 +63,14 @@ const buttons = {
 	important: {
 		text: colors.white,
 		background: colors.pink,
-	}
+	},
 };
 
 const borderRadius = {
 	buttons: 3,
 	cards: 5,
 	panels: 10,
-	search: 5
+	search: 5,
 };
 
 const colorBlocks = {
