@@ -213,11 +213,11 @@ const Subtitle = styled.span`
 	font-size: ${p => p.theme.globals.typeScale.s};
 `;
 
-function Button(props, ref) {
+function ButtonWithRef(props, ref) {
 	const {
 		as,
 		children,
-		color,
+		color = 'default',
 		icon,
 		iconRight,
 		subline,
@@ -247,9 +247,7 @@ function Button(props, ref) {
 	);
 }
 
-Button.defaultProps = {
-	color: 'default',
-};
+const Button = forwardRef(ButtonWithRef);
 
 Button.propTypes = {
 	icon: PropTypes.string,
@@ -270,4 +268,4 @@ Button.propTypes = {
 	align: PropTypes.string,
 };
 
-export default forwardRef(Button);
+export default Button;
