@@ -166,13 +166,13 @@ const HoverShade = styled.span`
 		opacity: 0.666;
 		box-shadow: inset 0 0 ${pxToRem(5)} ${alpha('black', 0.5)};
 	}
-
-	${Wrapper}:not (.is-disabled):hover > & {
+	/* prettier-ignore */
+	${Wrapper}:not(.is-disabled):hover > & {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
-
-	${Wrapper}:not (.is-disabled):active > & {
+	/* prettier-ignore */
+	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 0;
 		transition-duration: 250ms;
 	}
