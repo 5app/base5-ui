@@ -17,7 +17,8 @@ Portal.defaultProps = {
 };
 
 Portal.propTypes = {
-	/** Element to render the Portal's children into.
+	/**
+	 * Element to render the Portal's children into.
 	 * Must be an object, e.g. the result of a getElementById() call
 	 */
 	targetElement: PropTypes.object,
