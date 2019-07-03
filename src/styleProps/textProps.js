@@ -1,5 +1,5 @@
 import {alpha} from '../utils/colors';
-
+import {checkTheme} from '../utils/theme';
 import {ellipsis, overflowWrap} from '../mixins';
 
 const textTransformMap = {
@@ -27,6 +27,8 @@ function textProps(props) {
 
 		theme,
 	} = props;
+
+	checkTheme(theme);
 
 	let alignStyles;
 	if (textAlign) {

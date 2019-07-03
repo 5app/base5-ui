@@ -1,4 +1,5 @@
 import {alpha} from '../utils/colors';
+import {checkTheme} from '../utils/theme';
 
 const borderKeys = {
 	top: 'borderTop',
@@ -9,6 +10,8 @@ const borderKeys = {
 
 function borderProps(props) {
 	const {border, theme} = props;
+
+	checkTheme(theme);
 
 	if (!borderKeys[border]) {
 		return null;
