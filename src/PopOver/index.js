@@ -122,7 +122,6 @@ PopOver.propTypes = {
 	placement: PropTypes.oneOf(placements),
 	/** Control whether the popover should be positioned using "position: absolute" or "position: fixed" */
 	positionFixed: PropTypes.bool,
-	// eslint-disable-next-line jsdoc/check-indentation
 	/**
 	 * Customise popover rendering (e.g. for custom styling, transitions, etc).
 	 *  Should be a React component that takes the props
