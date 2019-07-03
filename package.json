@@ -15,7 +15,8 @@
     "lint": "eslint ./",
     "postversion": "pwd && cp -r package.json ../",
     "semantic-release": "semantic-release",
-    "test": "npm run lint"
+    "test": "jest /test && npm run lint",
+    "test:cover": "jest /test --coverage && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.4.5",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/git": "^7.0.14",
+    "@testing-library/react": "^8.0.4",
     "babel-eslint": "^10.0.2",
     "babel-plugin-styled-components": "^1.10.2",
     "docz": "^1.2.0",
@@ -48,6 +50,7 @@
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-react-hooks": "^1.6.1",
     "gh-pages": "^2.0.1",
+    "jest": "^23.1.0",
     "pixo": "^1.1.2",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
