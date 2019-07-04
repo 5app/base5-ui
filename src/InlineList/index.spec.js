@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, cleanup} from '@testing-library/react';
-import Wrapper from '../helper/wrapper';
-import {ThemeSectionError} from '../../src/ThemeSection';
-import InlineList from '../../src/InlineList';
+// import Wrapper from '../../test/helper/wrapper';
+import {ThemeSectionError} from '../ThemeSection';
+import InlineList from '.';
 
 describe('InlineList', () => {
 	afterEach(cleanup);

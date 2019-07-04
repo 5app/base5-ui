@@ -1,15 +1,15 @@
 import React from 'react';
 import {render, cleanup} from '@testing-library/react';
-import Wrapper from '../helper/wrapper';
-import {ThemeSectionError} from '../../src/ThemeSection';
-import Icon from '../../src/Icon';
+// import Wrapper from '../../test/helper/wrapper';
+import {ThemeSectionError} from '../ThemeSection';
+import Button from '.';
 
-describe('Icon', () => {
+describe('Button', () => {
 	afterEach(cleanup);
 
 	it('throws ThemeSectionError if rendered outside a <ThemeSection />', () => {
 		expect(() => {
-			render(<Icon />).toThrow(ThemeSectionError);
+			render(<Button />).toThrow(ThemeSectionError);
 		});
 	});
 });

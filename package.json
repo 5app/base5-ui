@@ -15,8 +15,8 @@
     "lint": "eslint ./",
     "postversion": "pwd && cp -r package.json ../",
     "semantic-release": "semantic-release",
-    "test": "jest /test && npm run lint",
-    "test:cover": "jest /test --coverage && npm run lint"
+    "test": "jest /src && npm run lint",
+    "test:cover": "jest /src --coverage && npm run lint"
   },
   "repository": {
     "type": "git",

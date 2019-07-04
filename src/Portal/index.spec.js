@@ -1,8 +1,8 @@
 import React from 'react';
 import {render, cleanup} from '@testing-library/react';
-import Wrapper from '../helper/wrapper';
-import {ThemeSectionError} from '../../src/ThemeSection';
-import Portal from '../../src/Portal';
+// import Wrapper from '../../test/helper/wrapper';
+import {ThemeSectionError} from '../ThemeSection';
+import Portal from '.';
 
 describe('Portal', () => {
 	afterEach(cleanup);
