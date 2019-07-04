@@ -11,7 +11,6 @@ import Icon from '../Icon';
 
 const PropFilteringWrapper = ({
 	buttonRef,
-	component,
 	round,
 	square,
 	fullWidth,
@@ -19,7 +18,7 @@ const PropFilteringWrapper = ({
 	size,
 	align,
 	...otherProps
-}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />;
+}) => <ButtonCore ref={buttonRef} {...otherProps} />;
 
 const Wrapper = styled(PropFilteringWrapper)`
 	/* Structure, size & spacing */
@@ -229,7 +228,7 @@ function ButtonWithRef(props, ref) {
 
 	return (
 		<Wrapper
-			component={as}
+			forwardedAs={as}
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
 			color={color}

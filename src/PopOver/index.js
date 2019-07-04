@@ -124,7 +124,7 @@ PopOver.propTypes = {
 	positionFixed: PropTypes.bool,
 	/**
 	 * Customise popover rendering (e.g. for custom styling, transitions, etc).
-	 *  Should be a React component that takes the props
+	 * Should be a React component that takes the props
 	 * `popOverRef`, `isOpen`, `style`, `content`, `arrow`, `resizeWatcher`
 	 */
 	renderer: PropTypes.elementType,

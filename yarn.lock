@@ -4584,7 +4584,7 @@ escodegen@^1.8.1, escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-5app@^0.6.4:
+eslint-config-5app@^0.6.5:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/eslint-config-5app/-/eslint-config-5app-0.6.5.tgz#6e66e6efdca7aa8517762a586a28ac0dcb660e15"
   integrity sha512-nCyRw2Wfb4ENBjz0oiZtIVS7qBaZyqaIBa+hQMNmBIDIZfU2nbigwvrWgmc+XbAtz1+pFpjijDi0m2DprcCmkQ==
