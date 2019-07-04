@@ -3,6 +3,9 @@ import {render, cleanup} from '@testing-library/react';
 import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
 import Button from '.';
+import {pxToRem} from '../utils/units';
+import {alpha} from '../utils/colors';
+import theme from '../theme';
 import 'jest-dom/extend-expect';
 
 describe('Button', () => {
@@ -43,9 +46,7 @@ describe('Button', () => {
 		const nope = container.querySelector('#nope');
 		const inexistent = nope.querySelector('svg');
 
-		expect(ok).toBeInTheDocument();
 		expect(svg).toBeDefined();
-		expect(nope).toBeInTheDocument();
 		expect(inexistent).toBeNull();
 	});
 
@@ -92,7 +93,6 @@ describe('Button', () => {
 		const ixText = array.indexOf(text);
 		const ixSubline = array.indexOf(subline);
 
-		expect(subline).toBeInTheDocument();
 		expect(ixText).toBeGreaterThan(-1);
 		expect(ixSubline).toBeGreaterThan(-1);
 		expect(ixText).toBeLessThan(ixSubline);
@@ -108,7 +108,6 @@ describe('Button', () => {
 		const ok = container.querySelector('#ok');
 		const svg = ok.querySelector('svg');
 
-		expect(ok).toBeInTheDocument();
 		expect(svg).toBeDefined();
 	});
 
@@ -125,10 +124,81 @@ describe('Button', () => {
 		const round = container.querySelector('#round');
 		const regular = container.querySelector('#regular');
 
-		expect(round).toBeInTheDocument();
-		expect(regular).toBeInTheDocument();
-
 		expect(round).toHaveStyle('border-radius: 2rem;');
 		expect(regular).not.toHaveStyle('border-radius: 2rem;');
+	});
+
+	it('can render large, medium and small sized buttons', () => {
+		const {container} = render(
+			<Wrapper>
+				<div>
+					<Button id="regular" />
+					<Button id="large" size="large" />
+					<Button id="medium" size="medium" />
+					<Button id="small" size="small" />
+				</div>
+			</Wrapper>
+		);
+
+		const regular = container.querySelector('#regular');
+		const large = container.querySelector('#large');
+		const medium = container.querySelector('#medium');
+		const small = container.querySelector('#small');
+		const {globals} = theme;
+
+		expect(regular).toHaveStyle(`
+			padding: ${pxToRem(12)}
+			font-size: ${globals.typeScale.m}
+		`);
+		expect(large).toHaveStyle(`
+			padding: ${pxToRem(19)}
+			font-size: ${globals.typeScale.m}
+		`);
+		expect(medium).toHaveStyle(`
+			padding: ${pxToRem(8)}
+			font-size: ${globals.typeScale.s}
+		`);
+		expect(small).toHaveStyle(`
+			padding: ${pxToRem(5)}
+			font-size: ${globals.typeScale.xs}
+		`);
+	});
+
+	it('can render theme colored, shaded and transparent buttons', () => {
+		const {container} = render(
+			<Wrapper>
+				<div>
+					<Button id="regular" />
+					<Button id="primary" color="primary" />
+					<Button id="important" color="important" />
+					<Button id="transparent" color="transparent" />
+					<Button id="shaded" color="shaded" />
+				</div>
+			</Wrapper>
+		);
+
+		const regular = container.querySelector('#regular');
+		const primary = container.querySelector('#primary');
+		const important = container.querySelector('#important');
+		const transparent = container.querySelector('#transparent');
+		const shaded = container.querySelector('#shaded');
+		const {globals} = theme;
+
+		expect(regular).toHaveStyle(
+			`background-color: ${globals.buttons.default.background}`
+		);
+		expect(primary).toHaveStyle(
+			`background-color: ${globals.buttons.primary.background}`
+		);
+		expect(important).toHaveStyle(
+			`background-color: ${globals.buttons.important.background}`
+		);
+		expect(transparent).toHaveStyle(`background-color: transparent`);
+		expect(shaded).toHaveStyle(
+			`background-color: ${alpha(
+				theme.sections.page.shade,
+				theme.sections.page.shadeStrength
+			)}`
+		);
 	});
 });
