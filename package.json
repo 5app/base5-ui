@@ -51,6 +51,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "gh-pages": "^2.0.1",
     "jest": "^23.1.0",
+    "jest-dom": "^3.5.0",
     "pixo": "^1.1.2",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
