@@ -1,6 +1,5 @@
 import React from 'react';
 import {render, cleanup} from '@testing-library/react';
-// import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '..//ThemeSection';
 import Box from '.';
 
@@ -12,5 +11,4 @@ describe('Box', () => {
 			render(<Box />).toThrow(ThemeSectionError);
 		});
 	});
-
 });
