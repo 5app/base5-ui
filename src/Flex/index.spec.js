@@ -19,7 +19,7 @@ describe('Flex', () => {
 			<Wrapper>
 				<div>
 					<Flex id="flex">Hello, World!</Flex>
-					<Flex id="wrap" wrap="true">
+					<Flex id="wrap" wrap>
 						Hello, World!
 					</Flex>
 				</div>
