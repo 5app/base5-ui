@@ -25,7 +25,6 @@ describe('Button', () => {
 		);
 
 		const ok = container.querySelector('#ok');
-		expect(ok).toBeInTheDocument();
 		expect(ok.tagName).toBe('BUTTON');
 	});
 

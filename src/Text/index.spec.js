@@ -24,7 +24,6 @@ describe('Text', () => {
 		);
 
 		const text = getByText('Hello, World!');
-		expect(text).toBeInTheDocument();
 		expect(text).toHaveStyle('font-weight: bold');
 		expect(text.tagName).toBe('DIV');
 	});

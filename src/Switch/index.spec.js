@@ -29,10 +29,6 @@ describe('Switch', () => {
 		const disabled = container.querySelector('#disabled');
 		const unchecked = container.querySelector('#unchecked');
 
-		expect(checked).toBeInTheDocument();
-		expect(disabled).toBeInTheDocument();
-		expect(unchecked).toBeInTheDocument();
-
 		expect(checked.checked).toBe(true);
 		expect(disabled.checked).toBe(false);
 		expect(disabled.disabled).toBe(true);

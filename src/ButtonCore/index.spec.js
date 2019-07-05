@@ -23,7 +23,6 @@ describe('ButtonCore', () => {
 		);
 
 		const ok = container.querySelector('#ok');
-		expect(ok).toBeInTheDocument();
 		expect(ok.tagName).toBe('BUTTON');
 	});
 
@@ -38,7 +37,6 @@ describe('ButtonCore', () => {
 		);
 
 		const ok = container.querySelector('#ok');
-		expect(ok).toBeInTheDocument();
 		expect(ok.tagName).toBe('A');
 		expect(ok.href).toContain(path);
 	});

@@ -23,7 +23,6 @@ describe('TextLink', () => {
 		);
 
 		const link = getByText('Click!');
-		expect(link).toBeInTheDocument();
 		expect(link.tagName).toBe('A');
 		expect(link.href).toContain(path);
 	});
@@ -36,7 +35,6 @@ describe('TextLink', () => {
 		);
 
 		const link = getByText('Click!');
-		expect(link).toBeInTheDocument();
 		expect(link.tagName).toBe('BUTTON');
 	});
 });
