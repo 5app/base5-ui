@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import {ThemeProvider} from 'styled-components';
+import ThemeSectionError from './error';
 
 import getReadableColorblock from './getReadableColorblock';
 
@@ -40,3 +41,4 @@ ThemeSection.propTypes = {
 };
 
 export default ThemeSection;
+export {ThemeSectionError};

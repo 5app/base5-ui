@@ -1,7 +1,10 @@
 import {getSpacing} from '../utils/spacing';
+import {checkTheme} from '../utils/theme';
 
 function spacingProps(props) {
 	const {p, px, py, pt, pr, pb, pl, m, mx, my, mt, mr, mb, ml, theme} = props;
+
+	checkTheme(theme);
 
 	return {
 		padding: p ? getSpacing(p, theme) : undefined,
