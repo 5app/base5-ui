@@ -11,7 +11,7 @@ module.exports = {
 	},
 	env: {
 		browser: true,
-    "jest": true
+		jest: true,
 	},
 	plugins: ['react-hooks', 'prettier'],
 	rules: {
