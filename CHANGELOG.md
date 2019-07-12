@@ -1,3 +1,14 @@
+# [3.0.0](https://github.com/5app/base5-ui/compare/v2.1.0...v3.0.0) (2019-07-12)
+
+
+* Maybe trigger v2 release? ([7ac95b6](https://github.com/5app/base5-ui/commit/7ac95b6))
+
+
+### BREAKING CHANGES
+
+* - Removes focusController, may have slightly different focus styles
+- Added new core components Box, Flex, Text, PopOver, Portal
+
 # [2.1.0](https://github.com/5app/base5-ui/compare/v2.0.1...v2.1.0) (2019-07-12)
 
 
