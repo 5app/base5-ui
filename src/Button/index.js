@@ -9,6 +9,8 @@ import {fillParent, ellipsis} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
+import 'focus-visible';
+
 const PropFilteringWrapper = ({
 	buttonRef,
 	round,

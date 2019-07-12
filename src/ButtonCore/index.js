@@ -2,6 +2,8 @@ import React, {forwardRef} from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
+import 'focus-visible';
+
 const Clickable = styled.button`
 	display: inline-block;
 	margin: 0;
