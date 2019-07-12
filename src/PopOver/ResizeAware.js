@@ -20,7 +20,7 @@ function ResizeAware({onResize}) {
 
 	useEffect(() => {
 		onResize();
-	}, [width, height]);
+	}, [width, height, onResize]);
 
 	return <Measurer ref={ref} />;
 }

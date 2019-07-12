@@ -3,13 +3,15 @@ name: Button
 menu: Components
 ---
 
-import { Playground } from 'docz'
+import { Playground, Props } from 'docz'
 import InlineList from '../InlineList'
 import Button from './'
 
 # Button
 
 Nice looking buttons, yo.
+
+## Examples
 
 <Playground>
 	<InlineList spacing="s">
@@ -19,5 +21,10 @@ Nice looking buttons, yo.
 		<Button size="medium" icon="send">Share</Button>
 		<Button size="small" color="transparent">Forgot password?</Button>
 		<Button round icon="plus" color="important" />
+		<Button isActive size="medium">Done</Button>
 	</InlineList>
 </Playground>
+
+## Props
+
+<Props of={Button} />

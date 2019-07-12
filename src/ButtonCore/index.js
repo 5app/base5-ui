@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-import focusController from './focusController';
+import 'focus-visible';
 
 const Clickable = styled.button`
 	display: inline-block;
@@ -22,8 +22,13 @@ const Clickable = styled.button`
 
 	appearance: none;
 
-	&:focus {
+	&:focus:not(.focus-visible) {
 		outline: none;
+	}
+
+	&.focus-visible {
+		outline: 3px solid currentColor;
+		outline-offset: 3px;
 	}
 
 	/* Normalise inner button spacing in Gecko browsers */
@@ -33,12 +38,11 @@ const Clickable = styled.button`
 	}
 `;
 
-const ButtonCore = React.forwardRef((props, ref) => {
+const ButtonCore = forwardRef((props, ref) => {
 	const {
 		as,
 		type,
 		isActive,
-		isFocused,
 		isDisabled,
 		disabled,
 		className,
@@ -47,7 +51,6 @@ const ButtonCore = React.forwardRef((props, ref) => {
 
 	const classes = classNames(className, {
 		'is-active': isActive,
-		'is-focused': isFocused,
 		'is-disabled': isDisabled || disabled,
 	});
 
@@ -68,8 +71,9 @@ const ButtonCore = React.forwardRef((props, ref) => {
 		/>
 	);
 });
+
 ButtonCore.defaultProps = {
 	as: 'button',
 };
 
-export default focusController(ButtonCore);
+export default ButtonCore;

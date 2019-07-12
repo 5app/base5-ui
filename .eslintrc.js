@@ -11,19 +11,17 @@ module.exports = {
 	},
 	env: {
 		browser: true,
+		jest: true,
 	},
-	plugins: ['prettier'],
+	plugins: ['react-hooks', 'prettier'],
 	rules: {
-		'arrow-parens': [0, 'as-needed'],
-		'prefer-template': 0,
-		'quote-props': [0, 'as-needed'],
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
-
-		'jsx-quotes': [2, 'prefer-double'],
-		'react/jsx-indent': [2, 'tab'],
+		'prefer-template': 0,
+		'prettier/prettier': 'error',
 		'react/jsx-no-bind': [2, {allowArrowFunctions: true, ignoreRefs: true}],
 		'react/prop-types': 0,
-		'prettier/prettier': 'error',
+		'react-hooks/rules-of-hooks': 'error',
+		'react-hooks/exhaustive-deps': 'warn',
 	},
 	settings: {
 		react: {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
@@ -9,9 +9,10 @@ import {fillParent, ellipsis} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
-const FilterButtonProps = ({
+import 'focus-visible';
+
+const PropFilteringWrapper = ({
 	buttonRef,
-	component,
 	round,
 	square,
 	fullWidth,
@@ -19,9 +20,9 @@ const FilterButtonProps = ({
 	size,
 	align,
 	...otherProps
-}) => <ButtonCore ref={buttonRef} as={component} {...otherProps} />;
+}) => <ButtonCore ref={buttonRef} {...otherProps} />;
 
-const Wrapper = styled(FilterButtonProps)`
+const Wrapper = styled(PropFilteringWrapper)`
 	/* Structure, size & spacing */
 
 	position: relative;
@@ -108,6 +109,10 @@ const Wrapper = styled(FilterButtonProps)`
 			}
 		`}
 
+	&.focus-visible {
+		outline: none;
+	}
+
 	&.is-disabled {
 		color: white;
 		background-color: ${alpha('black', 0.3)};
@@ -127,24 +132,35 @@ const Wrapper = styled(FilterButtonProps)`
 	}
 `;
 
+const ThreePx = pxToRem(3);
+
 const FocusRing = styled.span`
 	${fillParent}
 	border-radius: inherit;
 
-	${p =>
-		!p.color &&
-		css`
-			border: 1px solid ${p => alpha(p.theme.shade, p.theme.lineStrength)};
-		`}
-
-	box-shadow: 0 0 0 ${pxToRem(3)} ${p =>
-	alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
+	box-shadow: 0 0 0 ${ThreePx}
+		${p => alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
 
 	opacity: 0;
 	transition: opacity 250ms linear;
 	will-change: opacity;
 
-	${Wrapper}.is-focused > &,
+	${Wrapper}.focus-visible > & {
+		top: -${ThreePx};
+		left: -${ThreePx};
+		bottom: -${ThreePx};
+		right: -${ThreePx};
+
+		box-shadow: 0 0 0 ${ThreePx}
+			${p =>
+				p.color === 'primary' || p.color === 'important'
+					? p.theme.globals.buttons[p.color].background
+					: p.theme.links};
+
+		opacity: 1;
+		transition-duration: 50ms;
+	}
+	/* prettier-ignore */
 	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 1;
 		transition-duration: 50ms;
@@ -156,7 +172,7 @@ const HoverShade = styled.span`
 	border-radius: inherit;
 
 	background-color: ${p =>
-		alpha(p.theme.shade, Math.min(p.theme.shadeStrength, 0.15))};
+		alpha(p.theme.shade, Math.min(p.theme.shadeStrength, 0.12))};
 
 	opacity: 0;
 	transition: opacity 250ms linear;
@@ -164,7 +180,7 @@ const HoverShade = styled.span`
 
 	${Wrapper}.is-active > & {
 		opacity: 0.666;
-		box-shadow: inset 0 0 ${pxToRem(5)} ${alpha('black', 0.5)};
+		box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.5);
 	}
 	/* prettier-ignore */
 	${Wrapper}:not(.is-disabled):hover > & {
@@ -198,10 +214,11 @@ const Subtitle = styled.span`
 	font-size: ${p => p.theme.globals.typeScale.s};
 `;
 
-const Button = React.forwardRef((props, ref) => {
+function ButtonWithRef(props, ref) {
 	const {
 		as,
 		children,
+		color = 'default',
 		icon,
 		iconRight,
 		subline,
@@ -213,13 +230,14 @@ const Button = React.forwardRef((props, ref) => {
 
 	return (
 		<Wrapper
-			component={as}
+			forwardedAs={as}
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
+			color={color}
 			{...otherProps}
 		>
 			<HoverShade />
-			<FocusRing />
+			<FocusRing color={color} />
 			<Content>
 				{!iconRight && iconEl}
 				{children && <ButtonText>{children}</ButtonText>}
@@ -228,13 +246,9 @@ const Button = React.forwardRef((props, ref) => {
 			</Content>
 		</Wrapper>
 	);
-});
+}
 
-Button.defaultProps = {
-	color: 'default',
-};
-
-Button.displayName = 'Button';
+const Button = forwardRef(ButtonWithRef);
 
 Button.propTypes = {
 	icon: PropTypes.string,

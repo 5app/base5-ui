@@ -68,3 +68,27 @@ To publish changes to the components in this repo, please follow these steps. Th
 ## Updating just the docs
 
 If you did not make any changes to components and only want to update the docs in our online [component library](https://5app.github.io/base5-ui), just submit a PR or push to the `master` branch directly using a `docs:` prefix for the commit message.
+
+## Tests
+
+Execute `npm test` or `npm run test` to run the tests
+
+Execute `npm run test:cover` to run the tests with coverage analysis.
+
+- A summary report such as the following will be available in the terminal:
+
+```
+=============================== Coverage summary ===============================
+Statements   : 76.38% ( 524/686 )
+Branches     : 53.81% ( 120/223 )
+Functions    : 87.06% ( 148/170 )
+Lines        : 77.04% ( 520/675 )
+================================================================================
+Test Suites: 12 passed, 12 total
+Tests:       3 skipped, 32 passed, 35 total
+Snapshots:   0 total
+Time:        3.818s
+```
+
+- A detailed html code analysis report will be available at `./test/coverage/index.html`
+The detailed report provides a good insight on what to test and how well the component is tested.

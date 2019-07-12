@@ -16,13 +16,13 @@ It's a wrapper around `react-popper`.
 <Playground>
 	<PopOver
 		isOpen
-		content="I'm a popover. I'll try to always stay visible."
+		content="I'm a popover. I'll try to always open in a direction that keeps me visible."
 		placement="top-start"
 	>
 		{popover =>
-			<button type="button" ref={popover.ref}>
+			<span ref={popover.ref}>
 				I'm a reference element
-			</button>
+			</span>
 		}
 	</PopOver>
 </Playground>
