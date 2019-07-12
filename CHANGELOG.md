@@ -1,3 +1,32 @@
+# [2.1.0](https://github.com/5app/base5-ui/compare/v2.0.1...v2.1.0) (2019-07-12)
+
+
+### Bug Fixes
+
+* **deploy:** config semantic-release ([3949f41](https://github.com/5app/base5-ui/commit/3949f41))
+* **deploy:** config semantic-release ([563b456](https://github.com/5app/base5-ui/commit/563b456))
+* **deploy:** config semantic-release ([92bb80f](https://github.com/5app/base5-ui/commit/92bb80f))
+* **deploy:** config semantic-release ([4fd2c27](https://github.com/5app/base5-ui/commit/4fd2c27))
+* **deploy:** config semantic-release ([a18bee3](https://github.com/5app/base5-ui/commit/a18bee3))
+* **deploy:** config semantic-release ([166e860](https://github.com/5app/base5-ui/commit/166e860))
+* **deploy:** config semantic-release ([5397fef](https://github.com/5app/base5-ui/commit/5397fef))
+* **deploy:** config semantic-release ([84d8ba2](https://github.com/5app/base5-ui/commit/84d8ba2))
+* **deploy:** config semantic-release ([efe5956](https://github.com/5app/base5-ui/commit/efe5956))
+* **deploy:** copy README to npm package ([6adc257](https://github.com/5app/base5-ui/commit/6adc257))
+* **deploy:** tidy config semantic-release ([a0153b5](https://github.com/5app/base5-ui/commit/a0153b5))
+* **publish:** Docs ([cdecaf4](https://github.com/5app/base5-ui/commit/cdecaf4))
+* **publish:** Only run on master branch ([929ed34](https://github.com/5app/base5-ui/commit/929ed34))
+* **tests:** trigger a build pass eslint tests ([76ef815](https://github.com/5app/base5-ui/commit/76ef815))
+* Deploy docs prior to versioning ([e0444bd](https://github.com/5app/base5-ui/commit/e0444bd))
+* Fix docz publishing ([482e8a6](https://github.com/5app/base5-ui/commit/482e8a6))
+* Fix docz publishing ([f9621a9](https://github.com/5app/base5-ui/commit/f9621a9))
+* Fix issue with styled-components and prettier ([9b715b3](https://github.com/5app/base5-ui/commit/9b715b3))
+
+
+### Features
+
+* **auto-release:** Semantic release ([#2](https://github.com/5app/base5-ui/issues/2)) ([d2b5288](https://github.com/5app/base5-ui/commit/d2b5288))
+
 ## [1.14.18](https://github.com/5app/base5-ui/compare/v1.14.17...v1.14.18) (2019-06-27)
 
 
