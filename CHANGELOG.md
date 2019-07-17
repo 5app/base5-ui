@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/5app/base5-ui/compare/v3.0.0...v3.1.0) (2019-07-17)
+
+
+### Features
+
+* Split spacingProps into margin/paddingProps ([56fa273](https://github.com/5app/base5-ui/commit/56fa273))
+
 # [3.0.0](https://github.com/5app/base5-ui/compare/v2.1.0...v3.0.0) (2019-07-12)
 
 
