@@ -1,6 +1,8 @@
 import React, {forwardRef} from 'react';
 import styled, {css} from 'styled-components';
 
+import {positionProps, marginProps} from '../styleProps';
+
 import ButtonCore from '../ButtonCore';
 
 const textLinkStyles = css`
@@ -31,8 +33,10 @@ const textLinkStyles = css`
 const Wrapper = styled(({linkRef, bold, stealthy, ...otherProps}) => (
 	<ButtonCore ref={linkRef} {...otherProps} />
 ))`
+	${positionProps}
 	display: inline;
 	vertical-align: baseline;
+	${marginProps}
 
 	${textLinkStyles}
 `;

@@ -11,7 +11,6 @@ const Wrapper = styled.ul`
 	list-style: none;
 	margin: 0;
     padding: 0;
-	margin-left: 0;
 
 	${p =>
 		p.spacing &&

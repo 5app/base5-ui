@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {textProps, spacingProps} from '../styleProps';
+import {textProps, marginProps, paddingProps} from '../styleProps';
 
 const Text = styled.span`
 	${props =>
@@ -10,7 +10,8 @@ const Text = styled.span`
 			textAlign: props.align,
 			fontSize: props.size,
 		})}
-	${spacingProps}
+	${marginProps}
+	${paddingProps}
 `;
 
 Text.propTypes = {

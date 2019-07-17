@@ -6,6 +6,8 @@ import {alpha} from '../utils/colors';
 import {pxToRem} from '../utils/units';
 import {fillParent, ellipsis} from '../mixins';
 
+import {positionProps, marginProps} from '../styleProps';
+
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 
@@ -25,7 +27,7 @@ const PropFilteringWrapper = ({
 const Wrapper = styled(PropFilteringWrapper)`
 	/* Structure, size & spacing */
 
-	position: relative;
+	${positionProps}
 
 	${p =>
 		p.fullWidth &&
@@ -34,6 +36,7 @@ const Wrapper = styled(PropFilteringWrapper)`
 			width: 100%; /* needed for button element */
 		`}
 	padding: ${pxToRem(12)};
+	${marginProps}
 
 	font-size: ${p => p.theme.globals.typeScale.m};
 	font-weight: 600;
@@ -230,6 +233,7 @@ function ButtonWithRef(props, ref) {
 
 	return (
 		<Wrapper
+			position="relative"
 			forwardedAs={as}
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
