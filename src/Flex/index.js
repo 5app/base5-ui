@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {marginProps, paddingProps} from '../styleProps';
+import {borderProps, marginProps, paddingProps} from '../styleProps';
 import {alignMap} from '../styleProps/flexProps';
 
 import Box from '../Box';
@@ -28,6 +28,7 @@ const Flex = styled.div`
 
 	${marginProps}
 	${paddingProps}
+	${borderProps}
 `;
 
 Flex.defaultProps = {
