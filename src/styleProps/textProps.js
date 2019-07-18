@@ -8,7 +8,10 @@ const textTransformMap = {
 };
 
 const overflowStylesMap = {
-	ellipsis,
+	ellipsis: {
+		display: 'block',
+		...ellipsis,
+	},
 	wrap: {
 		display: 'block',
 		...overflowWrap,
