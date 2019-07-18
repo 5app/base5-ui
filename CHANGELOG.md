@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/5app/base5-ui/compare/v3.2.2...v3.2.3) (2019-07-18)
+
+
+### Bug Fixes
+
+* Allow 'stretch' for Flex align prop ([bdc3153](https://github.com/5app/base5-ui/commit/bdc3153))
+
 ## [3.2.2](https://github.com/5app/base5-ui/compare/v3.2.1...v3.2.2) (2019-07-18)
 
 
