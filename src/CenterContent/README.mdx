@@ -1,0 +1,51 @@
+---
+name: CenterContent
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import CenterContent from './';
+import AndroidIcon from '../icons/Android';
+
+# CenterContent
+
+Use the `CenterContent` component to center arbitrarily sized content horizontally and vertically inside of its container.
+
+## Usage notes
+
+The component renders two wrapper `div`s and is meant to be used for large components with an unpredictable height (e.g. modal popups or headlines in a banner). Don't use it for centering an icon within a circle or text within a button.
+
+Use the `height` prop to define a minimum height for the component. If the content is taller than the height specified, the component will grow accordingly.
+
+Instead of defining a height, you can also use the `fillParent` prop which will make the component grow to match the width and height of its container. When using this, make sure the container has a position other than `static` (`relative`, `absolute`, or `fixed` all work), and is not set to `overflow: hidden` as that could lead to longer content being cut off.
+
+## Examples
+
+<Playground>
+	<CenterContent height={350}>
+		Hello <AndroidIcon />
+	</CenterContent>
+
+    <div style={{
+    	position: 'relative',
+    	width: 200,
+    	height: 200,
+    	backgroundColor: 'aliceblue',
+    	border: '1px solid grey',
+    	overflow: 'auto',
+    }}>
+    	<CenterContent fillParent spacing="s">
+    		I'm centred in my little square container, but if I get<br/>
+    		too looooo<br/>
+    		ooooooooooooo<br/>
+    		ooooooooooooo<br/>
+    		oooooooooong,<br/>
+    		I just make it grow.
+    	</CenterContent>
+    </div>
+
+</Playground>
+
+## Props
+
+<Props of={CenterContent} />
