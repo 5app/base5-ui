@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/5app/base5-ui/compare/v3.1.1...v3.2.0) (2019-07-18)
+
+
+### Features
+
+* Add CenterContent component ([20fd2a0](https://github.com/5app/base5-ui/commit/20fd2a0))
+
 ## [3.1.1](https://github.com/5app/base5-ui/compare/v3.1.0...v3.1.1) (2019-07-17)
 
 
