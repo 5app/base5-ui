@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {borderProps, marginProps, paddingProps} from '../styleProps';
+import {
+	positionProps,
+	borderProps,
+	marginProps,
+	paddingProps,
+	textProps,
+} from '../styleProps';
+
 import {alignMap} from '../styleProps/flexProps';
 
 import Box from '../Box';
 
 const Flex = styled.div`
+	${positionProps}
 	display: flex;
 
 	${p =>
@@ -24,11 +32,12 @@ const Flex = styled.div`
 		height: 100%;
 	`}
 
-	align-items: ${p => alignMap[p.alignItems] || p.alignItems};
+	align-items: ${p => alignMap[p.align] || p.align};
 
 	${marginProps}
 	${paddingProps}
 	${borderProps}
+	${textProps}
 `;
 
 Flex.defaultProps = {
@@ -37,7 +46,7 @@ Flex.defaultProps = {
 
 Flex.propTypes = {
 	/** Align children on the cross axis */
-	alignItems: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
+	align: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
 	/** Arrange children in a column instead of a row.
 	 * Setting this also sets the wrapper's height to `100%` */
 	column: PropTypes.bool,
