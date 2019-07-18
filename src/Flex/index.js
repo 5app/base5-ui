@@ -27,8 +27,6 @@ const Flex = styled.div`
 		p.column &&
 		`
 		flex-direction: column;
-		align-items: stretch;
-
 		height: 100%;
 	`}
 
@@ -46,7 +44,14 @@ Flex.defaultProps = {
 
 Flex.propTypes = {
 	/** Align children on the cross axis */
-	align: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
+	align: PropTypes.oneOf([
+		'top',
+		'left',
+		'center',
+		'bottom',
+		'right',
+		'stretch',
+	]),
 	/** Arrange children in a column instead of a row.
 	 * Setting this also sets the wrapper's height to `100%` */
 	column: PropTypes.bool,
