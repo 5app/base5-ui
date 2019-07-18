@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/5app/base5-ui/compare/v3.1.0...v3.1.1) (2019-07-17)
+
+
+### Bug Fixes
+
+* Add border props to Flex component ([f196911](https://github.com/5app/base5-ui/commit/f196911))
+
 # [3.1.0](https://github.com/5app/base5-ui/compare/v3.0.0...v3.1.0) (2019-07-17)
 
 
