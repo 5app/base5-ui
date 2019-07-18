@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/5app/base5-ui/compare/v3.2.0...v3.2.1) (2019-07-18)
+
+
+### Bug Fixes
+
+* Rename align prop on Flex component ([f00ae48](https://github.com/5app/base5-ui/commit/f00ae48))
+
 # [3.2.0](https://github.com/5app/base5-ui/compare/v3.1.1...v3.2.0) (2019-07-18)
 
 
