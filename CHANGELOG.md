@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/5app/base5-ui/compare/v3.2.1...v3.2.2) (2019-07-18)
+
+
+### Bug Fixes
+
+* Fix ellipsis style missing display attribute ([0ccdd60](https://github.com/5app/base5-ui/commit/0ccdd60))
+
 ## [3.2.1](https://github.com/5app/base5-ui/compare/v3.2.0...v3.2.1) (2019-07-18)
 
 
