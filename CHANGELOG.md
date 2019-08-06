@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/5app/base5-ui/compare/v3.2.3...v3.2.4) (2019-08-06)
+
+
+### Bug Fixes
+
+* Fix default positioning for Arrow component ([b664597](https://github.com/5app/base5-ui/commit/b664597))
+
 ## [3.2.3](https://github.com/5app/base5-ui/compare/v3.2.2...v3.2.3) (2019-07-18)
 
 
