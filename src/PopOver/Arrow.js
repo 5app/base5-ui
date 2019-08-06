@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef, useMemo} from 'react';
 
 import getArrowPosition, {getPlacements} from './getArrowPosition';
 
@@ -9,33 +9,42 @@ const transformMap = {
 	left: 'translateX(-50%) rotate(45deg)',
 };
 
-const getArrowStyles = (primaryPlacement, arrowSize) => {
-	return {
-		position: 'absolute',
+function useArrowStyles(primaryPlacement, arrowSize) {
+	const arrowStyles = useMemo(
+		() => ({
+			position: 'absolute',
 
-		display: 'inline-block',
-		width: arrowSize + 'px',
-		height: arrowSize + 'px',
+			display: 'inline-block',
+			width: arrowSize + 'px',
+			height: arrowSize + 'px',
 
-		backgroundColor: 'inherit',
-		border: 'inherit',
-		borderLeftColor: 'transparent',
-		borderBottomColor: 'transparent',
+			backgroundColor: 'inherit',
+			border: 'inherit',
+			borderLeftColor: 'transparent',
+			borderBottomColor: 'transparent',
 
-		transform: transformMap[primaryPlacement],
-		transformOrigin: '50%',
-		clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
-	};
-};
+			transform: transformMap[primaryPlacement],
+			transformOrigin: '50%',
+			clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
+		}),
+		[arrowSize, primaryPlacement]
+	);
 
-const Arrow = React.forwardRef((props, ref) => {
+	return arrowStyles;
+}
+
+const Arrow = forwardRef((props, ref) => {
 	const {placement, size, style} = props;
 
 	const [primaryPlacement] = getPlacements(placement);
-	const baseArrowStyles = getArrowStyles(primaryPlacement, size);
-	const defaultArrowPosition = getArrowPosition(placement, {
-		centerOffset: `-${size / 2}px`,
-	});
+	const baseArrowStyles = useArrowStyles(primaryPlacement, size);
+	const defaultArrowPosition = useMemo(
+		() =>
+			getArrowPosition(placement, {
+				centerOffset: `-${size / 2}px`,
+			}),
+		[placement, size]
+	);
 	// Don't let an empty primary position attribute reset the default
 	if (style && style[primaryPlacement] === '') {
 		delete style[primaryPlacement];

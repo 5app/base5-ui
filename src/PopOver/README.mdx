@@ -29,11 +29,11 @@ It's a wrapper around `react-popper`.
 
 <Props of={PopOver} />
 
-# Using the Arrow Components
+## Using just the Arrow component
 
-The Arrow component is a tooltip "arrow" that can be dropped into any container element and will inherit its styling.
+The Arrow component is a tooltip "arrow" that can be dropped into any container element. It will then inherit the container's styling and can be positioned using a normal popper.js placement string (e.g. `left`, `top-start`, `right-end`).
 
-It accepts a placement string formatted in the style of popper.js (i.e. `left`, `top-start`, `right-end`) and will position itself on the opposing side of its parent element. For this to work, the parent element needs to have a position other than 'static', e.g. 'relative', 'absolute', or 'fixed'.
+For the positioning to work, the parent element needs to have a position other than `static`, e.g. `relative`, `absolute`, or `fixed`.
 
 Use the `size` prop to adjust the arrow's size (in pixels).
 
@@ -41,6 +41,7 @@ Use the `size` prop to adjust the arrow's size (in pixels).
 	<div
 		style={{
 			position: 'relative',
+			width: 250,
 			padding: 8,
 			backgroundColor: 'grey',
 			color: 'white',
@@ -49,6 +50,6 @@ Use the `size` prop to adjust the arrow's size (in pixels).
 		}}
 	>
 		Hello, I'm a box with a pointy arrow.
-		<Arrow placement="bottom-start" size={12} />
+		<Arrow placement="top-end" size={10} />
 	</div>
 </Playground>

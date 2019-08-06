@@ -2,7 +2,7 @@
  * returns a CSS style object containing sensible default
  * styles for the placement string.
  *
- * The values can be customised, but default to:
+ * The (customisable) defaults are:
  * - 100% for the primary direction
  * - 8 pixels for the secondary direction
  *
@@ -40,10 +40,14 @@ function getArrowPosition(
 	{defaultPrimaryValue = '100%', defaultSecondaryValue = 8, centerOffset}
 ) {
 	const [primaryPlacement, secondaryPlacement] = getPlacements(placement);
+	const secondaryDirection = getSecondaryDirection(
+		primaryPlacement,
+		secondaryPlacement
+	);
 
 	return {
 		[primaryPlacement]: defaultPrimaryValue,
-		[getSecondaryDirection(secondaryPlacement)]: secondaryPlacement
+		[secondaryDirection]: secondaryPlacement
 			? defaultSecondaryValue
 			: centerOffset
 			? `calc(50% + ${centerOffset})`
