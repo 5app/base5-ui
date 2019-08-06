@@ -1,6 +1,6 @@
 import React from 'react';
 
-import getPrimaryPlacement from './getPrimaryPlacement';
+import getArrowPosition, {getPlacements} from './getArrowPosition';
 
 const transformMap = {
 	top: 'translateY(-50%) rotate(135deg)',
@@ -9,12 +9,9 @@ const transformMap = {
 	left: 'translateX(-50%) rotate(45deg)',
 };
 
-const getArrowStyles = (placement, arrowSize) => {
-	const primaryPlacement = getPrimaryPlacement(placement);
-
+const getArrowStyles = (primaryPlacement, arrowSize) => {
 	return {
 		position: 'absolute',
-		[primaryPlacement]: '100%',
 
 		display: 'inline-block',
 		width: arrowSize + 'px',
@@ -34,10 +31,19 @@ const getArrowStyles = (placement, arrowSize) => {
 const Arrow = React.forwardRef((props, ref) => {
 	const {placement, size, style} = props;
 
-	const magicStyle = getArrowStyles(placement, size);
+	const [primaryPlacement] = getPlacements(placement);
+	const baseArrowStyles = getArrowStyles(primaryPlacement, size);
+	const defaultArrowPosition = getArrowPosition(placement, {
+		centerOffset: `-${size / 2}px`,
+	});
+	// Don't let an empty primary position attribute reset the default
+	if (style && style[primaryPlacement] === '') {
+		delete style[primaryPlacement];
+	}
 	const arrowStyle = {
+		...baseArrowStyles,
+		...defaultArrowPosition,
 		...style,
-		...magicStyle,
 	};
 
 	return <span ref={ref} style={arrowStyle} />;
