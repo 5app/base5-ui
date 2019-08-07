@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const UploadIcon = React.forwardRef((props, ref) => {
+const UploadIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

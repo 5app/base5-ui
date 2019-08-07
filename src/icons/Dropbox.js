@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const DropboxIcon = React.forwardRef((props, ref) => {
+const DropboxIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

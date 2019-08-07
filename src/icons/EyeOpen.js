@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const EyeOpenIcon = React.forwardRef((props, ref) => {
+const EyeOpenIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

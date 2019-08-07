@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const DiskIcon = React.forwardRef((props, ref) => {
+const DiskIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

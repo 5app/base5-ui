@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const AssetTextIcon = React.forwardRef((props, ref) => {
+const AssetTextIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

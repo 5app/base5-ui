@@ -7,11 +7,7 @@ module.exports = ({
 import Svg from './BaseSvg';
 
 const ${name}Icon = forwardRef((props, ref) => {
-	const {
-		size,
-		color,
-		...otherProps
-	} = props;
+	const {size, color, ...otherProps} = props;
 
 	return (
 		<Svg
@@ -33,7 +29,7 @@ ${name}Icon.displayName = '${name}Icon';
 
 ${name}Icon.defaultProps = {
 	size: 18,
-	color: 'currentcolor'
+	color: 'currentcolor',
 };
 
 export default ${name}Icon;

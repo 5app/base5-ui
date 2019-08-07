@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const SettingsIcon = React.forwardRef((props, ref) => {
+const SettingsIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (

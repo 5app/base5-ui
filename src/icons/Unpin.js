@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 
-const UnpinIcon = React.forwardRef((props, ref) => {
+const UnpinIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	return (
