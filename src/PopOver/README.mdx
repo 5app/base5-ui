@@ -3,11 +3,9 @@ name: PopOver
 menu: Components
 ---
 
-import {useEffect} from 'react';
 import {Playground, Props} from 'docz';
 
 import PopOver from './';
-import Arrow from './Arrow';
 
 # PopOver
 
@@ -28,28 +26,3 @@ It's a wrapper around `react-popper`.
 ## Props
 
 <Props of={PopOver} />
-
-## Using just the Arrow component
-
-The Arrow component is a tooltip "arrow" that can be dropped into any container element. It will then inherit the container's styling and can be positioned using a normal popper.js placement string (e.g. `left`, `top-start`, `right-end`).
-
-For the positioning to work, the parent element needs to have a position other than `static`, e.g. `relative`, `absolute`, or `fixed`.
-
-Use the `size` prop to adjust the arrow's size (in pixels).
-
-<Playground>
-	<div
-		style={{
-			position: 'relative',
-			width: 250,
-			padding: 8,
-			backgroundColor: 'grey',
-			color: 'white',
-			border: '1px solid black',
-			borderRadius: 4,
-		}}
-	>
-		Hello, I'm a box with a pointy arrow.
-		<Arrow placement="top-end" size={10} />
-	</div>
-</Playground>

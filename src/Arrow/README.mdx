@@ -1,0 +1,35 @@
+---
+name: Arrow
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Arrow from './';
+
+# Arrow
+
+The Arrow component is a tooltip "arrow" that can be dropped into any container element. It inherits the container's styling and can be positioned using a popper.js placement string (e.g. `left`, `top-start`, `right-end`).
+
+For the positioning to work, the parent element needs to have a position other than `static`, e.g. `relative`, `absolute`, or `fixed`.
+
+<Playground>
+	<div
+		style={{
+			position: 'relative',
+			width: 250,
+			padding: 8,
+			backgroundColor: 'grey',
+			color: 'white',
+			border: '1px solid black',
+			borderRadius: 4,
+		}}
+	>
+		Hello, I'm a box with a pointy arrow.
+		<Arrow placement="top-end" distanceFromEdge={20} size={10} />
+	</div>
+</Playground>
+
+## Arrow props
+
+<Props of={Arrow} />

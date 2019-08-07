@@ -2,9 +2,9 @@ import React from 'react';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 
+import Arrow from '../Arrow';
 import Portal from '../Portal';
 
-import Arrow from './Arrow';
 import ResizeAware from './ResizeAware';
 
 function PopOver(props) {
@@ -130,6 +130,6 @@ PopOver.propTypes = {
 	renderer: PropTypes.elementType,
 };
 
-PopOver.Arrow = Arrow;
+export {Arrow};
 
 export default PopOver;
