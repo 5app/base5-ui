@@ -1,3 +1,10 @@
+## [3.2.5](https://github.com/5app/base5-ui/compare/v3.2.4...v3.2.5) (2019-08-06)
+
+
+### Bug Fixes
+
+* Fix broken secondary placement for Arrow ([afaa051](https://github.com/5app/base5-ui/commit/afaa051))
+
 ## [3.2.4](https://github.com/5app/base5-ui/compare/v3.2.3...v3.2.4) (2019-08-06)
 
 
