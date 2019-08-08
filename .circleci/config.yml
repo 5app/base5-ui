@@ -45,7 +45,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - checkout
       - run:
           name: Copy core files to the /dist folder
           command: npm run copypackage
@@ -56,7 +55,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - checkout
       - add_ssh_keys:
           fingerprints:
              - "12:bf:d1:9d:22:ec:c3:4f:72:44:50:77:61:70:a0:1e"
