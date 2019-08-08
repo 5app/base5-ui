@@ -1,3 +1,11 @@
+## [3.3.1](https://github.com/5app/base5-ui/compare/v3.3.0...v3.3.1) (2019-08-08)
+
+
+### Bug Fixes
+
+* **docs:** breaking docs deploy ([a8c025b](https://github.com/5app/base5-ui/commit/a8c025b))
+* **docs:** publishing docs, reinstate fingerprint ([f480a26](https://github.com/5app/base5-ui/commit/f480a26))
+
 # [3.3.0](https://github.com/5app/base5-ui/compare/v3.2.5...v3.3.0) (2019-08-07)
 
 
