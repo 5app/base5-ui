@@ -84,4 +84,4 @@ workflows:
             - test
           filters:
             branches:
-              only: fix-pub-doc
+              only: master
