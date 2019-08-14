@@ -1,5 +1,6 @@
-import {alpha} from '../utils/colors';
 import {checkTheme} from '../utils/theme';
+
+import {borderValue} from '../mixins';
 
 const borderKeys = {
 	top: 'borderTop',
@@ -18,10 +19,7 @@ function borderProps(props) {
 	}
 
 	return {
-		[borderKeys[border]]: `1px solid ${alpha(
-			theme.shade,
-			theme.lineStrength
-		)}`,
+		[borderKeys[border]]: borderValue(theme),
 	};
 }
 

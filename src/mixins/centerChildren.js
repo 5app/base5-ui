@@ -1,9 +1,7 @@
-import {css} from 'styled-components';
-
-const centerChildren = css`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
+const centerChildren = {
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'center',
+};
 
 export default centerChildren;
