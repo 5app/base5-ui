@@ -29,4 +29,18 @@ const contrast = (
 const highlight = (color, factor = 0.1) =>
 	isDark(color) ? lighten(color, factor) : darken(color, factor);
 
-export {alpha, mix, darken, lighten, contrast, highlight, isDark, isLight};
+function getColorBlock(color, theme) {
+	return theme[color] || theme.globals.colorBlocks[color] || color;
+}
+
+export {
+	alpha,
+	mix,
+	darken,
+	lighten,
+	contrast,
+	highlight,
+	isDark,
+	isLight,
+	getColorBlock,
+};

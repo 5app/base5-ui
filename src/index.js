@@ -13,6 +13,8 @@ export {default as Icon} from './Icon';
 export {default as InlineList} from './InlineList';
 export {default as PopOver} from './PopOver';
 export {default as Portal} from './Portal';
+export {default as SimpleChart} from './charts/SimpleChart';
+export {default as SimpleGauge} from './charts/SimpleGauge';
 export {default as Switch} from './Switch';
 export {default as Text} from './Text';
 export {default as TextLink} from './TextLink';

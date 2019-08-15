@@ -1,0 +1,38 @@
+---
+name: Charts
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import SimpleChart from './SimpleChart';
+import SimpleGauge from './SimpleGauge';
+
+# Charts
+
+base5-UI provides a few very simple charts to illustrate trends and metrics in your UI.
+
+The chart's colours can be customised by providing a `color` name from either the theme's `colorBlock` or current `section` palette, or any valid CSS color.
+
+Both charts will take up the full width of their container and their height can be set using the `height` prop.
+
+The charts are generated using [Chartist.js](http://gionkunz.github.io/chartist-js).
+
+## SimpleChart
+
+Takes a `data` prop that must contain of a simple array of number values which will then be plotted out as a pretty graph.
+
+<Playground>
+	<SimpleChart data={[5, 3, 4, 2, 5, 2, 1]} height={125} color="links" />
+	<br />
+	<SimpleChart data={[2, 1, 9, 6, 6, 3, 7]} height={125} color="highlight" />
+</Playground>
+
+## SimpleGauge
+
+Takes a single `value` prop that must be a Number value between `0` and `1` which will then be plotted out as a pretty (half of a) pie chart.
+
+<Playground>
+	<SimpleGauge value={0.3} height={200} />
+	<br />
+	<SimpleGauge value={0.8} height={150} color="positive" />
+</Playground>
