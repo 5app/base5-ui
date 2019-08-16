@@ -1,3 +1,15 @@
+# [3.4.0](https://github.com/5app/base5-ui/compare/v3.3.2...v3.4.0) (2019-08-15)
+
+
+### Bug Fixes
+
+* Remove broken iconMap import ([d7e1c1c](https://github.com/5app/base5-ui/commit/d7e1c1c))
+
+
+### Features
+
+* New components (SimpleChart & SimpleGauge) ([8491aef](https://github.com/5app/base5-ui/commit/8491aef))
+
 ## [3.3.2](https://github.com/5app/base5-ui/compare/v3.3.1...v3.3.2) (2019-08-14)
 
 
