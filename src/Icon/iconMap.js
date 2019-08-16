@@ -1,7 +1,4 @@
 const iconMap = {
-	android: require('../icons/Android').default,
-	apple: require('../icons/Apple').default,
-	appstore: require('../icons/Appstore').default,
 	arrow: require('../icons/Arrow').default,
 	asset: require('../icons/AssetDefault').default,
 	'asset-audio': require('../icons/AssetAudio').default,

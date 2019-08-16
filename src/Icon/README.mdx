@@ -3,9 +3,9 @@ name: Icon
 menu: Components
 ---
 
-import { Playground } from 'docz'
+import {Playground} from 'docz';
 import Icon from './';
-import AndroidIcon from '../icons/Android';
+import DiskIcon from '../icons/Disk';
 import PlusIcon from '../icons/Plus';
 import SearchIcon from '../icons/Search';
 
@@ -20,7 +20,7 @@ See the Icons Overview page for a list of all available icons.
 Using the `<Icon />` wrapper component allows you to dynamically display icons by their (kebab-cased, not CamelCased) name. Using the Icon component will bundle the whole base5 icon set with your app. See the next section if you only need a few icons from the set.
 
 <Playground>
-	<Icon name="android" />
+	<Icon name="disk" />
 	<Icon name="plus" />
 	<Icon name="search" />
 </Playground>
@@ -30,7 +30,7 @@ Using the `<Icon />` wrapper component allows you to dynamically display icons b
 If you don't want to bundle the whole icon set with your app, import the icons individually:
 
 ```js
-import AndroidIcon from 'base5-ui/icons/Android';
+import DiskIcon from 'base5-ui/icons/Disk';
 import PlusIcon from 'base5-ui/icons/Plus';
 import SearchIcon from 'base5-ui/icons/Search';
 ```
@@ -38,7 +38,7 @@ import SearchIcon from 'base5-ui/icons/Search';
 and use them directly:
 
 <Playground>
-	<AndroidIcon />
+	<DiskIcon />
 	<PlusIcon />
 	<SearchIcon />
 </Playground>
@@ -63,12 +63,13 @@ String. Add some left or right margin to the icon. Accepts any valid CSS length 
 
 Boolean. Nudge the icon up by a few pixels to visually align it with its surrounding text, see the next section for an example.
 
-
 ## Aligning icons with text
 
 When placed next to or inside of text, square icons tend to sit a bit too low compared to the text's baseline. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text.
 
 <Playground>
-	<PlusIcon /> Without vAlign<br /><br />
+	<PlusIcon /> Without vAlign
+	<br />
+	<br />
 	<PlusIcon vAlign /> With vAlign
 </Playground>
