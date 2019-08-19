@@ -47,7 +47,7 @@ function SimpleGauge({value, height, color = 'links'}) {
 
 	const options = {
 		...defaultOptions,
-		height,
+		height: height * 2,
 	};
 
 	useChartist(hostRef, {
@@ -58,7 +58,7 @@ function SimpleGauge({value, height, color = 'links'}) {
 		options,
 	});
 
-	return <Wrapper ref={hostRef} height={height / 2} color={color} />;
+	return <Wrapper ref={hostRef} height={height} color={color} />;
 }
 
 export default SimpleGauge;
