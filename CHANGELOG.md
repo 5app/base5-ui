@@ -1,3 +1,15 @@
+# [3.5.0](https://github.com/5app/base5-ui/compare/v3.4.0...v3.5.0) (2019-08-16)
+
+
+### Bug Fixes
+
+* Remove obsolete app icons ([178c149](https://github.com/5app/base5-ui/commit/178c149))
+
+
+### Features
+
+* Added new icons NavUp, NavDown, Dot ([66b7b7c](https://github.com/5app/base5-ui/commit/66b7b7c))
+
 # [3.4.0](https://github.com/5app/base5-ui/compare/v3.3.2...v3.4.0) (2019-08-15)
 
 
