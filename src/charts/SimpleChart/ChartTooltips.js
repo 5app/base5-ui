@@ -49,7 +49,7 @@ const ReadoutListItem = styled.li`
 
 const Cursor = styled.span`
 	display: block;
-	height: 100%;
+	height: ${p => (p.yValue ? p.yValue * 100 : 100)}%;
 	width: 1px;
 	background-color: ${p => alpha(p.theme.shade, p.theme.lineStrength)};
 `;
@@ -91,6 +91,8 @@ function ChartTooltips({
 
 	if (!data || !data.length) return null;
 
+	const maxValue = Math.max.apply(null, data);
+
 	return (
 		<ReadoutList>
 			{data.map((value, index) => {
@@ -105,6 +107,7 @@ function ChartTooltips({
 						<PopOver
 							isOpen={hoveredPoint === index}
 							placement="top"
+							distance={8}
 							content={readOut}
 							renderer={tooltipRenderer}
 						>
@@ -114,6 +117,7 @@ function ChartTooltips({
 									<Cursor
 										ref={popover.ref}
 										aria-hidden="true"
+										yValue={value / maxValue}
 									/>
 								</Fragment>
 							)}
