@@ -1,3 +1,11 @@
+# [3.6.0](https://github.com/5app/base5-ui/compare/v3.5.1...v3.6.0) (2019-08-20)
+
+
+### Features
+
+* Add custom tooltips to SimpleChart ([f34fc87](https://github.com/5app/base5-ui/commit/f34fc87))
+* New VisuallyHidden component for a11y ([9d918ee](https://github.com/5app/base5-ui/commit/9d918ee))
+
 ## [3.5.1](https://github.com/5app/base5-ui/compare/v3.5.0...v3.5.1) (2019-08-19)
 
 
