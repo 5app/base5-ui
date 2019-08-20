@@ -89,6 +89,8 @@ function ChartTooltips({
 }) {
 	const [hoveredPoint, setHoveredPoint] = useState(null);
 
+	if (!data || !data.length) return null;
+
 	return (
 		<ReadoutList>
 			{data.map((value, index) => {
@@ -127,7 +129,7 @@ function ChartTooltips({
 ChartTooltips.propTypes = {
 	data: PropTypes.array.isRequired,
 	labels: PropTypes.array,
-	name: PropTypes.array,
+	name: PropTypes.string,
 	getReadout: PropTypes.func,
 	tooltipRenderer: PropTypes.func,
 };
