@@ -105,7 +105,6 @@ function ChartTooltips({
 						<PopOver
 							isOpen={hoveredPoint === index}
 							placement="top"
-							distance={8}
 							content={readOut}
 							renderer={tooltipRenderer}
 						>
