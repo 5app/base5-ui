@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import {getColorBlock} from '../../utils/colors';
 
 import useChartist from '../useChartist';
+import ChartTooltips from './ChartTooltips';
 
 const ChartWrapper = styled.div`
-	color: ${p => getColorBlock(p.color, p.theme)};
+	position: relative;
 
 	> svg {
 		vertical-align: middle;
+		color: ${p => getColorBlock(p.color, p.theme)};
 	}
 	.ct-line {
 		fill: none;
@@ -50,7 +52,15 @@ const defaultOptions = {
 	},
 };
 
-function SimpleChart({labels, data, height, color = 'links'}) {
+function SimpleChart({
+	labels,
+	data,
+	height,
+	name,
+	color = 'links',
+	tooltipRenderer,
+	getTooltipReadout,
+}) {
 	const hostRef = useRef(null);
 
 	const options = {
@@ -68,7 +78,17 @@ function SimpleChart({labels, data, height, color = 'links'}) {
 		preserveAspectRatio: 'none',
 	});
 
-	return <ChartWrapper ref={hostRef} color={color} />;
+	return (
+		<ChartWrapper ref={hostRef} color={color}>
+			<ChartTooltips
+				data={data}
+				labels={labels}
+				name={name}
+				tooltipRenderer={tooltipRenderer}
+				getReadout={getTooltipReadout}
+			/>
+		</ChartWrapper>
+	);
 }
 
 export default SimpleChart;

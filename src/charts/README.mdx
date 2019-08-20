@@ -21,10 +21,18 @@ The charts are generated using [Chartist.js](http://gionkunz.github.io/chartist-
 
 Takes a `data` prop that must contain of a simple array of number values which will then be plotted out as a pretty graph.
 
+You can also provide a `name` prop for the tooltip value and an array of `labels` for the x axis. When you specify more data points than labels, the labels will repeat to match the number of data values.
+
 <Playground>
 	<SimpleChart data={[5, 3, 4, 2, 5, 2, 1]} height={125} color="links" />
 	<br />
-	<SimpleChart data={[2, 1, 9, 6, 6, 3, 7]} height={125} color="highlight" />
+	<SimpleChart
+		name="Opens"
+		data={[2, 1, 9, 6, 6, 3, 7, 3, 6, 7, 8, 10]}
+		labels={['Mon', 'Tue', 'Wed']}
+		height={125}
+		color="highlight"
+	/>
 </Playground>
 
 ## SimpleGauge
