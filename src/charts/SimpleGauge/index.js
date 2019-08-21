@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 import {pxToRem} from '../../utils/units';
 import {getColorBlock} from '../../utils/colors';
 
-import CenterContent from '../../CenterContent';
+import Box from '../../Box';
 
 import useChartist from '../useChartist';
 import StripesPattern from './StripesPattern';
@@ -87,10 +87,10 @@ function SimpleGauge({
 			patternId={hasValue ? null : patternId}
 		>
 			{!hasValue && (
-				<CenterContent fillParent spacing="0">
+				<Box dimmed bottom right position="absolute" mx="xs" my="xxs">
 					{emptyContent}
 					<StripesPattern color={color} id={patternId} />
-				</CenterContent>
+				</Box>
 			)}
 		</Wrapper>
 	);

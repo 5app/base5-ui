@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {getColorBlock} from '../../utils/colors';
 
-import CenterContent from '../../CenterContent';
+import Box from '../../Box';
 
 import useChartist from '../useChartist';
 import ChartTooltips from './ChartTooltips';
@@ -113,7 +113,9 @@ function SimpleChart({
 					getReadout={getTooltipReadout}
 				/>
 			) : (
-				<CenterContent fillParent>{emptyContent}</CenterContent>
+				<Box dimmed bottom right position="absolute" mx="xs" my="xxs">
+					{emptyContent}
+				</Box>
 			)}
 		</ChartWrapper>
 	);
