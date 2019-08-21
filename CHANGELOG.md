@@ -1,3 +1,10 @@
+## [3.7.2](https://github.com/5app/base5-ui/compare/v3.7.1...v3.7.2) (2019-08-21)
+
+
+### Bug Fixes
+
+* Update popper.js for better PopOver positioning ([ff756d1](https://github.com/5app/base5-ui/commit/ff756d1))
+
 ## [3.7.1](https://github.com/5app/base5-ui/compare/v3.7.0...v3.7.1) (2019-08-21)
 
 
