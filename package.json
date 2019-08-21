@@ -1,6 +1,6 @@
 {
   "name": "base5-ui",
-  "version": "3.6.1",
+  "version": "3.6.2",
   "description": "5app's reusable UI component library",
   "main": "index.js",
   "scripts": {
