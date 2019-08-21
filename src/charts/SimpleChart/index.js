@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import {getColorBlock} from '../../utils/colors';
 
+import CenterContent from '../../CenterContent';
+
 import useChartist from '../useChartist';
 import ChartTooltips from './ChartTooltips';
 
@@ -26,6 +28,18 @@ const ChartWrapper = styled.div`
 		stroke: black;
 		opacity: 0.1;
 	}
+
+	${p =>
+		p.isEmpty &&
+		`
+		.ct-line {
+			opacity: 0.2;
+			stroke-dasharray: 10;
+		}
+		.ct-area {
+			opacity: 0;
+		}
+	`}
 `;
 
 const defaultOptions = {
@@ -52,6 +66,12 @@ const defaultOptions = {
 	},
 };
 
+function getRandomPoints(length = 7) {
+	return Array(length)
+		.fill(1)
+		.map(() => Math.random());
+}
+
 function SimpleChart({
 	labels,
 	data,
@@ -60,6 +80,8 @@ function SimpleChart({
 	color = 'links',
 	tooltipRenderer,
 	getTooltipReadout,
+	isEmpty,
+	emptyContent = 'No data to display',
 }) {
 	const hostRef = useRef(null);
 
@@ -68,25 +90,31 @@ function SimpleChart({
 		height,
 	};
 
+	const hasData = !isEmpty && data && data.length !== 0;
+
 	useChartist(hostRef, {
 		type: 'Line',
 		data: {
 			labels,
-			series: [data],
+			series: [hasData ? data : getRandomPoints()],
 		},
 		options,
 		preserveAspectRatio: 'none',
 	});
 
 	return (
-		<ChartWrapper ref={hostRef} color={color}>
-			<ChartTooltips
-				data={data}
-				labels={labels}
-				name={name}
-				tooltipRenderer={tooltipRenderer}
-				getReadout={getTooltipReadout}
-			/>
+		<ChartWrapper ref={hostRef} color={color} isEmpty={!hasData}>
+			{hasData ? (
+				<ChartTooltips
+					data={data}
+					labels={labels}
+					name={name}
+					tooltipRenderer={tooltipRenderer}
+					getReadout={getTooltipReadout}
+				/>
+			) : (
+				<CenterContent fillParent>{emptyContent}</CenterContent>
+			)}
 		</ChartWrapper>
 	);
 }
