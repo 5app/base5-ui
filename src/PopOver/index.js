@@ -32,6 +32,7 @@ function PopOver(props) {
 				modifiers={{
 					offset: {offset: `${offset}, ${autoDistance}`},
 					computeStyle: {gpuAcceleration: false},
+					flip: {flipVariations: true, flipVariationsByContent: true},
 				}}
 			>
 				{({ref, style, placement, arrowProps, scheduleUpdate}) => {
@@ -83,6 +84,7 @@ function DefaultPopover({
 					color: 'white',
 					borderRadius: '3px',
 					padding: '5px 10px',
+					maxWidth: '100%',
 					...style,
 				}}
 			>
