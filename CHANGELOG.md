@@ -1,3 +1,11 @@
+# [3.7.0](https://github.com/5app/base5-ui/compare/v3.6.2...v3.7.0) (2019-08-21)
+
+
+### Features
+
+* Add empty state to SimpleChart ([bd5b9f3](https://github.com/5app/base5-ui/commit/bd5b9f3))
+* Add empty state to SimpleGauge ([96e36c7](https://github.com/5app/base5-ui/commit/96e36c7))
+
 ## [3.6.2](https://github.com/5app/base5-ui/compare/v3.6.1...v3.6.2) (2019-08-21)
 
 
