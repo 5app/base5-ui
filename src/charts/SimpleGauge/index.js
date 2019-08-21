@@ -4,9 +4,13 @@ import styled, {css} from 'styled-components';
 import {pxToRem} from '../../utils/units';
 import {getColorBlock} from '../../utils/colors';
 
+import CenterContent from '../../CenterContent';
+
 import useChartist from '../useChartist';
+import StripesPattern from './StripesPattern';
 
 const Wrapper = styled.div`
+	position: relative;
 	overflow: hidden;
 	${p =>
 		p.height &&
@@ -14,19 +18,25 @@ const Wrapper = styled.div`
 			height: ${pxToRem(p.height)};
 		`}
 
-	color: ${p => getColorBlock(p.color, p.theme)};
-
 	> svg {
 		vertical-align: middle;
+		color: ${p => getColorBlock(p.color, p.theme)};
+		${p =>
+			p.patternId &&
+			`
+			opacity: 0.2;
+		`}
 	}
 	.ct-slice-donut {
+		stroke: none;
 		fill: none;
 	}
 	.ct-series-a {
-		stroke: currentColor;
+		fill: ${p =>
+			p.patternId ? `url(#${p.patternId}) currentColor` : 'currentColor'};
 	}
 	.ct-series-b {
-		stroke: currentColor;
+		fill: currentColor;
 		opacity: 0.2;
 	}
 `;
@@ -34,16 +44,25 @@ const Wrapper = styled.div`
 const defaultOptions = {
 	donut: true,
 	donutWidth: '80%',
+	donutSolid: true,
 	startAngle: 270,
 	total: 200,
 	showLabel: false,
 	chartPadding: 0,
 };
 
-function SimpleGauge({value, height, color = 'links'}) {
+function SimpleGauge({
+	value,
+	height,
+	color = 'links',
+	isEmpty,
+	emptyContent = 'No data to display',
+}) {
 	const hostRef = useRef(null);
 
-	const fraction = value * 100;
+	const hasValue = typeof value !== 'undefined' && value !== null && !isEmpty;
+
+	const fraction = (hasValue ? value : Math.random()) * 100;
 
 	const options = {
 		...defaultOptions,
@@ -58,7 +77,23 @@ function SimpleGauge({value, height, color = 'links'}) {
 		options,
 	});
 
-	return <Wrapper ref={hostRef} height={height} color={color} />;
+	const patternId = `gauge-chart-${Math.random()}`;
+
+	return (
+		<Wrapper
+			ref={hostRef}
+			height={height}
+			color={color}
+			patternId={hasValue ? null : patternId}
+		>
+			{!hasValue && (
+				<CenterContent fillParent spacing="0">
+					{emptyContent}
+					<StripesPattern color={color} id={patternId} />
+				</CenterContent>
+			)}
+		</Wrapper>
+	);
 }
 
 export default SimpleGauge;

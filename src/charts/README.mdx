@@ -34,7 +34,7 @@ You can also provide a `name` prop for the tooltip value and an array of `labels
 		color="highlight"
 	/>
 	<br />
-	<SimpleChart isEmpty height={125} color="highlight" />
+	<SimpleChart isEmpty height={125} color="positive" />
 </Playground>
 
 ## SimpleGauge
@@ -45,4 +45,6 @@ Takes a single `value` prop that must be a Number value between `0` and `1` whic
 	<SimpleGauge value={0.3} height={125} />
 	<br />
 	<SimpleGauge value={0.8} height={80} color="positive" />
+	<br />
+	<SimpleGauge isEmpty height={80} color="negative" />
 </Playground>
