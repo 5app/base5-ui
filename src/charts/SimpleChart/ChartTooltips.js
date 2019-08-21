@@ -119,7 +119,6 @@ function ChartTooltips({
 									<VisuallyHidden>{readOut}</VisuallyHidden>
 									<Cursor
 										ref={popover.ref}
-										aria-hidden="true"
 										yValue={value / maxValue}
 									/>
 								</Fragment>
