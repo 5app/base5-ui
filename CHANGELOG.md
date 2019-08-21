@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/5app/base5-ui/compare/v3.7.0...v3.7.1) (2019-08-21)
+
+
+### Bug Fixes
+
+* Subtler chart empty state messages ([8bb2074](https://github.com/5app/base5-ui/commit/8bb2074))
+
 # [3.7.0](https://github.com/5app/base5-ui/compare/v3.6.2...v3.7.0) (2019-08-21)
 
 
