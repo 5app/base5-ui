@@ -1,3 +1,12 @@
+## [3.6.1](https://github.com/5app/base5-ui/compare/v3.6.0...v3.6.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* Fix chart tooltip's name proptype ([0ab10dd](https://github.com/5app/base5-ui/commit/0ab10dd))
+* Position tooltip on the chart's line ([6ae19be](https://github.com/5app/base5-ui/commit/6ae19be))
+* Remove distance prop in chart tooltip ([63780e6](https://github.com/5app/base5-ui/commit/63780e6))
+
 # [3.6.0](https://github.com/5app/base5-ui/compare/v3.5.1...v3.6.0) (2019-08-20)
 
 
