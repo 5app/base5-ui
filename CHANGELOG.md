@@ -1,3 +1,10 @@
+## [3.6.2](https://github.com/5app/base5-ui/compare/v3.6.1...v3.6.2) (2019-08-21)
+
+
+### Bug Fixes
+
+* Trigger release for previous commit ([0f57665](https://github.com/5app/base5-ui/commit/0f57665))
+
 ## [3.6.1](https://github.com/5app/base5-ui/compare/v3.6.0...v3.6.1) (2019-08-20)
 
 
