@@ -49,10 +49,13 @@ const ReadoutListItem = styled.li`
 
 const Cursor = styled.span`
 	display: block;
-	height: ${p => (p.yValue ? p.yValue * 100 : 100)}%;
+	height: ${p => p.yValue * 100}%;
 	width: 1px;
 	background-color: ${p => alpha(p.theme.shade, p.theme.lineStrength)};
 `;
+Cursor.defaultProps = {
+	yValue: 1,
+};
 
 // Return a label from the given array of labels
 // and an index. If the index is higher than the
@@ -69,7 +72,7 @@ function getDefaultReadout(name, value, label) {
 	return (
 		<Fragment>
 			{label && (
-				<Text bold size="l" lineHeight={1}>
+				<Text bold size="m" lineHeight={1}>
 					{label}
 					<br />
 				</Text>
