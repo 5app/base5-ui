@@ -1,3 +1,10 @@
+# [3.8.0](https://github.com/5app/base5-ui/compare/v3.7.2...v3.8.0) (2019-08-22)
+
+
+### Features
+
+* Pass ref's measurements to PopOver renderer ([7f0fbe6](https://github.com/5app/base5-ui/commit/7f0fbe6))
+
 ## [3.7.2](https://github.com/5app/base5-ui/compare/v3.7.1...v3.7.2) (2019-08-21)
 
 
