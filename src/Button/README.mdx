@@ -3,9 +3,9 @@ name: Button
 menu: Components
 ---
 
-import { Playground, Props } from 'docz'
-import InlineList from '../InlineList'
-import Button from './'
+import {Playground, Props} from 'docz';
+import InlineList from '../InlineList';
+import Button from './';
 
 # Button
 
@@ -15,13 +15,24 @@ Nice looking buttons, yo.
 
 <Playground>
 	<InlineList spacing="s">
-		<Button color="primary" icon="ok">Save</Button>
+		<Button color="primary" icon="ok">
+			Save
+		</Button>
 		<Button>Cancel</Button>
-		<Button size="medium" color="important">Delete</Button>
-		<Button size="medium" icon="send">Share</Button>
-		<Button size="small" color="transparent">Forgot password?</Button>
+		<Button size="medium" color="important">
+			Delete
+		</Button>
+		<Button size="medium" icon="send">
+			Share
+		</Button>
+		<Button icon="tools" size="medium" color="shaded" />
+		<Button size="small" color="transparent">
+			Forgot password?
+		</Button>
 		<Button round icon="plus" color="important" />
-		<Button isActive size="medium">Done</Button>
+		<Button isActive size="medium">
+			Done
+		</Button>
 	</InlineList>
 </Playground>
 
