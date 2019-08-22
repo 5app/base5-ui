@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 
@@ -23,6 +23,19 @@ function PopOver(props) {
 
 	const autoDistance = +arrowSize / 2 + +distance;
 
+	const [refMeasurements, setRefMeasurements] = useState({});
+
+	const getRefModifier = {
+		enabled: true,
+		order: 950,
+		fn: data => {
+			if (data.offsets && data.offsets.reference) {
+				setRefMeasurements(data.offsets.reference);
+			}
+			return data;
+		},
+	};
+
 	return (
 		<Manager>
 			<Reference innerRef={innerRef}>{children}</Reference>
@@ -33,6 +46,7 @@ function PopOver(props) {
 					offset: {offset: `${offset}, ${autoDistance}`},
 					computeStyle: {gpuAcceleration: false},
 					flip: {flipVariations: true, flipVariationsByContent: true},
+					getRefModifier,
 				}}
 			>
 				{({ref, style, placement, arrowProps, scheduleUpdate}) => {
@@ -56,6 +70,7 @@ function PopOver(props) {
 							isOpen={isOpen}
 							content={content}
 							arrow={arrow}
+							refMeasurements={refMeasurements}
 							resizeWatcher={resizeWatcher}
 						/>
 					);
@@ -127,7 +142,8 @@ PopOver.propTypes = {
 	/**
 	 * Customise popover rendering (e.g. for custom styling, transitions, etc).
 	 * Should be a React component that takes the props
-	 * `popOverRef`, `isOpen`, `style`, `content`, `arrow`, `resizeWatcher`
+	 * `popOverRef`, `isOpen`, `style`, `content`, `arrow`, `resizeWatcher`,
+	 * and `refMeasurements`
 	 */
 	renderer: PropTypes.elementType,
 };
