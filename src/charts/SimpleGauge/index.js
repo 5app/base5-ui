@@ -21,6 +21,12 @@ const Wrapper = styled.div`
 	> svg {
 		vertical-align: middle;
 		color: ${p => getColorBlock(p.color, p.theme)};
+
+		${p =>
+			p.height &&
+			css`
+				height: ${pxToRem(p.height * 2)};
+			`}
 		${p =>
 			p.patternId &&
 			`

@@ -1,6 +1,7 @@
 import React, {useRef} from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
+import {pxToRem} from '../../utils/units';
 import {getColorBlock} from '../../utils/colors';
 
 import Box from '../../Box';
@@ -12,6 +13,11 @@ const ChartWrapper = styled.div`
 	position: relative;
 
 	> svg {
+		${p =>
+			p.height &&
+			css`
+				height: ${pxToRem(p.height)};
+			`}
 		vertical-align: middle;
 		color: ${p => getColorBlock(p.color, p.theme)};
 	}
@@ -103,7 +109,12 @@ function SimpleChart({
 	});
 
 	return (
-		<ChartWrapper ref={hostRef} color={color} isEmpty={!hasData}>
+		<ChartWrapper
+			ref={hostRef}
+			color={color}
+			height={height}
+			isEmpty={!hasData}
+		>
 			{hasData ? (
 				<ChartTooltips
 					data={data}
