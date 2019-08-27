@@ -14,6 +14,8 @@ function useChartist(
 		};
 	}, [data, hostRef, options, type]);
 
+	const chartHeight = options && options.height;
+
 	// This effect adds a viewBox attribute to the generated SVG element,
 	// which allows it to grow/shwink along with the container when the size
 	// of it changes - in case the change is not due to a window resize,
@@ -24,7 +26,8 @@ function useChartist(
 			if (node) {
 				node.setAttribute(
 					'viewBox',
-					`0 0 ${node.clientWidth} ${node.clientHeight}`
+					`0 0 ${node.clientWidth} ${chartHeight ||
+						node.clientHeight}`
 				);
 				if (preserveAspectRatio) {
 					node.setAttribute(
@@ -35,7 +38,7 @@ function useChartist(
 			}
 		}
 		chartRef.current.on('created', updateViewBox);
-	}, [chartRef, preserveAspectRatio]);
+	}, [chartRef, preserveAspectRatio, chartHeight]);
 }
 
 export default useChartist;
