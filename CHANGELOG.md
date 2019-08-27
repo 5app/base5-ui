@@ -1,3 +1,10 @@
+## [3.8.1](https://github.com/5app/base5-ui/compare/v3.8.0...v3.8.1) (2019-08-27)
+
+
+### Bug Fixes
+
+* Favor defined height in viewbox for IE11 ([f35cb6b](https://github.com/5app/base5-ui/commit/f35cb6b))
+
 # [3.8.0](https://github.com/5app/base5-ui/compare/v3.7.2...v3.8.0) (2019-08-22)
 
 
