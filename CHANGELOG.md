@@ -1,3 +1,10 @@
+# [3.9.0](https://github.com/5app/base5-ui/compare/v3.8.2...v3.9.0) (2019-08-29)
+
+
+### Features
+
+* New useBreakpoints hook ([bcab7a3](https://github.com/5app/base5-ui/commit/bcab7a3))
+
 ## [3.8.2](https://github.com/5app/base5-ui/compare/v3.8.1...v3.8.2) (2019-08-27)
 
 
