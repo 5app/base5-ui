@@ -1,3 +1,10 @@
+## [3.8.2](https://github.com/5app/base5-ui/compare/v3.8.1...v3.8.2) (2019-08-27)
+
+
+### Bug Fixes
+
+* Add missing height for charts in IE11 ([88ffc28](https://github.com/5app/base5-ui/commit/88ffc28))
+
 ## [3.8.1](https://github.com/5app/base5-ui/compare/v3.8.0...v3.8.1) (2019-08-27)
 
 
