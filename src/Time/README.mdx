@@ -1,0 +1,39 @@
+---
+name: Time
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import Time from './'
+
+# Time
+
+`Time` is a helper component for providing time given a context. For example if something happened a few seconds ago, let's say it happened a "seconds ago", similarly if it happened today, provide the time "3pm" rather than the full date, and dont provide too much information, seconds aren't relevant when we're talking hours.
+
+On hover over the full time is provided.
+
+## Props
+
+<Props of={Time} />
+
+## Examples
+
+<Playground>
+	<Time dateTime="2017-03-17T12:00:00" systemTime="2017-03-17T12:00:02"/>
+</Playground>
+
+<Playground>
+	<Time dateTime="2019-08-29T12:00:00" systemTime="2019-08-29T12:03:01"/>
+</Playground>
+
+<Playground>
+	<Time dateTime="2019-08-29T12:00:00" systemTime="2019-08-29T13:03:01"/>
+</Playground>
+
+<Playground>
+	<Time dateTime="2019-08-29T12:00:00" systemTime="2019-08-30T13:03:01"/>
+</Playground>
+
+<Playground>
+	<Time dateTime="1981-05-12" />
+</Playground>
