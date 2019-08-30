@@ -37,7 +37,7 @@ class Time extends Component {
 		}
 	}
 
-	setDateString(props) {
+	setDateString() {
 		// Clear any existing timers...
 		this.clearTimer();
 
