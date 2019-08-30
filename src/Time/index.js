@@ -7,11 +7,10 @@ const TIME_DAY = 24 * TIME_HOUR;
 const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 class Time extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			datestring: null
+			datestring: null,
 		};
 		this.timer = undefined;
 		this.clearTimer = this.clearTimer.bind(this);
@@ -38,7 +37,7 @@ class Time extends Component {
 		}
 	}
 
-	setDateString(props) {
+	setDateString() {
 		// Clear any existing timers...
 		this.clearTimer();
 
@@ -47,52 +46,48 @@ class Time extends Component {
 		// Define the offset, how old is this...
 		const time = date(dateTime);
 		const systemtime = systemTime ? date(systemTime) : new Date();
-		const offset = time && systemtime && systemtime.getTime() - time.getTime();
+		const offset =
+			time && systemtime && systemtime.getTime() - time.getTime();
 		const ms_today = Date.now() % TIME_DAY;
 
 		let datestring = null;
 		let nextCheck = null;
 
 		if (offset < TIME_MINUTE) {
-
 			nextCheck = TIME_MINUTE - offset;
 
 			datestring = 'seconds ago';
-		}
-		else if (offset < (TIME_MINUTE * 4)) {
-
-			nextCheck = (TIME_MINUTE * 4) - offset;
+		} else if (offset < TIME_MINUTE * 4) {
+			nextCheck = TIME_MINUTE * 4 - offset;
 
 			datestring = 'minutes ago';
 		}
 		// Occcured today...
 		else if (offset < ms_today) {
-
 			nextCheck = ms_today - offset;
 
 			datestring = toTimeString(time);
 		}
 		// Occurred this week
-		else if (offset < (TIME_DAY * 6)) {
-
-			nextCheck = (TIME_DAY * 6) - offset;
+		else if (offset < TIME_DAY * 6) {
+			nextCheck = TIME_DAY * 6 - offset;
 
 			// Get day
-			if (time.getDay() === (((systemtime.getDay() - 1) + 7) % 7)) {
+			if (time.getDay() === (systemtime.getDay() - 1 + 7) % 7) {
 				datestring = 'Yesterday';
-			}
-			else {
+			} else {
 				datestring = DOW[time.getDay()];
 			}
 			datestring += ', ' + toTimeString(time);
-
-		}
-		else {
+		} else {
 			datestring = toDateString(time);
 		}
 
 		if (nextCheck) {
-			this.timer = setTimeout(() => this.setDateString(this.props, nextCheck), nextCheck);
+			this.timer = setTimeout(
+				() => this.setDateString(this.props, nextCheck),
+				nextCheck
+			);
 		}
 
 		this.setState({datestring});
@@ -113,19 +108,18 @@ class Time extends Component {
 Time.propTypes = {
 	dateTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
-		PropTypes.string
+		PropTypes.string,
 	]).isRequired,
 	systemTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
-		PropTypes.string
-	])
+		PropTypes.string,
+	]),
 };
 
 function toTimeString(time) {
 	if (time.toLocaleTimeString) {
 		return time.toLocaleTimeString().replace(/:\d{2} /, ' ');
-	}
-	else {
+	} else {
 		return time.toTimeString();
 	}
 }
@@ -133,8 +127,7 @@ function toTimeString(time) {
 function toDateString(time) {
 	if (time.toLocaleDateString) {
 		return time.toLocaleDateString();
-	}
-	else {
+	} else {
 		return time.toDateString();
 	}
 }
@@ -145,8 +138,7 @@ function date(d) {
 	}
 	try {
 		return new Date(d);
-	}
-	catch (e) {
+	} catch (e) {
 		return null;
 	}
 }
