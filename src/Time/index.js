@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 const TIME_MINUTE = 60 * 1000;
@@ -7,7 +7,7 @@ const TIME_DAY = 24 * TIME_HOUR;
 
 function Time({dateTime, systemTime, locale}) {
 	// Offset system time with local time...
-	const [systemOffset] = useState(
+	const systemOffset = useRef(
 		date(systemTime) ? date(systemTime).getTime() - Date.now() : 0
 	);
 
@@ -15,7 +15,7 @@ function Time({dateTime, systemTime, locale}) {
 	const [dateString, delayValue] = getDateString({
 		dateTime,
 		locale,
-		systemOffset,
+		systemOffset: systemOffset.current,
 	});
 
 	// Set the current generated datestring
@@ -34,7 +34,7 @@ function Time({dateTime, systemTime, locale}) {
 				const [dateString, delayValue] = getDateString({
 					dateTime,
 					locale,
-					systemOffset,
+					systemOffset: systemOffset.current,
 				});
 
 				// Set the output value...
