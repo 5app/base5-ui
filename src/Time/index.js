@@ -41,7 +41,7 @@ class Time extends Component {
 		// Clear any existing timers...
 		this.clearTimer();
 
-		const {systemTime, dateTime} = props;
+		const {systemTime, dateTime} = this.props;
 
 		// Define the offset, how old is this...
 		const time = date(dateTime);
@@ -84,10 +84,7 @@ class Time extends Component {
 		}
 
 		if (nextCheck) {
-			this.timer = setTimeout(
-				() => this.setDateString(this.props, nextCheck),
-				nextCheck
-			);
+			this.timer = setTimeout(this.setDateString, nextCheck);
 		}
 
 		this.setState({datestring});
