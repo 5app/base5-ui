@@ -1,3 +1,122 @@
+## [3.9.1](https://github.com/5app/base5-ui/compare/v3.9.0...v3.9.1) (2019-08-29)
+
+
+### Bug Fixes
+
+* Better content sizing logic for CenterContent ([137294c](https://github.com/5app/base5-ui/commit/137294c))
+
+# [3.9.0](https://github.com/5app/base5-ui/compare/v3.8.2...v3.9.0) (2019-08-29)
+
+
+### Features
+
+* New useBreakpoints hook ([bcab7a3](https://github.com/5app/base5-ui/commit/bcab7a3))
+
+## [3.8.2](https://github.com/5app/base5-ui/compare/v3.8.1...v3.8.2) (2019-08-27)
+
+
+### Bug Fixes
+
+* Add missing height for charts in IE11 ([88ffc28](https://github.com/5app/base5-ui/commit/88ffc28))
+
+## [3.8.1](https://github.com/5app/base5-ui/compare/v3.8.0...v3.8.1) (2019-08-27)
+
+
+### Bug Fixes
+
+* Favor defined height in viewbox for IE11 ([f35cb6b](https://github.com/5app/base5-ui/commit/f35cb6b))
+
+# [3.8.0](https://github.com/5app/base5-ui/compare/v3.7.2...v3.8.0) (2019-08-22)
+
+
+### Features
+
+* Pass ref's measurements to PopOver renderer ([7f0fbe6](https://github.com/5app/base5-ui/commit/7f0fbe6))
+
+## [3.7.2](https://github.com/5app/base5-ui/compare/v3.7.1...v3.7.2) (2019-08-21)
+
+
+### Bug Fixes
+
+* Update popper.js for better PopOver positioning ([ff756d1](https://github.com/5app/base5-ui/commit/ff756d1))
+
+## [3.7.1](https://github.com/5app/base5-ui/compare/v3.7.0...v3.7.1) (2019-08-21)
+
+
+### Bug Fixes
+
+* Subtler chart empty state messages ([8bb2074](https://github.com/5app/base5-ui/commit/8bb2074))
+
+# [3.7.0](https://github.com/5app/base5-ui/compare/v3.6.2...v3.7.0) (2019-08-21)
+
+
+### Features
+
+* Add empty state to SimpleChart ([bd5b9f3](https://github.com/5app/base5-ui/commit/bd5b9f3))
+* Add empty state to SimpleGauge ([96e36c7](https://github.com/5app/base5-ui/commit/96e36c7))
+
+## [3.6.2](https://github.com/5app/base5-ui/compare/v3.6.1...v3.6.2) (2019-08-21)
+
+
+### Bug Fixes
+
+* Trigger release for previous commit ([0f57665](https://github.com/5app/base5-ui/commit/0f57665))
+
+## [3.6.1](https://github.com/5app/base5-ui/compare/v3.6.0...v3.6.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* Fix chart tooltip's name proptype ([0ab10dd](https://github.com/5app/base5-ui/commit/0ab10dd))
+* Position tooltip on the chart's line ([6ae19be](https://github.com/5app/base5-ui/commit/6ae19be))
+* Remove distance prop in chart tooltip ([63780e6](https://github.com/5app/base5-ui/commit/63780e6))
+
+# [3.6.0](https://github.com/5app/base5-ui/compare/v3.5.1...v3.6.0) (2019-08-20)
+
+
+### Features
+
+* Add custom tooltips to SimpleChart ([f34fc87](https://github.com/5app/base5-ui/commit/f34fc87))
+* New VisuallyHidden component for a11y ([9d918ee](https://github.com/5app/base5-ui/commit/9d918ee))
+
+## [3.5.1](https://github.com/5app/base5-ui/compare/v3.5.0...v3.5.1) (2019-08-19)
+
+
+### Bug Fixes
+
+* Fix GaugeChart height calculation ([4381d62](https://github.com/5app/base5-ui/commit/4381d62))
+
+# [3.5.0](https://github.com/5app/base5-ui/compare/v3.4.0...v3.5.0) (2019-08-16)
+
+
+### Bug Fixes
+
+* Remove obsolete app icons ([178c149](https://github.com/5app/base5-ui/commit/178c149))
+
+
+### Features
+
+* Added new icons NavUp, NavDown, Dot ([66b7b7c](https://github.com/5app/base5-ui/commit/66b7b7c))
+
+# [3.4.0](https://github.com/5app/base5-ui/compare/v3.3.2...v3.4.0) (2019-08-15)
+
+
+### Bug Fixes
+
+* Remove broken iconMap import ([d7e1c1c](https://github.com/5app/base5-ui/commit/d7e1c1c))
+
+
+### Features
+
+* New components (SimpleChart & SimpleGauge) ([8491aef](https://github.com/5app/base5-ui/commit/8491aef))
+
+## [3.3.2](https://github.com/5app/base5-ui/compare/v3.3.1...v3.3.2) (2019-08-14)
+
+
+### Bug Fixes
+
+* Consistently define mixins as objects ([4ce9be0](https://github.com/5app/base5-ui/commit/4ce9be0))
+
 ## [3.3.1](https://github.com/5app/base5-ui/compare/v3.3.0...v3.3.1) (2019-08-08)
 
 

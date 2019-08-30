@@ -8,6 +8,8 @@ import {paddingProps} from '../styleProps';
 
 const Wrapper = styled.div`
 	display: flex;
+	flex: 1;
+
 	${p =>
 		p.height &&
 		css`
@@ -34,7 +36,8 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-	max-width: ${p => (p.width ? pxToRem(p.width) : '100%')};
+	width: ${p => (p.width ? pxToRem(p.width) : 'auto')};
+	max-width: 100%;
 
 	/* Needed for IE11 to contain large items: https://stackoverflow.com/a/42494339 */
 	flex-shrink: 0;

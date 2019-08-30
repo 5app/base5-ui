@@ -1,8 +1,3 @@
-export {default as iconMap} from './iconMap';
-
-export {default as Android} from './Android';
-export {default as Apple} from './Apple';
-export {default as Appstore} from './Appstore';
 export {default as Arrow} from './Arrow';
 export {default as Asset} from './AssetDefault';
 export {default as AssetAudio} from './AssetAudio';
@@ -28,6 +23,7 @@ export {default as Chat} from './Chat';
 export {default as Chevron} from './Chevron';
 export {default as Collection} from './Collection';
 export {default as Disk} from './Disk';
+export {default as Dot} from './Dot';
 export {default as Download} from './Download';
 export {default as Dropbox} from './Dropbox';
 export {default as Edit} from './Edit';
@@ -45,8 +41,10 @@ export {default as Link} from './Link';
 export {default as Logout} from './Logout';
 export {default as Megaphone} from './Megaphone';
 export {default as Menu} from './Menu';
+export {default as NavDown} from './NavDown';
 export {default as NavLeft} from './NavLeft';
 export {default as NavRight} from './NavRight';
+export {default as NavUp} from './NavUp';
 export {default as Offline} from './Offline';
 export {default as Ok} from './Ok';
 export {default as Pause} from './Pause';
