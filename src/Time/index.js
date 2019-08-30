@@ -1,105 +1,62 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 
 const TIME_MINUTE = 60 * 1000;
 const TIME_HOUR = 60 * TIME_MINUTE;
 const TIME_DAY = 24 * TIME_HOUR;
-const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-class Time extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			datestring: null,
+function Time({dateTime, systemTime, locale}) {
+	// Offset system time with local time...
+	const [systemOffset] = useState(
+		date(systemTime) ? date(systemTime).getTime() - Date.now() : 0
+	);
+
+	// Get the date string and the delay before running the next loop
+	const [dateString, delayValue] = getDateString({
+		dateTime,
+		locale,
+		systemOffset,
+	});
+
+	// Set the current generated datestring
+	const [outputValue, setOutputValue] = useState(dateString);
+
+	// Set the current generated datestring
+	const [delay, setDelay] = useState(delayValue);
+
+	// Set the datestring
+	useEffect(() => {
+		let timer = null;
+
+		if (delay) {
+			timer = setInterval(() => {
+				// Get the date string and the delay before running the next loop
+				const [dateString, delayValue] = getDateString({
+					dateTime,
+					locale,
+					systemOffset,
+				});
+
+				// Set the output value...
+				setOutputValue(dateString);
+
+				// Set delay
+				setDelay(delayValue);
+			}, delay);
+		}
+
+		return () => {
+			clearInterval(timer);
 		};
-		this.timer = undefined;
-		this.clearTimer = this.clearTimer.bind(this);
-		this.setDateString = this.setDateString.bind(this);
-	}
+	});
 
-	componentDidMount() {
-		// Set up timer to periodically cause re-render
-		this.setDateString(this.props);
-	}
+	const title = date(dateTime);
 
-	componentWillUnmount() {
-		this.clearTimer();
-	}
-
-	UNSAFE_componentWillReceiveProps(nextProps) {
-		this.clearTimer();
-		this.setDateString(nextProps);
-	}
-
-	clearTimer() {
-		if (this.timer) {
-			clearTimeout(this.timer);
-		}
-	}
-
-	setDateString() {
-		// Clear any existing timers...
-		this.clearTimer();
-
-		const {systemTime, dateTime} = this.props;
-
-		// Define the offset, how old is this...
-		const time = date(dateTime);
-		const systemtime = systemTime ? date(systemTime) : new Date();
-		const offset =
-			time && systemtime && systemtime.getTime() - time.getTime();
-		const ms_today = Date.now() % TIME_DAY;
-
-		let datestring = null;
-		let nextCheck = null;
-
-		if (offset < TIME_MINUTE) {
-			nextCheck = TIME_MINUTE - offset;
-
-			datestring = 'seconds ago';
-		} else if (offset < TIME_MINUTE * 4) {
-			nextCheck = TIME_MINUTE * 4 - offset;
-
-			datestring = 'minutes ago';
-		}
-		// Occcured today...
-		else if (offset < ms_today) {
-			nextCheck = ms_today - offset;
-
-			datestring = toTimeString(time);
-		}
-		// Occurred this week
-		else if (offset < TIME_DAY * 6) {
-			nextCheck = TIME_DAY * 6 - offset;
-
-			// Get day
-			if (time.getDay() === (systemtime.getDay() - 1 + 7) % 7) {
-				datestring = 'Yesterday';
-			} else {
-				datestring = DOW[time.getDay()];
-			}
-			datestring += ', ' + toTimeString(time);
-		} else {
-			datestring = toDateString(time);
-		}
-
-		if (nextCheck) {
-			this.timer = setTimeout(this.setDateString, nextCheck);
-		}
-
-		this.setState({datestring});
-	}
-
-	render() {
-		const {dateTime} = this.props;
-		const title = date(dateTime);
-
-		return (
-			<time dateTime={dateTime} title={title && title.toLocaleString()}>
-				{this.state.datestring || 'n/a'}
-			</time>
-		);
-	}
+	return (
+		<time dateTime={dateTime} title={title && title.toLocaleString()}>
+			{outputValue || 'n/a'}
+		</time>
+	);
 }
 
 Time.propTypes = {
@@ -113,20 +70,85 @@ Time.propTypes = {
 	]),
 };
 
-function toTimeString(time) {
-	if (time.toLocaleTimeString) {
-		return time.toLocaleTimeString().replace(/:\d{2} /, ' ');
-	} else {
-		return time.toTimeString();
-	}
-}
+function getDateString({dateTime, locale, systemOffset = 0}) {
+	// Define the offset, how old is this...
+	const time = date(dateTime);
 
-function toDateString(time) {
-	if (time.toLocaleDateString) {
-		return time.toLocaleDateString();
-	} else {
-		return time.toDateString();
+	if (isNaN(time)) {
+		return [];
 	}
+
+	// Update the system time
+	const systemtime = new Date();
+	systemtime.setTime(Date.now() + systemOffset);
+
+	const offset = time && systemtime && systemtime.getTime() - time.getTime();
+
+	const ms_today = Date.now() % TIME_DAY;
+
+	let dateString = 'n/a';
+
+	// Default delay
+	let delay = null;
+
+	// A few seconds ago
+	if (offset < TIME_MINUTE / 2) {
+		delay = TIME_MINUTE / 2 - offset;
+		dateString = 'seconds ago';
+		// Less than a minute ago
+	} else if (offset < TIME_MINUTE) {
+		delay = TIME_MINUTE - offset;
+		dateString = '< 1 minute ago';
+		// A few minutes ago
+	} else if (offset < TIME_MINUTE * 10) {
+		delay = TIME_MINUTE;
+
+		const mins = parseInt(offset / TIME_MINUTE);
+
+		dateString = `${mins} minute${mins > 1 ? 's' : ''} ago`;
+	}
+	// Occcured today...
+	else if (offset < ms_today) {
+		delay = ms_today - offset;
+
+		dateString = new Intl.DateTimeFormat(locale, {
+			hour12: true,
+			hour: 'numeric',
+			minute: 'numeric',
+		}).format(time);
+	}
+	// Occurred this week
+	else if (offset < TIME_DAY * 6) {
+		delay = TIME_DAY * 6 - offset;
+
+		// Get day
+		if (time.getDay() === (systemtime.getDay() - 1 + 7) % 7) {
+			dateString = 'Yesterday, ';
+			dateString += new Intl.DateTimeFormat(locale, {
+				hour12: true,
+				hour: 'numeric',
+			}).format(time);
+		} else {
+			dateString = new Intl.DateTimeFormat(locale, {
+				weekday: 'short',
+				hour12: true,
+				hour: 'numeric',
+			}).format(time);
+		}
+	} else if (time.getYear() === systemtime.getYear()) {
+		dateString = new Intl.DateTimeFormat(locale, {
+			month: 'short',
+			day: 'numeric',
+		}).format(time);
+	} else {
+		dateString = new Intl.DateTimeFormat(locale, {
+			month: 'short',
+			day: 'numeric',
+			year: 'numeric',
+		}).format(time);
+	}
+
+	return [dateString, delay];
 }
 
 function date(d) {
