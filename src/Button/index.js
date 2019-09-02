@@ -198,23 +198,14 @@ const HoverShade = styled.span`
 `;
 
 const Content = styled.span`
-	display: block;
-	transform: translateZ(0);
+	position: relative;
+	display: flex;
+	align-items: center;
 `;
 
 const ButtonText = styled.span`
 	padding: 0 ${p => p.theme.globals.spacing.xxs};
 	vertical-align: middle;
-`;
-
-const Subtitle = styled.span`
-	display: block;
-	padding: ${p => p.theme.globals.spacing.xxxs} ${p =>
-	p.theme.globals.spacing.xxs};
-	${ellipsis}
-	opacity: ${p => p.theme.textDimStrength};
-
-	font-size: ${p => p.theme.globals.typeScale.s};
 `;
 
 function ButtonWithRef(props, ref) {
@@ -224,7 +215,6 @@ function ButtonWithRef(props, ref) {
 		color = 'default',
 		icon,
 		iconRight,
-		subline,
 		title,
 		...otherProps
 	} = props;
@@ -246,7 +236,6 @@ function ButtonWithRef(props, ref) {
 				{!iconRight && iconEl}
 				{children && <ButtonText>{children}</ButtonText>}
 				{iconRight && iconEl}
-				{subline && <Subtitle>{subline}</Subtitle>}
 			</Content>
 		</Wrapper>
 	);
@@ -257,7 +246,6 @@ const Button = forwardRef(ButtonWithRef);
 Button.propTypes = {
 	icon: PropTypes.string,
 	iconRight: PropTypes.bool,
-	subline: PropTypes.string,
 
 	round: PropTypes.bool,
 	square: PropTypes.bool,
@@ -270,7 +258,7 @@ Button.propTypes = {
 		'shaded',
 	]),
 	size: PropTypes.oneOf(['small', 'medium', 'large']),
-	align: PropTypes.string,
+	align: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
 export default Button;
