@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 
 import {alpha} from '../utils/colors';
 import {pxToRem} from '../utils/units';
-import {fillParent, ellipsis} from '../mixins';
+import {fillParent} from '../mixins';
 
 import {positionProps, marginProps} from '../styleProps';
 
