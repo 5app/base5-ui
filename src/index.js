@@ -19,3 +19,6 @@ export {default as Switch} from './Switch';
 export {default as Text} from './Text';
 export {default as TextLink} from './TextLink';
 export {default as ThemeSection} from './ThemeSection';
+export {default as Time} from './Time';
+export {default as useBreakpoints} from './useBreakpoints';
+export {default as useInterval} from './useInterval';
