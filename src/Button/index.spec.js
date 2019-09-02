@@ -75,28 +75,6 @@ describe('Button', () => {
 		expect(parent.children[0]).toBe(svg);
 	});
 
-	it('can render buttons with subtitles', () => {
-		const {getByText} = render(
-			<Wrapper>
-				<Button id="ok" icon="ok" subline="subline">
-					Ok
-				</Button>
-			</Wrapper>
-		);
-		const text = getByText('Ok');
-		const subline = getByText('subline');
-		const parent = text.parentElement;
-		const {children} = parent;
-
-		const array = [...children];
-		const ixText = array.indexOf(text);
-		const ixSubline = array.indexOf(subline);
-
-		expect(ixText).toBeGreaterThan(-1);
-		expect(ixSubline).toBeGreaterThan(-1);
-		expect(ixText).toBeLessThan(ixSubline);
-	});
-
 	it('can render icon only buttons', () => {
 		const {container} = render(
 			<Wrapper>
