@@ -59,12 +59,13 @@ const Meter = ({...props}) => {
 };
 
 Meter.propTypes = {
-	value: PropTypes.number,
-	max: PropTypes.number,
+	color: PropTypes.string,
 	high: PropTypes.number,
 	low: PropTypes.number,
+	max: PropTypes.number,
 	min: PropTypes.number,
 	optimum: PropTypes.number,
+	value: PropTypes.number,
 	visualMin: PropTypes.number,
 };
 
