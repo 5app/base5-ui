@@ -1,3 +1,11 @@
+# [3.10.0](https://github.com/5app/base5-ui/compare/v3.9.1...v3.10.0) (2019-08-30)
+
+
+### Features
+
+* New component ViewMoreText ([0f78209](https://github.com/5app/base5-ui/commit/0f78209))
+* New Meter component ([59f51d6](https://github.com/5app/base5-ui/commit/59f51d6))
+
 ## [3.9.1](https://github.com/5app/base5-ui/compare/v3.9.0...v3.9.1) (2019-08-29)
 
 

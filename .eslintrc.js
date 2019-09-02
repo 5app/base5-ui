@@ -1,5 +1,10 @@
 module.exports = {
-	extends: ['5app', 'plugin:react/recommended', 'prettier'],
+	extends: [
+		'5app',
+		'plugin:react/recommended',
+		'plugin:jsx-a11y/recommended',
+		'prettier',
+	],
 	parser: 'babel-eslint',
 	parserOptions: {
 		allowImportExportEverywhere: true,
@@ -13,7 +18,7 @@ module.exports = {
 		browser: true,
 		jest: true,
 	},
-	plugins: ['react-hooks', 'prettier'],
+	plugins: ['react-hooks', 'prettier', 'jsx-a11y'],
 	rules: {
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
 		'prefer-template': 0,

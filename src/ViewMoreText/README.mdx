@@ -1,0 +1,35 @@
+---
+name: ViewMoreText
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import ViewMoreText from './';
+
+# ViewMoreText
+
+Truncates a piece of text by a specified amount and displays a "View more" button at the end of it, which will reveal the rest of the text when clicked.
+
+The labels of the "View more" and "View less" buttons can be customised using the props `viewMoreLabel` and `viewLessLabel`.
+
+## Examples
+
+<Playground>
+	<ViewMoreText
+		content="This is a short example text with a disappointing reveal."
+		truncateBy={26}
+	/>
+	<br />
+	<br />
+	<ViewMoreText
+		content="Here comes a longer, tastier example. Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean. Dandelion zucchini burdock yarrow chickpea dandelion sorrel courgette turnip greens tigernut soybean radish artichoke wattle seed endive groundnut broccoli arugula."
+		truncateBy={150}
+		viewMoreLabel="Read more"
+		viewLessLabel="I don't care about any of that"
+	/>
+</Playground>
+
+## Props
+
+<Props of={ViewMoreText} />
