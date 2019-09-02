@@ -8,15 +8,17 @@ import Time from './';
 
 # Time
 
-`Time` is a helper component for providing time given a context. For example if something happened a few seconds ago, let's say it happened a "seconds ago", similarly if it happened today, provide the time "3pm" rather than the full date, and dont provide too much information, seconds aren't relevant when we're talking hours.
+`Time` is a helper component for providing a reading-friendly time relative to a given context.
 
-On hover over the full time is provided.
+For example, if something happened a few seconds ago, it would say "less than a minute ago". Similarly, if the provided timestamp was today, report the time as "3pm" rather than the full date. The idea is to provide not too much information. E.g., seconds aren't relevant when we're talking hours.
+
+The component auto-updates to keep the time accurate without requiring a page refresh. It renders a simple html `<time>` element with a `title` attribute that ensures that the full time is provided as a browser tooltip when holding a mouse cursor over it.
 
 ## Props
 
 <Props of={Time} />
 
-- `dateTime`: Any Date string recognized by [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse). Note: Suffix with `Z` to define the date as a UTC value or offset.
+-   `dateTime`: Any Date string recognized by [Date.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse). Note: Suffix with `Z` to define the date as a UTC value or offset.
 
 ## Examples
 
@@ -50,7 +52,6 @@ On hover over the full time is provided.
 
 ## Invalid examples
 
-
 <Playground>
-	<Time dateTime="3017-13-32T25:61:00"/>
+	<Time dateTime="3017-13-32T25:61:00" />
 </Playground>
