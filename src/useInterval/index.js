@@ -2,7 +2,7 @@ import {useRef, useEffect} from 'react';
 
 /**
  * @param {Function} callback - Function to run
- * @param {number|null} delay - Delay in milliseconds. Interval pauses when null
+ * @param {number|null|undefined} delay - Delay in milliseconds. Interval pauses when null
  */
 
 function useInterval(callback, delay) {
@@ -18,7 +18,7 @@ function useInterval(callback, delay) {
 		function tick() {
 			savedCallback.current();
 		}
-		if (delay !== null) {
+		if (typeof delay === 'number') {
 			const id = setInterval(tick, delay);
 			return () => clearInterval(id);
 		}
