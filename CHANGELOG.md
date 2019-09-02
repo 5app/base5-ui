@@ -1,3 +1,10 @@
+# [3.11.0](https://github.com/5app/base5-ui/compare/v3.10.0...v3.11.0) (2019-09-02)
+
+
+### Features
+
+* **Time:** Add Time Component ([#18](https://github.com/5app/base5-ui/issues/18)) ([56aedb7](https://github.com/5app/base5-ui/commit/56aedb7))
+
 # [3.10.0](https://github.com/5app/base5-ui/compare/v3.9.1...v3.10.0) (2019-08-30)
 
 
