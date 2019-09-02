@@ -84,7 +84,9 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 
 	const offset = time && systemtime && systemtime.getTime() - time.getTime();
 
-	const ms_today = Date.now() % TIME_DAY;
+	// Get the number of milliseconds since midnight in the local tz
+	const ms_today =
+		(Date.now() - new Date().getTimezoneOffset() * 1000 * 60) % TIME_DAY;
 
 	let dateString = 'n/a';
 
@@ -109,7 +111,8 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 	}
 	// Occcured today...
 	else if (offset < ms_today) {
-		delay = ms_today - offset;
+		// Number of ms until end of the day...
+		delay = TIME_DAY - ms_today;
 
 		dateString = new Intl.DateTimeFormat(locale, {
 			hour12: true,
@@ -119,22 +122,15 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 	}
 	// Occurred this week
 	else if (offset < TIME_DAY * 6) {
-		delay = TIME_DAY * 6 - offset;
+		// Delay a day...
+		delay = TIME_DAY;
 
 		// Get day
-		if (time.getDay() === (systemtime.getDay() - 1 + 7) % 7) {
-			dateString = 'Yesterday, ';
-			dateString += new Intl.DateTimeFormat(locale, {
-				hour12: true,
-				hour: 'numeric',
-			}).format(time);
-		} else {
-			dateString = new Intl.DateTimeFormat(locale, {
-				weekday: 'short',
-				hour12: true,
-				hour: 'numeric',
-			}).format(time);
-		}
+		dateString = new Intl.DateTimeFormat(locale, {
+			weekday: 'short',
+			hour12: true,
+			hour: 'numeric',
+		}).format(time);
 	} else if (time.getYear() === systemtime.getYear()) {
 		dateString = new Intl.DateTimeFormat(locale, {
 			month: 'short',
