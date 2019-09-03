@@ -7,6 +7,7 @@ import {pxToRem} from '../utils/units';
 import {fillParent} from '../mixins';
 
 import {positionProps, marginProps} from '../styleProps';
+import {alignMap} from '../styleProps/flexProps';
 
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
@@ -201,6 +202,7 @@ const Content = styled.span`
 	position: relative;
 	display: flex;
 	align-items: center;
+	justify-content: ${p => (p.align ? alignMap[p.align] : 'center')};
 `;
 
 const ButtonText = styled.span`
@@ -210,6 +212,7 @@ const ButtonText = styled.span`
 
 function ButtonWithRef(props, ref) {
 	const {
+		align,
 		as,
 		children,
 		color = 'default',
@@ -228,11 +231,12 @@ function ButtonWithRef(props, ref) {
 			buttonRef={ref}
 			aria-label={props['aria-label'] || title}
 			color={color}
+			align={align}
 			{...otherProps}
 		>
 			<HoverShade />
 			<FocusRing color={color} />
-			<Content>
+			<Content align={align}>
 				{!iconRight && iconEl}
 				{children && <ButtonText>{children}</ButtonText>}
 				{iconRight && iconEl}
