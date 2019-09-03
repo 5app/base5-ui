@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/5app/base5-ui/compare/v4.0.0...v4.0.1) (2019-09-03)
+
+
+### Bug Fixes
+
+* Fix broken Button alignment after refactor ([d8089e5](https://github.com/5app/base5-ui/commit/d8089e5))
+
 # [4.0.0](https://github.com/5app/base5-ui/compare/v3.11.0...v4.0.0) (2019-09-02)
 
 
