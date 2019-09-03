@@ -1,3 +1,23 @@
+# [4.0.0](https://github.com/5app/base5-ui/compare/v3.11.0...v4.0.0) (2019-09-02)
+
+
+### Bug Fixes
+
+* lint Button refactor ([6600bc4](https://github.com/5app/base5-ui/commit/6600bc4))
+* remove test for deprecated Button subline prop ([5649bab](https://github.com/5app/base5-ui/commit/5649bab))
+
+
+### Code Refactoring
+
+* Remove button subline prop ([79d3b98](https://github.com/5app/base5-ui/commit/79d3b98))
+
+
+### BREAKING CHANGES
+
+* Removes the underutilised subline prop
+from the Button component to reduce layout complexity and allow
+for nicer alignment of icons with multi-line button text.
+
 # [3.11.0](https://github.com/5app/base5-ui/compare/v3.10.0...v3.11.0) (2019-09-02)
 
 
