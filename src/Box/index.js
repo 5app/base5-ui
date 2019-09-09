@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
 	positionProps,
+	displayProps,
 	flexProps,
 	marginProps,
 	paddingProps,
@@ -12,6 +13,7 @@ import {
 
 const Box = styled.div`
 	${positionProps}
+	${displayProps}
 	${flexProps}
 	${marginProps}
 	${paddingProps}
@@ -21,13 +23,17 @@ const Box = styled.div`
 
 Box.propTypes = {
 	position: PropTypes.oneOf(['static', 'relative', 'absolute', 'fixed']),
+	display: PropTypes.oneOf(['block', 'inline', 'inline-block']),
 	border: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
 	flexAlign: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
 	basis: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	grow: PropTypes.bool,
 	shrink: PropTypes.bool,
 	bold: PropTypes.bool,
-	caps: PropTypes.oneOf(['all', 'first']),
+	caps: PropTypes.oneOfType([
+		PropTypes.oneOf(['all', 'first']),
+		PropTypes.bool,
+	]),
 	dimmed: PropTypes.bool,
 	fontSize: PropTypes.string,
 	lineHeight: PropTypes.number,

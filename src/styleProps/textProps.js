@@ -1,6 +1,6 @@
 import {alpha} from '../utils/colors';
 import {checkTheme} from '../utils/theme';
-import {ellipsis, overflowWrap} from '../mixins';
+import {ellipsis, overflowWrap as wrap} from '../mixins';
 
 const textTransformMap = {
 	all: 'uppercase',
@@ -8,14 +8,8 @@ const textTransformMap = {
 };
 
 const overflowStylesMap = {
-	ellipsis: {
-		display: 'block',
-		...ellipsis,
-	},
-	wrap: {
-		display: 'block',
-		...overflowWrap,
-	},
+	ellipsis,
+	wrap,
 };
 
 function textProps(props) {
@@ -33,22 +27,21 @@ function textProps(props) {
 
 	checkTheme(theme);
 
-	let alignStyles;
-	if (textAlign) {
-		alignStyles = {
-			display: 'block',
-			width: '100%',
-			textAlign,
-		};
-	}
-
 	return {
-		...alignStyles,
+		textAlign,
 		fontSize: fontSize ? theme.globals.typeScale[fontSize] : undefined,
-		fontWeight: bold ? 'bold' : undefined,
+		fontWeight: bold ? 'bold' : bold === false ? 'normal' : undefined,
 		lineHeight,
-		textTransform: caps ? textTransformMap[caps] : undefined,
-		color: dimmed ? alpha(theme.text, theme.textDimStrength) : undefined,
+		textTransform: caps
+			? textTransformMap[caps]
+			: caps === false
+			? 'none'
+			: undefined,
+		color: dimmed
+			? alpha(theme.text, theme.textDimStrength)
+			: dimmed === false
+			? theme.text
+			: undefined,
 		...(overflow ? overflowStylesMap[overflow] : undefined),
 	};
 }
