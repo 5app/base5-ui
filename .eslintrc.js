@@ -21,6 +21,7 @@ module.exports = {
 	plugins: ['react-hooks', 'prettier', 'jsx-a11y'],
 	rules: {
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
+		'no-console': [2, {allow: ['error', 'warn']}],
 		'prefer-template': 0,
 		'prettier/prettier': 'error',
 		'react/jsx-no-bind': [2, {allowArrowFunctions: true, ignoreRefs: true}],
