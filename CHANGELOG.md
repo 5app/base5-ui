@@ -1,3 +1,18 @@
+# [5.0.0](https://github.com/5app/base5-ui/compare/v4.0.1...v5.0.0) (2019-09-10)
+
+
+### Features
+
+* New 'display' styling prop ([a861038](https://github.com/5app/base5-ui/commit/a861038))
+
+
+### BREAKING CHANGES
+
+* `display: block` is no longer
+automatically applied when using the `overflow` or `textAlign`
+styling props. Instead, the new `display` prop should be used to
+give inline elements block-level layout
+
 ## [4.0.1](https://github.com/5app/base5-ui/compare/v4.0.0...v4.0.1) (2019-09-03)
 
 
