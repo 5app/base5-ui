@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 import {useSize} from 'react-hook-size';
 
-import {pxToRem} from 'base5-ui/utils/units';
-import {alpha} from 'base5-ui/utils/colors';
-import {borderValue} from 'base5-ui/mixins';
-import {positionProps, marginProps} from 'base5-ui/styleProps';
-import {getSpacing} from 'base5-ui/utils/spacing';
+import {pxToRem} from '../utils/units';
+import {alpha} from '../utils/colors';
+import {borderValue} from '../mixins';
+import {positionProps, marginProps} from '../styleProps';
+import {getSpacing} from '../utils/spacing';
 
-import Box from 'base5-ui/Box';
-import Text from 'base5-ui/Text';
+import Box from '../Box';
+import Text from '../Text';
 
 import getColumnsToHide from './getColumnsToHide';
 import getColumnConfigFromChildren from './getColumnConfigFromChildren';
@@ -158,18 +158,20 @@ Table.defaultProps = {
 };
 
 Table.propTypes = {
-	rowMinHeight: PropTypes.number,
-	data: PropTypes.array.isRequired,
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
+	data: PropTypes.array.isRequired,
+	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	rowMinHeight: PropTypes.number,
 };
 
 const columnPropsShape = {
+	allowLineBreaks: PropTypes.bool,
+	cellRenderer: PropTypes.func,
 	isHeading: PropTypes.bool,
 	name: PropTypes.string.isRequired,
-	cellRenderer: PropTypes.func,
-	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	minWidth: PropTypes.number,
-	allowLineBreaks: PropTypes.bool,
+	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 function Column() {

@@ -4,15 +4,105 @@ menu: Components
 ---
 
 import {Playground, Props} from 'docz';
+import Icon from '../Icon';
 import Table, {Column} from './';
+import dummyData from './dummyData';
 
 # Table
 
-More detailed description to follow.
+A table component with a sticky header row.
+
+-   By default, all columns have an equal width
+-   Control the width of columns by specifying a fixed or percentage width
+-   You can define a `minWidth` for columns under which they will be hidden
+-   Columns can be defined in JSX using the `Column` component, or using the `columns` prop
 
 ## Examples
 
-<Playground></Playground>
+### Simple example with JSX column config
+
+By default, column names will be used to select a field from the data row.
+To specify a field instead, use the `cellRenderer` prop.
+
+<Playground>
+	<Table data={dummyData.slice(0, 4)}>
+		<Column isHeading name="Name" />
+		<Column name="Email" />
+		<Column name="Country" cellRenderer={item => item.region} />
+		<Column name="Type" />
+		<Column name="Time" />
+	</Table>
+</Playground>
+
+### Simple example with object column config
+
+The same example as above, but using an array of objects to define the columns.
+
+<Playground>
+	<Table
+		data={dummyData.slice(4, 8)}
+		columns={[
+			{name: 'Name', isHeading: true},
+			{name: 'Email'},
+			{name: 'Country', cellRenderer: item => item.region},
+			{name: 'Type'},
+			{name: 'Time'},
+		]}
+	/>
+</Playground>
+
+### Customisation example
+
+-   Use `cellRenderer` to easily customise the way a cell's content is rendered.
+-   Use fixed or percentage `width` values to customise column sizes.
+-   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
+
+<Playground>
+	<Table data={dummyData.slice(8, 12)} pl="xl" pr={20}>
+		<Column
+			name="Role"
+			width={30}
+			cellRenderer={item => (
+				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
+			)}
+		/>
+		<Column
+			isHeading
+			name="Name"
+			width="40%"
+			cellRenderer={item => <strong>{item.name}</strong>}
+		/>
+		<Column name="Type" />
+		<Column name="Time" />
+	</Table>
+</Playground>
+
+### Responsiveness example
+
+-   **Hiding rows:** Use `minWidth` to set a column width that a column should not shrink below. If it does, it will be hidden.
+-   **Allowing line breaks:** By default, cells have only one line of text and are truncated with an ellipsis when they're too long. Use the `allowLineBreaks` prop to let long words wrap around to a new line.
+
+<Playground>
+	<Table data={dummyData.slice(12, 16)}>
+		<Column
+			name="Role"
+			width={30}
+			cellRenderer={item => (
+				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
+			)}
+		/>
+		<Column
+			isHeading
+			allowLineBreaks
+			name="Name"
+			width="40%"
+			cellRenderer={item => <strong>{item.name}</strong>}
+		/>
+		<Column name="Region" minWidth={120} />
+		<Column name="Type" minWidth={80} />
+		<Column name="Time" minWidth={80} />
+	</Table>
+</Playground>
 
 ## Table props
 
