@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/5app/base5-ui/compare/v5.0.0...v5.1.0) (2019-09-12)
+
+
+### Features
+
+* New Table component ([34d85da](https://github.com/5app/base5-ui/commit/34d85da))
+
 # [5.0.0](https://github.com/5app/base5-ui/compare/v4.0.1...v5.0.0) (2019-09-10)
 
 
