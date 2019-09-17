@@ -24,6 +24,16 @@ A table component with a sticky header row.
 By default, column names will be used to select a field from the data row.
 To specify a field instead, use the `cellRenderer` prop.
 
+```jsx
+<Table data={dummyData.slice(0, 4)}>
+	<Column isHeading name="Name" />
+	<Column name="Email" />
+	<Column name="Country" cellRenderer={item => item.region} />
+	<Column name="Type" />
+	<Column name="Time" />
+</Table>
+```
+
 <Playground>
 	<Table data={dummyData.slice(0, 4)}>
 		<Column isHeading name="Name" />
@@ -36,29 +46,30 @@ To specify a field instead, use the `cellRenderer` prop.
 
 ### Simple example with object column config
 
-The same example as above, but using an array of objects to define the columns.
+The table above can also be set up using an array of objects to define the columns:
 
-<Playground>
-	<Table
-		data={dummyData.slice(4, 8)}
-		columns={[
-			{name: 'Name', isHeading: true},
-			{name: 'Email'},
-			{name: 'Country', cellRenderer: item => item.region},
-			{name: 'Type'},
-			{name: 'Time'},
-		]}
-	/>
-</Playground>
+```jsx
+<Table
+	data={dummyData.slice(0, 4)}
+	columns={[
+		{name: 'Name', isHeading: true},
+		{name: 'Email'},
+		{name: 'Country', cellRenderer: item => item.region},
+		{name: 'Type'},
+		{name: 'Time'},
+	]}
+/>
+```
 
 ### Customisation example
 
 -   Use `cellRenderer` to easily customise the way a cell's content is rendered.
 -   Use fixed or percentage `width` values to customise column sizes.
+-   Use the `shadedHeader` prop for a shaded table header background
 -   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
 
 <Playground>
-	<Table data={dummyData.slice(8, 12)} pl="xl" pr={20}>
+	<Table shadedHeader data={dummyData.slice(4, 8)} pl="xl" pr={20}>
 		<Column
 			name="Role"
 			width={30}
@@ -83,7 +94,7 @@ The same example as above, but using an array of objects to define the columns.
 -   **Allowing line breaks:** By default, cells have only one line of text and are truncated with an ellipsis when they're too long. Use the `allowLineBreaks` prop to let long words wrap around to a new line.
 
 <Playground>
-	<Table data={dummyData.slice(12, 16)}>
+	<Table data={dummyData.slice(8, 12)}>
 		<Column
 			name="Role"
 			width={30}

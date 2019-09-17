@@ -27,7 +27,8 @@ const StyledTable = styled.table`
 	width: 100%;
 
 	tr:hover {
-		background-color: ${p => alpha(p.theme.shade, p.theme.shadeStrength)};
+		background-color: ${p =>
+			alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
 	}
 
 	td,
@@ -43,7 +44,30 @@ const StyledTable = styled.table`
 		top: 0;
 		z-index: ${p => p.theme.globals.z.raised};
 		background-color: ${p => p.theme.background};
-		border-bottom: ${p => borderValue(p.theme)};
+
+		/**
+		* MS Edge shows glitchy rendering when using a normal
+		* border on sticky table headers, so we're using a
+		* pseudo-element instead
+		*/
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: ${p => p.theme.globals.z.below};
+			border-bottom: ${p => borderValue(p.theme)};
+			${p =>
+				p.shadedHeader &&
+				css`
+					background-color: ${alpha(
+						p.theme.shade,
+						p.theme.shadeStrength
+					)};
+				`}
+		}
 	}
 
 	${p =>
@@ -83,6 +107,7 @@ function Table({
 	data,
 	headerRenderer = defaultHeaderRenderer,
 	rowMinHeight,
+	shadedHeader,
 	...otherProps
 }) {
 	const ref = useRef();
@@ -95,7 +120,11 @@ function Table({
 
 	return (
 		<div ref={ref}>
-			<StyledTable rowMinHeight={rowMinHeight} {...otherProps}>
+			<StyledTable
+				shadedHeader={shadedHeader}
+				rowMinHeight={rowMinHeight}
+				{...otherProps}
+			>
 				<thead>
 					<tr>
 						{columns.map(column => {
@@ -163,6 +192,7 @@ Table.propTypes = {
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	rowMinHeight: PropTypes.number,
+	shadedHeader: PropTypes.bool,
 };
 
 const columnPropsShape = {
