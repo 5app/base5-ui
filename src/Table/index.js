@@ -123,21 +123,21 @@ function Table({
 			<StyledTable
 				shadedHeader={shadedHeader}
 				rowMinHeight={rowMinHeight}
+				role="table"
 				{...otherProps}
 			>
-				<thead>
-					<tr>
+				{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+				<thead role="rowgroup">
+					<tr role="row">
 						{columns.map(column => {
+							const {name, width} = column;
 							return (
 								<th
-									hidden={hiddenColumns.includes(column.name)}
-									key={column.name}
+									hidden={hiddenColumns.includes(name)}
+									key={name}
 									scope="col"
-									style={
-										column.width
-											? {width: column.width}
-											: null
-									}
+									role="columnheader"
+									style={width ? {width} : null}
 								>
 									{headerRenderer(column)}
 								</th>
@@ -145,31 +145,36 @@ function Table({
 						})}
 					</tr>
 				</thead>
-				<tbody>
+				{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+				<tbody role="rowgroup">
 					{data.map(item => (
-						<tr key={item.id}>
+						<tr key={item.id} role="row">
 							{columns.map(column => {
-								const elementToRender = column.isHeading
-									? 'th'
-									: 'td';
-								const isHidden = hiddenColumns.includes(
-									column.name
-								);
+								const {
+									allowLineBreaks,
+									cellRenderer,
+									isHeading,
+									name,
+								} = column;
+
+								const element = isHeading ? 'th' : 'td';
+								const isHidden = hiddenColumns.includes(name);
 								return (
 									<Box
-										key={column.name}
+										key={name}
 										hidden={isHidden}
-										as={elementToRender}
-										scope={column.isHeading ? 'row' : null}
+										as={element}
+										role={isHeading ? 'rowheader' : 'cell'}
+										scope={isHeading ? 'row' : null}
 										overflow={
-											column.allowLineBreaks
+											allowLineBreaks
 												? 'wrap'
 												: 'ellipsis'
 										}
 									>
 										{getCellContent(
 											item,
-											column.cellRenderer || column.name
+											cellRenderer || name
 										)}
 									</Box>
 								);
