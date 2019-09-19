@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 import {useSize} from 'react-hook-size';
 
 import {pxToRem} from '../utils/units';
-import {alpha} from '../utils/colors';
+import {alpha, mix} from '../utils/colors';
 import {borderValue, overflowWrap} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
@@ -26,15 +26,19 @@ const StyledTable = styled.table`
 
 	width: 100%;
 
-	/* Highlight table row on hover and focus within */
-	tr:hover {
-		background-color: ${p =>
-			alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
-	}
-	tr:focus-within {
-		background-color: ${p =>
-			alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
-	}
+	${p =>
+		!p.isMobileView &&
+		css`
+			/* Highlight table row on hover and focus within */
+			tr:hover {
+				background-color: ${p =>
+					alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
+			}
+			tr:focus-within {
+				background-color: ${p =>
+					alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
+			}
+		`}
 
 	td,
 	th {
@@ -125,7 +129,10 @@ const StyledTable = styled.table`
 				/* Add some padding for nicer spacing in the content area */
 				padding-bottom: ${p => p.theme.globals.spacing.xs};
 				background-color: ${p =>
-					alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
+					mix(p.theme.shade)(
+						p.theme.background,
+						p.theme.shadeStrength
+					)};
 				border-top: ${p => borderValue(p.theme)};
 			}
 
