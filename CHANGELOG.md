@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/5app/base5-ui/compare/v5.1.0...v5.2.0) (2019-09-17)
+
+
+### Features
+
+* Add shadedHeader prop, fix Edge header border ([8b4ebf0](https://github.com/5app/base5-ui/commit/8b4ebf0))
+
 # [5.1.0](https://github.com/5app/base5-ui/compare/v5.0.0...v5.1.0) (2019-09-12)
 
 
