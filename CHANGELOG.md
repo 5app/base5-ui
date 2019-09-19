@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/5app/base5-ui/compare/v5.4.0...v5.4.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* Don't use transparent bg for mobile table ([eea0bc6](https://github.com/5app/base5-ui/commit/eea0bc6))
+
 # [5.4.0](https://github.com/5app/base5-ui/compare/v5.3.0...v5.4.0) (2019-09-19)
 
 
