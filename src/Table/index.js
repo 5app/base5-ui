@@ -21,6 +21,7 @@ const StyledTable = styled.table`
 	display: table;
 	table-layout: fixed;
 	border-spacing: 0;
+	line-height: 1.3;
 
 	${marginProps}
 
@@ -36,7 +37,8 @@ const StyledTable = styled.table`
 		font-weight: inherit;
 		text-align: left;
 		height: ${p => pxToRem(p.rowMinHeight)};
-		padding: 0 ${p => p.theme.globals.spacing.xs};
+		padding: ${p => p.theme.globals.spacing.xxs}
+			${p => p.theme.globals.spacing.xs};
 	}
 
 	thead th {
@@ -130,7 +132,7 @@ function Table({
 				<thead role="rowgroup">
 					<tr role="row">
 						{columns.map(column => {
-							const {name, width} = column;
+							const {name, subtitle, width} = column;
 							return (
 								<th
 									hidden={hiddenColumns.includes(name)}
@@ -140,6 +142,11 @@ function Table({
 									style={width ? {width} : null}
 								>
 									{headerRenderer(column)}
+									{subtitle && (
+										<Text dimmed size="xs" display="block">
+											{subtitle}
+										</Text>
+									)}
 								</th>
 							);
 						})}
@@ -204,8 +211,9 @@ const columnPropsShape = {
 	allowLineBreaks: PropTypes.bool,
 	cellRenderer: PropTypes.func,
 	isHeading: PropTypes.bool,
-	name: PropTypes.string.isRequired,
 	minWidth: PropTypes.number,
+	name: PropTypes.string.isRequired,
+	subtitle: PropTypes.string,
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 

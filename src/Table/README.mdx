@@ -63,9 +63,10 @@ The table above can also be set up using an array of objects to define the colum
 
 ### Customisation example
 
--   Use `cellRenderer` to easily customise the way a cell's content is rendered.
--   Use fixed or percentage `width` values to customise column sizes.
+-   Use `cellRenderer` to easily customise the way a cell's content is rendered
+-   Use fixed or percentage `width` values to customise column sizes
 -   Use the `shadedHeader` prop for a shaded table header background
+-   Use the `subtitle` prop to add a subtitle to a column header
 -   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
 
 <Playground>
@@ -74,7 +75,10 @@ The table above can also be set up using an array of objects to define the colum
 			name="Role"
 			width={30}
 			cellRenderer={item => (
-				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
+				<Icon
+					name={item.role === 'manager' ? 'star' : 'user'}
+					aria-label={item.role === 'manager' ? 'Manager' : 'User'}
+				/>
 			)}
 		/>
 		<Column
@@ -83,7 +87,7 @@ The table above can also be set up using an array of objects to define the colum
 			width="40%"
 			cellRenderer={item => <strong>{item.name}</strong>}
 		/>
-		<Column name="Type" />
+		<Column name="Type" subtitle="Random characters" />
 		<Column name="Time" />
 	</Table>
 </Playground>
