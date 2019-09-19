@@ -50,7 +50,7 @@ const StyledTable = styled.table`
 
 	thead th {
 		position: sticky;
-		top: 0;
+		top: ${p => p.stickyHeaderOffset};
 		z-index: ${p => p.theme.globals.z.raised};
 		background-color: ${p => p.theme.background};
 
@@ -182,6 +182,7 @@ function Table({
 	columns: columnsProp,
 	data,
 	headerRenderer,
+	stickyHeaderOffset,
 	canHideColumns,
 	minWidth,
 	rowMinHeight,
@@ -201,9 +202,10 @@ function Table({
 	return (
 		<div ref={ref}>
 			<StyledTable
+				stickyHeaderOffset={stickyHeaderOffset}
 				isMobileView={isMobileView}
-				shadedHeader={shadedHeader}
 				rowMinHeight={rowMinHeight}
+				shadedHeader={shadedHeader}
 				role="table"
 				{...otherProps}
 			>
@@ -272,12 +274,21 @@ function Table({
 Table.defaultProps = {
 	minWidth: 500,
 	headerRenderer: defaultHeaderRenderer,
+	stickyHeaderOffset: 0,
 	rowMinHeight: 45,
 };
 
 Table.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
 	data: PropTypes.array.isRequired,
+	/**
+	 * Specify how far from the top the sticky header should be placed.
+	 * Use to make sure it's not covered by a navigation bar
+	 */
+	stickyHeaderOffset: PropTypes.number,
+	/**
+	 * Specify below which width the mobile view should kick in
+	 */
 	minWidth: PropTypes.number,
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
