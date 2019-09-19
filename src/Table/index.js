@@ -5,11 +5,10 @@ import {useSize} from 'react-hook-size';
 
 import {pxToRem} from '../utils/units';
 import {alpha} from '../utils/colors';
-import {borderValue} from '../mixins';
+import {borderValue, overflowWrap} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
 
-import Box from '../Box';
 import Text from '../Text';
 
 import getColumnsToHide from './getColumnsToHide';
@@ -27,7 +26,12 @@ const StyledTable = styled.table`
 
 	width: 100%;
 
+	/* Highlight table row on hover and focus within */
 	tr:hover {
+		background-color: ${p =>
+			alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
+	}
+	tr:focus-within {
 		background-color: ${p =>
 			alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
 	}
@@ -38,7 +42,10 @@ const StyledTable = styled.table`
 		text-align: left;
 		height: ${p => pxToRem(p.rowMinHeight)};
 		padding: ${p => p.theme.globals.spacing.xxs}
-			${p => p.theme.globals.spacing.xs};
+			${p => p.theme.globals.spacing.s};
+		padding-right: 0;
+
+		${overflowWrap}
 	}
 
 	thead th {
@@ -74,6 +81,7 @@ const StyledTable = styled.table`
 
 	${p =>
 		p.pl &&
+		!p.isMobileView &&
 		css`
 			th:first-child,
 			td:first-child {
@@ -83,10 +91,70 @@ const StyledTable = styled.table`
 
 	${p =>
 		p.pr &&
+		!p.isMobileView &&
 		css`
 			th:last-child,
 			td:last-child {
 				padding-right: ${getSpacing(p.pr, p.theme)};
+			}
+		`}
+
+	${p =>
+		p.isMobileView &&
+		css`
+			/* Hide the column headers. We'll add them back
+			 * in inside of each (non-header) cell. */
+			thead {
+				display: none;
+			}
+
+			/* Remove table layout. */
+			table,
+			tbody,
+			th,
+			td {
+				display: block;
+			}
+
+			tr {
+				/* Using flex allows us to modify the order of children
+				 * so we can display the row's header at the top */
+				display: flex;
+				flex-direction: column;
+
+				/* Add some padding for nicer spacing in the content area */
+				padding-bottom: ${p => p.theme.globals.spacing.xs};
+				background-color: ${p =>
+					alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
+				border-top: ${p => borderValue(p.theme)};
+			}
+
+			th {
+				display: flex;
+				align-items: center;
+				font-weight: bold;
+				background-color: ${p => p.theme.background};
+				/* Make sure to display the header at the top */
+				order: -1;
+				/* Visually, this is the top spacing of the content area */
+				margin-bottom: ${p => p.theme.globals.spacing.xs};
+			}
+
+			td {
+				/* Don't use the specified row height in mobile view */
+				height: auto;
+				display: flex;
+				font-weight: bold;
+
+				/* Add columns headers as inline labels
+				 * The parent's display: flex ensures clean
+				 * content line breaks */
+				&::before {
+					content: attr(data-columnheader) ': ';
+					margin-right: ${p => p.theme.globals.spacing.xs};
+					font-weight: normal;
+					white-space: nowrap;
+				}
 			}
 		`}
 `;
@@ -103,26 +171,37 @@ function getCellContent(item, key) {
 	return key(item);
 }
 
+// Note about roles: The table is marked up using roles
+// that are seemingly redundant. This is done so that the
+// styles of the mobile view don't remove the table's semantics,
+// which they'd otherwise do. Explicit roles ensure that
+// semantics aren't affected by the styles.
+
 function Table({
 	children,
 	columns: columnsProp,
 	data,
-	headerRenderer = defaultHeaderRenderer,
+	headerRenderer,
+	canHideColumns,
+	minWidth,
 	rowMinHeight,
 	shadedHeader,
 	...otherProps
 }) {
 	const ref = useRef();
-	const {width: tableWidth} = useSize(ref);
+	const {width} = useSize(ref);
 	const columns = children
 		? getColumnConfigFromChildren(children)
 		: columnsProp;
 
-	const hiddenColumns = getColumnsToHide(columns, tableWidth);
+	const hiddenColumns = getColumnsToHide(columns, width);
+	const isMobileView =
+		width < minWidth || (!canHideColumns && hiddenColumns.length > 0);
 
 	return (
 		<div ref={ref}>
 			<StyledTable
+				isMobileView={isMobileView}
 				shadedHeader={shadedHeader}
 				rowMinHeight={rowMinHeight}
 				role="table"
@@ -135,7 +214,10 @@ function Table({
 							const {name, subtitle, width} = column;
 							return (
 								<th
-									hidden={hiddenColumns.includes(name)}
+									hidden={
+										!isMobileView &&
+										hiddenColumns.includes(name)
+									}
 									key={name}
 									scope="col"
 									role="columnheader"
@@ -157,33 +239,26 @@ function Table({
 					{data.map(item => (
 						<tr key={item.id} role="row">
 							{columns.map(column => {
-								const {
-									allowLineBreaks,
-									cellRenderer,
-									isHeading,
-									name,
-								} = column;
+								const {cellRenderer, isHeading, name} = column;
 
-								const element = isHeading ? 'th' : 'td';
-								const isHidden = hiddenColumns.includes(name);
+								const Element = isHeading ? 'th' : 'td';
+								const isHidden =
+									!isMobileView &&
+									hiddenColumns.includes(name);
+
 								return (
-									<Box
+									<Element
 										key={name}
 										hidden={isHidden}
-										as={element}
 										role={isHeading ? 'rowheader' : 'cell'}
 										scope={isHeading ? 'row' : null}
-										overflow={
-											allowLineBreaks
-												? 'wrap'
-												: 'ellipsis'
-										}
+										data-columnheader={name}
 									>
 										{getCellContent(
 											item,
 											cellRenderer || name
 										)}
-									</Box>
+									</Element>
 								);
 							})}
 						</tr>
@@ -195,12 +270,15 @@ function Table({
 }
 
 Table.defaultProps = {
+	minWidth: 500,
+	headerRenderer: defaultHeaderRenderer,
 	rowMinHeight: 45,
 };
 
 Table.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
 	data: PropTypes.array.isRequired,
+	minWidth: PropTypes.number,
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	rowMinHeight: PropTypes.number,
@@ -208,7 +286,6 @@ Table.propTypes = {
 };
 
 const columnPropsShape = {
-	allowLineBreaks: PropTypes.bool,
 	cellRenderer: PropTypes.func,
 	isHeading: PropTypes.bool,
 	minWidth: PropTypes.number,

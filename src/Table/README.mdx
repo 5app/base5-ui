@@ -14,15 +14,14 @@ A table component with a sticky header row.
 
 -   By default, all columns have an equal width
 -   Control the width of columns by specifying a fixed or percentage width
--   You can define a `minWidth` for columns under which they will be hidden
+-   You can define a `minWidth` for the table or individual columns – if they grow smaller than the defined size, a list-like **mobile view** will be enabled
 -   Columns can be defined in JSX using the `Column` component, or using the `columns` prop
 
 ## Examples
 
 ### Simple example with JSX column config
 
-By default, column names will be used to select a field from the data row.
-To specify a field instead, use the `cellRenderer` prop.
+The table data is provided as an array of objects. The column names defined will be used to select a field from the data row by default, but in most cases you'll want to specify a custom field, which you can do using the `cellRenderer` prop (see "Country" column below).
 
 ```jsx
 <Table data={dummyData.slice(0, 4)}>
@@ -46,7 +45,7 @@ To specify a field instead, use the `cellRenderer` prop.
 
 ### Simple example with object column config
 
-The table above can also be set up using an array of objects to define the columns:
+You can also define your columns as an array of objects, if you prefer:
 
 ```jsx
 <Table
@@ -73,7 +72,7 @@ The table above can also be set up using an array of objects to define the colum
 	<Table shadedHeader data={dummyData.slice(4, 8)} pl="xl" pr={20}>
 		<Column
 			name="Role"
-			width={30}
+			width={32}
 			cellRenderer={item => (
 				<Icon
 					name={item.role === 'manager' ? 'star' : 'user'}
@@ -92,30 +91,31 @@ The table above can also be set up using an array of objects to define the colum
 	</Table>
 </Playground>
 
-### Responsiveness example
+### Responsiveness examples
 
--   **Hiding rows:** Use `minWidth` to set a column width that a column should not shrink below. If it does, it will be hidden.
--   **Allowing line breaks:** By default, cells have only one line of text and are truncated with an ellipsis when they're too long. Use the `allowLineBreaks` prop to let long words wrap around to a new line.
+-   **Mobile view:** By default, the table changes to a more list-like view as soon as it has less than 500 pixels of horizontal space available. Use the `<Table minWidth={...}>` prop to set a custom pixel threshold under which you want the mobile view to become active. You can also define a `minWidth` for individual columns. As soon as any one column gets smaller than the size specified, the mobile view will kick in, making sure that all data stays readable.
+-   **Hiding columns:** If you'd rather hide columns than trigger the mobile view, add the `canHideColumns` prop to `<Table>`. In this mode, columns smaller than their specified `minWidth` will be hidden (unless the mobile view is active).
+
+The table below uses both modes – on medium sized screens, columns that don't fit are hidden, while the mobile view is active on very small screens.
 
 <Playground>
-	<Table data={dummyData.slice(8, 12)}>
+	<Table canHideColumns minWidth={300} data={dummyData.slice(8, 12)}>
 		<Column
 			name="Role"
-			width={30}
+			width={32}
 			cellRenderer={item => (
 				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
 			)}
 		/>
 		<Column
 			isHeading
-			allowLineBreaks
 			name="Name"
 			width="40%"
 			cellRenderer={item => <strong>{item.name}</strong>}
 		/>
 		<Column name="Region" minWidth={120} />
 		<Column name="Type" minWidth={80} />
-		<Column name="Time" minWidth={80} />
+		<Column name="Time" minWidth={100} />
 	</Table>
 </Playground>
 
