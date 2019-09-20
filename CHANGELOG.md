@@ -1,3 +1,15 @@
+# [6.1.0](https://github.com/5app/base5-ui/compare/v6.0.0...v6.1.0) (2019-09-20)
+
+
+### Bug Fixes
+
+* **Table:** convert stickyHeaderOffset to rem unit ([a2c4279](https://github.com/5app/base5-ui/commit/a2c4279))
+
+
+### Features
+
+* **Table:** Allow header to inherit border radius ([c464aea](https://github.com/5app/base5-ui/commit/c464aea))
+
 # [6.0.0](https://github.com/5app/base5-ui/compare/v5.4.1...v6.0.0) (2019-09-20)
 
 
