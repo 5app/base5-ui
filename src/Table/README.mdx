@@ -14,7 +14,7 @@ A table component with a sticky header row.
 
 -   By default, all columns have an equal width
 -   Control the width of columns by specifying a fixed or percentage width
--   You can define a `minWidth` for the table or individual columns – if they grow smaller than the defined size, a list-like **mobile view** will be enabled
+-   You can define a breakpoint under which a list-like **mobile view** will be enabled (by default this is "xs")
 -   Columns can be defined in JSX using the `Column` component, or using the `columns` prop
 
 ## Examples
@@ -93,13 +93,13 @@ You can also define your columns as an array of objects, if you prefer:
 
 ### Responsiveness examples
 
--   **Mobile view:** By default, the table changes to a more list-like view as soon as it has less than 500 pixels of horizontal space available. Use the `<Table minWidth={...}>` prop to set a custom pixel threshold under which you want the mobile view to become active. You can also define a `minWidth` for individual columns. As soon as any one column gets smaller than the size specified, the mobile view will kick in, making sure that all data stays readable.
--   **Hiding columns:** If you'd rather hide columns than trigger the mobile view, add the `canHideColumns` prop to `<Table>`. In this mode, columns smaller than their specified `minWidth` will be hidden (unless the mobile view is active).
+-   **Mobile view:** The table changes to a more list-like view when the screen width gets lower than the breakpoint defined using the `mobileViewBreakpoint` prop.
+-   **Hiding columns:** When the mobile view is not active, you can hide columns below a certain breakpoint using the `hideBelowBreakpoint` prop. Columns hidden this way will become visible again in the mobile view.
 
 The table below uses both modes – on medium sized screens, columns that don't fit are hidden, while the mobile view is active on very small screens.
 
 <Playground>
-	<Table canHideColumns minWidth={300} data={dummyData.slice(8, 12)}>
+	<Table mobileViewBreakpoint="xxs" data={dummyData.slice(8, 12)}>
 		<Column
 			name="Role"
 			width={32}
@@ -113,9 +113,9 @@ The table below uses both modes – on medium sized screens, columns that don't 
 			width="40%"
 			cellRenderer={item => <strong>{item.name}</strong>}
 		/>
-		<Column name="Region" minWidth={120} />
-		<Column name="Type" minWidth={80} />
-		<Column name="Time" minWidth={100} />
+		<Column name="Region" hideBelowBreakpoint="m" />
+		<Column name="Type" hideBelowBreakpoint="xs" />
+		<Column name="Time" />
 	</Table>
 </Playground>
 
