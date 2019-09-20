@@ -42,7 +42,7 @@ const StyledTable = styled.table`
 
 	thead th {
 		position: sticky;
-		top: ${p => p.stickyHeaderOffset};
+		top: ${p => pxToRem(p.stickyHeaderOffset) || 0};
 		z-index: ${p => p.theme.globals.z.raised};
 		background-color: ${p => p.theme.background};
 
