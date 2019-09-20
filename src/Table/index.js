@@ -71,6 +71,25 @@ const StyledTable = styled.table`
 		}
 	}
 
+	/* Border-radius madness */
+	border-radius: inherit;
+
+	thead,
+	tbody,
+	th::after {
+		border-radius: inherit;
+	}
+	th:first-child {
+		border-top-left-radius: inherit;
+	}
+	th:last-child {
+		border-top-right-radius: inherit;
+	}
+	tr:first-child {
+		border-top-left-radius: inherit;
+		border-top-right-radius: inherit;
+	}
+
 	/* Non-mobile-view styles only */
 	@media (min-width: ${getBreakpoint('mobileViewBreakpoint')}) {
 		/* Highlight table row on hover and focus within */
@@ -129,6 +148,12 @@ const StyledTable = styled.table`
 			background-color: ${p =>
 				mix(p.theme.shade)(p.theme.background, p.theme.shadeStrength)};
 			border-top: ${p => borderValue(p.theme)};
+		}
+
+		/* More border-radius madness */
+		tr:first-child th {
+			border-top-left-radius: inherit;
+			border-top-right-radius: inherit;
 		}
 
 		th {
