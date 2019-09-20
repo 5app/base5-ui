@@ -8,7 +8,7 @@ const sections = {
 		shade: colors.black,
 		highlight: colors.pink,
 		textDimStrength: 0.75,
-		shadeStrength: 0.08,
+		shadeStrength: 0.05,
 		lineStrength: 0.2,
 	},
 };
