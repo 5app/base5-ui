@@ -1,3 +1,17 @@
+# [6.0.0](https://github.com/5app/base5-ui/compare/v5.4.1...v6.0.0) (2019-09-20)
+
+
+### Features
+
+* Simplify Table, remove JS column fitting ([d5263b3](https://github.com/5app/base5-ui/commit/d5263b3))
+
+
+### BREAKING CHANGES
+
+* Removes minWidth on Column and Table, which
+can be replaced by the media-query-based props
+`mobileViewBreakpoint` and `hideBelowBreakpoint`
+
 ## [5.4.1](https://github.com/5app/base5-ui/compare/v5.4.0...v5.4.1) (2019-09-19)
 
 
