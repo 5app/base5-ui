@@ -1,0 +1,27 @@
+---
+name: Duration
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import Duration from './';
+
+# Duration
+
+A simple component for rendering a duration (e.g. of a video) in the format `m:s` or `h:m:s` with an accessible label.
+
+## Examples
+
+<Playground>
+	<Duration value={27} />
+	<br />
+	<Duration value={523} />
+	<br />
+	<Duration value={1104} />
+	<br />
+	<Duration value={7329} />
+</Playground>
+
+## Props
+
+<Props of={Duration} />
