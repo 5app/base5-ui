@@ -3,12 +3,12 @@ name: InlineList
 menu: Components
 ---
 
-import { Playground, Props } from 'docz'
+import {Playground, Props} from 'docz';
 
-import Icon from '../Icon'
-import TextLink from '../TextLink'
+import Icon from '../Icon';
+import TextLink from '../TextLink';
 
-import InlineList from './'
+import InlineList from './';
 
 # InlineList
 
@@ -21,18 +21,19 @@ Lay out children horizontally with optional spacing or separators.
 		<Icon name="asset-image" />
 	</InlineList>
 
-	<InlineList splitBy="comma">
-		<span>Milk</span>
-		<span>Flour</span>
-		<span>Sugar</span>
-		<span>Eggs</span>
-	</InlineList>
+    <InlineList splitBy="comma">
+    	<span>Milk</span>
+    	<span>Flour</span>
+    	<span>Sugar</span>
+    	<span>Eggs</span>
+    </InlineList>
 
-	<InlineList splitBy="dot">
-		<TextLink href="#">Home</TextLink>
-		<TextLink href="#">Projects</TextLink>
-		<TextLink href="#">About us</TextLink>
-	</InlineList>
+    <InlineList splitBy="dot">
+    	<TextLink href="#">Home</TextLink>
+    	<TextLink href="#">Projects</TextLink>
+    	<TextLink href="#">About us</TextLink>
+    </InlineList>
+
 </Playground>
 
 <Props of={InlineList} />

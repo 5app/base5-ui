@@ -3,16 +3,22 @@ name: ButtonCore
 menu: Components
 ---
 
-import { Playground } from 'docz'
-import RouterLink from './routerLinkForReadme'
-import ButtonCore from './'
+import {Playground} from 'docz';
+import RouterLink from './routerLinkForReadme';
+import ButtonCore from './';
 
 # ButtonCore
 
 Base component with normalised & neutral styling for building clickable elements like buttons and links.
 
 <Playground>
-	<ButtonCore>Button</ButtonCore><br />
-	<ButtonCore as="a" href="#">Link</ButtonCore><br />
-	<ButtonCore as={RouterLink} to="/">Router link</ButtonCore>
+	<ButtonCore>Button</ButtonCore>
+	<br />
+	<ButtonCore as="a" href="#">
+		Link
+	</ButtonCore>
+	<br />
+	<ButtonCore as={RouterLink} to="/">
+		Router link
+	</ButtonCore>
 </Playground>

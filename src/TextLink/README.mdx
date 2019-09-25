@@ -2,10 +2,11 @@
 name: TextLink
 menu: Components
 ---
-import {Playground} from 'docz'
 
-import InlineList from '../InlineList'
-import TextLink from './'
+import {Playground} from 'docz';
+
+import InlineList from '../InlineList';
+import TextLink from './';
 
 # TextLink
 
@@ -14,8 +15,14 @@ Simple styled text link. Renders as an `<a>` tag by default, but you can use the
 <Playground>
 	<InlineList spacing="s">
 		<TextLink href="#">Hello, world!</TextLink>
-		<TextLink as="button" href="#">I'm secretly a button</TextLink>
-		<TextLink bold href="#">I'm bold</TextLink>
-		<TextLink stealthy href="#">I blend in with my surroundings!</TextLink>
+		<TextLink as="button" href="#">
+			I'm secretly a button
+		</TextLink>
+		<TextLink bold href="#">
+			I'm bold
+		</TextLink>
+		<TextLink stealthy href="#">
+			I blend in with my surroundings!
+		</TextLink>
 	</InlineList>
 </Playground>
