@@ -6,10 +6,10 @@ function getZeroPaddedRest(value, base) {
 }
 
 function getDuration(durationInSeconds) {
-	const hours = parseInt(durationInSeconds / (60 * 60));
-	let minutes = parseInt(durationInSeconds / 60);
+	const hours = Math.floor(durationInSeconds / (60 * 60));
+	let minutes = Math.floor(durationInSeconds / 60);
 	minutes = hours ? getZeroPaddedRest(minutes, 60) : minutes;
-	const seconds = getZeroPaddedRest(durationInSeconds, 60);
+	const seconds = getZeroPaddedRest(Math.round(durationInSeconds), 60);
 
 	return {
 		hours,

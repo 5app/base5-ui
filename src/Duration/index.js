@@ -30,6 +30,7 @@ function Duration(props) {
 Duration.defaultProps = {
 	as: 'span',
 	getLabel: getDefaultLabel,
+	value: 0,
 };
 
 Duration.propTypes = {
@@ -38,7 +39,7 @@ Duration.propTypes = {
 	/** Customise the accessible label, i.e. for localisation */
 	getLabel: PropTypes.func,
 	/** Duration in seconds */
-	value: PropTypes.number.isRequired,
+	value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export {getDuration};
