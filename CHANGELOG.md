@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/5app/base5-ui/compare/v6.1.0...v6.2.0) (2019-09-25)
+
+
+### Features
+
+* New Duration component ([0506256](https://github.com/5app/base5-ui/commit/0506256))
+
 # [6.1.0](https://github.com/5app/base5-ui/compare/v6.0.0...v6.1.0) (2019-09-20)
 
 
