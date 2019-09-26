@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/5app/base5-ui/compare/v6.2.0...v6.2.1) (2019-09-26)
+
+
+### Bug Fixes
+
+* **Duration:** More resiliency to falsy values ([fd77f73](https://github.com/5app/base5-ui/commit/fd77f73))
+
 # [6.2.0](https://github.com/5app/base5-ui/compare/v6.1.0...v6.2.0) (2019-09-25)
 
 
