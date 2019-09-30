@@ -24,7 +24,7 @@ A table component with a sticky header row.
 The table data is provided as an array of objects. The column names defined will be used to select a field from the data row by default, but in most cases you'll want to specify a custom field, which you can do using the `cellRenderer` prop (see "Country" column below).
 
 ```jsx
-<Table data={dummyData.slice(0, 4)}>
+<Table data={dummyData.slice(0, 4)} itemKey="name">
 	<Column isHeading name="Name" />
 	<Column name="Email" />
 	<Column name="Country" cellRenderer={item => item.region} />
@@ -34,7 +34,7 @@ The table data is provided as an array of objects. The column names defined will
 ```
 
 <Playground>
-	<Table data={dummyData.slice(0, 4)}>
+	<Table data={dummyData.slice(0, 4)} itemKey="name">
 		<Column isHeading name="Name" />
 		<Column name="Email" />
 		<Column name="Country" cellRenderer={item => item.region} />
@@ -50,6 +50,7 @@ You can also define your columns as an array of objects, if you prefer:
 ```jsx
 <Table
 	data={dummyData.slice(0, 4)}
+	itemKey="name"
 	columns={[
 		{name: 'Name', isHeading: true},
 		{name: 'Email'},
@@ -71,7 +72,13 @@ You can also define your columns as an array of objects, if you prefer:
 
 <Playground>
 	<div style={{border: '1px solid grey', borderRadius: 10}}>
-		<Table shadedHeader data={dummyData.slice(4, 8)} pl="xl" pr={20}>
+		<Table
+			shadedHeader
+			data={dummyData.slice(4, 8)}
+			itemKey="name"
+			pl="xl"
+			pr={20}
+		>
 			<Column
 				name="Role"
 				width={32}
@@ -104,7 +111,11 @@ You can also define your columns as an array of objects, if you prefer:
 The table below uses both modes – on medium sized screens, columns that don't fit are hidden, while the mobile view is active on very small screens.
 
 <Playground>
-	<Table mobileViewBreakpoint="xxs" data={dummyData.slice(8, 12)}>
+	<Table
+		mobileViewBreakpoint="xxs"
+		data={dummyData.slice(8, 12)}
+		itemKey="name"
+	>
 		<Column
 			name="Role"
 			width={32}

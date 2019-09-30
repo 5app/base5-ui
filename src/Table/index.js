@@ -278,7 +278,7 @@ function Table(props) {
 			{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
 			<tbody role="rowgroup">
 				{data.map(item => (
-					<tr key={item.id} role="row">
+					<tr key={item[itemKey]} role="row">
 						{columns.map(column => {
 							const {
 								cellRenderer,
@@ -308,6 +308,7 @@ function Table(props) {
 }
 
 Table.defaultProps = {
+	itemKey: 'id',
 	headerRenderer: defaultHeaderRenderer,
 	mobileViewBreakpoint: 'xs',
 	stickyHeaderOffset: 0,
@@ -317,6 +318,11 @@ Table.defaultProps = {
 Table.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
 	data: PropTypes.array.isRequired,
+	/**
+	 * Specify a unique key by which each item in
+	 * the provided `data` array can be identified
+	 */
+	itemKey: PropTypes.string,
 	/**
 	 * Specify how far from the top the sticky header should be placed.
 	 * Use to make sure it's not covered by a navigation bar
