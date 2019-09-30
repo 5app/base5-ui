@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {pxToRem} from '../utils/units';
-import {alpha, mix} from '../utils/colors';
+import {alpha} from '../utils/colors';
 import {borderValue, overflowWrap} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
