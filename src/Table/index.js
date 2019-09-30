@@ -326,7 +326,7 @@ Table.propTypes = {
 	 * Specify below which breakpoint (from `theme.globals.breakpoints`)
 	 * the mobile view should kick in.
 	 */
-	mobileViewBreakpoint: PropTypes.number,
+	mobileViewBreakpoint: PropTypes.string,
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	rowMinHeight: PropTypes.number,
