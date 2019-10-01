@@ -25,6 +25,7 @@ export {default as TextLink} from './TextLink';
 export {default as ThemeSection} from './ThemeSection';
 export {default as Time} from './Time';
 export {default as useBreakpoints} from './useBreakpoints';
+export {default as useEventListener} from './useEventListener';
 export {default as useInterval} from './useInterval';
 export {default as ViewMoreText} from './ViewMoreText';
 export {default as VisuallyHidden} from './VisuallyHidden';

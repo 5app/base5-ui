@@ -1,0 +1,20 @@
+---
+name: useEventListener
+menu: Hooks
+---
+
+# useEventListener
+
+A simple hook that adds a global event listener & cleans up after it when the component unmounts.
+
+By default, the event listener is added on `document`, but you can change the element by passing a custom target element to it as the third parameter.
+
+## Examples
+
+```js
+useEventListener('click', onBodyClick);
+```
+
+```js
+useEventListener('scroll', onScroll, scrollContainerRef.current);
+```
