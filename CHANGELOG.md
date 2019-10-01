@@ -1,3 +1,17 @@
+# [6.3.0](https://github.com/5app/base5-ui/compare/v6.2.1...v6.3.0) (2019-09-30)
+
+
+### Bug Fixes
+
+* **Table:** Fix wrong propType ([41dd955](https://github.com/5app/base5-ui/commit/41dd955))
+* **Table:** Remove unneeded import ([ef067d2](https://github.com/5app/base5-ui/commit/ef067d2))
+* **Table:** Unify mobile/desktop header styles ([bdd70ae](https://github.com/5app/base5-ui/commit/bdd70ae))
+
+
+### Features
+
+* **Table:** New itemKey prop ([a175efc](https://github.com/5app/base5-ui/commit/a175efc))
+
 ## [6.2.1](https://github.com/5app/base5-ui/compare/v6.2.0...v6.2.1) (2019-09-26)
 
 
