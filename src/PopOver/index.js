@@ -17,7 +17,9 @@ function PopOver(props) {
 		isOpen,
 		offset,
 		placement,
+		popOverRef,
 		positionFixed,
+		referenceRef,
 		renderer: PopOverRenderer,
 	} = props;
 
@@ -38,8 +40,11 @@ function PopOver(props) {
 
 	return (
 		<Manager>
-			<Reference innerRef={innerRef}>{children}</Reference>
+			<Reference innerRef={referenceRef || innerRef}>
+				{children}
+			</Reference>
 			<Popper
+				innerRef={popOverRef}
 				positionFixed={positionFixed}
 				placement={placement}
 				modifiers={{
@@ -129,16 +134,18 @@ PopOver.propTypes = {
 	content: PropTypes.node,
 	/** Control the popover's distance from its reference element */
 	distance: PropTypes.number,
-	/** Access the reference component's ref */
-	innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 	/** Control whether the popover is shown or not */
 	isOpen: PropTypes.bool,
 	/** Shift the popover along the corss-axix */
 	offset: PropTypes.number,
 	/** One of 'top', 'bottom', 'left', or 'right'. Add an optional suffix '-start' or '-end' to align the popover to the start or end of the chosen direction. */
 	placement: PropTypes.oneOf(placements),
+	/** Access the popover's element */
+	popOverRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 	/** Control whether the popover should be positioned using "position: absolute" or "position: fixed" */
 	positionFixed: PropTypes.bool,
+	/** Access the reference component's element */
+	referenceRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 	/**
 	 * Customise popover rendering (e.g. for custom styling, transitions, etc).
 	 * Should be a React component that takes the props
