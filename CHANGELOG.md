@@ -1,3 +1,10 @@
+# [6.4.0](https://github.com/5app/base5-ui/compare/v6.3.0...v6.4.0) (2019-10-01)
+
+
+### Features
+
+* **PopOver:** Expose popover ref ([1d8353e](https://github.com/5app/base5-ui/commit/1d8353e))
+
 # [6.3.0](https://github.com/5app/base5-ui/compare/v6.2.1...v6.3.0) (2019-09-30)
 
 
