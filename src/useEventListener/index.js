@@ -8,7 +8,7 @@ function useEventListener(eventName, callback, element = document) {
 	}, [callback]);
 
 	useEffect(() => {
-		const currentCallback = callbackRef.current;
+		const currentCallback = event => callbackRef.current(event);
 
 		element.addEventListener(eventName, currentCallback);
 
