@@ -1,3 +1,10 @@
+# [6.5.0](https://github.com/5app/base5-ui/compare/v6.4.0...v6.5.0) (2019-10-01)
+
+
+### Features
+
+* **Hooks:** New useEventListener hook ([b3ea602](https://github.com/5app/base5-ui/commit/b3ea602))
+
 # [6.4.0](https://github.com/5app/base5-ui/compare/v6.3.0...v6.4.0) (2019-10-01)
 
 
