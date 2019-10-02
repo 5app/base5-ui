@@ -1,0 +1,60 @@
+---
+name: DocumentClickListener
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import DocumentClickListener from './';
+import Example from './Example';
+
+# DocumentClickListener
+
+A helper component that does not render any elements, but sets up a click listener on the body.
+If you want to ignore clicks on a certain element, you can pass in the ref of that element using the `excludedElementRef` prop.
+
+Useful for tooltips and dropdown menus.
+
+## Examples
+
+The below example shows how to use this component and also demonstrates why this is a component and not just a hook: Due to the "[rules of hooks](https://reactjs.org/docs/hooks-rules.html)", it's not possible to conditionally call a hook, while it's very easy to conditionally render a component.
+
+<Playground>
+	<Example />
+</Playground>
+
+```jsx
+function DocumentClickExample() {
+	const [count, setCount] = useState(0);
+	const [isActive, setActive] = useState(true);
+	const excludedElement = useRef(null);
+	return (
+		<>
+			<h1>Document clicks: {count}</h1>
+			<p
+				ref={excludedElement}
+				style={{padding: '1em', border: '2px dashed grey'}}
+			>
+				Clicks inside this box will be ignored.
+			</p>
+			{isActive && (
+				<DocumentClickListener
+					onClick={() => setCount(count + 1)}
+					excludedElementRef={excludedElement}
+				/>
+			)}
+			<Box mt="m">
+				<Switch
+					checked={isActive}
+					onChange={() => setActive(prevActive => !prevActive)}
+					id="switch"
+				/>{' '}
+				<label htmlFor="switch">Count clicks</label>
+			</Box>
+		</>
+	);
+}
+```
+
+## Props
+
+<Props of={DocumentClickListener} />
