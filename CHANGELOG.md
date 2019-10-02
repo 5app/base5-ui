@@ -1,3 +1,10 @@
+## [6.5.1](https://github.com/5app/base5-ui/compare/v6.5.0...v6.5.1) (2019-10-02)
+
+
+### Bug Fixes
+
+* **useEventListener:** Fix stale callback function ([400e801](https://github.com/5app/base5-ui/commit/400e801))
+
 # [6.5.0](https://github.com/5app/base5-ui/compare/v6.4.0...v6.5.0) (2019-10-01)
 
 
