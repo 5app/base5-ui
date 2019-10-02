@@ -1,3 +1,10 @@
+# [6.6.0](https://github.com/5app/base5-ui/compare/v6.5.1...v6.6.0) (2019-10-02)
+
+
+### Features
+
+* New DocumentClickListener component ([d3ee8dc](https://github.com/5app/base5-ui/commit/d3ee8dc))
+
 ## [6.5.1](https://github.com/5app/base5-ui/compare/v6.5.0...v6.5.1) (2019-10-02)
 
 
