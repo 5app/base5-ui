@@ -1,3 +1,10 @@
+# [6.7.0](https://github.com/5app/base5-ui/compare/v6.6.0...v6.7.0) (2019-10-04)
+
+
+### Features
+
+* **Table:** New emptyContent prop ([5a14d92](https://github.com/5app/base5-ui/commit/5a14d92))
+
 # [6.6.0](https://github.com/5app/base5-ui/compare/v6.5.1...v6.6.0) (2019-10-02)
 
 
