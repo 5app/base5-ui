@@ -9,6 +9,7 @@ import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
 
 import Text from '../Text';
+import CenterContent from '../CenterContent';
 
 import getColumnConfigFromChildren from './getColumnConfigFromChildren';
 
@@ -73,6 +74,10 @@ const StyledTable = styled.table`
 
 	thead th {
 		${stickyHeaderStyles}
+	}
+
+	caption {
+		caption-side: bottom;
 	}
 
 	/* Border-radius madness */
@@ -228,6 +233,7 @@ function Table(props) {
 		children,
 		columns: columnsProp,
 		data,
+		emptyContent,
 		itemKey,
 		headerRenderer,
 		stickyHeaderOffset,
@@ -240,6 +246,8 @@ function Table(props) {
 	const columns = children
 		? getColumnConfigFromChildren(children)
 		: columnsProp;
+
+	const hasData = data && data.length > 0;
 
 	return (
 		<StyledTable
@@ -282,37 +290,47 @@ function Table(props) {
 			</thead>
 			{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
 			<tbody role="rowgroup">
-				{data.map(item => (
-					<tr key={item[itemKey]} role="row">
-						{columns.map(column => {
-							const {
-								cellRenderer,
-								isHeading,
-								hideBelowBreakpoint,
-								name,
-							} = column;
+				{hasData &&
+					data.map(item => (
+						<tr key={item[itemKey]} role="row">
+							{columns.map(column => {
+								const {
+									cellRenderer,
+									isHeading,
+									hideBelowBreakpoint,
+									name,
+								} = column;
 
-							return (
-								<Cell
-									key={name}
-									as={isHeading && 'th'}
-									role={isHeading ? 'rowheader' : 'cell'}
-									scope={isHeading ? 'row' : null}
-									hideBelowBreakpoint={hideBelowBreakpoint}
-									data-columnheader={name}
-								>
-									{getCellContent(item, cellRenderer || name)}
-								</Cell>
-							);
-						})}
-					</tr>
-				))}
+								return (
+									<Cell
+										key={name}
+										as={isHeading && 'th'}
+										role={isHeading ? 'rowheader' : 'cell'}
+										scope={isHeading ? 'row' : null}
+										hideBelowBreakpoint={
+											hideBelowBreakpoint
+										}
+										data-columnheader={name}
+									>
+										{getCellContent(
+											item,
+											cellRenderer || name
+										)}
+									</Cell>
+								);
+							})}
+						</tr>
+					))}
 			</tbody>
+			{!hasData && <caption>{emptyContent}</caption>}
 		</StyledTable>
 	);
 }
 
 Table.defaultProps = {
+	emptyContent: (
+		<CenterContent height={200}>No data to display</CenterContent>
+	),
 	itemKey: 'id',
 	headerRenderer: defaultHeaderRenderer,
 	mobileViewBreakpoint: 'xs',
@@ -323,6 +341,10 @@ Table.defaultProps = {
 Table.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
 	data: PropTypes.array.isRequired,
+	/**
+	 * Content to be displayed when the passed data is empty
+	 */
+	emptyContent: PropTypes.element,
 	/**
 	 * Specify a unique key by which each item in
 	 * the provided `data` array can be identified

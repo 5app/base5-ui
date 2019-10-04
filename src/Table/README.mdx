@@ -6,6 +6,7 @@ menu: Components
 import {Playground, Props} from 'docz';
 import Icon from '../Icon';
 import Table, {Column} from './';
+import CenterContent from '../CenterContent';
 import dummyData from './dummyData';
 
 # Table
@@ -34,7 +35,7 @@ The table data is provided as an array of objects. The column names defined will
 ```
 
 <Playground>
-	<Table data={dummyData.slice(0, 4)} itemKey="name">
+	<Table isLoading data={dummyData.slice(0, 4)} itemKey="name">
 		<Column isHeading name="Name" />
 		<Column name="Email" />
 		<Column name="Country" cellRenderer={item => item.region} />
@@ -129,6 +130,26 @@ The table below uses both modes – on medium sized screens, columns that don't 
 			width="40%"
 			cellRenderer={item => <strong>{item.name}</strong>}
 		/>
+		<Column name="Region" />
+		<Column name="Type" />
+		<Column name="Time" />
+	</Table>
+</Playground>
+
+### Empty state
+
+When no `data` array is provided, or when its length is `0`, the message "No data to display" will be shown below the column headers. You can customise this message using the `emptyContent` prop.
+
+Use the `CenterContent` component to make the content appear centred and take up a minimum height.
+
+<Playground>
+	<Table
+		emptyContent={
+			<CenterContent height={180}>Here be dragons</CenterContent>
+		}
+	>
+		<Column name="Role" width={32} />
+		<Column isHeading name="Name" width="40%" />
 		<Column name="Region" hideBelowBreakpoint="m" />
 		<Column name="Type" hideBelowBreakpoint="xs" />
 		<Column name="Time" />
