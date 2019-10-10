@@ -33,7 +33,7 @@
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
     "@semantic-release/changelog": "3.0.4",
     "@semantic-release/git": "7.0.14",
     "@testing-library/react": "9.2.0",
