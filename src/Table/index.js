@@ -70,10 +70,6 @@ const StyledTable = styled.table`
 		}
 	}
 
-	caption {
-		caption-side: bottom;
-	}
-
 	/* Border-radius madness */
 	border-radius: inherit;
 
@@ -248,80 +244,84 @@ function Table(props) {
 	const hasData = data && data.length > 0;
 
 	return (
-		<StyledTable
-			mobileViewBreakpoint={mobileViewBreakpoint}
-			stickyHeaderOffset={stickyHeaderOffset}
-			rowMinHeight={rowMinHeight}
-			shadedHeader={shadedHeader}
-			role="table"
-			{...otherProps}
-		>
-			{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
-			<thead role="rowgroup">
-				<tr role="row">
-					{columns.map(column => {
-						const {
-							hideBelowBreakpoint,
-							name,
-							subtitle,
-							width,
-						} = column;
-						return (
-							<Cell
-								key={name}
-								as="th"
-								scope="col"
-								role="columnheader"
-								style={width ? {width} : null}
-								hideBelowBreakpoint={hideBelowBreakpoint}
-							>
-								{headerRenderer(column)}
-								{subtitle && (
-									<Text dimmed size="xs" display="block">
-										{subtitle}
-									</Text>
-								)}
-							</Cell>
-						);
-					})}
-				</tr>
-			</thead>
-			{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
-			<tbody role="rowgroup">
-				{hasData &&
-					data.map(item => (
-						<tr key={item[itemKey]} role="row">
-							{columns.map(column => {
-								const {
-									cellRenderer,
-									isHeading,
-									hideBelowBreakpoint,
-									name,
-								} = column;
+		<>
+			<StyledTable
+				mobileViewBreakpoint={mobileViewBreakpoint}
+				stickyHeaderOffset={stickyHeaderOffset}
+				rowMinHeight={rowMinHeight}
+				shadedHeader={shadedHeader}
+				role="table"
+				{...otherProps}
+			>
+				{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+				<thead role="rowgroup">
+					<tr role="row">
+						{columns.map(column => {
+							const {
+								hideBelowBreakpoint,
+								name,
+								subtitle,
+								width,
+							} = column;
+							return (
+								<Cell
+									key={name}
+									as="th"
+									scope="col"
+									role="columnheader"
+									style={width ? {width} : null}
+									hideBelowBreakpoint={hideBelowBreakpoint}
+								>
+									{headerRenderer(column)}
+									{subtitle && (
+										<Text dimmed size="xs" display="block">
+											{subtitle}
+										</Text>
+									)}
+								</Cell>
+							);
+						})}
+					</tr>
+				</thead>
+				{/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
+				<tbody role="rowgroup">
+					{hasData &&
+						data.map(item => (
+							<tr key={item[itemKey]} role="row">
+								{columns.map(column => {
+									const {
+										cellRenderer,
+										isHeading,
+										hideBelowBreakpoint,
+										name,
+									} = column;
 
-								return (
-									<Cell
-										key={name}
-										as={isHeading && 'th'}
-										role={isHeading ? 'rowheader' : 'cell'}
-										scope={isHeading ? 'row' : null}
-										hideBelowBreakpoint={
-											hideBelowBreakpoint
-										}
-										data-columnheader={name}
-									>
-										{getCellContent(
-											item,
-											cellRenderer || name
-										)}
-									</Cell>
-								);
-							})}
-						</tr>
-					))}
-			</tbody>
-			{!hasData && <caption>{emptyContent}</caption>}
-		</StyledTable>
+									return (
+										<Cell
+											key={name}
+											as={isHeading && 'th'}
+											role={
+												isHeading ? 'rowheader' : 'cell'
+											}
+											scope={isHeading ? 'row' : null}
+											hideBelowBreakpoint={
+												hideBelowBreakpoint
+											}
+											data-columnheader={name}
+										>
+											{getCellContent(
+												item,
+												cellRenderer || name
+											)}
+										</Cell>
+									);
+								})}
+							</tr>
+						))}
+				</tbody>
+			</StyledTable>
+			{!hasData && emptyContent}
+		</>
 	);
 }
 
