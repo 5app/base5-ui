@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/5app/base5-ui#readme",
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
