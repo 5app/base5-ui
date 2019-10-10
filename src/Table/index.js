@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {pxToRem} from '../utils/units';
-import {alpha} from '../utils/colors';
+import {alpha, getSolidBackgroundShade} from '../utils/colors';
 import {borderValue, overflowWrap} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
@@ -16,37 +16,6 @@ import getColumnConfigFromChildren from './getColumnConfigFromChildren';
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
 }
-
-const stickyHeaderStyles = css`
-	position: sticky;
-	top: ${p => pxToRem(p.stickyHeaderOffset) || 0};
-	z-index: ${p => p.theme.globals.z.raised};
-	background-color: ${p => p.theme.background};
-
-	/**
-	* MS Edge shows glitchy rendering when using a normal
-	* border on sticky table headers, so we're using a
-	* pseudo-element instead
-	*/
-	&::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: ${p => p.theme.globals.z.below};
-		border-bottom: ${p => borderValue(p.theme)};
-		${p =>
-			p.shadedHeader &&
-			css`
-				background-color: ${alpha(
-					p.theme.shade,
-					p.theme.shadeStrength
-				)};
-			`}
-	}
-`;
 
 const StyledTable = styled.table`
 	position: relative;
@@ -73,7 +42,32 @@ const StyledTable = styled.table`
 	}
 
 	thead th {
-		${stickyHeaderStyles}
+		position: relative;
+		position: sticky;
+		top: ${p => pxToRem(p.stickyHeaderOffset) || 0};
+		z-index: ${p => p.theme.globals.z.raised};
+		background-color: ${p => p.theme.background};
+
+		/**
+		* MS Edge shows glitchy rendering when using a normal
+		* border on sticky table headers, so we're using a
+		* pseudo-element instead
+		*/
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: ${p => p.theme.globals.z.below};
+			border-bottom: ${p => borderValue(p.theme)};
+			${p =>
+				p.shadedHeader &&
+				css`
+					background-color: ${p => getSolidBackgroundShade(p.theme)};
+				`}
+		}
 	}
 
 	caption {
@@ -167,8 +161,6 @@ const StyledTable = styled.table`
 			/* Make sure to display the header at the top */
 			order: -1;
 
-			${stickyHeaderStyles}
-
 			/* Flex to vertically align content in cell */
 			display: flex;
 			align-items: center;
@@ -177,6 +169,12 @@ const StyledTable = styled.table`
 			/* Visually, this margin is added to the top padding 
 			 * of the content area */
 			margin-bottom: ${p => p.theme.globals.spacing.xs};
+
+			border-bottom: ${p => borderValue(p.theme)};
+			background-color: ${p =>
+				p.shadedHeader
+					? getSolidBackgroundShade(p.theme)
+					: p.theme.background};
 		}
 
 		td {

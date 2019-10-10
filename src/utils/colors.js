@@ -33,6 +33,14 @@ function getColorBlock(color, theme) {
 	return theme[color] || theme.globals.colorBlocks[color] || color;
 }
 
+function getBackgroundShade(theme) {
+	return alpha(theme.shade, theme.shadeStrength);
+}
+
+function getSolidBackgroundShade(theme) {
+	return mix(theme.shade, 'rgb')(theme.background, theme.shadeStrength);
+}
+
 export {
 	alpha,
 	mix,
@@ -43,4 +51,6 @@ export {
 	isDark,
 	isLight,
 	getColorBlock,
+	getBackgroundShade,
+	getSolidBackgroundShade,
 };
