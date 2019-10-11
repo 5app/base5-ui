@@ -1,3 +1,11 @@
+## [6.7.3](https://github.com/5app/base5-ui/compare/v6.7.2...v6.7.3) (2019-10-11)
+
+
+### Bug Fixes
+
+* pin eslint-config-5app to 0.7.4 ([e6b9ccf](https://github.com/5app/base5-ui/commit/e6b9ccf5134208211743ee4e2b069450ccf378a2))
+* **Table:** Fix broken IE11 table header styles ([76a33ed](https://github.com/5app/base5-ui/commit/76a33ed4f13a2a80db0fc35b8b1b53adc93404ad))
+
 ## [6.7.2](https://github.com/5app/base5-ui/compare/v6.7.1...v6.7.2) (2019-10-11)
 
 
