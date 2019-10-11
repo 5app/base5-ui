@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 
 import {pxToRem} from '../utils/units';
 import {alpha, getSolidBackgroundShade} from '../utils/colors';
-import {borderValue, overflowWrap} from '../mixins';
+import {borderValue, overflowWrap, ie11Hack} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
 import {getSpacing} from '../utils/spacing';
 
@@ -16,6 +16,11 @@ import getColumnConfigFromChildren from './getColumnConfigFromChildren';
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
 }
+
+const headerBackgroundColor = css`
+	background-color: ${p =>
+		p.shadedHeader ? getSolidBackgroundShade(p.theme) : p.theme.background};
+`;
 
 const StyledTable = styled.table`
 	position: relative;
@@ -46,7 +51,6 @@ const StyledTable = styled.table`
 		position: sticky;
 		top: ${p => pxToRem(p.stickyHeaderOffset) || 0};
 		z-index: ${p => p.theme.globals.z.raised};
-		background-color: ${p => p.theme.background};
 
 		/**
 		* MS Edge shows glitchy rendering when using a normal
@@ -62,11 +66,21 @@ const StyledTable = styled.table`
 			right: 0;
 			z-index: ${p => p.theme.globals.z.below};
 			border-bottom: ${p => borderValue(p.theme)};
-			${p =>
-				p.shadedHeader &&
-				css`
-					background-color: ${p => getSolidBackgroundShade(p.theme)};
-				`}
+			${headerBackgroundColor}
+		}
+
+		/**
+		 * IE 11 doesn't render the pseudo element correctly, so
+		 * we hide it and apply background colour and border directly
+		 * to the cell.
+		 */
+		@media ${ie11Hack} {
+			border-bottom: ${p => borderValue(p.theme)};
+			${headerBackgroundColor}
+
+			&::after {
+				display: none;
+			}
 		}
 	}
 
@@ -92,11 +106,11 @@ const StyledTable = styled.table`
 	/* Non-mobile-view styles only */
 	@media (min-width: ${getBreakpoint('mobileViewBreakpoint')}) {
 		/* Highlight table row on hover and focus within */
-		tr:hover {
+		tbody tr:hover {
 			background-color: ${p =>
 				alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
 		}
-		tr:focus-within {
+		tbody tr:focus-within {
 			background-color: ${p =>
 				alpha(p.theme.shade, Number(p.theme.shadeStrength) / 2)};
 		}
@@ -167,10 +181,7 @@ const StyledTable = styled.table`
 			margin-bottom: ${p => p.theme.globals.spacing.xs};
 
 			border-bottom: ${p => borderValue(p.theme)};
-			background-color: ${p =>
-				p.shadedHeader
-					? getSolidBackgroundShade(p.theme)
-					: p.theme.background};
+			${headerBackgroundColor}
 		}
 
 		td {
