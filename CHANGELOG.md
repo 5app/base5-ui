@@ -1,3 +1,10 @@
+## [6.7.2](https://github.com/5app/base5-ui/compare/v6.7.1...v6.7.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* **CenterContent:** Fix IE11 flexbox shorthand bug ([de9f328](https://github.com/5app/base5-ui/commit/de9f328ea0a6748b272cdabfeaf2771c06f924f2))
+
 ## [6.7.1](https://github.com/5app/base5-ui/compare/v6.7.0...v6.7.1) (2019-10-11)
 
 
