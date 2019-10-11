@@ -1,3 +1,11 @@
+## [6.7.1](https://github.com/5app/base5-ui/compare/v6.7.0...v6.7.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* **Table:** Render empty state outside of <table> ([9651610](https://github.com/5app/base5-ui/commit/96516104ff7ec3db6876791d53aaccf482d4a6e5))
+* **Table:** Row headers on mobile aren't sticky anymore ([14dca37](https://github.com/5app/base5-ui/commit/14dca373ba8c9fcd1e113ab59ff0662cb864e8c6))
+
 # [6.7.0](https://github.com/5app/base5-ui/compare/v6.6.0...v6.7.0) (2019-10-04)
 
 
