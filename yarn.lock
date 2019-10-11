@@ -5080,13 +5080,13 @@ escodegen@^1.8.1, escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-5app@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-5app/-/eslint-config-5app-0.7.1.tgz#35fef20477acc390d9a835dd291d66636e8a2e73"
-  integrity sha512-pylN0vpr6CEKkpdjSnsGeLMuj7IVIAh+5+TdhU4Jll09euQLzDKv3chV8+z6Y5UCLktae66FHqLvqh6EOdAmBQ==
+eslint-config-5app@^0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-5app/-/eslint-config-5app-0.7.4.tgz#e02e73b66e8cd98e7d400aed487329fa4406a6cf"
+  integrity sha512-NKFmz4WrEAvguYLAeghmg+4VCeea6mrchpusLgbWzJ8O/qMyDlM4bEKsCu9G6UJ5SxXU/Hkfcaz8wJSydLpewQ==
   dependencies:
-    eslint-plugin-jsdoc "^15.7.2"
-    eslint-plugin-you-dont-need-lodash-underscore "^6.5.0"
+    eslint-plugin-jsdoc "^15.10.0"
+    eslint-plugin-you-dont-need-lodash-underscore "6.5.0"
     eslint-plugin-you-dont-need-momentjs "^1.5.0"
 
 eslint-config-prettier@^6.0.0:
@@ -5129,14 +5129,14 @@ eslint-plugin-import@^2.18.0:
     read-pkg-up "^2.0.0"
     resolve "^1.11.0"
 
-eslint-plugin-jsdoc@^15.7.2:
-  version "15.9.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.9.3.tgz#d7fb21a5104b60e36fd654586867761a7ce56f86"
-  integrity sha512-ta2oebmerDjW2Ub9Yteufw+GsJuDE61RG7+PAavpw0mgEIBGZHCeS/GuCH8RZ5csPOBr7uHiUU5RrD/97ZjJqQ==
+eslint-plugin-jsdoc@^15.10.0:
+  version "15.10.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.10.0.tgz#67ded2bf37aa14f80fd938527a38fd99b430be03"
+  integrity sha512-3nxbAcppP880k9De+rXAs4jsZuhFjhjav/VZU62grwi7btiKPzPUsjYOyZaEBVJOjPxIo+BBhovZmhZ5UQv+AQ==
   dependencies:
     comment-parser "^0.6.2"
     debug "^4.1.1"
-    jsdoctypeparser "5.0.1"
+    jsdoctypeparser "^5.1.1"
     lodash "^4.17.15"
     object.entries-ponyfill "^1.0.1"
     regextras "^0.6.1"
@@ -5183,7 +5183,7 @@ eslint-plugin-react@^7.14.2:
     prop-types "^15.7.2"
     resolve "^1.10.1"
 
-eslint-plugin-you-dont-need-lodash-underscore@^6.5.0:
+eslint-plugin-you-dont-need-lodash-underscore@6.5.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-you-dont-need-lodash-underscore/-/eslint-plugin-you-dont-need-lodash-underscore-6.5.0.tgz#c8893157fe477f8ccc9bf6e3e4577702f7333116"
   integrity sha512-68bj1UlZtCLmu1Mp0GaRgIBNFJyHJChfwphY9fBk60fBkNPH/xnbEXhbFsk7CBaZGMqPkHhYjT1iICQyZAdK5Q==
@@ -7937,10 +7937,10 @@ jsbn@~0.1.0:
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
   integrity sha1-peZUwuWi3rXyAdls77yoDA7y9RM=
 
-jsdoctypeparser@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-5.0.1.tgz#0d6bc09bb8bebeca5a588fcd508228d2189409a3"
-  integrity sha512-dYwcK6TKzvq+ZKtbp4sbQSW9JMo6s+4YFfUs5D/K7bZsn3s1NhEhZ+jmIPzby0HbkbECBe+hNPEa6a+E21o94w==
+jsdoctypeparser@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/jsdoctypeparser/-/jsdoctypeparser-5.1.1.tgz#99c57412fe736c70024bf54204ed1bb93cf4a49f"
+  integrity sha512-APGygIJrT5bbz5lsVt8vyLJC0miEbQf/z9ZBfTr4RYvdia8AhWMRlYgivvwHG5zKD/VW3d6qpChCy64hpQET3A==
 
 jsdom@^11.5.1:
   version "11.12.0"
