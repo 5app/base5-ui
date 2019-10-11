@@ -8,7 +8,7 @@ import {paddingProps} from '../styleProps';
 
 const Wrapper = styled.div`
 	display: flex;
-	flex: 1;
+	flex: 1 1 auto;
 
 	${p =>
 		p.height &&
