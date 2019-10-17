@@ -1,3 +1,10 @@
+# [6.8.0](https://github.com/5app/base5-ui/compare/v6.7.3...v6.8.0) (2019-10-17)
+
+
+### Features
+
+* **Icons:** Added icons ExitFullscreen and Like ([f405428](https://github.com/5app/base5-ui/commit/f4054282a0db0b221a593b7811ff10f6977ac873))
+
 ## [6.7.3](https://github.com/5app/base5-ui/compare/v6.7.2...v6.7.3) (2019-10-11)
 
 
