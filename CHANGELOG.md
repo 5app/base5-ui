@@ -1,3 +1,15 @@
+# [6.10.0](https://github.com/5app/base5-ui/compare/v6.9.0...v6.10.0) (2019-10-17)
+
+
+### Bug Fixes
+
+* **Icons:** Improved Like, Fullscreen and Sidebar ([afd4303](https://github.com/5app/base5-ui/commit/afd430376a72e868457ec1487da663d0546aa037))
+
+
+### Features
+
+* **Icons:** New Dislike icon ([5dec9e9](https://github.com/5app/base5-ui/commit/5dec9e9c65c644577e90cbfcb0a9df8a76b5ed6d))
+
 # [6.9.0](https://github.com/5app/base5-ui/compare/v6.8.0...v6.9.0) (2019-10-17)
 
 
