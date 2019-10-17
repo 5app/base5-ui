@@ -1,3 +1,10 @@
+# [6.9.0](https://github.com/5app/base5-ui/compare/v6.8.0...v6.9.0) (2019-10-17)
+
+
+### Features
+
+* **Icons:** New icons Sidebar Open & Close ([6e1f879](https://github.com/5app/base5-ui/commit/6e1f879aed60c6723480412473fd9dc690e832e5))
+
 # [6.8.0](https://github.com/5app/base5-ui/compare/v6.7.3...v6.8.0) (2019-10-17)
 
 
