@@ -1,3 +1,52 @@
+# [6.10.0](https://github.com/5app/base5-ui/compare/v6.9.0...v6.10.0) (2019-10-17)
+
+
+### Bug Fixes
+
+* **Icons:** Improved Like, Fullscreen and Sidebar ([afd4303](https://github.com/5app/base5-ui/commit/afd430376a72e868457ec1487da663d0546aa037))
+
+
+### Features
+
+* **Icons:** New Dislike icon ([5dec9e9](https://github.com/5app/base5-ui/commit/5dec9e9c65c644577e90cbfcb0a9df8a76b5ed6d))
+
+# [6.9.0](https://github.com/5app/base5-ui/compare/v6.8.0...v6.9.0) (2019-10-17)
+
+
+### Features
+
+* **Icons:** New icons Sidebar Open & Close ([6e1f879](https://github.com/5app/base5-ui/commit/6e1f879aed60c6723480412473fd9dc690e832e5))
+
+# [6.8.0](https://github.com/5app/base5-ui/compare/v6.7.3...v6.8.0) (2019-10-17)
+
+
+### Features
+
+* **Icons:** Added icons ExitFullscreen and Like ([f405428](https://github.com/5app/base5-ui/commit/f4054282a0db0b221a593b7811ff10f6977ac873))
+
+## [6.7.3](https://github.com/5app/base5-ui/compare/v6.7.2...v6.7.3) (2019-10-11)
+
+
+### Bug Fixes
+
+* pin eslint-config-5app to 0.7.4 ([e6b9ccf](https://github.com/5app/base5-ui/commit/e6b9ccf5134208211743ee4e2b069450ccf378a2))
+* **Table:** Fix broken IE11 table header styles ([76a33ed](https://github.com/5app/base5-ui/commit/76a33ed4f13a2a80db0fc35b8b1b53adc93404ad))
+
+## [6.7.2](https://github.com/5app/base5-ui/compare/v6.7.1...v6.7.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* **CenterContent:** Fix IE11 flexbox shorthand bug ([de9f328](https://github.com/5app/base5-ui/commit/de9f328ea0a6748b272cdabfeaf2771c06f924f2))
+
+## [6.7.1](https://github.com/5app/base5-ui/compare/v6.7.0...v6.7.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* **Table:** Render empty state outside of <table> ([9651610](https://github.com/5app/base5-ui/commit/96516104ff7ec3db6876791d53aaccf482d4a6e5))
+* **Table:** Row headers on mobile aren't sticky anymore ([14dca37](https://github.com/5app/base5-ui/commit/14dca373ba8c9fcd1e113ab59ff0662cb864e8c6))
+
 # [6.7.0](https://github.com/5app/base5-ui/compare/v6.6.0...v6.7.0) (2019-10-04)
 
 
