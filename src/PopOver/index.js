@@ -54,11 +54,17 @@ function PopOver(props) {
 					getRefModifier,
 				}}
 			>
-				{({ref, style, placement, arrowProps, scheduleUpdate}) => {
+				{({
+					ref,
+					style,
+					placement: computedPlacement,
+					arrowProps,
+					scheduleUpdate,
+				}) => {
 					const arrow = arrowSize > 0 && (
 						<Arrow
 							size={arrowSize}
-							placement={placement}
+							placement={computedPlacement}
 							ref={arrowProps.ref}
 							style={arrowProps.style}
 						/>
