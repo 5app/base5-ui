@@ -1,3 +1,10 @@
+## [6.10.1](https://github.com/5app/base5-ui/compare/v6.10.0...v6.10.1) (2019-10-28)
+
+
+### Bug Fixes
+
+* **PopOver:** Updated popper.js to latest ([fd3a45e](https://github.com/5app/base5-ui/commit/fd3a45e3a845bfcdf08b3c35b4a7c5424d6d173c))
+
 # [6.10.0](https://github.com/5app/base5-ui/compare/v6.9.0...v6.10.0) (2019-10-17)
 
 
