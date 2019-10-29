@@ -1,3 +1,10 @@
+## [6.10.2](https://github.com/5app/base5-ui/compare/v6.10.1...v6.10.2) (2019-10-29)
+
+
+### Bug Fixes
+
+* **Docz:** Update Docz to v2, cleaned up deps ([92f9d00](https://github.com/5app/base5-ui/commit/92f9d00f75ebd015a85b7f7c256a1c0cd053a338))
+
 ## [6.10.1](https://github.com/5app/base5-ui/compare/v6.10.0...v6.10.1) (2019-10-28)
 
 
