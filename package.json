@@ -11,7 +11,7 @@
 		"dist": "cd dist && npm publish",
 		"docz:dev": "docz dev",
 		"docz:build": "docz build",
-		"deploy-docs": "npm run docz:build && gh-pages -d .docz/dist -m 'Update docs [skip ci]'",
+		"deploy-docs": "npm run docz:build && gh-pages -d .docz/public -m 'Update docs [skip ci]'",
 		"lint": "eslint ./",
 		"postversion": "pwd && cp -r package.json ../",
 		"semantic-release": "semantic-release",
