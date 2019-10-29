@@ -5121,12 +5121,12 @@ escodegen@^1.8.1, escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-5app@0.7.7:
-  version "0.7.7"
-  resolved "https://registry.yarnpkg.com/eslint-config-5app/-/eslint-config-5app-0.7.7.tgz#4c7f57f1b6c05f90d1bc0fa6290368959376a325"
-  integrity sha512-R1cMpg+frH/KRY+lZJLvpIs5ymNnnBSbOcwq/mttAh5eN94rv/64vBgCTcF0ALQmXZ3PxREVuVc0FSwBXCNDSA==
+eslint-config-5app@0.7.8:
+  version "0.7.8"
+  resolved "https://registry.yarnpkg.com/eslint-config-5app/-/eslint-config-5app-0.7.8.tgz#d4e7c9413a2e5852ad7a605667730f228d3c69e5"
+  integrity sha512-BDD6OOPfbeoXUL7XCdC1ixanU9LLu9e2bQ41t8lSFR0eM70maM3ZVZkWnyO8c03HjR68N6faBY8q/GiTM8BEIw==
   dependencies:
-    eslint-plugin-jsdoc "^15.10.0"
+    eslint-plugin-jsdoc "^16.0.0"
     eslint-plugin-you-dont-need-lodash-underscore "6.8.0"
     eslint-plugin-you-dont-need-momentjs "^1.5.0"
 
@@ -5170,10 +5170,10 @@ eslint-plugin-import@^2.18.0:
     read-pkg-up "^2.0.0"
     resolve "^1.11.0"
 
-eslint-plugin-jsdoc@^15.10.0:
-  version "15.10.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-15.10.0.tgz#67ded2bf37aa14f80fd938527a38fd99b430be03"
-  integrity sha512-3nxbAcppP880k9De+rXAs4jsZuhFjhjav/VZU62grwi7btiKPzPUsjYOyZaEBVJOjPxIo+BBhovZmhZ5UQv+AQ==
+eslint-plugin-jsdoc@^16.0.0:
+  version "16.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-16.1.0.tgz#19ce3f6fa168108a90f07bb037364b144d9a7b08"
+  integrity sha512-cHfJwYHQgnv/pN+ltWWWdlneOji4D8NDidVxhxP8OuhPMe5UT1kQwBVO0djz+NGkJrTHaTVOQh3sAZOeb/cWoA==
   dependencies:
     comment-parser "^0.6.2"
     debug "^4.1.1"
