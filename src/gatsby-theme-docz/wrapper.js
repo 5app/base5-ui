@@ -1,8 +1,12 @@
 import React from 'react';
 import {createGlobalStyle} from 'styled-components';
-import ThemeSection from '../../src/ThemeSection';
 
-import theme from '../../src/theme';
+// These paths are relative to where this file goes after
+// docz moves it to .docz/src/gatsby-theme-docz/wrapper.js
+// Weird!
+
+import ThemeSection from '../../../src/ThemeSection';
+import theme from '../../../src/theme';
 
 import 'focus-visible';
 

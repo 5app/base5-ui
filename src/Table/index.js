@@ -347,6 +347,15 @@ Table.defaultProps = {
 	rowMinHeight: 45,
 };
 
+const columnPropsShape = {
+	cellRenderer: PropTypes.func,
+	isHeading: PropTypes.bool,
+	hideBelowBreakpoint: PropTypes.string,
+	name: PropTypes.string.isRequired,
+	subtitle: PropTypes.string,
+	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
 Table.propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
 	data: PropTypes.array.isRequired,
@@ -375,18 +384,10 @@ Table.propTypes = {
 	shadedHeader: PropTypes.bool,
 };
 
-const columnPropsShape = {
-	cellRenderer: PropTypes.func,
-	isHeading: PropTypes.bool,
-	hideBelowBreakpoint: PropTypes.string,
-	name: PropTypes.string.isRequired,
-	subtitle: PropTypes.string,
-	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
 function Column() {
 	return null;
 }
+
 Column.displayName = 'Column';
 Column.propTypes = columnPropsShape;
 
