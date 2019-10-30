@@ -58,7 +58,7 @@
 		"react": "16.11.0",
 		"react-dom": "16.11.0",
 		"semantic-release": "^15.13.12",
-		"styled-components": "4.4.0"
+		"styled-components": "4.4.1"
 	},
 	"peerDependencies": {
 		"react": "16.11.0",
