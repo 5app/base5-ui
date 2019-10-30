@@ -1,3 +1,10 @@
+## [6.10.3](https://github.com/5app/base5-ui/compare/v6.10.2...v6.10.3) (2019-10-29)
+
+
+### Bug Fixes
+
+* **Docz:** Fix docs not deploying ([a1519c4](https://github.com/5app/base5-ui/commit/a1519c44b4a9e104cab8e5612de8e5c86c005324))
+
 ## [6.10.2](https://github.com/5app/base5-ui/compare/v6.10.1...v6.10.2) (2019-10-29)
 
 
