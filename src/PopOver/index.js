@@ -102,7 +102,7 @@ function DefaultPopover({
 	if (!isOpen) return null;
 
 	return (
-		<Portal targetElement={document.body}>
+		<Portal>
 			<span
 				ref={popOverRef}
 				style={{
