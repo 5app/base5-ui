@@ -37,7 +37,7 @@
 		"@babel/preset-env": "^7.6.3",
 		"@semantic-release/changelog": "3.0.5",
 		"@semantic-release/git": "7.0.17",
-		"@testing-library/react": "9.3.0",
+		"@testing-library/react": "9.3.1",
 		"babel-eslint": "^10.0.2",
 		"babel-plugin-styled-components": "^1.10.2",
 		"docz": "^2.0.0-rc.65",
