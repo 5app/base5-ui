@@ -40,7 +40,7 @@
 		"@testing-library/react": "9.3.0",
 		"babel-eslint": "^10.0.2",
 		"babel-plugin-styled-components": "^1.10.2",
-		"docz": "^2.0.0-rc.65",
+		"docz": "^2.0.0-rc.67",
 		"eslint": "^6.6.0",
 		"eslint-config-5app": "0.7.7",
 		"eslint-config-prettier": "^6.5.0",
