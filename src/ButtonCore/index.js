@@ -44,30 +44,37 @@ const ButtonCore = forwardRef((props, ref) => {
 		as,
 		type,
 		isActive,
-		isDisabled,
+		isDisabled: isDisabledProp,
 		disabled,
 		className,
 		...otherProps
 	} = props;
 
+	const isDisabled = isDisabledProp || disabled;
+
 	const classes = classNames(className, {
 		'is-active': isActive,
-		'is-disabled': isDisabled || disabled,
+		'is-disabled': isDisabled,
 	});
 
-	const defaultType = !type && as === 'button' ? as : type;
+	const isButton = as === 'button';
 
-	// Delete button props that would end up in DOM due to
-	// styled-components' overly permissive attribute whitelist
-	delete otherProps.color;
+	const defaultType = !type && isButton ? as : type;
+
+	/**
+	 * There's no such thing as a disabled anchor tag in HTML,
+	 * so if one should appear "disabled", we render it as a `span`
+	 */
+	const isDisabledLink = !isButton && isDisabled;
 
 	return (
 		<Clickable
 			{...otherProps}
 			ref={ref}
-			as={as}
+			as={isDisabledLink ? 'span' : as}
 			type={defaultType}
-			disabled={isDisabled || disabled}
+			disabled={isButton && disabled}
+			aria-disabled={isButton && isDisabled ? 'true' : undefined}
 			className={classes}
 		/>
 	);
