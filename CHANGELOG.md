@@ -1,3 +1,10 @@
+## [6.10.4](https://github.com/5app/base5-ui/compare/v6.10.3...v6.10.4) (2019-10-30)
+
+
+### Bug Fixes
+
+* Fix SSR-incompatible code ([a84694b](https://github.com/5app/base5-ui/commit/a84694b88b20e8cccd6f0cc31dab01a04af9ac1a))
+
 ## [6.10.3](https://github.com/5app/base5-ui/compare/v6.10.2...v6.10.3) (2019-10-29)
 
 ### Bug Fixes
