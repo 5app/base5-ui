@@ -40,7 +40,7 @@ function BreakpointsProvider({breakpoints: breakpointsToWatch, children}) {
 				mediaQueries[bp].removeListener(updateMatches(bp));
 			});
 		};
-	}, [breakpointsToWatch, mediaQueriesRef]);
+	}, [breakpointsToWatch]);
 
 	return (
 		<BreakpointsContext.Provider value={breakpoints}>
