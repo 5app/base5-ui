@@ -2,10 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
+import {getSpacing} from '../utils/spacing';
+
 const Item = styled.li`
 	display: inline-block;
 	max-width: 100%;
 `;
+
+const getSpacingFromTheme = p => getSpacing(p.spacing, p.theme);
 
 const Wrapper = styled.ul`
 	list-style: none;
@@ -16,8 +20,8 @@ const Wrapper = styled.ul`
 		p.spacing &&
 		css`
 			/* Compensate for Item's padding */
-			margin-left: -${p => p.theme.globals.spacing[p.spacing]};
-			margin-bottom: -${p => p.theme.globals.spacing[p.spacing]};
+			margin-left: -${getSpacingFromTheme};
+			margin-bottom: -${getSpacingFromTheme};
 		`}
 
 	& > ${Item} {
@@ -26,8 +30,8 @@ const Wrapper = styled.ul`
 		${p =>
 			p.spacing &&
 			css`
-				padding-left: ${p => p.theme.globals.spacing[p.spacing]};
-				padding-bottom: ${p => p.theme.globals.spacing[p.spacing]};
+				padding-left: ${getSpacingFromTheme};
+				padding-bottom: ${getSpacingFromTheme};
 			`}
 
 		${p =>
@@ -62,12 +66,19 @@ const InlineList = ({children, ...otherProps}) => {
 	);
 };
 InlineList.propTypes = {
-	align: PropTypes.string,
-	spacing: PropTypes.string,
+	/**
+	 * Vertical alignment of list items
+	 */
+	align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+	/**
+	 * Spacing as t-shirt theme value or number (pixels)
+	 */
+	spacing: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	splitBy: PropTypes.oneOf(['comma', 'dot']),
 };
 
 InlineList.Wrapper = Wrapper;
 InlineList.Item = Item;
 
+// @component
 export default InlineList;

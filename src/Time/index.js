@@ -37,8 +37,10 @@ function Time({dateTime, systemTime, locale}) {
 }
 
 Time.propTypes = {
-	/** Any Date string recognized by `Date.parse()`.
-	 * Suffix with `Z` to define the date as a UTC value or offset. */
+	/**
+	 * Any Date string recognized by `Date.parse()`.
+	 * Suffix with `Z` to define the date as a UTC value or offset.
+	 */
 	dateTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
@@ -49,4 +51,5 @@ Time.propTypes = {
 	]),
 };
 
+// @component
 export default Time;

@@ -34,7 +34,11 @@ function DocumentClickListener({onClick, excludedElementRef}) {
 
 DocumentClickListener.propTypes = {
 	onClick: PropTypes.func.isRequired,
+	/**
+	 * Ignore clicks on the element passed here.
+	 */
 	excludedElementRef: PropTypes.object,
 };
 
+// @component
 export default DocumentClickListener;

@@ -41,4 +41,5 @@ Box.propTypes = {
 	textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
+// @component
 export default Box;

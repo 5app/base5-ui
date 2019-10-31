@@ -21,4 +21,5 @@ Portal.propTypes = {
 	targetElement: PropTypes.object,
 };
 
+// @component
 export default Portal;

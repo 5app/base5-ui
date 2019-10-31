@@ -102,4 +102,5 @@ function SimpleGauge({
 	);
 }
 
+// @component
 export default SimpleGauge;

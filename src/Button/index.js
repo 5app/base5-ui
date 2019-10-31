@@ -210,7 +210,7 @@ const ButtonText = styled.span`
 	vertical-align: middle;
 `;
 
-function ButtonWithRef(props, ref) {
+const Button = forwardRef((props, ref) => {
 	const {
 		align,
 		as,
@@ -243,9 +243,9 @@ function ButtonWithRef(props, ref) {
 			</Content>
 		</Wrapper>
 	);
-}
+});
 
-const Button = forwardRef(ButtonWithRef);
+Button.displayName = 'Button';
 
 Button.propTypes = {
 	icon: PropTypes.string,
@@ -265,4 +265,5 @@ Button.propTypes = {
 	align: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
+// @component
 export default Button;

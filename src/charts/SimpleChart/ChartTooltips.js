@@ -139,4 +139,5 @@ ChartTooltips.propTypes = {
 	tooltipRenderer: PropTypes.func,
 };
 
+// @component
 export default ChartTooltips;

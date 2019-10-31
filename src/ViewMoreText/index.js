@@ -39,4 +39,5 @@ ViewMoreText.propTypes = {
 	viewLessLabel: PropTypes.string,
 };
 
+// @component
 export default ViewMoreText;

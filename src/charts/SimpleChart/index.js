@@ -132,4 +132,5 @@ function SimpleChart({
 	);
 }
 
+// @component
 export default SimpleChart;

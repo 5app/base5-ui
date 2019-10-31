@@ -80,7 +80,7 @@ const SwitchIcon = styled(OkIcon)`
 		`}
 `;
 
-function Switch({checked, disabled, id, ...otherProps}, ref) {
+const Switch = forwardRef(({checked, disabled, id, ...otherProps}, ref) => {
 	return (
 		<Wrapper htmlFor={id} disabled={disabled}>
 			<Input
@@ -96,6 +96,9 @@ function Switch({checked, disabled, id, ...otherProps}, ref) {
 			</Handle>
 		</Wrapper>
 	);
-}
+});
 
-export default forwardRef(Switch);
+Switch.displayName = 'Switch';
+
+// @component
+export default Switch;

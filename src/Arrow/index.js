@@ -69,12 +69,23 @@ Arrow.defaultProps = {
 };
 
 Arrow.propTypes = {
-	/** Controls how far the arrow is placed from the container's edge when the placement contains a '-start' or '-end' suffix. */
+	/**
+	 * Controls how far the arrow is placed from the container's edge when
+	 * the placement contains a '-start' or '-end' suffix.
+	 */
 	distanceFromEdge: PropTypes.number,
-	/** The arrow will be placed on the opposing side of the defined direction: 'top', 'bottom', 'left', or 'right'. Add an optional suffix '-start' or '-end' to align the arrow to the start or end of the chosen direction. */
+	/**
+	 * The arrow will be placed on the opposing side of the defined direction:
+	 * 'top', 'bottom', 'left', or 'right'.
+	 * Add an optional suffix '-start' or '-end' to align the arrow to the
+	 * start or end of the chosen direction.
+	 */
 	placement: PropTypes.string,
-	/** Control the arrow size (length of side) */
+	/**
+	 * Control the arrow size (length of side)
+	 */
 	size: PropTypes.number,
 };
 
+// @component
 export default Arrow;

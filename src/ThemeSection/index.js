@@ -40,5 +40,7 @@ ThemeSection.propTypes = {
 	name: PropTypes.string.isRequired,
 };
 
-export default ThemeSection;
 export {ThemeSectionError};
+
+// @component
+export default ThemeSection;

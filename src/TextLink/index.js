@@ -1,4 +1,5 @@
 import React, {forwardRef} from 'react';
+import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {positionProps, marginProps} from '../styleProps';
@@ -41,12 +42,26 @@ const Wrapper = styled(({linkRef, bold, stealthy, ...otherProps}) => (
 	${textLinkStyles}
 `;
 
-function TextLink(props, ref) {
+const TextLink = forwardRef((props, ref) => {
 	const {as, ...otherProps} = props;
 
-	return <Wrapper {...otherProps} linkRef={ref} forwardedAs={as || 'a'} />;
-}
+	return <Wrapper {...otherProps} linkRef={ref} forwardedAs={as} />;
+});
+
+TextLink.displayName = 'TextLink';
+
+TextLink.defaultProps = {
+	as: 'a',
+};
+
+TextLink.propTypes = {
+	as: PropTypes.elementType,
+	bold: PropTypes.bool,
+	stealthy: PropTypes.bool,
+};
 
 // Allow components to re-use simple text link styles
 export {textLinkStyles};
-export default forwardRef(TextLink);
+
+// @component
+export default TextLink;

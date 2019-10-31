@@ -163,4 +163,5 @@ PopOver.propTypes = {
 
 export {Arrow};
 
+// @component
 export default PopOver;

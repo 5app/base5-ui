@@ -3,7 +3,7 @@ name: Icon
 menu: Components
 ---
 
-import {Playground} from 'docz';
+import {Playground, Props} from 'docz';
 import Icon from './';
 import DiskIcon from '../icons/Disk';
 import PlusIcon from '../icons/Plus';
@@ -13,7 +13,7 @@ import SearchIcon from '../icons/Search';
 
 An image says more than a thousand words. ;)
 
-See the Icons Overview page for a list of all available icons.
+[View all available icons here](/src-icons-readme)
 
 ## Using the Wrapper component
 
@@ -47,25 +47,11 @@ and use them directly:
 
 The following props are available on both the individual icon components as well as the `<Icon />` component:
 
-### `scale`
-
-Number. By default, icons are sized at `1em`, scaling along with their surrounding text. The `scale` prop lets you define a scaling factor to size the icon, i.e. a value of `2` will make the icon twice as large.
-
-### `color`
-
-String. By default, icons use the colour of their containing element (`currentcolor`). You can change this to any valid color value here.
-
-### `spacingLeft` / `spacingRight`
-
-String. Add some left or right margin to the icon. Accepts any valid CSS length value, a unit must be included.
-
-### `vAlign`
-
-Boolean. Nudge the icon up by a few pixels to visually align it with its surrounding text, see the next section for an example.
+<Props of={Icon} />
 
 ## Aligning icons with text
 
-When placed next to or inside of text, square icons tend to sit a bit too low compared to the text's baseline. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text.
+When placed next to or inside of text, icons tend to sit a bit too low compared to the text's baseline. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text.
 
 <Playground>
 	<PlusIcon /> Without vAlign

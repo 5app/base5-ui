@@ -34,4 +34,5 @@ Text.propTypes = {
 	textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
+// @component
 export default Text;

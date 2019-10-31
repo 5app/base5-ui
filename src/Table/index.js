@@ -12,6 +12,7 @@ import Text from '../Text';
 import CenterContent from '../CenterContent';
 
 import getColumnConfigFromChildren from './getColumnConfigFromChildren';
+import Column from './Column';
 
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
@@ -347,17 +348,17 @@ Table.defaultProps = {
 	rowMinHeight: 45,
 };
 
-const columnPropsShape = {
-	cellRenderer: PropTypes.func,
-	isHeading: PropTypes.bool,
-	hideBelowBreakpoint: PropTypes.string,
-	name: PropTypes.string.isRequired,
-	subtitle: PropTypes.string,
-	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
 Table.propTypes = {
-	columns: PropTypes.arrayOf(PropTypes.shape(columnPropsShape)),
+	columns: PropTypes.arrayOf(
+		PropTypes.shape({
+			cellRenderer: PropTypes.func,
+			isHeading: PropTypes.bool,
+			hideBelowBreakpoint: PropTypes.string,
+			name: PropTypes.string.isRequired,
+			subtitle: PropTypes.string,
+			width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+		})
+	),
 	data: PropTypes.array.isRequired,
 	/**
 	 * Content to be displayed when the passed data is empty
@@ -384,12 +385,7 @@ Table.propTypes = {
 	shadedHeader: PropTypes.bool,
 };
 
-function Column() {
-	return null;
-}
-
-Column.displayName = 'Column';
-Column.propTypes = columnPropsShape;
-
 export {Column};
+
+// @component
 export default Table;

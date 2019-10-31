@@ -5,4 +5,5 @@ const VisuallyHidden = styled.span`
 	${visuallyHiddenMixin}
 `;
 
+// @component
 export default VisuallyHidden;

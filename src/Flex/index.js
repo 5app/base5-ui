@@ -61,4 +61,5 @@ Flex.propTypes = {
 
 export {Box};
 
+// @component
 export default Flex;

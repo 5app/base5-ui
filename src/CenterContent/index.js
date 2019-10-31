@@ -73,10 +73,27 @@ CenterContent.defaultProps = {
 };
 
 CenterContent.propTypes = {
+	/**
+	 * Define the maximum width for the centred content.
+	 */
 	contentWidth: PropTypes.number,
+	/**
+	 * Make the component grow to match the width and height of its direct parent.
+	 * When using this, make sure the container has a position other than static
+	 * (e.g. relative, absolute, or fixed), and is not set to overflow: hidden as
+	 * that could lead to longer content being cut off.
+	 */
 	fillParent: PropTypes.bool,
+	/**
+	 * Define a minimum height for the component to take up.
+	 */
 	height: PropTypes.number,
+	/**
+	 * Define the inner spacing between the centred content and its container.
+	 * Alternatively you can also use the common style props `p`, `pl`, `pb`, etc.
+	 */
 	spacing: PropTypes.string,
 };
 
+// @component
 export default CenterContent;
