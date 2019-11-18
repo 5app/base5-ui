@@ -1,3 +1,10 @@
+## [6.10.5](https://github.com/5app/base5-ui/compare/v6.10.4...v6.10.5) (2019-11-18)
+
+
+### Bug Fixes
+
+* Update dependencies ([4f4a23a](https://github.com/5app/base5-ui/commit/4f4a23ac3a943721ce32d1e2b7df70e411a92d6d))
+
 ## [6.10.4](https://github.com/5app/base5-ui/compare/v6.10.3...v6.10.4) (2019-10-30)
 
 
