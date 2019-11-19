@@ -1,3 +1,10 @@
+## [6.10.6](https://github.com/5app/base5-ui/compare/v6.10.5...v6.10.6) (2019-11-19)
+
+
+### Bug Fixes
+
+* **PopOver:** Revert react-popper update ([f8253f3](https://github.com/5app/base5-ui/commit/f8253f30bac9311db906253b7da5aa950bf7eedd))
+
 ## [6.10.5](https://github.com/5app/base5-ui/compare/v6.10.4...v6.10.5) (2019-11-18)
 
 
