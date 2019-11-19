@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {Manager, Reference, Popper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 
@@ -27,16 +27,24 @@ function PopOver(props) {
 
 	const [refMeasurements, setRefMeasurements] = useState({});
 
-	const getRefModifier = {
-		enabled: true,
-		order: 950,
-		fn: data => {
-			if (data.offsets && data.offsets.reference) {
-				setRefMeasurements(data.offsets.reference);
-			}
-			return data;
-		},
-	};
+	const modifiers = useMemo(
+		() => ({
+			offset: {offset: `${offset}, ${autoDistance}`},
+			computeStyle: {gpuAcceleration: false},
+			flip: {flipVariations: true, flipVariationsByContent: true},
+			getRefModifier: {
+				enabled: true,
+				order: 950,
+				fn: data => {
+					if (data.offsets && data.offsets.reference) {
+						setRefMeasurements(data.offsets.reference);
+					}
+					return data;
+				},
+			},
+		}),
+		[autoDistance, offset, setRefMeasurements]
+	);
 
 	return (
 		<Manager>
@@ -47,12 +55,7 @@ function PopOver(props) {
 				innerRef={popOverRef}
 				positionFixed={positionFixed}
 				placement={placement}
-				modifiers={{
-					offset: {offset: `${offset}, ${autoDistance}`},
-					computeStyle: {gpuAcceleration: false},
-					flip: {flipVariations: true, flipVariationsByContent: true},
-					getRefModifier,
-				}}
+				modifiers={modifiers}
 			>
 				{({
 					ref,
