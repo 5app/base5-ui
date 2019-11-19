@@ -1,3 +1,10 @@
+## [6.10.7](https://github.com/5app/base5-ui/compare/v6.10.6...v6.10.7) (2019-11-19)
+
+
+### Bug Fixes
+
+* **PopOver:** Fix PopOver freeze ([4e95405](https://github.com/5app/base5-ui/commit/4e954053154f5ab850a2f993416d8b2c016d7359))
+
 ## [6.10.6](https://github.com/5app/base5-ui/compare/v6.10.5...v6.10.6) (2019-11-19)
 
 
