@@ -1,5 +1,5 @@
 import React from 'react';
-import {createGlobalStyle} from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 
 // These paths are relative to where this file goes after
 // docz moves it to .docz/src/gatsby-theme-docz/wrapper.js
@@ -27,13 +27,16 @@ const GlobalStyle = createGlobalStyle`
 	}
 `;
 
+const Content = styled.div`
+	font-size: ${p => p.theme.globals.typeScale.m};
+	line-height: ${p => p.theme.globals.lineHeight};
+`;
+
 const Wrapper = ({children}) => (
-	<>
+	<ThemeSection name="page" baseTheme={theme}>
 		<GlobalStyle />
-		<ThemeSection name="page" baseTheme={theme}>
-			{children}
-		</ThemeSection>
-	</>
+		<Content>{children}</Content>
+	</ThemeSection>
 );
 
 export default Wrapper;

@@ -7,13 +7,13 @@ const lineHeight = 1.5;
 const maxPageWidth = 1200;
 
 const typeScale = {
-	xxs: pxToRem(rootFontSize * 0.75),
-	xs: pxToRem(rootFontSize * 0.875),
-	s: pxToRem(rootFontSize * 0.9375),
-	m: pxToRem(rootFontSize),
-	l: pxToRem(rootFontSize * 1.125),
-	xl: pxToRem(rootFontSize * 1.375),
-	xxl: pxToRem(rootFontSize * 1.625),
+	xxs: pxToRem(fontSize * 0.75),
+	xs: pxToRem(fontSize * 0.875),
+	s: pxToRem(fontSize * 0.9375),
+	m: pxToRem(fontSize),
+	l: pxToRem(fontSize * 1.125),
+	xl: pxToRem(fontSize * 1.375),
+	xxl: pxToRem(fontSize * 1.625),
 };
 
 const spacing = {
