@@ -1,5 +1,5 @@
 import {alpha} from '../utils/colors';
-import {checkTheme} from '../utils/theme';
+import {checkTheme} from '../utils/styleProps';
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
 const textTransformMap = {

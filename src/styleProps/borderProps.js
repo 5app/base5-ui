@@ -1,4 +1,4 @@
-import {checkTheme} from '../utils/theme';
+import {checkTheme} from '../utils/styleProps';
 
 import {borderValue} from '../mixins';
 

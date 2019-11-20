@@ -1,34 +1,42 @@
 import {getSpacing} from '../utils/spacing';
-import {checkTheme} from '../utils/theme';
+import {createStyleFunction} from '../utils/styleProps';
 
-function paddingProps(props) {
-	const {p, px, py, pt, pr, pb, pl, theme} = props;
-
-	checkTheme(theme);
-
-	return {
-		padding: p ? getSpacing(p, theme) : undefined,
-		paddingTop: py
-			? getSpacing(py, theme)
-			: pt
-			? getSpacing(pt, theme)
-			: undefined,
-		paddingRight: px
-			? getSpacing(px, theme)
-			: pr
-			? getSpacing(pr, theme)
-			: undefined,
-		paddingBottom: py
-			? getSpacing(py, theme)
-			: pb
-			? getSpacing(pb, theme)
-			: undefined,
-		paddingLeft: px
-			? getSpacing(px, theme)
-			: pl
-			? getSpacing(pl, theme)
-			: undefined,
-	};
-}
+const paddingProps = createStyleFunction([
+	{
+		styleProp: 'p',
+		properties: ['padding'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'pt',
+		properties: ['paddingTop'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'pr',
+		properties: ['paddingRight'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'pb',
+		properties: ['paddingBottom'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'pl',
+		properties: ['paddingLeft'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'px',
+		properties: ['paddingLeft', 'paddingRight'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'py',
+		properties: ['paddingTop', 'paddingBottom'],
+		getValue: getSpacing,
+	},
+]);
 
 export default paddingProps;

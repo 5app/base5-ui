@@ -1,5 +1,5 @@
 import {getSpacing} from '../utils/spacing';
-import {checkTheme} from '../utils/theme';
+import {checkTheme} from '../utils/styleProps';
 
 function positionProps(props) {
 	const {pos, position, top, left, bottom, right, z, theme} = props;
