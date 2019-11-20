@@ -53,7 +53,7 @@ function getStylePropRules(stylePropConfig, passedProps, breakpointIndex) {
 					typeof properties === 'function'
 						? properties(styleProp)
 						: properties;
-				if (styleProp !== undefined || styleProp !== null) {
+				if (styleProp !== undefined && styleProp !== null) {
 					definedProps.forEach(prop => {
 						rules[prop] = getValue(styleProp, passedProps.theme);
 					});
