@@ -21,17 +21,26 @@ const Text = styled.span`
 `;
 
 Text.propTypes = {
-	bold: PropTypes.bool,
+	bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
 	caps: PropTypes.oneOfType([
 		PropTypes.oneOf(['all', 'first']),
-		PropTypes.bool,
+		PropTypes.array,
 	]),
-	dimmed: PropTypes.bool,
-	display: PropTypes.oneOf(['block', 'inline', 'inline-block']),
-	fontSize: PropTypes.string,
-	lineHeight: PropTypes.number,
-	overflow: PropTypes.oneOf(['ellipsis', 'wrap']),
-	textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+	display: PropTypes.oneOfType([
+		PropTypes.oneOf(['block', 'inline', 'inline-block']),
+		PropTypes.array,
+	]),
+	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+	lineHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+	overflow: PropTypes.oneOfType([
+		PropTypes.oneOf(['ellipsis', 'wrap']),
+		PropTypes.array,
+	]),
+	textAlign: PropTypes.oneOfType([
+		PropTypes.oneOf(['left', 'center', 'right']),
+		PropTypes.array,
+	]),
 };
 
 // @component
