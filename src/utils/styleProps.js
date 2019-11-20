@@ -104,12 +104,19 @@ function getResponsiveRules(stylePropConfig, passedProps) {
  * to set, or a function to create such an array
  * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a
  * valid CSS property value
+ * @param {object} [baseRules] - Any basic/static CSS rules to add
  */
 
-function createStyleFunction(stylePropConfig) {
+function createStyleFunction(stylePropConfig, baseRules) {
 	return function styleFunction(props) {
 		checkTheme(props.theme);
 		const rules = getResponsiveRules(stylePropConfig, props);
+		if (baseRules) {
+			return {
+				...baseRules,
+				...rules,
+			};
+		}
 		return rules;
 	};
 }
