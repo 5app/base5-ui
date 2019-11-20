@@ -5,6 +5,7 @@ import {ellipsis, overflowWrap as wrap} from '../mixins';
 const textTransformMap = {
 	all: 'uppercase',
 	first: 'capitalize',
+	none: 'none',
 };
 
 const overflowStylesMap = {
@@ -37,7 +38,7 @@ const textProps = createStyleFunction([
 	{
 		styleProp: 'caps',
 		properties: ['textTransform'],
-		getValue: caps => (caps ? textTransformMap[caps] : 'none'),
+		getValue: caps => textTransformMap[caps],
 	},
 	{
 		styleProp: 'dimmed',

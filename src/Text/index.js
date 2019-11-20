@@ -23,7 +23,7 @@ const Text = styled.span`
 Text.propTypes = {
 	bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
 	caps: PropTypes.oneOfType([
-		PropTypes.oneOf(['all', 'first']),
+		PropTypes.oneOf(['all', 'first', 'none']),
 		PropTypes.array,
 	]),
 	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
