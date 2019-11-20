@@ -40,19 +40,24 @@ function getValueByIndex(prop, index = 0) {
 function getStylePropRules(stylePropConfig, passedProps, breakpointIndex) {
 	const rules = {};
 	stylePropConfig.forEach(
-		({styleProp: stylePropKey, properties, getValue}) => {
+		({styleProp: stylePropKey, properties, getValue, getRules}) => {
 			const styleProp = getValueByIndex(
 				passedProps[stylePropKey],
 				breakpointIndex
 			);
-			const definedProps =
-				typeof properties === 'function'
-					? properties(styleProp)
-					: properties;
-			if (styleProp) {
-				definedProps.forEach(prop => {
-					rules[prop] = getValue(styleProp, passedProps.theme);
-				});
+
+			if (typeof getRules === 'function') {
+				Object.assign(rules, getRules(styleProp));
+			} else {
+				const definedProps =
+					typeof properties === 'function'
+						? properties(styleProp)
+						: properties;
+				if (styleProp !== undefined || styleProp !== null) {
+					definedProps.forEach(prop => {
+						rules[prop] = getValue(styleProp, passedProps.theme);
+					});
+				}
 			}
 		}
 	);
