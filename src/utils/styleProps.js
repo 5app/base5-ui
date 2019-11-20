@@ -8,10 +8,14 @@ function checkTheme(theme) {
 
 /**
  * Retrieve a responsive style prop's value.
- * If prop is not an array, return raw value
+ * If prop is not an array, it means it's not responsive and only needs to be
+ * set at the base breakpoint (i.e. index === 0), so we return undefined for
+ * any index larger than 0.
  *
  * @param {string|number|Array} prop - Prop passed to the component
  * @param {number} index - index used to retrieve value if prop is an array
+ *
+ * @returns {string|number} - A CSS property value
  */
 
 function getValueByIndex(prop, index = 0) {
@@ -29,33 +33,34 @@ function getValueByIndex(prop, index = 0) {
  *
  * @param {object[]} stylePropConfig - Style prop configuration objects
  * @param {string} stylePropConfig[].styleProp - Name of the style prop
- * @param {Array|Function} stylePropConfig[].properties - Array of the CSS properties
- * to set, or a function to create such an array
- * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a
- * valid CSS property value
- * @param {object} passedProps
- * @param {number} breakpointIndex
+ * @param {Array} stylePropConfig[].properties - The CSS properties that the value should be applied to
+ * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a valid CSS property value.
+ * This function is only called when the prop's value is not null or undefined.
+ * @param {Function} stylePropConfig[].getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
+ * @param {object} componentProps - Props that the component was called with
+ * @param {number} breakpointIndex - If the passed prop is an array of responsive values, this number tells us which value to pick from the array
+ *
+ * @returns {object} - A CSS rule set
  */
 
-function getStylePropRules(stylePropConfig, passedProps, breakpointIndex) {
+function getStylePropRules(stylePropConfig, componentProps, breakpointIndex) {
 	const rules = {};
 	stylePropConfig.forEach(
 		({styleProp: stylePropKey, properties, getValue, getRules}) => {
 			const styleProp = getValueByIndex(
-				passedProps[stylePropKey],
+				componentProps[stylePropKey],
 				breakpointIndex
 			);
 
 			if (typeof getRules === 'function') {
-				Object.assign(rules, getRules(styleProp, passedProps.theme));
+				const rulesToAdd = getRules(styleProp, componentProps.theme);
+				if (rulesToAdd) {
+					Object.assign(rules, rulesToAdd);
+				}
 			} else {
-				const definedProps =
-					typeof properties === 'function'
-						? properties(styleProp)
-						: properties;
 				if (styleProp !== undefined && styleProp !== null) {
-					definedProps.forEach(prop => {
-						rules[prop] = getValue(styleProp, passedProps.theme);
+					properties.forEach(prop => {
+						rules[prop] = getValue(styleProp, componentProps.theme);
 					});
 				}
 			}
@@ -64,11 +69,11 @@ function getStylePropRules(stylePropConfig, passedProps, breakpointIndex) {
 	return rules;
 }
 
-function getResponsiveRules(stylePropConfig, passedProps) {
+function getResponsiveRules(stylePropConfig, componentProps) {
 	// Get baseline styles
-	const rules = getStylePropRules(stylePropConfig, passedProps, 0);
+	const rules = getStylePropRules(stylePropConfig, componentProps, 0);
 
-	const {breakpoints} = passedProps;
+	const {breakpoints} = componentProps;
 	if (!breakpoints) {
 		return rules;
 	}
@@ -77,11 +82,11 @@ function getResponsiveRules(stylePropConfig, passedProps) {
 	const bps = Array.isArray(breakpoints) ? breakpoints : [breakpoints];
 	bps.forEach((breakpoint, index) => {
 		const breakpointWidth =
-			passedProps.theme.globals.breakpoints[breakpoint] || breakpoint;
+			componentProps.theme.globals.breakpoints[breakpoint] || breakpoint;
 		const breakpointQuery = `@media screen and (min-width: ${breakpointWidth})`;
 		rules[breakpointQuery] = getStylePropRules(
 			stylePropConfig,
-			passedProps,
+			componentProps,
 			index + 1
 		);
 	});
@@ -90,21 +95,21 @@ function getResponsiveRules(stylePropConfig, passedProps) {
 }
 
 /**
- * Generates a style prop function that can be used directly in a styled
- * component, e.g.
+ *
+ * @param {object[]} stylePropConfig - Style prop configuration objects
+ * @param {string} stylePropConfig[].styleProp - Name of the style prop
+ * @param {Array} stylePropConfig[].properties - The CSS properties that the value should be applied to
+ * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a valid CSS property value.
+ * This function is only called when the prop's value is not null or undefined.
+ * @param {Function} stylePropConfig[].getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
+ * @param {object} [baseRules] - Any static CSS rules to add before the dynamic styleProp rules
+ *
+ * @returns {Function} - A responsive style prop function that can be used directly in a styled component, e.g.
  * ```
  * const MyLink = styled.a`
  *   ${myStyleProp}
  * `
  * ```
- *
- * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {string} stylePropConfig[].styleProp - Name of the style prop
- * @param {Array|Function} stylePropConfig[].properties - Array of the CSS properties
- * to set, or a function to create such an array
- * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a
- * valid CSS property value
- * @param {object} [baseRules] - Any basic/static CSS rules to add
  */
 
 function createStyleFunction(stylePropConfig, baseRules) {
