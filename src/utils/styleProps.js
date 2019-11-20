@@ -47,7 +47,7 @@ function getStylePropRules(stylePropConfig, passedProps, breakpointIndex) {
 			);
 
 			if (typeof getRules === 'function') {
-				Object.assign(rules, getRules(styleProp));
+				Object.assign(rules, getRules(styleProp, passedProps.theme));
 			} else {
 				const definedProps =
 					typeof properties === 'function'

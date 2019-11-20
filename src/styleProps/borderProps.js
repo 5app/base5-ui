@@ -1,5 +1,4 @@
-import {checkTheme} from '../utils/styleProps';
-
+import {createStyleFunction} from '../utils/styleProps';
 import {borderValue} from '../mixins';
 
 const borderKeys = {
@@ -9,18 +8,19 @@ const borderKeys = {
 	right: 'borderRight',
 };
 
-function borderProps(props) {
-	const {border, theme} = props;
-
-	checkTheme(theme);
-
-	if (!borderKeys[border]) {
-		return null;
-	}
-
-	return {
-		[borderKeys[border]]: borderValue(theme),
-	};
-}
+const borderProps = createStyleFunction([
+	{
+		styleProp: 'border',
+		getRules: (border, theme) => {
+			if (!borderKeys[border]) {
+				return null;
+			}
+			return {
+				border: 'none',
+				[borderKeys[border]]: borderValue(theme),
+			};
+		},
+	},
+]);
 
 export default borderProps;
