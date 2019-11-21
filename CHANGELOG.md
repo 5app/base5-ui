@@ -1,3 +1,10 @@
+## [6.11.1](https://github.com/5app/base5-ui/compare/v6.11.0...v6.11.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* **Icon:** fix 0 not being applied to scale prop ([1ebfde4](https://github.com/5app/base5-ui/commit/1ebfde47b9e8d3052b304cf3a4b44e79a2a8b0ca))
+
 # [6.11.0](https://github.com/5app/base5-ui/compare/v6.10.7...v6.11.0) (2019-11-21)
 
 
