@@ -51,7 +51,7 @@ Icon.propTypes = {
 	 * as the theme's `textDimStrength`. Useful when an icon's colour
 	 * looks too strong compared to surrounding text
 	 */
-	dimmed: PropTypes.string,
+	dimmed: PropTypes.bool,
 	/**
 	 * Display the icon in any valid CSS color. By default, icons
 	 * use the colour of their containing element (`currentColor`).
