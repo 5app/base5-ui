@@ -1,3 +1,22 @@
+# [6.11.0](https://github.com/5app/base5-ui/compare/v6.10.7...v6.11.0) (2019-11-21)
+
+
+### Bug Fixes
+
+* **styleProps:** Add array propType for Box & Text ([8b4c415](https://github.com/5app/base5-ui/commit/8b4c4155ea8f827866c0d2552a3c58476581faf1))
+* **styleProps:** Better caps prop override ([38fc99c](https://github.com/5app/base5-ui/commit/38fc99cae18fe7675d236ba090be8546684cb456))
+* **styleProps:** Fix buggy prop presence check ([9827cb7](https://github.com/5app/base5-ui/commit/9827cb7fb05af82d6ab2bf05a1dbee6d4ee4e3d2))
+
+
+### Features
+
+* **styleProps:** Responsive border prop ([c476215](https://github.com/5app/base5-ui/commit/c4762151c39d2c2828684cbc03ffafae201e3179))
+* **styleProps:** Responsive display props ([0c61e80](https://github.com/5app/base5-ui/commit/0c61e80d07f469c8e18173c36994ff81a9ab4d00))
+* **styleProps:** Responsive flex props ([e06b41c](https://github.com/5app/base5-ui/commit/e06b41c9bc679d1e872f4ec563a0463acb3bc645))
+* **styleProps:** Responsive position props ([360ce08](https://github.com/5app/base5-ui/commit/360ce08cf2c503b571223e924feafaf0ea3737cb))
+* **styleProps:** Responsive spacing props ([64f5f92](https://github.com/5app/base5-ui/commit/64f5f9291406868d508ae18d0b9bc01ac041c174))
+* **styleProps:** Responsive textProps ([46893f2](https://github.com/5app/base5-ui/commit/46893f2bc8f736dc8f591210c98bde92bd697e48))
+
 ## [6.10.7](https://github.com/5app/base5-ui/compare/v6.10.6...v6.10.7) (2019-11-19)
 
 
