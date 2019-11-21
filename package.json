@@ -44,7 +44,7 @@
 		"babel-plugin-styled-components": "^1.10.2",
 		"docz": "^2.0.0-rc.75",
 		"eslint": "^6.6.0",
-		"eslint-config-5app": "^0.7.8",
+		"eslint-config-5app": "^0.8.0",
 		"eslint-config-prettier": "^6.5.0",
 		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-jsx-a11y": "^6.2.3",
