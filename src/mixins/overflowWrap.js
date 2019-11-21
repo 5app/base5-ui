@@ -5,4 +5,11 @@ const overflowWrap = {
 	wordBreak: 'break-word',
 };
 
+export const overflowWrapReset = {
+	overflowWrap: 'normal',
+	wordWrap: 'normal',
+
+	wordBreak: 'normal',
+};
+
 export default overflowWrap;

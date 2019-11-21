@@ -1,34 +1,42 @@
 import {getSpacing} from '../utils/spacing';
-import {checkTheme} from '../utils/theme';
+import {createStyleFunction} from '../utils/styleProps';
 
-function marginProps(props) {
-	const {m, mx, my, mt, mr, mb, ml, theme} = props;
-
-	checkTheme(theme);
-
-	return {
-		margin: m ? getSpacing(m, theme) : undefined,
-		marginTop: my
-			? getSpacing(my, theme)
-			: mt
-			? getSpacing(mt, theme)
-			: undefined,
-		marginRight: mx
-			? getSpacing(mx, theme)
-			: mr
-			? getSpacing(mr, theme)
-			: undefined,
-		marginBottom: my
-			? getSpacing(my, theme)
-			: mb
-			? getSpacing(mb, theme)
-			: undefined,
-		marginLeft: mx
-			? getSpacing(mx, theme)
-			: ml
-			? getSpacing(ml, theme)
-			: undefined,
-	};
-}
+const marginProps = createStyleFunction([
+	{
+		styleProp: 'm',
+		properties: ['margin'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'mt',
+		properties: ['marginTop'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'mr',
+		properties: ['marginRight'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'mb',
+		properties: ['marginBottom'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'ml',
+		properties: ['marginLeft'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'mx',
+		properties: ['marginLeft', 'marginRight'],
+		getValue: getSpacing,
+	},
+	{
+		styleProp: 'my',
+		properties: ['marginTop', 'marginBottom'],
+		getValue: getSpacing,
+	},
+]);
 
 export default marginProps;
