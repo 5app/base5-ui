@@ -26,11 +26,12 @@ const Icon = forwardRef((props, ref) => {
 	} = props;
 
 	const Glyph = iconMap[name] || iconMap.x;
+	const hasScale = scale !== null && scale !== undefined;
 
 	return (
 		<Glyph
 			ref={ref}
-			scale={scale || sizeMap[size]}
+			scale={hasScale ? scale : sizeMap[size]}
 			spacingLeft={getSpacing(spacingLeft, theme)}
 			spacingRight={getSpacing(spacingRight, theme)}
 			{...otherProps}
