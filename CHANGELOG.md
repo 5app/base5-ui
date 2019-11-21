@@ -1,3 +1,10 @@
+# [6.12.0](https://github.com/5app/base5-ui/compare/v6.11.1...v6.12.0) (2019-11-21)
+
+
+### Features
+
+* **Icon:** New dimmed prop to lighten icons ([8472aad](https://github.com/5app/base5-ui/commit/8472aadcaf04ed857afe4ac12951bbced6fb15ad))
+
 ## [6.11.1](https://github.com/5app/base5-ui/compare/v6.11.0...v6.11.1) (2019-11-21)
 
 
