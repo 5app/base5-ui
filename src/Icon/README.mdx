@@ -5,6 +5,7 @@ menu: Components
 
 import {Playground, Props} from 'docz';
 import Icon from './';
+import Text from '../Text';
 import DiskIcon from '../icons/Disk';
 import PlusIcon from '../icons/Plus';
 import SearchIcon from '../icons/Search';
@@ -22,7 +23,10 @@ Using the `<Icon />` wrapper component allows you to dynamically display icons b
 <Playground>
 	<Icon name="disk" />
 	<Icon name="plus" />
-	<Icon name="search" />
+	<Text as="div" size="xxl">
+		<Icon name="search" />
+		<Icon name="search" scale={0} />
+	</Text>
 </Playground>
 
 ## Using individual icons
@@ -51,11 +55,11 @@ The following props are available on both the individual icon components as well
 
 ## Aligning icons with text
 
-When placed next to or inside of text, icons tend to sit a bit too low compared to the text's baseline. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text.
+When placed next to or inside of text, icons tend to sit a bit too low compared to the text's baseline. They also often look darker than text, even if they "technically" have the same colour. The props `vAlign` and `dimmed` exist to compensate for these issues. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text. Use `dimmed` to make the icon slightly transparent to match the text's appearance.
 
 <Playground>
-	<PlusIcon /> Without vAlign
+	<PlusIcon /> Without vAlign and undimmed
 	<br />
 	<br />
-	<PlusIcon vAlign /> With vAlign
+	<PlusIcon vAlign dimmed /> With vAlign and dimmed
 </Playground>

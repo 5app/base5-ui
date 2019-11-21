@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 import {pxToRem, pxToEm} from '../utils/units';
 
@@ -18,12 +18,12 @@ const Svg = styled.svg.attrs({
 
 	${p =>
 		p.spacingLeft &&
-		css`
+		`
 			margin-left: ${p.spacingLeft};
 		`}
 	${p =>
 		p.spacingRight &&
-		css`
+		`
 			margin-right: ${p.spacingRight};
 		`}
 
@@ -32,10 +32,16 @@ const Svg = styled.svg.attrs({
 
 	${p =>
 		p.vAlign &&
-		css`
+		`
 			/* Use to align icons with surrounding body text */
 			position: relative;
 			top: -0.12em;
+		`}
+
+	${p =>
+		p.dimmed &&
+		`
+			opacity: ${p.theme.textDimStrength};
 		`}
 `;
 
@@ -44,6 +50,7 @@ Svg.defaultProps = {
 };
 
 Svg.propTypes = {
+	dimmed: PropTypes.bool,
 	scale: PropTypes.number,
 	vAlign: PropTypes.bool,
 	spacingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),

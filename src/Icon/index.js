@@ -47,6 +47,12 @@ Icon.defaultProps = {
 
 Icon.propTypes = {
 	/**
+	 * Set the opacity of the icon to the value specified
+	 * as the theme's `textDimStrength`. Useful when an icon's colour
+	 * looks too strong compared to surrounding text
+	 */
+	dimmed: PropTypes.string,
+	/**
 	 * Display the icon in any valid CSS color. By default, icons
 	 * use the colour of their containing element (`currentColor`).
 	 */
