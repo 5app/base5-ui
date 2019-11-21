@@ -1,3 +1,4 @@
+import {createStyleFunction} from '../utils/styleProps';
 import {pxToRem} from '../utils/units';
 
 export const alignMap = {
@@ -8,19 +9,37 @@ export const alignMap = {
 	right: 'flex-end',
 };
 
-function flexProps(props) {
-	const {flexAlign, basis, grow, shrink} = props;
+const baseRules = {
+	/* Reset flex to */
+	flex: 'none',
+	/* Prevent overflowing content from expanding flex items */
+	minWidth: 0,
+};
 
-	return {
-		/* Reset flex to */
-		flex: 'none',
-		/* Prevent overflowing content from expanding flex items */
-		minWidth: 0,
-		flexBasis: basis ? pxToRem(basis) : undefined,
-		flexGrow: grow ? 1 : undefined,
-		flexShrink: shrink ? 1 : undefined,
-		alignSelf: alignMap[flexAlign] || flexAlign,
-	};
-}
+const flexProps = createStyleFunction(
+	[
+		{
+			styleProp: 'basis',
+			properties: ['flexBasis'],
+			getValue: pxToRem,
+		},
+		{
+			styleProp: 'grow',
+			properties: ['flexGrow'],
+			getValue: value => Number(value),
+		},
+		{
+			styleProp: 'shrink',
+			properties: ['flexShrink'],
+			getValue: value => Number(value),
+		},
+		{
+			styleProp: 'flexAlign',
+			properties: ['alignSelf'],
+			getValue: value => alignMap[value] || value,
+		},
+	],
+	baseRules
+);
 
 export default flexProps;

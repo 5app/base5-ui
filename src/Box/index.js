@@ -22,23 +22,53 @@ const Box = styled.div`
 `;
 
 Box.propTypes = {
-	position: PropTypes.oneOf(['static', 'relative', 'absolute', 'fixed']),
-	display: PropTypes.oneOf(['block', 'inline', 'inline-block']),
-	border: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-	flexAlign: PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
-	basis: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	grow: PropTypes.bool,
-	shrink: PropTypes.bool,
-	bold: PropTypes.bool,
+	position: PropTypes.oneOfType([
+		PropTypes.oneOf(['static', 'relative', 'absolute', 'fixed']),
+		PropTypes.array,
+	]),
+	display: PropTypes.oneOfType([
+		PropTypes.oneOf(['block', 'inline', 'inline-block']),
+		PropTypes.array,
+	]),
+	border: PropTypes.oneOfType([
+		PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+		PropTypes.array,
+	]),
+	flexAlign: PropTypes.oneOfType([
+		PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
+		PropTypes.array,
+	]),
+	basis: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	grow: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.number,
+		PropTypes.array,
+	]),
+	shrink: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.number,
+		PropTypes.array,
+	]),
+	bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
 	caps: PropTypes.oneOfType([
 		PropTypes.oneOf(['all', 'first']),
-		PropTypes.bool,
+		PropTypes.array,
 	]),
-	dimmed: PropTypes.bool,
-	fontSize: PropTypes.string,
-	lineHeight: PropTypes.number,
-	overflow: PropTypes.oneOf(['ellipsis', 'wrap']),
-	textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+	lineHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+	overflow: PropTypes.oneOfType([
+		PropTypes.oneOf(['ellipsis', 'wrap']),
+		PropTypes.array,
+	]),
+	textAlign: PropTypes.oneOfType([
+		PropTypes.oneOf(['left', 'center', 'right']),
+		PropTypes.array,
+	]),
 };
 
 // @component
