@@ -6,7 +6,9 @@ function remToPx(rem) {
 }
 
 function pxToRelative(px, baseFontSize, unitName) {
-	return px ? px / baseFontSize + unitName : undefined;
+	if (px === 0) return '0';
+	if (!px) return undefined;
+	return px / baseFontSize + unitName;
 }
 
 const pxToRem = px => pxToRelative(px, rootFontSize, 'rem');
