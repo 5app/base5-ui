@@ -9,7 +9,7 @@ import {
 	textProps,
 } from '../styleProps';
 
-import {alignMap} from '../styleProps/flexProps';
+import {alignMap} from '../styleProps/flexItemProps';
 
 import Box from '../Box';
 

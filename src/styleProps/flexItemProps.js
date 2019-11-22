@@ -16,7 +16,7 @@ const baseRules = {
 	minWidth: 0,
 };
 
-const flexProps = createStyleFunction(
+const flexItemProps = createStyleFunction(
 	[
 		{
 			styleProp: 'basis',
@@ -42,4 +42,4 @@ const flexProps = createStyleFunction(
 	baseRules
 );
 
-export default flexProps;
+export default flexItemProps;

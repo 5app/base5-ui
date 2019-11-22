@@ -1,6 +1,6 @@
 import borderProps from './borderProps';
 import displayProps from './displayProps';
-import flexProps from './flexProps';
+import flexItemProps from './flexItemProps';
 import paddingProps from './paddingProps';
 import positionProps from './positionProps';
 import marginProps from './marginProps';
@@ -9,7 +9,7 @@ import textProps from './textProps';
 export {
 	borderProps,
 	displayProps,
-	flexProps,
+	flexItemProps,
 	paddingProps,
 	positionProps,
 	marginProps,

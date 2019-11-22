@@ -7,7 +7,7 @@ import {pxToRem} from '../utils/units';
 import {fillParent} from '../mixins';
 
 import {positionProps, marginProps} from '../styleProps';
-import {alignMap} from '../styleProps/flexProps';
+import {alignMap} from '../styleProps/flexItemProps';
 
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
