@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import classNames from 'classnames';
@@ -50,7 +50,7 @@ const ButtonCore = forwardRef((props, ref) => {
 		isActive,
 		isDisabled: isDisabledProp,
 		disabled,
-		onClick,
+		onClick: onClickProp,
 		className,
 		...otherProps
 	} = props;
@@ -72,6 +72,18 @@ const ButtonCore = forwardRef((props, ref) => {
 	 */
 	const isDisabledLink = !isButton && isDisabled;
 
+	const onClick = useCallback(
+		event => {
+			if (isDisabled) {
+				event.stopPropagation();
+				event.preventDefault();
+			} else if (onClickProp) {
+				onClickProp(event);
+			}
+		},
+		[isDisabled, onClickProp]
+	);
+
 	return (
 		<Clickable
 			{...otherProps}
@@ -79,7 +91,7 @@ const ButtonCore = forwardRef((props, ref) => {
 			as={isDisabledLink ? 'span' : as}
 			type={defaultType}
 			aria-disabled={isButton && isDisabled ? 'true' : undefined}
-			onClick={isDisabled ? undefined : onClick}
+			onClick={onClick}
 			className={classes}
 		/>
 	);
