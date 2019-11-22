@@ -1,3 +1,12 @@
+## [6.12.1](https://github.com/5app/base5-ui/compare/v6.12.0...v6.12.1) (2019-11-22)
+
+
+### Bug Fixes
+
+* **Button:** Fix triggerable disabled button ([bd16b0a](https://github.com/5app/base5-ui/commit/bd16b0a7ddd1fb08e2b4b44ee70af1758e17f348))
+* **Icon:** Fix wrong propType for dimmed prop ([1557260](https://github.com/5app/base5-ui/commit/1557260e2820c3788df6e64eb8813fdd9ca0c077))
+* **utils:** Better handling of 0 in pxToRem/pxToEm ([dc1a2f3](https://github.com/5app/base5-ui/commit/dc1a2f3d789900b2aa84ade967a1575a56a46479))
+
 # [6.12.0](https://github.com/5app/base5-ui/compare/v6.11.1...v6.12.0) (2019-11-21)
 
 
