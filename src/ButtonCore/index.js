@@ -23,6 +23,10 @@ const Clickable = styled.button`
 
 	appearance: none;
 
+	&.is-disabled {
+		pointer-events: none;
+	}
+
 	&:focus:not(.focus-visible) {
 		outline: none;
 	}
@@ -46,6 +50,7 @@ const ButtonCore = forwardRef((props, ref) => {
 		isActive,
 		isDisabled: isDisabledProp,
 		disabled,
+		onClick,
 		className,
 		...otherProps
 	} = props;
@@ -73,8 +78,8 @@ const ButtonCore = forwardRef((props, ref) => {
 			ref={ref}
 			as={isDisabledLink ? 'span' : as}
 			type={defaultType}
-			disabled={isButton && disabled}
 			aria-disabled={isButton && isDisabled ? 'true' : undefined}
+			onClick={isDisabled ? undefined : onClick}
 			className={classes}
 		/>
 	);
@@ -119,7 +124,6 @@ ButtonCore.propTypes = {
 	isDisabled: PropTypes.bool,
 	/**
 	 * An alias for the `isDisabled` prop, for alignment with the native html attribute.
-	 * Only use this if you for some reason really want to hide the element to screen reader users.
 	 */
 	disabled: PropTypes.bool,
 };
