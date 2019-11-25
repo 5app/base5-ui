@@ -1,3 +1,10 @@
+## [6.13.1](https://github.com/5app/base5-ui/compare/v6.13.0...v6.13.1) (2019-11-25)
+
+
+### Bug Fixes
+
+* **InlineList:** Accept display prop on wrapper ([eeea2d2](https://github.com/5app/base5-ui/commit/eeea2d2ecb41f01abbad0a1cb173fcfab6ab5d9b))
+
 # [6.13.0](https://github.com/5app/base5-ui/compare/v6.12.2...v6.13.0) (2019-11-25)
 
 
