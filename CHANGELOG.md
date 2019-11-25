@@ -1,3 +1,10 @@
+# [6.13.0](https://github.com/5app/base5-ui/compare/v6.12.2...v6.13.0) (2019-11-25)
+
+
+### Features
+
+* **InlineList:** Allow overriding display prop ([05e60e3](https://github.com/5app/base5-ui/commit/05e60e359fc69e67bbe47f23743332092ec1e3f4))
+
 ## [6.12.2](https://github.com/5app/base5-ui/compare/v6.12.1...v6.12.2) (2019-11-25)
 
 
