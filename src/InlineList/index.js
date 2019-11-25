@@ -57,13 +57,13 @@ const Wrapper = styled.ul`
 	}
 `;
 
-const InlineList = ({children, display, ...otherProps}) => {
+const InlineList = ({as, itemAs, children, display, ...otherProps}) => {
 	return (
-		<Wrapper {...otherProps}>
+		<Wrapper as={as} {...otherProps}>
 			{React.Children.map(children, (child, i) => {
 				if (child) {
 					return (
-						<Item key={i} display={display}>
+						<Item key={i} as={itemAs || as} display={display}>
 							{child}
 						</Item>
 					);
@@ -77,6 +77,8 @@ InlineList.propTypes = {
 	 * Vertical alignment of list items
 	 */
 	align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+	as: PropTypes.elementType,
+	itemAs: PropTypes.elementType,
 	/**
 	 * Change the display prop of each wrapped Item, must be either
 	 * 'inline-block' (default) or 'inline'. The latter is useful to
