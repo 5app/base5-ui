@@ -5,9 +5,12 @@ import styled, {css} from 'styled-components';
 import {getSpacing} from '../utils/spacing';
 
 const Item = styled.li`
-	display: inline-block;
+	display: ${p => p.display || 'inline-block'};
 	max-width: 100%;
 `;
+Item.propTypes = {
+	display: PropTypes.oneOf(['inline', 'inline-block']),
+};
 
 const getSpacingFromTheme = p => getSpacing(p.spacing, p.theme);
 
