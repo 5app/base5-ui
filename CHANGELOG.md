@@ -1,3 +1,10 @@
+## [6.12.2](https://github.com/5app/base5-ui/compare/v6.12.1...v6.12.2) (2019-11-25)
+
+
+### Bug Fixes
+
+* **ButtonCore:** Fix missing events when disabled ([9891c26](https://github.com/5app/base5-ui/commit/9891c26ef1a3f7c710f89d9822e8701befbd3a25))
+
 ## [6.12.1](https://github.com/5app/base5-ui/compare/v6.12.0...v6.12.1) (2019-11-22)
 
 
