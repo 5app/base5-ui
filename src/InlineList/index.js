@@ -57,12 +57,16 @@ const Wrapper = styled.ul`
 	}
 `;
 
-const InlineList = ({children, ...otherProps}) => {
+const InlineList = ({children, display, ...otherProps}) => {
 	return (
 		<Wrapper {...otherProps}>
 			{React.Children.map(children, (child, i) => {
 				if (child) {
-					return <Item key={i}>{child}</Item>;
+					return (
+						<Item key={i} display={display}>
+							{child}
+						</Item>
+					);
 				}
 			})}
 		</Wrapper>
@@ -73,6 +77,12 @@ InlineList.propTypes = {
 	 * Vertical alignment of list items
 	 */
 	align: PropTypes.oneOf(['top', 'middle', 'bottom', 'baseline']),
+	/**
+	 * Change the display prop of each wrapped Item, must be either
+	 * 'inline-block' (default) or 'inline'. The latter is useful to
+	 * allow line-breaks within items
+	 */
+	display: PropTypes.oneOf(['inline', 'inline-block']),
 	/**
 	 * Spacing as t-shirt theme value or number (pixels)
 	 */
