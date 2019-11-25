@@ -23,10 +23,6 @@ const Clickable = styled.button`
 
 	appearance: none;
 
-	&.is-disabled {
-		pointer-events: none;
-	}
-
 	&:focus:not(.focus-visible) {
 		outline: none;
 	}
