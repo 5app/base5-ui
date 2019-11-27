@@ -10,6 +10,7 @@ function ViewMoreText(props) {
 		truncateBy = 110,
 		viewMoreLabel = 'View more',
 		viewLessLabel = 'View less',
+		...otherProps
 	} = props;
 
 	const [showMore, setShowmore] = useState(false);
@@ -24,7 +25,7 @@ function ViewMoreText(props) {
 		<Fragment>
 			{truncateText(content, showMore ? null : truncateBy)}{' '}
 			{shouldTextBeTruncated && (
-				<TextLink as="button" onClick={toggleShowMore}>
+				<TextLink as="button" {...otherProps} onClick={toggleShowMore}>
 					{showMore ? viewLessLabel : viewMoreLabel}
 				</TextLink>
 			)}
