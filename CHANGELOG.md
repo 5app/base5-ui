@@ -1,3 +1,10 @@
+# [6.14.0](https://github.com/5app/base5-ui/compare/v6.13.1...v6.14.0) (2019-11-25)
+
+
+### Features
+
+* **InlineList:** Allow custom list elements ([825446e](https://github.com/5app/base5-ui/commit/825446eb8c18af0dbce9233b57e2e4eff314e7b1))
+
 ## [6.13.1](https://github.com/5app/base5-ui/compare/v6.13.0...v6.13.1) (2019-11-25)
 
 
