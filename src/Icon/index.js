@@ -41,10 +41,6 @@ const Icon = forwardRef((props, ref) => {
 
 Icon.displayName = 'Icon';
 
-Icon.defaultProps = {
-	scale: 1,
-};
-
 Icon.propTypes = {
 	/**
 	 * Set the opacity of the icon to the value specified
