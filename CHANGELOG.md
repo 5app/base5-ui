@@ -1,3 +1,10 @@
+# [6.15.0](https://github.com/5app/base5-ui/compare/v6.14.0...v6.15.0) (2019-11-27)
+
+
+### Features
+
+* **ViewMoreText:** Pass extra props to button ([a5401a9](https://github.com/5app/base5-ui/commit/a5401a995bb4df0e2c26f90c4172b3546bfa1bad))
+
 # [6.14.0](https://github.com/5app/base5-ui/compare/v6.13.1...v6.14.0) (2019-11-25)
 
 
