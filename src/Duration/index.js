@@ -7,7 +7,7 @@ function getDefaultLabel(minutes, hours) {
 
 	const readableMins = `${minutes} minute${addPluralS(minutes)}`;
 	if (hours) {
-		return `${hours} hour${addPluralS(minutes)}, ${readableMins}`;
+		return `${hours} hour${addPluralS(hours)}, ${readableMins}`;
 	} else return readableMins;
 }
 
