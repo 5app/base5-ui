@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getDuration from './getDuration';
 
-function getDefaultLabel(minutes, hours) {
-	const addPluralS = count => (count === 1 ? '' : 's');
+function zeroPad(number) {
+	if (number < 10) {
+		return String(number).padStart(2, '0');
+	} else return number;
+}
 
+const addPluralS = count => (count === 1 ? '' : 's');
+
+function getDefaultLabel(minutes, hours) {
 	const readableMins = `${minutes} minute${addPluralS(minutes)}`;
 	if (hours) {
 		return `${hours} hour${addPluralS(hours)}, ${readableMins}`;
@@ -15,7 +21,9 @@ function Duration(props) {
 	const {value, getLabel, as: Component, ...otherProps} = props;
 	const {hours, minutes, seconds} = getDuration(value);
 
-	const duration = hours ? [hours, minutes, seconds] : [minutes, seconds];
+	const duration = hours
+		? [hours, zeroPad(minutes), zeroPad(seconds)]
+		: [minutes, zeroPad(seconds)];
 
 	return (
 		<Component
