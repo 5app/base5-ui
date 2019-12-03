@@ -1,3 +1,10 @@
+## [6.15.1](https://github.com/5app/base5-ui/compare/v6.15.0...v6.15.1) (2019-11-29)
+
+
+### Bug Fixes
+
+* **Icon:** Fix icon size prop being ignored ([0be173e](https://github.com/5app/base5-ui/commit/0be173e7259cd16d9914cdcf173b1b9ad7cb2898))
+
 # [6.15.0](https://github.com/5app/base5-ui/compare/v6.14.0...v6.15.0) (2019-11-27)
 
 
