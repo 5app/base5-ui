@@ -8,7 +8,9 @@ import Duration from './';
 
 # Duration
 
-A simple component that renders a duration (e.g. of a video) in the format `m:s` or `h:m:s` with an accessible label. Takes a `value` prop in seconds.
+A simple component for rendering a duration (e.g. of a video) with an accessible label. Takes a `value` prop in seconds.
+
+By default, the duration is rendered "YouTube-style" in the format `m:s` or `h:m:s`, but you can pass a render function to the children prop to easily create a custom readout.
 
 ## Examples
 
@@ -23,7 +25,15 @@ A simple component that renders a duration (e.g. of a video) in the format `m:s`
 	<br />
 	<Duration value={1104} />
 	<br />
-	<Duration value={7329} />
+	<Duration value={7729} />
+	<br />
+	<Duration value={7729}>
+		{dur => `${dur.hours}h ${dur.minutes}m ${dur.seconds}s`}
+	</Duration>
+	<br />
+	<Duration value={7729}>{dur => `${dur.fullHours} hours`}</Duration>
+	<br />
+	<Duration value={7729}>{dur => `${dur.fullMinutes} mins`}</Duration>
 </Playground>
 
 ## Props

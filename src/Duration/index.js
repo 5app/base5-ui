@@ -17,26 +17,33 @@ function getDefaultLabel(minutes, hours) {
 	} else return readableMins;
 }
 
-function Duration(props) {
-	const {value, getLabel, as: Component, ...otherProps} = props;
-	const {hours, minutes, seconds} = getDuration(value);
+function getDefaultChildren(duration) {
+	const {hours, minutes, seconds} = duration;
 
-	const duration = hours
+	const durationFragments = hours
 		? [hours, zeroPad(minutes), zeroPad(seconds)]
 		: [minutes, zeroPad(seconds)];
+
+	return durationFragments.join(':');
+}
+
+function Duration(props) {
+	const {children, value, getLabel, as: Component, ...otherProps} = props;
+	const duration = getDuration(value);
 
 	return (
 		<Component
 			{...otherProps}
-			aria-label={getLabel(Number(minutes), Number(hours))}
+			aria-label={getLabel(duration.minutes, duration.hours)}
 		>
-			{duration.join(':')}
+			{children(duration)}
 		</Component>
 	);
 }
 
 Duration.defaultProps = {
 	as: 'span',
+	children: getDefaultChildren,
 	getLabel: getDefaultLabel,
 	value: 0,
 };
@@ -44,6 +51,12 @@ Duration.defaultProps = {
 Duration.propTypes = {
 	/** Change the element rendered by the component */
 	as: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+	/**
+	 * Render function to customise the duration readout.
+	 * Is passed an object with the fields hours, minutes, seconds,
+	 * fullHours, and fullMinutes
+	 */
+	children: PropTypes.func,
 	/** Customise the accessible label, i.e. for localisation */
 	getLabel: PropTypes.func,
 	/** Duration in seconds */
