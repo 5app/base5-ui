@@ -1,3 +1,15 @@
+# [6.16.0](https://github.com/5app/base5-ui/compare/v6.15.1...v6.16.0) (2019-12-03)
+
+
+### Bug Fixes
+
+* **Duration:** Fixed pluralisation for hours label ([01038b7](https://github.com/5app/base5-ui/commit/01038b7c0260f2662959d26fbaa9d97bf8ef0b22))
+
+
+### Features
+
+* **Duration:** New customisable time rendering 🎉 ([d53fd3d](https://github.com/5app/base5-ui/commit/d53fd3d170fd5e164dfb49ce19f45d346282e7e1))
+
 ## [6.15.1](https://github.com/5app/base5-ui/compare/v6.15.0...v6.15.1) (2019-11-29)
 
 
