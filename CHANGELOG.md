@@ -1,3 +1,10 @@
+# [6.17.0](https://github.com/5app/base5-ui/compare/v6.16.0...v6.17.0) (2020-01-09)
+
+
+### Features
+
+* New mergeRefs utility for merging react refs ([cac28c5](https://github.com/5app/base5-ui/commit/cac28c5d2ef035238dd6c121b0ec300717eef49a))
+
 # [6.16.0](https://github.com/5app/base5-ui/compare/v6.15.1...v6.16.0) (2019-12-03)
 
 
