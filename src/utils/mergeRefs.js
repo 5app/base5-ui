@@ -1,1 +1,3 @@
-export {default as mergeRefs} from 'react-merge-refs';
+import mergeRefs from 'react-merge-refs';
+
+export default mergeRefs;
