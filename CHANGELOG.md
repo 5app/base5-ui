@@ -1,3 +1,10 @@
+## [6.17.1](https://github.com/5app/base5-ui/compare/v6.17.0...v6.17.1) (2020-01-09)
+
+
+### Bug Fixes
+
+* Fix broken import ([30adbfc](https://github.com/5app/base5-ui/commit/30adbfcdee284a6a18f4c18724fc906df813562e))
+
 # [6.17.0](https://github.com/5app/base5-ui/compare/v6.16.0...v6.17.0) (2020-01-09)
 
 
