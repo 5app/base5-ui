@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "6.15.1",
+	"version": "6.16.0",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -42,7 +42,7 @@
 		"@testing-library/react": "^9.3.1",
 		"babel-eslint": "^10.0.2",
 		"babel-plugin-styled-components": "^1.10.2",
-		"docz": "^2.0.0-rc.75",
+		"docz": "^2.2.0",
 		"eslint": "^6.6.0",
 		"eslint-config-5app": "^0.8.0",
 		"eslint-config-prettier": "^6.5.0",
@@ -52,7 +52,7 @@
 		"eslint-plugin-react": "^7.16.0",
 		"eslint-plugin-react-hooks": "^2.2.0",
 		"gh-pages": "^2.1.1",
-		"husky": "^3.1.0",
+		"husky": "^4.0.3",
 		"jest": "23.1.0",
 		"jest-dom": "3.5.0",
 		"pixo": "^1.1.2",
