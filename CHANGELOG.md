@@ -1,3 +1,10 @@
+## [6.17.2](https://github.com/5app/base5-ui/compare/v6.17.1...v6.17.2) (2020-01-09)
+
+
+### Bug Fixes
+
+* Export mergeRefs util as default export ([c819ec0](https://github.com/5app/base5-ui/commit/c819ec02f4569751e991700d97893e220974e182))
+
 ## [6.17.1](https://github.com/5app/base5-ui/compare/v6.17.0...v6.17.1) (2020-01-09)
 
 
