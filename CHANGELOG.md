@@ -1,3 +1,10 @@
+## [6.17.3](https://github.com/5app/base5-ui/compare/v6.17.2...v6.17.3) (2020-01-10)
+
+
+### Bug Fixes
+
+* **Button:** Apply overflow: visible for IE11 ([f0b184a](https://github.com/5app/base5-ui/commit/f0b184abfe26eeea4b0faa17f782d73fbfd26d01))
+
 ## [6.17.2](https://github.com/5app/base5-ui/compare/v6.17.1...v6.17.2) (2020-01-09)
 
 
