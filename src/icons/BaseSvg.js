@@ -7,6 +7,7 @@ const iconSize = 18;
 
 const Svg = styled.svg.attrs({
 	role: 'presentation',
+	focusable: 'false',
 })`
 	display: inline-block;
 	vertical-align: middle;
