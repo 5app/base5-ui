@@ -3,7 +3,7 @@ import {render, cleanup} from '@testing-library/react';
 import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
 import TextLink from '.';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 describe('TextLink', () => {
 	afterEach(cleanup);

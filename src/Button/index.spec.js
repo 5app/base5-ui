@@ -6,7 +6,7 @@ import Button from '.';
 import {pxToRem} from '../utils/units';
 import {alpha} from '../utils/colors';
 import theme from '../theme';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 describe('Button', () => {
 	afterEach(cleanup);
@@ -124,20 +124,20 @@ describe('Button', () => {
 		const {globals} = theme;
 
 		expect(regular).toHaveStyle(`
-			padding: ${pxToRem(12)}
-			font-size: ${globals.typeScale.m}
+			padding: ${pxToRem(12)};
+			font-size: ${globals.typeScale.m};
 		`);
 		expect(large).toHaveStyle(`
-			padding: ${pxToRem(19)}
-			font-size: ${globals.typeScale.m}
+			padding: ${pxToRem(19)};
+			font-size: ${globals.typeScale.m};
 		`);
 		expect(medium).toHaveStyle(`
-			padding: ${pxToRem(8)}
-			font-size: ${globals.typeScale.s}
+			padding: ${pxToRem(8)};
+			font-size: ${globals.typeScale.s};
 		`);
 		expect(small).toHaveStyle(`
-			padding: ${pxToRem(5)}
-			font-size: ${globals.typeScale.xs}
+			padding: ${pxToRem(5)};
+			font-size: ${globals.typeScale.xs};
 		`);
 	});
 

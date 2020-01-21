@@ -4,7 +4,7 @@ import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
 import InlineList from '.';
 import theme from '../theme';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 describe('InlineList', () => {
 	afterEach(cleanup);

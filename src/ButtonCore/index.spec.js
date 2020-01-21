@@ -4,7 +4,7 @@ import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
 import ButtonCore from '.';
 import RouterLink from './routerLinkForReadme';
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 describe('ButtonCore', () => {
 	afterEach(cleanup);
