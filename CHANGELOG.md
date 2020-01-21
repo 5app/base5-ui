@@ -1,3 +1,10 @@
+## [6.17.4](https://github.com/5app/base5-ui/compare/v6.17.3...v6.17.4) (2020-01-15)
+
+
+### Bug Fixes
+
+* **Icons:** Prevent icons from being focusable in IE11 ([e339d48](https://github.com/5app/base5-ui/commit/e339d487fa296bafb9aa6175a9821c380d2e8c1a))
+
 ## [6.17.3](https://github.com/5app/base5-ui/compare/v6.17.2...v6.17.3) (2020-01-10)
 
 

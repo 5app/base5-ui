@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "6.17.3",
+	"version": "6.17.4",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -38,7 +38,7 @@
 		"@commitlint/cli": "^8.2.0",
 		"@commitlint/config-conventional": "^8.2.0",
 		"@semantic-release/changelog": "^3.0.5",
-		"@semantic-release/git": "^7.0.17",
+		"@semantic-release/git": "^8.0.0",
 		"@testing-library/react": "^9.3.1",
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.0.2",
@@ -62,12 +62,12 @@
 		"react-docgen-annotation-resolver": "^2.0.0",
 		"react-dom": "^16.11.0",
 		"semantic-release": "^16.0.0",
-		"styled-components": "^4.4.1"
+		"styled-components": "^5.0.0"
 	},
 	"peerDependencies": {
 		"react": "^16.11.0",
 		"react-dom": "^16.11.0",
-		"styled-components": "^4.4.1"
+		"styled-components": "^5.0.0"
 	},
 	"dependencies": {
 		"chartist": "^0.11.3",
