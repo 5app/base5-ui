@@ -38,7 +38,7 @@
 		"@commitlint/cli": "^8.2.0",
 		"@commitlint/config-conventional": "^8.2.0",
 		"@semantic-release/changelog": "^3.0.5",
-		"@semantic-release/git": "^8.0.0",
+		"@semantic-release/git": "^9.0.0",
 		"@testing-library/react": "^9.3.1",
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.0.2",
@@ -61,7 +61,7 @@
 		"react": "^16.11.0",
 		"react-docgen-annotation-resolver": "^2.0.0",
 		"react-dom": "^16.11.0",
-		"semantic-release": "^16.0.0",
+		"semantic-release": "^17.0.0",
 		"styled-components": "^5.0.0"
 	},
 	"peerDependencies": {
