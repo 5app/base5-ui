@@ -7,35 +7,60 @@ import TextLink from '../TextLink';
 function ViewMoreText(props) {
 	const {
 		content,
-		truncateBy = 110,
-		viewMoreLabel = 'View more',
-		viewLessLabel = 'View less',
+		maxLength,
+		tolerance,
+		viewMoreLabel,
+		viewLessLabel,
 		...otherProps
 	} = props;
 
-	const [showMore, setShowmore] = useState(false);
+	const [showFullText, setShowFullText] = useState(false);
 
 	function toggleShowMore() {
-		setShowmore(prevState => !prevState);
+		setShowFullText(prevState => !prevState);
 	}
 
-	const shouldTextBeTruncated = content && content.length > truncateBy;
+	const contentLength = (content && content.length) || 0;
+
+	const shouldTextBeTruncated = contentLength > maxLength + tolerance;
 
 	return (
 		<Fragment>
-			{truncateText(content, showMore ? null : truncateBy)}{' '}
+			{truncateText(
+				content,
+				!showFullText && shouldTextBeTruncated ? maxLength : null
+			)}{' '}
 			{shouldTextBeTruncated && (
 				<TextLink as="button" {...otherProps} onClick={toggleShowMore}>
-					{showMore ? viewLessLabel : viewMoreLabel}
+					{showFullText ? viewLessLabel : viewMoreLabel}
 				</TextLink>
 			)}
 		</Fragment>
 	);
 }
 
+ViewMoreText.defaultProps = {
+	tolerance: 30,
+	viewMoreLabel: 'View more',
+	viewLessLabel: 'View less',
+};
+
 ViewMoreText.propTypes = {
+	/** The text content to be truncated. */
 	content: PropTypes.string.isRequired,
-	truncateBy: PropTypes.number,
+	/**
+	 * The character count at which the content will be
+	 * truncated, and where the 'View more' button will
+	 * be displayed.
+	 * */
+	maxLength: PropTypes.number.isRequired,
+	/**
+	 * Tolerance for the maxLength value. If truncating
+	 * the content would only reduce its length by a number
+	 * smaller than this, the full text will be shown instead.
+	 * Set to 0 to disable this and make maxLength a hard limit.
+	 */
+	tolerance: PropTypes.number,
 	viewMoreLabel: PropTypes.string,
 	viewLessLabel: PropTypes.string,
 };
