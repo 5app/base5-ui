@@ -1,3 +1,16 @@
+# [7.0.0](https://github.com/5app/base5-ui/compare/v6.17.5...v7.0.0) (2020-01-30)
+
+
+### Features
+
+* Added tolerance prop to ViewMoreText ([4ee4768](https://github.com/5app/base5-ui/commit/4ee4768d3ae89551a7cc48c0f39cd2df83f4e05e))
+
+
+### BREAKING CHANGES
+
+* Renamed prop truncateBy to maxLength and
+made it a required prop.
+
 ## [6.17.5](https://github.com/5app/base5-ui/compare/v6.17.4...v6.17.5) (2020-01-23)
 
 
