@@ -1,3 +1,10 @@
+## [6.17.5](https://github.com/5app/base5-ui/compare/v6.17.4...v6.17.5) (2020-01-23)
+
+
+### Bug Fixes
+
+* **Table:** Remove outdated isLoading prop ([a889b41](https://github.com/5app/base5-ui/commit/a889b415ae4f572b9d1463491b022b28b5306ec5))
+
 ## [6.17.4](https://github.com/5app/base5-ui/compare/v6.17.3...v6.17.4) (2020-01-15)
 
 

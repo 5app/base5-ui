@@ -36,7 +36,7 @@ The table data is provided as an array of objects. The column names defined will
 ```
 
 <Playground>
-	<Table isLoading data={dummyData.slice(0, 4)} itemKey="name">
+	<Table data={dummyData.slice(0, 4)} itemKey="name">
 		<Column isHeading name="Name" />
 		<Column name="Email" />
 		<Column name="Country" cellRenderer={item => item.region} />

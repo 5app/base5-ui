@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "6.17.4",
+	"version": "6.17.5",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -37,8 +37,8 @@
 		"@babel/preset-env": "^7.6.3",
 		"@commitlint/cli": "^8.2.0",
 		"@commitlint/config-conventional": "^8.2.0",
-		"@semantic-release/changelog": "^3.0.5",
-		"@semantic-release/git": "^8.0.0",
+		"@semantic-release/changelog": "^5.0.0",
+		"@semantic-release/git": "^9.0.0",
 		"@testing-library/react": "^9.3.1",
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.0.2",
@@ -54,14 +54,14 @@
 		"eslint-plugin-react-hooks": "^2.2.0",
 		"gh-pages": "^2.1.1",
 		"husky": "^4.0.3",
-		"jest": "^24.9.0",
+		"jest": "^25.0.0",
 		"pixo": "^1.1.2",
 		"prettier": "^1.18.2",
 		"prop-types": "^15.7.2",
 		"react": "^16.11.0",
 		"react-docgen-annotation-resolver": "^2.0.0",
 		"react-dom": "^16.11.0",
-		"semantic-release": "^16.0.0",
+		"semantic-release": "^17.0.0",
 		"styled-components": "^5.0.0"
 	},
 	"peerDependencies": {
