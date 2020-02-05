@@ -245,6 +245,7 @@ function Table(props) {
 		stickyHeaderOffset,
 		mobileViewBreakpoint,
 		rowMinHeight,
+		rowHeader: rowHeaderProp,
 		shadedHeader,
 		...otherProps
 	} = props;
@@ -254,6 +255,7 @@ function Table(props) {
 		: columnsProp;
 
 	const hasData = data && data.length > 0;
+	const rowHeader = rowHeaderProp || columns[0][itemKey];
 
 	return (
 		<>
@@ -303,19 +305,20 @@ function Table(props) {
 								{columns.map(column => {
 									const {
 										cellRenderer,
-										isHeading,
 										hideBelowBreakpoint,
 										name,
 									} = column;
 
+									const isHeader = rowHeader === name;
+
 									return (
 										<Cell
 											key={name}
-											as={isHeading && 'th'}
+											as={isHeader && 'th'}
 											role={
-												isHeading ? 'rowheader' : 'cell'
+												isHeader ? 'rowheader' : 'cell'
 											}
-											scope={isHeading ? 'row' : null}
+											scope={isHeader ? 'row' : null}
 											hideBelowBreakpoint={
 												hideBelowBreakpoint
 											}
@@ -352,7 +355,6 @@ Table.propTypes = {
 	columns: PropTypes.arrayOf(
 		PropTypes.shape({
 			cellRenderer: PropTypes.func,
-			isHeading: PropTypes.bool,
 			hideBelowBreakpoint: PropTypes.string,
 			name: PropTypes.string.isRequired,
 			subtitle: PropTypes.string,
@@ -381,6 +383,12 @@ Table.propTypes = {
 	mobileViewBreakpoint: PropTypes.string,
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	/**
+	 * The name of the column that you want to act as header of the row.
+	 * Especially important to set correctly for the mobile view.
+	 * Defaults to the first column.
+	 */
+	rowHeader: PropTypes.string,
 	rowMinHeight: PropTypes.number,
 	shadedHeader: PropTypes.bool,
 };

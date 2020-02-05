@@ -8,7 +8,6 @@ Column.displayName = 'Column';
 
 Column.propTypes = {
 	cellRenderer: PropTypes.func,
-	isHeading: PropTypes.bool,
 	hideBelowBreakpoint: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	subtitle: PropTypes.string,
