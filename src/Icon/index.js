@@ -43,20 +43,28 @@ Icon.displayName = 'Icon';
 
 Icon.propTypes = {
 	/**
+	 * Display the icon in any valid CSS color. By default, icons
+	 * use the colour of their containing element (`currentColor`).
+	 */
+	color: PropTypes.string,
+	/**
 	 * Set the opacity of the icon to the value specified
 	 * as the theme's `textDimStrength`. Useful when an icon's colour
 	 * looks too strong compared to surrounding text
 	 */
 	dimmed: PropTypes.bool,
 	/**
-	 * Display the icon in any valid CSS color. By default, icons
-	 * use the colour of their containing element (`currentColor`).
+	 * Flip/mirror the icon along the specified axis. Want to flip both axes? Use `rotate={180}` instead.
 	 */
-	color: PropTypes.string,
+	flip: PropTypes.oneOf(['x', 'y']),
 	/**
 	 * Name of the icon you want to use.
 	 */
 	name: PropTypes.string.isRequired,
+	/**
+	 * Rotation of the icon in degrees
+	 */
+	rotate: PropTypes.number,
 	/**
 	 * By default, icons are sized at 1em, scaling along with their surrounding text.
 	 * The scale prop lets you define a scaling factor to size the icon, i.e. a value

@@ -6,9 +6,12 @@ menu: Components
 import {Playground, Props} from 'docz';
 import Icon from './';
 import Text from '../Text';
+import ArrowIcon from '../icons/Arrow';
 import DiskIcon from '../icons/Disk';
 import PlusIcon from '../icons/Plus';
 import SearchIcon from '../icons/Search';
+import InfoIcon from '../icons/Info';
+import XIcon from '../icons/X';
 
 # Icon
 
@@ -47,12 +50,6 @@ and use them directly:
 	<SearchIcon />
 </Playground>
 
-## Props
-
-The following props are available on both the individual icon components as well as the `<Icon />` component:
-
-<Props of={Icon} />
-
 ## Aligning icons with text
 
 When placed next to or inside of text, icons tend to sit a bit too low compared to the text's baseline. They also often look darker than text, even if they "technically" have the same colour. The props `vAlign` and `dimmed` exist to compensate for these issues. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text. Use `dimmed` to make the icon slightly transparent to match the text's appearance.
@@ -63,3 +60,26 @@ When placed next to or inside of text, icons tend to sit a bit too low compared 
 	<br />
 	<PlusIcon vAlign dimmed /> With vAlign and dimmed
 </Playground>
+
+## Transforming icons
+
+You can both rotate and flip icons.
+
+<Playground>
+	<ArrowIcon rotate={90} />
+	<ArrowIcon rotate={90} />
+	<ArrowIcon rotate={-90} />
+	<ArrowIcon rotate={-90} />
+	<ArrowIcon />
+	<ArrowIcon flip="x" />
+	<ArrowIcon />
+	<ArrowIcon flip="x" />
+	<InfoIcon />
+	<XIcon />
+</Playground>
+
+## Props
+
+The following props are available on both the individual icon components as well as the `<Icon />` component:
+
+<Props of={Icon} />
