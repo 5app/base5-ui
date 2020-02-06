@@ -45,11 +45,6 @@ const Wrapper = styled(PropFilteringWrapper)`
 	text-align: ${p => p.align || 'center'};
 	text-decoration: none;
 
-	/* This is only needed for IE11 whose default button styles
-	 * include 'overflow: hidden'. We need overflow to be visible
-	 * for the focus ring. */
-	overflow: visible;
-
 	${p =>
 		!p.square &&
 		css`

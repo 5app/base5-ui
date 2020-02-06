@@ -23,6 +23,11 @@ const Clickable = styled.button`
 
 	appearance: none;
 
+	/* This is only needed for IE11 whose default button styles
+	 * include 'overflow: hidden'. We need overflow to be visible
+	 * for the focus ring. */
+	overflow: visible;
+
 	&:focus:not(.focus-visible) {
 		outline: none;
 	}
