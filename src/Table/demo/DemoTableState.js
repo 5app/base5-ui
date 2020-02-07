@@ -16,20 +16,20 @@ function sortBy(property, order = 'asc') {
 
 function DemoTableState({data, children}) {
 	const [order, setOrder] = useState('asc');
-	const [orderProp, setOrderProp] = useState('Name');
+	const [sortedColumn, setSortedColumn] = useState('Name');
 
 	function handleSort(newOrder) {
 		setOrder(newOrder.order);
-		setOrderProp(newOrder.property);
+		setSortedColumn(newOrder.column);
 	}
 
-	const orderedData = data.sort(sortBy(orderProp, order));
+	const orderedData = data.sort(sortBy(sortedColumn, order));
 
 	return children({
 		data: orderedData,
 		sort: {
 			order,
-			property: orderProp,
+			column: sortedColumn,
 		},
 		handleSort,
 	});

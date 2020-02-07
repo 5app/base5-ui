@@ -102,7 +102,7 @@ function ClickableHeader({
 			// be ordered by changes. Otherwise use the
 			// column's `defaultOrder` prop
 			onRequestSort({
-				property: name,
+				column: name,
 				order: isActive ? reverseOrder[order] : defaultOrder,
 			});
 		};

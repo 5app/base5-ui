@@ -288,7 +288,7 @@ function Table(props) {
 							} = column;
 
 							const isColumnOrderedBy =
-								sort && name === sort.property;
+								sort && name === sort.column;
 
 							return (
 								<Cell
@@ -420,12 +420,12 @@ Table.propTypes = {
 	onRequestSort: PropTypes.func,
 	/**
 	 * Object describing the order of the table's data.
-	 * 'by': Name of the column to be sorted by
-	 * 'dir': Direction of sorting, either 'asc' (ascending)
+	 * 'column': Name of the column to be sorted by
+	 * 'order': Direction of sorting, either 'asc' (ascending)
 	 * or 'desc' (descending)
 	 */
 	sort: PropTypes.shape({
-		property: PropTypes.string.isRequired,
+		column: PropTypes.string.isRequired,
 		order: PropTypes.oneOf(['asc', 'desc']),
 	}),
 	/**

@@ -78,14 +78,14 @@ You can also define your columns as an array of objects, if you prefer:
 <Playground>
 	<div style={{border: '1px solid grey', borderRadius: 10}}>
 		<DemoTableState data={dummyData.slice(4, 8)}>
-			{({data, sort: {property, order}, handleSort}) => (
+			{({data, sort: {column, order}, handleSort}) => (
 				<Table
 					shadedHeader
 					data={data}
 					itemKey="name"
 					rowHeader="Name"
 					sort={{
-						property,
+						column,
 						order,
 					}}
 					onRequestSort={handleSort}
