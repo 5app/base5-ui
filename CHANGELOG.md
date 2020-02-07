@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/5app/base5-ui/compare/v7.0.0...v7.1.0) (2020-02-05)
+
+
+### Features
+
+* **icons:** New flip and rotate props ([ab5f62f](https://github.com/5app/base5-ui/commit/ab5f62f310b2404bff9324684d5faf097da07e5d))
+
 # [7.0.0](https://github.com/5app/base5-ui/compare/v6.17.5...v7.0.0) (2020-01-30)
 
 

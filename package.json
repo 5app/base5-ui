@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "7.0.0",
+	"version": "7.1.0",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -93,7 +93,7 @@
 				]
 			],
 			"scope-case": [
-				0 
+				0
 			]
 		}
 	},
