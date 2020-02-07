@@ -11,7 +11,6 @@ import VisuallyHidden from '../VisuallyHidden';
 const HeaderButton = styled(ButtonCore)`
 	vertical-align: baseline;
 	padding-right: ${p => p.theme.globals.spacing.xxs};
-	font-weight: bold;
 `;
 
 const ClickabilityIndicator = styled.span`
