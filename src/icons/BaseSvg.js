@@ -62,7 +62,7 @@ const Svg = styled.svg.attrs({
 			p.flip ? getScaleFromFlipAxis(p.flip) : ''
 		};
 
-		transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.46, 1.25);
+		transition: transform 0.2s cubic-bezier(0.3, 0.8, 0.46, 1.25);
 	`}
 `;
 
