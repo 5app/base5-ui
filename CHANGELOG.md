@@ -1,3 +1,11 @@
+# [7.2.0](https://github.com/5app/base5-ui/compare/v7.1.0...v7.2.0) (2020-02-07)
+
+
+### Features
+
+* **Table:** New clickable column headers ([2628d6b](https://github.com/5app/base5-ui/commit/2628d6bb49baec49cd049ca7413e62b46f5c95bf))
+* **Table:** Replaced prop isHeading with rowHeader ([64352b6](https://github.com/5app/base5-ui/commit/64352b6949f3b046476d7e92c57b7429573af89d))
+
 # [7.1.0](https://github.com/5app/base5-ui/compare/v7.0.0...v7.1.0) (2020-02-05)
 
 
