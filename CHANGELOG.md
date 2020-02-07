@@ -1,3 +1,10 @@
+## [7.2.2](https://github.com/5app/base5-ui/compare/v7.2.1...v7.2.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* **Table:** Remove bolding of clickable headers ([74cef76](https://github.com/5app/base5-ui/commit/74cef76fde131bf49cb6fe726b7be8aa335da0fc))
+
 ## [7.2.1](https://github.com/5app/base5-ui/compare/v7.2.0...v7.2.1) (2020-02-07)
 
 
