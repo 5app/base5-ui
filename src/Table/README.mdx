@@ -8,15 +8,16 @@ import Icon from '../Icon';
 import Table from './';
 import Column from './Column';
 import CenterContent from '../CenterContent';
-import dummyData from './dummyData';
+import dummyData from './demo/dummyData';
+import DemoTableState from './demo/DemoTableState';
 
 # Table
 
-A table component with a sticky header row.
+A table component with a sticky header row and clickable headers for sorting.
 
 -   By default, all columns have an equal width
 -   Control the width of columns by specifying a fixed or percentage width
--   You can define a breakpoint under which a list-like **mobile view** will be enabled (by default this is "xs")
+-   Define a breakpoint under which a list-like **mobile view** will be enabled (by default this is "xs")
 -   Columns can be defined in JSX using the `Column` component, or using the `columns` prop
 
 ## Examples
@@ -67,42 +68,61 @@ You can also define your columns as an array of objects, if you prefer:
 
 -   Wrapped in a box with rounded corners (not part of component API)
 -   Use `cellRenderer` to easily customise the way a cell's content is rendered
--	Use the `rowHeader` prop to determine which column will be used as the header in the mobile view (only needs to be specified if it's not the first column)
+-	Use the `rowHeader` prop to specify which column will be used as the header in the mobile view (only needs to be specified if it's not the first column)
 -   Use fixed or percentage `width` values to customise column sizes
 -   Use the `shadedHeader` prop for a shaded table header background
 -   Use the `subtitle` prop to add a subtitle to a column header
 -   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
+-	Enable sortable columns by adding `<Column sortable />` props and passing `sort` and `onRequestSort` props to `Table`
 
 <Playground>
 	<div style={{border: '1px solid grey', borderRadius: 10}}>
-		<Table
-			shadedHeader
-			data={dummyData.slice(4, 8)}
-			itemKey="name"
-			rowHeader="Name"
-			pl="xl"
-			pr={20}
-		>
-			<Column
-				name="Role"
-				width={32}
-				cellRenderer={item => (
-					<Icon
-						name={item.role === 'manager' ? 'star' : 'user'}
-						aria-label={
-							item.role === 'manager' ? 'Manager' : 'User'
-						}
+		<DemoTableState data={dummyData.slice(4, 8)}>
+			{({data, sort: {property, order}, handleSort}) => (
+				<Table
+					shadedHeader
+					data={data}
+					itemKey="name"
+					rowHeader="Name"
+					sort={{
+						property,
+						order,
+					}}
+					onRequestSort={handleSort}
+					pl="xl"
+					pr={20}
+				>
+					<Column
+						name="Role"
+						width={32}
+						cellRenderer={item => (
+							<Icon
+								name={item.role === 'manager' ? 'star' : 'user'}
+								aria-label={
+									item.role === 'manager' ? 'Manager' : 'User'
+								}
+							/>
+						)}
 					/>
-				)}
-			/>
-			<Column
-				name="Name"
-				width="40%"
-				cellRenderer={item => <strong>{item.name}</strong>}
-			/>
-			<Column name="Type" subtitle="Random characters" />
-			<Column name="Time" />
-		</Table>
+					<Column
+						sortable
+						name="Name"
+						width="40%"
+						cellRenderer={item => <strong>{item.name}</strong>}
+					/>
+					<Column
+						sortable
+						name="Type"
+						subtitle="Random characters"
+					/>
+					<Column
+						sortable
+						name="Time"
+						defaultOrder="desc"
+					/>
+				</Table>
+			)}
+		</DemoTableState>
 	</div>
 </Playground>
 

@@ -10,6 +10,8 @@ Column.propTypes = {
 	cellRenderer: PropTypes.func,
 	hideBelowBreakpoint: PropTypes.string,
 	name: PropTypes.string.isRequired,
+	sortable: PropTypes.bool,
+	defaultOrder: PropTypes.oneOf(['asc', 'desc']),
 	subtitle: PropTypes.string,
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

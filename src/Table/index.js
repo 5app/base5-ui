@@ -13,6 +13,7 @@ import CenterContent from '../CenterContent';
 
 import getColumnConfigFromChildren from './getColumnConfigFromChildren';
 import Column from './Column';
+import ClickableHeader from './ClickableHeader';
 
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
@@ -228,6 +229,11 @@ function getCellContent(item, key) {
 
 const defaultHeaderRenderer = column => <Text bold>{column.name}</Text>;
 
+const ariaSortLabel = {
+	asc: 'ascending',
+	desc: 'descending',
+};
+
 // Note about roles: The table is marked up using roles
 // that are seemingly redundant. This is done so that the
 // styles of the mobile view don't remove the table's semantics,
@@ -244,9 +250,12 @@ function Table(props) {
 		headerRenderer,
 		stickyHeaderOffset,
 		mobileViewBreakpoint,
+		onRequestSort,
+		orderLabels,
 		rowMinHeight,
 		rowHeader: rowHeaderProp,
 		shadedHeader,
+		sort,
 		...otherProps
 	} = props;
 
@@ -277,6 +286,10 @@ function Table(props) {
 								subtitle,
 								width,
 							} = column;
+
+							const isColumnOrderedBy =
+								sort && name === sort.property;
+
 							return (
 								<Cell
 									key={name}
@@ -285,8 +298,21 @@ function Table(props) {
 									role="columnheader"
 									style={width ? {width} : null}
 									hideBelowBreakpoint={hideBelowBreakpoint}
+									aria-sort={
+										isColumnOrderedBy
+											? ariaSortLabel[sort.order]
+											: null
+									}
 								>
-									{headerRenderer(column)}
+									<ClickableHeader
+										isActive={isColumnOrderedBy}
+										column={column}
+										order={sort && sort.order}
+										orderLabels={orderLabels}
+										onRequestSort={onRequestSort}
+									>
+										{headerRenderer(column)}
+									</ClickableHeader>
 									{subtitle && (
 										<Text dimmed size="xs" display="block">
 											{subtitle}
@@ -346,6 +372,10 @@ Table.defaultProps = {
 	),
 	itemKey: 'id',
 	headerRenderer: defaultHeaderRenderer,
+	orderLabels: {
+		asc: '(sorted ascending)',
+		desc: '(sorted descending)',
+	},
 	mobileViewBreakpoint: 'xs',
 	stickyHeaderOffset: 0,
 	rowMinHeight: 45,
@@ -355,13 +385,15 @@ Table.propTypes = {
 	columns: PropTypes.arrayOf(
 		PropTypes.shape({
 			cellRenderer: PropTypes.func,
+			defaultOrder: PropTypes.oneOf(['asc', 'desc']),
 			hideBelowBreakpoint: PropTypes.string,
 			name: PropTypes.string.isRequired,
+			sortable: PropTypes.bool,
 			subtitle: PropTypes.string,
 			width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		})
 	),
-	data: PropTypes.array.isRequired,
+	data: PropTypes.array,
 	/**
 	 * Content to be displayed when the passed data is empty
 	 */
@@ -381,6 +413,29 @@ Table.propTypes = {
 	 * the mobile view should kick in.
 	 */
 	mobileViewBreakpoint: PropTypes.string,
+	/**
+	 * Function to call when a new sort order is requested.
+	 * Passes an object in the shape of the `orderBy` prop.
+	 */
+	onRequestSort: PropTypes.func,
+	/**
+	 * Object describing the order of the table's data.
+	 * 'by': Name of the column to be sorted by
+	 * 'dir': Direction of sorting, either 'asc' (ascending)
+	 * or 'desc' (descending)
+	 */
+	sort: PropTypes.shape({
+		property: PropTypes.string.isRequired,
+		order: PropTypes.oneOf(['asc', 'desc']),
+	}),
+	/**
+	 * Object containing the labels that are used to announce
+	 * the order of a column to screen reader users.
+	 */
+	orderLabels: PropTypes.shape({
+		asc: PropTypes.string.isRequired,
+		desc: PropTypes.string.isRequired,
+	}),
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	/**
