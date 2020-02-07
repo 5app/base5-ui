@@ -1,3 +1,10 @@
+## [7.2.1](https://github.com/5app/base5-ui/compare/v7.2.0...v7.2.1) (2020-02-07)
+
+
+### Bug Fixes
+
+* **Table:** Change sort.property to sort.column ([b702af4](https://github.com/5app/base5-ui/commit/b702af40370f3443455a3bbdd7fa77dc15fff684))
+
 # [7.2.0](https://github.com/5app/base5-ui/compare/v7.1.0...v7.2.0) (2020-02-07)
 
 
