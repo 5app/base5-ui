@@ -1,3 +1,10 @@
+# [7.3.0](https://github.com/5app/base5-ui/compare/v7.2.2...v7.3.0) (2020-02-20)
+
+
+### Features
+
+* **Components:** New BackButton component ([57a84b5](https://github.com/5app/base5-ui/commit/57a84b527f3ef0081a68061ac9ce84a2eb25a0da))
+
 ## [7.2.2](https://github.com/5app/base5-ui/compare/v7.2.1...v7.2.2) (2020-02-07)
 
 
