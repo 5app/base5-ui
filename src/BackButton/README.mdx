@@ -17,7 +17,7 @@ A component for handling backlinks for navigation in apps.
 
 Hard-coding back links in an app where pages may have different entry points can quickly lead to a bad user experience. Users expect a link or button labelled "Back" to take them back to the page they came from – just like their browser's back button.
 
-So, one might think, why not just trigger the browser's back button using `history.back`? We need back buttons to have a sensible fallback for when there's no browser history yet, for example after a link has been opened in a new window, or when a page was reached via a link in an email.
+So, one might think, why not just trigger the browser's back button using `history.back`? The answer is that we need back buttons to have a sensible fallback for when there's no browser history yet, for example after a link has been opened in a new window, or when a page was reached via a link in an email.
 
 This is where this component comes in. Wrap your app with the `BackButtonProvider` component and pass it the current pathname. In react-router, you can get it from the `useLocation` hook:
 
@@ -36,7 +36,7 @@ function YourApp({children}) {
 
 `BackButtonProvider` tracks whether the user has navigated in the app. It then provides this information to the `BackButton` component via context. `BackButton` then either renders a `<button>` element, or the fallback link specified by you.
 
-For visual customisation, you can pass the component to render using the `baseComponent` prop. Please make sure that this component has support for changing the underlying rendered element using the `as` prop (this is the case for components built using styled-components by default).
+For visual customisation, you can pass a `baseComponent` prop which changes the component that's rendered by default ([`ButtonCore`](src-button-core-readme)). Please make sure that this component has support for changing the rendered element type using the '`as`' prop (by default this is the case for any components built using styled-components).
 
 ## Examples
 
