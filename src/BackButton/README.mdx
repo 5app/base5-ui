@@ -1,0 +1,63 @@
+---
+name: BackButton
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import InlineList from '../InlineList';
+import BackButton, {BackButtonProvider} from './';
+import Button from '../Button';
+import TextLink from '../TextLink';
+
+# BackButton
+
+A component for handling backlinks for navigation in apps.
+
+## The problem
+
+Hard-coding back links in an app where pages may have different entry points can quickly lead to a bad user experience. Users expect a link or button labelled "Back" to take them back to the page they came from – just like their browser's back button.
+
+So, one might think, why not just trigger the browser's back button using `history.back`? We need back buttons to have a sensible fallback for when there's no browser history yet, for example after a link has been opened in a new window, or when a page was reached via a link in an email.
+
+This is where this component comes in. Wrap your app with the `BackButtonProvider` component and pass it the current pathname. In react-router, you can get it from the `useLocation` hook:
+
+```js
+import {useLocation} from 'react-router';
+import {BackButtonProvider} from 'base5-ui/BackButton';
+
+function YourApp({children}) {
+	const {pathname} = useLocation();
+
+	return (
+		<BackButtonProvider pathname={pathname}>{children}</BackButtonProvider>
+	);
+}
+```
+
+`BackButtonProvider` tracks whether the user has navigated in the app. It then provides this information to the `BackButton` component via context. `BackButton` then either renders a `<button>` element, or the fallback link specified by you.
+
+For visual customisation, you can pass the component to render using the `baseComponent` prop. Please make sure that this component has support for changing the underlying rendered element using the `as` prop (this is the case for components built using styled-components by default).
+
+## Examples
+
+<Playground>
+	<BackButtonProvider pathname="/current/url">
+		<BackButton
+			baseComponent={Button}
+			as="a"
+			href="/fallback-link"
+			icon="arrow"
+		>
+			Back button
+		</BackButton>
+		<br />
+		<br />
+		<BackButton baseComponent={TextLink} as="a" href="/fallback-link">
+			Backlink
+		</BackButton>
+	</BackButtonProvider>
+</Playground>
+
+## Props
+
+<Props of={BackButton} />
