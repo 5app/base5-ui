@@ -5,6 +5,7 @@ export {default as theme} from './theme';
 export {default as utils} from './utils';
 
 export {default as Arrow} from './Arrow';
+export {default as BackButton} from './BackButton';
 export {default as Box} from './Box';
 export {default as Button} from './Button';
 export {default as ButtonCore} from './ButtonCore';
