@@ -1,3 +1,10 @@
+## [7.3.1](https://github.com/5app/base5-ui/compare/v7.3.0...v7.3.1) (2020-02-20)
+
+
+### Bug Fixes
+
+* **BackButton:** Add BackButton to main export ([5211b18](https://github.com/5app/base5-ui/commit/5211b182011505fa6e5dbd55fb1b1c2c8f5c17a8))
+
 # [7.3.0](https://github.com/5app/base5-ui/compare/v7.2.2...v7.3.0) (2020-02-20)
 
 
