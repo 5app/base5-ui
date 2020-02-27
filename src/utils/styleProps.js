@@ -59,7 +59,8 @@ function getStylePropRules(stylePropConfig, componentProps, breakpointIndex) {
 				}
 			} else {
 				if (styleProp !== undefined && styleProp !== null) {
-					properties.forEach(prop => {
+					const props = properties || [stylePropKey];
+					props.forEach(prop => {
 						rules[prop] = getValue(styleProp, componentProps.theme);
 					});
 				}

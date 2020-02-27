@@ -1,11 +1,10 @@
 import {createStyleFunction} from '../utils/styleProps';
 
-const supportedDisplayValues = ['block', 'inline', 'inline-block'];
+const supportedDisplayValues = ['block', 'inline', 'inline-block', 'flex'];
 
 const displayProps = createStyleFunction([
 	{
 		styleProp: 'display',
-		properties: ['display'],
 		getValue: display =>
 			supportedDisplayValues.includes(display)
 				? display
