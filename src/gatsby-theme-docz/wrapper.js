@@ -25,9 +25,22 @@ const GlobalStyle = createGlobalStyle`
 		border: 0;
 		vertical-align: baseline;
 	}
+
+	body {
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	div[data-testid="playground"] {
+		margin-bottom: 22px !important;
+	}
+
+	div[data-testid="live-preview"] {
+		padding: 22px;
+	}
 `;
 
 const Content = styled.div`
+	font-family: 'Open Sans', sans-serif;
 	font-size: ${p => p.theme.globals.typeScale.m};
 	line-height: ${p => p.theme.globals.lineHeight};
 `;
