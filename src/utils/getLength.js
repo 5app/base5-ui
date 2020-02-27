@@ -1,8 +1,14 @@
 import {pxToRem} from './units';
 
 function getLength(length) {
-	if (typeof shortCode === 'number') {
-		return pxToRem(length);
+	const lengthAsNumber = Number(length);
+
+	if (!Number.isNaN(lengthAsNumber)) {
+		if (lengthAsNumber === 0) {
+			return 0;
+		}
+
+		return pxToRem(lengthAsNumber);
 	}
 
 	return length;
