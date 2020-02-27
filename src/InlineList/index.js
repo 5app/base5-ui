@@ -4,6 +4,8 @@ import styled, {css} from 'styled-components';
 
 import {getSpacing} from '../utils';
 
+import {positionProps, sizeProps, textProps} from '../styleProps';
+
 const Item = styled.li`
 	display: ${p => p.display || 'inline-block'};
 	max-width: 100%;
@@ -15,6 +17,7 @@ Item.propTypes = {
 const getSpacingFromTheme = p => getSpacing(p.spacing, p.theme);
 
 const Wrapper = styled.ul`
+	${positionProps}
 	list-style: none;
 	margin: 0;
     padding: 0;
@@ -26,6 +29,9 @@ const Wrapper = styled.ul`
 			margin-left: -${getSpacingFromTheme};
 			margin-bottom: -${getSpacingFromTheme};
 		`}
+
+	${sizeProps}
+	${textProps}
 
 	& > ${Item} {
 		vertical-align: ${p => p.align || 'top'};
@@ -71,6 +77,10 @@ const InlineList = ({as, itemAs, children, display, ...otherProps}) => {
 			})}
 		</Wrapper>
 	);
+};
+InlineList.defaultProps = {
+	as: 'ul',
+	itemAs: 'li',
 };
 InlineList.propTypes = {
 	/**

@@ -14,6 +14,8 @@ import InlineList from './';
 
 Lay out children horizontally with optional spacing or separators.
 
+Supports styleProps `position`, `text`, and `size`.
+
 <Playground>
 	<InlineList spacing="s">
 		<Icon name="asset-image" />
@@ -22,10 +24,10 @@ Lay out children horizontally with optional spacing or separators.
 	</InlineList>
 
     <InlineList splitBy="comma">
-    	<span>Milk</span>
-    	<span>Flour</span>
-    	<span>Sugar</span>
-    	<span>Eggs</span>
+    	<>Milk</>
+    	<>Flour</>
+    	<>Sugar</>
+    	<>Eggs</>
     </InlineList>
 
     <InlineList splitBy="dot">
