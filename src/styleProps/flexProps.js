@@ -16,8 +16,12 @@ const baseRules = {
 	minWidth: 0,
 };
 
-const flexItemProps = createStyleFunction(
+const flexProps = createStyleFunction(
 	[
+		{
+			styleProp: 'flexWrap',
+			getValue: value => value,
+		},
 		{
 			styleProp: 'basis',
 			properties: ['flexBasis'],
@@ -38,8 +42,16 @@ const flexItemProps = createStyleFunction(
 			properties: ['alignSelf'],
 			getValue: value => alignMap[value] || value,
 		},
+		{
+			styleProp: 'alignItems',
+			getValue: value => alignMap[value] || value,
+		},
+		{
+			styleProp: 'flexDirection',
+			getValue: value => value,
+		},
 	],
 	baseRules
 );
 
-export default flexItemProps;
+export default flexProps;

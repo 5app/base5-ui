@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {
 	positionProps,
 	displayProps,
-	flexItemProps,
+	flexProps,
 	sizeProps,
 	marginProps,
 	paddingProps,
@@ -15,7 +15,7 @@ import {
 const Box = styled.div`
 	${positionProps}
 	${displayProps}
-	${flexItemProps}
+	${flexProps}
 	${sizeProps}
 	${marginProps}
 	${paddingProps}
