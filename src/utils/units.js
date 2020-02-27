@@ -11,8 +11,26 @@ function pxToRelative(px, baseFontSize, unitName) {
 	return px / baseFontSize + unitName;
 }
 
-const pxToRem = px => pxToRelative(px, rootFontSize, 'rem');
+function pxToRem(px) {
+	return pxToRelative(px, rootFontSize, 'rem');
+}
 
-const pxToEm = (px, base = rootFontSize) => pxToRelative(px, base, 'em');
+function pxToEm(px, base = rootFontSize) {
+	return pxToRelative(px, base, 'em');
+}
 
-export {rootFontSize, remToPx, pxToRem, pxToEm};
+function limitDecimals(n) {
+	return Math.round(n * 10000) / 10000;
+}
+
+function fractionToPercent(fraction) {
+	if (fraction === 0) {
+		return '0';
+	}
+	if (!fraction) {
+		return undefined;
+	}
+	return `${limitDecimals(fraction * 100)}%`;
+}
+
+export {rootFontSize, remToPx, pxToRem, pxToEm, fractionToPercent};
