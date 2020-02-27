@@ -3,21 +3,23 @@ import styled from 'styled-components';
 
 import {
 	displayProps,
-	textProps,
+	sizeProps,
 	marginProps,
 	paddingProps,
+	textProps,
 } from '../styleProps';
 
 const Text = styled.span`
 	${displayProps}
+	${sizeProps}
+	${marginProps}
+	${paddingProps}
 	${props =>
 		textProps({
 			...props,
 			textAlign: props.align || props.textAlign,
 			fontSize: props.size || props.fontSize,
 		})}
-	${marginProps}
-	${paddingProps}
 `;
 
 Text.propTypes = {
