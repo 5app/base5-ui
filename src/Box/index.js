@@ -29,7 +29,13 @@ Box.propTypes = {
 		PropTypes.array,
 	]),
 	display: PropTypes.oneOfType([
-		PropTypes.oneOf(['block', 'inline', 'inline-block']),
+		PropTypes.oneOf([
+			'block',
+			'inline',
+			'inline-block',
+			'flex',
+			'inline-flex',
+		]),
 		PropTypes.array,
 	]),
 	width: PropTypes.oneOfType([

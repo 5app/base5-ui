@@ -1,42 +1,21 @@
-import styled from 'styled-components';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import {
-	positionProps,
-	borderProps,
-	marginProps,
-	paddingProps,
-	textProps,
-} from '../styleProps';
-
-import {alignMap} from '../styleProps/flexProps';
 
 import Box from '../Box';
 
-const Flex = styled.div`
-	${positionProps}
-	display: flex;
-
-	${p =>
-		p.wrap &&
-		`
-		flex-wrap: wrap;
-	`}
-
-	${p =>
-		p.column &&
-		`
-		flex-direction: column;
-		height: 100%;
-	`}
-
-	align-items: ${p => alignMap[p.align] || p.align};
-
-	${marginProps}
-	${paddingProps}
-	${borderProps}
-	${textProps}
-`;
+function Flex({wrap, column, align, children, ...otherProps}) {
+	return (
+		<Box
+			display="flex"
+			wrapItems={wrap}
+			dirColumn={column}
+			alignItems={align}
+			{...otherProps}
+		>
+			{children}
+		</Box>
+	);
+}
 
 Flex.defaultProps = {
 	align: 'center',
@@ -52,8 +31,7 @@ Flex.propTypes = {
 		'right',
 		'stretch',
 	]),
-	/** Arrange children in a column instead of a row.
-	 * Setting this also sets the wrapper's height to `100%` */
+	/** Arrange children in a column instead of a row. */
 	column: PropTypes.bool,
 	/** Allow children to take up more than one row */
 	wrap: PropTypes.bool,

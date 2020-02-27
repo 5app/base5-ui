@@ -20,7 +20,7 @@ const flexProps = createStyleFunction(
 	[
 		{
 			styleProp: 'flexWrap',
-			getValue: value => value,
+			getValue: value => (value ? 'wrap' : 'nowrap'),
 		},
 		{
 			styleProp: 'basis',
@@ -49,6 +49,11 @@ const flexProps = createStyleFunction(
 		{
 			styleProp: 'flexDirection',
 			getValue: value => value,
+		},
+		{
+			styleProp: 'dirColumn',
+			properties: ['flexDirection'],
+			getValue: value => (value ? 'column' : 'initial'),
 		},
 	],
 	baseRules
