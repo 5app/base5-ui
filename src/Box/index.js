@@ -5,6 +5,7 @@ import {
 	positionProps,
 	displayProps,
 	flexItemProps,
+	sizeProps,
 	marginProps,
 	paddingProps,
 	borderProps,
@@ -15,6 +16,7 @@ const Box = styled.div`
 	${positionProps}
 	${displayProps}
 	${flexItemProps}
+	${sizeProps}
 	${marginProps}
 	${paddingProps}
 	${borderProps}
@@ -28,6 +30,36 @@ Box.propTypes = {
 	]),
 	display: PropTypes.oneOfType([
 		PropTypes.oneOf(['block', 'inline', 'inline-block']),
+		PropTypes.array,
+	]),
+	width: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	maxWidth: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	minWidth: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	height: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	maxHeight: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
+	minHeight: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
 		PropTypes.array,
 	]),
 	border: PropTypes.oneOfType([
