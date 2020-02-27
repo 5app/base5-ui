@@ -2,7 +2,7 @@ import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import {withTheme} from 'styled-components';
 
-import {getSpacing} from '../utils/spacing';
+import {getSpacing} from '../utils';
 
 import iconMap from './iconMap';
 

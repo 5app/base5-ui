@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {getSpacing} from '../utils/spacing';
+import {getSpacing} from '../utils';
 
 const Item = styled.li`
 	display: ${p => p.display || 'inline-block'};

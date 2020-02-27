@@ -6,7 +6,7 @@ import {pxToRem} from '../utils/units';
 import {alpha, getSolidBackgroundShade} from '../utils/colors';
 import {borderValue, overflowWrap, ie11Hack} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
-import {getSpacing} from '../utils/spacing';
+import {getSpacing} from '../utils';
 
 import Text from '../Text';
 import CenterContent from '../CenterContent';

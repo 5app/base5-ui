@@ -1,5 +1,5 @@
 import {createStyleFunction} from '../utils/styleProps';
-import {pxToRem} from '../utils/units';
+import {getLength} from '../utils';
 
 export const alignMap = {
 	top: 'flex-start',
@@ -21,7 +21,7 @@ const flexItemProps = createStyleFunction(
 		{
 			styleProp: 'basis',
 			properties: ['flexBasis'],
-			getValue: pxToRem,
+			getValue: getLength,
 		},
 		{
 			styleProp: 'grow',

@@ -1,4 +1,4 @@
-import {getSpacing} from '../utils/spacing';
+import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 
 const paddingProps = createStyleFunction([
