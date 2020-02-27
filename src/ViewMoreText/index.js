@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 import truncateText from '../utils/truncateText';
@@ -25,7 +25,7 @@ function ViewMoreText(props) {
 	const shouldTextBeTruncated = contentLength > maxLength + tolerance;
 
 	return (
-		<Fragment>
+		<>
 			{truncateText(
 				content,
 				!showFullText && shouldTextBeTruncated ? maxLength : null
@@ -35,7 +35,7 @@ function ViewMoreText(props) {
 					{showFullText ? viewLessLabel : viewMoreLabel}
 				</TextLink>
 			)}
-		</Fragment>
+		</>
 	);
 }
 

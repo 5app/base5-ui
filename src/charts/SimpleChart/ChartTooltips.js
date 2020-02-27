@@ -70,7 +70,7 @@ function getLabel(labels, index) {
 
 function getDefaultReadout(name, value, label) {
 	return (
-		<Fragment>
+		<>
 			{label && (
 				<Text bold size="m" lineHeight={1}>
 					{label}
@@ -79,7 +79,7 @@ function getDefaultReadout(name, value, label) {
 			)}
 			{name}
 			{name ? ':' : ''} {value}
-		</Fragment>
+		</>
 	);
 }
 

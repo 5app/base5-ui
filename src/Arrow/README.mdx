@@ -6,6 +6,7 @@ menu: Components
 import {Playground, Props} from 'docz';
 
 import Arrow from './';
+import Box from '../Box';
 
 # Arrow
 
@@ -14,20 +15,20 @@ The Arrow component is a tooltip "arrow" that can be dropped into any container 
 For the positioning to work, the parent element needs to have a position other than `static`, e.g. `relative`, `absolute`, or `fixed`.
 
 <Playground>
-	<div
+	<Box
+		position="relative"
+		width={250}
+		p="s"
 		style={{
-			position: 'relative',
-			width: 250,
-			padding: 8,
-			backgroundColor: 'grey',
+			backgroundColor: 'dodgerblue',
 			color: 'white',
-			border: '1px solid black',
-			borderRadius: 4,
+			border: '3px solid darkslateblue',
+			borderRadius: 6,
 		}}
 	>
 		Hello, I'm a box with a pointy arrow.
 		<Arrow placement="top-end" distanceFromEdge={20} size={10} />
-	</div>
+	</Box>
 </Playground>
 
 ## Arrow props

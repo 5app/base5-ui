@@ -6,7 +6,7 @@ import {pxToRem} from '../utils/units';
 import {alpha, getSolidBackgroundShade} from '../utils/colors';
 import {borderValue, overflowWrap, ie11Hack} from '../mixins';
 import {positionProps, marginProps} from '../styleProps';
-import {getSpacing} from '../utils';
+import {getSpacing, getLength} from '../utils';
 
 import Text from '../Text';
 import CenterContent from '../CenterContent';
@@ -206,6 +206,12 @@ const StyledTable = styled.table`
 `;
 
 const Cell = styled.td`
+	${p =>
+		p.width &&
+		`
+		width: ${getLength(p.width)};
+	`}
+
 	@media (max-width: ${getBreakpoint('hideBelowBreakpoint')}) {
 		display: none;
 	}
@@ -296,7 +302,7 @@ function Table(props) {
 									as="th"
 									scope="col"
 									role="columnheader"
-									style={width ? {width} : null}
+									width={width}
 									hideBelowBreakpoint={hideBelowBreakpoint}
 									aria-sort={
 										isColumnOrderedBy

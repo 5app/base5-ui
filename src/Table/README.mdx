@@ -94,7 +94,7 @@ You can also define your columns as an array of objects, if you prefer:
 				>
 					<Column
 						name="Role"
-						width={32}
+						width={40}
 						cellRenderer={item => (
 							<Icon
 								name={item.role === 'manager' ? 'star' : 'user'}
@@ -142,7 +142,7 @@ The table below uses both modes – on medium sized screens, columns that don't 
 	>
 		<Column
 			name="Role"
-			width={32}
+			width={40}
 			cellRenderer={item => (
 				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
 			)}
@@ -171,7 +171,7 @@ Use the `CenterContent` component to make the content appear centred and take up
 		}
 		rowHeader="Name"
 	>
-		<Column name="Role" width={32} />
+		<Column name="Role" width={40} />
 		<Column name="Name" width="40%" />
 		<Column name="Region" hideBelowBreakpoint="m" />
 		<Column name="Type" hideBelowBreakpoint="xs" />
