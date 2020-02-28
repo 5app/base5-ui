@@ -1,16 +1,10 @@
 import {alpha} from '../utils/colors';
 import {createStyleFunction} from '../utils/styleProps';
-import {ellipsis, overflowWrap as wrap} from '../mixins';
 
 const textTransformMap = {
 	all: 'uppercase',
 	first: 'capitalize',
 	none: 'none',
-};
-
-const overflowStylesMap = {
-	ellipsis,
-	wrap,
 };
 
 const textProps = createStyleFunction([
@@ -45,11 +39,6 @@ const textProps = createStyleFunction([
 		properties: ['color'],
 		getValue: (dimmed, theme) =>
 			dimmed ? alpha(theme.text, theme.textDimStrength) : theme.text,
-	},
-	{
-		styleProp: 'overflow',
-		getRules: overflow =>
-			overflow ? overflowStylesMap[overflow] : undefined,
 	},
 ]);
 
