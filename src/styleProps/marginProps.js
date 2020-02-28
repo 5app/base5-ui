@@ -1,7 +1,7 @@
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 
-const marginProps = createStyleFunction([
+export const marginPropsDef = [
 	{
 		styleProp: 'm',
 		properties: ['margin'],
@@ -37,6 +37,6 @@ const marginProps = createStyleFunction([
 		properties: ['marginTop', 'marginBottom'],
 		getValue: getSpacing,
 	},
-]);
+];
 
-export default marginProps;
+export default createStyleFunction(marginPropsDef);

@@ -1,7 +1,7 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {getLength} from '../utils';
 
-const sizeProps = createStyleFunction([
+export const sizePropsDef = [
 	{
 		styleProp: 'width',
 		getValue: getLength,
@@ -26,6 +26,6 @@ const sizeProps = createStyleFunction([
 		styleProp: 'minHeight',
 		getValue: getLength,
 	},
-]);
+];
 
-export default sizeProps;
+export default createStyleFunction(sizePropsDef);

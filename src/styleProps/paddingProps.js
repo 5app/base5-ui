@@ -1,7 +1,7 @@
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 
-const paddingProps = createStyleFunction([
+export const paddingPropsDef = [
 	{
 		styleProp: 'p',
 		properties: ['padding'],
@@ -37,6 +37,6 @@ const paddingProps = createStyleFunction([
 		properties: ['paddingTop', 'paddingBottom'],
 		getValue: getSpacing,
 	},
-]);
+];
 
-export default paddingProps;
+export default createStyleFunction(paddingPropsDef);

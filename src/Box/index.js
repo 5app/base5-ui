@@ -1,28 +1,31 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {createStyleFunction} from '../utils/styleProps';
 
-import {
-	positionProps,
-	displayProps,
-	flexProps,
-	sizeProps,
-	marginProps,
-	paddingProps,
-	themeProps,
-	borderProps,
-	textProps,
-} from '../styleProps';
+import {positionPropsDef} from '../styleProps/positionProps';
+import {displayPropsDef} from '../styleProps/displayProps';
+import {flexPropsDef} from '../styleProps/flexProps';
+import {sizePropsDef} from '../styleProps/sizeProps';
+import {marginPropsDef} from '../styleProps/marginProps';
+import {paddingPropsDef} from '../styleProps/paddingProps';
+import {themePropsDef} from '../styleProps/themeProps';
+import {borderPropsDef} from '../styleProps/borderProps';
+import {textPropsDef} from '../styleProps/textProps';
+
+const styleProps = createStyleFunction([
+	...positionPropsDef,
+	...displayPropsDef,
+	...flexPropsDef,
+	...sizePropsDef,
+	...marginPropsDef,
+	...paddingPropsDef,
+	...themePropsDef,
+	...borderPropsDef,
+	...textPropsDef,
+]);
 
 const Box = styled.div`
-	${positionProps}
-	${displayProps}
-	${flexProps}
-	${sizeProps}
-	${marginProps}
-	${paddingProps}
-	${themeProps}
-	${borderProps}
-	${textProps}
+	${styleProps}
 `;
 
 Box.propTypes = {

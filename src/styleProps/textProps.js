@@ -7,7 +7,7 @@ const textTransformMap = {
 	none: 'none',
 };
 
-const textProps = createStyleFunction([
+export const textPropsDef = [
 	{
 		styleProp: 'bold',
 		properties: ['fontWeight'],
@@ -40,6 +40,6 @@ const textProps = createStyleFunction([
 		getValue: (dimmed, theme) =>
 			dimmed ? alpha(theme.text, theme.textDimStrength) : theme.text,
 	},
-]);
+];
 
-export default textProps;
+export default createStyleFunction(textPropsDef);

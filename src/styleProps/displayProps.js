@@ -14,7 +14,7 @@ const overflowStylesMap = {
 	},
 };
 
-const displayProps = createStyleFunction([
+export const displayPropsDef = [
 	{
 		styleProp: 'display',
 		getValue: display =>
@@ -31,6 +31,6 @@ const displayProps = createStyleFunction([
 		getRules: overflow =>
 			overflow ? overflowStylesMap[overflow] : undefined,
 	},
-]);
+];
 
-export default displayProps;
+export default createStyleFunction(displayPropsDef);

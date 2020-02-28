@@ -1,7 +1,7 @@
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 
-const positionProps = createStyleFunction([
+export const positionPropsDef = [
 	{
 		styleProp: 'position',
 		getValue: value => value,
@@ -32,6 +32,6 @@ const positionProps = createStyleFunction([
 		properties: ['zIndex'],
 		getValue: (z, theme) => theme.globals?.z?.[z] || z,
 	},
-]);
+];
 
-export default positionProps;
+export default createStyleFunction(positionPropsDef);

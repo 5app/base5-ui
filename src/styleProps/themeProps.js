@@ -8,7 +8,7 @@ function getBackgroundColour(background, theme) {
 	return getColorBlock(background, theme);
 }
 
-const themeProps = createStyleFunction([
+export const themePropsDef = [
 	{
 		styleProp: 'backgroundColor',
 		getValue: getBackgroundColour,
@@ -21,6 +21,6 @@ const themeProps = createStyleFunction([
 		styleProp: 'color',
 		getValue: (value, theme) => getColorBlock(value, theme),
 	},
-]);
+];
 
-export default themeProps;
+export default createStyleFunction(themePropsDef);

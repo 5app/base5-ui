@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import {createStyleFunction} from '../utils/styleProps';
 
-import {
-	displayProps,
-	sizeProps,
-	marginProps,
-	paddingProps,
-	textProps,
-} from '../styleProps';
+import {displayPropsDef} from '../styleProps/displayProps';
+import {sizePropsDef} from '../styleProps/sizeProps';
+import {marginPropsDef} from '../styleProps/marginProps';
+import {paddingPropsDef} from '../styleProps/paddingProps';
+import {themePropsDef} from '../styleProps/themeProps';
+import textProps from '../styleProps/textProps';
+
+const styleProps = createStyleFunction([
+	...displayPropsDef,
+	...sizePropsDef,
+	...marginPropsDef,
+	...paddingPropsDef,
+	...themePropsDef,
+]);
 
 const Text = styled.span`
-	${displayProps}
-	${sizeProps}
-	${marginProps}
-	${paddingProps}
+	${styleProps}
 	${props =>
 		textProps({
 			...props,

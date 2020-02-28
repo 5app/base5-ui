@@ -10,7 +10,7 @@ function getBorderValue(value, theme) {
 	return borderValue(theme, borderStyles);
 }
 
-const borderProps = createStyleFunction([
+export const borderPropsDef = [
 	{
 		styleProp: 'border',
 		getValue: getBorderValue,
@@ -41,6 +41,6 @@ const borderProps = createStyleFunction([
 		getValue: (value, theme) =>
 			pxToRem(theme.globals?.borderRadius?.[value]) || value,
 	},
-]);
+];
 
-export default borderProps;
+export default createStyleFunction(borderPropsDef);
