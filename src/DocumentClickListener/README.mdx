@@ -30,12 +30,9 @@ function DocumentClickExample() {
 	return (
 		<>
 			<h1>Document clicks: {count}</h1>
-			<p
-				ref={excludedElement}
-				style={{padding: '1em', border: '2px dashed grey'}}
-			>
+			<Box ref={excludedElement} p="m" border="dashed">
 				Clicks inside this box will be ignored.
-			</p>
+			</Box>
 			{isActive && (
 				<DocumentClickListener
 					onClick={() => setCount(count + 1)}

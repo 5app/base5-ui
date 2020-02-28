@@ -2,7 +2,7 @@ import {contrast} from '../utils/colors';
 
 function getReadableColorblock(colorBlocks, colorBlockName, hasBgImage) {
 	if (!colorBlockName || !colorBlocks[colorBlockName]) {
-		return {};
+		return undefined;
 	}
 
 	const readableColor = hasBgImage

@@ -5,6 +5,7 @@ menu: Components
 
 import {Playground, Props} from 'docz';
 import CenterContent from './';
+import Box from '../Box';
 import PodcastIcon from '../icons/AssetPodcast';
 
 # CenterContent
@@ -22,27 +23,27 @@ Instead of defining a height, you can also use the `fillParent` prop which will 
 ## Examples
 
 <Playground>
-	<CenterContent height={350}>
-		<PodcastIcon vAlign /> Hello
-	</CenterContent>
+	<Box background="shaded" mb="m">
+		<CenterContent height={350}>
+			<PodcastIcon vAlign /> Hello
+		</CenterContent>
+	</Box>
 
-    <div style={{
-    	position: 'relative',
-    	width: 200,
-    	height: 200,
-    	backgroundColor: 'aliceblue',
-    	border: '1px solid grey',
-    	overflow: 'auto',
-    }}>
+    <Box 
+    	position="relative"
+    	width={200}
+    	height={200}
+    	border="thin"
+    	overflow="auto"
+    >
     	<CenterContent fillParent spacing="s">
-    		I'm centred in my little square container, but if I get<br/>
-    		too looooo<br/>
+    		This text is centred in its little square container, but if it gets too looooo<br/>
     		ooooooooooooo<br/>
     		ooooooooooooo<br/>
     		oooooooooong,<br/>
-    		I just make it grow.
+			it just makes it grow with no cut-off edges.
     	</CenterContent>
-    </div>
+    </Box>
 
 </Playground>
 
