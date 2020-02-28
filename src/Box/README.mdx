@@ -13,18 +13,26 @@ import Box from './';
 The following properties can be changed:
 
 -   Position
+-   Size
 -   Margin and padding
--   Border
 -   Flex behaviour (grow, shrink, basis, flexAlign)
+-   Borders & box-shadow
+-	Background & text colours
 -   Text styles (bold, dimmed, textAlign, overflow, caps)
 
 ## Examples
 
 <Playground>
-	<Box border="bottom" pb="s">
+	<Box borderBottom="thin" pb="s">
 		Hello
 	</Box>
-	<Box bold breakpoints="s" mt={['xs', 'l']} p="s">
+	<Box
+		bold
+		breakpoints="s"
+		mt={['xs', 'l']}
+		p="s"
+		boxShadow="soft"
+	>
 		Hello
 	</Box>
 </Playground>

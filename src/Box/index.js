@@ -8,6 +8,7 @@ import {
 	sizeProps,
 	marginProps,
 	paddingProps,
+	themeProps,
 	borderProps,
 	textProps,
 } from '../styleProps';
@@ -19,6 +20,7 @@ const Box = styled.div`
 	${sizeProps}
 	${marginProps}
 	${paddingProps}
+	${themeProps}
 	${borderProps}
 	${textProps}
 `;
@@ -68,10 +70,6 @@ Box.propTypes = {
 		PropTypes.string,
 		PropTypes.array,
 	]),
-	border: PropTypes.oneOfType([
-		PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-		PropTypes.array,
-	]),
 	flexAlign: PropTypes.oneOfType([
 		PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
 		PropTypes.array,
@@ -96,9 +94,21 @@ Box.propTypes = {
 		PropTypes.oneOf(['all', 'first']),
 		PropTypes.array,
 	]),
-	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-	lineHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+	dimmed: PropTypes.oneOfType([
+		PropTypes.bool,
+		PropTypes.array,
+		PropTypes.func,
+	]),
+	fontSize: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.func,
+	]),
+	lineHeight: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.array,
+		PropTypes.func,
+	]),
 	overflow: PropTypes.oneOfType([
 		PropTypes.oneOf(['ellipsis', 'wrap']),
 		PropTypes.array,
@@ -106,6 +116,26 @@ Box.propTypes = {
 	textAlign: PropTypes.oneOfType([
 		PropTypes.oneOf(['left', 'center', 'right']),
 		PropTypes.array,
+	]),
+	border: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.func,
+	]),
+	boxShadow: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.func,
+	]),
+	background: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.func,
+	]),
+	color: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.array,
+		PropTypes.func,
 	]),
 };
 

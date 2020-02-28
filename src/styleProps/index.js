@@ -1,19 +1,21 @@
 import borderProps from './borderProps';
 import displayProps from './displayProps';
 import flexProps from './flexProps';
-import sizeProps from './sizeProps';
+import marginProps from './marginProps';
 import paddingProps from './paddingProps';
 import positionProps from './positionProps';
-import marginProps from './marginProps';
+import sizeProps from './sizeProps';
 import textProps from './textProps';
+import themeProps from './themeProps';
 
 export {
 	borderProps,
 	displayProps,
 	flexProps,
-	sizeProps,
+	marginProps,
 	paddingProps,
 	positionProps,
-	marginProps,
+	sizeProps,
 	textProps,
+	themeProps,
 };
