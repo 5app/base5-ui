@@ -4,6 +4,8 @@
 		"@babel/transform-react-jsx",
 		"@babel/proposal-object-rest-spread",
 		"@babel/proposal-class-properties",
+		"@babel/proposal-optional-chaining",
+		"@babel/proposal-nullish-coalescing-operator",
 		"babel-plugin-styled-components"
 	]
 }

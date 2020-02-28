@@ -30,7 +30,7 @@ const positionProps = createStyleFunction([
 	{
 		styleProp: 'z',
 		properties: ['zIndex'],
-		getValue: (z, theme) => (theme.globals.z && theme.globals.z[z]) || z,
+		getValue: (z, theme) => theme.globals?.z?.[z] || z,
 	},
 ]);
 

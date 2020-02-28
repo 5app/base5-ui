@@ -30,7 +30,7 @@ const highlight = (color, factor = 0.1) =>
 	isDark(color) ? lighten(color, factor) : darken(color, factor);
 
 function getColorBlock(color, theme) {
-	return theme[color] || theme.globals.colorBlocks[color] || color;
+	return theme[color] || theme.globals?.colorBlocks?.[color] || color;
 }
 
 function getBackgroundShade(theme) {
