@@ -1,7 +1,15 @@
-import {alpha} from '../utils/colors';
+import {alpha, getColorBlock} from '../utils/colors';
 
-function borderValue(theme) {
-	return `1px solid ${alpha(theme.shade, theme.lineStrength)}`;
+const defaultOptions = {strength: '1px', style: 'solid'};
+
+function borderValue(theme, options = defaultOptions) {
+	const {strength, style, color} = options;
+
+	return `${strength} ${style} ${
+		color
+			? getColorBlock(color, theme)
+			: alpha(theme.shade, theme.lineStrength)
+	}`;
 }
 
 export default borderValue;

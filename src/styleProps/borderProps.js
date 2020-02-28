@@ -1,25 +1,45 @@
 import {createStyleFunction} from '../utils/styleProps';
+import {pxToRem} from '../utils/units';
 import {borderValue} from '../mixins';
 
-const borderKeys = {
-	top: 'borderTop',
-	left: 'borderLeft',
-	bottom: 'borderBottom',
-	right: 'borderRight',
-};
+function getBorderValue(value, theme) {
+	const borderStyles = theme.globals?.borderStyles?.[value];
+	if (!borderStyles) {
+		return value;
+	}
+	return borderValue(theme, borderStyles);
+}
 
 const borderProps = createStyleFunction([
 	{
 		styleProp: 'border',
-		getRules: (border, theme) => {
-			if (!borderKeys[border]) {
-				return null;
-			}
-			return {
-				border: 'none',
-				[borderKeys[border]]: borderValue(theme),
-			};
-		},
+		getValue: getBorderValue,
+	},
+	{
+		styleProp: 'borderTop',
+		getValue: getBorderValue,
+	},
+	{
+		styleProp: 'borderRight',
+		getValue: getBorderValue,
+	},
+	{
+		styleProp: 'borderBottom',
+		getValue: getBorderValue,
+	},
+	{
+		styleProp: 'borderLeft',
+		getValue: getBorderValue,
+	},
+	{
+		styleProp: 'boxShadow',
+		getValue: (value, theme) =>
+			theme.globals?.shadowStyles?.[value] || value,
+	},
+	{
+		styleProp: 'borderRadius',
+		getValue: (value, theme) =>
+			pxToRem(theme.globals?.borderRadius?.[value]) || value,
 	},
 ]);
 

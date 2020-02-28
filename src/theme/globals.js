@@ -73,6 +73,22 @@ const borderRadius = {
 	search: 5,
 };
 
+const borderStyles = {
+	thin: {
+		strength: '1px',
+		style: 'solid',
+	},
+	dashed: {
+		strength: pxToRem(3),
+		style: 'dashed',
+	},
+};
+
+const shadowStyles = {
+	soft: `0 0 ${pxToRem(3)} rgba(0, 0, 0, 0.2)`,
+	raised: `0 ${pxToRem(2)} 0 0 rgba(0, 0, 0, 0.15)`,
+};
+
 const colorBlocks = {
 	'alert-success': colors.blue,
 	'alert-fail': colors.pink,
@@ -90,6 +106,8 @@ export default {
 	typeScale,
 	z,
 	borderRadius,
+	borderStyles,
+	shadowStyles,
 	colorBlocks,
 	buttons,
 };
