@@ -47,21 +47,25 @@ function getStylePropRules(stylePropConfig, componentProps, breakpointIndex) {
 	const rules = {};
 	stylePropConfig.forEach(
 		({styleProp: stylePropKey, properties, getValue, getRules}) => {
-			const styleProp = getValueByIndex(
-				componentProps[stylePropKey],
-				breakpointIndex
-			);
+			let styleProp = componentProps[stylePropKey];
+			if (styleProp && typeof styleProp === 'function') {
+				styleProp = styleProp(componentProps.theme);
+			}
+			const stylePropVal = getValueByIndex(styleProp, breakpointIndex);
 
-			if (typeof getRules === 'function') {
-				const rulesToAdd = getRules(styleProp, componentProps.theme);
+			if (getRules && typeof getRules === 'function') {
+				const rulesToAdd = getRules(stylePropVal, componentProps.theme);
 				if (rulesToAdd) {
 					Object.assign(rules, rulesToAdd);
 				}
 			} else {
-				if (styleProp !== undefined && styleProp !== null) {
+				if (stylePropVal !== undefined && stylePropVal !== null) {
 					const props = properties || [stylePropKey];
 					props.forEach(prop => {
-						rules[prop] = getValue(styleProp, componentProps.theme);
+						rules[prop] = getValue(
+							stylePropVal,
+							componentProps.theme
+						);
 					});
 				}
 			}
