@@ -19,6 +19,12 @@ export const baseFlexRules = {
 export const flexPropsDef = [
 	{
 		styleProp: 'flexWrap',
+		getValue: value => value,
+	},
+	{
+		// Boolean switch for flexWrap="wrap"
+		styleProp: 'wrapItems',
+		properties: ['flexWrap'],
 		getValue: value => (value ? 'wrap' : 'nowrap'),
 	},
 	{
@@ -51,7 +57,7 @@ export const flexPropsDef = [
 	},
 	{
 		// Boolean switch for flexDirection="column"
-		styleProp: 'dirColumn',
+		styleProp: 'stackItems',
 		properties: ['flexDirection'],
 		getValue: value => (value ? 'column' : 'initial'),
 	},

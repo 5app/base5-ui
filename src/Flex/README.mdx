@@ -15,9 +15,16 @@ import Flex, {Box} from './';
 <Playground>
 	<Flex align="top">
 		<Box grow shrink>
-			I take up all the space and push other Boxes away! 👉
+			I take up all the free space and push other Boxes away! 👉
 		</Box>
 		<Box>👀 I'm smol.</Box>
+	</Flex>
+
+	<Flex wrap align="top" mt="m">
+		<Box grow shrink>
+			Still pushing all them Boxes!
+		</Box>
+		<Box>I'll go down 👇 if there's not enough space for me.</Box>
 	</Flex>
 </Playground>
 

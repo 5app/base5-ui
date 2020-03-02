@@ -8,7 +8,7 @@ function Flex({wrap, column, align, children, ...otherProps}) {
 		<Box
 			display="flex"
 			wrapItems={wrap}
-			dirColumn={column}
+			stackItems={column}
 			alignItems={align}
 			{...otherProps}
 		>

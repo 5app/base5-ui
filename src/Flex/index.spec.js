@@ -14,12 +14,12 @@ describe('Flex', () => {
 		});
 	});
 
-	it('can render wrapped content', () => {
+	it('can wrap items', () => {
 		const {container} = render(
 			<Wrapper>
 				<div>
 					<Flex id="flex">Hello, World!</Flex>
-					<Flex id="wrap" wrap>
+					<Flex wrap id="wrap">
 						Hello, World!
 					</Flex>
 				</div>
@@ -38,7 +38,7 @@ describe('Flex', () => {
 			<Wrapper>
 				<div>
 					<Flex id="flex">Hello, World!</Flex>
-					<Flex id="column" column>
+					<Flex column id="column">
 						Hello, World!
 					</Flex>
 				</div>
