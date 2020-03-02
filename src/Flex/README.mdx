@@ -8,7 +8,9 @@ import Flex, {Box} from './';
 
 # Flex
 
-`Flex` is a container component for building simple layouts using CSS flexbox. It's especially useful when used with the `Box` component which provides controls for laying out the children.
+`Flex` is a container component for building layouts using CSS flexbox. It's especially useful when used with the `Box` component which provides control for laying out the children.
+
+The component is built on top of `Box` and its props `align`, `column`, and `wrap` are aliases for the `Box` props `alignItems`, `stackItems`, and `wrapItems`.
 
 ## Examples
 
@@ -22,9 +24,9 @@ import Flex, {Box} from './';
 
 	<Flex wrap align="top" mt="m">
 		<Box grow shrink>
-			Still pushing all them Boxes!
+			Still taking up all free space.
 		</Box>
-		<Box>I'll go down 👇 if there's not enough space for me.</Box>
+		<Box>If there's no room for me I'll wrap onto a new line 👇</Box>
 	</Flex>
 </Playground>
 
