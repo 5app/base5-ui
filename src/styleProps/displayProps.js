@@ -6,13 +6,17 @@ const supportedDisplayValues = ['block', 'inline', 'inline-block', 'flex'];
 const overflowStylesMap = {
 	ellipsis,
 	wrap,
-	hidden: {
-		overflow: 'hidden',
-	},
-	auto: {
-		overflow: 'auto',
-	},
 };
+
+function getOverflowValue(value) {
+	if (overflowStylesMap[value]) {
+		return overflowStylesMap[value];
+	} else if (value) {
+		return {
+			overflow: value,
+		};
+	}
+}
 
 export const displayPropsDef = [
 	{
@@ -28,8 +32,7 @@ export const displayPropsDef = [
 	},
 	{
 		styleProp: 'overflow',
-		getRules: overflow =>
-			overflow ? overflowStylesMap[overflow] : undefined,
+		getRules: getOverflowValue,
 	},
 ];
 
