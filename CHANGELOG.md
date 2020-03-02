@@ -1,3 +1,45 @@
+# [8.0.0](https://github.com/5app/base5-ui/compare/v7.3.1...v8.0.0) (2020-03-02)
+
+
+### Bug Fixes
+
+* **Box:** Add missing base CSS rules for flexbox ([ba5dff4](https://github.com/5app/base5-ui/commit/ba5dff46788fbfd215f65990b7e346cdc6764d52))
+* **Flex:** Fix flex-wrap bug ([fd2cf81](https://github.com/5app/base5-ui/commit/fd2cf811e61bd517f172f9fbdc6ee00362cc2b4c))
+* **utils:** Fix getLength for string values ([57cbc95](https://github.com/5app/base5-ui/commit/57cbc9524ee25f19095d40178104deb1d12f1cce))
+
+
+### Features
+
+* **Box:** Add new size styleProps (width, height) ([4ab2bc4](https://github.com/5app/base5-ui/commit/4ab2bc495dcd8a44eeb959fc5f286f30d667a812))
+* **Box:** More supported flex props ([6646640](https://github.com/5app/base5-ui/commit/664664095c89dadb6dabb5a033ec4f75353c5624))
+* **Flex:** Rebuild Flex on top of Box ([fcaa327](https://github.com/5app/base5-ui/commit/fcaa3273f6938855bd3ab4533a317f3953872f1e))
+* **InlineList:** Support additional styleProps ([5f455ab](https://github.com/5app/base5-ui/commit/5f455abc1a6680899a69420b9cae48677d472e2a))
+* **styleProps:** Allow functions as styleProp values ([ebba463](https://github.com/5app/base5-ui/commit/ebba463e6d7b5f6c0f3d6b1dc8d845454e95207f))
+* **styleProps:** Allow ommitting properties array ([119a16b](https://github.com/5app/base5-ui/commit/119a16b8cdeb69b63063446d84d9b69e351da1bc))
+* **styleProps:** Moved border & shadow styles to theme ([05a1e53](https://github.com/5app/base5-ui/commit/05a1e5354303397466bde9958631c645c48caff6))
+* **styleProps:** New style props for theming ([ac8ae31](https://github.com/5app/base5-ui/commit/ac8ae31577ee505b0cac54df4135c3c75652ed96))
+* **Text:** Support sizing styleProps ([eede232](https://github.com/5app/base5-ui/commit/eede232d0a343505dd73c86ed6cc51075cce09bd))
+* **utils:** getLength now converts fractions to % ([0978082](https://github.com/5app/base5-ui/commit/0978082220e2e0dd28ed92e7a059aad65a9d73b7))
+* **utils:** New fractionToPercent converter ([349563f](https://github.com/5app/base5-ui/commit/349563ffe417c71952bb1d165e6def11ec6cad0d))
+* **utils:** New getLength CSS utility ([efcb177](https://github.com/5app/base5-ui/commit/efcb177f8dbd3e0c2542ddfc389e9e0b79e252f0))
+
+
+### Performance Improvements
+
+* **styleProps:** Reduce function calls in Box/Text ([56b6e7a](https://github.com/5app/base5-ui/commit/56b6e7aec0ae9abf82934a66b9d338fb93b74862))
+
+
+### BREAKING CHANGES
+
+* **styleProps:** The API for the border style prop has changed.
+Instead of e.g. border="top", use borderTop="thin"
+('thin' being the name of the border definition from
+the theme configuration).
+* **Flex:** When using the column prop on Flex, 100% height
+is not automatically applied anymore.
+Migration: Apply the new style prop height="100%"
+to any instances of Flex that have the column prop
+
 ## [7.3.1](https://github.com/5app/base5-ui/compare/v7.3.0...v7.3.1) (2020-02-20)
 
 
