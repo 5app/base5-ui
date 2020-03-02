@@ -41,6 +41,10 @@ function getSolidBackgroundShade(theme) {
 	return mix(theme.shade, 'rgb')(theme.background, theme.shadeStrength);
 }
 
+function getBorderColor(theme) {
+	return alpha(theme.shade, theme.lineStrength);
+}
+
 export {
 	alpha,
 	mix,
@@ -53,4 +57,5 @@ export {
 	getColorBlock,
 	getBackgroundShade,
 	getSolidBackgroundShade,
+	getBorderColor,
 };
