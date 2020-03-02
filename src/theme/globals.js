@@ -1,4 +1,5 @@
 import {rootFontSize, pxToEm, pxToRem} from '../utils/units';
+import {getBorderColor} from '../utils/colors';
 
 import colors from './colors';
 
@@ -74,14 +75,8 @@ const borderRadius = {
 };
 
 const borderStyles = {
-	thin: {
-		strength: '1px',
-		style: 'solid',
-	},
-	dashed: {
-		strength: pxToRem(3),
-		style: 'dashed',
-	},
+	thin: theme => `1px solid ${getBorderColor(theme)}`,
+	dashed: theme => `${pxToRem(3)} dashed ${getBorderColor(theme)}`,
 };
 
 const shadowStyles = {

@@ -1,14 +1,18 @@
 import {createStyleFunction} from '../utils/styleProps';
-import {pxToRem} from '../utils/units';
-import {borderValue} from '../mixins';
 
-function getBorderValue(value, theme) {
-	const borderStyles = theme.globals?.borderStyles?.[value];
-	if (!borderStyles) {
-		return value;
-	}
-	return borderValue(theme, borderStyles);
+function getGlobalThemeValue(key) {
+	return (value, theme) => {
+		const themeValue = theme.globals?.[key]?.[value] || value;
+
+		if (typeof themeValue === 'function') {
+			return themeValue(theme);
+		}
+
+		return themeValue;
+	};
 }
+
+const getBorderValue = getGlobalThemeValue('borderStyles');
 
 export const borderPropsDef = [
 	{
@@ -33,13 +37,11 @@ export const borderPropsDef = [
 	},
 	{
 		styleProp: 'boxShadow',
-		getValue: (value, theme) =>
-			theme.globals?.shadowStyles?.[value] || value,
+		getValue: getGlobalThemeValue('shadowStyles'),
 	},
 	{
 		styleProp: 'borderRadius',
-		getValue: (value, theme) =>
-			pxToRem(theme.globals?.borderRadius?.[value]) || value,
+		getValue: getGlobalThemeValue('borderRadius'),
 	},
 ];
 
