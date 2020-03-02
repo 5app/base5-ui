@@ -4,7 +4,7 @@ import {createStyleFunction} from '../utils/styleProps';
 
 import {positionPropsDef} from '../styleProps/positionProps';
 import {displayPropsDef} from '../styleProps/displayProps';
-import {flexPropsDef} from '../styleProps/flexProps';
+import {flexPropsDef, baseFlexRules} from '../styleProps/flexProps';
 import {sizePropsDef} from '../styleProps/sizeProps';
 import {marginPropsDef} from '../styleProps/marginProps';
 import {paddingPropsDef} from '../styleProps/paddingProps';
@@ -25,6 +25,7 @@ const styleProps = createStyleFunction([
 ]);
 
 const Box = styled.div`
+	${baseFlexRules}
 	${styleProps}
 `;
 

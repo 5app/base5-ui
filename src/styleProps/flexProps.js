@@ -50,6 +50,7 @@ export const flexPropsDef = [
 		getValue: value => value,
 	},
 	{
+		// Boolean switch for flexDirection="column"
 		styleProp: 'dirColumn',
 		properties: ['flexDirection'],
 		getValue: value => (value ? 'column' : 'initial'),
