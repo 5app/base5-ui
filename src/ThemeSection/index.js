@@ -10,6 +10,8 @@ function ThemeSection(props) {
 
 	const constructLocalTheme = useCallback(
 		(parentTheme = baseTheme) => {
+			const localThemeSection = parentTheme.sections[name];
+			const parentThemeSectionName = parentTheme.currentThemeSectionName;
 			const colorBlockOverrides = getReadableColorblock(
 				parentTheme.globals.colorBlocks,
 				colorBlock,
@@ -18,8 +20,11 @@ function ThemeSection(props) {
 
 			return {
 				...parentTheme,
-				...parentTheme.sections[name],
+				...localThemeSection,
 				...colorBlockOverrides,
+				currentThemeSectionName: name,
+				parent: parentTheme.sections[parentThemeSectionName],
+				parentThemeSectionName,
 			};
 		},
 		[baseTheme, colorBlock, hasBgImage, name]
