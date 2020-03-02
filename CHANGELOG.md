@@ -1,3 +1,12 @@
+# [8.1.0](https://github.com/5app/base5-ui/compare/v8.0.0...v8.1.0) (2020-03-02)
+
+
+### Features
+
+* **borderProps:** More consistent theming ([0ddacfb](https://github.com/5app/base5-ui/commit/0ddacfb02efae011c17dc8e0e706d14e92002114))
+* **ThemeSection:** Include parent themeSection ([0a21ad4](https://github.com/5app/base5-ui/commit/0a21ad451b030758f5597ffb46f4c91038f42471))
+* **utils:** New getBorderColor utility ([ad15956](https://github.com/5app/base5-ui/commit/ad15956eae321ad696a37fc29f4ecf9cb3f6ceb0))
+
 # [8.0.0](https://github.com/5app/base5-ui/compare/v7.3.1...v8.0.0) (2020-03-02)
 
 
