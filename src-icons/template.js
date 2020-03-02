@@ -19,6 +19,8 @@ const ${name}Icon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="${pathData}" />
 		</Svg>

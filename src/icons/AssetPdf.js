@@ -15,6 +15,8 @@ const AssetPdfIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M15,13l0,2l-12,0l0,-2l12,0Zm-7,-3l0,2l-5,0l0,-2l5,0Zm7,-3l0,5l-6,0l0,-5l6,0Zm-7,0l0,2l-5,0l0,-2l5,0Zm7,-4l0,3l-12,0l0,-3l12,0Z" />
 		</Svg>

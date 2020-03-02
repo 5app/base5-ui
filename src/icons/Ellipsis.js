@@ -15,6 +15,8 @@ const EllipsisIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M15,11c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M9,11c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M3,11c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z" />
 		</Svg>

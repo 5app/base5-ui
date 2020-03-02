@@ -15,6 +15,8 @@ const AssetTextIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M3,12l0,-2l9,0l0,2l-9,0Zm0,-5l12,0l0,2l-12,0l0,-2Zm0,-4l11,0l0,3l-11,0l0,-3Zm11,12l-11,0l0,-2l11,0l0,2Z" />
 		</Svg>

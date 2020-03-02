@@ -16,10 +16,7 @@ function getScaleFromFlipAxis(axis) {
 	}
 }
 
-const Svg = styled.svg.attrs({
-	role: 'presentation',
-	focusable: 'false',
-})`
+const Svg = styled.svg`
 	display: inline-block;
 	vertical-align: middle;
 

@@ -15,6 +15,8 @@ const DotIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M 9 4 A 5 5 0 0 1 9 14 A 5 5 0 0 1 9 4" />
 		</Svg>

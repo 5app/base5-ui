@@ -15,6 +15,8 @@ const NavDownIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M14,5l-5,9l-5,-9l10,0Z" />
 		</Svg>

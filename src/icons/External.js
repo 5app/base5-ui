@@ -15,6 +15,8 @@ const ExternalIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M11,6c-6.156,0.039 -8,8 -8,8c1.599,-2.156 3.641,-3.972 8,-4l0,3l5,-5l-5,-5l0,3Z" />
 		</Svg>

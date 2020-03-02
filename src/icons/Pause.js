@@ -15,6 +15,8 @@ const PauseIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M5,4l3,0l0,10l-3,0l0,-10ZM10,4l3,0l0,10l-3,0l0,-10Z" />
 		</Svg>

@@ -15,6 +15,8 @@ const FlagIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M14.95,5.538c-6.221,9.569 -4.091,-0.183 -9.35,4.483l1.195,4.979l-1.344,0l-2.441,-10.163l1.232,-0.469c5.895,-4.563 2.816,4.106 10.416,0.885c0.242,-0.103 0.436,0.064 0.292,0.285Z" />
 		</Svg>

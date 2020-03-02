@@ -15,6 +15,8 @@ const ChevronIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M5,7l8,0l-4,5l-4,-5Z" />
 		</Svg>

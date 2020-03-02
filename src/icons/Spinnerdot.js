@@ -15,6 +15,8 @@ const SpinnerdotIcon = forwardRef((props, ref) => {
 			fill={color}
 			fillRule="evenodd"
 			clipRule="evenodd"
+			focusable="false"
+			aria-hidden={true}
 		>
 			<path d="M 14 12 A 2 2 0 0 1 14 16 A 2 2 0 0 1 14 12" />
 		</Svg>
