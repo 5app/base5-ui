@@ -19,14 +19,22 @@ describe('Time', () => {
 			offset: 90,
 			text: '1 minute ago',
 		},
-	].forEach(({offset, text}) => {
-		it(`renders time as relative text, offset ${offset}, expect ${text}`, () => {
-			const date = new Date();
-			date.setTime(date.getTime() - offset * 1000);
+		{
+			dateValue: "2019-02-04T12:06:13Z",
+			systemTime: "2019-02-06T12:06:13Z",
+			text: 'Mon, 12 PM',
+		},
+	].forEach(({offset, text, dateValue = Date.now(), systemTime}) => {
+		it(`renders time as relative text ${offset ? `,offset:${offset}` : ''}  ${dateValue ? `,dateValue:${dateValue}` : ''}, expect ${text}`, () => {
+			const date = new Date(dateValue);
+
+			if (offset) {
+				date.setTime(date.getTime() - offset * 1000);
+			}
 
 			const isoDate = date.toISOString();
 
-			const {container} = render(<Time dateTime={isoDate} />);
+			const {container} = render(<Time dateTime={isoDate} systemTime={systemTime}/>);
 
 			const time = container.querySelector('time');
 
