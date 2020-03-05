@@ -19,20 +19,33 @@ describe('Time', () => {
 			offset: 90,
 			text: '1 minute ago',
 		},
-	].forEach(({offset, text}) => {
-		it(`renders time as relative text, offset ${offset}, expect ${text}`, () => {
-			const date = new Date();
-			date.setTime(date.getTime() - offset * 1000);
+		{
+			dateTime: '2019-02-27T12:06:14Z',
+			systemTime: '2019-02-29T12:06:14Z',
+			text: 'Wed, 12 PM',
+		},
+	].forEach(({offset, text, dateTime, systemTime}) => {
+		it(`renders time as relative text ${
+			offset ? `, offset:${offset}` : ''
+		}${dateTime ? `, dateTime:${dateTime}` : ''}, expect ${text}`, () => {
+			if (!dateTime) {
+				const date = new Date();
+				date.setTime(date.getTime() - offset * 1000);
+				dateTime = date.toISOString();
+			}
 
-			const isoDate = date.toISOString();
-
-			const {container} = render(<Time dateTime={isoDate} />);
+			const {container} = render(
+				<Time dateTime={dateTime} systemTime={systemTime} />
+			);
 
 			const time = container.querySelector('time');
 
 			expect(time).toBeInTheDocument();
-			expect(time).toHaveAttribute('title', date.toLocaleString());
-			expect(time).toHaveAttribute('dateTime', isoDate);
+			expect(time).toHaveAttribute(
+				'title',
+				new Date(dateTime).toLocaleString()
+			);
+			expect(time).toHaveAttribute('dateTime', dateTime);
 			expect(time).toHaveTextContent(text);
 		});
 	});
