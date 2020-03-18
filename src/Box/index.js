@@ -113,10 +113,7 @@ Box.propTypes = {
 		PropTypes.array,
 		PropTypes.func,
 	]),
-	overflow: PropTypes.oneOfType([
-		PropTypes.oneOf(['ellipsis', 'wrap']),
-		PropTypes.array,
-	]),
+	overflow: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 	textAlign: PropTypes.oneOfType([
 		PropTypes.oneOf(['left', 'center', 'right']),
 		PropTypes.array,
