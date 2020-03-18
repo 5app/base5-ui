@@ -1,3 +1,17 @@
+## [8.1.2](https://github.com/5app/base5-ui/compare/v8.1.1...v8.1.2) (2020-03-05)
+
+
+### Bug Fixes
+
+* **Time:** fix hour clock 5app/dashboard[#7197](https://github.com/5app/base5-ui/issues/7197) ([#67](https://github.com/5app/base5-ui/issues/67)) ([363ead5](https://github.com/5app/base5-ui/commit/363ead5614c9b490d2126654b1771fb90d3b9fbc))
+
+## [8.1.1](https://github.com/5app/base5-ui/compare/v8.1.0...v8.1.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **displayProps:** Allow generic values for overflow ([08edb9e](https://github.com/5app/base5-ui/commit/08edb9ea182627e6a305d7075d617f32e32465f1))
+
 # [8.1.0](https://github.com/5app/base5-ui/compare/v8.0.0...v8.1.0) (2020-03-02)
 
 

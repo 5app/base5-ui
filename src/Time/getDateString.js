@@ -55,7 +55,7 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 		// Number of ms until end of the day...
 		delay = TIME_DAY - ms_today;
 		dateString = new Intl.DateTimeFormat(locale, {
-			hour12: true,
+			hourCycle: 'h12',
 			hour: 'numeric',
 			minute: 'numeric',
 		}).format(time);
@@ -67,7 +67,7 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 		// Get day
 		dateString = new Intl.DateTimeFormat(locale, {
 			weekday: 'short',
-			hour12: true,
+			hourCycle: 'h12',
 			hour: 'numeric',
 		}).format(time);
 	} else if (time.getYear() === systemtime.getYear()) {

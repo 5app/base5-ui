@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "8.1.0",
+	"version": "8.1.2",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -41,7 +41,7 @@
 		"@commitlint/config-conventional": "^8.2.0",
 		"@semantic-release/changelog": "^5.0.0",
 		"@semantic-release/git": "^9.0.0",
-		"@testing-library/react": "^9.3.1",
+		"@testing-library/react": "^10.0.0",
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-styled-components": "^1.10.7",
