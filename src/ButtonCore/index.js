@@ -92,6 +92,7 @@ const ButtonCore = forwardRef((props, ref) => {
 			as={isDisabledLink ? 'span' : as}
 			type={defaultType}
 			aria-disabled={isButton && isDisabled ? 'true' : undefined}
+			aria-pressed={isButton && isActive ? 'true' : null}
 			onClick={onClick}
 			className={classes}
 		/>
