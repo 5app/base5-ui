@@ -69,7 +69,7 @@ const InlineList = ({as, itemAs, children, display, ...otherProps}) => {
 			{React.Children.map(children, (child, i) => {
 				if (child) {
 					return (
-						<Item key={i} as={itemAs || as} display={display}>
+						<Item key={i} as={itemAs} display={display}>
 							{child}
 						</Item>
 					);
