@@ -77,8 +77,7 @@ function getDefaultReadout(name, value, label) {
 					<br />
 				</Text>
 			)}
-			{name}
-			{name ? ':' : ''} {value}
+			{name ? `${name}: ${value}` : value}
 		</>
 	);
 }
