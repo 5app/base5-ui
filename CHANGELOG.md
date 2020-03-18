@@ -1,3 +1,17 @@
+# [8.2.0](https://github.com/5app/base5-ui/compare/v8.1.2...v8.2.0) (2020-03-18)
+
+
+### Bug Fixes
+
+* **a11y:** Smoother SR reading for chart labels ([41d38fe](https://github.com/5app/base5-ui/commit/41d38fee0f089f08933fcc065a78c3fd0122a2cf))
+* **Box:** Fix overly strict propTypes ([57f4772](https://github.com/5app/base5-ui/commit/57f47721ef6905106d83061f2746828ae86a61e4))
+* **InlineList:** Enforce separate 'as' props ([447677f](https://github.com/5app/base5-ui/commit/447677f93b0b0bfa8e3a922514f864259a31096d))
+
+
+### Features
+
+* **a11y:** Add aria-pressed to ButtonCore when active ([70cd899](https://github.com/5app/base5-ui/commit/70cd899d367d6765ab62e0f0f4ccd455b41f6131))
+
 ## [8.1.2](https://github.com/5app/base5-ui/compare/v8.1.1...v8.1.2) (2020-03-05)
 
 
