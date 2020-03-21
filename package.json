@@ -58,7 +58,7 @@
 		"husky": "^4.0.3",
 		"jest": "^25.0.0",
 		"pixo": "^1.1.2",
-		"prettier": "^1.18.2",
+		"prettier": "^2.0.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.11.0",
 		"react-docgen-annotation-resolver": "^2.0.0",
