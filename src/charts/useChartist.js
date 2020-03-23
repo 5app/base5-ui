@@ -26,8 +26,9 @@ function useChartist(
 			if (node) {
 				node.setAttribute(
 					'viewBox',
-					`0 0 ${node.clientWidth} ${chartHeight ||
-						node.clientHeight}`
+					`0 0 ${node.clientWidth} ${
+						chartHeight || node.clientHeight
+					}`
 				);
 				if (preserveAspectRatio) {
 					node.setAttribute(
