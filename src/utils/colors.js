@@ -1,9 +1,6 @@
 import chroma from 'chroma-js';
 
-const alpha = (color, amount) =>
-	chroma(color)
-		.alpha(amount)
-		.css();
+const alpha = (color, amount) => chroma(color).alpha(amount).css();
 
 const mix = (color, colorSpace = 'hsl') => (baseColor, amount) =>
 	chroma.mix(baseColor, color, amount, colorSpace);

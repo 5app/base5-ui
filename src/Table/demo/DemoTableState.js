@@ -8,7 +8,7 @@ function sortBy(property, order = 'asc') {
 
 	const prop = property.toLowerCase();
 
-	return function(a, b) {
+	return function (a, b) {
 		const result = a[prop] < b[prop] ? -1 : a[prop] > b[prop] ? 1 : 0;
 		return result * orderAsNumber[order];
 	};
