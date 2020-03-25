@@ -59,7 +59,7 @@ const Wrapper = styled.ul`
 					content: '';
 					display: inline-block;
 					vertical-align: middle;
-					margin: 0 0.8ch;
+					margin: -0.15em 0.8ch 0;
 					width: 0.15em;
 					height: 0.15em;
 					border-radius: 50%;
