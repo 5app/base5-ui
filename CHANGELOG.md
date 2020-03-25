@@ -1,3 +1,10 @@
+## [8.2.2](https://github.com/5app/base5-ui/compare/v8.2.1...v8.2.2) (2020-03-25)
+
+
+### Bug Fixes
+
+* **InlineList:** Tiny middledot alignment fix ([0f5f8c9](https://github.com/5app/base5-ui/commit/0f5f8c937d269f2227b3873b2430e8f5f42f0ae3))
+
 ## [8.2.1](https://github.com/5app/base5-ui/compare/v8.2.0...v8.2.1) (2020-03-25)
 
 
