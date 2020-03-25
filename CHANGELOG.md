@@ -1,3 +1,10 @@
+## [8.2.1](https://github.com/5app/base5-ui/compare/v8.2.0...v8.2.1) (2020-03-25)
+
+
+### Bug Fixes
+
+* **a11y:** Prevent middledot from being read by screen readers ([692123b](https://github.com/5app/base5-ui/commit/692123be5cbddb46f0800acdb1d5567c0b56c1a8))
+
 # [8.2.0](https://github.com/5app/base5-ui/compare/v8.1.2...v8.2.0) (2020-03-18)
 
 
