@@ -1,3 +1,10 @@
+## [8.2.3](https://github.com/5app/base5-ui/compare/v8.2.2...v8.2.3) (2020-03-25)
+
+
+### Bug Fixes
+
+* **Button:** Preserve aria-pressed attr on inactive toggle buttons ([a8b300b](https://github.com/5app/base5-ui/commit/a8b300b723be85b62f68803ecd37dbdb890255be))
+
 ## [8.2.2](https://github.com/5app/base5-ui/compare/v8.2.1...v8.2.2) (2020-03-25)
 
 
