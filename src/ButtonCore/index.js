@@ -92,7 +92,13 @@ const ButtonCore = forwardRef((props, ref) => {
 			as={isDisabledLink ? 'span' : as}
 			type={defaultType}
 			aria-disabled={isButton && isDisabled ? 'true' : undefined}
-			aria-pressed={isButton && isActive ? 'true' : null}
+			aria-pressed={
+				isButton && isActive
+					? 'true'
+					: isActive === false
+					? 'false'
+					: null
+			}
 			onClick={onClick}
 			className={classes}
 		/>
@@ -117,9 +123,11 @@ ButtonCore.propTypes = {
 	 */
 	type: PropTypes.string,
 	/**
-	 * When present, this adds the className `is-active` to the rendered element.
+	 * On links, this adds the className `is-active` to the rendered element when true.
 	 * Useful so you can use this class as the only styling hook in combination with
 	 * react-router's `NavLink` and its `activeClassName` prop.
+	 * On buttons, this turns the button into a toggle button and adds the
+	 * aria-pressed attribute to the element.
 	 * Note: This is different from react-router 5's isActive prop.
 	 * This conflict should be resolved at some point but would be a breaking change.
 	 */
