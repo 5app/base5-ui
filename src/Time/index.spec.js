@@ -25,13 +25,11 @@ describe('Time', () => {
 			text: 'Wed, 12 PM',
 		},
 	].forEach(({offset, text, dateStr, systemTime}) => {
-
 		let dateTime = dateStr;
 
 		it(`renders time as relative text ${
 			offset ? `, offset:${offset}` : ''
 		}${dateTime ? `, dateTime:${dateTime}` : ''}, expect ${text}`, () => {
-
 			if (!dateTime) {
 				const date = new Date();
 				date.setTime(date.getTime() - offset * 1000);
