@@ -20,11 +20,13 @@ describe('Time', () => {
 			text: '1 minute ago',
 		},
 		{
-			dateTime: '2019-02-27T12:06:14Z',
+			dateStr: '2019-02-27T12:06:14Z',
 			systemTime: '2019-02-29T12:06:14Z',
 			text: 'Wed, 12 PM',
 		},
-	].forEach(({offset, text, dateTime, systemTime}) => {
+	].forEach(({offset, text, dateStr, systemTime}) => {
+		let dateTime = dateStr;
+
 		it(`renders time as relative text ${
 			offset ? `, offset:${offset}` : ''
 		}${dateTime ? `, dateTime:${dateTime}` : ''}, expect ${text}`, () => {
