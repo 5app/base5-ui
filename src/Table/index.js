@@ -431,7 +431,7 @@ Table.propTypes = {
 	onRequestSort: PropTypes.func,
 	/**
 	 * Object describing the order of the table's data.
-	 * 'column': Name (or title) of the column to be sorted by
+	 * 'column': Name (or title) of the column to be sorted by.
 	 * 'order': Direction of sorting, either 'asc' (ascending)
 	 * or 'desc' (descending)
 	 */
@@ -447,7 +447,15 @@ Table.propTypes = {
 		asc: PropTypes.string.isRequired,
 		desc: PropTypes.string.isRequired,
 	}),
+	/**
+	 * Padding left – indent the content of the first column by the
+	 * specified amount.
+	 */
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	/**
+	 * Padding right – spaces the content of the last column by the
+	 * specified amount.
+	 */
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	/**
 	 * The title or name of the column that you want to act as header of the row.
@@ -455,7 +463,13 @@ Table.propTypes = {
 	 * Defaults to the first column.
 	 */
 	rowHeader: PropTypes.string,
+	/**
+	 * Minimum height of each row. Increase this for a more spacious design.
+	 */
 	rowMinHeight: PropTypes.number,
+	/**
+	 * Slightly darken the background of the header
+	 */
 	shadedHeader: PropTypes.bool,
 };
 

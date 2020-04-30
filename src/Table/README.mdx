@@ -128,6 +128,14 @@ You can also define your columns as an array of objects, if you prefer:
 	</Box>
 </Playground>
 
+### Sorting
+
+To add clickable column headers to a table, first add the `sortable` prop to any columns that you want to be sortable.
+
+Then add a `sort` prop to `<Table />` that defines the current sort order via an object with the keys `order` ('asc' || 'desc') and `column` (`name` of the sorted column). If a column wasn't given a `name` prop, its `title` will be used instead.
+
+Finally you'll need to tell the Table what to do when a header is clicked. That's what the `onRequestSort` prop is for – it's called with an object in the same shape as the `sort` prop to define the desired target sorting.
+
 ### Responsive example
 
 -   **Mobile view:** The table changes to a more list-like view when the screen width shrinks below the breakpoint defined using the `mobileViewBreakpoint` prop.
