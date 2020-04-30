@@ -1,3 +1,16 @@
+# [9.0.0](https://github.com/5app/base5-ui/compare/v8.3.0...v9.0.0) (2020-04-30)
+
+
+### Features
+
+* **Table:** Add new prop `title` to Column, [#79](https://github.com/5app/base5-ui/issues/79) ([7fe11b4](https://github.com/5app/base5-ui/commit/7fe11b48c7d427276f268f01f081e83ac2791e60))
+
+
+### BREAKING CHANGES
+
+* **Table:** The old name prop on Column instances was changed
+to title and needs to be updated accordingly.
+
 # [8.3.0](https://github.com/5app/base5-ui/compare/v8.2.3...v8.3.0) (2020-04-24)
 
 
