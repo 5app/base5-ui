@@ -270,7 +270,7 @@ function Table(props) {
 		: columnsProp;
 
 	const hasData = data && data.length > 0;
-	const rowHeader = rowHeaderProp || columns[0][itemKey];
+	const rowHeader = rowHeaderProp || columns[0].name || columns[0].title;
 
 	return (
 		<>
