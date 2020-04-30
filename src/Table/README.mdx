@@ -25,25 +25,30 @@ A table component with a sticky header row and clickable headers for sorting.
 
 ### Simple example with JSX column config
 
-The table data is provided as an array of objects. The column names defined will be used to select a field from the data row by default (i.e. the "Email" column will get its data from `item.email`), but in most cases you'll want to specify a custom field, which you can do using the `cellRenderer` prop (see "Country" column below).
+The table data is provided as an array of objects. The `title` given to each column will be used to select a field from the data row (i.e. the "Email" column will get its data from `item.email`). If you want to specify a field different from the title, you can do so either using the `name` prop (which must be a simple string like `title`), or using the `cellRenderer` prop for more complex cases (see "Country" column below).
+
+`cellRenderer` is also used to generally customise the rendering of a table cell.
 
 ```jsx
 <Table data={dummyData.slice(0, 4)} itemKey="name">
-	<Column name="Name" />
-	<Column name="Email" />
-	<Column name="Country" cellRenderer={item => item.region} />
-	<Column name="Type" />
-	<Column name="Time" />
+	<Column title="Name" />
+	<Column title="Country" name="region" />
+	<Column title="Domain" cellRenderer={item => item.email.split('@')[1]} />
+	<Column title="Type" />
+	<Column title="Time" />
 </Table>
 ```
 
 <Playground>
 	<Table data={dummyData.slice(0, 4)} itemKey="name">
-		<Column name="Name" />
-		<Column name="Email" />
-		<Column name="Country" cellRenderer={item => item.region} />
-		<Column name="Type" />
-		<Column name="Time" />
+		<Column title="Name" />
+		<Column title="Country" name="region" />
+		<Column
+			title="Email domain"
+			cellRenderer={item => item.email.split('@')[1]}
+		/>
+		<Column title="Type" />
+		<Column title="Time" />
 	</Table>
 </Playground>
 
@@ -56,11 +61,11 @@ You can also define your columns as an array of objects, if you prefer:
 	data={dummyData.slice(0, 4)}
 	itemKey="name"
 	columns={[
-		{name: 'Name'},
-		{name: 'Email'},
-		{name: 'Country', cellRenderer: item => item.region},
-		{name: 'Type'},
-		{name: 'Time'},
+		{title: 'Name'},
+		{title: 'Country', name: 'region'},
+		{title: 'Email domain', cellRenderer: item => item.email.split('@')[1]},
+		{title: 'Type'},
+		{title: 'Time'},
 	]}
 />
 ```
@@ -69,12 +74,12 @@ You can also define your columns as an array of objects, if you prefer:
 
 -   Wrapped in a box with rounded corners (not part of component API)
 -   Use `cellRenderer` to easily customise the way a cell's content is rendered
--	Use the `rowHeader` prop to specify which column will be used as the header in the mobile view (only needs to be specified if it's not the first column)
+-   Use the `rowHeader` prop to specify which column will be used as the header in the mobile view (only needs to be specified if it's not the first column)
 -   Use fixed or percentage `width` values to customise column sizes
 -   Use the `shadedHeader` prop for a shaded table header background
 -   Use the `subtitle` prop to add a subtitle to a column header
 -   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
--	Enable sortable columns by adding `<Column sortable />` props and passing `sort` and `onRequestSort` props to `Table`
+-   Enable sortable columns by adding `<Column sortable />` props and passing `sort` and `onRequestSort` props to `Table`
 
 <Playground>
 	<Box border="thin" borderRadius="panels">
@@ -94,7 +99,7 @@ You can also define your columns as an array of objects, if you prefer:
 					pr={20}
 				>
 					<Column
-						name="Role"
+						title="Role"
 						width={40}
 						cellRenderer={item => (
 							<Icon
@@ -107,29 +112,25 @@ You can also define your columns as an array of objects, if you prefer:
 					/>
 					<Column
 						sortable
-						name="Name"
+						title="Name"
 						width="40%"
 						cellRenderer={item => <strong>{item.name}</strong>}
 					/>
 					<Column
 						sortable
-						name="Type"
+						title="Type"
 						subtitle="Random characters"
 					/>
-					<Column
-						sortable
-						name="Time"
-						defaultOrder="desc"
-					/>
+					<Column sortable title="Time" defaultOrder="desc" />
 				</Table>
 			)}
 		</DemoTableState>
 	</Box>
 </Playground>
 
-### Responsiveness examples
+### Responsive example
 
--   **Mobile view:** The table changes to a more list-like view when the screen width goes below the breakpoint defined using the `mobileViewBreakpoint` prop.
+-   **Mobile view:** The table changes to a more list-like view when the screen width shrinks below the breakpoint defined using the `mobileViewBreakpoint` prop.
 -   **Hiding columns:** You can hide columns below a certain breakpoint using the `hideBelowBreakpoint` prop. Columns hidden this way will become visible again in the mobile view.
 
 The table below uses both modes – on medium sized screens, columns that don't fit are hidden, while the mobile view is active on very small screens.
@@ -142,20 +143,20 @@ The table below uses both modes – on medium sized screens, columns that don't 
 		rowHeader="Name"
 	>
 		<Column
-			name="Role"
+			title="Role"
 			width={40}
 			cellRenderer={item => (
 				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
 			)}
 		/>
 		<Column
-			name="Name"
+			title="Name"
 			width="40%"
 			cellRenderer={item => <strong>{item.name}</strong>}
 		/>
-		<Column name="Region" hideBelowBreakpoint="m" />
-		<Column name="Type" />
-		<Column name="Time" />
+		<Column title="Region" hideBelowBreakpoint="m" />
+		<Column title="Type" />
+		<Column title="Time" />
 	</Table>
 </Playground>
 
@@ -172,11 +173,11 @@ Use the `CenterContent` component to make the content appear centred and take up
 		}
 		rowHeader="Name"
 	>
-		<Column name="Role" width={40} />
-		<Column name="Name" width="40%" />
-		<Column name="Region" hideBelowBreakpoint="m" />
-		<Column name="Type" hideBelowBreakpoint="xs" />
-		<Column name="Time" />
+		<Column title="Role" width={40} />
+		<Column title="Name" width="40%" />
+		<Column title="Region" hideBelowBreakpoint="m" />
+		<Column title="Type" hideBelowBreakpoint="xs" />
+		<Column title="Time" />
 	</Table>
 </Playground>
 

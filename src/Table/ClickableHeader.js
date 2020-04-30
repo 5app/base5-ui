@@ -93,7 +93,7 @@ function ClickableHeader({
 		return children;
 	}
 
-	function getSortHandler({name, defaultOrder = 'asc'}) {
+	function getSortHandler({name, title, defaultOrder = 'asc'}) {
 		if (typeof onRequestSort !== 'function') return null;
 
 		return () => {
@@ -101,7 +101,7 @@ function ClickableHeader({
 			// be ordered by changes. Otherwise use the
 			// column's `defaultOrder` prop
 			onRequestSort({
-				column: name,
+				column: name || title,
 				order: isActive ? reverseOrder[order] : defaultOrder,
 			});
 		};

@@ -233,7 +233,7 @@ function getCellContent(item, key) {
 	return key(item);
 }
 
-const defaultHeaderRenderer = column => <Text bold>{column.name}</Text>;
+const defaultHeaderRenderer = column => <Text bold>{column.title}</Text>;
 
 const ariaSortLabel = {
 	asc: 'ascending',
@@ -290,15 +290,17 @@ function Table(props) {
 								hideBelowBreakpoint,
 								name,
 								subtitle,
+								title,
 								width,
 							} = column;
 
+							const columnName = name || title;
 							const isColumnOrderedBy =
-								sort && name === sort.column;
+								sort && columnName === sort.column;
 
 							return (
 								<Cell
-									key={name}
+									key={columnName}
 									as="th"
 									scope="col"
 									role="columnheader"
@@ -339,13 +341,15 @@ function Table(props) {
 										cellRenderer,
 										hideBelowBreakpoint,
 										name,
+										title,
 									} = column;
 
-									const isHeader = rowHeader === name;
+									const columnName = name || title;
+									const isHeader = rowHeader === columnName;
 
 									return (
 										<Cell
-											key={name}
+											key={columnName}
 											as={isHeader && 'th'}
 											role={
 												isHeader ? 'rowheader' : 'cell'
@@ -354,11 +358,11 @@ function Table(props) {
 											hideBelowBreakpoint={
 												hideBelowBreakpoint
 											}
-											data-columnheader={name}
+											data-columnheader={title}
 										>
 											{getCellContent(
 												item,
-												cellRenderer || name
+												cellRenderer || columnName
 											)}
 										</Cell>
 									);
@@ -393,9 +397,10 @@ Table.propTypes = {
 			cellRenderer: PropTypes.func,
 			defaultOrder: PropTypes.oneOf(['asc', 'desc']),
 			hideBelowBreakpoint: PropTypes.string,
-			name: PropTypes.string.isRequired,
+			name: PropTypes.string,
 			sortable: PropTypes.bool,
 			subtitle: PropTypes.string,
+			title: PropTypes.string.isRequired,
 			width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		})
 	),
@@ -421,12 +426,12 @@ Table.propTypes = {
 	mobileViewBreakpoint: PropTypes.string,
 	/**
 	 * Function to call when a new sort order is requested.
-	 * Passes an object in the shape of the `orderBy` prop.
+	 * Passes an object in the shape of the `sort` prop.
 	 */
 	onRequestSort: PropTypes.func,
 	/**
 	 * Object describing the order of the table's data.
-	 * 'column': Name of the column to be sorted by
+	 * 'column': Name (or title) of the column to be sorted by
 	 * 'order': Direction of sorting, either 'asc' (ascending)
 	 * or 'desc' (descending)
 	 */
@@ -445,7 +450,7 @@ Table.propTypes = {
 	pl: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	/**
-	 * The name of the column that you want to act as header of the row.
+	 * The title or name of the column that you want to act as header of the row.
 	 * Especially important to set correctly for the mobile view.
 	 * Defaults to the first column.
 	 */
