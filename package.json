@@ -57,7 +57,7 @@
 		"eslint-plugin-react-hooks": "^4.0.0",
 		"gh-pages": "^2.1.1",
 		"husky": "^4.0.3",
-		"jest": "^25.0.0",
+		"jest": "^26.0.0",
 		"pixo": "^1.1.2",
 		"prettier": "^2.0.1",
 		"prop-types": "^15.7.2",
