@@ -228,7 +228,7 @@ const Cell = styled.td`
 
 function getCellContent(item, key) {
 	if (typeof key === 'string') {
-		return item[key] || item[key.toLowerCase()] || 'No entry found';
+		return item[key] || item[key.toLowerCase()] || null;
 	}
 	return key(item);
 }
