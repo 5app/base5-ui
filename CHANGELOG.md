@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/5app/base5-ui/compare/v9.0.0...v9.0.1) (2020-04-30)
+
+
+### Bug Fixes
+
+* **Table:** Fix broken rowHeader fallback ([00ca904](https://github.com/5app/base5-ui/commit/00ca90464b79414d6a0699a3a838610a73ad74d6))
+
 # [9.0.0](https://github.com/5app/base5-ui/compare/v8.3.0...v9.0.0) (2020-04-30)
 
 
