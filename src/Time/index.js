@@ -9,7 +9,7 @@ function useForceUpdate() {
 	return forceUpdate;
 }
 
-function Time({dateTime, systemTime, locale}) {
+function Time({dateTime, systemTime, locale, dateOnly}) {
 	const forceUpdate = useForceUpdate();
 
 	// Offset system time with local time...
@@ -22,6 +22,7 @@ function Time({dateTime, systemTime, locale}) {
 		dateTime,
 		locale,
 		systemOffset: systemOffset.current,
+		dateOnly
 	});
 
 	// Set the datestring
@@ -49,6 +50,7 @@ Time.propTypes = {
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
 	]),
+	dateOnly: PropTypes.bool
 };
 
 // @component

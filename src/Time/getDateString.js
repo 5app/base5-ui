@@ -13,7 +13,7 @@ function date(d) {
 	}
 }
 
-function getDateString({dateTime, locale, systemOffset = 0}) {
+function getDateString({dateTime, locale, systemOffset = 0, dateOnly = false}) {
 	// Define the offset, how old is this...
 	const time = date(dateTime);
 
@@ -35,23 +35,23 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 	let delay = null;
 
 	// A few seconds ago
-	if (offset < TIME_MINUTE / 2) {
+	if (!dateOnly && offset < TIME_MINUTE / 2) {
 		delay = TIME_MINUTE / 2 - offset;
 		dateString = 'seconds ago';
 	}
 	// Less than a minute ago
-	else if (offset < TIME_MINUTE) {
+	else if (!dateOnly && offset < TIME_MINUTE) {
 		delay = TIME_MINUTE - offset;
 		dateString = '< 1 minute ago';
 	}
 	// A few minutes ago
-	else if (offset < TIME_MINUTE * 10) {
+	else if (!dateOnly && offset < TIME_MINUTE * 10) {
 		delay = TIME_MINUTE;
 		const mins = parseInt(offset / TIME_MINUTE);
 		dateString = `${mins} minute${mins > 1 ? 's' : ''} ago`;
 	}
 	// Occcured today...
-	else if (offset < ms_today) {
+	else if (!dateOnly && offset < ms_today) {
 		// Number of ms until end of the day...
 		delay = TIME_DAY - ms_today;
 		dateString = new Intl.DateTimeFormat(locale, {
@@ -61,7 +61,7 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 		}).format(time);
 	}
 	// Occurred this week
-	else if (offset < TIME_DAY * 6) {
+	else if (!dateOnly && offset < TIME_DAY * 6) {
 		// Delay a day...
 		delay = TIME_DAY;
 		// Get day
