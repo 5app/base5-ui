@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-const canUseDom = Boolean(typeof window !== 'undefined' && window.document);
+import useHasMounted from '../useHasMounted';
 
 function Portal({targetElement, children}) {
-	if (!canUseDom) return null;
+	if (!useHasMounted()) return null;
 	if (targetElement === null) return children;
 
 	return ReactDOM.createPortal(children, targetElement || document.body);

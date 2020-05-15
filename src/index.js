@@ -29,6 +29,7 @@ export {default as Time} from './Time';
 export {default as useAriaFeedProps} from './useAriaFeedProps';
 export {default as useBreakpoints} from './useBreakpoints';
 export {default as useEventListener} from './useEventListener';
+export {default as useHasMounted} from './useHasMounted';
 export {default as useInterval} from './useInterval';
 export {default as ViewMoreText} from './ViewMoreText';
 export {default as VisuallyHidden} from './VisuallyHidden';
