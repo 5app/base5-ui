@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "9.0.1",
+	"version": "9.0.2",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -47,7 +47,7 @@
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-styled-components": "^1.10.7",
 		"docz": "^2.2.0",
-		"eslint": "^6.8.0",
+		"eslint": "^7.0.0",
 		"eslint-config-5app": "^0.10.0",
 		"eslint-config-prettier": "^6.10.1",
 		"eslint-plugin-import": "^2.20.1",
