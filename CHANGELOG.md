@@ -1,3 +1,18 @@
+# [9.1.0](https://github.com/5app/base5-ui/compare/v9.0.2...v9.1.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* Fix eslint issues, noissue ([f3d6fe2](https://github.com/5app/base5-ui/commit/f3d6fe2275daab3802d3c5bd589b4c02962cb99c))
+* Fix superfluous import, noissue ([c846f32](https://github.com/5app/base5-ui/commit/c846f321bcc91270a8dbc1bcb9bb789449fa594a))
+* **utils:** Fix broken exports from /utils, noissue ([388e5a3](https://github.com/5app/base5-ui/commit/388e5a335de77b6e74a761f3e77d213f32393279))
+
+
+### Features
+
+* New Modal component, noissue ([4e677e9](https://github.com/5app/base5-ui/commit/4e677e9bd93d768c2bc1aedbb526305708458e23))
+* New useHasMounted hook, noissue ([34e132f](https://github.com/5app/base5-ui/commit/34e132f95ad7a1b7e708d9431ca3f7019ef3be51))
+
 ## [9.0.2](https://github.com/5app/base5-ui/compare/v9.0.1...v9.0.2) (2020-05-07)
 
 
