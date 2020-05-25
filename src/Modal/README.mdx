@@ -1,0 +1,137 @@
+---
+name: Modal
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import {ModalManager, BodyScrollLock, useModalManager} from './';
+import Modal from './Modal';
+
+# Modal
+
+React components and hooks for building accessible modals (dialogs).
+
+## Features
+
+-   Supports multiple (stacked) modals
+-   Handles focus management:
+    -   Contain keyboard focus inside of the topmost modal
+    -   Return keyboard focus to the element that triggered the modal after it is closed
+    -   Contain screen readers from navigating outside of the topmost modal
+-   Close the topmost modal when the <kbd>Esc</kbd> key is pressed
+-   Prevent scrolling "behind" the modal
+
+## How to use
+
+### Prerequisites
+
+Wrap your app with the `ModalManager` and `BodyScrollLock` components. `ModalManager` does not render an element to the DOM and can be as high up as you want. It keeps track of all the open modals and makes sure that focus is properly locked & restored.
+
+`BodyScrollLock` renders a `div` by default and should wrap the main content of your app. The HTML elements of your modals need to be rendered outside of this container. (If you use base5-ui's Portal or the built-in Modal component, this will be the case by default.) You can customise the rendered element using the `as` prop as seen below.
+
+```jsx
+import {ModalManager, BodyScrollLock} from 'base5-ui/Modal';
+
+function App() {
+	return (
+		<ModalManager>
+			<BodyScrollLock as="main">
+				{/* The rest of your app */}
+			</BodyScrollLock>
+		</ModalManager>
+	);
+}
+```
+
+### Rendering modals
+
+Once the above preparations are done, you can either use the built-in `Modal` component (built on styled-components) to render your modals, or build your own using the `useModalManager` hook.
+
+Keep in mind that you're responsible for opening & closing your modals. We recommend that you keep your modal display logic tied to a router location or React state, as shown below.
+
+#### Modal component example
+
+```jsx
+import Modal from 'base5-ui/Modal';
+
+function MyPage() {
+	const [hasModal, setHasModal] = useState(false);
+
+	function toggleModal() {
+		setHasModal(prev => !prev);
+	}
+
+	return (
+		<>
+			<Button onClick={toggleModal}>Toggle Modal</Button>
+			{hasModal && (
+				<Modal
+					name="my-modal"
+					onRequestClose={toggleModal}
+					aria-labelledby="heading-id"
+				>
+					<Card>
+						<Heading id="heading-id">My first modal dialog</Heading>
+						<p>This is a modal.</p>
+						<Button onClick={toggleModal}>Got it.</Button>
+					</Card>
+				</Modal>
+			)}
+		</>
+	);
+}
+```
+
+#### Modal props
+
+<Props of={Modal} />
+
+#### Custom modal example
+
+The `Modal` component is a wrapper around the `useModalManager` hook and the external dependency [FocusLock](https://github.com/theKashey/react-focus-lock). If you want to customise how your modals are rendered, you can easily do so by re-composing its elements in a different way. The example below is a slightly simplified version of the built-in `Modal` component that you can use as a guide.
+
+Be sure to include the `role="dialog"` and `aria-modal="true"` attributes on your modal component, as well as `aria-label` or `aria-labelledby`.
+
+```jsx
+import React from 'react';
+import Portal from 'base5-ui/Portal';
+import CenterContent from 'base5-ui/CenterContent';
+import {useModalManager} from 'base5-ui/Modal/ModalManager';
+import FocusLock from 'react-focus-lock';
+
+const ModalWrapper = /* Your custom modal wrapper styling. */
+const Overlay = /* Your custom overlay styling. */
+
+function Modal({children, name, onRequestClose, ...otherProps}) {
+	/**
+	 * useModalManager returns a ref that must be
+	 * passed to the modal wrapper component, and
+	 * an `isAtTop` flag that's true when this modal
+	 * is at the top (when multiple modals are open).
+	 */
+	const {modalRef, isAtTop} = useModalManager({
+		name,
+		onRequestClose,
+	});
+
+	return (
+		<Portal>
+			<ModalWrapper
+				ref={modalRef}
+				id={name}
+				{...otherProps}
+				role="dialog"
+				aria-modal="true"
+			>
+				<CenterContent fillParent>
+					<FocusLock>
+						{isAtTop && <Overlay onClick={onRequestClose} />}
+						{children}
+					</FocusLock>
+				</CenterContent>
+			</ModalWrapper>
+		</Portal>
+	);
+}
+```
