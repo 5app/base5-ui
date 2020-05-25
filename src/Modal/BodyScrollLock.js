@@ -1,6 +1,6 @@
 import React, {forwardRef, useContext, useLayoutEffect, useRef} from 'react';
 
-import {useHasMounted} from '../useHasMounted';
+import useHasMounted from '../useHasMounted';
 
 import {ModalStackContext} from './ModalManager';
 
