@@ -1,4 +1,5 @@
 module.exports = {
+	plugins: ['react-hooks', 'prettier', 'jsx-a11y'],
 	extends: [
 		'5app',
 		'plugin:react/recommended',
@@ -18,7 +19,6 @@ module.exports = {
 		browser: true,
 		jest: true,
 	},
-	plugins: ['react-hooks', 'prettier', 'jsx-a11y'],
 	rules: {
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
 		'no-console': [2, {allow: ['error', 'warn']}],

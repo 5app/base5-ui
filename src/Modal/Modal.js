@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
+import Portal from '../Portal';
+import CenterContent from '../CenterContent';
 import {useModalManager} from './ModalManager';
 
 const ModalWrapper = styled.div`

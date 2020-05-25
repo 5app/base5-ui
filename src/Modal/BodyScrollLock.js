@@ -1,4 +1,8 @@
-import {forwardRef, useContext, useLayoutEffect, useRef} from 'react';
+import React, {forwardRef, useContext, useLayoutEffect, useRef} from 'react';
+
+import {useHasMounted} from '../useHasMounted';
+
+import {ModalStackContext} from './ModalManager';
 
 function useScrollLockStyles({isLocked}) {
 	const originalScrollPosition = useRef(null);
@@ -30,7 +34,7 @@ function useScrollLockStyles({isLocked}) {
 	};
 }
 
-const BodyScrollLock = forwardRef(function InnerBodyScrollLock(props, ref) {
+function InnerBodyScrollLock(props, ref) {
 	const {as: Component = 'div', children, style} = props;
 	const modalStack = useContext(ModalStackContext);
 	const hasModal = modalStack?.length;
@@ -44,6 +48,8 @@ const BodyScrollLock = forwardRef(function InnerBodyScrollLock(props, ref) {
 			{children}
 		</Component>
 	);
-});
+}
+
+const BodyScrollLock = forwardRef(InnerBodyScrollLock);
 
 export {BodyScrollLock, useScrollLockStyles};
