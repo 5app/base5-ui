@@ -46,7 +46,7 @@
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-styled-components": "^1.10.7",
-		"docz": "^2.2.0",
+		"docz": "^2.3.1",
 		"eslint": "^7.0.0",
 		"eslint-config-5app": "^0.10.1",
 		"eslint-config-prettier": "^6.10.1",
