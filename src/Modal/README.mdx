@@ -44,6 +44,20 @@ function App() {
 }
 ```
 
+#### BodyScrollLock styling requirements
+
+The `BodyScrollLock` component prevents the page body from being scrolled when a modal is open. The method it uses is very robust and works even if your app has elements with a fixed position, like navigation bars.
+
+One trade-off to make this work seamlessly is that we require the vertical scrollbar on your root element to be visible always (even if the page content isn't long enough to cause a scrollbar). Without the below CSS, opening a modal in your app may cause the page in the background to shift slightly as the scrollbar disappears.
+
+```css
+html {
+	overflow-y: scroll;
+}
+```
+
+(Btw: Having this CSS on your page may be a good idea anyway – it ensures that centered elements don't jump around ever so slightly when navigating between long pages with a vertical scrollbar and short pages without one.)
+
 ### Rendering modals
 
 Once the above preparations are done, you can either use the built-in `Modal` component (built on styled-components) to render your modals, or build your own using the `useModalManager` hook.
