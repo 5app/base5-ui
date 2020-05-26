@@ -18,6 +18,10 @@ const ModalWrapper = styled.div`
 	overflow: auto;
 `;
 
+const ContentWrapper = styled.div`
+	position: relative;
+`;
+
 const Overlay = styled.div`
 	position: absolute;
 	top: 0;
@@ -52,10 +56,8 @@ function Modal({children, name, onRequestClose, ...otherProps}) {
 				aria-modal="true"
 			>
 				<CenterContent fillParent>
-					<FocusLock>
-						{isAtTop && <Overlay onClick={onRequestClose} />}
-						<div style={{position: 'relative'}}>{children}</div>
-					</FocusLock>
+					{isAtTop && <Overlay onClick={onRequestClose} />}
+					<FocusLock as={ContentWrapper}>{children}</FocusLock>
 				</CenterContent>
 			</ModalWrapper>
 		</Portal>
