@@ -6,7 +6,20 @@ import {pxToRem} from '../utils/units';
 
 import {paddingProps} from '../styleProps';
 
-const Wrapper = styled.div`
+const propsToFilter = [
+	'fillParent',
+	'height',
+	'spacing',
+	'p',
+	'pl',
+	'pr',
+	'pt',
+	'pb',
+];
+
+const Wrapper = styled.div.withConfig({
+	shouldForwardProp: prop => !propsToFilter.includes(prop),
+})`
 	display: flex;
 	flex: 1 1 auto;
 
@@ -35,7 +48,9 @@ const Wrapper = styled.div`
 	box-sizing: border-box;
 `;
 
-const Content = styled.div`
+const Content = styled.div.withConfig({
+	shouldForwardProp: prop => prop !== 'width',
+})`
 	width: ${p => (p.width ? pxToRem(p.width) : 'auto')};
 	max-width: 100%;
 
