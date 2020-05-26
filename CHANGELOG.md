@@ -1,3 +1,10 @@
+## [9.1.1](https://github.com/5app/base5-ui/compare/v9.1.0...v9.1.1) (2020-05-25)
+
+
+### Bug Fixes
+
+* **Modal:** Fix broken useHasMounted import, noissue ([a5cf703](https://github.com/5app/base5-ui/commit/a5cf703abc7c9c84a842b44fc9fb6b0d31918289))
+
 # [9.1.0](https://github.com/5app/base5-ui/compare/v9.0.2...v9.1.0) (2020-05-25)
 
 
