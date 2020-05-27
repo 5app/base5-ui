@@ -1,3 +1,11 @@
+# [9.2.0](https://github.com/5app/base5-ui/compare/v9.1.2...v9.2.0) (2020-05-27)
+
+
+### Features
+
+* **CenterContent:** Support responsive spacing and width, noissue ([30d0989](https://github.com/5app/base5-ui/commit/30d09898d328f3b5e3d25ce869055c05712ddc0c))
+* **Modal:** Add fullscreen mode, [#87](https://github.com/5app/base5-ui/issues/87) ([bd20cbe](https://github.com/5app/base5-ui/commit/bd20cbe69c91650e5523374622808a23f5fd3dff))
+
 ## [9.1.2](https://github.com/5app/base5-ui/compare/v9.1.1...v9.1.2) (2020-05-26)
 
 
