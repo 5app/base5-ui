@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {pxToRem} from '../utils/units';
-
+import {getLength} from '../utils';
+import {createStyleFunction} from '../utils/styleProps';
 import {paddingProps} from '../styleProps';
 
-const propsToFilter = [
+const wrapperPropsToFilter = [
 	'fillParent',
 	'height',
 	'spacing',
@@ -15,10 +16,18 @@ const propsToFilter = [
 	'pr',
 	'pt',
 	'pb',
+	'breakpoints',
 ];
 
+const responsiveWidthProp = createStyleFunction([
+	{
+		styleProp: 'width',
+		getValue: getLength,
+	},
+]);
+
 const Wrapper = styled.div.withConfig({
-	shouldForwardProp: prop => !propsToFilter.includes(prop),
+	shouldForwardProp: prop => !wrapperPropsToFilter.includes(prop),
 })`
 	display: flex;
 	flex: 1 1 auto;
@@ -49,9 +58,9 @@ const Wrapper = styled.div.withConfig({
 `;
 
 const Content = styled.div.withConfig({
-	shouldForwardProp: prop => prop !== 'width',
+	shouldForwardProp: prop => !['width', 'breakpoints'].includes(prop),
 })`
-	width: ${p => (p.width ? pxToRem(p.width) : 'auto')};
+	${responsiveWidthProp}
 	max-width: 100%;
 
 	/* Needed for IE11 to contain large items: https://stackoverflow.com/a/42494339 */
@@ -63,6 +72,7 @@ const Content = styled.div.withConfig({
 
 function CenterContent(props) {
 	const {
+		breakpoints,
 		contentWidth,
 		fillParent,
 		height,
@@ -76,9 +86,12 @@ function CenterContent(props) {
 			fillParent={fillParent}
 			height={height}
 			spacing={spacing}
+			breakpoints={breakpoints}
 			{...otherProps}
 		>
-			<Content width={contentWidth}>{children}</Content>
+			<Content width={contentWidth} breakpoints={breakpoints}>
+				{children}
+			</Content>
 		</Wrapper>
 	);
 }
@@ -90,8 +103,13 @@ CenterContent.defaultProps = {
 CenterContent.propTypes = {
 	/**
 	 * Define the maximum width for the centred content.
+	 * Supports responsive values when used with the breakpoints prop.
 	 */
-	contentWidth: PropTypes.number,
+	contentWidth: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
 	/**
 	 * Make the component grow to match the width and height of its direct parent.
 	 * When using this, make sure the container has a position other than static
@@ -107,7 +125,11 @@ CenterContent.propTypes = {
 	 * Define the inner spacing between the centred content and its container.
 	 * Alternatively you can also use the common style props `p`, `pl`, `pb`, etc.
 	 */
-	spacing: PropTypes.string,
+	spacing: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+		PropTypes.array,
+	]),
 };
 
 // @component
