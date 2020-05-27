@@ -1,3 +1,10 @@
+## [9.1.2](https://github.com/5app/base5-ui/compare/v9.1.1...v9.1.2) (2020-05-26)
+
+
+### Bug Fixes
+
+* Trigger release, noissue ([b2f7643](https://github.com/5app/base5-ui/commit/b2f7643ad4fb91ead6ce80f7b2d26b547a006145))
+
 ## [9.1.1](https://github.com/5app/base5-ui/compare/v9.1.0...v9.1.1) (2020-05-25)
 
 
