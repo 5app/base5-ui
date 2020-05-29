@@ -7,7 +7,10 @@ menu: Hooks
 
 A simple hook that adds a global event listener & cleans up after it when the component unmounts.
 
-By default, the event listener is added on `document`, but you can change the element by passing a custom target element to it as the third parameter.
+An options object can be added as a third parameter. Available options are:
+
+-   `targetElement`: Add the event listener to a custom target element. Defaults to `document`.
+-   `capture`: Use this for capturing events that don't bubble, e.g. to react to focus events within an element. (See [addEventListener docs on MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener))
 
 ## Examples
 
@@ -16,5 +19,13 @@ useEventListener('click', onBodyClick);
 ```
 
 ```js
-useEventListener('scroll', onScroll, scrollContainerRef.current);
+useEventListener('scroll', onScroll, {
+	targetElement: scrollContainerRef.current,
+});
+```
+
+```js
+useEventListener('focus', onFocus, {
+	capture: true,
+});
 ```
