@@ -1,3 +1,17 @@
+## [9.2.2](https://github.com/5app/base5-ui/compare/v9.2.1...v9.2.2) (2020-05-27)
+
+
+### Bug Fixes
+
+* pass props through InnerBodyScrollLock component ([#88](https://github.com/5app/base5-ui/issues/88)) ([7461459](https://github.com/5app/base5-ui/commit/7461459587d6f7909f2b2e489893ef4e8e0566c5))
+
+## [9.2.1](https://github.com/5app/base5-ui/compare/v9.2.0...v9.2.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* **Modal:** Add demo link to readme, noissue ([3285f48](https://github.com/5app/base5-ui/commit/3285f48b04ba4ccfe56c84fb1d67dbd04f6373c5))
+
 # [9.2.0](https://github.com/5app/base5-ui/compare/v9.1.2...v9.2.0) (2020-05-27)
 
 

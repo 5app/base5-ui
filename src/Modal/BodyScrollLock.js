@@ -35,7 +35,7 @@ function useScrollLockStyles({isLocked}) {
 }
 
 function InnerBodyScrollLock(props, ref) {
-	const {as: Component = 'div', children, style} = props;
+	const {as: Component = 'div', children, style, ...otherProps} = props;
 	const modalStack = useContext(ModalStackContext);
 	const hasModal = modalStack?.length;
 	const bodyLockStyles = useScrollLockStyles({isLocked: hasModal});
@@ -44,6 +44,7 @@ function InnerBodyScrollLock(props, ref) {
 		<Component
 			ref={ref}
 			style={style ? {...style, ...bodyLockStyles} : bodyLockStyles}
+			{...otherProps}
 		>
 			{children}
 		</Component>
