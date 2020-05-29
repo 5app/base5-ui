@@ -1,11 +1,12 @@
 import useEventListener from '../useEventListener';
 
-function useOnClickOutside(excludedElementRef, onClick, isEnabled) {
-	useEventListener('click', event => {
+export function getListener(excludedElementRef, callback, isEnabled) {
+	return event => {
 		if (!isEnabled) return null;
 
 		const excludedElement =
 			excludedElementRef && excludedElementRef.current;
+
 		// Bail out if the clicked element or the currently focused element
 		// is inside of excludedElement. We need to check the focused element
 		// to prevent an issue in Chrome where initiating a drag inside of an
@@ -21,8 +22,15 @@ function useOnClickOutside(excludedElementRef, onClick, isEnabled) {
 			return null;
 		}
 
-		onClick(event);
-	});
+		callback(event);
+	};
+}
+
+function useOnClickOutside(excludedElementRef, onClick, isEnabled) {
+	useEventListener(
+		'click',
+		getListener(excludedElementRef, onClick, isEnabled)
+	);
 }
 
 export default useOnClickOutside;
