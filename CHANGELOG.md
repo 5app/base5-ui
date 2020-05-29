@@ -1,3 +1,11 @@
+# [9.3.0](https://github.com/5app/base5-ui/compare/v9.2.2...v9.3.0) (2020-05-29)
+
+
+### Features
+
+* **useEventListener:** Add 'capture' option, noissue ([431dcbd](https://github.com/5app/base5-ui/commit/431dcbdc4512543e15896997102962703b0339fa))
+* **useOnClickOutside:** export listener function, noissue ([2fbde07](https://github.com/5app/base5-ui/commit/2fbde0767ec1955e5d4517f36fde58c6c0e89504))
+
 ## [9.2.2](https://github.com/5app/base5-ui/compare/v9.2.1...v9.2.2) (2020-05-27)
 
 
