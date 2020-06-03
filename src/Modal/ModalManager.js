@@ -146,7 +146,7 @@ function useModalManager({name, onRequestClose, focusAnchor}) {
 			name,
 			ref: modalRef,
 			onClose: onRequestClose,
-			focusAnchor: focusAnchor || document.activeElement,
+			focusAnchor: focusAnchor || document.activeElement || document.body,
 		});
 
 		return () => {
