@@ -1,3 +1,10 @@
+## [9.3.1](https://github.com/5app/base5-ui/compare/v9.3.0...v9.3.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **Modal:** Throw error when modal is missing params ([a51b130](https://github.com/5app/base5-ui/commit/a51b13026e3ee271b19763e016a34e05cd9aa2a0))
+
 # [9.3.0](https://github.com/5app/base5-ui/compare/v9.2.2...v9.3.0) (2020-05-29)
 
 
