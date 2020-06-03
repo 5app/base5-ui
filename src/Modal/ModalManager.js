@@ -21,6 +21,23 @@ const defaultState = {
 const ModalContext = createContext(defaultState);
 const ModalStackContext = createContext([]);
 
+function validateObjectShape(modalObject) {
+	const missingFields = [
+		!modalObject.name && 'name',
+		!modalObject.focusAnchor && 'focusAnchor',
+		!modalObject.ref && 'ref',
+		!modalObject.onClose && 'onClose',
+	].filter(Boolean);
+
+	if (missingFields.length !== 0) {
+		throw new Error(
+			`ModalManager couldn't register modal. Missing parameter(s): ${missingFields.join(
+				', '
+			)}.`
+		);
+	}
+}
+
 function ModalManager({children}) {
 	const [modalStack, setModalStack] = useState([]);
 	const elementToFocus = useRef(null);
@@ -32,19 +49,17 @@ function ModalManager({children}) {
 	 * ModalManager does not _own_ the open/close state of a modal,
 	 * it just needs to track it in order to handle focus restoration.
 	 */
-	const register = useCallback(({name, focusAnchor, ref, onClose}) => {
-		if (!name || !focusAnchor || !ref || !onClose) {
-			return;
-		}
+	const register = useCallback(newModalObject => {
+		validateObjectShape(newModalObject);
 
 		setModalStack(prevModalStack => {
 			const isModalAlreadyRegistered = Boolean(
-				prevModalStack.find(modal => modal.name === name)
+				prevModalStack.find(modal => modal.name === newModalObject.name)
 			);
 			if (isModalAlreadyRegistered) {
 				return prevModalStack;
 			}
-			return [...prevModalStack, {name, focusAnchor, ref, onClose}];
+			return [...prevModalStack, newModalObject];
 		});
 	}, []);
 
