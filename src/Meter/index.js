@@ -49,14 +49,14 @@ const MockMeter = styled.div.attrs({
 	transition: width 300ms ease-out;
 `;
 
-const Meter = ({...props}) => {
+function Meter(props) {
 	return (
 		<Wrapper>
 			<MockMeter {...props} />
 			<VisuallyHidden as="meter" {...props} />
 		</Wrapper>
 	);
-};
+}
 
 Meter.propTypes = {
 	color: PropTypes.string,
