@@ -1,3 +1,10 @@
+# [9.4.0](https://github.com/5app/base5-ui/compare/v9.3.2...v9.4.0) (2020-06-09)
+
+
+### Features
+
+* New Status component ([6ac4b55](https://github.com/5app/base5-ui/commit/6ac4b5570e999330c6e9e0b8f45aa71ca112556d))
+
 ## [9.3.2](https://github.com/5app/base5-ui/compare/v9.3.1...v9.3.2) (2020-06-03)
 
 
