@@ -1,3 +1,10 @@
+## [9.3.2](https://github.com/5app/base5-ui/compare/v9.3.1...v9.3.2) (2020-06-03)
+
+
+### Bug Fixes
+
+* **Modal:** Use body as focusAnchor if activeElement is null ([726994f](https://github.com/5app/base5-ui/commit/726994fc7de96834a96ecf9c6240aee4a7f8e9e0))
+
 ## [9.3.1](https://github.com/5app/base5-ui/compare/v9.3.0...v9.3.1) (2020-06-03)
 
 
