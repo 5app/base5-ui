@@ -25,7 +25,10 @@ For more control you can override each of these props.
 		const [showConfirmation, setShowConfirmation] = React.useState(false);
 		return (
 			<>
-				<Button onClick={() => setShowConfirmation(v => !v)}>
+				<Button
+					isActive={showConfirmation}
+					onClick={() => setShowConfirmation(v => !v)}
+				>
 					Click me
 				</Button>
 				<Status>
@@ -41,11 +44,11 @@ For more control you can override each of these props.
 
 Make sure that the `Status` component is always rendered – even when it's empty – before you update its contents. If the element is added alongside its content, screen readers will **not** announce it!
 
-The above example would break if it was written like below:
+The example below would not work:
 
 ```jsx
 {
-	showConfirmation && <Status>Congrats, you have clicked the button!</Status>;
+	showConfirmation && <Status>This status will NOT BE announced :(</Status>;
 }
 ```
 
