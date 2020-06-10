@@ -34,7 +34,7 @@ function useScrollLockStyles({isLocked}) {
 	};
 }
 
-function InnerBodyScrollLock(props, ref) {
+const BodyScrollLock = forwardRef((props, ref) => {
 	const {as: Component = 'div', children, style, ...otherProps} = props;
 	const modalStack = useContext(ModalStackContext);
 	const hasModal = modalStack?.length;
@@ -49,8 +49,8 @@ function InnerBodyScrollLock(props, ref) {
 			{children}
 		</Component>
 	);
-}
+});
 
-const BodyScrollLock = forwardRef(InnerBodyScrollLock);
+BodyScrollLock.displayName = 'BodyScrollLock';
 
 export {BodyScrollLock, useScrollLockStyles};
