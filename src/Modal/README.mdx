@@ -18,7 +18,7 @@ React components and hooks for building accessible modals (dialogs).
 -   Handles focus management:
     -   Contain keyboard focus inside of the topmost modal
     -   Return keyboard focus to the element that triggered the modal after it is closed
-    -   Contain screen readers from navigating outside of the topmost modal
+    -   Contain screen reader navigation within the topmost modal
 -   Close the topmost modal when the <kbd>Esc</kbd> key is pressed
 -   Prevent scrolling "behind" the modal
 
@@ -152,4 +152,18 @@ function Modal({children, name, onRequestClose, ...otherProps}) {
 		</Portal>
 	);
 }
+```
+
+### Preventing content outside of modals from being hidden to screen readers
+
+When a modal is open, the `aria-hidden` attribute will be applied to any elements outside of it. This is done to prevent users of screen reader software from accidentally navigating outside of the modal boundaries.
+
+If you want to prevent some elements (such as a live region used for accessible status updates) from being hidden in this way, you can wrap them in the `PreventModalAriaHidden` component:
+
+```jsx
+import {PreventModalAriaHidden} from 'base5-ui/Modal';
+
+<PreventModalAriaHidden>
+	<Status>...</Status>
+<PreventModalAriaHidden>
 ```

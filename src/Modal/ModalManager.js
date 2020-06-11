@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 
 import useEventListener from '../useEventListener';
-import {hideOthers} from 'aria-hidden';
+import {hideForModal} from './accessiblyHideModalBackground';
 
 const noop = () => {};
 
@@ -100,7 +100,7 @@ function ModalManager({children}) {
 	useEffect(() => {
 		if (modalStack.length) {
 			const topMostModal = modalStack[modalStack.length - 1];
-			const undoAriaHideOthers = hideOthers(topMostModal?.ref.current);
+			const undoAriaHideOthers = hideForModal(topMostModal?.ref.current);
 
 			return function cleanUp() {
 				undoAriaHideOthers();

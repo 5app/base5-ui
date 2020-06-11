@@ -8,5 +8,6 @@ export {
 } from './ModalManager';
 
 export {BodyScrollLock, useScrollLockStyles} from './BodyScrollLock';
+export {PreventModalAriaHidden} from './accessiblyHideModalBackground';
 
 export default Modal;
