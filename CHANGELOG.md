@@ -1,3 +1,10 @@
+## [9.4.1](https://github.com/5app/base5-ui/compare/v9.4.0...v9.4.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* **Status:** Pass refs to Status element ([10f6b18](https://github.com/5app/base5-ui/commit/10f6b186b4bacb9af13f2b7d8b9d9513cb87739a))
+
 # [9.4.0](https://github.com/5app/base5-ui/compare/v9.3.2...v9.4.0) (2020-06-09)
 
 
