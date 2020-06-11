@@ -1,3 +1,10 @@
+# [9.5.0](https://github.com/5app/base5-ui/compare/v9.4.1...v9.5.0) (2020-06-11)
+
+
+### Features
+
+* **Modal:** Add PreventModalAriaHidden component ([0f1be28](https://github.com/5app/base5-ui/commit/0f1be28958ec8f5e7595b35d62fa1ca31e5aee8f))
+
 ## [9.4.1](https://github.com/5app/base5-ui/compare/v9.4.0...v9.4.1) (2020-06-10)
 
 
