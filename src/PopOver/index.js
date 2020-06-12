@@ -1,5 +1,4 @@
-import React, {useMemo, useState} from 'react';
-import {usePopper, placements} from 'react-popper';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {mergeRefs} from '../utils';
@@ -7,7 +6,7 @@ import Arrow from '../Arrow';
 import Box from '../Box';
 import Portal from '../Portal';
 
-import {matchWidth} from './modifiers';
+import usePopOver from '../usePopOver';
 
 function PopOver(props) {
 	const {
@@ -25,56 +24,28 @@ function PopOver(props) {
 		renderer: PopOverRenderer,
 	} = props;
 
-	const [referenceElement, setReferenceElement] = useState(null);
-	const [popperElement, setPopperElement] = useState(null);
-	const [arrowElement, setArrowElement] = useState(null);
-
-	const autoDistance = Number(arrowSize) / 2 + Number(distance);
-
-	const modifiers = useMemo(
-		() =>
-			[
-				{name: 'arrow', options: {element: arrowElement}},
-				{name: 'offset', options: {offset: [offset, autoDistance]}},
-				{name: 'computeStyles', options: {gpuAcceleration: false}},
-				matchReferenceWidth ? matchWidth : null,
-			].filter(Boolean),
-		[autoDistance, offset, arrowElement, matchReferenceWidth]
-	);
-
-	const {styles, state, attributes, update} = usePopper(
-		referenceElement,
-		popperElement,
-		{
-			strategy: positionFixed ? 'fixed' : 'absolute',
-			placement,
-			modifiers,
-		}
-	);
-
-	const arrow = arrowSize > 0 && (
-		<Arrow
-			ref={setArrowElement}
-			size={arrowSize}
-			placement={state?.placement}
-			style={styles.arrow}
-		/>
-	);
+	const popOver = usePopOver({
+		arrowSize,
+		distance,
+		matchReferenceWidth,
+		offset,
+		placement,
+		positionFixed,
+	});
 
 	return (
 		<>
 			{children({
-				ref: mergeRefs([setReferenceElement, referenceRef]),
-				update,
+				ref: mergeRefs([popOver.referenceRef, referenceRef]),
+				update: popOver.update,
 			})}
 			<PopOverRenderer
-				popOverRef={mergeRefs([setPopperElement, popOverRef])}
-				style={styles.popper}
-				attributes={attributes.popper}
+				popOverRef={mergeRefs([popOver.ref, popOverRef])}
+				{...popOver.props}
 				isOpen={isOpen}
 				content={content}
-				arrow={arrow}
-				onUpdatePopOver={update}
+				arrow={popOver.arrow}
+				onUpdatePopOver={popOver.update}
 			/>
 		</>
 	);
@@ -83,11 +54,10 @@ function PopOver(props) {
 function DefaultPopover({
 	popOverRef,
 	isOpen,
-	style,
-	attributes,
 	content,
 	arrow,
-	resizeWatcher,
+	onUpdatePopOver,
+	...otherProps
 }) {
 	if (!isOpen) return null;
 
@@ -101,12 +71,10 @@ function DefaultPopover({
 				px="s"
 				py="xs"
 				maxWidth="100%"
-				{...attributes}
-				style={style}
+				{...otherProps}
 			>
 				{content}
 				{arrow}
-				{resizeWatcher}
 			</Box>
 		</Portal>
 	);
@@ -135,7 +103,23 @@ PopOver.propTypes = {
 	/** Shift the popover along the corss-axix */
 	offset: PropTypes.number,
 	/** One of 'top', 'bottom', 'left', or 'right'. Add an optional suffix '-start' or '-end' to align the popover to the start or end of the chosen direction. */
-	placement: PropTypes.oneOf(placements),
+	placement: PropTypes.oneOf([
+		'auto',
+		'top',
+		'bottom',
+		'left',
+		'right',
+		'auto-start',
+		'top-start',
+		'bottom-start',
+		'left-start',
+		'right-start',
+		'auto-end',
+		'top-end',
+		'bottom-end',
+		'left-end',
+		'right-end',
+	]),
 	/** Access the popover's element */
 	popOverRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 	/** Control whether the popover should be positioned using "position: absolute" or "position: fixed" */
