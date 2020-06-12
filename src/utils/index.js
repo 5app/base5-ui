@@ -6,3 +6,4 @@ export * from './spacing';
 export {default as truncateText} from './truncateText';
 export * from './units';
 export {createStyleFunction} from './styleProps';
+export {default as removeFalsyProps} from './removeFalsyProps';

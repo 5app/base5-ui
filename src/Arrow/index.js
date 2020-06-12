@@ -1,6 +1,8 @@
 import React, {forwardRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
 
+import {removeFalsyProps} from '../utils';
+
 import getArrowPosition, {getPlacements} from './getArrowPosition';
 
 const transformMap = {
@@ -47,14 +49,16 @@ const Arrow = forwardRef((props, ref) => {
 			}),
 		[distanceFromEdge, placement, size]
 	);
-	// Don't let an empty primary position attribute reset the default
-	if (style && style[primaryPlacement] === '') {
-		delete style[primaryPlacement];
-	}
+
+	// Popper.js likes to pass empty strings for unset properties,
+	// (e.g. top: '') we need to filter those out to prevent them
+	// from overriding our styles
+	const styleWithoutEmptyValues = removeFalsyProps(style);
+
 	const arrowStyle = {
 		...baseArrowStyles,
 		...defaultArrowPosition,
-		...style,
+		...styleWithoutEmptyValues,
 	};
 
 	return <span ref={ref} style={arrowStyle} />;

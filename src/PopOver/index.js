@@ -1,11 +1,13 @@
 import React, {useMemo, useState} from 'react';
-import {Manager, Reference, Popper, placements} from 'react-popper';
+import {usePopper, placements} from 'react-popper';
 import PropTypes from 'prop-types';
 
+import {mergeRefs} from '../utils';
 import Arrow from '../Arrow';
+import Box from '../Box';
 import Portal from '../Portal';
 
-import ResizeAware from './ResizeAware';
+import {matchWidth} from './modifiers';
 
 function PopOver(props) {
 	const {
@@ -13,8 +15,8 @@ function PopOver(props) {
 		children,
 		content,
 		distance,
-		innerRef,
 		isOpen,
+		matchReferenceWidth,
 		offset,
 		placement,
 		popOverRef,
@@ -23,74 +25,58 @@ function PopOver(props) {
 		renderer: PopOverRenderer,
 	} = props;
 
-	const autoDistance = +arrowSize / 2 + +distance;
+	const [referenceElement, setReferenceElement] = useState(null);
+	const [popperElement, setPopperElement] = useState(null);
+	const [arrowElement, setArrowElement] = useState(null);
 
-	const [refMeasurements, setRefMeasurements] = useState({});
+	const autoDistance = Number(arrowSize) / 2 + Number(distance);
 
 	const modifiers = useMemo(
-		() => ({
-			offset: {offset: `${offset}, ${autoDistance}`},
-			computeStyle: {gpuAcceleration: false},
-			flip: {flipVariations: true, flipVariationsByContent: true},
-			getRefModifier: {
-				enabled: true,
-				order: 950,
-				fn: data => {
-					if (data.offsets && data.offsets.reference) {
-						setRefMeasurements(data.offsets.reference);
-					}
-					return data;
-				},
-			},
-		}),
-		[autoDistance, offset, setRefMeasurements]
+		() =>
+			[
+				{name: 'arrow', options: {element: arrowElement}},
+				{name: 'offset', options: {offset: [offset, autoDistance]}},
+				{name: 'computeStyles', options: {gpuAcceleration: false}},
+				matchReferenceWidth ? matchWidth : null,
+			].filter(Boolean),
+		[autoDistance, offset, arrowElement, matchReferenceWidth]
+	);
+
+	const {styles, state, attributes, update} = usePopper(
+		referenceElement,
+		popperElement,
+		{
+			strategy: positionFixed ? 'fixed' : 'absolute',
+			placement,
+			modifiers,
+		}
+	);
+
+	const arrow = arrowSize > 0 && (
+		<Arrow
+			ref={setArrowElement}
+			size={arrowSize}
+			placement={state?.placement}
+			style={styles.arrow}
+		/>
 	);
 
 	return (
-		<Manager>
-			<Reference innerRef={referenceRef || innerRef}>
-				{children}
-			</Reference>
-			<Popper
-				innerRef={popOverRef}
-				positionFixed={positionFixed}
-				placement={placement}
-				modifiers={modifiers}
-			>
-				{({
-					ref,
-					style,
-					placement: computedPlacement,
-					arrowProps,
-					scheduleUpdate,
-				}) => {
-					const arrow = arrowSize > 0 && (
-						<Arrow
-							size={arrowSize}
-							placement={computedPlacement}
-							ref={arrowProps.ref}
-							style={arrowProps.style}
-						/>
-					);
-
-					const resizeWatcher = (
-						<ResizeAware onResize={scheduleUpdate} />
-					);
-
-					return (
-						<PopOverRenderer
-							popOverRef={ref}
-							style={style}
-							isOpen={isOpen}
-							content={content}
-							arrow={arrow}
-							refMeasurements={refMeasurements}
-							resizeWatcher={resizeWatcher}
-						/>
-					);
-				}}
-			</Popper>
-		</Manager>
+		<>
+			{children({
+				ref: mergeRefs([setReferenceElement, referenceRef]),
+				update,
+			})}
+			<PopOverRenderer
+				popOverRef={mergeRefs([setPopperElement, popOverRef])}
+				style={styles.popper}
+				attributes={attributes.popper}
+				isOpen={isOpen}
+				content={content}
+				arrow={arrow}
+				onUpdatePopOver={update}
+			/>
+		</>
 	);
 }
 
@@ -98,6 +84,7 @@ function DefaultPopover({
 	popOverRef,
 	isOpen,
 	style,
+	attributes,
 	content,
 	arrow,
 	resizeWatcher,
@@ -106,21 +93,21 @@ function DefaultPopover({
 
 	return (
 		<Portal>
-			<span
+			<Box
 				ref={popOverRef}
-				style={{
-					background: 'black',
-					color: 'white',
-					borderRadius: '3px',
-					padding: '5px 10px',
-					maxWidth: '100%',
-					...style,
-				}}
+				background="black"
+				color="white"
+				borderRadius={3}
+				px="s"
+				py="xs"
+				maxWidth="100%"
+				{...attributes}
+				style={style}
 			>
 				{content}
 				{arrow}
 				{resizeWatcher}
-			</span>
+			</Box>
 		</Portal>
 	);
 }
@@ -158,8 +145,7 @@ PopOver.propTypes = {
 	/**
 	 * Customise popover rendering (e.g. for custom styling, transitions, etc).
 	 * Should be a React component that takes the props
-	 * `popOverRef`, `isOpen`, `style`, `content`, `arrow`, `resizeWatcher`,
-	 * and `refMeasurements`
+	 * `popOverRef`, `isOpen`, `attributes`, `style`, `content`, `arrow`, `onUpdatePopOver`,
 	 */
 	renderer: PropTypes.elementType,
 };
