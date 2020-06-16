@@ -1,3 +1,20 @@
+# [10.0.0](https://github.com/5app/base5-ui/compare/v9.5.0...v10.0.0) (2020-06-12)
+
+
+### Code Refactoring
+
+* Update react-popper to latest version, [#75](https://github.com/5app/base5-ui/issues/75) ([e157a87](https://github.com/5app/base5-ui/commit/e157a87bb1bbf7fca091efdfa0b84d7f81ef6b5c))
+
+
+### BREAKING CHANGES
+
+* Changed props on PopOver:
+- renderer now requires an attributes prop that
+  needs to be spread to the popover element
+- renderer doesn't receive refMeasurements
+  and resizeWatcher anymore
+- new machReference prop on PopOver
+
 # [9.5.0](https://github.com/5app/base5-ui/compare/v9.4.1...v9.5.0) (2020-06-11)
 
 
