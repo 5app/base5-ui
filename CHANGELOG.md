@@ -1,3 +1,10 @@
+## [10.1.2](https://github.com/5app/base5-ui/compare/v10.1.1...v10.1.2) (2020-06-16)
+
+
+### Bug Fixes
+
+* **usePopOver:** Pass popper.js attr's through popperly ([473e606](https://github.com/5app/base5-ui/commit/473e606bef379969a698f1b1980f82ef58846eb9))
+
 ## [10.1.1](https://github.com/5app/base5-ui/compare/v10.1.0...v10.1.1) (2020-06-16)
 
 
