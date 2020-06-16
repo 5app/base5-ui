@@ -6,7 +6,7 @@ import Arrow from '../Arrow';
 import Box from '../Box';
 import Portal from '../Portal';
 
-import usePopOver from '../usePopOver';
+import usePopOver from './usePopOver';
 
 function PopOver(props) {
 	const {
@@ -36,11 +36,11 @@ function PopOver(props) {
 	return (
 		<>
 			{children({
-				ref: mergeRefs([popOver.referenceRef, referenceRef]),
+				ref: mergeRefs([popOver.setReferenceRef, referenceRef]),
 				update: popOver.update,
 			})}
 			<PopOverRenderer
-				popOverRef={mergeRefs([popOver.ref, popOverRef])}
+				popOverRef={mergeRefs([popOver.setRef, popOverRef])}
 				{...popOver.props}
 				isOpen={isOpen}
 				content={content}
@@ -51,7 +51,7 @@ function PopOver(props) {
 	);
 }
 
-function DefaultPopover({
+function DefaultPopOver({
 	popOverRef,
 	isOpen,
 	content,
@@ -86,7 +86,7 @@ PopOver.defaultProps = {
 	offset: 0,
 	placement: 'top',
 	positionFixed: true,
-	renderer: DefaultPopover,
+	renderer: DefaultPopOver,
 };
 
 PopOver.propTypes = {
@@ -134,7 +134,9 @@ PopOver.propTypes = {
 	renderer: PropTypes.elementType,
 };
 
-export {Arrow};
+export {usePopOver, DefaultPopOver, Arrow};
+
+export {default as usePopOverState} from './usePopOverState';
 
 // @component
 export default PopOver;

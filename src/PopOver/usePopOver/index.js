@@ -2,7 +2,7 @@ import React, {useMemo, useState} from 'react';
 import {usePopper} from 'react-popper';
 
 import {matchWidth} from './modifiers';
-import Arrow from '../Arrow';
+import Arrow from '../../Arrow';
 
 function usePopOver({
 	arrowSize = 12,
@@ -49,8 +49,8 @@ function usePopOver({
 	);
 
 	return {
-		ref: setPopperElement,
-		referenceRef: setReferenceElement,
+		setRef: setPopperElement,
+		setReferenceRef: setReferenceElement,
 		props: {
 			style: styles.popper,
 			...attributes,
