@@ -53,7 +53,7 @@ function usePopOver({
 		setReferenceRef: setReferenceElement,
 		props: {
 			style: styles.popper,
-			...attributes,
+			...attributes.popper,
 		},
 		arrow,
 		update,
