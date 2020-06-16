@@ -1,8 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-import useOnClickOutside from '../useOnClickOutside';
-
-function usePopOverState({openDelay, popOverRef = null}) {
+function usePopOverState({openDelay}) {
 	const [isOpen, setOpen] = useState(false);
 	const timeoutRef = useRef();
 	const isMounted = useRef(true);
@@ -44,8 +42,6 @@ function usePopOverState({openDelay, popOverRef = null}) {
 		setOpen(openState => !openState);
 		resetTimeout();
 	}
-
-	useOnClickOutside(popOverRef, close, isOpen);
 
 	return {
 		isOpen,
