@@ -1,3 +1,10 @@
+## [10.1.1](https://github.com/5app/base5-ui/compare/v10.1.0...v10.1.1) (2020-06-16)
+
+
+### Bug Fixes
+
+* **usePopOverState:** Remove onClickOutside function ([16f42c3](https://github.com/5app/base5-ui/commit/16f42c35048bce88d13548bfd1b3a838da32eb7f))
+
 # [10.1.0](https://github.com/5app/base5-ui/compare/v10.0.0...v10.1.0) (2020-06-16)
 
 
