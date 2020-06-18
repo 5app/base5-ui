@@ -5,8 +5,18 @@ import styled, {css} from 'styled-components';
 import {pxToRem} from '../utils/units';
 import {alpha, getSolidBackgroundShade} from '../utils/colors';
 import {borderValue, overflowWrap, ie11Hack} from '../mixins';
-import {positionProps, marginProps} from '../styleProps';
-import {getSpacing, getLength} from '../utils';
+import {
+	positionProps,
+	positionPropsDef,
+	marginProps,
+	marginPropsDef,
+} from '../styleProps';
+import {
+	getSpacing,
+	getLength,
+	getPropFilter,
+	getPropNamesFromPropDefinition,
+} from '../utils';
 
 import Text from '../Text';
 import CenterContent from '../CenterContent';
@@ -24,7 +34,14 @@ const headerBackgroundColor = css`
 		p.shadedHeader ? getSolidBackgroundShade(p.theme) : p.theme.background};
 `;
 
-const StyledTable = styled.table`
+const stylePropNames = getPropNamesFromPropDefinition([
+	...positionPropsDef,
+	...marginPropsDef,
+]);
+
+const StyledTable = styled('table').withConfig({
+	shouldForwardProp: getPropFilter(stylePropNames),
+})`
 	position: relative;
 	${positionProps}
 	display: table;
@@ -205,7 +222,9 @@ const StyledTable = styled.table`
 	}
 `;
 
-const Cell = styled.td`
+const Cell = styled('td').withConfig({
+	shouldForwardProp: prop => prop !== 'width',
+})`
 	${p =>
 		p.width &&
 		`

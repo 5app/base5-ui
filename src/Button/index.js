@@ -5,8 +5,13 @@ import styled, {css} from 'styled-components';
 import {alpha} from '../utils/colors';
 import {pxToRem} from '../utils/units';
 import {fillParent} from '../mixins';
+import {
+	getPropFilter,
+	getPropNamesFromPropDefinition,
+} from '../utils/styleProps';
 
-import {positionProps, marginProps} from '../styleProps';
+import positionProps, {positionPropsDef} from '../styleProps/positionProps';
+import marginProps, {marginPropsDef} from '../styleProps/marginProps';
 import {alignMap} from '../styleProps/flexProps';
 
 import ButtonCore from '../ButtonCore';
@@ -14,18 +19,24 @@ import Icon from '../Icon';
 
 import 'focus-visible';
 
-const PropFilteringWrapper = ({
-	buttonRef,
-	round,
-	square,
-	fullWidth,
-	color,
-	size,
-	align,
-	...otherProps
-}) => <ButtonCore ref={buttonRef} {...otherProps} />;
+const stylePropNames = getPropNamesFromPropDefinition([
+	...positionPropsDef,
+	...marginPropsDef,
+]);
 
-const Wrapper = styled(PropFilteringWrapper)`
+const shouldForwardProp = getPropFilter([
+	'round',
+	'square',
+	'fullWidth',
+	'color',
+	'size',
+	'align',
+	...stylePropNames,
+]);
+
+const Wrapper = styled(ButtonCore).withConfig({
+	shouldForwardProp,
+})`
 	/* Structure, size & spacing */
 
 	${positionProps}
@@ -229,9 +240,9 @@ const Button = forwardRef((props, ref) => {
 
 	return (
 		<Wrapper
-			position="relative"
+			ref={ref}
 			forwardedAs={as}
-			buttonRef={ref}
+			position="relative"
 			aria-label={props['aria-label'] || title}
 			color={color}
 			align={align}

@@ -131,4 +131,42 @@ function createStyleFunction(stylePropConfig, baseRules) {
 	};
 }
 
-export {checkTheme, createStyleFunction};
+/**
+ * Returns the names (keys) of all style props in a styleProp config array
+ * @param {object[]} stylePropConfig - Array of style prop configuration objects
+ * @returns {string[]} - Array of prop names
+ */
+
+function getPropNamesFromPropDefinition(propDefinition) {
+	return ['breakpoints', ...propDefinition.map(propDef => propDef.styleProp)];
+}
+
+/**
+ * Returns a `shouldForwardProp` function to be used in styled-components
+ * to prevent any custom props from ending up in the DOM
+ *
+ * @param {string[]} propNames - Array of prop names
+ * @returns {Function} - shouldForwardProp function for styled-components, e.g.
+ * ```
+ * 		const Box = styled('div').withConfig({
+ * 			shouldForwardProp: getPropFilter(['color', 'align'])
+ * 		})`
+ * 			...
+ * 		`;
+ * ```
+ */
+
+function getPropFilter(propNames) {
+	const propsToFilter = new Set(propNames);
+
+	return function shouldForwardProp(prop) {
+		return !propsToFilter.has(prop);
+	};
+}
+
+export {
+	checkTheme,
+	createStyleFunction,
+	getPropFilter,
+	getPropNamesFromPropDefinition,
+};

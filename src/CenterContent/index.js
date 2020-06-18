@@ -3,21 +3,13 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {pxToRem} from '../utils/units';
-import {getLength} from '../utils';
+import {
+	getLength,
+	getPropNamesFromPropDefinition,
+	getPropFilter,
+} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
-import {paddingProps} from '../styleProps';
-
-const wrapperPropsToFilter = [
-	'fillParent',
-	'height',
-	'spacing',
-	'p',
-	'pl',
-	'pr',
-	'pt',
-	'pb',
-	'breakpoints',
-];
+import paddingProps, {paddingPropsDef} from '../styleProps/paddingProps';
 
 const responsiveWidthProp = createStyleFunction([
 	{
@@ -26,8 +18,17 @@ const responsiveWidthProp = createStyleFunction([
 	},
 ]);
 
-const Wrapper = styled.div.withConfig({
-	shouldForwardProp: prop => !wrapperPropsToFilter.includes(prop),
+const wrapperPropsToFilter = ['fillParent', 'width', 'height', 'spacing'];
+
+const paddingPropsToFilter = getPropNamesFromPropDefinition(paddingPropsDef);
+
+const shouldForwardProp = getPropFilter([
+	...wrapperPropsToFilter,
+	...paddingPropsToFilter,
+]);
+
+const Wrapper = styled('div').withConfig({
+	shouldForwardProp,
 })`
 	display: flex;
 	flex: 1 1 auto;
@@ -57,8 +58,8 @@ const Wrapper = styled.div.withConfig({
 	box-sizing: border-box;
 `;
 
-const Content = styled.div.withConfig({
-	shouldForwardProp: prop => !['width', 'breakpoints'].includes(prop),
+const Content = styled('div').withConfig({
+	shouldForwardProp,
 })`
 	${responsiveWidthProp}
 	max-width: 100%;

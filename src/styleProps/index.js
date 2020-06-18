@@ -1,21 +1,9 @@
-import borderProps from './borderProps';
-import displayProps from './displayProps';
-import flexProps from './flexProps';
-import marginProps from './marginProps';
-import paddingProps from './paddingProps';
-import positionProps from './positionProps';
-import sizeProps from './sizeProps';
-import textProps from './textProps';
-import themeProps from './themeProps';
-
-export {
-	borderProps,
-	displayProps,
-	flexProps,
-	marginProps,
-	paddingProps,
-	positionProps,
-	sizeProps,
-	textProps,
-	themeProps,
-};
+export {default as borderProps, borderPropsDef} from './borderProps';
+export {default as displayProps, displayPropsDef} from './displayProps';
+export {default as flexProps, flexPropsDef} from './flexProps';
+export {default as marginProps, marginPropsDef} from './marginProps';
+export {default as paddingProps, paddingPropsDef} from './paddingProps';
+export {default as positionProps, positionPropsDef} from './positionProps';
+export {default as sizeProps, sizePropsDef} from './sizeProps';
+export {default as textProps, textPropsDef} from './textProps';
+export {default as themeProps, themePropsDef} from './themeProps';

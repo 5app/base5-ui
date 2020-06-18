@@ -2,9 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {getSpacing} from '../utils';
+import {
+	getSpacing,
+	getPropNamesFromPropDefinition,
+	getPropFilter,
+} from '../utils';
 
-import {positionProps, sizeProps, textProps} from '../styleProps';
+import {
+	positionProps,
+	positionPropsDef,
+	sizeProps,
+	sizePropsDef,
+	textProps,
+	textPropsDef,
+} from '../styleProps';
+
+const stylePropNames = getPropNamesFromPropDefinition([
+	...positionPropsDef,
+	...sizePropsDef,
+	...textPropsDef,
+]);
+
+const shouldForwardProp = getPropFilter([
+	'spacing',
+	'splitBy',
+	...stylePropNames,
+]);
 
 const Item = styled.li`
 	display: ${p => p.display || 'inline-block'};
@@ -16,7 +39,7 @@ Item.propTypes = {
 
 const getSpacingFromTheme = p => getSpacing(p.spacing, p.theme);
 
-const Wrapper = styled.ul`
+const Wrapper = styled('ul').withConfig({shouldForwardProp})`
 	${positionProps}
 	list-style: none;
 	margin: 0;

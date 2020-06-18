@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {createStyleFunction} from '../utils/styleProps';
+import {
+	createStyleFunction,
+	getPropNamesFromPropDefinition,
+	getPropFilter,
+} from '../utils/styleProps';
 
 import {positionPropsDef} from '../styleProps/positionProps';
 import {displayPropsDef} from '../styleProps/displayProps';
@@ -12,7 +16,7 @@ import {themePropsDef} from '../styleProps/themeProps';
 import {borderPropsDef} from '../styleProps/borderProps';
 import {textPropsDef} from '../styleProps/textProps';
 
-const styleProps = createStyleFunction([
+const propDefs = [
 	...positionPropsDef,
 	...displayPropsDef,
 	...flexPropsDef,
@@ -22,9 +26,16 @@ const styleProps = createStyleFunction([
 	...themePropsDef,
 	...borderPropsDef,
 	...textPropsDef,
-]);
+];
 
-const Box = styled.div`
+const styleProps = createStyleFunction(propDefs);
+const shouldForwardProp = getPropFilter(
+	getPropNamesFromPropDefinition(propDefs)
+);
+
+const Box = styled('div').withConfig({
+	shouldForwardProp,
+})`
 	${baseFlexRules}
 	${styleProps}
 `;

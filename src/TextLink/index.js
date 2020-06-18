@@ -2,9 +2,25 @@ import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {positionProps, marginProps} from '../styleProps';
+import {getPropFilter, getPropNamesFromPropDefinition} from '../utils';
+
+import {
+	positionProps,
+	positionPropsDef,
+	marginProps,
+	marginPropsDef,
+} from '../styleProps';
 
 import ButtonCore from '../ButtonCore';
+
+const stylePropNames = getPropNamesFromPropDefinition([
+	...positionPropsDef,
+	...marginPropsDef,
+]);
+
+const textLinkProps = ['bold', 'stealthy'];
+
+const shouldForwardProp = getPropFilter([...textLinkProps, ...stylePropNames]);
 
 const textLinkStyles = css`
 	${p =>
@@ -31,9 +47,9 @@ const textLinkStyles = css`
 	}
 `;
 
-const Wrapper = styled(({linkRef, bold, stealthy, ...otherProps}) => (
-	<ButtonCore ref={linkRef} {...otherProps} />
-))`
+const Wrapper = styled(ButtonCore).withConfig({
+	shouldForwardProp,
+})`
 	${positionProps}
 	display: inline;
 	vertical-align: baseline;
@@ -45,7 +61,7 @@ const Wrapper = styled(({linkRef, bold, stealthy, ...otherProps}) => (
 const TextLink = forwardRef((props, ref) => {
 	const {as, ...otherProps} = props;
 
-	return <Wrapper {...otherProps} linkRef={ref} forwardedAs={as} />;
+	return <Wrapper {...otherProps} ref={ref} forwardedAs={as} />;
 });
 
 TextLink.displayName = 'TextLink';
