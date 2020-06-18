@@ -1,11 +1,11 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {getSolidBackgroundShade, getColorBlock} from '../utils/colors';
 
-function getBackgroundColour(background, theme) {
-	if (background === 'shaded') {
+function getBackgroundColour(value, theme) {
+	if (value === 'shaded') {
 		return getSolidBackgroundShade(theme);
 	}
-	return getColorBlock(background, theme);
+	return getColorBlock(value, theme);
 }
 
 export const themePropsDef = [
@@ -19,7 +19,7 @@ export const themePropsDef = [
 	},
 	{
 		styleProp: 'color',
-		getValue: (value, theme) => getColorBlock(value, theme),
+		getValue: getColorBlock,
 	},
 ];
 

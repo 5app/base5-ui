@@ -5,6 +5,7 @@ menu: Components
 
 import {Playground, Props} from 'docz';
 import Box from './';
+import {mix, getSolidBackgroundShade} from '../utils/colors';
 
 # Box
 
@@ -17,21 +18,27 @@ The following properties can be changed:
 -   Margin and padding
 -   Flex behaviour (grow, shrink, basis, flexAlign)
 -   Borders & box-shadow
--	Background & text colours
+-   Background & text colours
 -   Text styles (bold, dimmed, textAlign, overflow, caps)
 
 ## Examples
 
 <Playground>
-	<Box borderBottom="thin" pb="s">
+	<Box borderBottom="thin" pb="xxs" pl="xs">
+		Hello
+	</Box>
+	<Box bold breakpoints="s" mt={['xs', 'l']} p="s" boxShadow="soft">
+		Hello
+	</Box>
+	<Box mt={['xs', 'l']} p="s" color="text" background="shaded">
 		Hello
 	</Box>
 	<Box
-		bold
-		breakpoints="s"
 		mt={['xs', 'l']}
 		p="s"
-		boxShadow="soft"
+		background={theme =>
+			mix(getSolidBackgroundShade(theme), 'rgb')(theme.links, 0.75)
+		}
 	>
 		Hello
 	</Box>
