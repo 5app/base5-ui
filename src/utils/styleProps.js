@@ -32,11 +32,11 @@ function getValueByIndex(prop, index = 0) {
  * Builds a CSS ruleset based on the props passed to the component.
  *
  * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {string} stylePropConfig[].styleProp - Name of the style prop
- * @param {Array} stylePropConfig[].properties - The CSS properties that the value should be applied to
- * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a valid CSS property value.
+ * @param {string} stylePropConfig.styleProp - Name of the style prop
+ * @param {Array} stylePropConfig.properties - The CSS properties that the value should be applied to
+ * @param {Function} stylePropConfig.getValue - Transforms the prop value into a valid CSS property value.
  * This function is only called when the prop's value is not null or undefined.
- * @param {Function} stylePropConfig[].getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
+ * @param {Function} stylePropConfig.getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
  * @param {object} componentProps - Props that the component was called with
  * @param {number} breakpointIndex - If the passed prop is an array of responsive values, this number tells us which value to pick from the array
  *
@@ -102,11 +102,11 @@ function getResponsiveRules(stylePropConfig, componentProps) {
 /**
  *
  * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {string} stylePropConfig[].styleProp - Name of the style prop
- * @param {Array} stylePropConfig[].properties - The CSS properties that the value should be applied to
- * @param {Function} stylePropConfig[].getValue - Transforms the prop value into a valid CSS property value.
+ * @param {string} stylePropConfig.styleProp - Name of the style prop
+ * @param {Array} stylePropConfig.properties - The CSS properties that the value should be applied to
+ * @param {Function} stylePropConfig.getValue - Transforms the prop value into a valid CSS property value.
  * This function is only called when the prop's value is not null or undefined.
- * @param {Function} stylePropConfig[].getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
+ * @param {Function} stylePropConfig.getRules - Use this instead of stylePropConfig.properties and stylePropConfig.getValue to define more complex style props that need to generate multiple CSS rules. Will be called with any value, so you have to make sure to return a falsy value if you don't want to add a rule.
  * @param {object} [baseRules] - Any static CSS rules to add before the dynamic styleProp rules
  *
  * @returns {Function} - A responsive style prop function that can be used directly in a styled component, e.g.
