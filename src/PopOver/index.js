@@ -10,6 +10,7 @@ import usePopOver from './usePopOver';
 
 function PopOver(props) {
 	const {
+		adaptivePositioning,
 		arrowSize,
 		children,
 		content,
@@ -25,6 +26,7 @@ function PopOver(props) {
 	} = props;
 
 	const popOver = usePopOver({
+		adaptivePositioning,
 		arrowSize,
 		distance,
 		matchReferenceWidth,
@@ -90,6 +92,8 @@ PopOver.defaultProps = {
 };
 
 PopOver.propTypes = {
+	/** Controls the `adaptive` option in popper.js' compute-styles modifier  */
+	adaptivePositioning: PropTypes.bool,
 	/** Control the popover's arrow size */
 	arrowSize: PropTypes.number,
 	/** Child function, providing a ref that needs to be passed to the wrapped reference component */
