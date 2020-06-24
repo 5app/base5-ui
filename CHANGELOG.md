@@ -1,3 +1,15 @@
+# [10.2.0](https://github.com/5app/base5-ui/compare/v10.1.2...v10.2.0) (2020-06-18)
+
+
+### Bug Fixes
+
+* Prevent custom props from reaching DOM ([fe9a17e](https://github.com/5app/base5-ui/commit/fe9a17e16009bc2de40034ca138fd2d4e7801fb3))
+
+
+### Features
+
+* **styleProps:** Accept function for themeProps ([5af3b6e](https://github.com/5app/base5-ui/commit/5af3b6e226e686e79726cea2f43e1a1f3f448d97))
+
 ## [10.1.2](https://github.com/5app/base5-ui/compare/v10.1.1...v10.1.2) (2020-06-16)
 
 
