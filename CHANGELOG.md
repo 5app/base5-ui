@@ -1,3 +1,10 @@
+## [10.3.1](https://github.com/5app/base5-ui/compare/v10.3.0...v10.3.1) (2020-06-24)
+
+
+### Bug Fixes
+
+* **PopOver:** Disable adaptive positioning ([f8c9730](https://github.com/5app/base5-ui/commit/f8c97306559d07b483cd2494060816137c719abf))
+
 # [10.3.0](https://github.com/5app/base5-ui/compare/v10.2.0...v10.3.0) (2020-06-24)
 
 
