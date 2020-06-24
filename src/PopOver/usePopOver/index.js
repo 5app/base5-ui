@@ -1,7 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import {usePopper} from 'react-popper';
 
-import {matchWidth} from './modifiers';
+import {matchWidth, maxSize, applyMaxHeight} from './modifiers';
 import Arrow from '../../Arrow';
 
 function usePopOver({
@@ -25,6 +25,8 @@ function usePopOver({
 				{name: 'offset', options: {offset: [offset, autoDistance]}},
 				{name: 'computeStyles', options: {gpuAcceleration: false}},
 				matchReferenceWidth ? matchWidth : null,
+				maxSize,
+				applyMaxHeight,
 			].filter(Boolean),
 		[autoDistance, offset, arrowElement, matchReferenceWidth]
 	);
