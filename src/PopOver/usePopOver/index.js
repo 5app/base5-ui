@@ -11,6 +11,7 @@ function usePopOver({
 	offset = 0,
 	placement = 'top',
 	positionFixed = true,
+	adaptivePositioning = false,
 }) {
 	const [referenceElement, setReferenceElement] = useState(null);
 	const [popperElement, setPopperElement] = useState(null);
@@ -23,12 +24,24 @@ function usePopOver({
 			[
 				{name: 'arrow', options: {element: arrowElement}},
 				{name: 'offset', options: {offset: [offset, autoDistance]}},
-				{name: 'computeStyles', options: {gpuAcceleration: false}},
+				{
+					name: 'computeStyles',
+					options: {
+						gpuAcceleration: false,
+						adaptive: adaptivePositioning,
+					},
+				},
 				matchReferenceWidth ? matchWidth : null,
 				maxSize,
 				applyMaxHeight,
 			].filter(Boolean),
-		[autoDistance, offset, arrowElement, matchReferenceWidth]
+		[
+			autoDistance,
+			offset,
+			arrowElement,
+			adaptivePositioning,
+			matchReferenceWidth,
+		]
 	);
 
 	const {styles, state, attributes, update} = usePopper(
