@@ -1,3 +1,10 @@
+## [10.3.2](https://github.com/5app/base5-ui/compare/v10.3.1...v10.3.2) (2020-06-24)
+
+
+### Bug Fixes
+
+* **PopOver:** Pass through adaptivePositioning prop ([b49c00c](https://github.com/5app/base5-ui/commit/b49c00ce5d1c1e311291d6b5571c57a911faf8ca))
+
 ## [10.3.1](https://github.com/5app/base5-ui/compare/v10.3.0...v10.3.1) (2020-06-24)
 
 
