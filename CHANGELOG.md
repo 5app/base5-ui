@@ -1,3 +1,15 @@
+# [10.3.0](https://github.com/5app/base5-ui/compare/v10.2.0...v10.3.0) (2020-06-24)
+
+
+### Bug Fixes
+
+* Fix JSDoc comment syntax, noissue ([0f9927f](https://github.com/5app/base5-ui/commit/0f9927f0778d88deec81542833dc58b0ba13a463))
+
+
+### Features
+
+* **usePopOver:** Prevent popOvers from overflowing viewport ([486d429](https://github.com/5app/base5-ui/commit/486d429f7c2e000da182b8be3be7a484a62cb7cd))
+
 # [10.2.0](https://github.com/5app/base5-ui/compare/v10.1.2...v10.2.0) (2020-06-18)
 
 
