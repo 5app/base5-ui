@@ -40,21 +40,27 @@ Stack.defaultProps = {
 };
 
 Stack.propTypes = {
-	/** Control the spacing between Stack items. Can be an array
-	 * of responsive values when used alongside the `breakpoints` prop */
+	/**
+	 * Control the spacing between Stack items. Can be an array
+	 * of responsive values when used alongside the `breakpoints` prop
+	 */
 	spacing: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 		PropTypes.array,
 	]),
-	/** Breakpoints to use when responsive spacing values are provided */
+	/**
+	 * Breakpoints to use when responsive spacing values are provided
+	 */
 	breakpoints: PropTypes.oneOfType([
 		PropTypes.string,
 		PropTypes.number,
 		PropTypes.array,
 	]),
-	/** Control the HTML elements to be used for the Stack item.
-	 * Defaults to `div`s, choose `default` to use `ul` and `li` */
+	/**
+	 * Control the HTML elements to be used for the Stack item.
+	 * Defaults to `div`, choose `list` to use `ul` and `li`
+	 */
 	as: PropTypes.oneOf(['list', 'default']),
 };
 
