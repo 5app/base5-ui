@@ -52,6 +52,10 @@ export const flexPropsDef = [
 		getValue: value => alignMap[value] || value,
 	},
 	{
+		styleProp: 'justifyContent',
+		getValue: value => value,
+	},
+	{
 		styleProp: 'flexDirection',
 		getValue: value => value,
 	},
