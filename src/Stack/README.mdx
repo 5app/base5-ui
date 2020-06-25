@@ -1,0 +1,37 @@
+---
+name: Stack
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Box from '../Box';
+import Text from '../Text';
+import TextLink from '../TextLink';
+import Stack from './';
+
+# Stack
+
+Control vertical spacing between Stack items. Built on top of `Box`, allowing all `Box` props to be used.
+
+## Examples
+
+<Playground>
+	<Stack spacing="xxs">
+		<TextLink href="#">Home</TextLink>
+		<TextLink href="#">Projects</TextLink>
+		<TextLink href="#">About us</TextLink>
+	</Stack>
+</Playground>
+
+<Playground>
+	<Stack as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
+		<TextLink href="#">Milch</TextLink>
+		<TextLink href="#">Eier</TextLink>
+		<TextLink href="#">Käse</TextLink>
+	</Stack>
+</Playground>
+
+## Props
+
+<Props of={Stack} />
