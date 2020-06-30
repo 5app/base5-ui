@@ -35,5 +35,6 @@ export {default as useFocusOnMount} from './useFocusOnMount';
 export {default as useOnClickOutside} from './useOnClickOutside';
 export {default as useHasMounted} from './useHasMounted';
 export {default as useInterval} from './useInterval';
+export {default as useReturnToInitEffect} from './useReturnToInitEffect';
 export {default as ViewMoreText} from './ViewMoreText';
 export {default as VisuallyHidden} from './VisuallyHidden';
