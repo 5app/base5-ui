@@ -1,3 +1,15 @@
+# [10.6.0](https://github.com/5app/base5-ui/compare/v10.5.0...v10.6.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* Add missing root exports for Stack and useFocusOnMount ([fb09d7f](https://github.com/5app/base5-ui/commit/fb09d7fa969f38698329c2b5633e45a3d3019c45))
+
+
+### Features
+
+* New hook useReturnToInitEffect ([d7ad2ae](https://github.com/5app/base5-ui/commit/d7ad2aeca02034955db08c3491ab8fcffb6bd109))
+
 # [10.5.0](https://github.com/5app/base5-ui/compare/v10.4.0...v10.5.0) (2020-06-30)
 
 
