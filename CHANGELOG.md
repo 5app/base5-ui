@@ -1,3 +1,10 @@
+# [10.4.0](https://github.com/5app/base5-ui/compare/v10.3.2...v10.4.0) (2020-06-25)
+
+
+### Features
+
+* New layout component Stack ([507e9f5](https://github.com/5app/base5-ui/commit/507e9f5cdcaccef596fb759965a2c6ec76a0f2ba))
+
 ## [10.3.2](https://github.com/5app/base5-ui/compare/v10.3.1...v10.3.2) (2020-06-24)
 
 
