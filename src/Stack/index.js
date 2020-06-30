@@ -20,6 +20,8 @@ function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 	return (
 		<Box as={wrapperAs} breakpoints={breakpoints} {...otherProps}>
 			{React.Children.map(children, (child, index) => {
+				if (!child) return null;
+
 				const isFirst = index === 0;
 				return (
 					<Box
