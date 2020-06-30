@@ -1,0 +1,123 @@
+---
+name: useFocusOnMount
+menu: Hooks
+---
+
+import {Playground, Props} from 'docz';
+import Button from '../Button';
+import Stack from '../Stack';
+
+import Dialog from './DemoExample';
+
+# useFocusOnMount
+
+A hook that will focus a chosen element when the component it is in is mounted, and crucially, will move focus back to where it was before when the component unmounts.
+
+This is useful for moving focus into non-modal dialogs (for modal dialogs, please use the Modal component).
+
+Notes: Restoring focus to the previously focused element only works if that element has not been unmounted or replaced by the dialog. If you want to hide or replace the elements that were used to open the dialog, please do so via CSS (`display: none`), not by unmounting.
+
+## Example
+
+See below for a live example of the `Dialog` component in action.
+
+```jsx
+function Dialog({onClose}) {
+	const buttonRef = useFocusOnMount();
+	return (
+		<Box role="dialog" aria-labelledby="heading" p="s" background="shaded">
+			<Stack spacing="s">
+				<Text as="h2" bold size="l" id="heading">
+					Do you really want to hrmpf!?
+				</Text>
+				<InlineList spacing="s">
+					<Button
+						ref={buttonRef}
+						icon="x"
+						size="medium"
+						onClick={onClose}
+					>
+						Nah
+					</Button>
+					<Button
+						icon="ok"
+						color="primary"
+						size="medium"
+						onClick={onClose}
+					>
+						Sure
+					</Button>
+				</InlineList>
+			</Stack>
+		</Box>
+	);
+}
+```
+
+<Playground>
+	{() => {
+		const [hasDialog, setHasDialog] = React.useState(false);
+		return (
+			<Stack spacing="s">
+				<Button
+					icon="eye-open"
+					isActive={hasDialog}
+					onClick={() => setHasDialog(prev => !prev)}
+				>
+					Show non-modal dialog
+				</Button>
+				{hasDialog && <Dialog onClose={() => setHasDialog(false)} />}
+			</Stack>
+		);
+	}}
+</Playground>
+
+## Options
+
+### Using your own ref
+
+Instead of attaching the ref returned by the hook, you can also pass in your own ref to the hook.
+
+```jsx
+function Dialog() {
+	const buttonRef = React.useRef();
+	useFocusOnMount({ref: buttonRef});
+	return (
+		// Your Dialog code
+	)
+}
+```
+
+### Hooking into `onFocus` and `onRestoreFocus`
+
+If you need more control over what happens when focus is (re-)set, you can pass in your own callbacks `onFocus` and `onRestoreFocus`. These will be called after focus was set. They are called with the focused element.
+
+This can be useful if, for example, you want to set focus to an input field, and not just move focus to it, but also select its contents.
+
+```jsx
+function Dialog() {
+	const inputRef = useFocusOnMount({
+		onFocus: focusedElement => focusedElement.select(),
+	});
+
+	return (
+		// Your Dialog code
+	)
+}
+```
+
+### Disabling the hook
+
+You can disable the hook by passing in the `disable` option:
+
+```jsx
+function Dialog({focusInputOnMount}) {
+	const inputRef = useFocusOnMount({
+		disable: focusInputOnMount,
+	});
+
+	return (
+		// Your Dialog code
+	)
+}
+```
