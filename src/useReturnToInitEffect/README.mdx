@@ -17,6 +17,8 @@ Note that unlike the regular `useEffect` hook, `useReturnToInitEffect` only acce
 ## Example
 
 ```jsx
+import useReturnToInitEffect from 'base5-ui/useReturnToInitEffect';
+
 function Comment({data}) {
 	const [isEditing, setIsEditing] = useState(false);
 	const editButtonRef = useRef();
