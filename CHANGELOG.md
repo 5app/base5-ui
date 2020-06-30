@@ -1,3 +1,16 @@
+# [10.5.0](https://github.com/5app/base5-ui/compare/v10.4.0...v10.5.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* **Stack:** Don't render spacing for falsy children ([5f24846](https://github.com/5app/base5-ui/commit/5f2484654dd19b7fd16158c6df51e45cffb758e4))
+* **styleProps:** Support justifyContent styleProp ([06a5173](https://github.com/5app/base5-ui/commit/06a5173a33752d1acad5be4ddf378aebfbf203af))
+
+
+### Features
+
+* New useFocusOnMount hook ([3f58537](https://github.com/5app/base5-ui/commit/3f58537d904c90125e2603de0a99a6249d5d9816))
+
 # [10.4.0](https://github.com/5app/base5-ui/compare/v10.3.2...v10.4.0) (2020-06-25)
 
 
