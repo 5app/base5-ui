@@ -16,7 +16,19 @@ function getScaleFromFlipAxis(axis) {
 	}
 }
 
-const Svg = styled.svg`
+function shouldForwardProp(prop) {
+	return ![
+		'spacingLeft',
+		'spacingRight',
+		'scale',
+		'vAlign',
+		'dimmed',
+		'rotate',
+		'flip',
+	].includes(prop);
+}
+
+const Svg = styled.svg.withConfig({shouldForwardProp})`
 	display: inline-block;
 	vertical-align: middle;
 
