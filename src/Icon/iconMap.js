@@ -46,6 +46,7 @@ const iconMap = {
 	logout: require('../icons/Logout').default,
 	megaphone: require('../icons/Megaphone').default,
 	menu: require('../icons/Menu').default,
+	minus: require('../icons/Minus').default,
 	'nav-down': require('../icons/NavDown').default,
 	'nav-left': require('../icons/NavLeft').default,
 	'nav-right': require('../icons/NavRight').default,

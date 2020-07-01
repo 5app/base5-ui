@@ -44,6 +44,7 @@ export {default as Link} from './Link';
 export {default as Logout} from './Logout';
 export {default as Megaphone} from './Megaphone';
 export {default as Menu} from './Menu';
+export {default as Minus} from './Minus';
 export {default as NavDown} from './NavDown';
 export {default as NavLeft} from './NavLeft';
 export {default as NavRight} from './NavRight';
