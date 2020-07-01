@@ -26,6 +26,11 @@ const GlobalStyle = createGlobalStyle`
 		vertical-align: baseline;
 	}
 
+	input {
+		margin: 0;
+		padding: 0;
+	}
+
 	body {
 		font-family: 'Open Sans', sans-serif;
 	}

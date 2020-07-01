@@ -1,0 +1,73 @@
+---
+name: Checkbox
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Stack from '../Stack';
+import Text from '../Text';
+import Checkbox from './';
+
+# Checkbox
+
+Pretty and accessible checkbox that'll match your theme colours.
+
+## Examples
+
+<Playground>
+	{() => {
+		const [checked, setChecked] = React.useState(true);
+		const toggle = () => setChecked(checked => !checked);
+    	const [triState, setTriState] = React.useState('indeterminate');
+    	function cycleTriState() {
+    		setTriState(prevState => {
+    			switch (prevState) {
+    				case 'indeterminate':
+    					return 'checked';
+    				case 'checked':
+    					return 'unchecked';
+    				case 'unchecked':
+    					return 'indeterminate';
+    			}
+    		});
+    	}
+    	return (
+    		<Stack spacing="s">
+    			<label>
+    				<Checkbox checked={checked} onChange={toggle} /> Regular
+    				option
+    			</label>
+    			<Text dimmed as="label">
+    				<Checkbox checked disabled /> Disabled checked option
+    			</Text>
+    			<Text dimmed as="label">
+    				<Checkbox disabled /> Disabled unchecked option
+    			</Text>
+    			<label>
+    				<Checkbox
+    					indeterminate={triState === 'indeterminate'}
+    					checked={triState === 'checked'}
+    					onChange={cycleTriState}
+    				/>{' '}
+    				Indeterminate option
+    			</label>
+    			<Text dimmed as="label">
+    				<Checkbox disabled indeterminate /> Disabled indeterminate
+    				option
+    			</Text>
+    			<label>
+    				<Checkbox scale={0.75} /> Scaled-down checkbox
+    			</label>
+    			<Text as="label" size="xl">
+    				<Checkbox scale="auto" /> Checkbox that scales along with text
+    			</Text>
+    		</Stack>
+    	);
+    }}
+
+</Playground>
+
+## Props
+
+<Props of={Checkbox} />
