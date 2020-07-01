@@ -1,3 +1,16 @@
+# [10.7.0](https://github.com/5app/base5-ui/compare/v10.6.0...v10.7.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* **Icon:** Filter custom props from reaching DOM ([c61d9a5](https://github.com/5app/base5-ui/commit/c61d9a582f8c7933c74b7b8a66ebcbac69e15f56))
+
+
+### Features
+
+* New Checkbox component ([d8777a5](https://github.com/5app/base5-ui/commit/d8777a5a4c2ac8052cb8dd9157db0366871d7d4e))
+* **Icons:** Add new icon "minus" ([86a40ef](https://github.com/5app/base5-ui/commit/86a40ef427ab5affdd173d4613fb04a0148b9996))
+
 # [10.6.0](https://github.com/5app/base5-ui/compare/v10.5.0...v10.6.0) (2020-06-30)
 
 
