@@ -15,7 +15,7 @@ A hook that will focus a chosen element when the component it is in is mounted, 
 
 This is useful for moving focus into non-modal dialogs (for modal dialogs, please use the Modal component).
 
-Notes: Restoring focus to the previously focused element only works if that element has not been unmounted or replaced by the dialog. If you want to hide or replace the elements that were used to open the dialog, please do so via CSS (`display: none`), not by unmounting.
+Note: This hook can only restore focus to the previously focused element if that element has not been unmounted or replaced by the dialog. If your design requires this, you can additionally use the [`useReturnToInitEffect` hook](src-use-return-to-init-effect-readme) in the parent component to explicitly set focus when the dialog is closed.
 
 ## Example
 
