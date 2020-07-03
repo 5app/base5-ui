@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '../Box';
+import Hidden from '../Hidden';
 
 const roles = {
 	default: {
@@ -14,23 +15,54 @@ const roles = {
 	},
 };
 
+function getHiddenChildProps(child) {
+	if (typeof child === 'object' && child.type === Hidden) {
+		return child.props;
+	} else return null;
+}
+
+function invertPrimitive(spacing) {
+	if (!spacing) return null;
+	if (typeof spacing === 'number') {
+		return spacing * -1;
+	} else return `-${spacing}`;
+}
+
+function getNegativeSpacing(spacing) {
+	if (Array.isArray(spacing)) {
+		return spacing.map(invertPrimitive);
+	} else {
+		return invertPrimitive(spacing);
+	}
+}
+
 function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 	const wrapperAs = roles[as]?.wrapper;
 	const itemAs = roles[as]?.item;
 	return (
-		<Box as={wrapperAs} breakpoints={breakpoints} {...otherProps}>
-			{React.Children.map(children, (child, index) => {
+		<Box
+			{...otherProps}
+			mb={getNegativeSpacing(spacing)}
+			as={wrapperAs}
+			breakpoints={breakpoints}
+		>
+			{React.Children.map(children, child => {
 				if (!child) return null;
 
-				const isFirst = index === 0;
+				const hiddenChildProps = getHiddenChildProps(child);
+
+				const Component = hiddenChildProps ? Hidden : Box;
+
 				return (
-					<Box
+					<Component
 						as={itemAs}
-						pt={!isFirst && spacing}
+						above={hiddenChildProps?.above}
+						below={hiddenChildProps?.below}
+						pb={spacing}
 						breakpoints={breakpoints}
 					>
-						{child}
-					</Box>
+						{hiddenChildProps ? hiddenChildProps.children : child}
+					</Component>
 				);
 			})}
 		</Box>

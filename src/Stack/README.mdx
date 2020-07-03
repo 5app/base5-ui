@@ -6,6 +6,7 @@ menu: Components
 import {Playground, Props} from 'docz';
 
 import Box from '../Box';
+import Hidden from '../Hidden';
 import Text from '../Text';
 import TextLink from '../TextLink';
 import Stack from './';
@@ -28,7 +29,9 @@ Control vertical spacing between Stack items. Built on top of `Box`, allowing al
 	<Stack as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
 		<TextLink href="#">Milch</TextLink>
 		<TextLink href="#">Eier</TextLink>
-		<TextLink href="#">Käse</TextLink>
+		<Hidden above="xl">
+			<TextLink href="#">Käse</TextLink>
+		</Hidden>
 	</Stack>
 </Playground>
 
