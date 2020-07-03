@@ -32,6 +32,7 @@ export {default as useAriaFeedProps} from './useAriaFeedProps';
 export {default as useBreakpoints} from './useBreakpoints';
 export {default as useEventListener} from './useEventListener';
 export {default as useFocusOnMount} from './useFocusOnMount';
+export {default as useMergedRefs} from './useMergedRefs';
 export {default as useOnClickOutside} from './useOnClickOutside';
 export {default as useHasMounted} from './useHasMounted';
 export {default as useInterval} from './useInterval';
