@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
 		padding: 0;
 	}
 
+	ul, ol {
+		list-style: none;
+	}
+
 	body {
 		font-family: 'Open Sans', sans-serif;
 	}
