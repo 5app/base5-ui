@@ -1,0 +1,37 @@
+---
+name: Hidden
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import Hidden from './';
+
+# Hidden
+
+Hide content above or below a responsive breakpoint. Either use a breakpoint from your theme config (`theme.globals.breakpoints`), or a string of a CSS length (i.e. `600px` or `42em`).
+
+Renders a `div` by default, but as usual you can use the `as` prop to change that. Use the Boolean `inline` prop as a shortcut for `as="span"`.
+
+Built on top of the [Box component](https://5app.github.io/base5-ui/src-box-readme), so all valid Box props can be used on the Hidden component.
+
+## Examples
+
+<Playground>
+	<Hidden below="m">Hello up there 👆</Hidden>
+	<Hidden below="xs" above="l">
+		Welcome to the golden middle ✌️
+	</Hidden>
+	<Hidden above="m">Hello down there 👇</Hidden>
+</Playground>
+
+<Playground>
+	This text contains a hidden word{' '}
+	<Hidden inline below="m">
+		that's
+	</Hidden>{' '}
+	only visible on wider viewports
+</Playground>
+
+## Props
+
+<Props of={Hidden} />
