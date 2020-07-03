@@ -1,3 +1,10 @@
+# [10.8.0](https://github.com/5app/base5-ui/compare/v10.7.0...v10.8.0) (2020-07-03)
+
+
+### Features
+
+* New hook useMergedRefs ([df41733](https://github.com/5app/base5-ui/commit/df41733f2163366ea00f483ad3054ac3b365c26f))
+
 # [10.7.0](https://github.com/5app/base5-ui/compare/v10.6.0...v10.7.0) (2020-07-01)
 
 
