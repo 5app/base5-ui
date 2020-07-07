@@ -1,3 +1,17 @@
+## [11.0.1](https://github.com/5app/base5-ui/compare/v11.0.0...v11.0.1) (2020-07-07)
+
+# [11.0.0](https://github.com/5app/base5-ui/compare/v10.8.0...v11.0.0) (2020-07-07)
+
+
+### Bug Fixes
+
+* Trigger breaking release ([e43d959](https://github.com/5app/base5-ui/commit/e43d9595768f120db513d80f68e1fc969a82014d))
+
+
+### BREAKING CHANGES
+
+* See previous commit
+
 # [10.8.0](https://github.com/5app/base5-ui/compare/v10.7.0...v10.8.0) (2020-07-03)
 
 
