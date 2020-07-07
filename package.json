@@ -1,6 +1,6 @@
 {
 	"name": "base5-ui",
-	"version": "11.0.0",
+	"version": "11.0.1",
 	"description": "5app's reusable UI component library",
 	"main": "index.js",
 	"scripts": {
@@ -131,7 +131,10 @@
 				"@semantic-release/commit-analyzer",
 				{
 					"releaseRules": [
-						{"type": "refactor", "release": "patch"}
+						{
+							"type": "refactor",
+							"release": "patch"
+						}
 					]
 				}
 			],
