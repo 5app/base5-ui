@@ -136,7 +136,7 @@ ChartTooltips.propTypes = {
 	labels: PropTypes.array,
 	name: PropTypes.string,
 	getReadout: PropTypes.func,
-	tooltipComponent: PropTypes.object,
+	tooltipComponent: PropTypes.elementType,
 	tooltipProps: PropTypes.object,
 };
 

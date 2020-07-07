@@ -84,7 +84,8 @@ function SimpleChart({
 	height,
 	name,
 	color = 'links',
-	tooltipRenderer,
+	tooltipComponent,
+	tooltipProps,
 	getTooltipReadout,
 	isEmpty,
 	emptyContent = 'No data to display',
@@ -120,7 +121,8 @@ function SimpleChart({
 					data={data}
 					labels={labels}
 					name={name}
-					tooltipRenderer={tooltipRenderer}
+					tooltipComponent={tooltipComponent}
+					tooltipProps={tooltipProps}
 					getReadout={getTooltipReadout}
 				/>
 			) : (
