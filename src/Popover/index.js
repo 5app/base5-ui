@@ -64,7 +64,6 @@ const Popover = forwardRef((props, ref) => {
 				{...otherProps}
 				{...popover.props}
 				ref={popover.setRef}
-				arrow={popover.arrow}
 			>
 				{content}
 				{popover.arrow}
