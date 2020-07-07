@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-function usePopOverState({openDelay}) {
+function usePopoverState({openDelay}) {
 	const [isOpen, setOpen] = useState(false);
 	const timeoutRef = useRef();
 	const isMounted = useRef(true);
@@ -51,4 +51,4 @@ function usePopOverState({openDelay}) {
 	};
 }
 
-export default usePopOverState;
+export default usePopoverState;

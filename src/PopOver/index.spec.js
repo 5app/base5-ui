@@ -2,22 +2,22 @@ import React from 'react';
 import {render, cleanup} from '@testing-library/react';
 import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
-import PopOver from '.';
+import Popover from './';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('PopOver', () => {
+describe('Popover', () => {
 	afterEach(cleanup);
 
 	it('throws ThemeSectionError if rendered outside a <ThemeSection />', () => {
 		expect(() => {
-			render(<PopOver />).toThrow(ThemeSectionError);
+			render(<Popover />).toThrow(ThemeSectionError);
 		});
 	});
 
 	it.skip('renders its child inplace and appends its content prop to the document', () => {
 		const {container} = render(
 			<Wrapper>
-				<PopOver
+				<Popover
 					id="popover"
 					isOpen
 					content="I'm a popover. I'll try to always open in a direction that keeps me visible."
@@ -28,7 +28,7 @@ describe('PopOver', () => {
 							I&apos;m a reference element
 						</span>
 					)}
-				</PopOver>
+				</Popover>
 			</Wrapper>
 		);
 

@@ -1,10 +1,10 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {alpha} from '../../utils/colors';
 
-import PopOver from '../../PopOver';
+import Popover from '../../Popover';
 import Text from '../../Text';
 import VisuallyHidden from '../../VisuallyHidden';
 
@@ -87,7 +87,8 @@ function ChartTooltips({
 	labels,
 	name,
 	getReadout = getDefaultReadout,
-	tooltipRenderer,
+	tooltipComponent: TooltipComponent = Popover,
+	tooltipProps,
 }) {
 	const [hoveredPoint, setHoveredPoint] = useState(null);
 
@@ -106,23 +107,23 @@ function ChartTooltips({
 						onMouseEnter={() => setHoveredPoint(index)}
 						onMouseLeave={() => setHoveredPoint(null)}
 					>
-						<PopOver
+						<TooltipComponent
+							{...tooltipProps}
 							isOpen={hoveredPoint === index}
 							placement="top"
 							distance={8}
 							content={readOut}
-							renderer={tooltipRenderer}
 						>
 							{popover => (
-								<Fragment>
+								<>
 									<VisuallyHidden>{readOut}</VisuallyHidden>
 									<Cursor
 										ref={popover.ref}
 										yValue={value / maxValue}
 									/>
-								</Fragment>
+								</>
 							)}
-						</PopOver>
+						</TooltipComponent>
 					</ReadoutListItem>
 				);
 			})}
@@ -135,7 +136,8 @@ ChartTooltips.propTypes = {
 	labels: PropTypes.array,
 	name: PropTypes.string,
 	getReadout: PropTypes.func,
-	tooltipRenderer: PropTypes.func,
+	tooltipComponent: PropTypes.object,
+	tooltipProps: PropTypes.object,
 };
 
 // @component
