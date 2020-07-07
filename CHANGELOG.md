@@ -1,3 +1,11 @@
+## [11.0.2](https://github.com/5app/base5-ui/compare/v11.0.1...v11.0.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* **Popover:** Remove redundant arrow prop ([46305e6](https://github.com/5app/base5-ui/commit/46305e6a31fd7a70377aa48fbe0a7f30104b7770))
+* **SimpleChart:** Pass through new tooltip props ([39385de](https://github.com/5app/base5-ui/commit/39385de6b8adbc7a41bd27110a33668821488f87))
+
 ## [11.0.1](https://github.com/5app/base5-ui/compare/v11.0.0...v11.0.1) (2020-07-07)
 
 # [11.0.0](https://github.com/5app/base5-ui/compare/v10.8.0...v11.0.0) (2020-07-07)
