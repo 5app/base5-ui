@@ -48,7 +48,7 @@ function usePopover({
 		]
 	);
 
-	const {styles, state, attributes, update} = usePopper(
+	const {styles, state, attributes, update, forceUpdate} = usePopper(
 		referenceElement,
 		popperElement,
 		{
@@ -79,6 +79,7 @@ function usePopover({
 		},
 		arrow,
 		update,
+		forceUpdate,
 	};
 }
 
