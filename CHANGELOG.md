@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/5app/base5-ui/compare/v11.0.2...v11.1.0) (2020-07-08)
+
+
+### Features
+
+* **usePopover:** Expose forceUpdate method ([fa3e6ae](https://github.com/5app/base5-ui/commit/fa3e6ae5fd47aac1ed68216083fe3d1ec878f264))
+
 ## [11.0.2](https://github.com/5app/base5-ui/compare/v11.0.1...v11.0.2) (2020-07-07)
 
 
