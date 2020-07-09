@@ -1,3 +1,10 @@
+# [11.2.0](https://github.com/5app/base5-ui/compare/v11.1.0...v11.2.0) (2020-07-09)
+
+
+### Features
+
+* **usePopoverState:** Add onClose/onOpen callbacks ([1123af2](https://github.com/5app/base5-ui/commit/1123af2935b666fe58e8753cc71777e373dbb9f9))
+
 # [11.1.0](https://github.com/5app/base5-ui/compare/v11.0.2...v11.1.0) (2020-07-08)
 
 
