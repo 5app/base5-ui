@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-function usePopoverState({openDelay}) {
+function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 	const [isOpen, setOpen] = useState(false);
 	const timeoutRef = useRef();
 	const isMounted = useRef(true);
@@ -27,6 +27,9 @@ function usePopoverState({openDelay}) {
 			timeoutRef.current = setTimeout(() => {
 				if (isMounted.current) {
 					setOpen(true);
+					if (onOpen) {
+						onOpen();
+					}
 					timeoutRef.current = null;
 				}
 			}, openDelay);
@@ -35,12 +38,18 @@ function usePopoverState({openDelay}) {
 
 	function close() {
 		setOpen(false);
+		if (onClose) {
+			onClose();
+		}
 		resetTimeout();
 	}
 
-	function toggle() {
-		setOpen(openState => !openState);
-		resetTimeout();
+	function toggle(e) {
+		if (isOpen) {
+			close(e);
+		} else {
+			open(e);
+		}
 	}
 
 	return {
