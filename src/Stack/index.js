@@ -1,8 +1,36 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {getSpacing, createStyleFunction} from '../utils';
 
 import Box from '../Box';
 import Hidden from '../Hidden';
+
+export const spacingCompensationProp = createStyleFunction([
+	{
+		styleProp: 'compensateSpacing',
+		properties: ['marginBottom'],
+		getValue: (value, theme) => `-${getSpacing(value, theme)}`,
+	},
+]);
+
+/**
+ * Using a pseudo element to compensate for the spacing
+ * between items (instead of negative margin) to allow
+ * for the wrapper to seamlessly accept any `Box` props.
+ * E.g., if a negative margin-top was used instead, it would
+ * clash with the `mt` prop.
+ */
+const Wrapper = styled(Box).withConfig({
+	shouldForwardProp: prop => prop !== 'compensateSpacing',
+})`
+	&::before {
+		content: '';
+		display: block;
+		height: 0;
+		${spacingCompensationProp}
+	}
+`;
 
 const roles = {
 	default: {
@@ -21,28 +49,13 @@ function getHiddenChildProps(child) {
 	} else return null;
 }
 
-function invertPrimitive(spacing) {
-	if (!spacing) return null;
-	if (typeof spacing === 'number') {
-		return spacing * -1;
-	} else return `-${spacing}`;
-}
-
-function getNegativeSpacing(spacing) {
-	if (Array.isArray(spacing)) {
-		return spacing.map(invertPrimitive);
-	} else {
-		return invertPrimitive(spacing);
-	}
-}
-
 function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 	const wrapperAs = roles[as]?.wrapper;
 	const itemAs = roles[as]?.item;
 	return (
-		<Box
+		<Wrapper
 			{...otherProps}
-			mb={getNegativeSpacing(spacing)}
+			compensateSpacing={spacing}
 			as={wrapperAs}
 			breakpoints={breakpoints}
 		>
@@ -58,14 +71,14 @@ function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 						as={itemAs}
 						above={hiddenChildProps?.above}
 						below={hiddenChildProps?.below}
-						pb={spacing}
+						pt={spacing}
 						breakpoints={breakpoints}
 					>
 						{hiddenChildProps ? hiddenChildProps.children : child}
 					</Component>
 				);
 			})}
-		</Box>
+		</Wrapper>
 	);
 }
 
