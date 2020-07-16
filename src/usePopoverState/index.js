@@ -23,6 +23,9 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 	}
 
 	function open(e) {
+		// TO DO: Investigate why the below check exists.
+		// Does it prevent double-triggers on mobile?
+		// Should've added a comment back in the day :(
 		if (e.type !== 'touchstart') {
 			timeoutRef.current = setTimeout(() => {
 				if (isMounted.current) {
