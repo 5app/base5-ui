@@ -13,7 +13,19 @@ function date(d) {
 	}
 }
 
-function getDateString({dateTime, locale, systemOffset = 0}) {
+function getDateString({
+	dateTime,
+	locale,
+	systemOffset = 0,
+	readoutFunctions = {},
+}) {
+	// Set default readout functions
+	const {
+		secondsAgoReadout = () => `seconds ago`,
+		minutesAgoReadout = count =>
+			`${count ? count : '< 1'} minute${count > 1 ? 's' : ''} ago`,
+	} = readoutFunctions;
+
 	// Define the offset, how old is this...
 	const time = date(dateTime);
 
@@ -37,18 +49,19 @@ function getDateString({dateTime, locale, systemOffset = 0}) {
 	// A few seconds ago
 	if (offset < TIME_MINUTE / 2) {
 		delay = TIME_MINUTE / 2 - offset;
-		dateString = 'seconds ago';
+		const seconds = parseInt(offset / 1000);
+		dateString = secondsAgoReadout(seconds);
 	}
 	// Less than a minute ago
 	else if (offset < TIME_MINUTE) {
 		delay = TIME_MINUTE - offset;
-		dateString = '< 1 minute ago';
+		dateString = minutesAgoReadout(0);
 	}
 	// A few minutes ago
 	else if (offset < TIME_MINUTE * 10) {
 		delay = TIME_MINUTE;
 		const mins = parseInt(offset / TIME_MINUTE);
-		dateString = `${mins} minute${mins > 1 ? 's' : ''} ago`;
+		dateString = minutesAgoReadout(mins);
 	}
 	// Occcured today...
 	else if (offset < ms_today) {
