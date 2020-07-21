@@ -18,7 +18,7 @@ function useForceUpdate() {
  * @param {object} opts.readoutFunctions - Object for handling translations
  * @returns {Function} React Hook
  */
-function Time({dateTime, systemTime, readoutFunctions, locale}) {
+function Time({dateTime, systemTime, readoutFunctions, locale, ...props}) {
 	const forceUpdate = useForceUpdate();
 
 	// Offset system time with local time...
@@ -40,7 +40,11 @@ function Time({dateTime, systemTime, readoutFunctions, locale}) {
 	const title = date(dateTime);
 
 	return (
-		<time dateTime={dateTime} title={title && title.toLocaleString()}>
+		<time
+			dateTime={dateTime}
+			title={title && title.toLocaleString()}
+			{...props}
+		>
 			{dateString || 'n/a'}
 		</time>
 	);
