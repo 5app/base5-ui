@@ -1,6 +1,7 @@
-const TIME_MINUTE = 60 * 1000;
-const TIME_HOUR = 60 * TIME_MINUTE;
-const TIME_DAY = 24 * TIME_HOUR;
+const ONE_SECOND = 1000;
+const ONE_MINUTE = 60 * ONE_SECOND;
+const ONE_HOUR = 60 * ONE_MINUTE;
+const ONE_DAY = 24 * ONE_HOUR;
 
 function date(d) {
 	if (!d) {
@@ -21,9 +22,10 @@ function getDateString({
 }) {
 	// Set default readout functions
 	const {
-		secondsAgoReadout = () => `seconds ago`,
+		secondsAgoReadout = count =>
+			`${count} second${count > 1 ? 's' : ''} ago`,
 		minutesAgoReadout = count =>
-			`${count ? count : '< 1'} minute${count > 1 ? 's' : ''} ago`,
+			`${count} minute${count > 1 ? 's' : ''} ago`,
 	} = readoutFunctions;
 
 	// Define the offset, how old is this...
@@ -40,33 +42,29 @@ function getDateString({
 
 	// Get the number of milliseconds since midnight in the local tz
 	const ms_today =
-		(Date.now() - new Date().getTimezoneOffset() * 1000 * 60) % TIME_DAY;
+		(Date.now() - new Date().getTimezoneOffset() * 1000 * 60) % ONE_DAY;
 	let dateString = 'n/a';
 
 	// Default delay
 	let delay = null;
 
 	// A few seconds ago
-	if (offset < TIME_MINUTE / 2) {
-		delay = TIME_MINUTE / 2 - offset;
+	if (offset < ONE_MINUTE) {
+		const FIVE_SECONDS = ONE_SECOND * 5;
+		delay = offset % FIVE_SECONDS || FIVE_SECONDS;
 		const seconds = parseInt(offset / 1000);
-		dateString = secondsAgoReadout(seconds);
-	}
-	// Less than a minute ago
-	else if (offset < TIME_MINUTE) {
-		delay = TIME_MINUTE - offset;
-		dateString = minutesAgoReadout(0);
+		dateString = secondsAgoReadout(seconds || ONE_SECOND);
 	}
 	// A few minutes ago
-	else if (offset < TIME_MINUTE * 10) {
-		delay = TIME_MINUTE;
-		const mins = parseInt(offset / TIME_MINUTE);
+	else if (offset < ONE_MINUTE * 10) {
+		delay = offset % ONE_MINUTE || ONE_MINUTE;
+		const mins = parseInt(offset / ONE_MINUTE);
 		dateString = minutesAgoReadout(mins);
 	}
 	// Occcured today...
 	else if (offset < ms_today) {
 		// Number of ms until end of the day...
-		delay = TIME_DAY - ms_today;
+		delay = ONE_DAY - ms_today;
 		dateString = new Intl.DateTimeFormat(locale, {
 			hourCycle: 'h12',
 			hour: 'numeric',
@@ -74,9 +72,9 @@ function getDateString({
 		}).format(time);
 	}
 	// Occurred this week
-	else if (offset < TIME_DAY * 6) {
+	else if (offset < ONE_DAY * 6) {
 		// Delay a day...
-		delay = TIME_DAY;
+		delay = ONE_DAY;
 		// Get day
 		dateString = new Intl.DateTimeFormat(locale, {
 			weekday: 'short',

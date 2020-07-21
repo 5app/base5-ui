@@ -23,11 +23,11 @@ describe('Time', () => {
 	[
 		{
 			offset: 1,
-			text: 'seconds ago',
+			text: '1 second ago',
 		},
 		{
 			offset: 33,
-			text: '< 1 minute ago',
+			text: '33 seconds ago',
 		},
 		{
 			offset: 90,
@@ -67,7 +67,7 @@ describe('Time', () => {
 
 		if (offset) {
 			it(`lets us use custom readout functions`, () => {
-				const count = offset > 30 ? parseInt(offset / 60) : offset;
+				const count = offset > 60 ? parseInt(offset / 60) : offset;
 
 				const elephants = count => `${count} elephants`;
 
