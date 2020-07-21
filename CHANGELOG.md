@@ -1,3 +1,10 @@
+## [11.3.1](https://github.com/5app/base5-ui/compare/v11.3.0...v11.3.1) (2020-07-21)
+
+
+### Bug Fixes
+
+* **Time:** minimum seconds 1 ([5ff31fc](https://github.com/5app/base5-ui/commit/5ff31fce7cf8d758e11e056ce0c45d92efe76a09))
+
 # [11.3.0](https://github.com/5app/base5-ui/compare/v11.2.0...v11.3.0) (2020-07-21)
 
 
