@@ -53,7 +53,7 @@ function getDateString({
 		const FIVE_SECONDS = ONE_SECOND * 5;
 		delay = offset % FIVE_SECONDS || FIVE_SECONDS;
 		const seconds = parseInt(offset / 1000);
-		dateString = secondsAgoReadout(seconds || ONE_SECOND);
+		dateString = secondsAgoReadout(seconds || 1);
 	}
 	// A few minutes ago
 	else if (offset < ONE_MINUTE * 10) {
