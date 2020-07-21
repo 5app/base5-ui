@@ -1,3 +1,10 @@
+# [11.3.0](https://github.com/5app/base5-ui/compare/v11.2.0...v11.3.0) (2020-07-21)
+
+
+### Features
+
+* **Time:** Add readout overrides 5app/dashboard[#8221](https://github.com/5app/base5-ui/issues/8221) ([#98](https://github.com/5app/base5-ui/issues/98)) ([8d2239f](https://github.com/5app/base5-ui/commit/8d2239ff8d6ad9c350ad14fa2fc68eed933e3326))
+
 # [11.2.0](https://github.com/5app/base5-ui/compare/v11.1.0...v11.2.0) (2020-07-09)
 
 
