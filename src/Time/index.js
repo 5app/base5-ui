@@ -9,7 +9,16 @@ function useForceUpdate() {
 	return forceUpdate;
 }
 
-function Time({dateTime, systemTime, locale}) {
+/**
+ * Relative Time component
+ * @param {object} opts - Options
+ * @param {string|Date} opts.dateTime - Date of the event
+ * @param {string|Date} opts.systemTime - Base time (used in testing)
+ * @param {string} opts.locale - Locale of the user, otherwise uses agent default
+ * @param {object} opts.readoutFunctions - Object for handling translations
+ * @returns {Function} React Hook
+ */
+function Time({dateTime, systemTime, readoutFunctions, locale, ...props}) {
 	const forceUpdate = useForceUpdate();
 
 	// Offset system time with local time...
@@ -19,6 +28,7 @@ function Time({dateTime, systemTime, locale}) {
 
 	// Get the date string and the delay before running the next loop
 	const [dateString, delay] = getDateString({
+		readoutFunctions,
 		dateTime,
 		locale,
 		systemOffset: systemOffset.current,
@@ -30,7 +40,11 @@ function Time({dateTime, systemTime, locale}) {
 	const title = date(dateTime);
 
 	return (
-		<time dateTime={dateTime} title={title && title.toLocaleString()}>
+		<time
+			dateTime={dateTime}
+			title={title && title.toLocaleString()}
+			{...props}
+		>
 			{dateString || 'n/a'}
 		</time>
 	);
@@ -49,6 +63,7 @@ Time.propTypes = {
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
 	]),
+	readoutFunctions: PropTypes.object,
 };
 
 // @component
