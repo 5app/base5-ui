@@ -1,3 +1,11 @@
+## [11.3.2](https://github.com/5app/base5-ui/compare/v11.3.1...v11.3.2) (2020-07-23)
+
+
+### Bug Fixes
+
+* **Table:** Allow using column title as rowHeader ([df48d25](https://github.com/5app/base5-ui/commit/df48d25c00684da587e0cddc93a95749bc5e67b3))
+* **Table:** Filter custom props from DOM ([aaf5919](https://github.com/5app/base5-ui/commit/aaf59199068427ec227660b2d82f8df892432e9a))
+
 ## [11.3.1](https://github.com/5app/base5-ui/compare/v11.3.0...v11.3.1) (2020-07-21)
 
 
