@@ -1,3 +1,10 @@
+## [11.3.3](https://github.com/5app/base5-ui/compare/v11.3.2...v11.3.3) (2020-07-23)
+
+
+### Bug Fixes
+
+* **CenterContent:** Fix vertical centering in IE11 (hopefully) ([a808497](https://github.com/5app/base5-ui/commit/a808497071c008cd3f5117583f1fec4218475c06))
+
 ## [11.3.2](https://github.com/5app/base5-ui/compare/v11.3.1...v11.3.2) (2020-07-23)
 
 
