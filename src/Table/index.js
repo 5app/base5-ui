@@ -39,8 +39,16 @@ const stylePropNames = getPropNamesFromPropDefinition([
 	...marginPropsDef,
 ]);
 
+const tablePropNames = [
+	...stylePropNames,
+	'mobileViewBreakpoint',
+	'stickyHeaderOffset',
+	'rowMinHeight',
+	'shadedHeader',
+];
+
 const StyledTable = styled('table').withConfig({
-	shouldForwardProp: getPropFilter(stylePropNames),
+	shouldForwardProp: getPropFilter(tablePropNames),
 })`
 	position: relative;
 	${positionProps}
@@ -223,7 +231,7 @@ const StyledTable = styled('table').withConfig({
 `;
 
 const Cell = styled('td').withConfig({
-	shouldForwardProp: prop => prop !== 'width',
+	shouldForwardProp: prop => !['width', 'hideBelowBreakpoint'].includes(prop),
 })`
 	${p =>
 		p.width &&
