@@ -372,7 +372,9 @@ function Table(props) {
 									} = column;
 
 									const columnName = name || title;
-									const isHeader = rowHeader === columnName;
+									const isHeader = [name, title].includes(
+										rowHeader
+									);
 
 									return (
 										<Cell
