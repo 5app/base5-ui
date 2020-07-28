@@ -1,3 +1,10 @@
+# [11.4.0](https://github.com/5app/base5-ui/compare/v11.3.3...v11.4.0) (2020-07-28)
+
+
+### Features
+
+* **icons:** New icon "globe" ([472edb2](https://github.com/5app/base5-ui/commit/472edb26c4b002933d4591ad3203f90a946ef2b9))
+
 ## [11.3.3](https://github.com/5app/base5-ui/compare/v11.3.2...v11.3.3) (2020-07-23)
 
 
