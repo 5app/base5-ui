@@ -36,6 +36,7 @@ export {default as Favourite} from './Favourite';
 export {default as Flag} from './Flag';
 export {default as Fullscreen} from './Fullscreen';
 export {default as FullscreenExit} from './FullscreenExit';
+export {default as Globe} from './Globe';
 export {default as Hierarchy} from './Hierarchy';
 export {default as Home} from './Home';
 export {default as Info} from './Info';

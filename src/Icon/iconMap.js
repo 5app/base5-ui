@@ -38,6 +38,7 @@ const iconMap = {
 	flag: require('../icons/Flag').default,
 	fullscreen: require('../icons/Fullscreen').default,
 	'fullscreen-exit': require('../icons/FullscreenExit').default,
+	globe: require('../icons/Globe').default,
 	hierarchy: require('../icons/Hierarchy').default,
 	home: require('../icons/Home').default,
 	info: require('../icons/Info').default,
