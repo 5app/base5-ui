@@ -1,3 +1,10 @@
+## [11.4.1](https://github.com/5app/base5-ui/compare/v11.4.0...v11.4.1) (2020-08-05)
+
+
+### Bug Fixes
+
+* disregard null-ish items when considering whether to apply spacing, #noissue ([22625f7](https://github.com/5app/base5-ui/commit/22625f707db107dce083da91b8049ec1b61e523e))
+
 # [11.4.0](https://github.com/5app/base5-ui/compare/v11.3.3...v11.4.0) (2020-07-28)
 
 
