@@ -17,12 +17,13 @@ const roles = {
 function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 	const wrapperAs = roles[as]?.wrapper;
 	const itemAs = roles[as]?.item;
+	let renderCount = 0;
 	return (
 		<Box as={wrapperAs} breakpoints={breakpoints} {...otherProps}>
-			{React.Children.map(children, (child, index) => {
+			{React.Children.map(children, child => {
 				if (!child) return null;
 
-				const isFirst = index === 0;
+				const isFirst = !renderCount++;
 				return (
 					<Box
 						as={itemAs}
