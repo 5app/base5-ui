@@ -1,3 +1,10 @@
+## [11.4.2](https://github.com/5app/base5-ui/compare/v11.4.1...v11.4.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* Fix focusing on nullish modal elements ([#100](https://github.com/5app/base5-ui/issues/100)) ([f4f5488](https://github.com/5app/base5-ui/commit/f4f5488e02d96997b6330f13c22e21982397917b))
+
 ## [11.4.1](https://github.com/5app/base5-ui/compare/v11.4.0...v11.4.1) (2020-08-05)
 
 
