@@ -86,14 +86,14 @@ function ModalManager({children}) {
 	// Focus the element that originally opened the modal
 	// There should only be one after a modal was un-registered)
 	useEffect(() => {
-		if (elementToFocus.current) {
-			// The timeout is needed to allow the focus lock script
-			// (react-focus-lock) to unlock the focus target
-			setTimeout(() => {
+		// The timeout is needed to allow the focus lock script
+		// (react-focus-lock) to unlock the focus target
+		setTimeout(() => {
+			if (elementToFocus.current) {
 				elementToFocus.current.focus();
 				elementToFocus.current = null;
-			}, 0);
-		}
+			}
+		}, 0);
 	}, [modalStack]);
 
 	// Apply aria-hidden to everything but the top-most modal.
