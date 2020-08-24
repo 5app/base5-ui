@@ -1,3 +1,11 @@
+## [11.4.3](https://github.com/5app/base5-ui/compare/v11.4.2...v11.4.3) (2020-08-24)
+
+
+### Bug Fixes
+
+* **icons:** Better vertical alignment of chat icon ([9a17694](https://github.com/5app/base5-ui/commit/9a1769455b46c713103c3bb75611090e65264218))
+* **InlineList:** Fix sneaky non-tab indentation ([ca0f955](https://github.com/5app/base5-ui/commit/ca0f955eb4a53e474f399726d577fa7c0d930de2))
+
 ## [11.4.2](https://github.com/5app/base5-ui/compare/v11.4.1...v11.4.2) (2020-08-14)
 
 
