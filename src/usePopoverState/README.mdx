@@ -1,0 +1,45 @@
+---
+name: usePopoverState
+menu: Hooks
+---
+
+import {Playground, Props} from 'docz';
+
+import Box from '../Box';
+import Popover from '../Popover';
+import usePopoverState from '../usePopoverState';
+
+# usePopoverState
+
+Easily handle the state of popover menus or tooltips.
+
+## Example
+
+<Playground>
+	{() => {
+		const {isOpen, open, close} = usePopoverState({
+			openDelay: 200,
+			onOpen: () => console.log('Opening!'),
+			onClose: () => console.log('Closing!'),
+		});
+		return (
+			<Box p="l">
+				<Popover
+					isOpen={isOpen}
+					content="I'm a popover. I'll always stick to my reference element!"
+					placement="top-start"
+				>
+					{popover => (
+						<span
+							ref={popover.ref}
+							onMouseEnter={open}
+							onMouseLeave={close}
+						>
+							I'm a reference element
+						</span>
+					)}
+				</Popover>
+			</Box>
+		);
+	}}
+</Playground>

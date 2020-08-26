@@ -1,3 +1,117 @@
+## [11.4.3](https://github.com/5app/base5-ui/compare/v11.4.2...v11.4.3) (2020-08-24)
+
+
+### Bug Fixes
+
+* **icons:** Better vertical alignment of chat icon ([9a17694](https://github.com/5app/base5-ui/commit/9a1769455b46c713103c3bb75611090e65264218))
+* **InlineList:** Fix sneaky non-tab indentation ([ca0f955](https://github.com/5app/base5-ui/commit/ca0f955eb4a53e474f399726d577fa7c0d930de2))
+
+## [11.4.2](https://github.com/5app/base5-ui/compare/v11.4.1...v11.4.2) (2020-08-14)
+
+
+### Bug Fixes
+
+* Fix focusing on nullish modal elements ([#100](https://github.com/5app/base5-ui/issues/100)) ([f4f5488](https://github.com/5app/base5-ui/commit/f4f5488e02d96997b6330f13c22e21982397917b))
+
+## [11.4.1](https://github.com/5app/base5-ui/compare/v11.4.0...v11.4.1) (2020-08-05)
+
+
+### Bug Fixes
+
+* disregard null-ish items when considering whether to apply spacing, #noissue ([22625f7](https://github.com/5app/base5-ui/commit/22625f707db107dce083da91b8049ec1b61e523e))
+
+# [11.4.0](https://github.com/5app/base5-ui/compare/v11.3.3...v11.4.0) (2020-07-28)
+
+
+### Features
+
+* **icons:** New icon "globe" ([472edb2](https://github.com/5app/base5-ui/commit/472edb26c4b002933d4591ad3203f90a946ef2b9))
+
+## [11.3.3](https://github.com/5app/base5-ui/compare/v11.3.2...v11.3.3) (2020-07-23)
+
+
+### Bug Fixes
+
+* **CenterContent:** Fix vertical centering in IE11 (hopefully) ([a808497](https://github.com/5app/base5-ui/commit/a808497071c008cd3f5117583f1fec4218475c06))
+
+## [11.3.2](https://github.com/5app/base5-ui/compare/v11.3.1...v11.3.2) (2020-07-23)
+
+
+### Bug Fixes
+
+* **Table:** Allow using column title as rowHeader ([df48d25](https://github.com/5app/base5-ui/commit/df48d25c00684da587e0cddc93a95749bc5e67b3))
+* **Table:** Filter custom props from DOM ([aaf5919](https://github.com/5app/base5-ui/commit/aaf59199068427ec227660b2d82f8df892432e9a))
+
+## [11.3.1](https://github.com/5app/base5-ui/compare/v11.3.0...v11.3.1) (2020-07-21)
+
+
+### Bug Fixes
+
+* **Time:** minimum seconds 1 ([5ff31fc](https://github.com/5app/base5-ui/commit/5ff31fce7cf8d758e11e056ce0c45d92efe76a09))
+
+# [11.3.0](https://github.com/5app/base5-ui/compare/v11.2.0...v11.3.0) (2020-07-21)
+
+
+### Features
+
+* **Time:** Add readout overrides 5app/dashboard[#8221](https://github.com/5app/base5-ui/issues/8221) ([#98](https://github.com/5app/base5-ui/issues/98)) ([8d2239f](https://github.com/5app/base5-ui/commit/8d2239ff8d6ad9c350ad14fa2fc68eed933e3326))
+
+# [11.2.0](https://github.com/5app/base5-ui/compare/v11.1.0...v11.2.0) (2020-07-09)
+
+
+### Features
+
+* **usePopoverState:** Add onClose/onOpen callbacks ([1123af2](https://github.com/5app/base5-ui/commit/1123af2935b666fe58e8753cc71777e373dbb9f9))
+
+# [11.1.0](https://github.com/5app/base5-ui/compare/v11.0.2...v11.1.0) (2020-07-08)
+
+
+### Features
+
+* **usePopover:** Expose forceUpdate method ([fa3e6ae](https://github.com/5app/base5-ui/commit/fa3e6ae5fd47aac1ed68216083fe3d1ec878f264))
+
+## [11.0.2](https://github.com/5app/base5-ui/compare/v11.0.1...v11.0.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* **Popover:** Remove redundant arrow prop ([46305e6](https://github.com/5app/base5-ui/commit/46305e6a31fd7a70377aa48fbe0a7f30104b7770))
+* **SimpleChart:** Pass through new tooltip props ([39385de](https://github.com/5app/base5-ui/commit/39385de6b8adbc7a41bd27110a33668821488f87))
+
+## [11.0.1](https://github.com/5app/base5-ui/compare/v11.0.0...v11.0.1) (2020-07-07)
+
+# [11.0.0](https://github.com/5app/base5-ui/compare/v10.8.0...v11.0.0) (2020-07-07)
+
+
+### Bug Fixes
+
+* Trigger breaking release ([e43d959](https://github.com/5app/base5-ui/commit/e43d9595768f120db513d80f68e1fc969a82014d))
+
+
+### BREAKING CHANGES
+
+* See previous commit
+
+# [10.8.0](https://github.com/5app/base5-ui/compare/v10.7.0...v10.8.0) (2020-07-03)
+
+
+### Features
+
+* New hook useMergedRefs ([df41733](https://github.com/5app/base5-ui/commit/df41733f2163366ea00f483ad3054ac3b365c26f))
+
+# [10.7.0](https://github.com/5app/base5-ui/compare/v10.6.0...v10.7.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* **Icon:** Filter custom props from reaching DOM ([c61d9a5](https://github.com/5app/base5-ui/commit/c61d9a582f8c7933c74b7b8a66ebcbac69e15f56))
+
+
+### Features
+
+* New Checkbox component ([d8777a5](https://github.com/5app/base5-ui/commit/d8777a5a4c2ac8052cb8dd9157db0366871d7d4e))
+* **Icons:** Add new icon "minus" ([86a40ef](https://github.com/5app/base5-ui/commit/86a40ef427ab5affdd173d4613fb04a0148b9996))
+
 # [10.6.0](https://github.com/5app/base5-ui/compare/v10.5.0...v10.6.0) (2020-06-30)
 
 

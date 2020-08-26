@@ -1,0 +1,31 @@
+---
+name: Popover
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Box from '../Box';
+import Popover from './';
+
+# Popover
+
+A Popover is a an element that's positioned so that it appears right next to another element (the 'reference element'). It's a low-level building block used for building dropdown menus, tooltips, and similar UI patterns.
+
+The Popover component included in base5-ui is a simple wrapper around the `usePopover` hook. To customise the look and feel of your Popover, this hook makes it easy to create your own.
+
+<Playground>
+	<Box p="l">
+		<Popover
+			isOpen
+			content="I'm a popover. I'll always stick to my reference element!"
+			placement="top-start"
+		>
+			{popover => <span ref={popover.ref}>I'm a reference element</span>}
+		</Popover>
+	</Box>
+</Playground>
+
+# Props
+
+<Props of={Popover} />

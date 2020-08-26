@@ -1,10 +1,14 @@
 import React, {useMemo, useState} from 'react';
 import {usePopper} from 'react-popper';
 
-import {matchWidth, maxSize, applyMaxHeight} from './modifiers';
-import Arrow from '../../Arrow';
+import useMergedRefs from '../useMergedRefs';
 
-function usePopOver({
+import {matchWidth, maxSize, applyMaxHeight} from './modifiers';
+import Arrow from '../Arrow';
+
+function usePopover({
+	ref,
+	referenceRef,
 	arrowSize = 12,
 	distance = 0,
 	matchReferenceWidth = false,
@@ -44,7 +48,7 @@ function usePopOver({
 		]
 	);
 
-	const {styles, state, attributes, update} = usePopper(
+	const {styles, state, attributes, update, forceUpdate} = usePopper(
 		referenceElement,
 		popperElement,
 		{
@@ -63,16 +67,20 @@ function usePopOver({
 		/>
 	);
 
+	const setRef = useMergedRefs([setPopperElement, ref]);
+	const setReferenceRef = useMergedRefs([setReferenceElement, referenceRef]);
+
 	return {
-		setRef: setPopperElement,
-		setReferenceRef: setReferenceElement,
+		setRef,
+		setReferenceRef,
 		props: {
 			style: styles.popper,
 			...attributes.popper,
 		},
 		arrow,
 		update,
+		forceUpdate,
 	};
 }
 
-export default usePopOver;
+export default usePopover;

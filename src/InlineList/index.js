@@ -43,7 +43,7 @@ const Wrapper = styled('ul').withConfig({shouldForwardProp})`
 	${positionProps}
 	list-style: none;
 	margin: 0;
-    padding: 0;
+	padding: 0;
 
 	${p =>
 		p.spacing &&

@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {pxToRem} from '../utils/units';
 import {
+	pxToRem,
 	getLength,
 	getPropNamesFromPropDefinition,
 	getPropFilter,
+	createStyleFunction,
 } from '../utils';
-import {createStyleFunction} from '../utils/styleProps';
-import paddingProps, {paddingPropsDef} from '../styleProps/paddingProps';
+
+import {paddingProps, paddingPropsDef} from '../styleProps';
+
+import {ie11Hack} from '../mixins';
 
 const responsiveWidthProp = createStyleFunction([
 	{
@@ -53,9 +56,22 @@ const Wrapper = styled('div').withConfig({
 			left: 0;
 			width: 100%;
 			min-height: 100%;
+
+			@media ${ie11Hack} {
+				height: 100%;
+			}
 		`}
 	
 	box-sizing: border-box;
+
+	/*
+	 * On IE11 we're using this method of centering
+	 * which doesn't play as nice with overflowing content,
+	 * but at least centres the content vertically
+	 */
+	@media ${ie11Hack} {
+		align-items: center;
+	}
 `;
 
 const Content = styled('div').withConfig({
@@ -67,7 +83,7 @@ const Content = styled('div').withConfig({
 	/* Needed for IE11 to contain large items: https://stackoverflow.com/a/42494339 */
 	flex-shrink: 0;
 
-	/* This does the centering magic: */
+	/* This does the centering magic (except on IE11): */
 	margin: auto;
 `;
 

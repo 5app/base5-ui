@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-function usePopOverState({openDelay}) {
+function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 	const [isOpen, setOpen] = useState(false);
 	const timeoutRef = useRef();
 	const isMounted = useRef(true);
@@ -23,10 +23,16 @@ function usePopOverState({openDelay}) {
 	}
 
 	function open(e) {
+		// TO DO: Investigate why the below check exists.
+		// Does it prevent double-triggers on mobile?
+		// Should've added a comment back in the day :(
 		if (e.type !== 'touchstart') {
 			timeoutRef.current = setTimeout(() => {
 				if (isMounted.current) {
 					setOpen(true);
+					if (onOpen) {
+						onOpen();
+					}
 					timeoutRef.current = null;
 				}
 			}, openDelay);
@@ -35,12 +41,18 @@ function usePopOverState({openDelay}) {
 
 	function close() {
 		setOpen(false);
+		if (onClose) {
+			onClose();
+		}
 		resetTimeout();
 	}
 
-	function toggle() {
-		setOpen(openState => !openState);
-		resetTimeout();
+	function toggle(e) {
+		if (isOpen) {
+			close(e);
+		} else {
+			open(e);
+		}
 	}
 
 	return {
@@ -51,4 +63,4 @@ function usePopOverState({openDelay}) {
 	};
 }
 
-export default usePopOverState;
+export default usePopoverState;
