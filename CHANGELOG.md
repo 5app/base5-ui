@@ -1,3 +1,17 @@
+# [11.5.0](https://github.com/5app/base5-ui/compare/v11.4.3...v11.5.0) (2020-08-26)
+
+
+### Bug Fixes
+
+* **Stack:** Documentation & propType tweaks ([017c1e4](https://github.com/5app/base5-ui/commit/017c1e4b0d20c9471f58339233ca56b6ac51288f))
+* **Stack:** Fix spacing between conditionally rendered items ([c066b73](https://github.com/5app/base5-ui/commit/c066b7351deee7b7e18649afed764a07a0cef9b6))
+* **Stack:** v1 support for hidden Stack items ([91f1fff](https://github.com/5app/base5-ui/commit/91f1fff9448439b2b022e88d62785f2b80a7c287))
+
+
+### Features
+
+* v1 of Hidden component ([7a80663](https://github.com/5app/base5-ui/commit/7a80663f82d726a739da8c9459d5013d78e668e3))
+
 ## [11.4.3](https://github.com/5app/base5-ui/compare/v11.4.2...v11.4.3) (2020-08-24)
 
 
