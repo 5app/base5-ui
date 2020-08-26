@@ -66,6 +66,12 @@ function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 
 				const Component = hiddenChildProps ? Hidden : Box;
 
+				if (hiddenChildProps?.inline || hiddenChildProps?.as) {
+					console.warn(
+						"The props `inline` or `as` are not valid on a Hidden component that's inside of a Stack. The element used will be determined by the Stack."
+					);
+				}
+
 				return (
 					<Component
 						as={itemAs}
@@ -106,7 +112,7 @@ Stack.propTypes = {
 	]),
 	/**
 	 * Control the HTML elements to be used for the Stack item.
-	 * Defaults to `div`, choose `list` to use `ul` and `li`
+	 * Choose `list` to use `ul` and `li` elements.
 	 */
 	as: PropTypes.oneOf(['list', 'default']),
 };

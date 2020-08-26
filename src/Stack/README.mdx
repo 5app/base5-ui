@@ -13,7 +13,7 @@ import Stack from './';
 
 # Stack
 
-Control vertical spacing between Stack items. Built on top of `Box`, allowing all `Box` props to be used.
+Control vertical spacing between Stack items. Supports all `Box` style props.
 
 ## Examples
 
@@ -24,6 +24,11 @@ Control vertical spacing between Stack items. Built on top of `Box`, allowing al
 		<TextLink href="#">About us</TextLink>
 	</Stack>
 </Playground>
+
+## Responsively hiding Stack items
+
+Use the `Hidden` component to hide Stack items below or above a certain breakpoint.
+The following list has a third list item that will be hidden on larger screens.
 
 <Playground>
 	<Stack as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
