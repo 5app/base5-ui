@@ -6,13 +6,14 @@ menu: Components
 import {Playground, Props} from 'docz';
 
 import Box from '../Box';
+import Hidden from '../Hidden';
 import Text from '../Text';
 import TextLink from '../TextLink';
 import Stack from './';
 
 # Stack
 
-Control vertical spacing between Stack items. Built on top of `Box`, allowing all `Box` props to be used.
+Control vertical spacing between Stack items. Supports all `Box` style props.
 
 ## Examples
 
@@ -24,11 +25,41 @@ Control vertical spacing between Stack items. Built on top of `Box`, allowing al
 	</Stack>
 </Playground>
 
+## Conditionally rendering Stack items
+
+To conditionally render Stack items, simply ensure that a falsy value is returned as a direct child of the Stack component in place of the respective item.
+
+```jsx
+<Stack spacing="s">
+	<>Milk</>
+	<>Eggs</>
+	{shouldRenderItem && <>Cheese</>}
+</Stack>
+```
+
+Please note that a nested falsy return as shown in the next example will **not** work, and will generate superfluous spacing:
+
+```jsx
+<Stack spacing="s">
+	<Item>Milk</Item>
+	<Item>Eggs</Item>
+	{/* Don't do this, it will create extra spacing for the hidden item: */}
+	<Item isHidden={shouldRenderItem}>Cheese</Item>
+</Stack>
+```
+
+## Responsively hiding Stack items
+
+Use the `Hidden` component to hide Stack items below or above a certain breakpoint.
+The following list has a third list item that will be hidden on larger screens.
+
 <Playground>
 	<Stack as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
 		<TextLink href="#">Milch</TextLink>
 		<TextLink href="#">Eier</TextLink>
-		<TextLink href="#">Käse</TextLink>
+		<Hidden above="xl">
+			<TextLink href="#">Käse</TextLink>
+		</Hidden>
 	</Stack>
 </Playground>
 

@@ -1,7 +1,36 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import {getSpacing, createStyleFunction} from '../utils';
 
 import Box from '../Box';
+import Hidden from '../Hidden';
+
+export const spacingCompensationProp = createStyleFunction([
+	{
+		styleProp: 'compensateSpacing',
+		properties: ['marginBottom'],
+		getValue: (value, theme) => `-${getSpacing(value, theme)}`,
+	},
+]);
+
+/**
+ * Using a pseudo element to compensate for the spacing
+ * between items (instead of negative margin) to allow
+ * for the wrapper to seamlessly accept any `Box` props.
+ * E.g., if a negative margin-top was used instead, it would
+ * clash with the `mt` prop.
+ */
+const Wrapper = styled(Box).withConfig({
+	shouldForwardProp: prop => prop !== 'compensateSpacing',
+})`
+	&::before {
+		content: '';
+		display: block;
+		height: 0;
+		${spacingCompensationProp}
+	}
+`;
 
 const roles = {
 	default: {
@@ -14,27 +43,48 @@ const roles = {
 	},
 };
 
+function getHiddenChildProps(child) {
+	if (typeof child === 'object' && child.type === Hidden) {
+		return child.props;
+	} else return null;
+}
+
 function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 	const wrapperAs = roles[as]?.wrapper;
 	const itemAs = roles[as]?.item;
-	let renderCount = 0;
 	return (
-		<Box as={wrapperAs} breakpoints={breakpoints} {...otherProps}>
+		<Wrapper
+			{...otherProps}
+			compensateSpacing={spacing}
+			as={wrapperAs}
+			breakpoints={breakpoints}
+		>
 			{React.Children.map(children, child => {
 				if (!child) return null;
 
-				const isFirst = !renderCount++;
+				const hiddenChildProps = getHiddenChildProps(child);
+
+				const Component = hiddenChildProps ? Hidden : Box;
+
+				if (hiddenChildProps?.inline || hiddenChildProps?.as) {
+					console.warn(
+						"The props `inline` or `as` are not valid on a Hidden component that's inside of a Stack. The element used will be determined by the Stack."
+					);
+				}
+
 				return (
-					<Box
+					<Component
 						as={itemAs}
-						pt={!isFirst && spacing}
+						above={hiddenChildProps?.above}
+						below={hiddenChildProps?.below}
+						pt={spacing}
 						breakpoints={breakpoints}
 					>
-						{child}
-					</Box>
+						{hiddenChildProps ? hiddenChildProps.children : child}
+					</Component>
 				);
 			})}
-		</Box>
+		</Wrapper>
 	);
 }
 
@@ -62,7 +112,7 @@ Stack.propTypes = {
 	]),
 	/**
 	 * Control the HTML elements to be used for the Stack item.
-	 * Defaults to `div`, choose `list` to use `ul` and `li`
+	 * Choose `list` to use `ul` and `li` elements.
 	 */
 	as: PropTypes.oneOf(['list', 'default']),
 };
