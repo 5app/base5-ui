@@ -25,6 +25,29 @@ Control vertical spacing between Stack items. Supports all `Box` style props.
 	</Stack>
 </Playground>
 
+## Conditionally rendering Stack items
+
+To conditionally render Stack items, simply ensure that a falsy value is returned as a direct child of the Stack component in place of the respective item.
+
+```jsx
+<Stack spacing="s">
+	<>Milk</>
+	<>Eggs</>
+	{shouldRenderItem && <>Cheese</>}
+</Stack>
+```
+
+Please note that a nested falsy return as shown in the next example will **not** work, and will generate superfluous spacing:
+
+```jsx
+<Stack spacing="s">
+	<Item>Milk</Item>
+	<Item>Eggs</Item>
+	{/* Don't do this, it will create extra spacing for the hidden item: */}
+	<Item isHidden={shouldRenderItem}>Cheese</Item>
+</Stack>
+```
+
 ## Responsively hiding Stack items
 
 Use the `Hidden` component to hide Stack items below or above a certain breakpoint.
