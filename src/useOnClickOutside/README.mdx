@@ -1,0 +1,80 @@
+---
+name: useOnClickOutside
+menu: Hooks
+---
+
+import {Playground, Props} from 'docz';
+import useOnClickOutside from './';
+import Box from '../Box';
+import Stack from '../Stack';
+import Switch from '../Switch';
+
+# useOnClickOutside
+
+This hook lets you run a callback whenever the body of the page is clicked, and allows you to ignore clicks on a certain element by specifying the `excludedElementRef` prop.
+
+## Examples
+
+<Playground>
+	{() => {
+		const [count, setCount] = React.useState(0);
+		const [isEnabled, setIsEnabled] = React.useState(true);
+		const excludedElement = React.useRef(null);
+		useOnClickOutside(
+			excludedElement,
+			() => setCount(count + 1),
+			isEnabled
+		);
+		return (
+			<Stack spacing="m">
+				<h1>Document clicks: {count}</h1>
+				<Box ref={excludedElement} p="m" border="dashed">
+					Clicks inside this box will be ignored.
+				</Box>
+    			<>
+    				<Switch
+    					checked={isEnabled}
+    					onChange={() =>
+    						setIsEnabled(prevEnabled => !prevEnabled)
+    					}
+    					id="switch"
+    				/>{' '}
+    				<label htmlFor="switch">Count clicks</label>
+    			</>
+    		</Stack>
+    	);
+    }}
+
+</Playground>
+
+```jsx
+function DocumentClickExample() {
+	const [count, setCount] = useState(0);
+	const [isActive, setActive] = useState(true);
+	const excludedElement = useRef(null);
+	return (
+		<>
+			<h1>Document clicks: {count}</h1>
+			<Box ref={excludedElement} p="m" border="dashed">
+				Clicks inside this box will be ignored.
+			</Box>
+			{isActive && (
+				<DocumentClickListener
+					onClick={() => setCount(count + 1)}
+					excludedElementRef={excludedElement}
+				/>
+			)}
+			<Box mt="m">
+				<Switch
+					checked={isActive}
+					onChange={() => setActive(prevActive => !prevActive)}
+					id="switch"
+				/>{' '}
+				<label htmlFor="switch">Count clicks</label>
+			</Box>
+		</>
+	);
+}
+```
+
+## Props

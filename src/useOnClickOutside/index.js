@@ -1,9 +1,7 @@
 import useEventListener from '../useEventListener';
 
-export function getListener(excludedElementRef, callback, isEnabled) {
+export function getOutsideTargetCallback(excludedElementRef, callback) {
 	return event => {
-		if (!isEnabled) return null;
-
 		const excludedElement =
 			excludedElementRef && excludedElementRef.current;
 
@@ -29,7 +27,10 @@ export function getListener(excludedElementRef, callback, isEnabled) {
 function useOnClickOutside(excludedElementRef, onClick, isEnabled) {
 	useEventListener(
 		'click',
-		getListener(excludedElementRef, onClick, isEnabled)
+		getOutsideTargetCallback(excludedElementRef, onClick),
+		{
+			isEnabled,
+		}
 	);
 }
 
