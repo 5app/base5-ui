@@ -1,5 +1,8 @@
 import {useState, useEffect, useRef} from 'react';
 
+import {KEY_CODES} from '../constants';
+import useEventListener from '../useEventListener';
+
 function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 	const [isOpen, setOpen] = useState(false);
 	const timeoutRef = useRef();
@@ -54,6 +57,18 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 			open(e);
 		}
 	}
+
+	useEventListener(
+		'keydown',
+		event => {
+			if (event.keyCode === KEY_CODES.ESC) {
+				close();
+			}
+		},
+		{
+			isEnabled: isOpen,
+		}
+	);
 
 	return {
 		isOpen,
