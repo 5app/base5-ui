@@ -25,21 +25,16 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 		}
 	}
 
-	function open(e) {
-		// TO DO: Investigate why the below check exists.
-		// Does it prevent double-triggers on mobile?
-		// Should've added a comment back in the day :(
-		if (e.type !== 'touchstart') {
-			timeoutRef.current = setTimeout(() => {
-				if (isMounted.current) {
-					setOpen(true);
-					if (onOpen) {
-						onOpen();
-					}
-					timeoutRef.current = null;
+	function open() {
+		timeoutRef.current = setTimeout(() => {
+			if (isMounted.current) {
+				setOpen(true);
+				if (onOpen) {
+					onOpen();
 				}
-			}, openDelay);
-		}
+				timeoutRef.current = null;
+			}
+		}, openDelay);
 	}
 
 	function close() {
@@ -50,11 +45,11 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 		resetTimeout();
 	}
 
-	function toggle(e) {
+	function toggle() {
 		if (isOpen) {
-			close(e);
+			close();
 		} else {
-			open(e);
+			open();
 		}
 	}
 
