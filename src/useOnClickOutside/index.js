@@ -1,9 +1,15 @@
 import useEventListener from '../useEventListener';
 
-export function getListener(excludedElementRef, callback, isEnabled) {
-	return event => {
-		if (!isEnabled) return null;
+/**
+ * Returns an event handler that executes the callback only if the
+ * event's target is outside of, or equal to the provided excluded element
+ *
+ * @param {object} excludedElementRef - A React ref (as obtained from `useRef` or `createRef`) to an element that should be excluded from triggering the `onClick` callback
+ * @param {Function} callback - Function that's called when the event originated outside of the excluded element
+ */
 
+export function getOutsideTargetCallback(excludedElementRef, callback) {
+	return event => {
 		const excludedElement =
 			excludedElementRef && excludedElementRef.current;
 
@@ -26,10 +32,21 @@ export function getListener(excludedElementRef, callback, isEnabled) {
 	};
 }
 
+/**
+ * Handle clicks that occur outside of the element provided in the first parameter
+ *
+ * @param {object} excludedElementRef - A React ref (as obtained from `useRef` or `createRef`) to an element that should be excluded from triggering the `onClick` callback
+ * @param {Function} onClick - Function that's called when a click occurs outside of the excluded element
+ * @param {bool} [isEnabled=true] - Set to false to disable the hook
+ */
+
 function useOnClickOutside(excludedElementRef, onClick, isEnabled) {
 	useEventListener(
 		'click',
-		getListener(excludedElementRef, onClick, isEnabled)
+		getOutsideTargetCallback(excludedElementRef, onClick),
+		{
+			isEnabled,
+		}
 	);
 }
 

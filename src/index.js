@@ -10,7 +10,6 @@ export {default as Box} from './Box';
 export {default as Button} from './Button';
 export {default as ButtonCore} from './ButtonCore';
 export {default as CenterContent} from './CenterContent';
-export {default as DocumentClickListener} from './DocumentClickListener';
 export {default as Duration} from './Duration';
 export {default as Flex} from './Flex';
 export {default as Icon} from './Icon';

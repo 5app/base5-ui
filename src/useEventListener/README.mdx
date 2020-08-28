@@ -9,6 +9,7 @@ A simple hook that adds a global event listener & cleans up after it when the co
 
 An options object can be added as a third parameter. Available options are:
 
+-   `isEnabled`: Can be used to conditionally disable the hook. Defaults to `true`.
 -   `targetElement`: Add the event listener to a custom target element. Defaults to `document`.
 -   `capture`: Use this for capturing events that don't bubble, e.g. to react to focus events within an element. (See [addEventListener docs on MDN](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener))
 
@@ -16,6 +17,12 @@ An options object can be added as a third parameter. Available options are:
 
 ```js
 useEventListener('click', onBodyClick);
+```
+
+```js
+useEventListener('click', closeTooltip, {
+	isEnabled: shouldCloseOnBodyClick,
+});
 ```
 
 ```js

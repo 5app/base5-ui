@@ -8,6 +8,7 @@ import React, {
 	useContext,
 } from 'react';
 
+import {KEY_CODES} from '../constants';
 import useEventListener from '../useEventListener';
 import {hideForModal} from './accessiblyHideModalBackground';
 
@@ -109,16 +110,18 @@ function ModalManager({children}) {
 	}, [modalStack]);
 
 	// Close the topmost modal when the Esc key is pressed
-	useEventListener('keydown', event => {
-		if (event.keyCode === 27) {
-			// key === 'Escape', but for IE11 👀
-			if (modalStack.length === 0) {
-				return;
+	useEventListener(
+		'keydown',
+		event => {
+			if (event.keyCode === KEY_CODES.ESC) {
+				const topMostModal = modalStack[modalStack.length - 1];
+				topMostModal.onClose();
 			}
-			const topMostModal = modalStack[modalStack.length - 1];
-			topMostModal.onClose();
+		},
+		{
+			isEnabled: modalStack.length > 0,
 		}
-	});
+	);
 
 	const modalContext = useMemo(
 		() => ({
