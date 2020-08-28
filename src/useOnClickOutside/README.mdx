@@ -11,7 +11,13 @@ import Switch from '../Switch';
 
 # useOnClickOutside
 
-This hook lets you run a callback whenever the body of the page is clicked, and allows you to ignore clicks on a certain element by specifying the `excludedElementRef` prop.
+This hook lets you run a callback whenever the body of the page (or any other element) is clicked, and allows you to ignore clicks on a certain element within it by specifying the `excludedElementRef` prop.
+
+## Parameters
+
+-   `excludedElementRef` - A React ref (as obtained from `useRef` or `createRef`) to an element that should be excluded from triggering the `onClick` callback
+-   `onClick` - Function that's called when a click occurs outside of the excluded element
+-   `isEnabled`=true] - Set to false to disable the hook
 
 ## Examples
 
@@ -46,35 +52,3 @@ This hook lets you run a callback whenever the body of the page is clicked, and 
     }}
 
 </Playground>
-
-```jsx
-function DocumentClickExample() {
-	const [count, setCount] = useState(0);
-	const [isActive, setActive] = useState(true);
-	const excludedElement = useRef(null);
-	return (
-		<>
-			<h1>Document clicks: {count}</h1>
-			<Box ref={excludedElement} p="m" border="dashed">
-				Clicks inside this box will be ignored.
-			</Box>
-			{isActive && (
-				<DocumentClickListener
-					onClick={() => setCount(count + 1)}
-					excludedElementRef={excludedElement}
-				/>
-			)}
-			<Box mt="m">
-				<Switch
-					checked={isActive}
-					onChange={() => setActive(prevActive => !prevActive)}
-					id="switch"
-				/>{' '}
-				<label htmlFor="switch">Count clicks</label>
-			</Box>
-		</>
-	);
-}
-```
-
-## Props
