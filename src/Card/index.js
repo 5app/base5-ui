@@ -23,11 +23,11 @@ const Card = forwardRef(({variant, size, ...otherProps}, ref) => {
 	return (
 		<ThemedBox
 			ref={ref}
-			borderRadius={size}
 			width="100%"
 			overflow="hidden"
-			{...variantProps[variant]}
 			{...otherProps}
+			borderRadius={size}
+			{...variantProps[variant]}
 		/>
 	);
 });
