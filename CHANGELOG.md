@@ -1,3 +1,27 @@
+# [11.6.0](https://github.com/5app/base5-ui/compare/v11.5.0...v11.6.0) (2020-08-28)
+
+
+### Code Refactoring
+
+* Remove DocumentClickListener ([2a98b2e](https://github.com/5app/base5-ui/commit/2a98b2ea66e113df450dbc7853a146754966bf85))
+* **useOnClickOutside:** Use new useEventListener functionality ([8c5db31](https://github.com/5app/base5-ui/commit/8c5db31c2d42da9eebb16aedb575790d660c0e16))
+
+
+### Features
+
+* New hook "useOnNavigateAway" ([60fdfad](https://github.com/5app/base5-ui/commit/60fdfadb56dc80c74286c05e7c0547c04d91ba7f))
+* **useEventListener:** Allow disabling the hook, [#96](https://github.com/5app/base5-ui/issues/96) ([2e3ecb2](https://github.com/5app/base5-ui/commit/2e3ecb2876e5a480e8a30c0d3412a924f66efd4e))
+* **usePopoverState:** Close on Esc key press, [#96](https://github.com/5app/base5-ui/issues/96) ([6ccdc41](https://github.com/5app/base5-ui/commit/6ccdc4177c9a7f09ce9218b03174897cfde7576d))
+
+
+### BREAKING CHANGES
+
+* Removes the DocumentClickListener
+component as it can now trivially be replaced by
+the useOnClickOutside hook
+* **useOnClickOutside:** The getListener export
+was renamed to getOutsideTargetCallback for clarity
+
 # [11.5.0](https://github.com/5app/base5-ui/compare/v11.4.3...v11.5.0) (2020-08-26)
 
 
