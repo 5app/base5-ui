@@ -1,3 +1,10 @@
+## [11.7.1](https://github.com/5app/base5-ui/compare/v11.7.0...v11.7.1) (2020-09-01)
+
+
+### Bug Fixes
+
+* **styleProps:** Handle string values in borderRadius ([227356f](https://github.com/5app/base5-ui/commit/227356f8ba36f9aacb3feb8610d3d0311c4dfcdc))
+
 # [11.7.0](https://github.com/5app/base5-ui/compare/v11.6.0...v11.7.0) (2020-09-01)
 
 
