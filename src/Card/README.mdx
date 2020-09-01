@@ -1,0 +1,40 @@
+---
+name: Card
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import Stack from '../Stack';
+import ThemedBox from '../ThemedBox';
+import Card from './';
+
+# Card
+
+## Examples
+
+<Playground>
+	<ThemedBox name="page" p="l">
+		<Stack spacing="s">
+			<Card p="s">Hello</Card>
+			<Card variant="raised" p="s">
+				Hello
+			</Card>
+			<Card variant="inverted" p="s">
+				Hello
+			</Card>
+			<Card size="small" p="s">
+				Hello
+			</Card>
+			<Card variant="raised" size="small" p="s">
+				Hello
+			</Card>
+			<Card variant="inverted" size="small" p="s">
+				Hello
+			</Card>
+		</Stack>
+	</ThemedBox>
+</Playground>
+
+## Props
+
+<Props isToggle of={Card} />

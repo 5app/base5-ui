@@ -11,6 +11,10 @@ import theme from '../../../src/theme';
 import 'focus-visible';
 
 const GlobalStyle = createGlobalStyle`
+	* {
+		box-sizing: border-box;
+	}
+
 	*:focus:not(:focus-visible) {
 		outline: none;
 	}
