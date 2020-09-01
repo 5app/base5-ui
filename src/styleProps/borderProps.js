@@ -1,4 +1,5 @@
 import {createStyleFunction} from '../utils/styleProps';
+import {pxToRem} from '../utils';
 
 function getGlobalThemeValue(key) {
 	return (value, theme) => {
@@ -6,6 +7,10 @@ function getGlobalThemeValue(key) {
 
 		if (typeof themeValue === 'function') {
 			return themeValue(theme);
+		}
+
+		if (!isNaN(themeValue)) {
+			return pxToRem(themeValue);
 		}
 
 		return themeValue;
