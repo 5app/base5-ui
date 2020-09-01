@@ -14,7 +14,7 @@ const PopoverCard = forwardRef(({isOpen, children, ...otherProps}, ref) => {
 				ref={ref}
 				background="black"
 				color="white"
-				borderRadius={3}
+				borderRadius="small"
 				px="s"
 				py="xs"
 				maxWidth="100%"

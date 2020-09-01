@@ -69,9 +69,9 @@ const buttons = {
 
 const borderRadius = {
 	buttons: 3,
-	cards: 5,
-	panels: 10,
 	search: 5,
+	small: 5,
+	large: 10,
 };
 
 const borderStyles = {
