@@ -1,3 +1,10 @@
+# [11.7.0](https://github.com/5app/base5-ui/compare/v11.6.0...v11.7.0) (2020-09-01)
+
+
+### Features
+
+* New component ThemedBox, [#103](https://github.com/5app/base5-ui/issues/103) ([1a5d3fd](https://github.com/5app/base5-ui/commit/1a5d3fdb3830aa266bccb96083e43a77a2fcacd4))
+
 # [11.6.0](https://github.com/5app/base5-ui/compare/v11.5.0...v11.6.0) (2020-08-28)
 
 
