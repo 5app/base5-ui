@@ -1,3 +1,15 @@
+# [11.8.0](https://github.com/5app/base5-ui/compare/v11.7.1...v11.8.0) (2020-09-01)
+
+
+### Bug Fixes
+
+* **Card:** Prevent overriding variant/size props, [#103](https://github.com/5app/base5-ui/issues/103) ([6722f19](https://github.com/5app/base5-ui/commit/6722f19e9f8e44b6f17ce252ed0964584e5834e0))
+
+
+### Features
+
+* New Card component, [#103](https://github.com/5app/base5-ui/issues/103) ([25406e2](https://github.com/5app/base5-ui/commit/25406e2c519dbae4d24345d0e6695c2685a80c05))
+
 ## [11.7.1](https://github.com/5app/base5-ui/compare/v11.7.0...v11.7.1) (2020-09-01)
 
 
