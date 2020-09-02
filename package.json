@@ -43,7 +43,7 @@
 		"@mdx-js/mdx": "^1.6.16",
 		"@semantic-release/changelog": "^5.0.0",
 		"@semantic-release/git": "^9.0.0",
-		"@testing-library/react": "^10.0.0",
+		"@testing-library/react": "^11.0.0",
 		"@testing-library/jest-dom": "^5.0.0",
 		"babel-eslint": "^10.1.0",
 		"babel-plugin-styled-components": "^1.10.7",
