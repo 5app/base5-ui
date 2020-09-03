@@ -1,3 +1,10 @@
+## [11.9.1](https://github.com/5app/base5-ui/compare/v11.9.0...v11.9.1) (2020-09-03)
+
+
+### Bug Fixes
+
+* **Card:** Fix variant prop being marked required ([e07e3a2](https://github.com/5app/base5-ui/commit/e07e3a2c647e380ff21ec557e8263ac57c297363))
+
 # [11.9.0](https://github.com/5app/base5-ui/compare/v11.8.1...v11.9.0) (2020-09-03)
 
 
