@@ -1,3 +1,15 @@
+# [11.9.0](https://github.com/5app/base5-ui/compare/v11.8.1...v11.9.0) (2020-09-03)
+
+
+### Bug Fixes
+
+* **Table:** Fix some layout issues in the readme ([c0ac92c](https://github.com/5app/base5-ui/commit/c0ac92c552693cbb232d9ee0f4d63c4618ba4443))
+
+
+### Features
+
+* **styleProps:** Added new fillParent styleProp ([66eafb8](https://github.com/5app/base5-ui/commit/66eafb891f7bcaf2cc86a9440a3d5ff8f98a51e1))
+
 ## [11.8.1](https://github.com/5app/base5-ui/compare/v11.8.0...v11.8.1) (2020-09-02)
 
 
