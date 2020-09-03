@@ -40,7 +40,7 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-	variant: PropTypes.oneOf(['default', 'raised', 'inverted']).isRequired,
+	variant: PropTypes.oneOf(['default', 'raised', 'inverted']),
 	size: PropTypes.oneOf(['small', 'large']),
 };
 
