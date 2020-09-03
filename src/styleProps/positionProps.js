@@ -1,5 +1,6 @@
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
+import {fillParent} from '../mixins';
 
 export const positionPropsDef = [
 	{
@@ -26,6 +27,10 @@ export const positionPropsDef = [
 	{
 		styleProp: 'right',
 		getValue: getSpacing,
+	},
+	{
+		styleProp: 'fillParent',
+		getRules: value => (value ? fillParent : false),
 	},
 	{
 		styleProp: 'z',
