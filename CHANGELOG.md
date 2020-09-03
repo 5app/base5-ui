@@ -1,3 +1,10 @@
+## [11.8.1](https://github.com/5app/base5-ui/compare/v11.8.0...v11.8.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* Hopefully fix Docz component previews ([e98fc1e](https://github.com/5app/base5-ui/commit/e98fc1e8f7aa7d874e400b1042a6d3caad1c8fbd))
+
 # [11.8.0](https://github.com/5app/base5-ui/compare/v11.7.1...v11.8.0) (2020-09-01)
 
 
