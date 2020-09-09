@@ -1,3 +1,10 @@
+## [11.9.2](https://github.com/5app/base5-ui/compare/v11.9.1...v11.9.2) (2020-09-09)
+
+
+### Bug Fixes
+
+* **constants:** Add more key codes, noissue ([3c29e30](https://github.com/5app/base5-ui/commit/3c29e303f3f9b8e23143682201bb41dca52982e6))
+
 ## [11.9.1](https://github.com/5app/base5-ui/compare/v11.9.0...v11.9.1) (2020-09-03)
 
 
