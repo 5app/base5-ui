@@ -3,7 +3,7 @@ defaults: &defaults
   docker:
     - image: circleci/node:lts
 cache_key: &cache_key
-  key: dependency-cache-lts-{{ checksum "package.json" }}
+  key: dependency-cache-{{ checksum "package.json" }}
 
 version: 2
 jobs:
@@ -64,7 +64,7 @@ jobs:
           fingerprints:
              - "12:bf:d1:9d:22:ec:c3:4f:72:44:50:77:61:70:a0:1e"
       - checkout
-      - run: 
+      - run:
           name: Set names
           command: git config --global user.email "bot@5app.com" && git config --global user.name "UI release bot"
       - run:
