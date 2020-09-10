@@ -1,3 +1,14 @@
+# [11.10.0](https://github.com/5app/base5-ui/compare/v11.9.2...v11.10.0) (2020-09-10)
+
+
+### Features
+
+* New "Menu" component ([9fa5d8e](https://github.com/5app/base5-ui/commit/9fa5d8ed9966c0a548312ae40bff389e4766da2d))
+* New component PopoverCard, noissue ([e07d0f0](https://github.com/5app/base5-ui/commit/e07d0f0cfb7314ded6014e06132e7118fd651fa4))
+* New MenuList components ([426c85d](https://github.com/5app/base5-ui/commit/426c85dbc0d75468511fa3c2aa381ac0082d6367))
+* New NavMenu component ([b480623](https://github.com/5app/base5-ui/commit/b4806233110ff4c62088fdebde50bafa80601bc3))
+* **utils:** New utility "mergeCallbacks" ([ee761c7](https://github.com/5app/base5-ui/commit/ee761c70755e980be043d1eb99292cb0cde9c032))
+
 ## [11.9.2](https://github.com/5app/base5-ui/compare/v11.9.1...v11.9.2) (2020-09-09)
 
 
