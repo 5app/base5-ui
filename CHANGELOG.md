@@ -1,3 +1,10 @@
+## [11.10.3](https://github.com/5app/base5-ui/compare/v11.10.2...v11.10.3) (2020-09-10)
+
+
+### Bug Fixes
+
+* **NavMenu:** Fix first menu item unselectable by keyboard ([4d4cfb4](https://github.com/5app/base5-ui/commit/4d4cfb40db27a729c66afb3a33e795229f504985))
+
 ## [11.10.2](https://github.com/5app/base5-ui/compare/v11.10.1...v11.10.2) (2020-09-10)
 
 
