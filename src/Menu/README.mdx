@@ -5,16 +5,17 @@ menu: Components
 
 import {Playground, Props} from 'docz';
 
-import Icon from '../Icon';
-import PopoverCard from '../PopoverCard';
-import TextLink from '../TextLink';
 import Status from '../Status';
-
 import {Menu, MenuButton, MenuList, MenuItem} from './';
 
 # Menu
 
 An implementation of the menu button pattern as described in the [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton).
+
+Only use this component when your menu items can best be described as immediate actions for your users to take.
+If your menu items contain links or other textual content, you probably want to use the [NavMenu](src-nav-menu-readme) component instead, which provides a similar design & functionality, but doesn't override the roles of links or buttons in your menu items. (See [this](https://adrianroselli.com/2017/10/dont-use-aria-menu-roles-for-site-nav.html) and [this article](https://www.marcozehe.de/wai-aria-menus-use-with-care/) for more information.)
+
+This component doesn't support the `menuitemradio` or `menuitemcheckbox` roles at this point.
 
 <Playground>
 	{() => {
@@ -22,7 +23,12 @@ An implementation of the menu button pattern as described in the [WAI-ARIA guide
 		const menuItems = [
 			{id: 0, label: 'Insert', icon: 'plus'},
 			{id: 1, label: 'Favourite', icon: 'star'},
-			{id: 2, label: 'Insights', icon: 'trending', isDisabled: true},
+			{
+				id: 2,
+				label: 'Reset progress',
+				icon: 'trending',
+				isDisabled: true,
+			},
 			{id: 3, label: 'Download', icon: 'download'},
 		];
 		return (

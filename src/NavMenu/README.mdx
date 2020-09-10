@@ -1,0 +1,50 @@
+---
+name: Menu (Nav)
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Text from '../Text';
+import {NavMenu, NavMenuButton, NavMenuList, NavMenuItem} from './';
+
+# NavMenu
+
+An accessible dropdown menu to be used when the regular menu button pattern (see [Menu](src-menu-readme)) is not the right choice.
+This is the case when:
+
+-   Your menu contains regular navigation links, or both buttons and links
+-   Your menu contains other content besides menu items (e.g. hint text)
+
+Unlike the normal [Menu](src-menu-readme) component, the items in this menu can be navigated using the Tab key in addition to the arrow keys. Focus will not be moved to the menu automatically, and tabbing away from the menu will not close it (but _clicking_ outside of it will).
+
+This component is inspired and based on patterns described in the following articles:
+
+-   [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html)
+-   [Menus & Menu Buttons (section "Navigation menu buttons")](https://inclusive-components.design/menus-menu-buttons/#navigationmenubuttons)
+
+<Playground>
+	{() => {
+		return (
+			<>
+				<NavMenu id="demo-nav-menu" menuPlacement="bottom-start">
+					<NavMenuButton icon="menu">Related links</NavMenuButton>
+					<NavMenuList>
+						<Text as="li" bold fontSize="s" px="s" py="xxs">
+							Open-source essentials:
+						</Text>
+						<NavMenuItem as="a" href="https://duckduckgo.com">
+							DuckDuckGo
+						</NavMenuItem>
+						<NavMenuItem as="a" href="https://firefox.com">
+							Firefox
+						</NavMenuItem>
+						<NavMenuItem as="a" href="https://bitwarden.com">
+							Bitwarden
+						</NavMenuItem>
+					</NavMenuList>
+				</NavMenu>
+			</>
+		);
+	}}
+</Playground>
