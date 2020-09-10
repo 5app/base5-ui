@@ -185,7 +185,7 @@ function NavMenuButton({as: Component = Button, forwardedAs, ...otherProps}) {
 	return <Component {...otherProps} as={forwardedAs} {...menuButtonProps} />;
 }
 
-function NavMenuItem({children, icon, ...otherProps}) {
+function NavMenuItem({as, children, icon, ...otherProps}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(NavMenuContext);
 	const {
@@ -204,6 +204,7 @@ function NavMenuItem({children, icon, ...otherProps}) {
 			<MenuListUI.Link
 				{...otherProps}
 				ref={itemRef}
+				forwardedAs={as}
 				isHighlighted={useHighlighted()}
 				onClick={mergeCallbacks(select, otherProps.onClick)}
 				onFocus={mergeCallbacks(highlight, otherProps.onFocus)}
