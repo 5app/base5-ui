@@ -1,3 +1,10 @@
+## [11.10.1](https://github.com/5app/base5-ui/compare/v11.10.0...v11.10.1) (2020-09-10)
+
+
+### Bug Fixes
+
+* **NavMenu:** Fix 'as' prop not applied correctly ([9463586](https://github.com/5app/base5-ui/commit/9463586d00ebee9cfc4f81e7f841be5da44e05fd))
+
 # [11.10.0](https://github.com/5app/base5-ui/compare/v11.9.2...v11.10.0) (2020-09-10)
 
 
