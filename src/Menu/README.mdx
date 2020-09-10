@@ -1,0 +1,53 @@
+---
+name: Menu
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+
+import Icon from '../Icon';
+import PopoverCard from '../PopoverCard';
+import TextLink from '../TextLink';
+import Status from '../Status';
+
+import {Menu, MenuButton, MenuList, MenuItem} from './';
+
+# Menu
+
+An implementation of the menu button pattern as described in the [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton).
+
+<Playground>
+	{() => {
+		const [lastSelectedItem, setLastSelectedItem] = React.useState();
+		const menuItems = [
+			{id: 0, label: 'Insert', icon: 'plus'},
+			{id: 1, label: 'Favourite', icon: 'star'},
+			{id: 2, label: 'Insights', icon: 'trending', isDisabled: true},
+			{id: 3, label: 'Download', icon: 'download'},
+		];
+		return (
+			<>
+				<Menu id="demo-menu">
+					<MenuButton iconRight icon="chevron">
+						More actions
+					</MenuButton>
+					<MenuList>
+						{menuItems.map(item => (
+							<MenuItem
+								key={item.id}
+								icon={item.icon}
+								isDisabled={item.isDisabled}
+								onClick={() => setLastSelectedItem(item.label)}
+							>
+								{item.label}
+							</MenuItem>
+						))}
+					</MenuList>
+				</Menu>
+				<Status mt={lastSelectedItem ? 's' : null}>
+					{lastSelectedItem && `Last action: "${lastSelectedItem}"`}
+				</Status>
+			</>
+		);
+	}}
+</Playground>

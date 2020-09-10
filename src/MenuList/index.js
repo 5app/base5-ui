@@ -31,7 +31,8 @@ const Item = styled.li`
 `;
 
 const Link = styled(ButtonCore).withConfig({
-	shouldForwardProp: prop => ![...textLinkProps, 'isFocused'].includes(prop),
+	shouldForwardProp: prop =>
+		![...textLinkProps, 'isHighlighted'].includes(prop),
 })`
 	position: relative;
 	display: flex;
@@ -44,6 +45,7 @@ const Link = styled(ButtonCore).withConfig({
 	${textLinkStyles}
 	${overflowWrap}
 
+	cursor: pointer;
 	transition: none;
 
 	&:hover:not(.is-disabled),
