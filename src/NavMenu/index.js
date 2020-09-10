@@ -84,7 +84,7 @@ function NavMenu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				if (itemList.highlightedIndex.current) {
+				if (itemList.highlightedIndex.current !== null) {
 					event.preventDefault();
 					const item =
 						itemList.items.current[
