@@ -83,7 +83,7 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				if (itemList.highlightedIndex.current) {
+				if (itemList.highlightedIndex.current !== null) {
 					event.preventDefault();
 					// Trigger a click on the highlighted item
 					// to select it (unless it's disabled)
