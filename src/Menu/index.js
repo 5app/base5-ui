@@ -188,7 +188,7 @@ function MenuButton({as: Component = Button, forwardedAs, ...otherProps}) {
 	return <Component {...otherProps} as={forwardedAs} {...menuButtonProps} />;
 }
 
-function MenuItem({icon, isDisabled, onClick, children}) {
+function MenuItem({icon, isDisabled, onClick, children, as = 'span', ...otherProps}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(MenuContext);
 	const {
@@ -214,7 +214,8 @@ function MenuItem({icon, isDisabled, onClick, children}) {
 			onMouseLeave={clearHighlightedItem}
 		>
 			<MenuListUI.Link
-				forwardedAs="span"
+				{...otherProps}
+				forwardedAs={as}
 				isDisabled={isDisabled}
 				isHighlighted={useHighlighted()}
 			>
