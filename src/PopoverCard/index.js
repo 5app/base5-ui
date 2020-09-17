@@ -1,4 +1,4 @@
-import React, {forwardRef, useEffect} from 'react';
+import React, {forwardRef} from 'react';
 import styled, {keyframes} from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -21,11 +21,15 @@ const AnimatedCard = styled(Card)`
 
 	/*
 	 * Hide the popover when the reference
-	 * is scrolled out of view
+	 * is scrolled out of view, or when
+	 * renderWhenClosed is enabled and the
+	 * popover is closed
 	 */
-	&[data-popper-reference-hidden='true'] {
+	&[data-popper-reference-hidden='true'],
+	&[data-hidden='true'] {
 		visibility: hidden;
 		pointer-events: none;
+		animation: none;
 	}
 `;
 
@@ -44,19 +48,9 @@ const PopoverCard = forwardRef((props, ref) => {
 		renderWhenClosed,
 		ignorePointerEvents,
 		renderInPlace,
-		onUpdatePopover,
 		scrollContainerRef,
 		...otherProps
 	} = props;
-
-	useEffect(() => {
-		if (renderWhenClosed && isOpen) {
-			// Triggering a double-update seems to more reliably
-			// position the popover correctly when it becomes visible
-			// Need to raise an issue with popper.js/react-popper
-			onUpdatePopover().then(onUpdatePopover);
-		}
-	}, [isOpen, onUpdatePopover, renderWhenClosed]);
 
 	if (!isOpen && !renderWhenClosed) return null;
 
@@ -70,10 +64,10 @@ const PopoverCard = forwardRef((props, ref) => {
 				p={p || spacing}
 				maxWidth="36rem"
 				width="auto"
+				data-hidden={renderWhenClosed && !isOpen}
 				{...otherProps}
 				overflow="visible"
 				style={{
-					display: renderWhenClosed && !isOpen ? 'none' : null,
 					pointerEvents: ignorePointerEvents ? 'none' : null,
 					...style,
 				}}
