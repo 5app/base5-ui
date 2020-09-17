@@ -1,3 +1,10 @@
+## [11.10.4](https://github.com/5app/base5-ui/compare/v11.10.3...v11.10.4) (2020-09-17)
+
+
+### Bug Fixes
+
+* **PopoverCard:** Better hiding with renderWhenClosed ([b2d8fa4](https://github.com/5app/base5-ui/commit/b2d8fa4b665cf9627721a3a54cc109e3abd9d550))
+
 ## [11.10.3](https://github.com/5app/base5-ui/compare/v11.10.2...v11.10.3) (2020-09-10)
 
 
