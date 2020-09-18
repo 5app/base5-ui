@@ -57,3 +57,23 @@ This component doesn't support the `menuitemradio` or `menuitemcheckbox` roles a
 		);
 	}}
 </Playground>
+
+## Props
+
+### Menu
+
+<Props isToggle of={Menu} />
+
+### MenuButton
+
+<Props isToggle of={MenuButton} />
+
+### MenuList
+
+<Props isToggle of={MenuList} />
+
+### MenuItem
+
+Note that unlike the `NavMenuItem` component, `MenuItem` doesn't support the `as` prop, i.e. its rendered element can not be changed. If you need to include a link in the menu, you might want to use the `NavMenu` component instead.
+
+<Props isToggle of={MenuItem} />
