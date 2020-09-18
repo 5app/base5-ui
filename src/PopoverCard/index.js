@@ -49,6 +49,7 @@ const PopoverCard = forwardRef((props, ref) => {
 		ignorePointerEvents,
 		renderInPlace,
 		scrollContainerRef,
+		onUpdatePopover,
 		...otherProps
 	} = props;
 
