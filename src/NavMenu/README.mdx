@@ -18,33 +18,46 @@ This is the case when:
 
 Unlike the normal [Menu](src-menu-readme) component, the items in this menu can be navigated using the Tab key in addition to the arrow keys. Focus will not be moved to the menu automatically, and tabbing away from the menu will not close it (but _clicking_ outside of it will).
 
-This component is inspired and based on patterns described in the following articles:
+This component is inspired and based on patterns described in the following resources:
 
+-   [WAI-ARIA Authoring Practices 1.1: Disclosure for Navigation Menus](https://www.w3.org/TR/wai-aria-practices-1.1/examples/disclosure/disclosure-navigation.html)
 -   [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html)
 -   [Menus & Menu Buttons (section "Navigation menu buttons")](https://inclusive-components.design/menus-menu-buttons/#navigationmenubuttons)
 
 <Playground>
-	{() => {
-		return (
-			<>
-				<NavMenu id="demo-nav-menu" menuPlacement="bottom-start">
-					<NavMenuButton icon="menu">Related links</NavMenuButton>
-					<NavMenuList>
-						<Text as="li" bold fontSize="s" px="s" py="xxs">
-							Open-source essentials:
-						</Text>
-						<NavMenuItem as="a" href="https://duckduckgo.com">
-							DuckDuckGo
-						</NavMenuItem>
-						<NavMenuItem as="a" href="https://firefox.com">
-							Firefox
-						</NavMenuItem>
-						<NavMenuItem as="a" href="https://bitwarden.com">
-							Bitwarden
-						</NavMenuItem>
-					</NavMenuList>
-				</NavMenu>
-			</>
-		);
-	}}
+	<NavMenu id="demo-nav-menu" menuPlacement="bottom-start">
+		<NavMenuButton icon="menu">Related links</NavMenuButton>
+		<NavMenuList>
+			<Text as="li" bold fontSize="s" px="s" py="xxs">
+				Open-source essentials:
+			</Text>
+			<NavMenuItem as="a" href="https://duckduckgo.com">
+				DuckDuckGo
+			</NavMenuItem>
+			<NavMenuItem as="a" href="https://firefox.com">
+				Firefox
+			</NavMenuItem>
+			<NavMenuItem as="a" href="https://bitwarden.com">
+				Bitwarden
+			</NavMenuItem>
+		</NavMenuList>
+	</NavMenu>
 </Playground>
+
+## Props
+
+### NavMenu
+
+<Props isToggle of={NavMenu} />
+
+### NavMenuButton
+
+<Props isToggle of={NavMenuButton} />
+
+### NavMenuList
+
+<Props isToggle of={NavMenuList} />
+
+### NavMenuItem
+
+<Props isToggle of={NavMenuItem} />
