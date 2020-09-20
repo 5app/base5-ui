@@ -1,3 +1,10 @@
+## [11.10.6](https://github.com/5app/base5-ui/compare/v11.10.5...v11.10.6) (2020-09-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency use-item-list to v0.1.1 ([41cb8d1](https://github.com/5app/base5-ui/commit/41cb8d15a7282e2e31cf277b4cec0940944d1c00))
+
 ## [11.10.5](https://github.com/5app/base5-ui/compare/v11.10.4...v11.10.5) (2020-09-19)
 
 
