@@ -1,3 +1,24 @@
+## [11.10.6](https://github.com/5app/base5-ui/compare/v11.10.5...v11.10.6) (2020-09-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency use-item-list to v0.1.1 ([41cb8d1](https://github.com/5app/base5-ui/commit/41cb8d15a7282e2e31cf277b4cec0940944d1c00))
+
+## [11.10.5](https://github.com/5app/base5-ui/compare/v11.10.4...v11.10.5) (2020-09-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency use-item-list to v0.1.0 ([d4c2e36](https://github.com/5app/base5-ui/commit/d4c2e36b76a5181415da07e4d2f8c90e7b5d4b76))
+
+## [11.10.4](https://github.com/5app/base5-ui/compare/v11.10.3...v11.10.4) (2020-09-17)
+
+
+### Bug Fixes
+
+* **PopoverCard:** Better hiding with renderWhenClosed ([b2d8fa4](https://github.com/5app/base5-ui/commit/b2d8fa4b665cf9627721a3a54cc109e3abd9d550))
+
 ## [11.10.3](https://github.com/5app/base5-ui/compare/v11.10.2...v11.10.3) (2020-09-10)
 
 
