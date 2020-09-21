@@ -48,7 +48,7 @@ MenuItem.propTypes = {
 	/**
 	 * Define the label of the menu item
 	 */
-	children: PropTypes.node.isRequired,
+	children: PropTypes.string.isRequired,
 	/**
 	 * Define the action to be performed when
 	 * the item is selected

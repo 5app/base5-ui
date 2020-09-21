@@ -55,7 +55,7 @@ NavMenuItem.propTypes = {
 	/**
 	 * Define the label of the menu item
 	 */
-	children: PropTypes.node.isRequired,
+	children: PropTypes.string.isRequired,
 	/**
 	 * Define an icon for the menu item
 	 */
