@@ -1,3 +1,12 @@
+## [11.10.7](https://github.com/5app/base5-ui/compare/v11.10.6...v11.10.7) (2020-09-21)
+
+
+### Bug Fixes
+
+* Update (Nav)Menu to latest useItemList API ([b6380cb](https://github.com/5app/base5-ui/commit/b6380cb90d3477d2111a98fc536f9a793f4e9398))
+* **PopoverCard:** Filter onUpdatePopover prop ([34139e6](https://github.com/5app/base5-ui/commit/34139e611cc59bca990efb2aba738a773254a135))
+* **propTypes:** Limit (Nav)MenuItem contents to strings ([f6bb013](https://github.com/5app/base5-ui/commit/f6bb013c542f15498fadad914e6218514506a38f))
+
 ## [11.10.6](https://github.com/5app/base5-ui/compare/v11.10.5...v11.10.6) (2020-09-20)
 
 
