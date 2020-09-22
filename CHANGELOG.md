@@ -1,3 +1,15 @@
+# [11.11.0](https://github.com/5app/base5-ui/compare/v11.10.7...v11.11.0) (2020-09-22)
+
+
+### Features
+
+* v1 of new Select component ([76cb469](https://github.com/5app/base5-ui/commit/76cb469ded76e43b441aa1fbf6544a6d7899e6c3))
+
+
+### Reverts
+
+* Revert "fix: Update (Nav)Menu to latest useItemList API" ([e189996](https://github.com/5app/base5-ui/commit/e1899960057d5a78de5a37a38923bcc2c20178b6))
+
 ## [11.10.7](https://github.com/5app/base5-ui/compare/v11.10.6...v11.10.7) (2020-09-21)
 
 
