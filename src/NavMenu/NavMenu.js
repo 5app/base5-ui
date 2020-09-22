@@ -46,8 +46,11 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 		},
 	});
 
-	function onHighlight(item) {
-		item?.ref.current?.focus();
+	function onHighlight(index) {
+		const highlightedItem = itemList.items.current[index];
+		if (highlightedItem) {
+			highlightedItem.ref.current.focus();
+		}
 	}
 
 	function onSelect() {
@@ -76,11 +79,14 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				const item = itemList.getHighlightedItem();
-				if (item) {
+				if (itemList.highlightedIndex.current !== null) {
 					event.preventDefault();
-					if (!event.ctrlKey && !event.metaKey) {
-						item.ref.current?.click();
+					const item =
+						itemList.items.current[
+							itemList.highlightedIndex.current
+						];
+					if (item) {
+						item.ref.current.click();
 					}
 					itemList.selectHighlightedItem();
 				}

@@ -78,13 +78,16 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				const item = itemList.getHighlightedItem();
-				if (item) {
+				if (itemList.highlightedIndex.current !== null) {
 					event.preventDefault();
 					// Trigger a click on the highlighted item
 					// to select it (unless it's disabled)
-					if (!item.ref.current?.ariaDisabled) {
-						item.ref.current?.click();
+					const item =
+						itemList.items.current[
+							itemList.highlightedIndex.current
+						];
+					if (item && !item.ref.current.ariaDisabled) {
+						item.ref.current.click();
 					}
 				}
 			}
