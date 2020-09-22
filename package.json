@@ -86,7 +86,7 @@
 		"react-merge-refs": "^1.0.0",
 		"react-popper": "^2.2.3",
 		"react-resize-aware": "^3.0.1",
-		"use-item-list": "0.1.1"
+		"use-item-list": "0.0.1"
 	},
 	"commitlint": {
 		"extends": [
