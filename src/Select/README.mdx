@@ -19,10 +19,45 @@ There are known issues around this pattern when using VoiceOver with Safari on m
 <Playground>
 	{() => {
 		const [selectedValue, setSelectedValue] = React.useState(0);
+		const options = [
+			'Apple',
+			'Apricot',
+			'Banana',
+			'Blueberry',
+			'Cherry',
+			'Fig',
+			'Feijoa',
+			'Gooseberry',
+			'Jackfruit',
+			'Jujube',
+			'Kiwi',
+			'Kumquat',
+			'Lingonberry',
+			'Lychee',
+			'Mandarin',
+			'Mango',
+			'Melon',
+			'Nectarine',
+			'Orange',
+			'Papaya',
+			'Passion Fruit',
+			'Pear',
+			'Persimmon',
+			'Physalis',
+			'Pineapple',
+			'Plum',
+			'Pomegranate',
+			'Pomelo',
+			'Raspberry',
+			'Starfruit',
+			'Strawberry',
+			'Watermelon',
+			'Wumpa',
+		];
 		return (
 			<>
 				<Text as="label" id="demo-menu-label" display="block" bold>
-					Select time period
+					Select a fruit
 				</Text>
 				<Select
 					id="demo-menu"
@@ -30,11 +65,11 @@ There are known issues around this pattern when using VoiceOver with Safari on m
 					value={selectedValue}
 					onChange={setSelectedValue}
 				>
-					<Option value={0}>Hourly</Option>
-					<Option value={1}>Daily</Option>
-					<Option value={2}>Weekly</Option>
-					<Option value={3}>Monthly</Option>
-					<Option value={4}>Yearly</Option>
+					{options.map(item => (
+						<Option key={item} value={item}>
+							{item}
+						</Option>
+					))}
 				</Select>
 			</>
 		);
