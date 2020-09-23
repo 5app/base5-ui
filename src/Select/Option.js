@@ -32,6 +32,12 @@ function Option({value, icon, children}) {
 		}
 	}, [selected, children, value, setSelectedItem]);
 
+	useEffect(() => {
+		if (selected) {
+			highlight();
+		}
+	}, [selected]); // eslint-disable-line react-hooks/exhaustive-deps
+
 	return (
 		<MenuListUI.Item
 			ref={itemRef}
@@ -45,6 +51,7 @@ function Option({value, icon, children}) {
 		>
 			<MenuListUI.Link
 				forwardedAs="span"
+				isActive={selected}
 				// isDisabled={isDisabled}
 				isHighlighted={useHighlighted()}
 			>
