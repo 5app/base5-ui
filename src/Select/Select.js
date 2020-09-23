@@ -116,9 +116,8 @@ function Select({
 			}}
 		>
 			<ButtonComponent
-				iconRight
-				icon="chevron"
 				{...otherProps}
+				iconRight="chevron"
 				as="div"
 				role="combobox"
 				ref={popover.setReferenceRef}
