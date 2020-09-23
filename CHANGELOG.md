@@ -1,3 +1,10 @@
+# [11.12.0](https://github.com/5app/base5-ui/compare/v11.11.3...v11.12.0) (2020-09-23)
+
+
+### Features
+
+* **Button:** Allow adding both a left and right icon ([19f5a38](https://github.com/5app/base5-ui/commit/19f5a38ea84887cd773828d4374fb28644def4de))
+
 ## [11.11.3](https://github.com/5app/base5-ui/compare/v11.11.2...v11.11.3) (2020-09-23)
 
 ## [11.11.2](https://github.com/5app/base5-ui/compare/v11.11.1...v11.11.2) (2020-09-22)
