@@ -1,3 +1,5 @@
+## [11.12.1](https://github.com/5app/base5-ui/compare/v11.12.0...v11.12.1) (2020-09-23)
+
 # [11.12.0](https://github.com/5app/base5-ui/compare/v11.11.3...v11.12.0) (2020-09-23)
 
 
