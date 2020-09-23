@@ -18,7 +18,6 @@ There are known issues around this pattern when using VoiceOver with Safari on m
 
 <Playground>
 	{() => {
-		const [selectedValue, setSelectedValue] = React.useState(0);
 		const options = [
 			'Apple',
 			'Apricot',
@@ -54,6 +53,7 @@ There are known issues around this pattern when using VoiceOver with Safari on m
 			'Watermelon',
 			'Wumpa',
 		];
+		const [selectedValue, setSelectedValue] = React.useState(options[0]);
 		return (
 			<>
 				<Text as="label" id="demo-menu-label" display="block" bold>
