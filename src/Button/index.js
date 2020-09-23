@@ -152,7 +152,9 @@ const Wrapper = styled(ButtonCore).withConfig({
 
 const ThreePx = pxToRem(3);
 
-const FocusRing = styled.span`
+const FocusRing = styled.span.withConfig({
+	shouldForwardProp: prop => prop !== 'color',
+})`
 	${fillParent}
 	border-radius: inherit;
 
@@ -236,7 +238,7 @@ const Button = forwardRef((props, ref) => {
 		...otherProps
 	} = props;
 
-	const iconEl = icon && <Icon name={icon} />;
+	const hasSeparateRightIcon = iconRight && typeof iconRight === 'string';
 
 	return (
 		<Wrapper
@@ -251,9 +253,11 @@ const Button = forwardRef((props, ref) => {
 			<HoverShade />
 			<FocusRing color={color} />
 			<Content align={align}>
-				{!iconRight && iconEl}
+				{icon && iconRight !== true && <Icon name={icon} />}
 				{children && <ButtonText>{children}</ButtonText>}
-				{iconRight && iconEl}
+				{iconRight && (
+					<Icon name={hasSeparateRightIcon ? iconRight : icon} />
+				)}
 			</Content>
 		</Wrapper>
 	);
@@ -262,12 +266,46 @@ const Button = forwardRef((props, ref) => {
 Button.displayName = 'Button';
 
 Button.propTypes = {
+	/**
+	 * Renders the button in a "pressed" state.
+	 * Adds the ARIA attribute `aria-pressed="true"`
+	 */
+	isActive: PropTypes.bool,
+	/**
+	 * Renders the button in its disabled state. Uses
+	 * `aria-disabled` to make sure the button label
+	 * can still be read out by screen readers.
+	 */
+	isDisabled: PropTypes.bool,
+	/**
+	 * Choose an icon to display next to the button's label
+	 */
 	icon: PropTypes.string,
-	iconRight: PropTypes.bool,
+	/**
+	 * When passed as a Boolean, the icon defined under `icon`
+	 * will be displayed on the right-hand side.
+	 * You can also pass a string to display a separate icon
+	 * on the right.
+	 */
+	iconRight: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 
+	/**
+	 * Render the button with fully rounded corners, useful for
+	 * circular icon-only buttons.
+	 */
 	round: PropTypes.bool,
+	/**
+	 * Render the button with square corners, ignoring the theme config
+	 * values for button border radius
+	 */
 	square: PropTypes.bool,
+	/**
+	 * Let the button take up all available width
+	 */
 	fullWidth: PropTypes.bool,
+	/**
+	 * Choose between one of 5 available theme variants
+	 */
 	color: PropTypes.oneOf([
 		'default',
 		'primary',
@@ -275,7 +313,13 @@ Button.propTypes = {
 		'transparent',
 		'shaded',
 	]),
-	size: PropTypes.oneOf(['small', 'medium', 'large']),
+	/**
+	 * Choose between one of 4 available theme variants
+	 */
+	size: PropTypes.oneOf(['small', 'medium', 'default', 'large']),
+	/**
+	 * Align the button text
+	 */
 	align: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
