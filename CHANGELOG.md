@@ -1,3 +1,10 @@
+## [11.12.2](https://github.com/5app/base5-ui/compare/v11.12.1...v11.12.2) (2020-09-23)
+
+
+### Bug Fixes
+
+* **Select:** Fix selected item not initially highlighted ([9dfc380](https://github.com/5app/base5-ui/commit/9dfc3809d8338ca5f7a132bae14d0d442f9a34b4))
+
 ## [11.12.1](https://github.com/5app/base5-ui/compare/v11.12.0...v11.12.1) (2020-09-23)
 
 # [11.12.0](https://github.com/5app/base5-ui/compare/v11.11.3...v11.12.0) (2020-09-23)
