@@ -1,28 +1,47 @@
-defaults: &defaults
-  working_directory: ~/repo
-  docker:
-    - image: circleci/node:lts
-cache_key: &cache_key
-  key: dependency-cache-lts-{{ checksum "package.json" }}
+version: 2.1
 
-version: 2
+################################
+# Aliases
+
+aliases:
+  - &dir ~/repo
+  - &attach_workspace
+    attach_workspace:
+      at: *dir
+  - &cache-key dependency-cache-lts-{{ checksum "package.json" }}
+  - &cache-key-fallback dependency-cache-
+
+################################
+# Executors
+
+executors:
+  default:
+    working_directory: *dir
+    docker:
+      - image: circleci/node:lts
+
+
+################################
+# Jobs
+
 jobs:
   checkout_code:
-    <<: *defaults
+    executor: default
     steps:
       - checkout
       - persist_to_workspace:
-          root: ~/repo
+          root: *dir
           paths:
             - .
 
   test:
-    <<: *defaults
+    executor: default
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - *attach_workspace
       - restore_cache:
-          <<: *cache_key
+          keys:
+            - *cache-key
+            - *cache-key-fallback
       - run:
           name: install dependencies with npm
           command: npm install
@@ -30,7 +49,7 @@ jobs:
           name: rebuild dependencies with npm -- in case node version changed
           command: npm rebuild
       - save_cache:
-          <<: *cache_key
+          key: *cache-key
           paths:
             - ./node_modules
       - run:
@@ -40,31 +59,29 @@ jobs:
           name: Compile the files using Babel
           command: npm run compile
       - persist_to_workspace:
-          root: ~/repo
+          root: *dir
           paths:
             - node_modules
             - dist
 
   release:
-    <<: *defaults
+    executor: default
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - *attach_workspace
       - run:
           name: Copy core files to the /dist folder
           command: npm run copypackage
       - run: npm run semantic-release
 
   publish-docs:
-    <<: *defaults
+    executor: default
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - *attach_workspace
       - add_ssh_keys:
           fingerprints:
              - "12:bf:d1:9d:22:ec:c3:4f:72:44:50:77:61:70:a0:1e"
       - checkout
-      - run: 
+      - run:
           name: Set names
           command: git config --global user.email "bot@5app.com" && git config --global user.name "UI release bot"
       - run:
@@ -72,7 +89,6 @@ jobs:
           command: npm run deploy-docs
 
 workflows:
-  version: 2
   build:
     jobs:
       - checkout_code
