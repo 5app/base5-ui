@@ -33,6 +33,7 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 		onOpen: () => {
 			menuListRef.current?.focus();
 			itemList.setHighlightedItem(0);
+			popover.update();
 		},
 		onClose: () => {
 			// If focus is on or within the popover when it's closed,

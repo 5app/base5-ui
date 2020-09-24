@@ -31,6 +31,7 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 	});
 
 	const {isOpen, open, close, toggle} = usePopoverState({
+		onOpen: popover.update,
 		onClose: () => {
 			itemList.clearHighlightedItem();
 
