@@ -1,3 +1,10 @@
+## [11.12.3](https://github.com/5app/base5-ui/compare/v11.12.2...v11.12.3) (2020-09-24)
+
+
+### Bug Fixes
+
+* **Menu:** Always update popover position on open ([e86941c](https://github.com/5app/base5-ui/commit/e86941cae11567a68b36235933c5d67c3f3be370))
+
 ## [11.12.2](https://github.com/5app/base5-ui/compare/v11.12.1...v11.12.2) (2020-09-23)
 
 
