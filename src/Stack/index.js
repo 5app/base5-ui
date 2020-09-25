@@ -41,6 +41,10 @@ const roles = {
 		wrapper: 'ul',
 		item: 'li',
 	},
+	'ordered-list': {
+		wrapper: 'ol',
+		item: 'li',
+	},
 };
 
 function getHiddenChildProps(child) {
@@ -114,7 +118,7 @@ Stack.propTypes = {
 	 * Control the HTML elements to be used for the Stack item.
 	 * Choose `list` to use `ul` and `li` elements.
 	 */
-	as: PropTypes.oneOf(['list', 'default']),
+	as: PropTypes.oneOf(['list', 'ordered-list', 'default']),
 };
 
 // @component
