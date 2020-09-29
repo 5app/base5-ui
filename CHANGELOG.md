@@ -1,3 +1,10 @@
+# [11.13.0](https://github.com/5app/base5-ui/compare/v11.12.3...v11.13.0) (2020-09-25)
+
+
+### Features
+
+* **Stack:** Support role "ordered list" ([f999807](https://github.com/5app/base5-ui/commit/f999807c1007b53b65152c6f9c93d583d3863e69))
+
 ## [11.12.3](https://github.com/5app/base5-ui/compare/v11.12.2...v11.12.3) (2020-09-24)
 
 
