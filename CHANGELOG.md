@@ -1,3 +1,10 @@
+# [11.14.0](https://github.com/5app/base5-ui/compare/v11.13.0...v11.14.0) (2020-09-29)
+
+
+### Features
+
+* **icons:** New PlaylistLink icon ([9cdd38c](https://github.com/5app/base5-ui/commit/9cdd38cddc9787248f622e97dcab2e2d95f3babf))
+
 # [11.13.0](https://github.com/5app/base5-ui/compare/v11.12.3...v11.13.0) (2020-09-25)
 
 
