@@ -56,6 +56,7 @@ export {default as Pause} from './Pause';
 export {default as Pin} from './Pin';
 export {default as Play} from './Play';
 export {default as Playlist} from './Playlist';
+export {default as PlaylistLink} from './PlaylistLink';
 export {default as Plus} from './Plus';
 export {default as Search} from './Search';
 export {default as Send} from './Send';

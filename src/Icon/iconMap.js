@@ -58,6 +58,7 @@ const iconMap = {
 	pin: require('../icons/Pin').default,
 	play: require('../icons/Play').default,
 	playlist: require('../icons/Playlist').default,
+	'playlist-link': require('../icons/PlaylistLink').default,
 	plus: require('../icons/Plus').default,
 	search: require('../icons/Search').default,
 	send: require('../icons/Send').default,
