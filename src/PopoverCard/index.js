@@ -58,7 +58,7 @@ const PopoverCard = forwardRef((props, ref) => {
 	return (
 		<Portal targetElement={renderInPlace ? null : undefined}>
 			<AnimatedCard
-				ref={ref}
+				ref={renderWhenClosed && !isOpen ? null : ref}
 				forwardedAs={Component}
 				variant={variant || theme === 'dark' ? 'inverted' : 'raised'}
 				size="small"
