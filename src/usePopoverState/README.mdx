@@ -27,9 +27,12 @@ Supports specifying a delay after which the popover is opened, and automatically
 		return (
 			<Box p="l">
 				<Popover
+					renderWhenClosed
 					isOpen={isOpen}
 					content="I'm a popover. I'll always stick to my reference element!"
 					placement="top-start"
+					p="s"
+					variant="inverted"
 				>
 					{popover => (
 						<span
