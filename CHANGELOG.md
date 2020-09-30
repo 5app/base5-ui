@@ -1,3 +1,10 @@
+## [11.14.1](https://github.com/5app/base5-ui/compare/v11.14.0...v11.14.1) (2020-09-30)
+
+
+### Bug Fixes
+
+* **PopoverCard:** Don't apply hidden popover positions, [#112](https://github.com/5app/base5-ui/issues/112) ([8dd8084](https://github.com/5app/base5-ui/commit/8dd8084f76c94443c8aea56642a60e118d9640e8))
+
 # [11.14.0](https://github.com/5app/base5-ui/compare/v11.13.0...v11.14.0) (2020-09-29)
 
 
