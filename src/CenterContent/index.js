@@ -57,21 +57,29 @@ const Wrapper = styled('div').withConfig({
 			width: 100%;
 			min-height: 100%;
 
-			@media ${ie11Hack} {
-				height: 100%;
-			}
+			${p =>
+				!p.disableIE11Hack &&
+				`
+				@media ${ie11Hack} {
+					height: 100%;
+				}
+			`}
 		`}
 	
 	box-sizing: border-box;
 
-	/*
-	 * On IE11 we're using this method of centering
-	 * which doesn't play as nice with overflowing content,
-	 * but at least centres the content vertically
-	 */
-	@media ${ie11Hack} {
-		align-items: center;
-	}
+	${p =>
+		!p.disableIE11Hack &&
+		`
+		/*
+		* On IE11 we're using this method of centering
+		* which doesn't play as nice with overflowing content,
+		* but at least centres the content vertically
+		*/
+		@media ${ie11Hack} {
+			align-items: center;
+		}
+	`}
 `;
 
 const Content = styled('div').withConfig({
@@ -115,6 +123,7 @@ function CenterContent(props) {
 
 CenterContent.defaultProps = {
 	spacing: 'm',
+	disableIE11Hack: false,
 };
 
 CenterContent.propTypes = {
@@ -127,6 +136,12 @@ CenterContent.propTypes = {
 		PropTypes.string,
 		PropTypes.array,
 	]),
+	/**
+	 * Disable the hacky vertical centering method used for IE11, as it can lead
+	 * to cut-off/inaccessible content when the height of the centred content
+	 * increases beyond the height of the parent container.
+	 */
+	disableIE11Hack: PropTypes.bool,
 	/**
 	 * Make the component grow to match the width and height of its direct parent.
 	 * When using this, make sure the container has a position other than static
