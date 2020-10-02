@@ -1,3 +1,10 @@
+## [11.14.2](https://github.com/5app/base5-ui/compare/v11.14.1...v11.14.2) (2020-10-02)
+
+
+### Bug Fixes
+
+* **CenterContent:** Add prop to disable IE11 hack ([7d740e4](https://github.com/5app/base5-ui/commit/7d740e4eaf08318c4b30f22860d310470c098cd6))
+
 ## [11.14.1](https://github.com/5app/base5-ui/compare/v11.14.0...v11.14.1) (2020-09-30)
 
 
