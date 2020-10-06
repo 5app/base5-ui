@@ -1,3 +1,10 @@
+## [11.14.4](https://github.com/5app/base5-ui/compare/v11.14.3...v11.14.4) (2020-10-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @popperjs/core to v2.5.3 ([08133ed](https://github.com/5app/base5-ui/commit/08133eda000c2e98b2c1c081b1211d7a57ced855))
+
 ## [11.14.3](https://github.com/5app/base5-ui/compare/v11.14.2...v11.14.3) (2020-10-06)
 
 
