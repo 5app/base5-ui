@@ -1,3 +1,10 @@
+## [11.14.3](https://github.com/5app/base5-ui/compare/v11.14.2...v11.14.3) (2020-10-06)
+
+
+### Bug Fixes
+
+* Downgrade popperjs/core to last IE11-stable ([bc4cadb](https://github.com/5app/base5-ui/commit/bc4cadba87038303cb84a7af5d2471ac512ad566))
+
 ## [11.14.2](https://github.com/5app/base5-ui/compare/v11.14.1...v11.14.2) (2020-10-02)
 
 
