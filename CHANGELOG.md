@@ -1,3 +1,10 @@
+## [11.14.5](https://github.com/5app/base5-ui/compare/v11.14.4...v11.14.5) (2020-10-06)
+
+
+### Bug Fixes
+
+* Properly pin popperjs/core now? ([6565f6c](https://github.com/5app/base5-ui/commit/6565f6c9b8bc00842f3330b8aaf84236fc086ea5))
+
 ## [11.14.4](https://github.com/5app/base5-ui/compare/v11.14.3...v11.14.4) (2020-10-06)
 
 
