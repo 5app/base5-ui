@@ -1,7 +1,4 @@
 {
-  "rangeStrategy": "replace",
-  "automerge": true,
-  "extends": [
-    "config:base"
-  ]
+	"automerge": false,
+	"extends": ["config:base", ":preserveSemverRanges"]
 }
