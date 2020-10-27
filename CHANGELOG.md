@@ -1,3 +1,10 @@
+## [11.15.2](https://github.com/5app/base5-ui/compare/v11.15.1...v11.15.2) (2020-10-27)
+
+
+### Bug Fixes
+
+* **NavMenu:** Allow passing string-only label, noissue ([1ec6b64](https://github.com/5app/base5-ui/commit/1ec6b64a917b6d18884e9298f016980fa29b39c6))
+
 ## [11.15.1](https://github.com/5app/base5-ui/compare/v11.15.0...v11.15.1) (2020-10-27)
 
 
