@@ -50,7 +50,11 @@ Text.propTypes = {
 		PropTypes.array,
 	]),
 	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-	lineHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
+	lineHeight: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.array,
+	]),
 	overflow: PropTypes.oneOfType([
 		PropTypes.oneOf(['ellipsis', 'wrap']),
 		PropTypes.array,

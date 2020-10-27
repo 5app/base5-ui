@@ -77,7 +77,7 @@ Arrow.propTypes = {
 	 * Controls how far the arrow is placed from the container's edge when
 	 * the placement contains a '-start' or '-end' suffix.
 	 */
-	distanceFromEdge: PropTypes.number,
+	distanceFromEdge: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	/**
 	 * The arrow will be placed on the opposing side of the defined direction:
 	 * 'top', 'bottom', 'left', or 'right'.
