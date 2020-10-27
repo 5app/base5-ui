@@ -1,3 +1,10 @@
+# [11.15.0](https://github.com/5app/base5-ui/compare/v11.14.5...v11.15.0) (2020-10-27)
+
+
+### Features
+
+* **icons:** New icons webinar, activity, video ([5871b15](https://github.com/5app/base5-ui/commit/5871b15d69540cb7229d6612adffae995c055760))
+
 ## [11.14.5](https://github.com/5app/base5-ui/compare/v11.14.4...v11.14.5) (2020-10-06)
 
 
