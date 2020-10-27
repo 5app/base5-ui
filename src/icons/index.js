@@ -1,5 +1,6 @@
 export {default as Arrow} from './Arrow';
 export {default as Asset} from './AssetDefault';
+export {default as AssetActivity} from './AssetActivity';
 export {default as AssetAudio} from './AssetAudio';
 export {default as AssetDefault} from './AssetDefault';
 export {default as AssetDiagram} from './AssetDiagram';
@@ -16,6 +17,7 @@ export {default as AssetQuiz} from './AssetQuiz';
 export {default as AssetSpreadsheet} from './AssetSpreadsheet';
 export {default as AssetText} from './AssetText';
 export {default as AssetVideo} from './AssetVideo';
+export {default as AssetWebinar} from './AssetWebinar';
 export {default as Box} from './Box';
 export {default as Calendar} from './Calendar';
 export {default as Captions} from './Captions';
