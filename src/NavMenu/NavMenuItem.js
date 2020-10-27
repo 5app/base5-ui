@@ -7,7 +7,7 @@ import * as MenuListUI from '../MenuList';
 
 import {NavMenuContext} from './NavMenu';
 
-function NavMenuItem({as, children, icon, ...otherProps}) {
+function NavMenuItem({as, children, text, icon, ...otherProps}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(NavMenuContext);
 	const {
@@ -17,9 +17,16 @@ function NavMenuItem({as, children, icon, ...otherProps}) {
 		clearHighlightedItem,
 	} = itemList.useItem({
 		ref: itemRef,
-		text: children,
-		value: children,
+		text: text || children,
+		value: text || children,
 	});
+
+	if (typeof children !== 'string' && !text) {
+		console.warn(
+			'NavMenuItem: The type of the children prop is not "string". Please provide a string-only label to the menu item via the "text" prop.',
+			children
+		);
+	}
 
 	return (
 		<MenuListUI.Item>
@@ -55,7 +62,12 @@ NavMenuItem.propTypes = {
 	/**
 	 * Define the label of the menu item
 	 */
-	children: PropTypes.string.isRequired,
+	children: PropTypes.node.isRequired,
+	/**
+	 * If the `children` prop is not a plain string, a text-only label must be provided
+	 * to enable navigating the menu by typing the first letters of the item's label
+	 */
+	text: PropTypes.string,
 	/**
 	 * Define an icon for the menu item
 	 */

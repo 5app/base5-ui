@@ -44,6 +44,18 @@ This component is inspired and based on patterns described in the following reso
 	</NavMenu>
 </Playground>
 
+### Note on non-string menu items
+
+When passing non-string children to `NavMenuItem`, please also provide a string-only representation of the item's label using the `text` prop:
+
+```jsx
+<NavMenuItem as={Link} to="notifications" text={`Notifications (${count})`}>
+	Notifications <Badge count={count} />
+</NavMenuItem>
+```
+
+This is needed to allow navigating the menu by typing the first letters of the item's label.
+
 ## Props
 
 ### NavMenu
