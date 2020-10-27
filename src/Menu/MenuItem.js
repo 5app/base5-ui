@@ -20,6 +20,7 @@ function MenuItem({icon, isDisabled, onClick, children}) {
 		ref: itemRef,
 		text: children,
 		value: children,
+		disabled: isDisabled,
 	});
 
 	return (

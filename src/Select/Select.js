@@ -38,15 +38,13 @@ function Select({
 		adaptivePositioning: true,
 	});
 
-	const {isOpen, open, close, toggle} = usePopoverState({
-		onOpen: popover.update,
-	});
+	const {isOpen, open, close, toggle} = usePopoverState();
 
 	const itemList = useItemList({
 		id,
 		selected: value,
-		onSelect: value => {
-			onChange(value);
+		onSelect: selectedItem => {
+			onChange(selectedItem.value);
 			close();
 		},
 	});

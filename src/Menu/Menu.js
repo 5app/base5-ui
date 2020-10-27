@@ -33,7 +33,6 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 		onOpen: () => {
 			menuListRef.current?.focus();
 			itemList.setHighlightedItem(0);
-			popover.update();
 		},
 		onClose: () => {
 			// If focus is on or within the popover when it's closed,
@@ -64,7 +63,7 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 		const isFocusInMenuOrOnButton =
 			buttonRef.current === document.activeElement ||
 			popoverRef.current === document.activeElement ||
-			popoverRef.current.contains(document.activeElement);
+			popoverRef.current?.contains(document.activeElement);
 
 		if (isFocusInMenuOrOnButton) {
 			if (event.keyCode === KEY_CODES.ARROW_UP) {
@@ -79,16 +78,13 @@ function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				if (itemList.highlightedIndex.current !== null) {
+				const item = itemList.getHighlightedItem();
+				if (item) {
 					event.preventDefault();
 					// Trigger a click on the highlighted item
 					// to select it (unless it's disabled)
-					const item =
-						itemList.items.current[
-							itemList.highlightedIndex.current
-						];
-					if (item && !item.ref.current.ariaDisabled) {
-						item.ref.current.click();
+					if (!item.ref.current?.ariaDisabled) {
+						item.ref.current?.click();
 					}
 				}
 			}

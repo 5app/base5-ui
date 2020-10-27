@@ -5,7 +5,7 @@ import * as MenuListUI from '../MenuList';
 
 import {SelectContext} from './Select';
 
-function Option({value, icon, children}) {
+function Option({value, icon, isDisabled, children}) {
 	const itemRef = useRef();
 	const {itemList, setSelectedItem} = useContext(SelectContext);
 	const {
@@ -19,7 +19,7 @@ function Option({value, icon, children}) {
 		ref: itemRef,
 		value: value ?? children,
 		text: children,
-		// disabled: isDisabled,
+		disabled: isDisabled,
 	});
 
 	useEffect(() => {
@@ -44,7 +44,7 @@ function Option({value, icon, children}) {
 			id={id}
 			role="option"
 			aria-selected={selected ? 'true' : null}
-			// aria-disabled={isDisabled ? 'true' : null}
+			aria-disabled={isDisabled ? 'true' : null}
 			onClick={select}
 			onMouseEnter={highlight}
 			onMouseLeave={clearHighlightedItem}
@@ -52,7 +52,7 @@ function Option({value, icon, children}) {
 			<MenuListUI.Link
 				forwardedAs="span"
 				isActive={selected}
-				// isDisabled={isDisabled}
+				isDisabled={isDisabled}
 				isHighlighted={useHighlighted()}
 			>
 				{icon && <MenuListUI.ItemIcon name={icon} />}
@@ -79,7 +79,7 @@ Option.propTypes = {
 	/**
 	 * Disable the option
 	 */
-	// isDisabled: PropTypes.bool,
+	isDisabled: PropTypes.bool,
 };
 
 // @component

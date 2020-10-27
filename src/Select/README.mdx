@@ -66,7 +66,11 @@ There are known issues around this pattern when using VoiceOver with Safari on m
 					onChange={setSelectedValue}
 				>
 					{options.map(item => (
-						<Option key={item} value={item}>
+						<Option
+							key={item}
+							value={item}
+							isDisabled={item === 'Mango'}
+						>
 							{item}
 						</Option>
 					))}

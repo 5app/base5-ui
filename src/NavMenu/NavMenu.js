@@ -31,7 +31,6 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 	});
 
 	const {isOpen, open, close, toggle} = usePopoverState({
-		onOpen: popover.update,
 		onClose: () => {
 			itemList.clearHighlightedItem();
 
@@ -47,11 +46,8 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 		},
 	});
 
-	function onHighlight(index) {
-		const highlightedItem = itemList.items.current[index];
-		if (highlightedItem) {
-			highlightedItem.ref.current.focus();
-		}
+	function onHighlight(item) {
+		item?.ref.current?.focus();
 	}
 
 	function onSelect() {
@@ -65,7 +61,7 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 		const isFocusInMenuOrOnButton =
 			buttonRef.current === document.activeElement ||
 			popoverRef.current === document.activeElement ||
-			popoverRef.current.contains(document.activeElement);
+			popoverRef.current?.contains(document.activeElement);
 
 		if (isFocusInMenuOrOnButton) {
 			if (event.keyCode === KEY_CODES.ARROW_UP) {
@@ -80,14 +76,11 @@ function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
 				event.keyCode === KEY_CODES.SPACE ||
 				event.keyCode === KEY_CODES.ENTER
 			) {
-				if (itemList.highlightedIndex.current !== null) {
+				const item = itemList.getHighlightedItem();
+				if (item) {
 					event.preventDefault();
-					const item =
-						itemList.items.current[
-							itemList.highlightedIndex.current
-						];
-					if (item) {
-						item.ref.current.click();
+					if (!event.ctrlKey && !event.metaKey) {
+						item.ref.current?.click();
 					}
 					itemList.selectHighlightedItem();
 				}

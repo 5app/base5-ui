@@ -38,10 +38,10 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 	}
 
 	function close() {
-		setOpen(false);
 		if (onClose) {
 			onClose();
 		}
+		setOpen(false);
 		resetTimeout();
 	}
 
