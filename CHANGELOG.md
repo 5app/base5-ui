@@ -1,3 +1,10 @@
+## [11.15.1](https://github.com/5app/base5-ui/compare/v11.15.0...v11.15.1) (2020-10-27)
+
+
+### Bug Fixes
+
+* **Menu:** Don't call popover.update on open, [#115](https://github.com/5app/base5-ui/issues/115) ([93e7d81](https://github.com/5app/base5-ui/commit/93e7d8121df51e74d4a97eccecd5b2a7cadd4a32))
+
 # [11.15.0](https://github.com/5app/base5-ui/compare/v11.14.5...v11.15.0) (2020-10-27)
 
 
