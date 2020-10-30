@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '../Box';
 
-function Flex({wrap, column, align, children, ...otherProps}) {
-	return (
-		<Box
-			display="flex"
-			wrapItems={wrap}
-			stackItems={column}
-			alignItems={align}
-			{...otherProps}
-		>
-			{children}
-		</Box>
-	);
-}
+const Flex = forwardRef(
+	({wrap, column, align, children, ...otherProps}, ref) => {
+		return (
+			<Box
+				ref={ref}
+				display="flex"
+				wrapItems={wrap}
+				stackItems={column}
+				alignItems={align}
+				{...otherProps}
+			>
+				{children}
+			</Box>
+		);
+	}
+);
+
+Flex.displayName = 'Flex';
 
 Flex.defaultProps = {
 	align: 'center',
