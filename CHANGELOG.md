@@ -1,3 +1,10 @@
+## [11.15.3](https://github.com/5app/base5-ui/compare/v11.15.2...v11.15.3) (2020-10-30)
+
+
+### Bug Fixes
+
+* **Flex:** Support ref forwarding in Flex component ([12785bb](https://github.com/5app/base5-ui/commit/12785bb4840683b84e73661ffeb5087570b5f39b))
+
 ## [11.15.2](https://github.com/5app/base5-ui/compare/v11.15.1...v11.15.2) (2020-10-27)
 
 
