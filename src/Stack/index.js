@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext, useContext, forwardRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {getSpacing, createStyleFunction} from '../utils';
@@ -32,20 +32,16 @@ const Wrapper = styled(Box).withConfig({
 	}
 `;
 
-const roles = {
-	default: {
-		wrapper: 'div',
-		item: 'div',
-	},
-	list: {
-		wrapper: 'ul',
-		item: 'li',
-	},
-	'ordered-list': {
-		wrapper: 'ol',
-		item: 'li',
-	},
-};
+function getRoles(as) {
+	switch (as) {
+		case 'list':
+			return ['ul', 'li'];
+		case 'ordered-list':
+			return ['ol', 'li'];
+		default:
+			return ['div', 'div'];
+	}
+}
 
 function getHiddenChildProps(child) {
 	if (typeof child === 'object' && child.type === Hidden) {
@@ -54,8 +50,8 @@ function getHiddenChildProps(child) {
 }
 
 function Stack({children, spacing, breakpoints, as, ...otherProps}) {
-	const wrapperAs = roles[as]?.wrapper;
-	const itemAs = roles[as]?.item;
+	const [wrapperAs, itemAs] = getRoles(as);
+
 	return (
 		<Wrapper
 			{...otherProps}
@@ -116,10 +112,57 @@ Stack.propTypes = {
 	]),
 	/**
 	 * Control the HTML elements to be used for the Stack item.
-	 * Choose `list` to use `ul` and `li` elements.
+	 * Choose `list` or `ordered-list` to use `ul`/`ol` and `li` elements.
 	 */
 	as: PropTypes.oneOf(['list', 'ordered-list', 'default']),
 };
+
+const StandaloneStackContext = createContext();
+
+const StackWrapper = forwardRef(function StackWrapper(
+	{children, as, spacing, breakpoints, ...otherProps},
+	ref
+) {
+	const [wrapperAs, itemAs] = getRoles(as);
+	return (
+		<Wrapper
+			{...otherProps}
+			ref={ref}
+			as={wrapperAs}
+			compensateSpacing={spacing}
+			breakpoints={breakpoints}
+		>
+			<StandaloneStackContext.Provider
+				value={{as: itemAs, spacing, breakpoints}}
+			>
+				{children}
+			</StandaloneStackContext.Provider>
+		</Wrapper>
+	);
+});
+
+const StackItem = forwardRef(function StackItem(
+	{children, hiddenAbove, hiddenBelow, allowUnknownProps, ...otherProps},
+	ref
+) {
+	const {as, spacing, breakpoints} = useContext(StandaloneStackContext);
+
+	const Component = hiddenAbove || hiddenBelow ? Hidden : Box;
+
+	return (
+		<Component
+			{...(allowUnknownProps ? otherProps : undefined)}
+			ref={ref}
+			as={as}
+			pt={spacing}
+			breakpoints={breakpoints}
+		>
+			{children}
+		</Component>
+	);
+});
+
+export {StackWrapper, StackItem};
 
 // @component
 export default Stack;

@@ -9,7 +9,7 @@ import Box from '../Box';
 import Hidden from '../Hidden';
 import Text from '../Text';
 import TextLink from '../TextLink';
-import Stack from './';
+import Stack, {StackWrapper, StackItem} from './';
 
 # Stack
 
@@ -61,6 +61,29 @@ The following list has a third list item that will be hidden on larger screens.
 			<TextLink href="#">Käse</TextLink>
 		</Hidden>
 	</Stack>
+</Playground>
+
+## Granular list item rendering
+
+Some use cases may require rendering the list items separately from its wrapper,
+for example in expensive-to-render lists that need to be memoised.
+For these use cases you can import `StackWrapper` and `StackItem` separately:
+
+```js
+import {StackWrapper, StackItem} from 'base5-ui/Stack';
+```
+
+All `Stack` props are now passed to the `StackWrapper` instead.
+Instead of using the `Hidden` component to responsively hide items, you can pass the `hideBelow` prop to items.
+`StackItem` rejects all other custom props by default, but you can allow them to be passed through by attaching the `allowUnknownProps` prop.
+
+<Playground>
+	<StackWrapper as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
+		<StackItem>Development</StackItem>
+		<StackItem>Marketing</StackItem>
+		<StackItem hideBelow="xs">Sales</StackItem>
+		<StackItem>Design</StackItem>
+	</StackWrapper>
 </Playground>
 
 ## Props
