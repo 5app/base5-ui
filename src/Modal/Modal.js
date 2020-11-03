@@ -41,6 +41,7 @@ function CenterOrFullscreen({
 	fullscreen,
 	spacing,
 	width,
+	disableIE11Hack
 }) {
 	if (fullscreen) {
 		return (
@@ -61,6 +62,7 @@ function CenterOrFullscreen({
 			p={spacing}
 			contentWidth={width}
 			breakpoints={breakpoints}
+			disableIE11Hack={disableIE11Hack}
 		>
 			{children}
 		</CenterContent>
@@ -75,6 +77,7 @@ function Modal({
 	onRequestClose,
 	spacing,
 	width,
+	disableIE11Hack = false,
 	...otherProps
 }) {
 	const {modalRef, isAtTop} = useModalManager({
@@ -103,6 +106,7 @@ function Modal({
 					spacing={spacing}
 					width={width}
 					breakpoints={breakpoints}
+					disableIE11Hack={disableIE11Hack}
 				>
 					{isAtTop && <Overlay onClick={onRequestClose} />}
 					<FocusLock as={ContentWrapper}>{children}</FocusLock>
