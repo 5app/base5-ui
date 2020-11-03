@@ -41,7 +41,7 @@ function CenterOrFullscreen({
 	fullscreen,
 	spacing,
 	width,
-	disableIE11Hack
+	disableIE11Hack,
 }) {
 	if (fullscreen) {
 		return (
