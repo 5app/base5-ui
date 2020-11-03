@@ -1,5 +1,7 @@
 import chroma from 'chroma-js';
 
+const isValidColor = color => chroma.valid(color);
+
 const alpha = (color, amount) => chroma(color).alpha(amount).css();
 
 const mix = (color, colorSpace = 'hsl') => (baseColor, amount) =>
@@ -46,6 +48,7 @@ function getBorderColor(theme) {
 }
 
 export {
+	isValidColor,
 	alpha,
 	mix,
 	darken,

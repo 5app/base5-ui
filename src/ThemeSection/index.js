@@ -13,8 +13,8 @@ function ThemeSection(props) {
 			const localThemeSection = parentTheme.sections[name];
 			const parentThemeSectionName = parentTheme.currentThemeSectionName;
 			const colorBlockOverrides = getReadableColorblock(
-				parentTheme.globals.colorBlocks,
 				colorBlock,
+				parentTheme,
 				hasBgImage
 			);
 

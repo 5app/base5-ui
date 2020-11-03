@@ -1,18 +1,22 @@
-import {contrast} from '../utils/colors';
+import {isValidColor, contrast, getColorBlock} from '../utils/colors';
 
-function getReadableColorblock(colorBlocks, colorBlockName, hasBgImage) {
-	if (!colorBlockName || !colorBlocks[colorBlockName]) {
+function getReadableColorblock(colorBlock, theme, hasBgImage) {
+	if (!colorBlock) {
 		return undefined;
 	}
 
-	const readableColor = hasBgImage
-		? 'white'
-		: contrast(colorBlocks[colorBlockName]);
+	const background = getColorBlock(colorBlock, theme);
+
+	if (!isValidColor(background)) {
+		return undefined;
+	}
+
+	const contrastingTextColor = hasBgImage ? 'white' : contrast(background);
 
 	return {
-		text: readableColor,
-		links: readableColor,
-		background: colorBlocks[colorBlockName],
+		text: contrastingTextColor,
+		links: contrastingTextColor,
+		background,
 	};
 }
 
