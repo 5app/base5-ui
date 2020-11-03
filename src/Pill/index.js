@@ -2,7 +2,13 @@ import React, {forwardRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {pxToRem, alpha, getBackgroundShade} from '../utils';
+import {
+	pxToRem,
+	alpha,
+	getBackgroundShade,
+	getColorBlock,
+	contrast,
+} from '../utils';
 import {fillParent, borderValue} from '../mixins';
 
 import Box from '../Box';
@@ -16,9 +22,16 @@ const pillHeight = pxToRem(24);
 const iconSpacing = pxToRem(30);
 const _3px = pxToRem(3);
 
+const customWrapperProps = [
+	'background',
+	'dimmed',
+	'isClickable',
+	'hasIcon',
+	'hasSideButton',
+];
+
 const Wrapper = styled.div.withConfig({
-	shouldForwardProp: prop =>
-		!['dimmed', 'isClickable', 'hasIcon', 'hasSideButton'].includes(prop),
+	shouldForwardProp: prop => !customWrapperProps.includes(prop),
 })`
 	position: relative;
 
@@ -46,8 +59,14 @@ const Wrapper = styled.div.withConfig({
 	font-weight: 600;
 	line-height: ${pillHeight};
 
-	color: ${p => p.theme.text};
-	background-color: ${p => getBackgroundShade(p.theme)};
+	color: ${p =>
+		p.background
+			? contrast(getColorBlock(p.background, p.theme))
+			: p.theme.text};
+	background-color: ${p =>
+		p.background
+			? getColorBlock(p.background, p.theme)
+			: getBackgroundShade(p.theme)};
 
 	transition: background-color 250ms linear;
 	border-radius: 1em;
@@ -154,11 +173,21 @@ const IconWrapper = styled.span`
 	border-radius: 100%;
 `;
 
-const SideButton = styled(Button)`
+const SideButton = styled(Button).withConfig({
+	shouldForwardProp: prop => prop !== 'background',
+})`
 	height: ${pillHeight};
 	padding: ${pxToRem(5)};
 	border-radius: 0 1em 1em 0;
-	color: inherit;
+
+	color: ${p =>
+		p.background
+			? contrast(getColorBlock(p.background, p.theme))
+			: p.theme.text};
+	background-color: ${p =>
+		p.background
+			? getColorBlock(p.background, p.theme)
+			: getBackgroundShade(p.theme)};
 `;
 
 function ConditionalFlexWrapper({wrap, children}) {
@@ -176,14 +205,15 @@ function ConditionalFlexWrapper({wrap, children}) {
 const Pill = forwardRef(function Pill(props, ref) {
 	const {
 		as,
+		background,
+		children,
+		deleteLabel,
+		dimmed,
 		forwardedAs,
 		icon,
-		dimmed,
-		onDelete,
-		deleteLabel,
-		id,
 		iconColor,
-		children,
+		id,
+		onDelete,
 		...otherProps
 	} = props;
 
@@ -215,6 +245,7 @@ const Pill = forwardRef(function Pill(props, ref) {
 				dimmed={dimmed}
 				hasIcon={Boolean(icon)}
 				hasSideButton={hasSideButton}
+				background={background}
 			>
 				{isClickable && (
 					<>
@@ -243,6 +274,7 @@ const Pill = forwardRef(function Pill(props, ref) {
 					id={id ? `${id}_side_button` : null}
 					size="small"
 					color="shaded"
+					background={background}
 					onClick={onDelete}
 					aria-label={deleteLabel}
 				/>
@@ -261,6 +293,10 @@ Pill.propTypes = {
 	 * If there's a colorBlock of the same name as the chosen icon, it will automatically be used.
 	 */
 	iconColor: PropTypes.string,
+	/**
+	 * Set the background color of the pill.
+	 */
+	background: PropTypes.string,
 	/**
 	 * Dims the whole component slightly. Use sparingly and ONLY to
 	 * indicate e.g. partial matches in a group of items.
