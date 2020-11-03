@@ -30,6 +30,13 @@ const sections = {
 		shade: colors.white,
 		...commonProps,
 	},
+	colorBlock: {
+		text: colors.white,
+		background: colors.grey,
+		links: colors.white,
+		shade: colors.black,
+		...commonProps,
+	},
 };
 
 export default sections;

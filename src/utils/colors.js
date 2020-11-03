@@ -18,7 +18,7 @@ const isLight = color => !isDark(color);
 
 const contrast = (
 	color,
-	darkColor = 'rgba(0, 0, 0, 0.7)',
+	darkColor = 'rgba(0, 0, 0, 0.8)',
 	lightColor = 'white'
 ) => (isDark(color) ? lightColor : darkColor);
 

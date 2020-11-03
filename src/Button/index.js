@@ -150,7 +150,7 @@ const Wrapper = styled(ButtonCore).withConfig({
 	}
 `;
 
-const ThreePx = pxToRem(3);
+const _3px = pxToRem(3);
 
 const FocusRing = styled.span.withConfig({
 	shouldForwardProp: prop => prop !== 'color',
@@ -158,7 +158,7 @@ const FocusRing = styled.span.withConfig({
 	${fillParent}
 	border-radius: inherit;
 
-	box-shadow: 0 0 0 ${ThreePx}
+	box-shadow: 0 0 0 ${_3px}
 		${p => alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
 
 	opacity: 0;
@@ -166,12 +166,12 @@ const FocusRing = styled.span.withConfig({
 	will-change: opacity;
 
 	${Wrapper}.focus-visible > & {
-		top: -${ThreePx};
-		left: -${ThreePx};
-		bottom: -${ThreePx};
-		right: -${ThreePx};
+		top: -${_3px};
+		left: -${_3px};
+		bottom: -${_3px};
+		right: -${_3px};
 
-		box-shadow: 0 0 0 ${ThreePx}
+		box-shadow: 0 0 0 ${_3px}
 			${p =>
 				p.color === 'primary' || p.color === 'important'
 					? p.theme.globals.buttons[p.color].background
