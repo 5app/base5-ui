@@ -1,7 +1,13 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
-const supportedDisplayValues = ['block', 'inline', 'inline-block', 'flex'];
+const supportedDisplayValues = [
+	'block',
+	'inline',
+	'inline-block',
+	'flex',
+	'inline-flex',
+];
 
 const overflowStylesMap = {
 	ellipsis,
