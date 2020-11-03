@@ -8,12 +8,14 @@ import useEventListener from '../useEventListener';
 import usePopover from '../usePopover';
 import usePopoverState from '../usePopoverState';
 import useOnNavigateAway from '../useOnNavigateAway';
+import useUniqueId from '../useUniqueId';
 
 const NavMenuContext = createContext();
 
-function NavMenu({id, menuPlacement, menuPositionFixed, children}) {
+function NavMenu({id: idProp, menuPlacement, menuPositionFixed, children}) {
 	const buttonRef = useRef();
 	const popoverRef = useRef();
+	const id = useUniqueId(idProp);
 
 	const popover = usePopover({
 		ref: popoverRef,
@@ -151,7 +153,7 @@ NavMenu.propTypes = {
 	/**
 	 * Unique ID for the menu
 	 */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/**
 	 * Control the positioning of the popover menu relative to the button.
 	 * Takes a Popper.js placement string

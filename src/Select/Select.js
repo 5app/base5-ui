@@ -8,6 +8,7 @@ import useEventListener from '../useEventListener';
 import useOnClickOutside from '../useOnClickOutside';
 import usePopover from '../usePopover';
 import usePopoverState from '../usePopoverState';
+import useUniqueId from '../useUniqueId';
 
 import Button from '../Button';
 import * as MenuListUI from '../MenuList';
@@ -16,7 +17,7 @@ import PopoverCard from '../PopoverCard';
 const SelectContext = createContext();
 
 function Select({
-	id,
+	id: idProp,
 	labelledById,
 	onChange,
 	value,
@@ -29,6 +30,7 @@ function Select({
 	const buttonRef = useRef();
 	const popoverRef = useRef();
 	const [selectedItem, setSelectedItem] = useState();
+	const id = useUniqueId(idProp);
 
 	const popover = usePopover({
 		ref: popoverRef,
@@ -121,7 +123,7 @@ function Select({
 				ref={popover.setReferenceRef}
 				id={itemList.controllerId}
 				tabIndex="0"
-				aria-labelledby={labelledById}
+				aria-labelledby={`${labelledById} ${itemList.controllerId}`}
 				aria-haspopup="listbox"
 				aria-autocomplete="none"
 				aria-controls={itemList.listId}
@@ -162,9 +164,9 @@ Select.propTypes = {
 	/**
 	 * Unique ID for the menu
 	 */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/**
-	 * Unique ID for the menu
+	 * ID of the select menu's label
 	 */
 	labelledById: PropTypes.string.isRequired,
 	/**

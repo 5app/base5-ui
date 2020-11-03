@@ -8,13 +8,20 @@ import useEventListener from '../useEventListener';
 import useOnClickOutside from '../useOnClickOutside';
 import usePopover from '../usePopover';
 import usePopoverState from '../usePopoverState';
+import useUniqueId from '../useUniqueId';
 
 const MenuContext = createContext();
 
-function Menu({id, menuPlacement = 'bottom', menuPositionFixed, children}) {
+function Menu({
+	id: idProp,
+	menuPlacement = 'bottom',
+	menuPositionFixed,
+	children,
+}) {
 	const buttonRef = useRef();
 	const menuListRef = useRef();
 	const popoverRef = useRef();
+	const id = useUniqueId(idProp);
 
 	const popover = usePopover({
 		ref: popoverRef,
@@ -156,7 +163,7 @@ Menu.propTypes = {
 	/**
 	 * Unique ID for the menu
 	 */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 	/**
 	 * Control the positioning of the popover menu relative to the button.
 	 * Takes a Popper.js placement string
