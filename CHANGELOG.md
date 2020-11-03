@@ -1,3 +1,18 @@
+# [11.16.0](https://github.com/5app/base5-ui/compare/v11.15.4...v11.16.0) (2020-11-03)
+
+
+### Bug Fixes
+
+* **displayProps:** Allow 'inline-flex' display value ([95e5f06](https://github.com/5app/base5-ui/commit/95e5f0642cdacc5b46aa2510c96892a7f1894d4a))
+
+
+### Features
+
+* **Hooks:** New useUniqueId hook ([564167a](https://github.com/5app/base5-ui/commit/564167a30ca830c69977cb349a54c3015d37aa14))
+* New Pill component ([d6c921f](https://github.com/5app/base5-ui/commit/d6c921f3ef3fd3da46a64ccd9dc2ba52bd7d6064))
+* **Stack:** Allow separate Stack item rendering ([7bc4748](https://github.com/5app/base5-ui/commit/7bc4748d0ddc1ceaf18ee6a99c46bd1ee2db920e))
+* **ThemeSection:** Accept any valid colour as colorBlock ([f65bc94](https://github.com/5app/base5-ui/commit/f65bc946b2614267cc580f90f8ed660b6feb0aad))
+
 ## [11.15.4](https://github.com/5app/base5-ui/compare/v11.15.3...v11.15.4) (2020-11-03)
 
 
