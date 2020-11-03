@@ -282,4 +282,5 @@ Pill.propTypes = {
 	deleteLabel: PropTypes.string,
 };
 
+// @component
 export default Pill;

@@ -15,9 +15,9 @@ The Pill component is great for representing simple items in the UI: assets, tag
 
 Pills can have an icon and an optional "Delete" button which should remove the associated item from the list it's in.
 
-Pills can be clickable themselves, but should never be used as action buttons (think "Confirm" or "Cancel" buttons). Use the [Button](/src-button-readme) component for this use case.
+Pills can be made clickable, but should never be used as action buttons (think "Confirm" or "Cancel" buttons). Use the [Button](/src-button-readme) component for this use case.
 
-## Non-interactive examples:
+## Non-interactive examples
 
 <Playground>
 	<Stack spacing="xs">
@@ -32,11 +32,13 @@ Pills can be clickable themselves, but should never be used as action buttons (t
 	</Stack>
 </Playground>
 
-## Interactive examples:
+## Interactive examples
+
+To make a Pill's body clickable, simply attach an `onClick` handler. You can also make the Pill a link: Use the `as` prop to choose which element to render, e.g. `"a"` or react-router's `{Link}`. You can then use the `href` or `to` prop to define the link's destination. All other link props will also be passed through to the clickable element.
 
 <Playground>
 	<Stack spacing="xs">
-		<Pill onDelete={() => console.log('Delete')}>
+		<Pill onDelete={() => console.log('Delete')} deleteLabel="Delete">
 			Regular, delete-able pill
 		</Pill>
 		<Pill
@@ -96,4 +98,4 @@ Pills can be clickable themselves, but should never be used as action buttons (t
 
 ## Props
 
-<Props of={Pill} />
+<Props isToggle of={Pill} />
