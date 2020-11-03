@@ -17,6 +17,7 @@ export {default as InlineList} from './InlineList';
 export {default as Meter} from './Meter';
 export * as Menu from './Menu';
 export * as MenuList from './MenuList';
+export {default as Pill} from './Pill';
 export {default as Popover} from './Popover';
 export {default as Portal} from './Portal';
 export {default as SimpleChart} from './charts/SimpleChart';

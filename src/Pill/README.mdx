@@ -1,0 +1,99 @@
+---
+name: Pill
+menu: Components
+---
+
+import {Playground, Props} from 'docz';
+import Card from '../Card';
+import Stack from '../Stack';
+
+import Pill from './';
+
+# Pill
+
+The Pill component is great for representing simple items in the UI: assets, tags, categories, teams, or users.
+
+Pills can have an icon and an optional "Delete" button which should remove the associated item from the list it's in.
+
+Pills can be clickable themselves, but should never be used as action buttons (think "Confirm" or "Cancel" buttons). Use the [Button](/src-button-readme) component for this use case.
+
+## Non-interactive examples:
+
+<Playground>
+	<Stack spacing="xs">
+		<Pill>Regular pill</Pill>
+		<Pill dimmed>Dimmed pill</Pill>
+		<Pill icon="tag" iconColor="neutral">
+			Pill with icon
+		</Pill>
+		<Pill dimmed icon="user" iconColor="negative">
+			Dimmed pill with icon
+		</Pill>
+	</Stack>
+</Playground>
+
+## Interactive examples:
+
+<Playground>
+	<Stack spacing="xs">
+		<Pill onDelete={() => console.log('Delete')}>
+			Regular, delete-able pill
+		</Pill>
+		<Pill
+			dimmed
+			onDelete={() => console.log('Delete')}
+			deleteLabel="Delete"
+		>
+			Dimmed, delete-able pill
+		</Pill>
+		<Pill
+			icon="tag"
+			iconColor="neutral"
+			onDelete={() => console.log('Delete')}
+			deleteLabel="Delete"
+		>
+			Delete-able Pill with icon
+		</Pill>
+		<Pill onClick={() => console.log('Hello!')}>Clickable pill</Pill>
+		<Pill
+			onClick={() => console.log('Hello!')}
+			icon="external"
+			iconColor="pink"
+		>
+			Clickable pill with icon
+		</Pill>
+		<Pill
+			onClick={() => console.log('Hello!')}
+			icon="user"
+			iconColor="positive"
+			onDelete={() => console.log('Delete')}
+			deleteLabel="Delete"
+		>
+			Clickable, delete-able pill
+		</Pill>
+		<Card maxWidth={250} variant="inverted" p="s">
+			<Stack spacing="xs">
+				<Pill
+					onClick={() => console.log('Hello!')}
+					icon="user"
+					iconColor="positive"
+				>
+					Pill on a dark background
+				</Pill>
+				<Pill
+					onClick={() => console.log('Hello!')}
+					icon="user"
+					iconColor="positive"
+					onDelete={() => console.log('Delete')}
+					deleteLabel="Delete"
+				>
+					Pill with a long label that doesn't fit the parent container
+				</Pill>
+			</Stack>
+		</Card>
+	</Stack>
+</Playground>
+
+## Props
+
+<Props of={Pill} />
