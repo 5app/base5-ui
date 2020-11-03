@@ -29,6 +29,7 @@ const sections = {
 		links: colors.babyBlue,
 		shade: colors.white,
 		...commonProps,
+		shadeStrength: 0.12,
 	},
 	colorBlock: {
 		text: colors.white,
