@@ -1,3 +1,10 @@
+## [11.16.1](https://github.com/5app/base5-ui/compare/v11.16.0...v11.16.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* **Pill:** Re-add missing highlighting feature ([51a83bb](https://github.com/5app/base5-ui/commit/51a83bbb42d8ae7467d33251a920ea324ace3ec5))
+
 # [11.16.0](https://github.com/5app/base5-ui/compare/v11.15.4...v11.16.0) (2020-11-03)
 
 
