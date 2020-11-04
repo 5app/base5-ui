@@ -39,6 +39,15 @@ const contrast = (
 const highlight = (color, factor = 0.1) =>
 	isDark(color) ? lighten(color, factor) : darken(color, factor);
 
+function getPalette(startColor, endColor, length) {
+	const scale = getScale(startColor, endColor);
+
+	return Array.from({length}, (x, i) => {
+		if (i === 0) return scale(0);
+		return scale(i + 1 / (length - 1));
+	});
+}
+
 function getColorBlock(color, theme) {
 	if (typeof color === 'function') {
 		return color(theme);
@@ -68,6 +77,7 @@ export {
 	highlight,
 	isDark,
 	isLight,
+	getPalette,
 	getColorBlock,
 	getBackgroundShade,
 	getSolidBackgroundShade,
