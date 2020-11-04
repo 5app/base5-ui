@@ -21,7 +21,13 @@ const responsiveWidthProp = createStyleFunction([
 	},
 ]);
 
-const wrapperPropsToFilter = ['fillParent', 'width', 'height', 'spacing'];
+const wrapperPropsToFilter = [
+	'fillParent',
+	'width',
+	'height',
+	'spacing',
+	'disableIE11Hack',
+];
 
 const paddingPropsToFilter = getPropNamesFromPropDefinition(paddingPropsDef);
 
