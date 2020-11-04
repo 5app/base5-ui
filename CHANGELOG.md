@@ -1,3 +1,10 @@
+# [11.18.0](https://github.com/5app/base5-ui/compare/v11.17.0...v11.18.0) (2020-11-04)
+
+
+### Features
+
+* **utils:** New getPalette colour util ([269dffc](https://github.com/5app/base5-ui/commit/269dffc67b6f500baf313718af79849e6e2fc130))
+
 # [11.17.0](https://github.com/5app/base5-ui/compare/v11.16.1...v11.17.0) (2020-11-04)
 
 
