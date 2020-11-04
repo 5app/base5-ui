@@ -5,6 +5,7 @@ import {
 	transparentize,
 	parseToRgba,
 	getLuminance,
+	getScale,
 } from 'color2k';
 
 const isValidColor = color => {
@@ -71,4 +72,5 @@ export {
 	getBackgroundShade,
 	getSolidBackgroundShade,
 	getBorderColor,
+	getScale,
 };
