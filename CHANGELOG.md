@@ -1,3 +1,15 @@
+# [11.17.0](https://github.com/5app/base5-ui/compare/v11.16.1...v11.17.0) (2020-11-04)
+
+
+### Bug Fixes
+
+* **CenterContent:** Filter prop from DOM ([174782c](https://github.com/5app/base5-ui/commit/174782ca66d840c1d00a8348c93aa3cd65a04273))
+
+
+### Features
+
+* Export getScale function from color2k ([9b46b49](https://github.com/5app/base5-ui/commit/9b46b49a04b183a066c4f457ba5ac35c7c0072c8))
+
 ## [11.16.1](https://github.com/5app/base5-ui/compare/v11.16.0...v11.16.1) (2020-11-03)
 
 
