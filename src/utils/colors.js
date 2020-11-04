@@ -1,17 +1,27 @@
-import chroma from 'chroma-js';
+import {
+	mix as color2kMix,
+	darken,
+	lighten,
+	transparentize,
+	parseToRgba,
+	getLuminance,
+} from 'color2k';
 
-const isValidColor = color => chroma.valid(color);
+const isValidColor = color => {
+	try {
+		parseToRgba(color);
+	} catch {
+		return false;
+	}
+	return true;
+};
 
-const alpha = (color, amount) => chroma(color).alpha(amount).css();
+const alpha = (color, amount) => transparentize(color, 1 - amount);
 
-const mix = (color, colorSpace = 'hsl') => (baseColor, amount) =>
-	chroma.mix(baseColor, color, amount, colorSpace);
+const mix = color => (baseColor, amount) =>
+	color2kMix(baseColor, color, amount);
 
-const darken = mix('black', 'rgb');
-
-const lighten = mix('white', 'rgb');
-
-const isDark = color => chroma(color).luminance() < 0.43;
+const isDark = color => getLuminance(color) < 0.43;
 const isLight = color => !isDark(color);
 
 // Return a contrasting text color for a given background colour
@@ -40,7 +50,7 @@ function getBackgroundShade(theme) {
 }
 
 function getSolidBackgroundShade(theme) {
-	return mix(theme.shade, 'rgb')(theme.background, theme.shadeStrength);
+	return color2kMix(theme.background, theme.shade, theme.shadeStrength);
 }
 
 function getBorderColor(theme) {
