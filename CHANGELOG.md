@@ -1,3 +1,10 @@
+## [11.19.1](https://github.com/5app/base5-ui/compare/v11.19.0...v11.19.1) (2020-11-12)
+
+
+### Bug Fixes
+
+* **Combobox:** Add text prop to menu items ([6034aa8](https://github.com/5app/base5-ui/commit/6034aa86f6727165a1452c38a74bc739ba8424df))
+
 # [11.19.0](https://github.com/5app/base5-ui/compare/v11.18.0...v11.19.0) (2020-11-12)
 
 
