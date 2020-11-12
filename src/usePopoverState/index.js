@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react';
+import {useCallback, useState, useEffect, useRef} from 'react';
 
 import {KEY_CODES} from '../constants';
 import useEventListener from '../useEventListener';
@@ -14,18 +14,18 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 		};
 	}, []);
 
-	useEffect(() => {
-		return resetTimeout;
-	}, [isOpen]);
-
-	function resetTimeout() {
+	const resetTimeout = useCallback(() => {
 		if (timeoutRef.current !== null) {
 			clearTimeout(timeoutRef.current);
 			timeoutRef.current = null;
 		}
-	}
+	}, []);
 
-	function open() {
+	useEffect(() => {
+		return resetTimeout;
+	}, [isOpen, resetTimeout]);
+
+	const open = useCallback(() => {
 		timeoutRef.current = setTimeout(() => {
 			if (isMounted.current) {
 				setOpen(true);
@@ -35,15 +35,15 @@ function usePopoverState({openDelay = 0, onOpen, onClose} = {}) {
 				timeoutRef.current = null;
 			}
 		}, openDelay);
-	}
+	}, [onOpen, openDelay]);
 
-	function close() {
+	const close = useCallback(() => {
 		if (onClose) {
 			onClose();
 		}
 		setOpen(false);
 		resetTimeout();
-	}
+	}, [onClose, resetTimeout]);
 
 	function toggle() {
 		if (isOpen) {
