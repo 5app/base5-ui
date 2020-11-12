@@ -1,3 +1,12 @@
+# [11.19.0](https://github.com/5app/base5-ui/compare/v11.18.0...v11.19.0) (2020-11-12)
+
+
+### Features
+
+* New Combobox component ([9b31104](https://github.com/5app/base5-ui/commit/9b31104f057c3922923eb791726da39ceb2d154b))
+* **useOnClickOutside:** Allow passing multiple refs ([bf3acac](https://github.com/5app/base5-ui/commit/bf3acac3207bcf1ca8ca32a55d8b5a693588e67a))
+* **usePopoverState:** memoise open & close callbacks ([5b49611](https://github.com/5app/base5-ui/commit/5b496114ef5a280eebbd2beacecfd0bf20959735))
+
 # [11.18.0](https://github.com/5app/base5-ui/compare/v11.17.0...v11.18.0) (2020-11-04)
 
 
