@@ -4,7 +4,7 @@ import * as MenuListUI from '../MenuList';
 
 import {ComboboxContext} from './Combobox';
 
-function ComboboxMenuItem({value, icon, isDisabled, children}) {
+function ComboboxMenuItem({value, text, icon, isDisabled, children}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(ComboboxContext);
 	const {
@@ -17,7 +17,7 @@ function ComboboxMenuItem({value, icon, isDisabled, children}) {
 	} = itemList.useItem({
 		ref: itemRef,
 		value: value ?? children,
-		text: children,
+		text: text || children,
 		disabled: isDisabled,
 	});
 

@@ -57,9 +57,7 @@ function Combobox({
 		arrowSize: 0,
 	});
 
-	const {isOpen, open, close, toggle} = usePopoverState({
-		onOpen: onOpenMenu,
-	});
+	const {isOpen, open, close, toggle} = usePopoverState();
 
 	const canMenuBeOpen =
 		(shouldShowStatusMessage && Boolean(statusMessage)) ||
@@ -91,10 +89,6 @@ function Combobox({
 		}
 		shouldOpenOnValueChange.current = true;
 	}, [inputValue]); // eslint-disable-line react-hooks/exhaustive-deps
-
-	function onOpenMenu() {
-		// itemList.setHighlightedItem(0);
-	}
 
 	function handleGlobalMenuKeyEvents(event) {
 		if (event.keyCode === KEY_CODES.ESC) {
