@@ -155,10 +155,6 @@ const FocusRing = styled.span.withConfig({
 `;
 
 const IconWrapper = styled.span`
-	position: absolute;
-	top: 0;
-	left: 0;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -202,6 +198,20 @@ function ConditionalFlexWrapper({wrap, children}) {
 	);
 }
 
+function defaultIconRenderer({iconName, iconColor}) {
+	if (!iconName) {
+		return null;
+	}
+
+	return (
+		<ThemeSection name="colorBlock" colorBlock={iconColor || iconName}>
+			<IconWrapper>
+				<Icon name={iconName} data-iconname={iconName} />
+			</IconWrapper>
+		</ThemeSection>
+	);
+}
+
 const Pill = forwardRef(function Pill(props, ref) {
 	const {
 		as,
@@ -212,6 +222,7 @@ const Pill = forwardRef(function Pill(props, ref) {
 		forwardedAs,
 		icon,
 		iconColor,
+		iconRenderer,
 		id,
 		onDelete,
 		...otherProps
@@ -224,6 +235,7 @@ const Pill = forwardRef(function Pill(props, ref) {
 		otherProps.isClickable;
 
 	const hasSideButton = Boolean(onDelete);
+	const token = iconRenderer({iconName: icon, iconColor});
 
 	if (hasSideButton && !deleteLabel) {
 		console.warn(
@@ -243,7 +255,7 @@ const Pill = forwardRef(function Pill(props, ref) {
 				id={id ? `${id}_wrapper` : null}
 				isClickable={isClickable}
 				dimmed={dimmed}
-				hasIcon={Boolean(icon)}
+				hasIcon={Boolean(token)}
 				hasSideButton={hasSideButton}
 				background={background}
 			>
@@ -253,15 +265,10 @@ const Pill = forwardRef(function Pill(props, ref) {
 						<FocusRing />
 					</>
 				)}
-				{icon && (
-					<ThemeSection
-						name="colorBlock"
-						colorBlock={iconColor || icon}
-					>
-						<IconWrapper>
-							<Icon name={icon} data-iconname={icon} />
-						</IconWrapper>
-					</ThemeSection>
+				{token && (
+					<Box position="absolute" top left>
+						{token}
+					</Box>
 				)}
 				<Text display="block" overflow="ellipsis">
 					{children}
@@ -283,6 +290,10 @@ const Pill = forwardRef(function Pill(props, ref) {
 	);
 });
 
+Pill.defaultProps = {
+	iconRenderer: defaultIconRenderer,
+};
+
 Pill.propTypes = {
 	/**
 	 * Name of the icon to be shown
@@ -293,6 +304,11 @@ Pill.propTypes = {
 	 * If there's a colorBlock of the same name as the chosen icon, it will automatically be used.
 	 */
 	iconColor: PropTypes.string,
+	/**
+	 * Customise the way the icons are rendered. Will be called with an object containing
+	 * the properties `iconName` and `iconColor`.
+	 */
+	iconRenderer: PropTypes.func,
 	/**
 	 * Set the background color of the pill.
 	 */
