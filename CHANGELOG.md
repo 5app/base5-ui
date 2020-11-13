@@ -1,3 +1,10 @@
+# [11.20.0](https://github.com/5app/base5-ui/compare/v11.19.2...v11.20.0) (2020-11-13)
+
+
+### Features
+
+* **Pill:** Allow customising icon rendering ([ba0dad0](https://github.com/5app/base5-ui/commit/ba0dad063bec65eb4a817ac0c10fce0bc9aa5eac))
+
 ## [11.19.2](https://github.com/5app/base5-ui/compare/v11.19.1...v11.19.2) (2020-11-13)
 
 
