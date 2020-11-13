@@ -1,3 +1,10 @@
+## [11.19.2](https://github.com/5app/base5-ui/compare/v11.19.1...v11.19.2) (2020-11-13)
+
+
+### Bug Fixes
+
+* **Combobox:** Allow preventing menu from opening, [#111](https://github.com/5app/base5-ui/issues/111) ([97c915a](https://github.com/5app/base5-ui/commit/97c915a85690205914c833ddea5a47fe58831128))
+
 ## [11.19.1](https://github.com/5app/base5-ui/compare/v11.19.0...v11.19.1) (2020-11-12)
 
 
