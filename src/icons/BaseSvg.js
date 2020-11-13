@@ -25,6 +25,7 @@ function shouldForwardProp(prop) {
 		'dimmed',
 		'rotate',
 		'flip',
+		'disablePointerEvents',
 	].includes(prop);
 }
 
@@ -73,6 +74,11 @@ const Svg = styled.svg.withConfig({shouldForwardProp})`
 
 		transition: transform 0.2s cubic-bezier(0.3, 0.8, 0.46, 1.25);
 	`}
+	${p =>
+		p.disablePointerEvents &&
+		`
+			pointer-events: none;
+		`}
 `;
 
 Svg.defaultProps = {
@@ -83,6 +89,7 @@ Svg.propTypes = {
 	dimmed: PropTypes.bool,
 	scale: PropTypes.number,
 	vAlign: PropTypes.bool,
+	disablePointerEvents: PropTypes.bool,
 	spacingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 	spacingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };

@@ -253,10 +253,15 @@ const Button = forwardRef((props, ref) => {
 			<HoverShade />
 			<FocusRing color={color} />
 			<Content align={align}>
-				{icon && iconRight !== true && <Icon name={icon} />}
+				{icon && iconRight !== true && (
+					<Icon disablePointerEvents name={icon} />
+				)}
 				{children && <ButtonText>{children}</ButtonText>}
 				{iconRight && (
-					<Icon name={hasSeparateRightIcon ? iconRight : icon} />
+					<Icon
+						disablePointerEvents
+						name={hasSeparateRightIcon ? iconRight : icon}
+					/>
 				)}
 			</Content>
 		</Wrapper>
