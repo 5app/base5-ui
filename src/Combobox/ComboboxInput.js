@@ -7,8 +7,6 @@ const ComboboxInput = forwardRef(function ComboboxInput(props, outerRef) {
 		as: Component = 'input',
 		forwardedAs,
 		refKey = 'ref',
-		onFocus,
-		onKeyDown,
 		...otherProps
 	} = props;
 
@@ -32,13 +30,14 @@ const ComboboxInput = forwardRef(function ComboboxInput(props, outerRef) {
 		refs[refKey] = mergedCustomRefs;
 	}
 
+	if (otherProps.onChange || otherProps.value) {
+		console.warn(
+			'ComboboxInput: `onChange` or `value` props were found on a ComboboxInput instance. This can lead to unexpected behaviour, please use the the `inputValue` and `onInputChange` props on the parent `Combobox` component instead.'
+		);
+	}
+
 	return (
-		<Component
-			{...otherProps}
-			as={forwardedAs}
-			{...refs}
-			{...getInputProps({onFocus, onKeyDown})}
-		/>
+		<Component {...getInputProps(otherProps)} {...refs} as={forwardedAs} />
 	);
 });
 

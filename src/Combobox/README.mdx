@@ -74,11 +74,9 @@ Implemented based on the recommendations from the [WAI-ARIA Authoring Practices 
 						setValue(selectedItem.value);
 						inputRef.current.focus();
 					}}
+					onInputChange={e => setValue(e.target.value)}
 				>
-					<ComboboxInput
-						ref={inputRef}
-						onChange={e => setValue(e.target.value)}
-					/>
+					<ComboboxInput ref={inputRef} />
 					<ComboboxMenu aria-label="Fruits">
 						{options.map(item => (
 							<ComboboxMenuItem key={item}>

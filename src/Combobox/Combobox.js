@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, createContext} from 'react';
+import React, {useRef, createContext} from 'react';
 import PropTypes from 'prop-types';
 import {useItemList} from 'use-item-list';
 
@@ -38,7 +38,9 @@ function Combobox({
 	inputValue,
 	resultCount,
 	onSelect,
+	onInputChange,
 	getStatusMessage,
+	canOpenMenu,
 	shouldShowStatusMessage,
 	children,
 }) {
@@ -59,9 +61,8 @@ function Combobox({
 
 	const {isOpen, open, close, toggle} = usePopoverState();
 
-	const canMenuBeOpen =
-		(shouldShowStatusMessage && Boolean(statusMessage)) ||
-		Boolean(resultCount);
+	const hasStatusMessage = shouldShowStatusMessage && Boolean(statusMessage);
+	const canMenuBeOpen = canOpenMenu && (hasStatusMessage || resultCount);
 	const isMenuOpen = canMenuBeOpen && isOpen;
 
 	const itemList = useItemList({
@@ -71,24 +72,19 @@ function Combobox({
 		onSelect: handleSelect,
 	});
 
-	const shouldOpenOnValueChange = useRef(true);
-
 	function handleSelect(selectedItem) {
-		// Normally, the dropdown menu is opened whenever
-		// the input value changes. However we don't want that
-		// if the value was changed as the result of a selection
-		// as it would re-open the menu
-		shouldOpenOnValueChange.current = false;
 		onSelect(selectedItem);
 		close();
 	}
 
-	useEffect(() => {
-		if (inputValue.length && shouldOpenOnValueChange.current) {
+	function handleInputChange(e) {
+		onInputChange(e);
+		itemList.setHighlightedItem(0);
+
+		if (e.target.value && canOpenMenu) {
 			open();
 		}
-		shouldOpenOnValueChange.current = true;
-	}, [inputValue]); // eslint-disable-line react-hooks/exhaustive-deps
+	}
 
 	function handleGlobalMenuKeyEvents(event) {
 		if (event.keyCode === KEY_CODES.ESC) {
@@ -143,7 +139,8 @@ function Combobox({
 
 	const highlightedItemId = itemList.useHighlightedItemId();
 
-	const getInputProps = ({onFocus, onKeyDown}) => ({
+	const getInputProps = ({onChange, onFocus, onKeyDown, ...otherProps}) => ({
+		...otherProps,
 		id,
 		value: inputValue,
 		role: 'combobox',
@@ -155,8 +152,9 @@ function Combobox({
 		autoComplete: 'off',
 		spellCheck: 'false',
 		onKeyDown: mergeCallbacks(onKeyDown, handleInputKeyEvents),
+		onChange: mergeCallbacks(onChange, handleInputChange),
 		onFocus: mergeCallbacks(onFocus, () => {
-			if (!isMenuOpen) {
+			if (!isMenuOpen && canOpenMenu) {
 				open();
 			}
 		}),
@@ -189,6 +187,7 @@ function Combobox({
 }
 
 Combobox.defaultProps = {
+	canOpenMenu: true,
 	shouldShowStatusMessage: false,
 	getStatusMessage: defaultGetA11yStatusMessage,
 };
@@ -227,6 +226,12 @@ Combobox.propTypes = {
 	 * as it will replace the options in the menu.
 	 */
 	shouldShowStatusMessage: PropTypes.bool,
+	/**
+	 * Set this to `false` to prevent the combobox from opening its menu, which
+	 * normally happens by default when the inputValue changes or the input is
+	 * focused and the resultCount is not zero.
+	 */
+	canOpenMenu: PropTypes.bool,
 	/**
 	 * Function to be called when a menu option was selected by the user.
 	 * Will be called with an object containing the option's `value` and `text`.
