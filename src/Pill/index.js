@@ -9,7 +9,7 @@ import {
 	getColorBlock,
 	contrast,
 } from '../utils';
-import {fillParent, borderValue} from '../mixins';
+import {fillParent, borderValue, ie11Hack} from '../mixins';
 
 import Box from '../Box';
 import ButtonCore from '../ButtonCore';
@@ -96,6 +96,19 @@ const Wrapper = styled.div.withConfig({
 		 * Actual focus styles are applied using the FocusRing
 		 * component further below */
 		outline: none;
+	}
+
+	/* IE11 won't 'shrink-wrap' contents (stop growing to allow
+	 * content to wrap or be truncated) unless overflow is set
+	 * to 'hidden'. Who knows why.
+	 * Doing this breaks the focus outline, so we restore it
+	 * with a simpler (and slightly uglier) implementation. */
+	@media ${ie11Hack} {
+		overflow: hidden;
+
+		&.focus-visible {
+			outline: 3px solid currentColor;
+		}
 	}
 `;
 
