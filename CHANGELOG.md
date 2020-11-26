@@ -1,3 +1,10 @@
+## [11.20.1](https://github.com/5app/base5-ui/compare/v11.20.0...v11.20.1) (2020-11-13)
+
+
+### Bug Fixes
+
+* **Button:** Disable pointer events on button icon ([30f4814](https://github.com/5app/base5-ui/commit/30f48141dc50273fb4ee5f11b3199780fd662c0d))
+
 # [11.20.0](https://github.com/5app/base5-ui/compare/v11.19.2...v11.20.0) (2020-11-13)
 
 
