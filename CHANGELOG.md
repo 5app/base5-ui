@@ -1,3 +1,10 @@
+## [11.20.2](https://github.com/5app/base5-ui/compare/v11.20.1...v11.20.2) (2020-11-26)
+
+
+### Bug Fixes
+
+* **Pill:** Improve IE11 compatibility ([def55f0](https://github.com/5app/base5-ui/commit/def55f048ac7d6bff72fa266b09a6a38b5fa6bf2))
+
 ## [11.20.1](https://github.com/5app/base5-ui/compare/v11.20.0...v11.20.1) (2020-11-13)
 
 
