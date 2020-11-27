@@ -25,6 +25,7 @@ const iconMap = {
 	chat: require('../icons/Chat').default,
 	chevron: require('../icons/Chevron').default,
 	collection: require('../icons/Collection').default,
+	cycle: require('../icons/Cycle').default,
 	dislike: require('../icons/Dislike').default,
 	disk: require('../icons/Disk').default,
 	dot: require('../icons/Dot').default,

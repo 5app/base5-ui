@@ -24,6 +24,7 @@ export {default as Captions} from './Captions';
 export {default as Chat} from './Chat';
 export {default as Chevron} from './Chevron';
 export {default as Collection} from './Collection';
+export {default as Cycle} from './Cycle';
 export {default as Dislike} from './Dislike';
 export {default as Disk} from './Disk';
 export {default as Dot} from './Dot';
