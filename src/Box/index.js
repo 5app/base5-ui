@@ -86,7 +86,14 @@ Box.propTypes = {
 		PropTypes.array,
 	]),
 	flexAlign: PropTypes.oneOfType([
-		PropTypes.oneOf(['top', 'left', 'center', 'bottom', 'right']),
+		PropTypes.oneOf([
+			'top',
+			'left',
+			'center',
+			'bottom',
+			'right',
+			'stretch',
+		]),
 		PropTypes.array,
 	]),
 	basis: PropTypes.oneOfType([
