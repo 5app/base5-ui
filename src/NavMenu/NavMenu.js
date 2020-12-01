@@ -15,6 +15,7 @@ const NavMenuContext = createContext();
 function NavMenu({id: idProp, menuPlacement, menuPositionFixed, children}) {
 	const buttonRef = useRef();
 	const popoverRef = useRef();
+	const preventFocusResetOnClose = useRef(false);
 	const id = useUniqueId(idProp);
 
 	const popover = usePopover({
@@ -35,16 +36,16 @@ function NavMenu({id: idProp, menuPlacement, menuPositionFixed, children}) {
 	const {isOpen, open, close, toggle} = usePopoverState({
 		onClose: () => {
 			itemList.clearHighlightedItem();
-
-			// If focus is on or within the popover when it's closed,
-			// we need to move it back to the button.
-			// Otherwise we do nothing & preserve user focus.
-			if (
+			const isFocusInPopover =
 				popoverRef.current === document.activeElement ||
-				popoverRef.current?.contains(document.activeElement)
-			) {
+				popoverRef.current?.contains(document.activeElement);
+
+			// Move focus back to the button if it's within the popover
+			// and if it's no link. Otherwise, preserve user focus.
+			if (!preventFocusResetOnClose.current && isFocusInPopover) {
 				buttonRef.current?.focus();
 			}
+			preventFocusResetOnClose.current = false;
 		},
 	});
 
@@ -52,7 +53,13 @@ function NavMenu({id: idProp, menuPlacement, menuPositionFixed, children}) {
 		item?.ref.current?.focus();
 	}
 
-	function onSelect() {
+	function onSelect(item) {
+		// When the selected item is a link, we don't want
+		// to reset focus when the menu is closed, as focus should be managed
+		// globally on navigation, e.g. using `base5-ui/PageTitleAnnouncer`.
+		if (item?.ref.current?.href) {
+			preventFocusResetOnClose.current = true;
+		}
 		close();
 	}
 
