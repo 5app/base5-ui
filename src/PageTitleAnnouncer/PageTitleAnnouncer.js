@@ -31,21 +31,12 @@ PageTitleAnnouncer.propTypes = {
 	pathname: PropTypes.string,
 };
 
-function usePageTitleAnnouncer(pageTitle, {isEnabled = true} = {}) {
+function usePageTitleAnnouncer(pageTitle) {
 	const focusablePageTitleRef = useRef();
-	const isEnabledRef = useRef();
 	const hasNavigationOccuredRef = useContext(PageTitleContext);
 
 	useEffect(() => {
-		isEnabledRef.current = isEnabled;
-	}, [isEnabled]);
-
-	useEffect(() => {
-		if (
-			pageTitle &&
-			hasNavigationOccuredRef.current &&
-			isEnabledRef.current
-		) {
+		if (pageTitle && hasNavigationOccuredRef.current) {
 			focusablePageTitleRef.current?.focus();
 		}
 	}, [pageTitle, hasNavigationOccuredRef]);

@@ -23,19 +23,10 @@ const Heading = styled.h1.withConfig({
 `;
 
 const PageTitle = forwardRef((props, ref) => {
-	const {
-		text,
-		enableAnnouncement,
-		visuallyHidden,
-		children,
-		...otherProps
-	} = props;
+	const {text, visuallyHidden, children, ...otherProps} = props;
 	const areChildrenText = typeof children === 'string';
 	const pageTitleRef = usePageTitleAnnouncer(
-		areChildrenText ? children : text,
-		{
-			isEnabled: enableAnnouncement,
-		}
+		areChildrenText ? children : text
 	);
 	const mergedRefs = useMergedRefs([ref, pageTitleRef]);
 
@@ -62,7 +53,6 @@ PageTitle.displayName = 'PageTitle';
 
 PageTitle.defaultProps = {
 	as: 'h1',
-	enableAnnouncement: true,
 	visuallyHidden: false,
 };
 
@@ -76,13 +66,6 @@ PageTitle.propTypes = {
 	 * announced to screen reader users.
 	 */
 	visuallyHidden: PropTypes.bool,
-	/**
-	 * Set to false to disable focusing the title element.
-	 * Can be used to coordinate focus between subsections of
-	 * the app, when multiple PageTitle components are used
-	 * on a single page.
-	 */
-	enableAnnouncement: PropTypes.bool,
 	/**
 	 * If the children prop's type is more complex than a simple
 	 * string, pass a string version of the title to this prop.

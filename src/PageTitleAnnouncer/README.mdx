@@ -86,27 +86,6 @@ In case your PageTitle contains children more complex than a simple string, a te
 </PageTitle>
 ```
 
-## Nested app navigation
-
-Generally, every page of your app should only have one page title. However, there may be cases where you want to announce the `<h2>` title of a sub-section of a page, e.g. when there's a secondary navigation.
-
-In those cases you need to manually coordinate which heading should be announced after a navigation. This can be achieved e.g. by using React Router's location state.
-
-```jsx
-// This will be announced the first time the page is navigated to
-<PageTitle enableAnnouncement={!secondaryNavbarWasUsed}>
-	Page title
-</PageTitle>
-
-<SecondaryNavbar />
-
-// This will be announced if the user has reached the page using the
-// secondary navigation bar
-<PageTitle as="h2" enableAnnouncement={secondaryNavbarWasUsed}>
-	Sub-Section title
-</PageTitle>
-```
-
 ## `PageTitle` props
 
 <Props isToggle of={PageTitle} />
