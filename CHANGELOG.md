@@ -1,3 +1,15 @@
+# [11.21.0](https://github.com/5app/base5-ui/compare/v11.20.2...v11.21.0) (2020-11-27)
+
+
+### Bug Fixes
+
+* **Box:** Fix missing flexAlign propType ([619f91a](https://github.com/5app/base5-ui/commit/619f91a38b3d10661dd2f27ebba228ce7c60ad01))
+
+
+### Features
+
+* **icons:** New icon "cycle" ([14072c9](https://github.com/5app/base5-ui/commit/14072c95a4fabb28b7b30a62e5c057e1a5e5c8a4))
+
 ## [11.20.2](https://github.com/5app/base5-ui/compare/v11.20.1...v11.20.2) (2020-11-26)
 
 
