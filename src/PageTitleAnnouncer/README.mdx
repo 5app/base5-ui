@@ -22,7 +22,7 @@ The `<PageTitleAnnouncer>` and `<PageTitle>` components help you mitigate both o
 
 ## Setup
 
-To keep track of the navigation state of the app, you need to wrap your app with the `PageTitleAnnouncer` component and provide it with the `pathname` prop, which you'd typically get from your client-side routing library. The content of this prop has to be a string, but it doesn't need to be the literal `location.pathname` attribute – you can also dynamically construct it to include e.g. query parameters that you'd like the component to keep track of.
+To keep track of the navigation state of the app, you need to wrap your app with the `PageTitleAnnouncer` component and provide it with the `pathname` prop, which you'd typically get from your client-side routing library. The content of this prop has to be a string, but it doesn't need to be the literal `location.pathname` attribute – you can also pass any other primitive value that will change when a client-side navigation occurs.
 
 ```js
 import {useLocation} from 'react-router';
@@ -45,7 +45,7 @@ import {PageTitle} from 'base5-ui/PageTitleAnnouncer';
 function HomePage() {
 	return (
 		<main>
-			<PageTitle>Welcome to my super accessible app!</PageTitle>
+			<PageTitle>Welcome to my accessible app!</PageTitle>
 		</main>
 	);
 }
@@ -53,13 +53,10 @@ function HomePage() {
 
 ## Custom styling
 
-If you're already using styled heading components, you can pass those to the `PageTitle` component using the `as` prop; or pass `PageTitle` to the `as` prop of your styled component – both approaches will work.
+If you're already using styled heading components, you can pass those to the `PageTitle` component using the `as` prop; or pass `PageTitle` to the `as` prop of your styled component – both approaches should work.
 
 ```jsx
 <PageTitle as={MainHeading}>Welcome to my super accessible app!</PageTitle>
-```
-
-```jsx
 <MainHeading as={PageTitle}>Welcome to my super accessible app!</MainHeading>
 ```
 
@@ -79,16 +76,34 @@ If a page in your app doesn't have an obvious readable heading, you can still pr
 <PageTitle visuallyHidden>Your Profile</PageTitle>
 ```
 
-## Handling loading states
+## Complex heading contents
 
-The announcement of the page title is tied to changes of the `pathname` prop provided to `PageTitleAnnouncer`, and not to whether or not a new `PageTitle` was rendered. This means that when your users navigate to a page that takes a moment to load the data that's needed to display a meaningful page title, no title will be announced (because it's not loaded yet).
-
-In those cases, make sure to still render the `PageTitle` component, but apply the prop `deferAnnouncementWhile` with a truthy value that turns falsy when the page has finished loading.
-`PageTitleAnnouncer` will then only announce the title when it's ready.
+In case your PageTitle contains children more complex than a simple string, a text-only representation of the title must be provided via the `text` prop:
 
 ```jsx
-<PageTitle deferAnnouncementWhile={isLoading}>
-	{user.favourites.title}
+<PageTitle text="Welcome to my app!">
+	Welcome to <b>my app!</b>
+</PageTitle>
+```
+
+## Nested app navigation
+
+Generally, every page of your app should only have one page title. However, there may be cases where you want to announce the `<h2>` title of a sub-section of a page, e.g. when there's a secondary navigation.
+
+In those cases you need to manually coordinate which heading should be announced after a navigation. This can be achieved e.g. by using React Router's location state.
+
+```jsx
+// This will be announced the first time the page is navigated to
+<PageTitle enableAnnouncement={!secondaryNavbarWasUsed}>
+	Page title
+</PageTitle>
+
+<SecondaryNavbar />
+
+// This will be announced if the user has reached the page using the
+// secondary navigation bar
+<PageTitle as="h2" enableAnnouncement={secondaryNavbarWasUsed}>
+	Sub-Section title
 </PageTitle>
 ```
 

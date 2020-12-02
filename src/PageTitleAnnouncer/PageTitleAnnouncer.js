@@ -1,54 +1,20 @@
-import React, {
-	createContext,
-	memo,
-	useContext,
-	useRef,
-	useMemo,
-	useState,
-	useEffect,
-} from 'react';
+import React, {createContext, memo, useContext, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 const PageTitleContext = createContext();
 
-function usePageTitleAnnouncer({deferAnnouncementWhile = false} = {}) {
-	const {pageTitleRef, setDeferFocus} = useContext(PageTitleContext);
-
-	useEffect(() => {
-		setDeferFocus(deferAnnouncementWhile);
-	}, [deferAnnouncementWhile, setDeferFocus]);
-
-	return pageTitleRef;
-}
-
 function Provider({pathname, children}) {
-	const focusablePageTitleRef = useRef();
-	const [deferFocus, setDeferFocus] = useState(false);
-	const [initialPathname] = useState(pathname);
-
+	const hasNavigationOccuredRef = useRef(false);
 	useEffect(() => {
-		// Only ever move focus to the page title if the pathname
-		// has actually changed, never on first render, where focus
-		// should stay at the beginning of the page
-		if (initialPathname !== pathname) {
-			// Using a zero timeout makes focusing the
-			// heading on the new page a bit more reliable
-			setTimeout(() => {
-				!deferFocus && focusablePageTitleRef.current?.focus();
-			}, 0);
-		}
-	}, [pathname, deferFocus, initialPathname]);
-
-	const contextValue = useMemo(
-		() => ({
-			pageTitleRef: focusablePageTitleRef,
-			setDeferFocus,
-		}),
-		[focusablePageTitleRef, setDeferFocus]
-	);
+		// Track whether any navigation has occured, as we
+		// don't want to move user focus on initial page load
+		return () => {
+			hasNavigationOccuredRef.current = true;
+		};
+	}, [pathname]);
 
 	return (
-		<PageTitleContext.Provider value={contextValue}>
+		<PageTitleContext.Provider value={hasNavigationOccuredRef}>
 			{children}
 		</PageTitleContext.Provider>
 	);
@@ -65,4 +31,26 @@ PageTitleAnnouncer.propTypes = {
 	pathname: PropTypes.string,
 };
 
-export {usePageTitleAnnouncer, PageTitleAnnouncer};
+function usePageTitleAnnouncer(pageTitle, {isEnabled = true} = {}) {
+	const focusablePageTitleRef = useRef();
+	const isEnabledRef = useRef();
+	const hasNavigationOccuredRef = useContext(PageTitleContext);
+
+	useEffect(() => {
+		isEnabledRef.current = isEnabled;
+	}, [isEnabled]);
+
+	useEffect(() => {
+		if (
+			pageTitle &&
+			hasNavigationOccuredRef.current &&
+			isEnabledRef.current
+		) {
+			focusablePageTitleRef.current?.focus();
+		}
+	}, [pageTitle, hasNavigationOccuredRef]);
+
+	return focusablePageTitleRef;
+}
+
+export {PageTitleAnnouncer, usePageTitleAnnouncer};

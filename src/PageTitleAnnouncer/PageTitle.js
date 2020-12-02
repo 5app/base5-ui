@@ -24,13 +24,27 @@ const Heading = styled.h1.withConfig({
 
 const PageTitle = forwardRef((props, ref) => {
 	const {
-		deferAnnouncementWhile,
+		text,
+		enableAnnouncement,
 		visuallyHidden,
 		children,
 		...otherProps
 	} = props;
-	const pageTitleRef = usePageTitleAnnouncer({deferAnnouncementWhile});
+	const areChildrenText = typeof children === 'string';
+	const pageTitleRef = usePageTitleAnnouncer(
+		areChildrenText ? children : text,
+		{
+			isEnabled: enableAnnouncement,
+		}
+	);
 	const mergedRefs = useMergedRefs([ref, pageTitleRef]);
+
+	if (!areChildrenText && text === undefined) {
+		console.warn(
+			'PageTitle: Type of the "children" prop is not string. Please provide a string-only label to the PageTitle component via the "text" prop.',
+			children
+		);
+	}
 
 	return (
 		<Heading
@@ -48,6 +62,8 @@ PageTitle.displayName = 'PageTitle';
 
 PageTitle.defaultProps = {
 	as: 'h1',
+	enableAnnouncement: true,
+	visuallyHidden: false,
 };
 
 PageTitle.propTypes = {
@@ -61,13 +77,17 @@ PageTitle.propTypes = {
 	 */
 	visuallyHidden: PropTypes.bool,
 	/**
-	 * When this is passed a truthy value, DOM focus will not be
-	 * moved to the PageTitle. Focus will be set as soon as it
-	 * resolves to `false`.
-	 * Use this to delay the screen reader announcement until e.g.
-	 * the data needed to render the page title has been loaded.
+	 * Set to false to disable focusing the title element.
+	 * Can be used to coordinate focus between subsections of
+	 * the app, when multiple PageTitle components are used
+	 * on a single page.
 	 */
-	deferAnnouncementWhile: PropTypes.bool,
+	enableAnnouncement: PropTypes.bool,
+	/**
+	 * If the children prop's type is more complex than a simple
+	 * string, pass a string version of the title to this prop.
+	 */
+	text: PropTypes.string,
 };
 
 // @component
