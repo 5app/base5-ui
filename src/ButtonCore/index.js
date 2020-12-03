@@ -19,7 +19,6 @@ const Clickable = styled.button`
 	background-color: transparent;
 	border: none;
 	border-radius: 0;
-	cursor: pointer;
 
 	appearance: none;
 
@@ -27,6 +26,10 @@ const Clickable = styled.button`
 	 * include 'overflow: hidden'. We need overflow to be visible
 	 * for the focus ring. */
 	overflow: visible;
+
+	&:not(.is-disabled) {
+		cursor: pointer;
+	}
 
 	&:focus:not(.focus-visible) {
 		outline: none;
@@ -43,6 +46,22 @@ const Clickable = styled.button`
 		border: 0;
 	}
 `;
+
+function filterLinkProps(props, isDisabled) {
+	if (isDisabled) {
+		const {
+			href,
+			target,
+			rel,
+			referrerpolicy,
+			download,
+			...remainingProps
+		} = props;
+		return remainingProps;
+	}
+
+	return props;
+}
 
 const ButtonCore = forwardRef((props, ref) => {
 	const {
@@ -87,7 +106,7 @@ const ButtonCore = forwardRef((props, ref) => {
 
 	return (
 		<Clickable
-			{...otherProps}
+			{...filterLinkProps(otherProps, isDisabledLink)}
 			ref={ref}
 			as={isDisabledLink ? 'span' : as}
 			type={defaultType}

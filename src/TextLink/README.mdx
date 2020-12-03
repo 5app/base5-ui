@@ -12,21 +12,27 @@ import TextLink from './';
 
 Simple styled text link. Renders as an `<a>` tag by default, but you can use the `as` prop to render as a button or a router link, too.
 
+`TextLink` supports the `disabled` or `isDisabled` prop whether it's used to render a button or a link. Since "disabled links" don't exist in HTML, we simply render them as `span` elements and remove all link-specific attributes from them.
+
 <Playground>
 	<InlineList spacing="s">
 		<TextLink href="#">Hello, world!</TextLink>
-		<TextLink as="button" href="#">
-			I'm secretly a button
-		</TextLink>
 		<TextLink bold href="#">
 			I'm bold
 		</TextLink>
 		<TextLink stealthy href="#">
 			I blend in with my surroundings!
 		</TextLink>
+		<TextLink as="button">I'm actually a button</TextLink>
+		<TextLink as="button" disabled>
+			I can be disabled!
+		</TextLink>
+		<TextLink href="#" isDisabled>
+			Even as a link!
+		</TextLink>
 	</InlineList>
 </Playground>
 
 ## Props
 
-<Props of={TextLink} />
+<Props isToggle of={TextLink} />

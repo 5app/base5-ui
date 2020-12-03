@@ -2,7 +2,11 @@ import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {getPropFilter, getPropNamesFromPropDefinition} from '../utils';
+import {
+	getPropFilter,
+	getPropNamesFromPropDefinition,
+	getDimmedTextColor,
+} from '../utils';
 
 import {
 	positionProps,
@@ -22,6 +26,16 @@ const textLinkProps = ['bold', 'stealthy'];
 
 const shouldForwardProp = getPropFilter([...textLinkProps, ...stylePropNames]);
 
+function getLinkColor({stealthy, disabled, isDisabled, theme}) {
+	if (disabled || isDisabled) {
+		return getDimmedTextColor(theme);
+	} else if (stealthy) {
+		return 'inherit';
+	} else {
+		return theme.links;
+	}
+}
+
 const textLinkStyles = css`
 	${p =>
 		p.bold &&
@@ -32,11 +46,11 @@ const textLinkStyles = css`
 	text-align: inherit;
 	text-decoration: none;
 	transition: color 0.25s ease-in;
-	color: ${p => (p.stealthy ? 'inherit' : p.theme.links)};
+	color: ${getLinkColor};
 
-	&:hover,
-	&:active,
-	&:focus {
+	&:not(.is-disabled):hover,
+	&:not(.is-disabled):focus,
+	&:not(.is-disabled):active {
 		${p =>
 			p.stealthy &&
 			`
