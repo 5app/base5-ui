@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import styled, {css} from 'styled-components';
 
-import {alpha, contrast} from '../utils/colors';
+import {alpha, contrast, getDimmedTextColor} from '../utils/colors';
 import {pxToRem} from '../utils/units';
 
 import OkIcon from '../icons/Ok';
@@ -46,7 +46,7 @@ const Handle = styled.span`
 	overflow: hidden;
 
 	color: ${p => contrast(p.theme.links)};
-	background-color: ${p => alpha(p.theme.text, p.theme.textDimStrength)};
+	background-color: ${p => getDimmedTextColor(p.theme)};
 
 	will-change: transform;
 	transition: transform 150ms ease-out;

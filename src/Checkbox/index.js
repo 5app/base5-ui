@@ -2,7 +2,14 @@ import React, {forwardRef, useCallback, useEffect, useRef} from 'react';
 import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {mergeRefs, pxToEm, pxToRem, alpha, contrast} from '../utils';
+import {
+	mergeRefs,
+	pxToEm,
+	pxToRem,
+	alpha,
+	contrast,
+	getDimmedTextColor,
+} from '../utils';
 import {fillParent} from '../mixins';
 import Icon from '../Icon';
 
@@ -49,7 +56,7 @@ const MockBox = styled.span.withConfig({
 
 		${p => {
 			if (!p.isChecked) {
-				const textColor = alpha(p.theme.text, p.theme.textDimStrength);
+				const textColor = getDimmedTextColor(p.theme);
 				return css`
 					background-image: linear-gradient(
 						45deg,

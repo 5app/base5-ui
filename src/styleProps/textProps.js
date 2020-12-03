@@ -1,4 +1,4 @@
-import {alpha} from '../utils/colors';
+import {getDimmedTextColor} from '../utils/colors';
 import {createStyleFunction} from '../utils/styleProps';
 
 const textTransformMap = {
@@ -38,7 +38,7 @@ export const textPropsDef = [
 		styleProp: 'dimmed',
 		properties: ['color'],
 		getValue: (dimmed, theme) =>
-			dimmed ? alpha(theme.text, theme.textDimStrength) : theme.text,
+			dimmed ? getDimmedTextColor(theme) : theme.text,
 	},
 ];
 

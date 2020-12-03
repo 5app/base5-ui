@@ -55,6 +55,10 @@ function getColorBlock(color, theme) {
 	return theme[color] || theme.globals?.colorBlocks?.[color] || color;
 }
 
+function getDimmedTextColor(theme) {
+	return alpha(theme.text, theme.textDimStrength);
+}
+
 function getBackgroundShade(theme) {
 	return alpha(theme.shade, theme.shadeStrength);
 }
@@ -79,6 +83,7 @@ export {
 	isLight,
 	getPalette,
 	getColorBlock,
+	getDimmedTextColor,
 	getBackgroundShade,
 	getSolidBackgroundShade,
 	getBorderColor,
