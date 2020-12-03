@@ -1,3 +1,15 @@
+# [11.22.0](https://github.com/5app/base5-ui/compare/v11.21.0...v11.22.0) (2020-12-02)
+
+
+### Bug Fixes
+
+* **NavMenu:** Don't reset focus for menu links ([1f0b9e8](https://github.com/5app/base5-ui/commit/1f0b9e8b98399cd445676efd1d848c133564fd1e))
+
+
+### Features
+
+* New PageTitleAnnouncer component ([81bf255](https://github.com/5app/base5-ui/commit/81bf255b07209064e0fce49d80656928b2ca45a5))
+
 # [11.21.0](https://github.com/5app/base5-ui/compare/v11.20.2...v11.21.0) (2020-11-27)
 
 
