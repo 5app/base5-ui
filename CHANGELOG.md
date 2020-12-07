@@ -1,3 +1,15 @@
+# [11.23.0](https://github.com/5app/base5-ui/compare/v11.22.0...v11.23.0) (2020-12-03)
+
+
+### Bug Fixes
+
+* **TextLink:** Add styles for disabled state [#123](https://github.com/5app/base5-ui/issues/123) ([54f699a](https://github.com/5app/base5-ui/commit/54f699aa60c422793126fae3300d6c58c70ba9aa))
+
+
+### Features
+
+* **utils:** Adds new getDimmedTextColor utility ([b17027a](https://github.com/5app/base5-ui/commit/b17027a125ae7bc9d1a82f6f49e9ab3aad10b342))
+
 # [11.22.0](https://github.com/5app/base5-ui/compare/v11.21.0...v11.22.0) (2020-12-02)
 
 
