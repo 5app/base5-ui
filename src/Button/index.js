@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 
 import {alpha} from '../utils/colors';
 import {pxToRem} from '../utils/units';
-import {fillParent} from '../mixins';
+import {fillParent, ellipsis, overflowWrap} from '../mixins';
 import {
 	getPropFilter,
 	getPropNamesFromPropDefinition,
@@ -221,9 +221,22 @@ const Content = styled.span`
 	justify-content: ${p => (p.align ? alignMap[p.align] : 'center')};
 `;
 
-const ButtonText = styled.span`
-	padding: 0 ${p => p.theme.globals.spacing.xxs};
+/**
+ * The button label should just have some horinzontal spacing.
+ * But if `textOverflow="ellipsis" is set, the Button label
+ * will have overflow set to "hidden", which can cause the
+ * descenders of some characters (g, y, j) to be cut off.
+ * To avoid this, we also give the text label some vertical
+ * padding and visually remove it using negative margins.
+ */
+
+const ButtonText = styled.span.withConfig({
+	shouldForwardProp: prop => prop !== 'textOverflow',
+})`
+	padding: ${p => p.theme.globals.spacing.xxs};
+	margin: -${p => p.theme.globals.spacing.xxs} 0;
 	vertical-align: middle;
+	${p => (p.textOverflow === 'ellipsis' ? ellipsis : overflowWrap)}
 `;
 
 const Button = forwardRef((props, ref) => {
@@ -231,10 +244,12 @@ const Button = forwardRef((props, ref) => {
 		align,
 		as,
 		children,
-		color = 'default',
+		color,
 		icon,
 		iconRight,
+		fullWidth,
 		title,
+		textOverflow,
 		...otherProps
 	} = props;
 
@@ -248,6 +263,7 @@ const Button = forwardRef((props, ref) => {
 			aria-label={props['aria-label'] || title}
 			color={color}
 			align={align}
+			fullWidth={fullWidth || textOverflow === 'ellipsis'}
 			{...otherProps}
 		>
 			<HoverShade />
@@ -256,7 +272,11 @@ const Button = forwardRef((props, ref) => {
 				{icon && iconRight !== true && (
 					<Icon disablePointerEvents name={icon} />
 				)}
-				{children && <ButtonText>{children}</ButtonText>}
+				{children && (
+					<ButtonText textOverflow={textOverflow}>
+						{children}
+					</ButtonText>
+				)}
 				{iconRight && (
 					<Icon
 						disablePointerEvents
@@ -269,6 +289,11 @@ const Button = forwardRef((props, ref) => {
 });
 
 Button.displayName = 'Button';
+
+Button.defaultProps = {
+	color: 'default',
+	textOverflow: 'wrap',
+};
 
 Button.propTypes = {
 	/**
@@ -293,7 +318,6 @@ Button.propTypes = {
 	 * on the right.
 	 */
 	iconRight: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-
 	/**
 	 * Render the button with fully rounded corners, useful for
 	 * circular icon-only buttons.
@@ -326,6 +350,14 @@ Button.propTypes = {
 	 * Align the button text
 	 */
 	align: PropTypes.oneOf(['left', 'right', 'center']),
+	/**
+	 * Control whether long text labels wrap to a new line
+	 * or are truncated with an ellipsis
+	 * When set to 'ellipsis', the button will automatically
+	 * enable the `fullWidth` prop and render as a block-level
+	 * element that takes up all available width.
+	 */
+	textOverflow: PropTypes.oneOf(['wrap', 'ellipsis']),
 };
 
 // @component

@@ -4,6 +4,7 @@ menu: Components
 ---
 
 import {Playground, Props} from 'docz';
+import Box from '../Box';
 import InlineList from '../InlineList';
 import Button from './';
 
@@ -45,6 +46,12 @@ Nice looking buttons, yo.
 	<Button fullWidth align="left" size="large" color="shaded" icon="plus">
 		Add to My learning
 	</Button>
+	<br />
+	<Box width={285}>
+		<Button textOverflow="ellipsis" iconRight="chevron">
+			A Button with a very long label
+		</Button>
+	</Box>
 </Playground>
 
 ## Props
