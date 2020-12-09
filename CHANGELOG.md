@@ -1,3 +1,10 @@
+# [11.24.0](https://github.com/5app/base5-ui/compare/v11.23.0...v11.24.0) (2020-12-07)
+
+
+### Features
+
+* **Button:** Add textOverflow prop ([d5114e3](https://github.com/5app/base5-ui/commit/d5114e314dfddc1ff6bab89607d1dad3067d26fa))
+
 # [11.23.0](https://github.com/5app/base5-ui/compare/v11.22.0...v11.23.0) (2020-12-03)
 
 
