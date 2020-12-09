@@ -1,3 +1,15 @@
+# [11.25.0](https://github.com/5app/base5-ui/compare/v11.24.0...v11.25.0) (2020-12-09)
+
+
+### Bug Fixes
+
+* **InlineList:** Shrink-wrap long content ([b88424b](https://github.com/5app/base5-ui/commit/b88424bae05159d4b3137436c98c3df7595ee21f))
+
+
+### Features
+
+* Add margin style props to Pill component ([d81262d](https://github.com/5app/base5-ui/commit/d81262d572d69c72a467dc7aabfa20d03ab6adab))
+
 # [11.24.0](https://github.com/5app/base5-ui/compare/v11.23.0...v11.24.0) (2020-12-07)
 
 
