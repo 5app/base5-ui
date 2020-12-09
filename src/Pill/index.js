@@ -8,6 +8,9 @@ import {
 	getBackgroundShade,
 	getColorBlock,
 	contrast,
+	createStyleFunction,
+	getPropFilter,
+	getPropNamesFromPropDefinition,
 } from '../utils';
 import {fillParent, borderValue, ie11Hack} from '../mixins';
 
@@ -18,11 +21,17 @@ import Text from '../Text';
 import Icon from '../Icon';
 import ThemeSection from '../ThemeSection';
 
+import {marginPropsDef} from '../styleProps/marginProps';
+
+const marginProps = createStyleFunction(marginPropsDef);
+const marginPropNames = getPropNamesFromPropDefinition(marginPropsDef);
+
 const pillHeight = pxToRem(24);
 const iconSpacing = pxToRem(30);
 const _3px = pxToRem(3);
 
 const customWrapperProps = [
+	...marginPropNames,
 	'background',
 	'dimmed',
 	'isClickable',
@@ -31,7 +40,7 @@ const customWrapperProps = [
 ];
 
 const Wrapper = styled.div.withConfig({
-	shouldForwardProp: prop => !customWrapperProps.includes(prop),
+	shouldForwardProp: getPropFilter(customWrapperProps),
 })`
 	position: relative;
 
@@ -47,7 +56,9 @@ const Wrapper = styled.div.withConfig({
 
 	max-width: 100%;
 	min-width: 0;
-	margin: 0;
+
+	${marginProps}
+
 	padding: 0 ${p => p.theme.globals.spacing.xs};
 	${p =>
 		p.hasIcon &&
