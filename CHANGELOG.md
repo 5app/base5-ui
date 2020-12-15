@@ -1,3 +1,10 @@
+# [11.26.0](https://github.com/5app/base5-ui/compare/v11.25.0...v11.26.0) (2020-12-15)
+
+
+### Features
+
+* **utils:** New scrollIntoViewIfNeeded function ([4620d35](https://github.com/5app/base5-ui/commit/4620d35c44c868ad4a8702753825ebe3cc91d612))
+
 # [11.25.0](https://github.com/5app/base5-ui/compare/v11.24.0...v11.25.0) (2020-12-09)
 
 
