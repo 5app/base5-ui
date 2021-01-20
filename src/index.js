@@ -5,7 +5,6 @@ export {default as theme} from './theme';
 export {default as utils} from './utils';
 
 export {default as Arrow} from './Arrow';
-export {default as BackButton} from './BackButton';
 export {default as Box} from './Box';
 export {default as Button} from './Button';
 export {default as ButtonCore} from './ButtonCore';
@@ -31,6 +30,11 @@ export {default as TextLink} from './TextLink';
 export {default as ThemeSection} from './ThemeSection';
 export {default as Time} from './Time';
 export {default as useAriaFeedProps} from './useAriaFeedProps';
+export {
+	default as useBackLink,
+	BackLinkProvider,
+	BackLinkContext,
+} from './useBackLink';
 export {default as useBreakpoints} from './useBreakpoints';
 export {default as useEventListener} from './useEventListener';
 export {default as useFocusOnMount} from './useFocusOnMount';
