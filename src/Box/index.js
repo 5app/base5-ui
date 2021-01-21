@@ -47,6 +47,7 @@ Box.propTypes = {
 	]),
 	display: PropTypes.oneOfType([
 		PropTypes.oneOf([
+			'none',
 			'block',
 			'inline',
 			'inline-block',

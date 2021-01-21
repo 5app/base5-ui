@@ -7,6 +7,7 @@ const supportedDisplayValues = [
 	'inline-block',
 	'flex',
 	'inline-flex',
+	'none',
 ];
 
 const overflowStylesMap = {
@@ -31,8 +32,10 @@ export const displayPropsDef = [
 			supportedDisplayValues.includes(display)
 				? display
 				: console.warn(
-						`Only 'block', 'inline', and 'inline-block' are supported for
-			the 'display' styling prop. Please use 'base5-ui/Flex' or custom CSS
+						`Only ${supportedDisplayValues.join(
+							', '
+						)} are supported for
+			the 'display' styling prop. Please use custom CSS
 			for more complex styling.`
 				  ),
 	},
