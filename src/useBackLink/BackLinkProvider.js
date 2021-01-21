@@ -30,17 +30,22 @@ function BackLinkProvider({
 			setHistoryStack(prevHistory => {
 				let newHistory = [...prevHistory];
 				if (newHistory[locationLevel]) {
+					// If entries exist at the location's level, append it
 					newHistory[locationLevel] = [
 						...newHistory[locationLevel],
 						wrappedLocation,
 					];
 				} else {
+					// If no entries exist, create a new level
 					newHistory[locationLevel] = [wrappedLocation];
-					newHistory = newHistory.slice(0, locationLevel + 1);
 				}
+				// Discard all higher levels
+				newHistory = newHistory.slice(0, locationLevel + 1);
 				return newHistory;
 			});
 		} else {
+			// The location already exists somewhere in the history stack,
+			// so we discard any entries after it.
 			const [levelIndex, entryIndex] = locationInHistory;
 			setHistoryStack(prevHistory => {
 				let newHistory = [...prevHistory];
