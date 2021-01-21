@@ -1,3 +1,10 @@
+## [12.0.1](https://github.com/5app/base5-ui/compare/v12.0.0...v12.0.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* **useBackLink:** Didn't discard later entries when adding level ([4bbec96](https://github.com/5app/base5-ui/commit/4bbec96a2f98b8fc99a2ce9571a4688fc4d7caaa))
+
 # [12.0.0](https://github.com/5app/base5-ui/compare/v11.26.1...v12.0.0) (2021-01-20)
 
 
