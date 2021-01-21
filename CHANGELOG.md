@@ -1,3 +1,16 @@
+# [12.0.0](https://github.com/5app/base5-ui/compare/v11.26.1...v12.0.0) (2021-01-20)
+
+
+### Features
+
+* Rewrite backlink manager from scratch ([d063a25](https://github.com/5app/base5-ui/commit/d063a25add520d03cf051f59e498afaa5832627f))
+
+
+### BREAKING CHANGES
+
+* Removes old BackButton component and related modules.
+Migrate to the new component to update.
+
 ## [11.26.1](https://github.com/5app/base5-ui/compare/v11.26.0...v11.26.1) (2021-01-04)
 
 # [11.26.0](https://github.com/5app/base5-ui/compare/v11.25.0...v11.26.0) (2020-12-15)
