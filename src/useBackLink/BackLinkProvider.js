@@ -15,7 +15,7 @@ function removePreviousEntry(history, indexes) {
 	if (newHistory[x]) {
 		newHistory[x].splice(y, 1);
 		if (newHistory[x].length === 0) {
-			newHistory.splice(x, 1);
+			newHistory[x] = undefined;
 		}
 	}
 	return newHistory;
