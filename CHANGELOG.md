@@ -1,3 +1,10 @@
+## [12.1.1](https://github.com/5app/base5-ui/compare/v12.1.0...v12.1.1) (2021-01-29)
+
+
+### Bug Fixes
+
+* **useBackLink:** Preserve array indexes when handling redirect ([3b2ed86](https://github.com/5app/base5-ui/commit/3b2ed866e401d4d9a55f8beb0bb3e02ca6042f98))
+
 # [12.1.0](https://github.com/5app/base5-ui/compare/v12.0.2...v12.1.0) (2021-01-29)
 
 
