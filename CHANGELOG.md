@@ -1,3 +1,16 @@
+# [12.1.0](https://github.com/5app/base5-ui/compare/v12.0.2...v12.1.0) (2021-01-29)
+
+
+### Bug Fixes
+
+* **Table:** Filter custom props from DOM ([6065103](https://github.com/5app/base5-ui/commit/60651034fc4dc84e3dd155422c691599c0389fa1))
+
+
+### Features
+
+* **Box:** New keyword for transparently shaded backgrounds ([bffb2e3](https://github.com/5app/base5-ui/commit/bffb2e34c30b8cfe804118d9eee1bc5dab41ecf6))
+* **useBackLink:** Handle automatic redirects ([6efc12e](https://github.com/5app/base5-ui/commit/6efc12efa25cdc9f13457f242d335b27fe939e5e))
+
 ## [12.0.2](https://github.com/5app/base5-ui/compare/v12.0.1...v12.0.2) (2021-01-21)
 
 
