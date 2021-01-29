@@ -1,3 +1,10 @@
+## [12.0.2](https://github.com/5app/base5-ui/compare/v12.0.1...v12.0.2) (2021-01-21)
+
+
+### Bug Fixes
+
+* **styleProps:** Allow display="none" style prop ([d2b0672](https://github.com/5app/base5-ui/commit/d2b067264f7acf7a0acd7d5e83c30033a0d9d152))
+
 ## [12.0.1](https://github.com/5app/base5-ui/compare/v12.0.0...v12.0.1) (2021-01-21)
 
 
