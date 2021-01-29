@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {alpha} from '../utils/colors';
+import {alpha, getBackgroundShade} from '../utils/colors';
 import ArrowIcon from '../icons/Arrow';
 import ButtonCore from '../ButtonCore';
 
@@ -13,7 +13,9 @@ const HeaderButton = styled(ButtonCore)`
 	padding-right: ${p => p.theme.globals.spacing.xxs};
 `;
 
-const ClickabilityIndicator = styled.span`
+const shouldForwardProp = prop => prop !== 'isActive';
+
+const ClickabilityIndicator = styled.span.withConfig({shouldForwardProp})`
 	position: relative;
 	margin-left: ${p => p.theme.globals.spacing.xxs};
 
@@ -37,7 +39,7 @@ const ClickabilityIndicator = styled.span`
 	}
 `;
 
-const StyledSortArrow = styled(ArrowIcon)`
+const StyledSortArrow = styled(ArrowIcon).withConfig({shouldForwardProp})`
 	border-radius: 50%;
 	transition-property: all;
 
@@ -55,7 +57,7 @@ const StyledSortArrow = styled(ArrowIcon)`
 		${p =>
 			p.isActive &&
 			`
-				background-color: ${alpha(p.theme.shade, p.theme.shadeStrength)};
+				background-color: ${getBackgroundShade(p.theme)};
 				box-shadow: 0 0 0 3px
 					${alpha(p.theme.shade, p.isActive ? p.theme.shadeStrength : 0)};
 			`}
