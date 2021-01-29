@@ -1,9 +1,16 @@
 import {createStyleFunction} from '../utils/styleProps';
-import {getSolidBackgroundShade, getColorBlock} from '../utils/colors';
+import {
+	getColorBlock,
+	getSolidBackgroundShade,
+	getBackgroundShade,
+} from '../utils/colors';
 
 function getBackgroundColour(value, theme) {
 	if (value === 'shaded') {
 		return getSolidBackgroundShade(theme);
+	}
+	if (value === 'transparently-shaded') {
+		return getBackgroundShade(theme);
 	}
 	return getColorBlock(value, theme);
 }
