@@ -62,8 +62,10 @@ function Combobox({
 	const {isOpen, open, close, toggle} = usePopoverState();
 
 	const hasStatusMessage = shouldShowStatusMessage && Boolean(statusMessage);
-	const canMenuBeOpen = canOpenMenu && (hasStatusMessage || resultCount);
-	const isMenuOpen = canMenuBeOpen && isOpen;
+	const canMenuBeOpen = Boolean(
+		canOpenMenu && (hasStatusMessage || resultCount)
+	);
+	const isMenuOpen = Boolean(canMenuBeOpen && isOpen);
 
 	const itemList = useItemList({
 		id,
