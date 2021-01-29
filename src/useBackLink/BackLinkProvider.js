@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useState, useRef} from 'react';
 import PropTypes from 'prop-types';
 
 import findInHistoryStack from './findInHistoryStack';
@@ -6,17 +6,33 @@ import getBackLinks from './getBackLinks';
 
 const BackLinkContext = createContext(false);
 
+function removePreviousEntry(history, indexes) {
+	if (!indexes) {
+		return history;
+	}
+	const newHistory = [...history];
+	const [x, y] = indexes;
+	if (newHistory[x]) {
+		newHistory[x].splice(y, 1);
+		if (newHistory[x].length === 0) {
+			newHistory.splice(x, 1);
+		}
+	}
+	return newHistory;
+}
+
 function BackLinkProvider({
 	children,
 	location,
 	track,
 	getLocationLevel,
 	getLocationId,
+	wasRedirected,
 }) {
 	const [historyStack, setHistoryStack] = useState([]);
+	const indexOfPreviousEntry = useRef(null);
 
 	useEffect(() => {
-		const locationLevel = getLocationLevel(location);
 		const wrappedLocation = {
 			location,
 			id: getLocationId(track),
@@ -25,10 +41,13 @@ function BackLinkProvider({
 			wrappedLocation,
 			historyStack
 		);
+		const locationLevel = locationInHistory
+			? locationInHistory[0]
+			: getLocationLevel(location);
 
-		if (!locationInHistory) {
-			setHistoryStack(prevHistory => {
-				let newHistory = [...prevHistory];
+		setHistoryStack(prevHistory => {
+			let newHistory = [...prevHistory];
+			if (!locationInHistory) {
 				if (newHistory[locationLevel]) {
 					// If entries exist at the location's level, append it
 					newHistory[locationLevel] = [
@@ -39,24 +58,38 @@ function BackLinkProvider({
 					// If no entries exist, create a new level
 					newHistory[locationLevel] = [wrappedLocation];
 				}
-				// Discard all higher levels
-				newHistory = newHistory.slice(0, locationLevel + 1);
-				return newHistory;
-			});
-		} else {
-			// The location already exists somewhere in the history stack,
-			// so we discard any entries after it.
-			const [levelIndex, entryIndex] = locationInHistory;
-			setHistoryStack(prevHistory => {
-				let newHistory = [...prevHistory];
-				newHistory[levelIndex] = newHistory[levelIndex].slice(
+			} else {
+				// The location already exists somewhere in the history stack,
+				// so we discard any entries after it.
+				const entryIndex = locationInHistory[1];
+
+				newHistory[locationLevel] = newHistory[locationLevel].slice(
 					0,
 					entryIndex + 1
 				);
-				newHistory = newHistory.slice(0, levelIndex + 1);
-				return newHistory;
-			});
-		}
+			}
+
+			// Discard any higher levels
+			newHistory = newHistory.slice(0, locationLevel + 1);
+
+			// If we were redirected to this location, discard
+			// the previous entry so we can skip the redirect
+			if (wasRedirected) {
+				newHistory = removePreviousEntry(
+					newHistory,
+					indexOfPreviousEntry.current
+				);
+				// Set to null so we don't try to remove it again
+				indexOfPreviousEntry.current = null;
+			} else {
+				indexOfPreviousEntry.current = [
+					locationLevel,
+					newHistory[locationLevel].length - 1,
+				];
+			}
+
+			return newHistory;
+		});
 	}, track); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const backLinks = getBackLinks(historyStack);
@@ -97,6 +130,12 @@ BackLinkProvider.propTypes = {
 	 * return a unique ID from those values
 	 */
 	getLocationId: PropTypes.func,
+	/**
+	 * Indicate that the current location was the result of a redirect.
+	 * This will cause the history entry that initiated the redirect
+	 * (i.e. the previous one) to be discarded.
+	 */
+	wasRedirected: PropTypes.bool,
 };
 
 export {BackLinkContext};

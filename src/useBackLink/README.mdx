@@ -110,6 +110,31 @@ function BackLink({fallback, children}) {
 }
 ```
 
+## Handling automatic redirects
+
+If a user is automatically redirected from one URL to another, two entries will be created in the back link history. This is a problem: If the user navigates back to the first entry, the redirect will be re-triggered, and the user ends up back on the page they just tried to navigate away from!
+
+Luckily, there's a way to tell `BackLinkProvider` to treat redirects as a single link: Make sure that the page you've redirected the user to knows that it's a "redirect target". You can do this by adding a query parameter like `&wasRedirected=true` to its URL, or by adding some React Router location state. Then you can pass that information to the `BackLinkProvider` using the `wasRedirected` prop, and your back links will work again.
+
+Note that the location passed to `BackLinkProvider` **must not** include the 'wasRedirected' hint, as otherwise we'd get the same issue in reverse.
+
+```js
+<BackLinkProvider
+	wasRedirected={location.state?.wasRedirected}
+	location={{
+		...location
+		state: {
+			...location.state,
+			wasRedirected: undefined,
+		}
+	}}
+	track={[pathname, modal, page]}
+	getLocationLevel={getLocationLevel}
+>
+	{children}
+</BackLinkProvider>
+```
+
 ## BackLinkProvider props
 
 <Props isToggle of={BackLinkProvider} />
