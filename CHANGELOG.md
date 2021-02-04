@@ -1,3 +1,10 @@
+## [12.1.2](https://github.com/5app/base5-ui/compare/v12.1.1...v12.1.2) (2021-01-29)
+
+
+### Bug Fixes
+
+* **Combobox:** Fix proptypes warning ([99aa30f](https://github.com/5app/base5-ui/commit/99aa30fef2bb6cc0b58ffa1c8b4a5d3154c42a07))
+
 ## [12.1.1](https://github.com/5app/base5-ui/compare/v12.1.0...v12.1.1) (2021-01-29)
 
 
