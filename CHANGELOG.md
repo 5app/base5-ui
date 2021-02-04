@@ -1,3 +1,10 @@
+## [12.1.3](https://github.com/5app/base5-ui/compare/v12.1.2...v12.1.3) (2021-02-04)
+
+
+### Bug Fixes
+
+* **Combobox:** Fix unintentionally prevented menu open ([29e1570](https://github.com/5app/base5-ui/commit/29e1570ef83af8325000ad87dcceb6879c6b15eb))
+
 ## [12.1.2](https://github.com/5app/base5-ui/compare/v12.1.1...v12.1.2) (2021-01-29)
 
 
