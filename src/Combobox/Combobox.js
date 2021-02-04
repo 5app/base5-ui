@@ -83,7 +83,7 @@ function Combobox({
 		onInputChange(e);
 		itemList.setHighlightedItem(0);
 
-		if (e.target.value && canOpenMenu) {
+		if (e.target.value) {
 			open();
 		}
 	}
@@ -123,8 +123,8 @@ function Combobox({
 			}
 		}
 		if (event.keyCode === KEY_CODES.ENTER) {
-			event.preventDefault();
 			if (isMenuOpen) {
+				event.preventDefault();
 				close();
 				itemList.selectHighlightedItem();
 			}
