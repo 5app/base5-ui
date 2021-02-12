@@ -1,43 +1,41 @@
-import React, {forwardRef, useContext, useLayoutEffect, useRef} from 'react';
-
-import useHasMounted from '../useHasMounted';
+import React, {forwardRef, useContext, useLayoutEffect, useState} from 'react';
 
 import {ModalStackContext} from './ModalManager';
 
 function useScrollLockStyles({isLocked}) {
-	const originalScrollPosition = useRef(null);
-	const hasMounted = useHasMounted();
-	const scrollTop = hasMounted
-		? document.body.scrollTop || document.documentElement.scrollTop
-		: null;
+	const [originalScrollPos, setOriginalScrollPos] = useState(null);
 
 	useLayoutEffect(() => {
-		// Store last scroll position so it can be restored
-		// when the scroll lock is released
-		if (isLocked && originalScrollPosition.current === null) {
-			originalScrollPosition.current = scrollTop;
-			// Restore previous scroll position and re-apply it to
-			// document.body
-		} else if (originalScrollPosition.current !== null) {
-			document.documentElement.scrollTop = document.body.scrollTop =
-				originalScrollPosition.current;
-			originalScrollPosition.current = null;
+		if (isLocked && originalScrollPos === null) {
+			// Store current scroll position
+			setOriginalScrollPos(
+				document.body.scrollTop || document.documentElement.scrollTop
+			);
+		} else if (originalScrollPos !== null) {
+			// Restore original scroll position
+			document.documentElement.scrollTop = document.body.scrollTop = originalScrollPos;
+			setOriginalScrollPos(null);
 		}
-	}, [isLocked, scrollTop]);
+		// We only want the hook to run when `isLocked` changes,
+		// adding `originalScrollPos` would cause an infinite loop
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isLocked]);
 
-	if (!isLocked) return undefined;
+	if (isLocked && originalScrollPos !== null) {
+		return {
+			position: 'fixed',
+			top: `-${originalScrollPos}px`,
+			width: '100%',
+		};
+	}
 
-	return {
-		position: 'fixed',
-		top: `-${scrollTop}px`,
-		width: '100%',
-	};
+	return undefined;
 }
 
 const BodyScrollLock = forwardRef((props, ref) => {
 	const {as: Component = 'div', children, style, ...otherProps} = props;
 	const modalStack = useContext(ModalStackContext);
-	const hasModal = modalStack?.length;
+	const hasModal = Boolean(modalStack?.length);
 	const bodyLockStyles = useScrollLockStyles({isLocked: hasModal});
 
 	return (
