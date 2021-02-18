@@ -1,3 +1,10 @@
+## [12.1.5](https://github.com/5app/base5-ui/compare/v12.1.4...v12.1.5) (2021-02-18)
+
+
+### Bug Fixes
+
+* **Combobox:** Fix race condition when selecting ([8506809](https://github.com/5app/base5-ui/commit/85068093460120372817c43435da503106ec4cfa))
+
 ## [12.1.4](https://github.com/5app/base5-ui/compare/v12.1.3...v12.1.4) (2021-02-12)
 
 
