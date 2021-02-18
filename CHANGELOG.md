@@ -1,3 +1,10 @@
+## [12.1.6](https://github.com/5app/base5-ui/compare/v12.1.5...v12.1.6) (2021-02-18)
+
+
+### Bug Fixes
+
+* Empty commit to trigger release ([088b61a](https://github.com/5app/base5-ui/commit/088b61a3b759709abf186ee274b7a88daa1f5ea2))
+
 ## [12.1.5](https://github.com/5app/base5-ui/compare/v12.1.4...v12.1.5) (2021-02-18)
 
 
