@@ -1,3 +1,10 @@
+## [12.1.4](https://github.com/5app/base5-ui/compare/v12.1.3...v12.1.4) (2021-02-12)
+
+
+### Bug Fixes
+
+* **Modal:** Make body scroll lock more robust ([50d51c9](https://github.com/5app/base5-ui/commit/50d51c9e8a73da0f756a5d998ca7cdb41e236cb0))
+
 ## [12.1.3](https://github.com/5app/base5-ui/compare/v12.1.2...v12.1.3) (2021-02-04)
 
 
