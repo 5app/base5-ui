@@ -125,8 +125,10 @@ function Combobox({
 		if (event.keyCode === KEY_CODES.ENTER) {
 			if (isMenuOpen) {
 				event.preventDefault();
-				close();
-				itemList.selectHighlightedItem();
+				setTimeout(() => {
+					itemList.selectHighlightedItem();
+					close();
+				}, 0);
 			}
 		}
 	}
