@@ -1,7 +1,7 @@
 import React, {createContext, memo, useContext, useRef, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-const PageTitleContext = createContext();
+const PageTitleAnnouncerContext = createContext();
 
 function Provider({pathname, children}) {
 	const hasNavigationOccuredRef = useRef(false);
@@ -14,9 +14,9 @@ function Provider({pathname, children}) {
 	}, [pathname]);
 
 	return (
-		<PageTitleContext.Provider value={hasNavigationOccuredRef}>
+		<PageTitleAnnouncerContext.Provider value={hasNavigationOccuredRef}>
 			{children}
-		</PageTitleContext.Provider>
+		</PageTitleAnnouncerContext.Provider>
 	);
 }
 
@@ -33,7 +33,7 @@ PageTitleAnnouncer.propTypes = {
 
 function usePageTitleAnnouncer(pageTitle) {
 	const focusablePageTitleRef = useRef();
-	const hasNavigationOccuredRef = useContext(PageTitleContext);
+	const hasNavigationOccuredRef = useContext(PageTitleAnnouncerContext);
 
 	useEffect(() => {
 		if (pageTitle && hasNavigationOccuredRef.current) {

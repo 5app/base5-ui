@@ -6,6 +6,7 @@ import useMergedRefs from '../useMergedRefs';
 import {visuallyHidden} from '../mixins';
 
 import {usePageTitleAnnouncer} from './PageTitleAnnouncer';
+import {useSetDocumentTitle} from './DocumentTitleProvider';
 
 const Heading = styled.h1.withConfig({
 	shouldForwardProp: prop => prop !== 'visuallyHidden',
@@ -25,10 +26,12 @@ const Heading = styled.h1.withConfig({
 const PageTitle = forwardRef((props, ref) => {
 	const {text, visuallyHidden, children, ...otherProps} = props;
 	const areChildrenText = typeof children === 'string';
-	const pageTitleRef = usePageTitleAnnouncer(
-		areChildrenText ? children : text
-	);
+	const pageTitle = (areChildrenText ? children : text) || '';
+
+	const pageTitleRef = usePageTitleAnnouncer(pageTitle);
 	const mergedRefs = useMergedRefs([ref, pageTitleRef]);
+
+	useSetDocumentTitle(pageTitle);
 
 	if (!areChildrenText && text === undefined) {
 		console.warn(
