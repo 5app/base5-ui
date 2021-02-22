@@ -51,6 +51,7 @@ function filterLinkProps(props, isDisabled) {
 	if (isDisabled) {
 		const {
 			href,
+			to,
 			target,
 			rel,
 			referrerpolicy,
