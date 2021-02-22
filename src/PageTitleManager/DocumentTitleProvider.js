@@ -29,11 +29,9 @@ function useSetDocumentTitle(pageTitle, {isDisabled = false} = {}) {
 				? `${pageTitle} - ${baseTitle}`
 				: pageTitle;
 			document.title = newTitle;
-			console.log('Updating page title to', newTitle);
 
 			return () => {
 				document.title = prevTitleRef.current;
-				console.log('Resetting page title to', prevTitleRef.current);
 			};
 		}
 	}, [baseTitle, pageTitle, disabled]);
