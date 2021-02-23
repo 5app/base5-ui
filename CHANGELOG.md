@@ -1,3 +1,22 @@
+# [13.0.0](https://github.com/5app/base5-ui/compare/v12.1.6...v13.0.0) (2021-02-22)
+
+
+### Bug Fixes
+
+* **ButtonCode:** Add "to" to list of "link" props ([9c583f1](https://github.com/5app/base5-ui/commit/9c583f18bfb546a3d82e0f5bb0fd59b0b249477e))
+
+
+### Features
+
+* **PageTitleManager:** New options to handle document titles ([ac79874](https://github.com/5app/base5-ui/commit/ac79874787950b4d08307f143f848ea936664234))
+
+
+### BREAKING CHANGES
+
+* **PageTitleManager:** The PageTitleAnnouncer export
+was renamed to PageTitleManager, as it can also handle
+document titles now.
+
 ## [12.1.6](https://github.com/5app/base5-ui/compare/v12.1.5...v12.1.6) (2021-02-18)
 
 
