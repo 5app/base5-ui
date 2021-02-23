@@ -1,6 +1,6 @@
 import React, {useRef, createContext} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from 'use-item-list';
+import {useItemList} from '5app-use-item-list';
 
 import {KEY_CODES} from '../constants';
 import {mergeCallbacks} from '../utils';
@@ -125,10 +125,8 @@ function Combobox({
 		if (event.keyCode === KEY_CODES.ENTER) {
 			if (isMenuOpen) {
 				event.preventDefault();
-				setTimeout(() => {
-					itemList.selectHighlightedItem();
-					close();
-				}, 0);
+				itemList.selectHighlightedItem();
+				close();
 			}
 		}
 	}
