@@ -5,6 +5,9 @@ import Svg from './BaseSvg';
 const ToolsIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
+	// Unless the icon has an explicit ARIA label, we'll hide it visually
+	const ariaHidden = !(otherProps['aria-label'] || otherProps['aria-labelledby']) || undefined;
+
 	return (
 		<Svg
 			{...otherProps}
@@ -16,7 +19,7 @@ const ToolsIcon = forwardRef((props, ref) => {
 			fillRule="evenodd"
 			clipRule="evenodd"
 			focusable="false"
-			aria-hidden={true}
+			aria-hidden={ariaHidden}
 		>
 			<path d="M9,5c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M9,11c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M9,17c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z" />
 		</Svg>

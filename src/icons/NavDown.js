@@ -5,6 +5,9 @@ import Svg from './BaseSvg';
 const NavDownIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
+	// Unless the icon has an explicit ARIA label, we'll hide it visually
+	const ariaHidden = !(otherProps['aria-label'] || otherProps['aria-labelledby']) || undefined;
+
 	return (
 		<Svg
 			{...otherProps}
@@ -16,7 +19,7 @@ const NavDownIcon = forwardRef((props, ref) => {
 			fillRule="evenodd"
 			clipRule="evenodd"
 			focusable="false"
-			aria-hidden={true}
+			aria-hidden={ariaHidden}
 		>
 			<path d="M14,5l-5,9l-5,-9l10,0Z" />
 		</Svg>

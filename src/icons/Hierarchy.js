@@ -5,6 +5,9 @@ import Svg from './BaseSvg';
 const HierarchyIcon = forwardRef((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
+	// Unless the icon has an explicit ARIA label, we'll hide it visually
+	const ariaHidden = !(otherProps['aria-label'] || otherProps['aria-labelledby']) || undefined;
+
 	return (
 		<Svg
 			{...otherProps}
@@ -16,7 +19,7 @@ const HierarchyIcon = forwardRef((props, ref) => {
 			fillRule="evenodd"
 			clipRule="evenodd"
 			focusable="false"
-			aria-hidden={true}
+			aria-hidden={ariaHidden}
 		>
 			<path d="M16.143,12c0.002,0 0.857,0.021 0.857,1c0,0.98 -0.857,1 -0.857,1l-10.286,0c0,0 -0.857,-0.014 -0.857,-1c0,-0.985 0.855,-1 0.857,-1l10.286,0Z M14.143,8c0.002,0 0.857,0.021 0.857,1c0,0.979 -0.855,1 -0.857,1l-10.286,0c0,0 -0.857,-0.014 -0.857,-1c0,-0.985 0.855,-1 0.857,-1l10.286,0Z M12.143,4c0.002,0 0.857,0.021 0.857,1c0,0.979 -0.855,1 -0.857,1l-10.286,0c0,0 -0.857,-0.014 -0.857,-1c0,-0.985 0.855,-1 0.857,-1l10.286,0Z" />
 		</Svg>
