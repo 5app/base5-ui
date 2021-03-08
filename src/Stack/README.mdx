@@ -74,14 +74,14 @@ import {StackWrapper, StackItem} from 'base5-ui/Stack';
 ```
 
 All `Stack` props are now passed to the `StackWrapper` instead.
-Instead of using the `Hidden` component to responsively hide items, you can pass the `hideBelow` prop to items.
+Instead of using the `Hidden` component to responsively hide items, you can pass the `hiddenBelow` or `hiddenAbove` props to items.
 `StackItem` rejects all other custom props by default, but you can allow them to be passed through by attaching the `allowUnknownProps` prop.
 
 <Playground>
 	<StackWrapper as="list" spacing={[0, 's', 'xl']} breakpoints={['m', 'l']}>
 		<StackItem>Development</StackItem>
 		<StackItem>Marketing</StackItem>
-		<StackItem hideBelow="xs">Sales</StackItem>
+		<StackItem hiddenBelow="xs">Sales</StackItem>
 		<StackItem>Design</StackItem>
 	</StackWrapper>
 </Playground>

@@ -155,6 +155,8 @@ const StackItem = forwardRef(function StackItem(
 			ref={ref}
 			as={as}
 			pt={spacing}
+			below={hiddenBelow}
+			above={hiddenAbove}
 			breakpoints={breakpoints}
 		>
 			{children}
