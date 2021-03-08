@@ -42,7 +42,7 @@ const Box = styled('div').withConfig({
 
 Box.propTypes = {
 	position: PropTypes.oneOfType([
-		PropTypes.oneOf(['static', 'relative', 'absolute', 'fixed']),
+		PropTypes.oneOf(['static', 'relative', 'absolute', 'fixed', 'sticky']),
 		PropTypes.array,
 	]),
 	display: PropTypes.oneOfType([
