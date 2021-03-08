@@ -5,6 +5,7 @@ menu: Components
 
 import {Playground, Props} from 'docz';
 import Hidden from './';
+import Icon from '../Icon';
 
 # Hidden
 
@@ -12,9 +13,13 @@ Hide content above or below a responsive breakpoint. Either use a breakpoint fro
 
 Renders a `div` by default, but as usual you can use the `as` prop to change that. Use the Boolean `inline` prop as a shortcut for `as="span"`.
 
+The component can hide content completely (`display: none`, the default setting), or only visually, so that screen reader users can still access the content. Add the `accessible` prop to opt in to this mode.
+
 Built on top of the [Box component](https://5app.github.io/base5-ui/src-box-readme), so all valid Box props can be used on the Hidden component.
 
 ## Examples
+
+### General use
 
 <Playground>
 	<Hidden below="m">Hello up there 👆</Hidden>
@@ -24,12 +29,23 @@ Built on top of the [Box component](https://5app.github.io/base5-ui/src-box-read
 	<Hidden above="m">Hello down there 👇</Hidden>
 </Playground>
 
+### Hiding inline content
+
 <Playground>
 	This text contains a hidden word{' '}
 	<Hidden inline below="m">
 		that's
 	</Hidden>{' '}
 	only visible on wider viewports
+</Playground>
+
+### Accessibly hiding content
+
+<Playground>
+	<Icon vAlign name="globe" aria-labelledby="location-label" />{' '}
+	<Hidden inline accessible below="m" id="location-label">
+		Choose location
+	</Hidden>
 </Playground>
 
 ## Props

@@ -1,32 +1,45 @@
 import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import Box from '../Box';
+import {visuallyHidden} from '../mixins';
 
-const propsToFilter = ['above', 'below'];
+const propsToFilter = ['above', 'below', 'accessible'];
+
+function getBreakpoint(key, props) {
+	return props.theme?.globals?.breakpoints?.[key] || key;
+}
 
 const InnerHidden = styled(Box).withConfig({
 	shouldForwardProp: prop => !propsToFilter.includes(prop),
 })`
 	${p =>
 		p.below &&
-		`
-		@media (max-width: ${p.theme?.globals?.breakpoints?.[p.below] || p.below}) {
-			display: none;
-		}
-	`}
+		css`
+			@media (max-width: ${getBreakpoint(p.below, p)}) {
+				${p.accessible ? visuallyHidden : `display: none;`}
+			}
+		`}
 	${p =>
 		p.above &&
-		`
-		@media (min-width: ${p.theme?.globals?.breakpoints?.[p.above] || p.above}) {
-			display: none;
-		}
-	`}
+		css`
+			@media (min-width: ${getBreakpoint(p.above, p)}) {
+				${p.accessible ? visuallyHidden : `display: none;`}
+			}
+		`}
 `;
 
 const Hidden = forwardRef((props, ref) => {
-	const {above, below, as, inline, children, ...otherProps} = props;
+	const {
+		above,
+		below,
+		as,
+		accessible,
+		inline,
+		children,
+		...otherProps
+	} = props;
 
 	if (!above && !below) {
 		console.warn(
@@ -41,6 +54,7 @@ const Hidden = forwardRef((props, ref) => {
 			as={inline ? 'span' : as}
 			above={above}
 			below={below}
+			accessible={accessible}
 		>
 			{children}
 		</InnerHidden>
@@ -50,6 +64,11 @@ const Hidden = forwardRef((props, ref) => {
 Hidden.displayName = 'Hidden';
 
 Hidden.propTypes = {
+	/**
+	 * Keep the hidden content accessible to users
+	 * of screen readers
+	 */
+	accessible: PropTypes.bool,
 	/**
 	 * Breakpoint above which the component's content
 	 * should be hidden
