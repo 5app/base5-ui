@@ -1,3 +1,18 @@
+# [13.1.0](https://github.com/5app/base5-ui/compare/v13.0.1...v13.1.0) (2021-03-08)
+
+
+### Bug Fixes
+
+* **Box:** Add "position" propTypes value "sticky" ([c3400cb](https://github.com/5app/base5-ui/commit/c3400cbc250d4dbaec17cac09129846a386dff04))
+* **icons:** Allow adding ARIA labels to icons ([cbce054](https://github.com/5app/base5-ui/commit/cbce05457989d7e0c81a695f522e8b1b7db08d72))
+* **icons:** Fix linter error ([fa2d7dd](https://github.com/5app/base5-ui/commit/fa2d7ddaaae042514f07c04513535ec24346b3e7))
+* **Stack:** Fix StackItem not receiving "hidden" props ([8c6c92c](https://github.com/5app/base5-ui/commit/8c6c92c59c09288ec4fd3fdc7093b4169490a63f))
+
+
+### Features
+
+* **Hidden:** New prop for accessible hiding ([e5f6f15](https://github.com/5app/base5-ui/commit/e5f6f158ee218d83694897df0dd7347a56d8a264))
+
 ## [13.0.1](https://github.com/5app/base5-ui/compare/v13.0.0...v13.0.1) (2021-02-23)
 
 
