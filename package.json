@@ -58,7 +58,7 @@
 		"eslint-plugin-react-hooks": "^4.0.0",
 		"gatsby": "2.24.51",
 		"gh-pages": "^3.0.0",
-		"husky": "^4.0.3",
+		"husky": "^6.0.0",
 		"jest": "^26.0.0",
 		"pixo": "^1.1.2",
 		"prettier": "^2.0.1",
