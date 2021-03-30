@@ -25,9 +25,8 @@ const ModalStackContext = createContext([]);
 function validateObjectShape(modalObject) {
 	const missingFields = [
 		!modalObject.name && 'name',
-		!modalObject.focusAnchor && 'focusAnchor',
+		!modalObject.focusAnchorRef && 'focusAnchor',
 		!modalObject.ref && 'ref',
-		!modalObject.onClose && 'onClose',
 	].filter(Boolean);
 
 	if (missingFields.length !== 0) {
@@ -44,9 +43,9 @@ function ModalManager({children}) {
 	const elementToFocus = useRef(null);
 
 	/**
-	 * Add a new modal to the stack with a name, focusAnchor (the
+	 * Add a new modal to the stack with a name, focusAnchorRef (the
 	 * element that triggered its opening), ref of the modal component,
-	 * and an onClose handler that will close the modal.
+	 * and an onCloseRef handler ref that will close the modal.
 	 * ModalManager does not _own_ the open/close state of a modal,
 	 * it just needs to track it in order to handle focus restoration.
 	 */
@@ -77,8 +76,8 @@ function ModalManager({children}) {
 				return prevModalStack;
 			}
 
-			const {focusAnchor} = prevModalStack[indexOfModalToClose];
-			elementToFocus.current = focusAnchor;
+			const {focusAnchorRef} = prevModalStack[indexOfModalToClose];
+			elementToFocus.current = focusAnchorRef.current;
 
 			return prevModalStack.slice(0, indexOfModalToClose);
 		});
@@ -115,7 +114,7 @@ function ModalManager({children}) {
 		event => {
 			if (event.keyCode === KEY_CODES.ESC) {
 				const topMostModal = modalStack[modalStack.length - 1];
-				topMostModal.onClose();
+				topMostModal.onCloseRef.current?.();
 			}
 		},
 		{
@@ -142,20 +141,33 @@ function ModalManager({children}) {
 
 function useModalManager({name, onRequestClose, focusAnchor}) {
 	const modalRef = useRef();
+	const onCloseRef = useRef(onRequestClose);
+	const focusAnchorRef = useRef(focusAnchor);
 	const {register, unregister} = useContext(ModalContext);
+
+	useEffect(() => {
+		// Maintain up-to-date refs of the onRequestClose
+		// and focusAnchor props, as we don't want them to
+		// trigger the register/unregister effect.
+		// Simply removing them from that effect's dependencies
+		// would cause them to potentially go stale.
+		onCloseRef.current = onRequestClose;
+		focusAnchorRef.current =
+			focusAnchor || document.activeElement || document.body;
+	});
 
 	useEffect(() => {
 		register({
 			name,
+			onCloseRef,
+			focusAnchorRef,
 			ref: modalRef,
-			onClose: onRequestClose,
-			focusAnchor: focusAnchor || document.activeElement || document.body,
 		});
 
 		return () => {
 			unregister({name});
 		};
-	}, [focusAnchor, name, onRequestClose, register, unregister]);
+	}, [name, register, unregister]);
 
 	const modalStack = useContext(ModalStackContext);
 	const isAtTop = modalStack[modalStack.length - 1]?.name === name;

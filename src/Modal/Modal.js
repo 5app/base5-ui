@@ -125,8 +125,10 @@ Modal.propTypes = {
 	 * A function that, when called, will cause the modal to close.
 	 * This is needed to support closing the modal when the Esc key
 	 * is pressed or the backdrop of the modal is clicked.
+	 * Only omit this if you're sure that you don't want the user to
+	 * be able to close the modal.
 	 */
-	onRequestClose: PropTypes.func.isRequired,
+	onRequestClose: PropTypes.func,
 	/**
 	 * Add either this or the `aria-labelledby` prop for accessibility.
 	 */
