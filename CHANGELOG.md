@@ -1,3 +1,10 @@
+## [13.1.1](https://github.com/5app/base5-ui/compare/v13.1.0...v13.1.1) (2021-03-30)
+
+
+### Bug Fixes
+
+* **Modal:** Fix unneeded Modal re-register, [#118](https://github.com/5app/base5-ui/issues/118) ([2014106](https://github.com/5app/base5-ui/commit/2014106846eaecb7ee386ff843af8fc2c405dc83))
+
 # [13.1.0](https://github.com/5app/base5-ui/compare/v13.0.1...v13.1.0) (2021-03-08)
 
 
