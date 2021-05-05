@@ -1,13 +1,4 @@
-function getScrollParent(element) {
-	if (!element) {
-		return null;
-	}
-	if (element.scrollHeight > element.clientHeight) {
-		return element;
-	} else {
-		return getScrollParent(element.parentNode);
-	}
-}
+import getScrollParent from './getScrollParent';
 
 /**
  * Vertically Scrolls an element into view if it's not visible yet.
@@ -31,7 +22,5 @@ function scrollIntoViewIfNeeded(element) {
 		element.scrollIntoView();
 	}
 }
-
-export {getScrollParent};
 
 export default scrollIntoViewIfNeeded;
