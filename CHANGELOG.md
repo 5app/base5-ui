@@ -1,3 +1,10 @@
+## [13.1.2](https://github.com/5app/base5-ui/compare/v13.1.1...v13.1.2) (2021-05-05)
+
+
+### Bug Fixes
+
+* **utils:** Improve getScrollParent ([944fa64](https://github.com/5app/base5-ui/commit/944fa647ad044d35e2cae30bf29eb5ce989f757d))
+
 ## [13.1.1](https://github.com/5app/base5-ui/compare/v13.1.0...v13.1.1) (2021-03-30)
 
 
