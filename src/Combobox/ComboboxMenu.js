@@ -8,12 +8,8 @@ import PopoverCard from '../PopoverCard';
 import {ComboboxContext} from './Combobox';
 
 function ComboboxMenu({children, 'aria-label': ariaLabel}) {
-	const {
-		popover,
-		itemList,
-		statusMessage,
-		shouldShowStatusMessage,
-	} = useContext(ComboboxContext);
+	const {popover, itemList, statusMessage, shouldShowStatusMessage} =
+		useContext(ComboboxContext);
 
 	return (
 		<PopoverCard

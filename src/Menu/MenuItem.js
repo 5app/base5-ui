@@ -10,18 +10,13 @@ import {MenuContext} from './Menu';
 function MenuItem({icon, isDisabled, onClick, children}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(MenuContext);
-	const {
-		id,
-		select,
-		highlight,
-		useHighlighted,
-		clearHighlightedItem,
-	} = itemList.useItem({
-		ref: itemRef,
-		text: children,
-		value: children,
-		disabled: isDisabled,
-	});
+	const {id, select, highlight, useHighlighted, clearHighlightedItem} =
+		itemList.useItem({
+			ref: itemRef,
+			text: children,
+			value: children,
+			disabled: isDisabled,
+		});
 
 	return (
 		<MenuListUI.Item

@@ -1,10 +1,10 @@
 module.exports = {
-	plugins: ['react-hooks', 'prettier', 'jsx-a11y'],
+	plugins: ['react-hooks', 'jsx-a11y'],
 	extends: [
 		'5app',
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
-		'prettier',
+		'prettier'
 	],
 	parser: 'babel-eslint',
 	parserOptions: {
@@ -23,7 +23,6 @@ module.exports = {
 		'no-unused-vars': [2, {ignoreRestSiblings: true}],
 		'no-console': [2, {allow: ['error', 'warn']}],
 		'prefer-template': 0,
-		'prettier/prettier': 'error',
 		'react/jsx-no-bind': [2, {allowArrowFunctions: true, ignoreRefs: true}],
 		'react/prop-types': 0,
 		'react-hooks/rules-of-hooks': 'error',

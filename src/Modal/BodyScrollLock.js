@@ -13,7 +13,8 @@ function useScrollLockStyles({isLocked}) {
 			);
 		} else if (originalScrollPos !== null) {
 			// Restore original scroll position
-			document.documentElement.scrollTop = document.body.scrollTop = originalScrollPos;
+			document.documentElement.scrollTop = document.body.scrollTop =
+				originalScrollPos;
 			setOriginalScrollPos(null);
 		}
 		// We only want the hook to run when `isLocked` changes,

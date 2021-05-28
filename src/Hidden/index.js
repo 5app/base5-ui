@@ -31,15 +31,8 @@ const InnerHidden = styled(Box).withConfig({
 `;
 
 const Hidden = forwardRef((props, ref) => {
-	const {
-		above,
-		below,
-		as,
-		accessible,
-		inline,
-		children,
-		...otherProps
-	} = props;
+	const {above, below, as, accessible, inline, children, ...otherProps} =
+		props;
 
 	if (!above && !below) {
 		console.warn(

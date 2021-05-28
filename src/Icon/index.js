@@ -15,15 +15,8 @@ const sizeMap = {
 };
 
 const Icon = forwardRef((props, ref) => {
-	const {
-		name,
-		scale,
-		size,
-		spacingLeft,
-		spacingRight,
-		theme,
-		...otherProps
-	} = props;
+	const {name, scale, size, spacingLeft, spacingRight, theme, ...otherProps} =
+		props;
 
 	const Glyph = iconMap[name] || iconMap.x;
 	const hasScale = scale !== null && scale !== undefined;

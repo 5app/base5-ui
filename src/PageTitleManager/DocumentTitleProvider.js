@@ -12,9 +12,8 @@ function DocumentTitleProvider({baseTitle = '', isDisabled = false, children}) {
 
 function useSetDocumentTitle(pageTitle, {isDisabled = false} = {}) {
 	const prevTitleRef = useRef(document.title);
-	const {baseTitle, isDisabled: globalIsDisabled} = useContext(
-		DocumentTitleContext
-	);
+	const {baseTitle, isDisabled: globalIsDisabled} =
+		useContext(DocumentTitleContext);
 
 	const disabled = isDisabled || globalIsDisabled;
 

@@ -11,10 +11,9 @@ This section is still a work in progress, we'll try to add documentation around 
 
 ## Global theme
 
-
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import ThemeSection from 'base5-icons/ThemeSection';
 import Button from 'base5-icons/Button';
@@ -22,14 +21,14 @@ import Button from 'base5-icons/Button';
 import theme from 'base5-icons/theme';
 
 function App() {
-  return (
-    <ThemeSection name="page" baseTheme={theme}>
-    	<Button>Hello world!</Button>
-    </ThemeSection>
-  );
+	return (
+		<ThemeSection name="page" baseTheme={theme}>
+			<Button>Hello world!</Button>
+		</ThemeSection>
+	);
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 
 ReactDOM.render(<App />, rootElement);
 ```

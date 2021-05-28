@@ -10,16 +10,12 @@ import {NavMenuContext} from './NavMenu';
 function NavMenuItem({as, children, text, icon, ...otherProps}) {
 	const itemRef = useRef();
 	const {itemList} = useContext(NavMenuContext);
-	const {
-		select,
-		highlight,
-		useHighlighted,
-		clearHighlightedItem,
-	} = itemList.useItem({
-		ref: itemRef,
-		text: text || children,
-		value: text || children,
-	});
+	const {select, highlight, useHighlighted, clearHighlightedItem} =
+		itemList.useItem({
+			ref: itemRef,
+			text: text || children,
+			value: text || children,
+		});
 
 	if (typeof children !== 'string' && !text) {
 		console.warn(
