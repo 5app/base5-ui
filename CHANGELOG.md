@@ -1,3 +1,10 @@
+## [13.1.3](https://github.com/5app/base5-ui/compare/v13.1.2...v13.1.3) (2021-05-28)
+
+
+### Bug Fixes
+
+* **Time:** component in tests, add locale ([e0ebeee](https://github.com/5app/base5-ui/commit/e0ebeeec3f8361dae8b4412076a7deeacebedb76))
+
 ## [13.1.2](https://github.com/5app/base5-ui/compare/v13.1.1...v13.1.2) (2021-05-05)
 
 
