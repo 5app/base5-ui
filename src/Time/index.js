@@ -63,6 +63,7 @@ Time.propTypes = {
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
 	]),
+	locale: PropTypes.string,
 	readoutFunctions: PropTypes.object,
 };
 

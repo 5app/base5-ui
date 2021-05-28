@@ -51,7 +51,7 @@ describe('Time', () => {
 			offset ? `, offset:${offset}` : ''
 		}${dateTime ? `, dateTime:${dateTime}` : ''}, expect ${text}`, () => {
 			const {container} = render(
-				<Time dateTime={dateTime} systemTime={systemTime} />
+				<Time dateTime={dateTime} systemTime={systemTime} locale="en" />
 			);
 
 			const time = container.querySelector('time');
