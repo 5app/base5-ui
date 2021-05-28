@@ -2,7 +2,7 @@ import React, {useContext, forwardRef} from 'react';
 import useMergedRefs from '../useMergedRefs';
 import {ComboboxContext} from './Combobox';
 
-const ComboboxInput = forwardRef(function ComboboxInput(props, outerRef) {
+const ComboboxInput = forwardRef((props, outerRef) => {
 	const {
 		as: Component = 'input',
 		forwardedAs,
@@ -40,5 +40,7 @@ const ComboboxInput = forwardRef(function ComboboxInput(props, outerRef) {
 		<Component {...getInputProps(otherProps)} {...refs} as={forwardedAs} />
 	);
 });
+
+ComboboxInput.displayName = 'ComboboxInput';
 
 export default ComboboxInput;

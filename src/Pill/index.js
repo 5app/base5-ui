@@ -236,7 +236,7 @@ function defaultIconRenderer({iconName, iconColor}) {
 	);
 }
 
-const Pill = forwardRef(function Pill(props, ref) {
+const Pill = forwardRef((props, ref) => {
 	const {
 		as,
 		background,
@@ -313,6 +313,8 @@ const Pill = forwardRef(function Pill(props, ref) {
 		</ConditionalFlexWrapper>
 	);
 });
+
+Pill.displayName = 'Pill';
 
 Pill.defaultProps = {
 	iconRenderer: defaultIconRenderer,

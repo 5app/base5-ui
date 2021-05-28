@@ -119,50 +119,55 @@ Stack.propTypes = {
 
 const StandaloneStackContext = createContext();
 
-const StackWrapper = forwardRef(function StackWrapper(
-	{children, as, spacing, breakpoints, ...otherProps},
-	ref
-) {
-	const [wrapperAs, itemAs] = getRoles(as);
-	return (
-		<Wrapper
-			{...otherProps}
-			ref={ref}
-			as={wrapperAs}
-			compensateSpacing={spacing}
-			breakpoints={breakpoints}
-		>
-			<StandaloneStackContext.Provider
-				value={{as: itemAs, spacing, breakpoints}}
+const StackWrapper = forwardRef(
+	({children, as, spacing, breakpoints, ...otherProps}, ref) => {
+		const [wrapperAs, itemAs] = getRoles(as);
+		return (
+			<Wrapper
+				{...otherProps}
+				ref={ref}
+				as={wrapperAs}
+				compensateSpacing={spacing}
+				breakpoints={breakpoints}
+			>
+				<StandaloneStackContext.Provider
+					value={{as: itemAs, spacing, breakpoints}}
+				>
+					{children}
+				</StandaloneStackContext.Provider>
+			</Wrapper>
+		);
+	}
+);
+
+StackWrapper.displayName = 'StackWrapper';
+
+const StackItem = forwardRef(
+	(
+		{children, hiddenAbove, hiddenBelow, allowUnknownProps, ...otherProps},
+		ref
+	) => {
+		const {as, spacing, breakpoints} = useContext(StandaloneStackContext);
+
+		const Component = hiddenAbove || hiddenBelow ? Hidden : Box;
+
+		return (
+			<Component
+				{...(allowUnknownProps ? otherProps : undefined)}
+				ref={ref}
+				as={as}
+				pt={spacing}
+				below={hiddenBelow}
+				above={hiddenAbove}
+				breakpoints={breakpoints}
 			>
 				{children}
-			</StandaloneStackContext.Provider>
-		</Wrapper>
-	);
-});
+			</Component>
+		);
+	}
+);
 
-const StackItem = forwardRef(function StackItem(
-	{children, hiddenAbove, hiddenBelow, allowUnknownProps, ...otherProps},
-	ref
-) {
-	const {as, spacing, breakpoints} = useContext(StandaloneStackContext);
-
-	const Component = hiddenAbove || hiddenBelow ? Hidden : Box;
-
-	return (
-		<Component
-			{...(allowUnknownProps ? otherProps : undefined)}
-			ref={ref}
-			as={as}
-			pt={spacing}
-			below={hiddenBelow}
-			above={hiddenAbove}
-			breakpoints={breakpoints}
-		>
-			{children}
-		</Component>
-	);
-});
+StackItem.displayName = 'StackItem';
 
 export {StackWrapper, StackItem};
 
