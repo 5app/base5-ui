@@ -18,7 +18,7 @@
 		"semantic-release": "semantic-release",
 		"test": "jest /src && npm run lint",
 		"test:cover": "jest /src --coverage && npm run lint",
-		"prepare": "husky install"
+		"prepare": "cd .. && husky install dist/.husky"
 	},
 	"repository": {
 		"type": "git",
