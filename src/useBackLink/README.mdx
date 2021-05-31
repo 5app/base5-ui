@@ -16,11 +16,11 @@ Hard-coding back links in an app where pages may have different entry points can
 
 It might be tempting to just mirror the browser's back button behaviour using `history.back` to create back buttons on your site. However, this comes with several downsides:
 
-1. It doesn't work when there's no browser history, for example after opening a new browser window. If your user clicked a link in an email to arrive on an article page with a button wired up to `history.back`, that button would simply do nothing. Of course it would be much better if it took them to an article overview page or another fallback location instead.
+1. It doesn't work when there's no browser history, for example after opening a new browser window. If your user opened a link in an email to arrive on a page with a button wired up to `history.back`, that button would simply do nothing. It would be much better if it took them to an overview page or another fallback location instead.
 
 1. Conflicts with manual navigation. A user may navigate back on your site by clicking a regular link, which will be registered by the browser as "forward navigation". This means that a new history entry will be created even though the user has navigated backwards relative to your page's hierarchy or structure.
 
-1. Circular navigation: While users expect their _browser_ to take them back exactly where they were when they click the browser's back button, they don't necessarily expect back links on your site to work the same way, instead they might map them to the site's hierarchy instead. Imagine navigating from the homepage of a web shop to a category page. On the category page, you click on a product, then return to the category page. If that category page had a "Back" button, where would you expect it to take you? Back to the product you just viewed, or back to the homepage? I'd suspect that most users would expect to be taken back to the homepage (i.e. higher up in the site hierarchy), yet `history.back` would simply take them back to the product.
+1. Circular navigation: While users expect their _browser_ to take them back exactly where they were when they click the browser's back button, they don't necessarily expect back links on your site to work the same way. For example, they might expect them to match the site's hierarchy instead. Imagine navigating from the homepage of a web shop to a category page. On the category page, you click on a product, then return to the category page. If that category page had a "Back" button, where would you expect it to take you? Back to the product you just viewed, or back to the homepage? I'd suspect that most users would expect to be taken back to the homepage (i.e. higher up in the site hierarchy), yet `history.back` would simply take them back to the product.
 
     Of course the back link on the category page could be hard-coded to always point to the homepage, but what if categories could be navigated to from various other pages in the shop?
 
@@ -57,7 +57,7 @@ function BackLink({fallbackLink, children}) {
 
 Pass the location object or the current path to the `location` prop of the `BackLinkProvider` component, and pass the same property to the `track` prop, making sure that it is wrapped in an array.
 
-The `track` prop of the `BackLinkProvider` component works similarly to the dependency array of React's `useEffect` hook. Whenever any variable in the array changes, `BackLinkProvider` will update its history. This means you don't have to rely solely on the pathname for tracking back link changes, but you can also include query parameters or any other variable you want to track.
+The `track` prop of the `BackLinkProvider` component works similarly to the dependency array of React's `useEffect` hook. Whenever any variable in the array changes, `BackLinkProvider` will create a new entry in its history. This means you don't have to rely solely on the pathname for tracking back link changes, but you can also include query parameters or other variables you want to track.
 
 The example below shows how the two query parameters `modal` and `page` are now also taken into account for creating new entries in the history, even if `pathname` stays unchanged.
 
@@ -75,7 +75,9 @@ return (
 
 Now that `BackLinkProvider` knows when to update its history, it'll keep track of the user's navigation in a linear fashion. It doesn't work the same as the browser's history, though: To avoid the circular navigation issues mentioned earlier, our history doesn't allow duplicate entries. So as soon as the user navigates to a page that already exists in the history, the existing page will be made the new user location, and any later history entries will be discarded.
 
-If we want to take our site's hierarchy into account, we also need to pass it a function that, given the current location, will return that location's hierarchy level. This function should be passed to the `getLocationLevel` prop as shown below. (Note the use of the `matchPath` helper from react-router, which helps us to find out which route we're on.)
+### Hierarchy-aware history
+
+If we want to take our site's hierarchy into account, we also need to pass the Provider compoent a function that, given the current location, will return that location's hierarchy level. This function should be passed to the `getLocationLevel` prop as shown below. (Note the use of the `matchPath` helper from react-router, which helps us to find out which route we're on.)
 
 ```js
 import {matchPath} from 'react-router';
@@ -99,9 +101,9 @@ return (
 );
 ```
 
-Now, the `backLink` returned from the `useBackLink` hook will return the previously visited page of the current hierarchy level – if there is one. If there's no previous page on the current level, it'll point to the last page of the _previous_ hierarchy level.
+Now, the `useBackLink` hook will return a link to the previously visited page of the current hierarchy level – if there is one. If there's no previous page on the current level, it'll point to the last page of the _previous_ hierarchy level.
 
-When using the hook, you can also choose to _always_ go back up one hierarchy level. This is useful to avoid the circular navigation issue described earlier, for example on overview pages that have local navigation (think tabs or a side bar with links). Make sure that all sibling pages report the same hierarchy, and a back link wired up as shown below will always point to the last page viewed on the nearest hierarchy level, ignoring any local navigation that has taken place.
+You can also ask the hook to _always_ return a link from a higher hierarchy level. This is useful to avoid the circular navigation issue described earlier, for example on overview pages that have local navigation (think tabs or a side bar with links). Make sure that all sibling pages report the same hierarchy, and a back link wired up as shown below will always point to the last page viewed on the nearest hierarchy level, ignoring any local navigation that has taken place.
 
 ```js
 function BackLink({fallback, children}) {

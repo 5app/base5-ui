@@ -30,24 +30,47 @@ function BackLinkProvider({
 	wasRedirected,
 }) {
 	const [historyStack, setHistoryStack] = useState([]);
-	const indexOfPreviousEntry = useRef(null);
+	const indexesOfPreviousEntry = useRef(null);
+	const haveTrackedDependenciesChanged = useRef(false);
+
+	// We track dependencies in this separate effect because
+	// the main effect needs to run every time the location changes.
+	// This allows us to only create _new_ history entries when
+	// a tracked dependency changes, but to keep the current
+	// location entry up to date with all changes, tracked or not.
+	useEffect(() => {
+		haveTrackedDependenciesChanged.current = true;
+	}, track); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		const wrappedLocation = {
 			location,
 			id: getLocationId(track),
 		};
-		const locationInHistory = findInHistoryStack(
+		const historyStackIndexes = findInHistoryStack(
 			wrappedLocation,
 			historyStack
 		);
-		const locationLevel = locationInHistory
-			? locationInHistory[0]
-			: getLocationLevel(location);
+
+		const [locationLevel, entryIndex] = historyStackIndexes || [
+			getLocationLevel(location),
+			0,
+		];
 
 		setHistoryStack(prevHistory => {
 			let newHistory = [...prevHistory];
-			if (!locationInHistory) {
+
+			// If the tracked dependencies haven't changed, we only
+			// update the current location with its latest state, so
+			// that going back always restores the last viewed URL state
+			if (!haveTrackedDependenciesChanged.current) {
+				newHistory[locationLevel][entryIndex] = wrappedLocation;
+
+				return newHistory;
+			}
+
+			if (!historyStackIndexes) {
+				// If location wasn't found in history
 				if (newHistory[locationLevel]) {
 					// If entries exist at the location's level, append it
 					newHistory[locationLevel] = [
@@ -60,9 +83,7 @@ function BackLinkProvider({
 				}
 			} else {
 				// The location already exists somewhere in the history stack,
-				// so we discard any entries after it.
-				const entryIndex = locationInHistory[1];
-
+				// so we discard any entries after it
 				newHistory[locationLevel] = newHistory[locationLevel].slice(
 					0,
 					entryIndex + 1
@@ -77,12 +98,12 @@ function BackLinkProvider({
 			if (wasRedirected) {
 				newHistory = removePreviousEntry(
 					newHistory,
-					indexOfPreviousEntry.current
+					indexesOfPreviousEntry.current
 				);
 				// Set to null so we don't try to remove it again
-				indexOfPreviousEntry.current = null;
+				indexesOfPreviousEntry.current = null;
 			} else {
-				indexOfPreviousEntry.current = [
+				indexesOfPreviousEntry.current = [
 					locationLevel,
 					newHistory[locationLevel].length - 1,
 				];
@@ -90,7 +111,11 @@ function BackLinkProvider({
 
 			return newHistory;
 		});
-	}, track); // eslint-disable-line react-hooks/exhaustive-deps
+
+		return () => {
+			haveTrackedDependenciesChanged.current = false;
+		};
+	}, [location]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const backLinks = getBackLinks(historyStack);
 
