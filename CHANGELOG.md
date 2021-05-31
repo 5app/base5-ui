@@ -1,3 +1,10 @@
+## [13.1.5](https://github.com/5app/base5-ui/compare/v13.1.4...v13.1.5) (2021-05-31)
+
+
+### Bug Fixes
+
+* Maybe fix npm publish ([c79c46b](https://github.com/5app/base5-ui/commit/c79c46bd17d726e366e4f1d615ec1ee31e9364c4))
+
 ## [13.1.4](https://github.com/5app/base5-ui/compare/v13.1.3...v13.1.4) (2021-05-31)
 
 
