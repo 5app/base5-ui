@@ -1,3 +1,10 @@
+## [13.1.4](https://github.com/5app/base5-ui/compare/v13.1.3...v13.1.4) (2021-05-31)
+
+
+### Bug Fixes
+
+* Fix useBackLink returning stale location ([b79f2c5](https://github.com/5app/base5-ui/commit/b79f2c594b0640b8328fdcc942c043a300a57e48))
+
 ## [13.1.3](https://github.com/5app/base5-ui/compare/v13.1.2...v13.1.3) (2021-05-28)
 
 
