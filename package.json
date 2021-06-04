@@ -75,7 +75,7 @@
 		"styled-components": "^5.2.1"
 	},
 	"dependencies": {
-		"@popperjs/core": "^2.5.4",
+		"@popperjs/core": "^2.9.2",
 		"5app-use-item-list": "0.1.1",
 		"aria-hidden": "^1.1.1",
 		"chartist": "^0.11.3",
@@ -85,7 +85,7 @@
 		"popper-max-size-modifier": "^0.2.0",
 		"react-focus-lock": "^2.3.1",
 		"react-merge-refs": "^1.0.0",
-		"react-popper": "^2.2.3"
+		"react-popper": "^2.2.5"
 	},
 	"commitlint": {
 		"extends": [
