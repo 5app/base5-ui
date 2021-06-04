@@ -12,12 +12,7 @@ import useUniqueId from '../useUniqueId';
 
 const MenuContext = createContext();
 
-function Menu({
-	id: idProp,
-	menuPlacement = 'bottom',
-	menuPositionFixed,
-	children,
-}) {
+function Menu({id: idProp, menuPlacement, menuPositionFixed, children}) {
 	const buttonRef = useRef();
 	const menuListRef = useRef();
 	const popoverRef = useRef();
