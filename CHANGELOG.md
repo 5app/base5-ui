@@ -1,3 +1,10 @@
+# [13.2.0](https://github.com/5app/base5-ui/compare/v13.1.5...v13.2.0) (2021-06-04)
+
+
+### Features
+
+* New components Tooltip & TooltipButton ([a92f89b](https://github.com/5app/base5-ui/commit/a92f89b86ee6dd9082582ed3b7046ccd72153dea))
+
 ## [13.1.5](https://github.com/5app/base5-ui/compare/v13.1.4...v13.1.5) (2021-05-31)
 
 
