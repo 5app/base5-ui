@@ -144,7 +144,7 @@ ButtonCore.propTypes = {
 	type: PropTypes.string,
 	/**
 	 * On links, this adds the className `is-active` to the rendered element when true.
-	 * Useful so you can use this class as the only styling hook in combination with
+	 * Use this as a styling hook, e.g. in combination with
 	 * react-router's `NavLink` and its `activeClassName` prop.
 	 * On buttons, this turns the button into a toggle button and adds the
 	 * aria-pressed attribute to the element.

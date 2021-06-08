@@ -1,0 +1,79 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import CenterContent from './';
+import Box from '../Box';
+import PodcastIcon from '../icons/AssetPodcast';
+
+<Meta
+	title="Components/CenterContent"
+	component={CenterContent}
+	argTypes={{
+		height: {
+			control: {type: 'number'},
+		},
+		contentWidth: {
+			control: {type: 'number'},
+		},
+	}}
+/>
+
+# CenterContent
+
+```js
+import CenterContent from 'base5-ui/CenterContent';
+```
+
+Use the `CenterContent` component to center arbitrarily sized content horizontally and vertically inside of its container.
+
+## Usage notes
+
+The component renders two wrapper `div`s and is meant to be used in large components with an unpredictable height (e.g. modal popups or headlines in a banner). Don't use it for centering an icon within a circle or text within a button.
+
+Use the `height` prop to define a minimum height for the component. If the content is taller than the height specified, the component will grow accordingly.
+
+Instead of defining a height, you can also use the `fillParent` prop which will make the component grow to match the width and height of its container. When using this approach, make sure the container has a position other than `static` (for example `relative`, `absolute`, or `fixed`), and is not set to `overflow: hidden` as that could lead to longer content being cut off.
+
+## Examples
+
+<Canvas>
+	<Story name="Simple example" args={{height: 350}}>
+		{props => (
+			<Box background="shaded" mb="m">
+				<CenterContent {...props}>
+					<PodcastIcon vAlign /> Hello
+				</CenterContent>
+			</Box>
+		)}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name="Overflow example"
+		args={{fillParent: true, spacing: 's', contentWidth: 200}}
+	>
+		{props => (
+			<Box
+				position="relative"
+				width={200}
+				height={200}
+				border="thin"
+				overflow="auto"
+				style={{resize: 'both'}}
+			>
+				<CenterContent {...props}>
+					This is a container that centres its content, but if there's
+					not enough space to fit it all, it can be scrolled to reveal
+					all content, instead of cutting it off.
+					<br />
+					Note that you can resize the container to see how it behaves
+					at different sizes.
+				</CenterContent>
+			</Box>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={CenterContent} />

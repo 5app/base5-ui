@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {alpha} from '../../utils/colors';
+import {alpha} from '../utils/colors';
 
-import Popover from '../../Popover';
-import Text from '../../Text';
-import VisuallyHidden from '../../VisuallyHidden';
+import Popover from '../Popover';
+import Text from '../Text';
+import VisuallyHidden from '../VisuallyHidden';
 
 const ReadoutList = styled.ul`
 	position: absolute;

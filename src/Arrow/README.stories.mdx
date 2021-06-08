@@ -1,0 +1,57 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Arrow, {VALID_PLACEMENT_PROPS} from './';
+import Box from '../Box';
+
+<Meta
+	title="Components/Arrow"
+	component={Arrow}
+	argTypes={{
+		size: {
+			control: {type: 'number'},
+		},
+		distanceFromEdge: {
+			control: {type: 'number'},
+		},
+		placement: {
+			control: {type: 'radio'},
+			options: VALID_PLACEMENT_PROPS,
+		},
+	}}
+/>
+
+# Arrow
+
+```js
+import Arrow from 'base5-ui/Arrow';
+```
+
+The Arrow component is a tooltip "arrow" that can be dropped into any container element. It inherits the container's styling and can be positioned using a popper.js placement string (e.g. `left`, `top-start`, `right-end`).
+
+For the positioning to work, the parent element needs to have a position other than `static`, e.g. `relative`, `absolute`, or `fixed`.
+
+<Canvas>
+	<Story
+		name="Arrow"
+		args={{placement: 'top-end', size: 16, distanceFromEdge: 20}}
+	>
+		{args => (
+			<Box
+				position="relative"
+				width={250}
+				p="s"
+				color="text"
+				backgroundColor="background"
+				border="dashed"
+				borderRadius="card"
+			>
+				Hello, I'm a box with a pointy arrow.
+				<Arrow {...args} />
+			</Box>
+		)}
+	</Story>
+</Canvas>
+
+## Arrow props
+
+<ArgsTable story="Arrow" />

@@ -1,10 +1,11 @@
 import React, {useRef} from 'react';
 import styled, {css} from 'styled-components';
+import PropTypes from 'prop-types';
 
-import {pxToRem} from '../../utils/units';
-import {getColorBlock} from '../../utils/colors';
+import {pxToRem} from '../utils/units';
+import {getColorBlock} from '../utils/colors';
 
-import Box from '../../Box';
+import Box from '../Box';
 
 import useChartist from '../useChartist';
 import StripesPattern from './StripesPattern';
@@ -101,6 +102,14 @@ function SimpleGauge({
 		</Wrapper>
 	);
 }
+
+SimpleGauge.propTypes = {
+	value: PropTypes.number,
+	height: PropTypes.number,
+	color: PropTypes.string,
+	isEmpty: PropTypes.bool,
+	emptyContent: PropTypes.node,
+};
 
 // @component
 export default SimpleGauge;

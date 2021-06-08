@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {getColorBlock} from '../../utils/colors';
+import {getColorBlock} from '../utils/colors';
 
 const Wrapper = styled.div`
 	height: 0;

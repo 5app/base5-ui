@@ -1,10 +1,11 @@
 import React, {useRef} from 'react';
 import styled, {css} from 'styled-components';
+import PropTypes from 'prop-types';
 
-import {pxToRem} from '../../utils/units';
-import {getColorBlock} from '../../utils/colors';
+import {pxToRem} from '../utils/units';
+import {getColorBlock} from '../utils/colors';
 
-import Box from '../../Box';
+import Box from '../Box';
 
 import useChartist from '../useChartist';
 import ChartTooltips from './ChartTooltips';
@@ -134,5 +135,17 @@ function SimpleChart({
 	);
 }
 
-// @component
+SimpleChart.propTypes = {
+	labels: PropTypes.arrayOf(PropTypes.string),
+	data: PropTypes.arrayOf(PropTypes.number),
+	height: PropTypes.number,
+	name: PropTypes.string,
+	color: PropTypes.string,
+	tooltipComponent: PropTypes.elementType,
+	tooltipProps: PropTypes.object,
+	getTooltipReadout: PropTypes.func,
+	isEmpty: PropTypes.bool,
+	emptyContent: PropTypes.node,
+};
+
 export default SimpleChart;

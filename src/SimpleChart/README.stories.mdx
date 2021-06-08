@@ -1,0 +1,63 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import SimpleChart from './';
+import ChartsReadme from './CHARTS_README.md';
+
+<Meta title="Components/SimpleChart" component={SimpleChart} argTypes={{}} />
+
+# SimpleChart
+
+```js
+import SimpleChart from 'base5-ui/SimpleChart';
+```
+
+<ChartsReadme />
+
+## API
+
+Takes a `data` prop that must contain of a simple array of number values which will then be plotted out as a pretty graph.
+
+You can also provide a `name` prop for the tooltip value and an array of `labels` for the x axis. When you specify more data points than labels, the labels will repeat to match the number of data values.
+
+<Canvas>
+	<Story
+		name="Normal"
+		args={{
+			data: [5, 3, 4, 0, 5, 2, 1],
+			height: 125,
+			color: 'links',
+			tooltipProps: {p: 'xxs'},
+		}}
+	>
+		{props => <SimpleChart {...props} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name="With labels"
+		args={{
+			name: 'Opens',
+			data: [2, 1, 9, 6, 6, 3, 7, 3, 6, 7, 8, 10],
+			labels: ['Mon', 'Tue', 'Wed'],
+			height: 125,
+			color: 'highlight',
+			tooltipProps: {p: 'xs', variant: 'inverted'},
+		}}
+	>
+		{props => <SimpleChart {...props} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name="Placeholder"
+		args={{isEmpty: true, height: 125, color: 'positive'}}
+	>
+		{props => <SimpleChart {...props} />}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="With labels" />

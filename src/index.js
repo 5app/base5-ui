@@ -19,8 +19,8 @@ export * as MenuList from './MenuList';
 export {default as Pill} from './Pill';
 export {default as Popover} from './Popover';
 export {default as Portal} from './Portal';
-export {default as SimpleChart} from './charts/SimpleChart';
-export {default as SimpleGauge} from './charts/SimpleGauge';
+export {default as SimpleChart} from './SimpleChart';
+export {default as SimpleGauge} from './SimpleGauge';
 export {default as Stack} from './Stack';
 export {default as Status} from './Status';
 export {default as Switch} from './Switch';
@@ -38,6 +38,7 @@ export {
 	BackLinkContext,
 } from './useBackLink';
 export {default as useBreakpoints} from './useBreakpoints';
+export {default as useChartist} from './useChartist';
 export {default as useEventListener} from './useEventListener';
 export {default as useFocusOnMount} from './useFocusOnMount';
 export {default as useMergedRefs} from './useMergedRefs';

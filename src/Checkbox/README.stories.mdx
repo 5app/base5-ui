@@ -1,0 +1,65 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Text from '../Text';
+import Checkbox from './';
+
+<Meta
+	title="Components/Checkbox"
+	component={Checkbox}
+	argTypes={{
+		scale: {control: {type: 'number', min: 0.5, step: 0.25}},
+		onChange: {action: 'change'},
+	}}
+/>
+
+# Checkbox
+
+```js
+import Checkbox from 'base5-ui/Checkbox';
+```
+
+Pretty and accessible checkbox that'll match your theme colours.
+
+## Examples
+
+<Canvas>
+	<Story name="Default" args={{checked: true}}>
+		{props => (
+			<label>
+				<Checkbox {...props} /> Regular option
+			</label>
+		)}
+	</Story>
+	<Story name="Disabled" args={{checked: true, disabled: true}}>
+		{props => (
+			<Text dimmed as="label">
+				<Checkbox {...props} /> Disabled option
+			</Text>
+		)}
+	</Story>
+	<Story name="Indeterminate" args={{indeterminate: true}}>
+		{props => (
+			<Text dimmed as="label">
+				<Checkbox {...props} /> Indeterminate option
+			</Text>
+		)}
+	</Story>
+	<Story name="Scaled-down" args={{scale: 0.75}}>
+		{props => (
+			<label>
+				<Checkbox {...props} /> Scaled-down checkbox
+			</label>
+		)}
+	</Story>
+	<Story name="Auto-sizing" args={{scale: 'auto'}}>
+		{props => (
+			<Text as="label" size="xl">
+				<Checkbox {...props} /> Checkbox that scales along with text
+			</Text>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Checkbox} />
