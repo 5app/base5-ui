@@ -1,9 +1,5 @@
----
-name: Table
-menu: Components
----
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Playground, Props} from 'docz';
 import Box from '../Box';
 import Icon from '../Icon';
 import Table from './';
@@ -12,7 +8,13 @@ import CenterContent from '../CenterContent';
 import dummyData from './demo/dummyData';
 import DemoTableState from './demo/DemoTableState';
 
+<Meta title="Components/Table" component={Table} />
+
 # Table
+
+```jsx
+import Table, {Column} from 'base5-ui/Table';
+```
 
 A table component with a sticky header row and clickable headers for sorting.
 
@@ -39,18 +41,20 @@ The table data is provided as an array of objects. The `title` given to each col
 </Table>
 ```
 
-<Playground>
-	<Table data={dummyData.slice(0, 4)} itemKey="name">
-		<Column title="Name" />
-		<Column title="Country" name="region" />
-		<Column
-			title="Email domain"
-			cellRenderer={item => item.email.split('@')[1]}
-		/>
-		<Column title="Type" />
-		<Column title="Time" />
-	</Table>
-</Playground>
+<Canvas>
+	<Story name="Simple example">
+		<Table data={dummyData.slice(0, 4)} itemKey="name">
+			<Column title="Name" />
+			<Column title="Country" name="region" />
+			<Column
+				title="Email domain"
+				cellRenderer={item => item.email.split('@')[1]}
+			/>
+			<Column title="Type" />
+			<Column title="Time" />
+		</Table>
+	</Story>
+</Canvas>
 
 ### Simple example with object column config
 
@@ -81,52 +85,60 @@ You can also define your columns as an array of objects, if you prefer:
 -   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
 -   Enable sortable columns by adding `<Column sortable />` props and passing `sort` and `onRequestSort` props to `Table`
 
-<Playground>
-	<Box border="thin" borderRadius="large">
-		<DemoTableState data={dummyData.slice(4, 8)}>
-			{({data, sort: {column, order}, handleSort}) => (
-				<Table
-					shadedHeader
-					data={data}
-					itemKey="name"
-					rowHeader="Name"
-					sort={{
-						column,
-						order,
-					}}
-					onRequestSort={handleSort}
-					pl="xl"
-					pr={20}
-				>
-					<Column
-						title="Role"
-						width={75}
-						cellRenderer={item => (
-							<Icon
-								name={item.role === 'manager' ? 'star' : 'user'}
-								aria-label={
-									item.role === 'manager' ? 'Manager' : 'User'
-								}
-							/>
-						)}
-					/>
-					<Column
-						sortable
-						title="Name"
-						width="40%"
-						cellRenderer={item => <strong>{item.name}</strong>}
-					/>
-					<Column
-						sortable
-						title="Type"
-						subtitle="Random characters"
-					/>
-					<Column sortable title="Time" defaultOrder="desc" />
-				</Table>
-			)}
-		</DemoTableState>
-	</Box>
-</Playground>
+<Canvas>
+	<Story name="Customisation example">
+		<Box border="thin" borderRadius="large">
+			<DemoTableState data={dummyData.slice(4, 8)}>
+				{({data, sort: {column, order}, handleSort}) => (
+					<Table
+						shadedHeader
+						data={data}
+						itemKey="name"
+						rowHeader="Name"
+						sort={{
+							column,
+							order,
+						}}
+						onRequestSort={handleSort}
+						pl="xl"
+						pr={20}
+					>
+						<Column
+							title="Role"
+							width={75}
+							cellRenderer={item => (
+								<Icon
+									name={
+										item.role === 'manager'
+											? 'star'
+											: 'user'
+									}
+									aria-label={
+										item.role === 'manager'
+											? 'Manager'
+											: 'User'
+									}
+								/>
+							)}
+						/>
+						<Column
+							sortable
+							title="Name"
+							width="40%"
+							cellRenderer={item => <strong>{item.name}</strong>}
+						/>
+						<Column
+							sortable
+							title="Type"
+							subtitle="Random characters"
+						/>
+						<Column sortable title="Time" defaultOrder="desc" />
+					</Table>
+				)}
+			</DemoTableState>
+		</Box>
+	</Story>
+</Canvas>
 
 ### Sorting
 
@@ -143,30 +155,32 @@ Finally you'll need to tell the Table what to do when a header is clicked. That'
 
 The table below uses both modes – on medium sized screens, columns that don't fit are hidden, while the mobile view is active on very small screens.
 
-<Playground>
-	<Table
-		mobileViewBreakpoint="xxs"
-		data={dummyData.slice(8, 12)}
-		itemKey="name"
-		rowHeader="Name"
-	>
-		<Column
-			title="Role"
-			width={60}
-			cellRenderer={item => (
-				<Icon name={item.role === 'manager' ? 'star' : 'user'} />
-			)}
-		/>
-		<Column
-			title="Name"
-			width="40%"
-			cellRenderer={item => <strong>{item.name}</strong>}
-		/>
-		<Column title="Region" hideBelowBreakpoint="m" />
-		<Column title="Type" />
-		<Column title="Time" />
-	</Table>
-</Playground>
+<Canvas>
+	<Story name="Responsive example">
+		<Table
+			mobileViewBreakpoint="xxs"
+			data={dummyData.slice(8, 12)}
+			itemKey="name"
+			rowHeader="Name"
+		>
+			<Column
+				title="Role"
+				width={60}
+				cellRenderer={item => (
+					<Icon name={item.role === 'manager' ? 'star' : 'user'} />
+				)}
+			/>
+			<Column
+				title="Name"
+				width="40%"
+				cellRenderer={item => <strong>{item.name}</strong>}
+			/>
+			<Column title="Region" hideBelowBreakpoint="m" />
+			<Column title="Type" />
+			<Column title="Time" />
+		</Table>
+	</Story>
+</Canvas>
 
 ### Empty state
 
@@ -174,25 +188,27 @@ When no `data` array is provided, or when its length is `0`, the message "No dat
 
 Use the `CenterContent` component to make the content appear centred and take up a minimum height.
 
-<Playground>
-	<Table
-		emptyContent={
-			<CenterContent height={180}>Here be dragons</CenterContent>
-		}
-		rowHeader="Name"
-	>
-		<Column title="Role" width={60} />
-		<Column title="Name" width="40%" />
-		<Column title="Region" hideBelowBreakpoint="m" />
-		<Column title="Type" hideBelowBreakpoint="xs" />
-		<Column title="Time" />
-	</Table>
-</Playground>
+<Canvas>
+	<Story name="Empty state">
+		<Table
+			emptyContent={
+				<CenterContent height={180}>Here be dragons</CenterContent>
+			}
+			rowHeader="Name"
+		>
+			<Column title="Role" width={60} />
+			<Column title="Name" width="40%" />
+			<Column title="Region" hideBelowBreakpoint="m" />
+			<Column title="Type" hideBelowBreakpoint="xs" />
+			<Column title="Time" />
+		</Table>
+	</Story>
+</Canvas>
 
 ## Table props
 
-<Props of={Table} />
+<ArgsTable of={Table} />
 
 ## Column props
 
-<Props of={Column} />
+<ArgsTable of={Column} />

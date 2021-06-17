@@ -55,5 +55,4 @@ Card.propTypes = {
 	size: PropTypes.oneOf(VALID_SIZE_PROPS),
 };
 
-// @component
 export default Card;

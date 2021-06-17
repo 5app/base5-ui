@@ -165,5 +165,4 @@ PopoverCard.propTypes = {
 	scrollContainerRef: PropTypes.object,
 };
 
-// @component
 export default PopoverCard;

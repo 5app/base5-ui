@@ -1,6 +1,6 @@
 import React, {createContext, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from '5app-use-item-list';
+import {useItemList} from 'use-item-list';
 
 import {KEY_CODES} from '../constants';
 
@@ -189,5 +189,4 @@ Menu.propTypes = {
 
 export {MenuContext};
 
-// @component
 export default Menu;

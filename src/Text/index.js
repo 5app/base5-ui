@@ -65,5 +65,4 @@ Text.propTypes = {
 	]),
 };
 
-// @component
 export default Text;

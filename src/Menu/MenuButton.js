@@ -18,5 +18,4 @@ MenuButton.propTypes = {
 	icon: PropTypes.string,
 };
 
-// @component
 export default MenuButton;

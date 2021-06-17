@@ -31,5 +31,4 @@ Status.propTypes = {
 	'aria-relevant': PropTypes.string,
 };
 
-// @component
 export default Status;

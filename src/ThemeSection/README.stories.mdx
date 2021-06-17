@@ -1,0 +1,60 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Box from '../Box';
+import ThemeSection from './';
+
+<Meta
+	title="Components/ThemeSection"
+	component={ThemeSection}
+	argTypes={{
+		name: {
+			control: {type: 'radio'},
+			options: ['page', 'card', 'invertedCard', 'colorBlock'],
+		},
+		colorBlock: {
+			control: {type: 'select'},
+			options: [
+				undefined,
+				'alert-success',
+				'alert-fail',
+				'positive',
+				'neutral',
+				'negative',
+			],
+		},
+	}}
+/>
+
+# ThemeSection
+
+```jsx
+import ThemeSection from 'base5-ui/ThemeSection';
+```
+
+The `ThemeSection` component has two main functions:
+
+-   When used at the top of the app, it provides your app with a global theme object via the `baseTheme` prop
+-   When used throughout the app, it assigns "theme sections" from your global theme to all children of the component.
+
+To assign a theme section, set the `name` prop to a valid key from `theme.sections`. Any components inside of a ThemeSection will then use the colours defined for this section, until overwritten by a more deeply nested ThemeSection.
+
+You can also select a "color block" from the theme, as defined in `theme.globals.colorBlocks`. Color blocks are single colour values mapped to semantic names, e.g. `positive: 'green', negative: 'red'`. The mapped colour will be used as the background colour of the theme section, while the text and link colours will be automatically computed to be as contrasting/readable as possible.
+
+## Examples
+
+<Canvas>
+	<Story name="ThemeSection" args={{name: 'card'}}>
+		{props => (
+			<ThemeSection {...props}>
+				<Box background="background" color="text" p="s" m="m">
+					This is a simple box picking up its parent ThemeSection's
+					text and background colours.
+				</Box>
+			</ThemeSection>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="ThemeSection" />

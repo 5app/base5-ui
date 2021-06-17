@@ -14,13 +14,13 @@ npm i base5-ui styled-components
 
 ## Running the component library locally
 
-base5-ui comes with its own documentation tool & development playground powered by [docz](https://www.docz.site/). To check it out locally, clone this repo to your local machine, install its dependencies (`npm i`), and finally run the following command:
+base5-ui comes with its own documentation tool & development playground powered by [Storybook](https://storybook.js.org/). To check it out locally, clone this repo to your local machine, install its dependencies (`npm i`), and finally run the following command:
 
 ```
-npm run docz:dev
+npm run storybook
 ```
 
-The documentation environment should then open in your browser at http://localhost:3000, letting you browse all available components to inspect their API and see usage examples.
+The documentation environment should then open in your browser at http://localhost:6006, letting you browse all available components to inspect their API, read documentation and see usage examples.
 
 ## Using base5-ui
 
@@ -52,9 +52,9 @@ ReactDOM.render(<App />, rootElement);
 
 ## Updating the repo
 
-Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.mdx) before continuing here.
+> Want to add/edit icons? Please follow the steps outlined in the [icons README](/src/icons/README.mdx) before continuing here.
 
-To publish changes to the components in this repo, please follow these steps. The docs will automatically be updated after the changes were published.
+To publish changes to the components in this repo, please follow these steps. The online docs will automatically be updated after the changes were merged to the master branch.
 
 -   Commit your changes using semantic versioning prefixes:
     1. `fix:` or `refactor:` for a patch release (x.x.+1)

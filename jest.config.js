@@ -6,9 +6,10 @@ module.exports = {
 	collectCoverageFrom: [
 		'**/*.{js}',
 		'!**/docz/**',
+		'!**/src-icons/**',
 		'!**/node_modules/**',
 		'!**/test/**',
 	],
-	coveragePathIgnorePatterns: ['/node_modules/', '/docz/', '/test/'],
-	modulePathIgnorePatterns: ['/node_modules/', '/docz/'],
+	coveragePathIgnorePatterns: ['/node_modules/', '/.storybook/', '/.src-icons/', '/test/'],
+	modulePathIgnorePatterns: ['/node_modules/', '/.storybook/'],
 };

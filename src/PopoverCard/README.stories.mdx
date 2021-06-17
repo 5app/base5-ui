@@ -1,0 +1,46 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Box from '../Box';
+import Text from '../Text';
+import {VALID_VARIANT_PROPS, VALID_SIZE_PROPS} from '../Card';
+import PopoverCard from './';
+
+<Meta
+	title="Components/PopoverCard"
+	component={PopoverCard}
+	argTypes={{
+		variant: {
+			control: {type: 'select'},
+			options: VALID_VARIANT_PROPS,
+		},
+		size: {
+			control: {type: 'radio'},
+			options: VALID_SIZE_PROPS,
+		},
+		p: {
+			control: {type: 'select'},
+			options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+		},
+	}}
+/>
+
+# PopoverCard
+
+```jsx
+import PopoverCard from 'base5-ui/PopoverCard';
+```
+
+PopoverCard is a building block for creating tooltips and dropdown menus, built on top of the Card component.
+
+<Canvas>
+	<Story
+		name="PopoverCard"
+		args={{isOpen: true, renderInPlace: true, p: 's', variant: 'inverted'}}
+	>
+		{props => <PopoverCard {...props}>Popover content</PopoverCard>}
+	</Story>
+</Canvas>
+
+# Props
+
+<ArgsTable story="PopoverCard" />

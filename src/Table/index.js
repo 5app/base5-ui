@@ -504,5 +504,4 @@ Table.propTypes = {
 
 export {Column};
 
-// @component
 export default Table;

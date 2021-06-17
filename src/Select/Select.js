@@ -1,6 +1,6 @@
 import React, {createContext, useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from '5app-use-item-list';
+import {useItemList} from 'use-item-list';
 
 import {KEY_CODES} from '../constants';
 
@@ -214,5 +214,4 @@ Select.propTypes = {
 
 export {SelectContext};
 
-// @component
 export default Select;

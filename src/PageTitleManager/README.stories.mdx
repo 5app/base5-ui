@@ -1,12 +1,14 @@
----
-name: PageTitleManager
-menu: Components
----
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Props} from 'docz';
-import PageTitle from './PageTitle';
+import PageTitleManager, {PageTitle} from './';
+
+<Meta title="Components/PageTitleManager" component={PageTitleManager} />
 
 # PageTitleManager
+
+```jsx
+import PageTitleManager, {PageTitle} from 'base5-ui/PageTitleManager';
+```
 
 Create accessible page title announcements when navigating between pages in a single-page React app (SPA).
 
@@ -111,6 +113,10 @@ You can also define a "base page title" that will be added at the end of the doc
 </PageTitleManager>
 ```
 
+## `PageTitleManager` props
+
+<ArgsTable of={PageTitleManager} />
+
 ## `PageTitle` props
 
-<Props isToggle of={PageTitle} />
+<ArgsTable of={PageTitle} />

@@ -367,5 +367,4 @@ Button.propTypes = {
 	textOverflow: PropTypes.oneOf(VALID_OVERFLOW_PROPS),
 };
 
-// @component
 export default Button;

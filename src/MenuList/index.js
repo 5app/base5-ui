@@ -1,4 +1,5 @@
 import React, {forwardRef} from 'react';
+import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {getBackgroundShade, pxToRem} from '../utils';
@@ -90,6 +91,12 @@ const Link = styled(ButtonCore).withConfig({
 
 Link.defaultProps = {
 	stealthy: true,
+};
+
+Link.propTypes = {
+	isActive: PropTypes.bool,
+	isDisabled: PropTypes.bool,
+	isHighlighted: PropTypes.bool,
 };
 
 const IconWrapper = styled.span`

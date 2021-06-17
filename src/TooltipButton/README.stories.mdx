@@ -1,0 +1,28 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import TooltipButton from '../TooltipButton';
+
+<Meta title="Components/TooltipButton" component={TooltipButton} />
+
+# TooltipButton
+
+```jsx
+import TooltipButton from 'base5-ui/TooltipButton';
+```
+
+An extended version of the [Button](/src-button-readme) component with a built-in tooltip. The tooltip content will be used as the button's accessible label when the button doesn't have a label of its own (e.g. icon-only buttons). If the button already has a label, the tooltip content will be made available to assistive technologies as a description (using the `aria-describedby` attribute).
+
+## Example
+
+<Canvas>
+	<Story name="Button with label" args={{title: 'Hi, I am a useful tooltip'}}>
+		{props => <TooltipButton {...props}>Button with a label</TooltipButton>}
+	</Story>
+	<Story name="Button without label" args={{title: 'Add more content'}}>
+		{props => <TooltipButton {...props} icon="plus" color="primary" />}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Button with label" />

@@ -60,5 +60,4 @@ MenuItem.propTypes = {
 	isDisabled: PropTypes.bool,
 };
 
-// @component
 export default MenuItem;

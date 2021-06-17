@@ -76,5 +76,4 @@ PageTitle.propTypes = {
 	text: PropTypes.string,
 };
 
-// @component
 export default PageTitle;

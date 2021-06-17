@@ -10,7 +10,8 @@ function ThemeSection(props) {
 
 	const constructLocalTheme = useCallback(
 		(parentTheme = baseTheme) => {
-			const localThemeSection = parentTheme.sections[name];
+			const usedName = colorBlock ? 'colorBlock' : name;
+			const localThemeSection = parentTheme.sections[usedName];
 			const parentThemeSectionName = parentTheme.currentThemeSectionName;
 			const colorBlockOverrides = getReadableColorblock(
 				colorBlock,
@@ -22,7 +23,7 @@ function ThemeSection(props) {
 				...parentTheme,
 				...localThemeSection,
 				...colorBlockOverrides,
-				currentThemeSectionName: name,
+				currentThemeSectionName: usedName,
 				parent: parentTheme.sections[parentThemeSectionName],
 				parentThemeSectionName,
 			};
@@ -36,16 +37,36 @@ function ThemeSection(props) {
 }
 
 ThemeSection.propTypes = {
+	/**
+	 * Theme object to use as the base for all nested
+	 * ThemeSections. Usually this prop only needs to be
+	 * used once per app, to define its global theme.
+	 */
 	baseTheme: PropTypes.shape({
 		globals: PropTypes.object.isRequired,
 		sections: PropTypes.object.isRequired,
 	}),
-	colorBlock: PropTypes.string,
-	hasBgImage: PropTypes.bool,
+	/**
+	 * The key (name) of the theme section, as defined in `baseTheme.sections`
+	 */
 	name: PropTypes.string.isRequired,
+	/**
+	 * The key (name) of a colorBlock that you want to use
+	 * to define foreground and background colours for the section.
+	 * Your colorBlock definitions must be located at `baseTheme.globals.colorBlock`
+	 */
+	colorBlock: PropTypes.string,
+	/**
+	 * Enable this prop when defining a color block with a background
+	 * image. This will force its text colour to white, instead of a
+	 * calculated colour that contrasts with the color block (as that
+	 * colour will be covered by the image).
+	 * Make sure to give your images a dark wash or gradient to ensure
+	 * readability
+	 */
+	hasBgImage: PropTypes.bool,
 };
 
 export {ThemeSectionError};
 
-// @component
 export default ThemeSection;

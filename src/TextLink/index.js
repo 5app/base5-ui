@@ -93,5 +93,4 @@ TextLink.propTypes = {
 // Allow components to re-use simple text link styles
 export {textLinkStyles, textLinkProps};
 
-// @component
 export default TextLink;

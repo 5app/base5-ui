@@ -11,7 +11,6 @@ const TooltipButton = forwardRef((props, outerRef) => {
 	const {
 		children,
 		title,
-		description,
 		id,
 		tooltipPlacement,
 		'aria-label': ariaLabel,
@@ -64,8 +63,13 @@ const TooltipButton = forwardRef((props, outerRef) => {
 TooltipButton.displayName = 'TooltipButton';
 
 TooltipButton.propTypes = {
+	/**
+	 * The button tooltip's content.
+	 */
 	title: PropTypes.string,
-	description: PropTypes.string,
+	/**
+	 * The button tooltip's position relative to the button.
+	 */
 	tooltipPlacement: PropTypes.oneOf([
 		'auto',
 		'top',

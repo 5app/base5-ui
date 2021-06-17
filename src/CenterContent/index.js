@@ -143,7 +143,7 @@ CenterContent.propTypes = {
 		PropTypes.array,
 	]),
 	/**
-	 * Disable the hacky vertical centering method used for IE11, as it can lead
+	 * Disable the vertical centering method used for IE11, as it can lead
 	 * to cut-off/inaccessible content when the height of the centred content
 	 * increases beyond the height of the parent container.
 	 * Use this whenever the content is known to be long enough to cause scrolling,
@@ -172,5 +172,4 @@ CenterContent.propTypes = {
 	]),
 };
 
-// @component
 export default CenterContent;

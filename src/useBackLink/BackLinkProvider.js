@@ -165,5 +165,4 @@ BackLinkProvider.propTypes = {
 
 export {BackLinkContext};
 
-// @component
 export default BackLinkProvider;

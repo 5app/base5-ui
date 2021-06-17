@@ -1,9 +1,10 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useRef} from 'react';
+import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {alpha, contrast, getDimmedTextColor} from '../utils/colors';
-import {pxToRem} from '../utils/units';
+import {alpha, contrast, getDimmedTextColor, pxToRem} from '../utils';
 
+import useMergedRefs from '../useMergedRefs';
 import OkIcon from '../icons/Ok';
 
 const Input = styled.input`
@@ -11,7 +12,7 @@ const Input = styled.input`
 	opacity: 0;
 `;
 
-const Wrapper = styled.label`
+const Wrapper = styled.span`
 	position: relative;
 	display: inline-block;
 	width: 2.4rem;
@@ -81,11 +82,18 @@ const SwitchIcon = styled(OkIcon)`
 `;
 
 const Switch = forwardRef(({checked, disabled, id, ...otherProps}, ref) => {
+	const inputRef = useRef();
+	const mergedRefs = useMergedRefs([ref, inputRef]);
+
+	function forwardClick(e) {
+		inputRef.current.click(e);
+	}
+
 	return (
-		<Wrapper htmlFor={id} disabled={disabled}>
+		<Wrapper disabled={disabled} onClick={forwardClick}>
 			<Input
 				type="checkbox"
-				ref={ref}
+				ref={mergedRefs}
 				id={id}
 				checked={checked}
 				disabled={disabled}
@@ -100,5 +108,10 @@ const Switch = forwardRef(({checked, disabled, id, ...otherProps}, ref) => {
 
 Switch.displayName = 'Switch';
 
-// @component
+Switch.propTypes = {
+	checked: PropTypes.bool,
+	disabled: PropTypes.bool,
+	id: PropTypes.string.isRequired,
+};
+
 export default Switch;

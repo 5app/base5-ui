@@ -1,14 +1,19 @@
----
-name: Modal
-menu: Components
----
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Playground, Props} from 'docz';
+import Modal, {ModalManager, BodyScrollLock, useModalManager} from './';
 
-import {ModalManager, BodyScrollLock, useModalManager} from './';
-import Modal from './Modal';
+<Meta title="Components/Modal" component={Modal} />
 
 # Modal
+
+```jsx
+import Modal, {
+	ModalManager,
+	useModalManager,
+	BodyScrollLock,
+	PreventModalAriaHidden,
+} from 'base5-ui/Modal';
+```
 
 React components and hooks for building accessible modals (dialogs).
 
@@ -16,11 +21,10 @@ React components and hooks for building accessible modals (dialogs).
 
 -   Supports multiple (stacked) modals
 -   Handles focus management:
-    -   Contain keyboard focus inside of the topmost modal
-    -   Return keyboard focus to the element that triggered the modal after it is closed
-    -   Contain screen reader navigation within the topmost modal
--   Close the topmost modal when the <kbd>Esc</kbd> key is pressed
--   Prevent scrolling "behind" the modal
+    -   Contains keyboard and screen reader focus inside of the topmost modal
+    -   Returns keyboard focus to the element that triggered the modal after it is closed
+-   Closes the topmost modal when the <kbd>Esc</kbd> key is pressed
+-   Prevents scrolling "behind" the modal
 
 ## Demo
 
@@ -35,8 +39,6 @@ Wrap your app with the `ModalManager` and `BodyScrollLock` components. `ModalMan
 `BodyScrollLock` renders a `div` by default and should wrap the main content of your app. The HTML elements of your modals need to be rendered outside of this container. (If you use base5-ui's Portal or the built-in Modal component, this will be the case by default.) You can customise the rendered element using the `as` prop as seen below.
 
 ```jsx
-import {ModalManager, BodyScrollLock} from 'base5-ui/Modal';
-
 function App() {
 	return (
 		<ModalManager>
@@ -71,8 +73,6 @@ Keep in mind that you're responsible for opening & closing your modals. We recom
 #### Modal component example
 
 ```jsx
-import Modal from 'base5-ui/Modal';
-
 function MyPage() {
 	const [hasModal, setHasModal] = useState(false);
 
@@ -103,7 +103,7 @@ function MyPage() {
 
 #### Modal props
 
-<Props of={Modal} />
+<ArgsTable of={Modal} />
 
 #### Custom modal example
 
@@ -115,7 +115,7 @@ Be sure to include the `role="dialog"` and `aria-modal="true"` attributes on you
 import React from 'react';
 import Portal from 'base5-ui/Portal';
 import CenterContent from 'base5-ui/CenterContent';
-import {useModalManager} from 'base5-ui/Modal/ModalManager';
+import {useModalManager} from 'base5-ui/Modal';
 import FocusLock from 'react-focus-lock';
 
 const ModalWrapper = /* Your custom modal wrapper styling. */

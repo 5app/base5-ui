@@ -9,16 +9,7 @@ function useForceUpdate() {
 	return forceUpdate;
 }
 
-/**
- * Relative Time component
- * @param {object} opts - Options
- * @param {string|Date} opts.dateTime - Date of the event
- * @param {string|Date} opts.systemTime - Base time (used in testing)
- * @param {string} opts.locale - Locale of the user, otherwise uses agent default
- * @param {object} opts.readoutFunctions - Object for handling translations
- * @returns {Function} React Hook
- */
-function Time({dateTime, systemTime, readoutFunctions, locale, ...props}) {
+function Time({dateTime, systemTime, readoutFunctions, locale, ...otherProps}) {
 	const forceUpdate = useForceUpdate();
 
 	// Offset system time with local time...
@@ -43,7 +34,7 @@ function Time({dateTime, systemTime, readoutFunctions, locale, ...props}) {
 		<time
 			dateTime={dateTime}
 			title={title && title.toLocaleString()}
-			{...props}
+			{...otherProps}
 		>
 			{dateString || 'n/a'}
 		</time>
@@ -52,20 +43,34 @@ function Time({dateTime, systemTime, readoutFunctions, locale, ...props}) {
 
 Time.propTypes = {
 	/**
-	 * Any Date string recognized by `Date.parse()`.
+	 * Date of the event. Any Date string recognized by `Date.parse()`.
 	 * Suffix with `Z` to define the date as a UTC value or offset.
 	 */
 	dateTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
 	]).isRequired,
+	/**
+	 * Base time (used in testing)
+	 */
 	systemTime: PropTypes.oneOfType([
 		PropTypes.instanceOf(Date),
 		PropTypes.string,
 	]),
+	/**
+	 * Locale of the user, otherwise uses agent default
+	 */
 	locale: PropTypes.string,
-	readoutFunctions: PropTypes.object,
+	/**
+	 * Object containing callbacks for handling translations.
+	 * The functions are called with the count of seconds or
+	 * minutes respectively, and should return a string like
+	 * 'X minute(s) ago'.
+	 */
+	readoutFunctions: PropTypes.shape({
+		secondsAgoReadout: PropTypes.func,
+		minutesAgoReadout: PropTypes.func,
+	}),
 };
 
-// @component
 export default Time;

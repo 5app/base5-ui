@@ -1,6 +1,6 @@
 import React, {createContext, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from '5app-use-item-list';
+import {useItemList} from 'use-item-list';
 
 import {KEY_CODES} from '../constants';
 
@@ -191,5 +191,4 @@ NavMenu.propTypes = {
 
 export {NavMenuContext};
 
-// @component
 export default NavMenu;

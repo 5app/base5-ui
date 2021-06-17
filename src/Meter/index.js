@@ -69,5 +69,4 @@ Meter.propTypes = {
 	visualMin: PropTypes.number,
 };
 
-// @component
 export default Meter;

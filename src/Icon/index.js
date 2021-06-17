@@ -78,5 +78,4 @@ Icon.propTypes = {
 	vAlign: PropTypes.bool,
 };
 
-// @component
 export default withTheme(Icon);

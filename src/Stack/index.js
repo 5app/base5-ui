@@ -171,5 +171,4 @@ StackItem.displayName = 'StackItem';
 
 export {StackWrapper, StackItem};
 
-// @component
 export default Stack;

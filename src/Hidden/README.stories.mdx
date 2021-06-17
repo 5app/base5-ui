@@ -1,0 +1,60 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Hidden from './';
+import Icon from '../Icon';
+
+<Meta title="Components/Hidden" component={Hidden} />
+
+# Hidden
+
+```js
+import Hidden from 'base5-ui/Hidden';
+```
+
+Hide content above or below a responsive breakpoint. Either use a breakpoint from your theme config (`theme.globals.breakpoints`), or a string of a CSS length (i.e. `600px` or `42em`).
+
+<Canvas>
+	<Story name="General">
+		<Hidden below="s">Hello up there 👆</Hidden>
+		<Hidden below="xs" above="m">
+			Welcome to the golden middle ✌️
+		</Hidden>
+		<Hidden above="s">Hello down there 👇</Hidden>
+	</Story>
+</Canvas>
+
+Renders a `div` by default, but as usual you can use the `as` prop to change that. Use the Boolean `inline` prop as a shortcut for `as="span"`.
+
+<Canvas>
+	<Story name="Inline content">
+		<>This text contains a hidden word </>
+		<Hidden inline below="m">
+			that's
+		</Hidden>
+		<> only visible on wider viewports </>
+	</Story>
+</Canvas>
+
+The component can hide content completely (`display: none`, the default setting), or only visually, so that screen reader users can still access the content. Add the `accessible` prop to opt in to this mode.
+
+<Canvas>
+	<Story name="Accessibly hidden">
+		<>
+			<Icon
+				vAlign
+				name="globe"
+				aria-labelledby="location-label"
+				spacingRight="xs"
+			/>
+			<Hidden inline accessible below="xxs" id="location-label">
+				Choose location
+			</Hidden>
+		</>
+	</Story>
+</Canvas>
+
+Built on top of the [Box component](https://5app.github.io/base5-ui/src-box-readme), so all valid Box props can be used on the Hidden component.
+
+## Props
+
+<ArgsTable of={Hidden} />

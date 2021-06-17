@@ -1,0 +1,56 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import InlineList from '../InlineList';
+import Switch from './';
+
+<Meta
+	title="Components/Switch"
+	component={Switch}
+	argTypes={{
+		onChange: {action: 'change'},
+	}}
+/>
+
+# Switch
+
+```jsx
+import Switch from 'base5-ui/Switch';
+```
+
+Simple accessible mobile-style switch that can be used like an `<input type="checkbox" />` element.
+
+<Canvas>
+	<Story name="Checked" args={{checked: true, id: '1'}}>
+		{props => <SwitchTemplate {...props} />}
+	</Story>
+	<Story name="Disabled" args={{checked: true, disabled: true, id: '2'}}>
+		{props => <SwitchTemplate {...props} />}
+	</Story>
+	<Story name="Unchecked" args={{checked: false, id: '3'}}>
+		{props => <SwitchTemplate {...props} />}
+	</Story>
+	<Story
+		name="Unchecked disabled"
+		args={{checked: false, disabled: true, id: '4'}}
+	>
+		{props => <SwitchTemplate {...props} />}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Checked" />
+
+export const SwitchTemplate = ({checked, onChange, ...otherProps}) => {
+	const [isChecked, setIsChecked] = React.useState(checked);
+	function change(e) {
+		onChange?.(e);
+		setIsChecked(prev => !prev);
+	}
+	React.useEffect(() => {
+		setIsChecked(checked);
+	}, [checked]);
+	return <Switch checked={isChecked} onChange={change} {...otherProps} />;
+};
+
+;

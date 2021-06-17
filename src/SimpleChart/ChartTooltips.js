@@ -140,5 +140,4 @@ ChartTooltips.propTypes = {
 	tooltipProps: PropTypes.object,
 };
 
-// @component
 export default ChartTooltips;

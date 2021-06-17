@@ -77,7 +77,7 @@ function Modal({
 	onRequestClose,
 	spacing,
 	width,
-	disableIE11Hack = false,
+	disableIE11Hack,
 	...otherProps
 }) {
 	const {modalRef, isAtTop} = useModalManager({
@@ -115,6 +115,11 @@ function Modal({
 		</Portal>
 	);
 }
+
+Modal.defaultProps = {
+	disableIE11Hack: false,
+};
+
 Modal.propTypes = {
 	/**
 	 * A unique ID for your modal. (Only needs to be unique among modals
@@ -167,7 +172,14 @@ Modal.propTypes = {
 		PropTypes.string,
 		PropTypes.array,
 	]),
+	/**
+	 * Disable the vertical centering method used for IE11, as it can lead
+	 * to cut-off/inaccessible content when the height of the centred content
+	 * increases beyond the height of the parent container.
+	 * Use this whenever the modal content is known to be long enough to cause
+	 * scrolling or when the content is dynamic and may grow.
+	 */
+	disableIE11Hack: PropTypes.bool,
 };
 
-// @component
 export default Modal;

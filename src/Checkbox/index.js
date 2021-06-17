@@ -195,5 +195,4 @@ Checkbox.propTypes = {
 	scale: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-// @component
 export default Checkbox;

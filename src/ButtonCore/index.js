@@ -170,5 +170,4 @@ ButtonCore.propTypes = {
 	disabled: PropTypes.bool,
 };
 
-// @component
 export default ButtonCore;

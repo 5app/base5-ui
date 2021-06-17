@@ -96,5 +96,4 @@ Arrow.propTypes = {
 	size: PropTypes.number,
 };
 
-// @component
 export default Arrow;

@@ -1,0 +1,35 @@
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Portal from './';
+
+<Meta title="Components/Portal" component={Portal} />
+
+# Portal
+
+```jsx
+import Portal from 'base5-ui/Portal';
+```
+
+Render any React components in a different DOM context. This component is a light wrapper component around `ReactDOM.createPortal`.
+
+In the example below, the word "Hello" will be rendered in the "empty" div above the portal. The portal itself will not render anything. You can also set the `targetElement` prop to `null` to render its contents in place, effectively disabling the portal.
+
+```jsx
+function Example() {
+	const targetRef = useRef();
+	return (
+		<>
+			<div ref={targetRef} />
+			<Portal targetElement={targetRef.current}>Hello</Portal>
+		</>
+	);
+}
+```
+
+## Server-side rendering
+
+Note that while this component is safe to use while server-side rendering, its contents will not be rendered on the server.
+
+## Props
+
+<ArgsTable of={Portal} />

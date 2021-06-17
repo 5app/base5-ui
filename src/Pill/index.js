@@ -350,6 +350,10 @@ Pill.propTypes = {
 	 */
 	id: PropTypes.string,
 	/**
+	 * Make the pill's main body clickable.
+	 */
+	onClick: PropTypes.func,
+	/**
 	 * Callback that's run when the delete button is activated.
 	 * Hides the delete button, if not provided. Remember to provide a "deleteLabel" prop.
 	 */
@@ -360,5 +364,4 @@ Pill.propTypes = {
 	deleteLabel: PropTypes.string,
 };
 
-// @component
 export default Pill;

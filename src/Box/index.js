@@ -159,5 +159,4 @@ Box.propTypes = {
 	]),
 };
 
-// @component
 export default Box;

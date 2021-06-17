@@ -107,5 +107,4 @@ Popover.propTypes = {
 	matchReferenceWidth: PropTypes.bool,
 };
 
-// @component
 export default Popover;

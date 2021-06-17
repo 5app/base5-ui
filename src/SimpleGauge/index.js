@@ -111,5 +111,4 @@ SimpleGauge.propTypes = {
 	emptyContent: PropTypes.node,
 };
 
-// @component
 export default SimpleGauge;
