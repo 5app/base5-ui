@@ -1,11 +1,14 @@
----
-name: usePopover
-menu: Hooks
----
+import {Meta} from '@storybook/addon-docs/blocks';
 
-import {Playground, Props} from 'docz';
+import usePopover from './';
+
+<Meta title="Hooks/usePopover" component={usePopover} />
 
 # usePopover
+
+```jsx
+import usePopover from 'base5-ui/usePopover';
+```
 
 The `usePopover` hook uses [react-popper](https://github.com/FezVrasta/react-popper) and the [Arrow component](https://5app.github.io/base5-ui/src-arrow-readme) to make it easy to create your own Popover component.
 

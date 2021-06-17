@@ -1,0 +1,35 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+import useChartist from './';
+
+<Meta title="Hooks/useChartist" component={useChartist} />
+
+# useChartist
+
+```jsx
+import useChartist from 'base5-ui/useChartist';
+```
+
+A simple hook for using [Chartist.js](http://gionkunz.github.io/chartist-js/) in React.
+
+See below for a simplified example, or view the sources of [SimpleChart](https://github.com/5app/base5-ui/tree/master/src/SimpleChart) or [SimpleGauge](https://github.com/5app/base5-ui/tree/master/src/SimpleGauge) for real-world usage examples.
+
+## Example
+
+```jsx
+function MyChart({labels, data, options}) {
+	const chartRef = useRef(null);
+
+	useChartist(chartRef, {
+		type: 'Line',
+		data: {
+			labels,
+			series: [data],
+		},
+		options,
+		preserveAspectRatio: 'none',
+	});
+
+	return <ChartContainer ref={chartRef} />;
+}
+```

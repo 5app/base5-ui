@@ -1,12 +1,14 @@
----
-name: useBackLink
-menu: Hooks
----
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Props} from 'docz';
-import BackLinkProvider from './BackLinkProvider';
+import useBackLink, {BackLinkProvider} from './';
+
+<Meta title="Hooks/useBackLink" component={useBackLink} />
 
 # useBackLink
+
+```jsx
+import useBackLink, {BackLinkProvider} from 'base5-ui/useBackLink';
+```
 
 `useBackLink` is a hook that returns a link to the previous page that the user has visited (if available). It can track the user's history across multiple hierarchy levels to avoid circular navigation issues, and allows navigating "up" a page level instead of only "back" to the last page viewed.
 
@@ -139,4 +141,4 @@ Note that the location passed to `BackLinkProvider` **must not** include the 'wa
 
 ## BackLinkProvider props
 
-<Props isToggle of={BackLinkProvider} />
+<ArgsTable of={BackLinkProvider} />

@@ -1,9 +1,14 @@
----
-name: useEventListener
-menu: Hooks
----
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import useEventListener from './';
+
+<Meta title="Hooks/useEventListener" component={useEventListener} />
 
 # useEventListener
+
+```jsx
+import useEventListener from 'base5-ui/useEventListener';
+```
 
 A simple hook that adds a global event listener & cleans up after it when the component unmounts.
 

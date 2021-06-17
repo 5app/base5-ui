@@ -1,0 +1,30 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+import useUniqueId from './';
+
+<Meta title="Hooks/useUniqueId" component={useUniqueId} />
+
+# useUniqueId
+
+```jsx
+import useUniqueId from 'base5-ui/useUniqueId';
+```
+
+A hook for generating a random unique ID.
+
+If an ID is passed to the hook, that ID will be used instead. This is useful when a component internally needs an ID to work, but you don't want to require users of the component to provide a unique ID. With this hook, it's easy to either use the provided ID, or generate one if needed.
+
+## Example
+
+```jsx
+function InputField({label, id}) {
+	const uniqueId = useUniqueId(id);
+
+	return (
+		<>
+			<label htmlFor={uniqueId}>{label}</label>
+			<input type="text" id={uniqueId} defaultValue="" />
+		</>
+	);
+}
+```

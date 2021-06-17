@@ -1,11 +1,14 @@
----
-name: useBreakpoints
-menu: Hooks
----
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Playground} from 'docz';
+import useBreakpoints, {BreakpointsProvider} from './';
+
+<Meta title="Hooks/useBreakpoints" component={useBreakpoints} />
 
 # useBreakpoints
+
+```jsx
+import useBreakpoints, {BreakpointsProvider} from 'base5-ui/useBreakpoints';
+```
 
 A hook that returns an object containing the state of the current theme's media query breakpoints.
 This can be useful when you need to render different markup depending on the user's screen width.

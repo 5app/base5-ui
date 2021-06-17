@@ -1,0 +1,28 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+import useMergedRefs from './';
+
+<Meta title="Hooks/useMergedRefs" component={useMergedRefs} />
+
+# useMergedRefs
+
+```jsx
+import useMergedRefs from 'base5-ui/useMergedRefs';
+```
+
+A hook for efficiently merging React refs. Usually used inside of a component that needs to expose a public ref via `React.forwardRef` while also using a ref locally. Supports both callback and object refs.
+
+## Example
+
+```jsx
+const AutoFocusingInput = forwardRef((props, ref) => {
+	const inputRef = useRef();
+	const mergedRefs = useMergedRefs([ref, inputRef]);
+
+	useEffect(() => {
+		inputRef.current.focus();
+	}, []);
+
+	return <input type="text" ref={mergedRefs} />;
+});
+```

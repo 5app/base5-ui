@@ -1,15 +1,18 @@
----
-name: useFocusOnMount
-menu: Hooks
----
+import {Meta, Canvas, Story, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import {Playground, Props} from 'docz';
 import Button from '../Button';
 import Stack from '../Stack';
 
 import Dialog from './DemoExample';
+import useFocusOnMount from './';
+
+<Meta title="Hooks/useFocusOnMount" component={useFocusOnMount} />
 
 # useFocusOnMount
+
+```jsx
+import useFocusOnMount from 'base5-ui/useFocusOnMount';
+```
 
 A hook that will focus a chosen element when the component it is in is mounted, and crucially, will move focus back to where it was before when the component unmounts.
 
@@ -54,23 +57,27 @@ function Dialog({onClose}) {
 }
 ```
 
-<Playground>
-	{() => {
-		const [hasDialog, setHasDialog] = React.useState(false);
-		return (
-			<Stack spacing="s">
-				<Button
-					icon="eye-open"
-					isActive={hasDialog}
-					onClick={() => setHasDialog(prev => !prev)}
-				>
-					Show non-modal dialog
-				</Button>
-				{hasDialog && <Dialog onClose={() => setHasDialog(false)} />}
-			</Stack>
-		);
-	}}
-</Playground>
+<Canvas>
+	<Story name="Dialog example">
+		{() => {
+			const [hasDialog, setHasDialog] = React.useState(false);
+			return (
+				<Stack spacing="s">
+					<Button
+						icon="eye-open"
+						isActive={hasDialog}
+						onClick={() => setHasDialog(prev => !prev)}
+					>
+						Show non-modal dialog
+					</Button>
+					{hasDialog && (
+						<Dialog onClose={() => setHasDialog(false)} />
+					)}
+				</Stack>
+			);
+		}}
+	</Story>
+</Canvas>
 
 ## Options
 
