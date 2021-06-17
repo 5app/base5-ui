@@ -9,7 +9,7 @@
     "copypackage": "cp -rf package.json README.md dist",
     "predist": "npm run copypackage",
     "dist": "cd dist && npm publish",
-    "deploy-docs": "npm run docz:build && gh-pages -d .docz/public -m 'Update docs [skip ci]'",
+    "deploy-docs": "npm run build-storybook && gh-pages -d storybook-static -m 'Update docs [skip ci]'",
     "lint": "eslint ./",
     "format": "prettier --write .",
     "postversion": "pwd && cp -r package.json ../",
