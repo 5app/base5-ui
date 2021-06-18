@@ -10,6 +10,11 @@ module.exports = {
 		'!**/node_modules/**',
 		'!**/test/**',
 	],
-	coveragePathIgnorePatterns: ['/node_modules/', '/.storybook/', '/.src-icons/', '/test/'],
+	coveragePathIgnorePatterns: [
+		'/node_modules/',
+		'/.storybook/',
+		'/.src-icons/',
+		'/test/',
+	],
 	modulePathIgnorePatterns: ['/node_modules/', '/.storybook/'],
 };
