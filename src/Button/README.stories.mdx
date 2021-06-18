@@ -49,45 +49,49 @@ The base5-ui button component. Built on top of ButtonCore.
 ## Examples
 
 <Canvas>
-	<Story name="Examples">
-		<InlineList spacing="s">
-			<Button color="primary" icon="ok">
-				Save
-			</Button>
-			<Button>Cancel</Button>
-			<Button size="medium" color="important">
-				Delete
-			</Button>
-			<Button size="medium" icon="send">
-				Share
-			</Button>
-			<Button icon="tools" size="medium" color="shaded" />
-			<Button size="small" color="transparent">
-				Forgot password?
-			</Button>
-			<Button round icon="plus" color="important" />
-			<Button isActive size="medium">
-				Done
-			</Button>
-			<Button isDisabled size="medium">
-				Mark as done
-			</Button>
-		</InlineList>
-		<br />
-		<Button fullWidth color="primary" icon="ok">
-			Login
+	<InlineList spacing="s">
+		<Button color="primary" icon="ok">
+			Save
 		</Button>
-		<br />
-		<Button fullWidth align="left" size="large" color="shaded" icon="plus">
-			Add to My learning
+		<Button>Cancel</Button>
+		<Button size="medium" color="important">
+			Delete
 		</Button>
-		<br />
-		<Box width={285}>
-			<Button textOverflow="ellipsis" iconRight="chevron">
-				A Button with a very long label
-			</Button>
-		</Box>
-	</Story>
+		<Button size="medium" icon="send">
+			Share
+		</Button>
+		<Button icon="tools" size="medium" color="shaded" />
+		<Button size="small" color="transparent">
+			Forgot password?
+		</Button>
+		<Button round icon="plus" color="important" />
+		<Button isActive size="medium">
+			Done
+		</Button>
+		<Button isDisabled size="medium">
+			Mark as done
+		</Button>
+	</InlineList>
+</Canvas>
+
+<Canvas>
+	<Button fullWidth color="primary" icon="ok">
+		Login
+	</Button>
+</Canvas>
+
+<Canvas>
+	<Button fullWidth align="left" size="large" color="shaded" icon="plus">
+		Add to My learning
+	</Button>
+</Canvas>
+
+<Canvas>
+	<Box width={285}>
+		<Button textOverflow="ellipsis" iconRight="chevron">
+			A Button with a very long label
+		</Button>
+	</Box>
 </Canvas>
 
 ## Playground
@@ -96,7 +100,7 @@ Change the props in the table below to adjust the Button to your needs.
 
 <Canvas>
 	<Story
-		name="Playground"
+		name="Button"
 		args={{children: 'Default button', size: 'default', icon: 'ok'}}
 	>
 		{props => <Button {...props} />}
@@ -105,4 +109,4 @@ Change the props in the table below to adjust the Button to your needs.
 
 ## Props
 
-<ArgsTable story="Playground" />
+<ArgsTable story="Button" />
