@@ -1,4 +1,5 @@
 import {Meta, Canvas, Story, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import Button from '../Button';
 import Stack from '../Stack';
@@ -18,7 +19,7 @@ A hook that will focus a chosen element when the component it is in is mounted, 
 
 This is useful for moving focus into non-modal dialogs (for modal dialogs, please use the Modal component).
 
-Note: This hook can only restore focus to the previously focused element if that element has not been unmounted or replaced by the dialog. If your design requires this, you can additionally use the [`useReturnToInitEffect` hook](src-use-return-to-init-effect-readme) in the parent component to explicitly set focus when the dialog is closed.
+Note: This hook can only restore focus to the previously focused element if that element has not been unmounted or replaced by the dialog. If your design requires this, you can additionally use the <LinkTo kind="Hooks/useReturnToInitEffect">`useReturnToInitEffect` hook</LinkTo> in the parent component to explicitly set focus when the dialog is closed.
 
 ## Example
 

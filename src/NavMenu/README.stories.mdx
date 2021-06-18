@@ -1,4 +1,5 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import Text from '../Text';
 import {NavMenu, NavMenuButton, NavMenuList, NavMenuItem} from './';
@@ -16,13 +17,13 @@ import {
 } from 'base5-ui/NavMenu';
 ```
 
-An accessible dropdown menu to be used when the regular menu button pattern (see [Menu](src-menu-readme)) is not the right choice.
+An accessible dropdown menu to be used when the regular menu button pattern (see <LinkTo kind="Components/Menu">Menu</LinkTo>) is not the right choice.
 This is the case when:
 
 -   Your menu contains regular navigation links, or both buttons and links
 -   Your menu contains other content besides menu items (e.g. hint text)
 
-Unlike the normal [Menu](src-menu-readme) component, the items in this menu can be navigated using the Tab key in addition to the arrow keys. Focus will not be moved to the menu automatically, and tabbing away from the menu will not close it (but _clicking_ outside of it will).
+Unlike the normal <LinkTo kind="Components/Menu">Menu</LinkTo> component, the items in this menu can be navigated using the Tab key in addition to the arrow keys. Focus will not be moved to the menu automatically, and tabbing away from the menu will not close it (but _clicking_ outside of it will).
 
 This component is inspired and based on patterns described in the following resources:
 

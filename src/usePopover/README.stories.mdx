@@ -1,4 +1,5 @@
 import {Meta} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 import usePopover from './';
 
@@ -10,9 +11,9 @@ import usePopover from './';
 import usePopover from 'base5-ui/usePopover';
 ```
 
-The `usePopover` hook uses [react-popper](https://github.com/FezVrasta/react-popper) and the [Arrow component](https://5app.github.io/base5-ui/src-arrow-readme) to make it easy to create your own Popover component.
+The `usePopover` hook uses [react-popper](https://github.com/FezVrasta/react-popper) and the <LinkTo kind="Components/Arrow">Arrow</LinkTo> component to make it easy to create your own Popover component.
 
-Here's a simple implementation of a Popover using `usePopover`, not dissimilar to the [Popover](/src-popover-readme) component:
+Here's a simple implementation of a Popover using `usePopover`, not dissimilar to the <LinkTo kind="Components/Popover">Popover</LinkTo> component:
 
 ```jsx
 import React from 'react';

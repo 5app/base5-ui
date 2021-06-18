@@ -1,4 +1,5 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
 
 <Meta title="base5-ui/Icons" />
 
@@ -97,9 +98,9 @@ import Icon from '../Icon';
 
 1. Add new SVG icons to `/src-icons/svg`
 2. Add any new icons as an export inside of `src/icons/index.js`
-3. To make new icons available from the `<Icon />` component, define a `string` name for them in the icon map in `src/Icon/iconMap.js`
+3. To make new icons available from the <LinkTo kind="Components/Icon">Icon</LinkTo> component, define a `string` name for them in the icon map in `src/Icon/iconMap.js`
 4. Add new icons to this Storybook page for documentation (you'll find it inside of `/src/docs`)
 
-Once that's done, run `npm run build-icons` to convert the SVGs to standalone React components inside of [src/icons](/src/icons).
+Once that's done, run `npm run build-icons` to convert the SVGs to standalone React components inside of `src/icons`.
 
 After that, you can follow the normal instructions for updating/publishing this repo found in the base5-UI Introduction.
