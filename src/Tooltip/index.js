@@ -1,6 +1,7 @@
 import React, {useRef, forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import useOnClickOutside from '../useOnClickOutside';
 import usePopoverState from '../usePopoverState';
 import useMergedRefs from '../useMergedRefs';
@@ -62,23 +63,7 @@ Tooltip.defaultProps = {
 Tooltip.propTypes = {
 	allowTooltipClicks: PropTypes.bool,
 	delay: PropTypes.number,
-	placement: PropTypes.oneOf([
-		'auto',
-		'top',
-		'bottom',
-		'left',
-		'right',
-		'auto-start',
-		'top-start',
-		'bottom-start',
-		'left-start',
-		'right-start',
-		'auto-end',
-		'top-end',
-		'bottom-end',
-		'left-end',
-		'right-end',
-	]),
+	placement: PropTypes.oneOf(POPPER_PLACEMENTS),
 };
 
 export {default as Arrow} from '../Arrow';

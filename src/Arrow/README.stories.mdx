@@ -1,7 +1,8 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 
-import Arrow, {VALID_PLACEMENT_PROPS} from './';
+import {POPPER_PLACEMENTS} from '../constants';
 import Box from '../Box';
+import Arrow from './';
 
 <Meta
 	title="Components/Arrow"
@@ -15,7 +16,7 @@ import Box from '../Box';
 		},
 		placement: {
 			control: {type: 'radio'},
-			options: VALID_PLACEMENT_PROPS,
+			options: POPPER_PLACEMENTS,
 		},
 	}}
 />

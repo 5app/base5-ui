@@ -1,6 +1,7 @@
 import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import {mergeCallbacks} from '../utils';
 
 import Button from '../Button';
@@ -70,23 +71,7 @@ TooltipButton.propTypes = {
 	/**
 	 * The button tooltip's position relative to the button.
 	 */
-	tooltipPlacement: PropTypes.oneOf([
-		'auto',
-		'top',
-		'bottom',
-		'left',
-		'right',
-		'auto-start',
-		'top-start',
-		'bottom-start',
-		'left-start',
-		'right-start',
-		'auto-end',
-		'top-end',
-		'bottom-end',
-		'left-end',
-		'right-end',
-	]),
+	tooltipPlacement: PropTypes.oneOf(POPPER_PLACEMENTS),
 };
 
 export default TooltipButton;

@@ -1,14 +1,10 @@
 import React, {forwardRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
-import {placements} from '@popperjs/core';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import {removeFalsyProps} from '../utils';
 
 import getArrowPosition, {getPlacements} from './getArrowPosition';
-
-export const VALID_PLACEMENT_PROPS = placements.filter(
-	placement => !placement.startsWith('auto')
-);
 
 const transformMap = {
 	top: 'translateY(-50%) rotate(135deg)',
@@ -89,7 +85,9 @@ Arrow.propTypes = {
 	 * Add an optional suffix '-start' or '-end' to align the arrow to the
 	 * start or end of the chosen direction.
 	 */
-	placement: PropTypes.oneOf(VALID_PLACEMENT_PROPS),
+	placement: PropTypes.oneOf(
+		POPPER_PLACEMENTS.filter(position => !position.startsWith('auto'))
+	),
 	/**
 	 * Control the arrow size (length of side)
 	 */
