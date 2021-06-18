@@ -1,3 +1,10 @@
+## [13.2.1](https://github.com/5app/base5-ui/compare/v13.2.0...v13.2.1) (2021-06-18)
+
+
+### Bug Fixes
+
+* Work around popperJS missing CJS export, [#135](https://github.com/5app/base5-ui/issues/135) ([374edc8](https://github.com/5app/base5-ui/commit/374edc8913b16569e8803c638da129c1f9289dff))
+
 # [13.2.0](https://github.com/5app/base5-ui/compare/v13.1.5...v13.2.0) (2021-06-04)
 
 
