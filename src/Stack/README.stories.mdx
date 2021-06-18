@@ -1,0 +1,119 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Box from '../Box';
+import Hidden from '../Hidden';
+import Text from '../Text';
+import TextLink from '../TextLink';
+import Stack, {StackWrapper, StackItem} from './';
+
+<Meta title="Components/Stack" component={Stack} />
+
+# Stack
+
+```jsx
+import Stack from 'base5-ui/Stack';
+```
+
+Control vertical spacing between Stack items. Supports all `Box` style props.
+
+## Examples
+
+<Canvas>
+	<Story
+		name="Simple"
+		args={{spacing: 'xxs'}}
+		argTypes={{
+			spacing: {
+				control: {type: 'radio'},
+				options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+			},
+		}}
+	>
+		{props => (
+			<Stack {...props}>
+				<TextLink href="#">Home</TextLink>
+				<TextLink href="#">Projects</TextLink>
+				<TextLink href="#">About us</TextLink>
+			</Stack>
+		)}
+	</Story>
+</Canvas>
+
+## Conditionally rendering Stack items
+
+To conditionally render Stack items, simply ensure that a falsy value is returned as a direct child of the Stack component in place of the respective item.
+
+```jsx
+<Stack spacing="s">
+	<>Milk</>
+	<>Eggs</>
+	{shouldRenderItem && <>Cheese</>}
+</Stack>
+```
+
+Please note that a nested falsy return as shown in the next example will **not** work, and will generate superfluous spacing:
+
+```jsx
+<Stack spacing="s">
+	<Item>Milk</Item>
+	<Item>Eggs</Item>
+	{/* Don't do this, it will create extra spacing for the hidden item: */}
+	<Item isHidden={shouldRenderItem}>Cheese</Item>
+</Stack>
+```
+
+## Responsively hiding Stack items
+
+Use the `Hidden` component to hide Stack items below or above a certain breakpoint.
+The following list has a third list item that will be hidden on larger screens.
+
+<Canvas>
+	<Story
+		name="Hiding items"
+		args={{as: 'list', spacing: [0, 's', 'xl'], breakpoints: ['m', 'l']}}
+	>
+		{props => (
+			<Stack {...props}>
+				<TextLink href="#">Milch</TextLink>
+				<TextLink href="#">Eier</TextLink>
+				<Hidden above="xl">
+					<TextLink href="#">Käse</TextLink>
+				</Hidden>
+			</Stack>
+		)}
+	</Story>
+</Canvas>
+
+## Granular list item rendering
+
+Some use cases may require rendering the list items separately from its wrapper,
+for example in expensive-to-render lists that need to be memoised.
+For these use cases you can import `StackWrapper` and `StackItem` separately:
+
+```js
+import {StackWrapper, StackItem} from 'base5-ui/Stack';
+```
+
+All `Stack` props are now passed to the `StackWrapper` instead.
+Instead of using the `Hidden` component to responsively hide items, you can pass the `hiddenBelow` or `hiddenAbove` props to items.
+`StackItem` rejects all other custom props by default, but you can allow them to be passed through by attaching the `allowUnknownProps` prop.
+
+<Canvas>
+	<Story
+		name="Granular rendering"
+		args={{as: 'list', spacing: [0, 's', 'xl'], breakpoints: ['m', 'l']}}
+	>
+		{props => (
+			<StackWrapper {...props}>
+				<StackItem>Development</StackItem>
+				<StackItem>Marketing</StackItem>
+				<StackItem hiddenBelow="xs">Sales</StackItem>
+				<StackItem>Design</StackItem>
+			</StackWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Granular rendering" />

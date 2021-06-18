@@ -47,5 +47,4 @@ Column.propTypes = {
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-// @component
 export default Column;

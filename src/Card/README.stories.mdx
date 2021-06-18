@@ -1,0 +1,56 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Stack from '../Stack';
+import ThemedBox from '../ThemedBox';
+import Card, {VALID_VARIANT_PROPS, VALID_SIZE_PROPS} from './';
+
+<Meta
+	title="Components/Card"
+	component={Card}
+	argTypes={{
+		variant: {
+			control: {type: 'radio'},
+			options: VALID_VARIANT_PROPS,
+		},
+		size: {
+			control: {type: 'radio'},
+			options: VALID_SIZE_PROPS,
+		},
+		p: {
+			control: {type: 'radio'},
+			options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+		},
+	}}
+/>
+
+# Card
+
+```js
+import Card from 'base5-ui/Card';
+```
+
+A basic themed card component that comes in 3 variants.
+
+## Examples
+
+<Canvas>
+	<Story name="Default" args={{variant: undefined, p: 's'}}>
+		{props => <Card {...props}>Hello</Card>}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Raised" args={{variant: 'raised', p: 's'}}>
+		{props => <Card {...props}>Hello</Card>}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Inverted" args={{variant: 'inverted', p: 's'}}>
+		{props => <Card {...props}>Hello</Card>}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Inverted" />

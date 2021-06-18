@@ -1,6 +1,7 @@
 import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import usePopover from '../usePopover';
 import PopoverCard from '../PopoverCard';
 
@@ -61,23 +62,7 @@ Popover.propTypes = {
 	 * Control the positioning of the popover relative to its reference.
 	 * Takes a Popper.js placement string
 	 */
-	placement: PropTypes.oneOf([
-		'auto',
-		'top',
-		'bottom',
-		'left',
-		'right',
-		'auto-start',
-		'top-start',
-		'bottom-start',
-		'left-start',
-		'right-start',
-		'auto-end',
-		'top-end',
-		'bottom-end',
-		'left-end',
-		'right-end',
-	]),
+	placement: PropTypes.oneOf(POPPER_PLACEMENTS),
 	/*
 	 * Shifts the popover along the side perpendicular
 	 * to the direction the popover is attached to.
@@ -107,5 +92,4 @@ Popover.propTypes = {
 	matchReferenceWidth: PropTypes.bool,
 };
 
-// @component
 export default Popover;

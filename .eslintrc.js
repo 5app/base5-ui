@@ -4,7 +4,7 @@ module.exports = {
 		'5app',
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
-		'prettier'
+		'prettier',
 	],
 	parser: 'babel-eslint',
 	parserOptions: {

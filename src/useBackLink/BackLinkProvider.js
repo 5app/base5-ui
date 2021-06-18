@@ -141,7 +141,8 @@ BackLinkProvider.propTypes = {
 		.isRequired,
 	/**
 	 * A "dependency array" of values that tell the component whether or
-	 * not the current location should be added to the history array.
+	 * not a new entry should be added for the current location.
+	 * A new entry will be added only if one or more of the array's items have changed.
 	 * All requirements & limitations of `React.useEffect` dependency arrays apply here, too.
 	 */
 	track: PropTypes.array.isRequired,
@@ -165,5 +166,4 @@ BackLinkProvider.propTypes = {
 
 export {BackLinkContext};
 
-// @component
 export default BackLinkProvider;

@@ -24,6 +24,7 @@ const stylePropNames = getPropNamesFromPropDefinition([
 ]);
 
 const shouldForwardProp = getPropFilter([
+	'align',
 	'spacing',
 	'splitBy',
 	...stylePropNames,
@@ -135,5 +136,4 @@ InlineList.propTypes = {
 InlineList.Wrapper = Wrapper;
 InlineList.Item = Item;
 
-// @component
 export default InlineList;

@@ -1,0 +1,101 @@
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import useBreakpoints, {BreakpointsProvider} from './';
+
+<Meta title="Hooks/useBreakpoints" component={useBreakpoints} />
+
+# useBreakpoints
+
+```jsx
+import useBreakpoints, {BreakpointsProvider} from 'base5-ui/useBreakpoints';
+```
+
+A hook that returns an object containing the state of the current theme's media query breakpoints.
+This can be useful when you need to render different markup depending on the user's screen width.
+
+## Example
+
+```jsx
+const {m, xl} = useBreakpoints();
+
+console.log(m, xl); // e.g. true, false
+```
+
+The breakpoint states are resolved using "mobile-first" `min-width` queries, i.e. they are reported as matching (`true`) when the viewport width is **wider** than the breakpoint.
+
+**Word of warning:** Due to its reliance on client-side JS, this hook is not compatible with server-side rendering.
+
+## Features
+
+-   Choose your own breakpoints and breakpoint names
+-   Works without resize event listeners (It uses the `window.matchMedia` API)
+-   Keeps track of Media Query state in a single place, minimising the number of Media Query change listeners on the page
+
+## Setup
+
+In order to use the `useBreakpoints` hook, wrap your React app with the `BreakpointsProvider` component and initialise it with a configuration object that contains the widths of your breakpoints.
+
+```jsx
+import {BreakpointsProvider} from 'base5-ui/useBreakpoints';
+...
+const myBreakpoints = {
+	smol: '360px',
+	medium: '480px',
+	largo: '840px',
+};
+
+function MyApp() {
+	return (
+		<BreakpointsProvider breakpoints={myBreakpoints}>
+			<App />
+		</BreakpointsProvider>
+	)
+}
+```
+
+## Usage
+
+Once your app has been set up as described above, the `useBreakpoints` hook is ready to be used.
+
+```jsx
+import useBreakpoints from 'base5-ui/useBreakpoints';
+
+...
+
+function Component() {
+	const {smol, medium, largo} = useBreakpoints();
+
+	return (
+		<nav>
+			{medium ? (
+				<DesktopMenu />
+			) : (
+				<MobileMenu />
+			)}
+		</nav>
+	)
+}
+```
+
+**Tip:** Rename your breakpoints while destructuring for a more readable variable:
+
+```jsx
+const {medium: isDesktop} = useBreakpoints();
+```
+
+## Getting the current breakpoint
+
+If you need to read the currently active breakpoint, you need to provide the hook with an array of the breakpoint names you're interested in, ordered from smallest to largest.
+
+The hook will then return the name of the largest matching breakpoint under the `currentBreakpoint` key.
+
+```jsx
+	const {currentBreakpoint} = useBreakpoints(['smol', 'largo']);
+
+	return (
+		<p>
+			The current breakpoint is {currentBreakpoint}!
+		</p>
+	)
+}
+```

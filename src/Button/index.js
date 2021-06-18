@@ -19,6 +19,19 @@ import Icon from '../Icon';
 
 import 'focus-visible';
 
+export const VALID_SIZE_PROPS = ['small', 'medium', 'default', 'large'];
+
+export const VALID_COLOR_PROPS = [
+	'default',
+	'primary',
+	'important',
+	'transparent',
+	'shaded',
+];
+
+export const VALID_ALIGN_PROPS = ['left', 'right', 'center'];
+export const VALID_OVERFLOW_PROPS = ['wrap', 'ellipsis'];
+
 const stylePropNames = getPropNamesFromPropDefinition([
 	...positionPropsDef,
 	...marginPropsDef,
@@ -335,21 +348,15 @@ Button.propTypes = {
 	/**
 	 * Choose between one of 5 available theme variants
 	 */
-	color: PropTypes.oneOf([
-		'default',
-		'primary',
-		'important',
-		'transparent',
-		'shaded',
-	]),
+	color: PropTypes.oneOf(VALID_COLOR_PROPS),
 	/**
 	 * Choose between one of 4 available theme variants
 	 */
-	size: PropTypes.oneOf(['small', 'medium', 'default', 'large']),
+	size: PropTypes.oneOf(VALID_SIZE_PROPS),
 	/**
 	 * Align the button text
 	 */
-	align: PropTypes.oneOf(['left', 'right', 'center']),
+	align: PropTypes.oneOf(VALID_ALIGN_PROPS),
 	/**
 	 * Control whether long text labels wrap to a new line
 	 * or are truncated with an ellipsis
@@ -357,8 +364,7 @@ Button.propTypes = {
 	 * enable the `fullWidth` prop and render as a block-level
 	 * element that takes up all available width.
 	 */
-	textOverflow: PropTypes.oneOf(['wrap', 'ellipsis']),
+	textOverflow: PropTypes.oneOf(VALID_OVERFLOW_PROPS),
 };
 
-// @component
 export default Button;

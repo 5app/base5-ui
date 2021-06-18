@@ -1,0 +1,60 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import PopoverCard from '../PopoverCard';
+import * as MenuList from './';
+
+<Meta title="Components/MenuList" component={MenuList} />
+
+# MenuList
+
+```jsx
+import {Wrapper, Item, ItemIcon, Link} from 'base5-ui/MenuList';
+// or
+import * as MenuList from 'base5-ui/MenuList';
+```
+
+MenuList is a set of components used for building dropdown menus:
+
+-   MenuList.Wrapper
+-   MenuList.Item
+-   MenuList.ItemIcon
+-   MenuList.Link
+
+They don't come with any built-in behaviour. Check out the <LinkTo kind="Components/Menu">Menu</LinkTo> and <LinkTo kind="Components/Menu (Nav)">NavMenu</LinkTo> components to see the MenuList component in use.
+
+<Canvas>
+	<Story name="MenuList">
+		{() => {
+			const [highlightedItem, setHighlightedItem] = React.useState(0);
+			const [selectedItem, setSelectedItem] = React.useState(0);
+			const menuItems = [
+				{id: 0, label: 'Insert', icon: 'plus'},
+				{id: 1, label: 'Favourite', icon: 'star'},
+				{id: 2, label: 'Insights', icon: 'trending', isDisabled: true},
+				{id: 3, label: 'Download', icon: 'download'},
+			];
+			return (
+				<PopoverCard isOpen renderInPlace>
+					<MenuList.Wrapper>
+						{menuItems.map((item, index) => (
+							<MenuList.Item key={item.id}>
+								<MenuList.Link
+									isActive={item.id === selectedItem}
+									isHighlighted={item.id === highlightedItem}
+									isDisabled={item.isDisabled}
+									onMouseEnter={() =>
+										setHighlightedItem(item.id)
+									}
+								>
+									<MenuList.ItemIcon name={item.icon} />
+									{item.label}
+								</MenuList.Link>
+							</MenuList.Item>
+						))}
+					</MenuList.Wrapper>
+				</PopoverCard>
+			);
+		}}
+	</Story>
+</Canvas>

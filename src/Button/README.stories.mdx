@@ -1,0 +1,112 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Box from '../Box';
+import InlineList from '../InlineList';
+import Button, {
+	VALID_SIZE_PROPS,
+	VALID_COLOR_PROPS,
+	VALID_ALIGN_PROPS,
+	VALID_OVERFLOW_PROPS,
+} from './';
+
+<Meta
+	title="Components/Button"
+	component={Button}
+	argTypes={{
+		size: {
+			control: {type: 'radio'},
+			options: VALID_SIZE_PROPS,
+		},
+		color: {
+			control: {type: 'radio'},
+			options: VALID_COLOR_PROPS,
+		},
+		align: {
+			control: {type: 'select'},
+			options: VALID_ALIGN_PROPS,
+		},
+		textOverflow: {
+			control: {type: 'select'},
+			options: VALID_OVERFLOW_PROPS,
+		},
+		icon: {
+			control: {type: 'text'},
+		},
+		iconRight: {
+			control: {type: 'text'},
+		},
+	}}
+/>
+
+# Button
+
+```js
+import Button from 'base5-ui/Button';
+```
+
+The base5-ui button component. Built on top of ButtonCore.
+
+## Examples
+
+<Canvas>
+	<InlineList spacing="s">
+		<Button color="primary" icon="ok">
+			Save
+		</Button>
+		<Button>Cancel</Button>
+		<Button size="medium" color="important">
+			Delete
+		</Button>
+		<Button size="medium" icon="send">
+			Share
+		</Button>
+		<Button icon="tools" size="medium" color="shaded" />
+		<Button size="small" color="transparent">
+			Forgot password?
+		</Button>
+		<Button round icon="plus" color="important" />
+		<Button isActive size="medium">
+			Done
+		</Button>
+		<Button isDisabled size="medium">
+			Mark as done
+		</Button>
+	</InlineList>
+</Canvas>
+
+<Canvas>
+	<Button fullWidth color="primary" icon="ok">
+		Login
+	</Button>
+</Canvas>
+
+<Canvas>
+	<Button fullWidth align="left" size="large" color="shaded" icon="plus">
+		Add to My learning
+	</Button>
+</Canvas>
+
+<Canvas>
+	<Box width={285}>
+		<Button textOverflow="ellipsis" iconRight="chevron">
+			A Button with a very long label
+		</Button>
+	</Box>
+</Canvas>
+
+## Playground
+
+Change the props in the table below to adjust the Button to your needs.
+
+<Canvas>
+	<Story
+		name="Button"
+		args={{children: 'Default button', size: 'default', icon: 'ok'}}
+	>
+		{props => <Button {...props} />}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Button" />

@@ -1,0 +1,57 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Meter from './';
+
+<Meta
+	title="Components/Meter"
+	component={Meter}
+	argTypes={{
+		color: {
+			control: {type: 'text'},
+		},
+	}}
+/>
+
+# Meter
+
+An accessible stand-in for the native `<meter>` HTML element built to ensure consistent visuals across browsers.
+
+If you don't define a color for the meter, it will look for color blocks named 'negative', 'neutral', and 'positive' in your global theme, and use them for the sections of the meter that were defined using the `low` and `high` props.
+
+You can also visually prevent the meter value from falling below a certain value by specifying the `visualMin` prop.
+
+## Examples
+
+<Canvas>
+	<Story name="Simple" args={{value: 0.3, max: 1}}>
+		{props => <Meter {...props} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name="Auto-coloring"
+		args={{value: 72, visualMin: 10, low: 33, high: 66, max: 100}}
+	>
+		{props => <Meter {...props} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Fixed color" args={{value: 80, max: 100, color: 'links'}}>
+		{props => <Meter {...props} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name="Visual minimum value"
+		args={{value: 0, visualMin: 0.1, max: 1}}
+	>
+		{props => <Meter {...props} />}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Auto-coloring" />

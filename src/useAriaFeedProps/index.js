@@ -10,8 +10,7 @@ import {useRef} from 'react';
  * @param {object} options
  * @param {bool} options.isLoading - Indicate whether new items are being added to the feed
  * @param {bool} options.totalItemCount - Provide the total number of available items in the feed
- * @returns {Function} props.getWrapperProps
- * @returns {Function} props.getItemProps
+ * @returns {object} An object containing the prop getter functions `{getWrapperProps, getItemProps}`
  */
 
 function useAriaFeedProps({isLoading, totalItemCount = -1}) {

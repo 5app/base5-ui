@@ -79,5 +79,4 @@ Hidden.propTypes = {
 	inline: PropTypes.bool,
 };
 
-// @component
 export default Hidden;

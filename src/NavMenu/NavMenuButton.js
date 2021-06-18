@@ -18,5 +18,4 @@ NavMenuButton.propTypes = {
 	icon: PropTypes.string,
 };
 
-// @component
 export default NavMenuButton;

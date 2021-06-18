@@ -1,0 +1,53 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import InlineList from '../InlineList';
+import TextLink from './';
+
+<Meta title="Components/TextLink" component={TextLink} />
+
+# TextLink
+
+```jsx
+import TextLink from 'base5-ui/TextLink';
+```
+
+Simple styled text link. Renders as an `<a>` tag by default, but you can use the `as` prop to render as a button or a router link, too.
+
+`TextLink` supports the `disabled` or `isDisabled` prop whether it's used to render a button or a link. Since "disabled links" don't exist in HTML, we simply render them as `span` elements and remove all link-specific attributes from them.
+
+<Canvas>
+	<Story name="Standard">
+		{props => (
+			<TextLink href="#" {...props}>
+				Hello, world!
+			</TextLink>
+		)}
+	</Story>
+	<Story name="Bold">
+		<TextLink bold href="#">
+			I'm bold
+		</TextLink>
+	</Story>
+	<Story name="Stealthy">
+		<TextLink stealthy href="#">
+			I blend in with my surroundings!
+		</TextLink>
+	</Story>
+	<Story name="As a button">
+		<TextLink as="button">I'm actually a button</TextLink>
+	</Story>
+	<Story name="Disabled button">
+		<TextLink as="button" disabled>
+			I can be disabled!
+		</TextLink>
+	</Story>
+	<Story name="Disabled link">
+		<TextLink href="#" isDisabled>
+			Even as a link!
+		</TextLink>
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Standard" />

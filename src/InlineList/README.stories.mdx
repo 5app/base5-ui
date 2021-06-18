@@ -1,0 +1,68 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Icon from '../Icon';
+import TextLink from '../TextLink';
+
+import InlineList from './';
+
+<Meta
+	title="Components/InlineList"
+	component={InlineList}
+	argTypes={{
+		spacing: {
+			control: {type: 'radio'},
+			options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+		},
+	}}
+/>
+
+# InlineList
+
+```js
+import InlineList from 'base5-ui/InlineList';
+```
+
+Lay out children horizontally with optional spacing or separators.
+
+Supports styleProps `position`, `text`, and `size`.
+
+<Canvas>
+	<Story name="Spaced list" args={{spacing: 's'}}>
+		{props => (
+			<InlineList {...props}>
+				<Icon name="asset-image" />
+				<Icon name="asset-podcast" />
+				<Icon name="asset-audio" />
+			</InlineList>
+		)}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Split by comma" args={{splitBy: 'comma'}}>
+		{props => (
+			<InlineList {...props}>
+				<>Milk</>
+				<>Flour</>
+				<>Sugar</>
+				<>Eggs</>
+			</InlineList>
+		)}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Split by dot" args={{splitBy: 'dot'}}>
+		{props => (
+			<InlineList {...props}>
+				<TextLink href="#">Home</TextLink>
+				<TextLink href="#">Projects</TextLink>
+				<TextLink href="#">About us</TextLink>
+			</InlineList>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={InlineList} />

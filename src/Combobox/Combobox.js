@@ -1,6 +1,6 @@
 import React, {useRef, createContext} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from '5app-use-item-list';
+import {useItemList} from 'use-item-list';
 
 import {KEY_CODES} from '../constants';
 import {mergeCallbacks} from '../utils';
@@ -244,5 +244,4 @@ Combobox.propTypes = {
 
 export {ComboboxContext};
 
-// @component
 export default Combobox;

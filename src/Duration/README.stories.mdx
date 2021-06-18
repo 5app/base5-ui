@@ -1,0 +1,68 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Duration from './';
+
+<Meta title="Components/Duration" component={Duration} />
+
+# Duration
+
+```js
+import Duration from 'base5-ui/Duration';
+```
+
+A simple component for rendering a duration (e.g. of a video) with an accessible label. Takes a `value` prop in seconds.
+
+By default, the duration is rendered "YouTube-style" in the format `m:s` or `h:m:s`, but you can pass a render function to the children prop to easily create a custom readout.
+
+## Examples
+
+<Canvas>
+	<Story name="Empty" args={{value: null}}>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story name="Rounded seconds" args={{value: 2.7245}}>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story name="Regular seconds" args={{value: 27}}>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story name="Value as string" args={{value: '489'}}>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story name="With hours" args={{value: 7729}}>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story
+		name="Custom readout"
+		args={{
+			value: 7729,
+			children: dur => `${dur.hours}h ${dur.minutes}m ${dur.seconds}s`,
+		}}
+	>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story
+		name="Custom readout (full hours)"
+		args={{
+			value: 7729,
+			children: dur => `${dur.fullHours} hours`,
+		}}
+	>
+		{props => <Duration {...props} />}
+	</Story>
+	<Story
+		name="Custom readout (full minutes)"
+		args={{
+			value: 7729,
+			children: dur => `${dur.fullMinutes} mins`,
+		}}
+	>
+		{props => (
+			<Duration {...props}>{dur => `${dur.fullMinutes} mins`}</Duration>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Duration} />

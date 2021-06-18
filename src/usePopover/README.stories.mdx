@@ -1,0 +1,55 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import usePopover from './';
+
+<Meta title="Hooks/usePopover" component={usePopover} />
+
+# usePopover
+
+```jsx
+import usePopover from 'base5-ui/usePopover';
+```
+
+The `usePopover` hook uses [react-popper](https://github.com/FezVrasta/react-popper) and the <LinkTo kind="Components/Arrow">Arrow</LinkTo> component to make it easy to create your own Popover component.
+
+Here's a simple implementation of a Popover using `usePopover`, not dissimilar to the <LinkTo kind="Components/Popover">Popover</LinkTo> component:
+
+```jsx
+import React from 'react';
+import Box from 'base5-ui/Box';
+import Portal from 'base5-ui/Portal';
+import usePopover from 'base5-ui/usePopover';
+
+function Popover({isOpen, content, placement}) {
+	const popover = usePopover({
+		placement,
+	});
+
+	return (
+		<>
+			{children({
+				ref: popover.setReferenceRef,
+				update: popover.update,
+			})}
+			{isOpen &&
+				<Portal>
+					<Box
+						{...popover.props}
+						ref={popover.setRef}
+						background="black"
+						color="white"
+						borderRadius={3}
+						px="s"
+						py="xs"
+						maxWidth="100%"
+					>
+						{content}
+						{popover.arrow}
+					</Box>
+				</Portal>
+			}
+		</>
+	);
+});
+```

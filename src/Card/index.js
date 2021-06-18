@@ -19,6 +19,9 @@ const variantProps = {
 	},
 };
 
+export const VALID_VARIANT_PROPS = Object.keys(variantProps);
+export const VALID_SIZE_PROPS = ['small', 'large'];
+
 const Card = forwardRef(({variant, size, ...otherProps}, ref) => {
 	return (
 		<ThemedBox
@@ -40,9 +43,16 @@ Card.defaultProps = {
 };
 
 Card.propTypes = {
-	variant: PropTypes.oneOf(['default', 'raised', 'inverted']),
-	size: PropTypes.oneOf(['small', 'large']),
+	/**
+	 * Controls the card's visual appearance
+	 */
+	variant: PropTypes.oneOf(VALID_VARIANT_PROPS),
+	/**
+	 * Controls the card's border radius, as defined in the global theme.
+	 * In some themes (when border radiuses are disabled), this may not
+	 * make a visible difference
+	 */
+	size: PropTypes.oneOf(VALID_SIZE_PROPS),
 };
 
-// @component
 export default Card;

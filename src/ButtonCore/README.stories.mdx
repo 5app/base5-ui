@@ -1,0 +1,34 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import RouterLink from './routerLinkForReadme';
+import ButtonCore from './';
+
+<Meta title="Components/ButtonCore" component={ButtonCore} />
+
+# ButtonCore
+
+```js
+import ButtonCore from 'base5-ui/ButtonCore';
+```
+
+Base component for building interactive elements like buttons and links.
+
+Its styling is neutral: By default it just blends in with its surrounding text. Make sure to add sufficiently contrasting visual cues about its interactivity to the component when using it.
+
+<Canvas>
+	<Story name="Button">
+		{props => <ButtonCore {...props}>Button</ButtonCore>}
+	</Story>
+	<Story name="Link">
+		<ButtonCore as="a" href="#">
+			Link
+		</ButtonCore>
+	</Story>
+	<Story name="Router link">
+		<ButtonCore as={RouterLink} to="/">
+			Router link
+		</ButtonCore>
+	</Story>
+</Canvas>
+
+<ArgsTable of={ButtonCore} />

@@ -1,6 +1,7 @@
 import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import {mergeCallbacks} from '../utils';
 
 import Button from '../Button';
@@ -11,7 +12,6 @@ const TooltipButton = forwardRef((props, outerRef) => {
 	const {
 		children,
 		title,
-		description,
 		id,
 		tooltipPlacement,
 		'aria-label': ariaLabel,
@@ -64,25 +64,14 @@ const TooltipButton = forwardRef((props, outerRef) => {
 TooltipButton.displayName = 'TooltipButton';
 
 TooltipButton.propTypes = {
+	/**
+	 * The button tooltip's content.
+	 */
 	title: PropTypes.string,
-	description: PropTypes.string,
-	tooltipPlacement: PropTypes.oneOf([
-		'auto',
-		'top',
-		'bottom',
-		'left',
-		'right',
-		'auto-start',
-		'top-start',
-		'bottom-start',
-		'left-start',
-		'right-start',
-		'auto-end',
-		'top-end',
-		'bottom-end',
-		'left-end',
-		'right-end',
-	]),
+	/**
+	 * The button tooltip's position relative to the button.
+	 */
+	tooltipPlacement: PropTypes.oneOf(POPPER_PLACEMENTS),
 };
 
 export default TooltipButton;

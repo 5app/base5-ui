@@ -1,0 +1,90 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import Icon from './';
+import Text from '../Text';
+import ArrowIcon from '../icons/Arrow';
+import DiskIcon from '../icons/Disk';
+import PlusIcon from '../icons/Plus';
+import SearchIcon from '../icons/Search';
+import InfoIcon from '../icons/Info';
+import XIcon from '../icons/X';
+
+<Meta title="Components/Icon" component={Icon} />
+
+# Icon
+
+```js
+import Icon from 'base5-ui/Icon';
+```
+
+An image says more than a thousand words. ;) <LinkTo kind="base5-ui/Icons">View all available icons here</LinkTo>
+
+## Using the Icon component
+
+Using the `<Icon />` component allows you to dynamically display icons by their (kebab-cased, not CamelCased) name. Using the Icon component will bundle the whole base5 icon set with your app. See the next section if you only need a few icons from the set.
+
+<Canvas>
+	<Story name="Icon">
+		<Icon name="disk" />
+		<Icon name="plus" />
+		<Text as="p" size="xxl">
+			<Icon name="search" />
+			<Icon name="search" scale={0} />
+		</Text>
+	</Story>
+</Canvas>
+
+## Using individual icons
+
+If you don't want to bundle the whole icon set with your app, import the icons individually:
+
+```js
+import DiskIcon from 'base5-ui/icons/Disk';
+import PlusIcon from 'base5-ui/icons/Plus';
+import SearchIcon from 'base5-ui/icons/Search';
+```
+
+and use them directly:
+
+<Canvas>
+	<DiskIcon />
+	<PlusIcon />
+	<SearchIcon />
+</Canvas>
+
+## Aligning icons with text
+
+When placed next to or inside of text, icons tend to sit a bit too low compared to the text's baseline. They also often look darker than text, even if they "technically" have the same colour. The props `vAlign` and `dimmed` exist to compensate for these issues. Use the Boolean `vAlign` prop to nudge the icon up by a few pixels to visually align it with its surrounding text. Use `dimmed` to make the icon slightly transparent to match the text's appearance.
+
+<Canvas>
+	<>
+		<PlusIcon /> Without vAlign and undimmed
+	</>
+	<>
+		<PlusIcon vAlign dimmed /> With vAlign and dimmed
+	</>
+</Canvas>
+
+## Transforming icons
+
+You can both rotate and flip icons.
+
+<Canvas>
+	<ArrowIcon rotate={90} />
+	<ArrowIcon rotate={90} />
+	<ArrowIcon rotate={-90} />
+	<ArrowIcon rotate={-90} />
+	<ArrowIcon />
+	<ArrowIcon flip="x" />
+	<ArrowIcon />
+	<ArrowIcon flip="x" />
+	<InfoIcon />
+	<XIcon />
+</Canvas>
+
+## Props
+
+The following props are available on both the individual icon components as well as the `<Icon />` component:
+
+<ArgsTable of={Icon} />

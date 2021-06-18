@@ -1,0 +1,122 @@
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import PageTitleManager, {PageTitle} from './';
+
+<Meta title="Components/PageTitleManager" component={PageTitleManager} />
+
+# PageTitleManager
+
+```jsx
+import PageTitleManager, {PageTitle} from 'base5-ui/PageTitleManager';
+```
+
+Create accessible page title announcements when navigating between pages in a single-page React app (SPA).
+
+-   Move focus to a visible or hidden main page header on page change
+-   (Optionally) easily manage your site's document titles
+
+Inspired by [this blog post by Hugo Giraudel](https://hugogiraudel.com/2020/01/15/accessible-title-in-a-single-page-react-application/#title-announcer).
+
+## The problem
+
+When browsing a traditional server-rendered website, following a link causes the page to reload with the content of the new page. Screenreaders take this as a signal to announce the title of the new page to the user.
+
+In a SPA, this typically doesn't happen by default, as new content is displayed without a full page reload. Because of this, users of assistive technologies might miss out on the fact that a new page was loaded, or if they do, they'll still manually have to navigate to the main content of the page.
+
+The `<PageTitleManager>` and `<PageTitle>` components help you mitigate both of these issues by moving the user's focus to the main `<h1>` heading element on the page – but only after an in-app navigation has taken place.
+
+## Setup
+
+To keep track of the navigation state of the app, you need to wrap your app with the `PageTitleManager` component and provide it with the `pathname` prop, which you'd typically get from your client-side routing library. The content of this prop has to be a string, but it doesn't need to be the literal `location.pathname` attribute – you can also pass any other primitive value that will change when a client-side navigation occurs.
+
+```js
+import {useLocation} from 'react-router';
+import PageTitleManager from 'base5-ui/PageTitleManager';
+
+function YourApp({children}) {
+	const {pathname} = useLocation();
+
+	return <PageTitleManager pathname={pathname}>{children}</PageTitleManager>;
+}
+```
+
+Once your app has been wrapped in this way, use the `PageTitle` component to render the main headings of each of your pages:
+
+```js
+import {PageTitle} from 'base5-ui/PageTitleManager';
+
+function HomePage() {
+	return (
+		<main>
+			<PageTitle>Welcome to my accessible app!</PageTitle>
+		</main>
+	);
+}
+```
+
+## Custom styling
+
+If you're already using styled heading components, you can pass those to the `PageTitle` component using the `as` prop; or pass `PageTitle` to the `as` prop of your styled component – both approaches should work.
+
+```jsx
+<PageTitle as={MainHeading}>Welcome to my super accessible app!</PageTitle>
+<MainHeading as={PageTitle}>Welcome to my super accessible app!</MainHeading>
+```
+
+You can also create a new styled component based on `PageTitle`. It will render an `h1` element by default.
+
+```js
+const MainHeading = styled(PageTitle)`
+	/* Your heading styles */
+`;
+```
+
+## Visually hiding the heading
+
+If a page in your app doesn't have an obvious readable heading, you can still provide a title to screen reader users by using the `PageTitle` component with the `visuallyHidden` prop. This hides the heading from sighted users, while announcing & focusing it for users of assisitive technologies.
+
+```jsx
+<PageTitle visuallyHidden>Your Profile</PageTitle>
+```
+
+## Complex heading contents
+
+In case your PageTitle contains children more complex than a simple string, a text-only representation of the title must be provided via the `text` prop:
+
+```jsx
+<PageTitle text="Welcome to my app!">
+	Welcome to <b>my app!</b>
+</PageTitle>
+```
+
+## Setting the document title
+
+You can also use `PageTitleManager` component to easily update your site's document title, i.e. the title that's shown in the page's browser tab.
+
+To do this, add the `syncDocumentTitle` prop to the `PageTitleManager` component:
+
+```jsx
+<PageTitleManager syncDocumentTitle pathname={pathname}>
+	...
+</PageTitleManager>
+```
+
+You can also define a "base page title" that will be added at the end of the document title. The code in the following example would change the title of your document to "Home - My Site Name"
+
+```jsx
+<PageTitleManager
+	syncDocumentTitle
+	baseTitle="My Site Name"
+	pathname={pathname}
+>
+	<PageTitle>Home</PageTitle>
+</PageTitleManager>
+```
+
+## `PageTitleManager` props
+
+<ArgsTable of={PageTitleManager} />
+
+## `PageTitle` props
+
+<ArgsTable of={PageTitle} />

@@ -1,0 +1,17 @@
+export const POPPER_PLACEMENTS = [
+	'top',
+	'top-start',
+	'top-end',
+	'bottom',
+	'bottom-start',
+	'bottom-end',
+	'right',
+	'right-start',
+	'right-end',
+	'left',
+	'left-start',
+	'left-end',
+	'auto',
+	'auto-start',
+	'auto-end',
+];

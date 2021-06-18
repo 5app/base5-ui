@@ -1,0 +1,30 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+import useInterval from './';
+
+<Meta title="Hooks/useInterval" component={useInterval} />
+
+# useInterval
+
+```jsx
+import useInterval from 'base5-ui/useInterval';
+```
+
+A hook for safely & declaratively setting up intervals in functional React components.
+
+Based on Dan Abramov's blog post ["Making setInterval Declarative with React Hooks"](https://overreacted.io/making-setinterval-declarative-with-react-hooks/)
+
+## Example
+
+```jsx
+function Counter() {
+	const [count, setCount] = useState(0);
+
+	useInterval(() => {
+		// Your custom logic here
+		setCount(count + 1);
+	}, 1000);
+
+	return <h1>{count}</h1>;
+}
+```

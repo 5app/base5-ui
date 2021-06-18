@@ -29,5 +29,4 @@ NavMenuList.propTypes = {
 	children: PropTypes.node,
 };
 
-// @component
 export default NavMenuList;

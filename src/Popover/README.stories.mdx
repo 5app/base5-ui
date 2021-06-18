@@ -1,0 +1,68 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import Box from '../Box';
+import Text from '../Text';
+import {VALID_VARIANT_PROPS, VALID_SIZE_PROPS} from '../Card';
+import Popover from './';
+
+<Meta
+	title="Components/Popover"
+	component={Popover}
+	argTypes={{
+		variant: {
+			control: {type: 'select'},
+			description: 'Popover card variant',
+			options: VALID_VARIANT_PROPS,
+		},
+		size: {
+			control: {type: 'radio'},
+			description: 'Popover card size (border radius)',
+			options: VALID_SIZE_PROPS,
+		},
+		p: {
+			control: {type: 'select'},
+			description: 'Popover card padding',
+			options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+		},
+	}}
+/>
+
+# Popover
+
+```jsx
+import Popover from 'base5-ui/Popover';
+```
+
+A Popover is a an element that's positioned so that it appears right next to another element (the 'reference element'). This component is a low-level building block used for building dropdown menus, tooltips, and similar UI patterns.
+
+The Popover component included in base5-ui is a simple wrapper around the <LinkTo kind="Hooks/usePopover">usePopover</LinkTo> hook and the <LinkTo kind="Components/PopoverCard">PopoverCard</LinkTo> component. You can easily customise the look and feel of your Popover by replacing `PopoverCard` with your own implementation and keeping the hook to control the placement.
+
+Also see the hook <LinkTo kind="Hooks/usePopoverState">usePopoverState</LinkTo> for an easy way to control the open/closed state of a popover, and <LinkTo kind="Components/Tooltip">Tooltip</LinkTo> for a ready-made component combining the hook and this component.
+
+<Canvas>
+	<Story
+		name="Popover"
+		args={{
+			isOpen: true,
+			placement: 'bottom',
+			p: 's',
+			variant: 'inverted',
+			content:
+				"I'm a popover. I'll always stick to my reference element!",
+			children: popover => (
+				<Text ref={popover.ref}>I'm a reference element</Text>
+			),
+		}}
+	>
+		{props => (
+			<Box textAlign="center">
+				<Popover {...props} />
+			</Box>
+		)}
+	</Story>
+</Canvas>
+
+# Props
+
+<ArgsTable story="Popover" />

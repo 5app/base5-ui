@@ -34,5 +34,4 @@ ThemedBox.propTypes = {
 	alternateBackground: PropTypes.bool,
 };
 
-// @component
 export default ThemedBox;

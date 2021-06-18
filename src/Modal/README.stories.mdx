@@ -1,0 +1,169 @@
+import {Meta, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Modal, {ModalManager, BodyScrollLock, useModalManager} from './';
+
+<Meta title="Components/Modal" component={Modal} />
+
+# Modal
+
+```jsx
+import Modal, {
+	ModalManager,
+	useModalManager,
+	BodyScrollLock,
+	PreventModalAriaHidden,
+} from 'base5-ui/Modal';
+```
+
+React components and hooks for building accessible modals (dialogs).
+
+## Features
+
+-   Supports multiple (stacked) modals
+-   Handles focus management:
+    -   Contains keyboard and screen reader focus inside of the topmost modal
+    -   Returns keyboard focus to the element that triggered the modal after it is closed
+-   Closes the topmost modal when the <kbd>Esc</kbd> key is pressed
+-   Prevents scrolling "behind" the modal
+
+## Demo
+
+View a demo of the modal in action on [Codesandbox](https://codesandbox.io/s/base5-ui-modal-example-hdjk9?file=/src/App.js).
+
+## How to use
+
+### Prerequisites
+
+Wrap your app with the `ModalManager` and `BodyScrollLock` components. `ModalManager` does not render an element to the DOM and can be as high up as you want. It keeps track of all the open modals and makes sure that focus is properly locked & restored.
+
+`BodyScrollLock` renders a `div` by default and should wrap the main content of your app. The HTML elements of your modals need to be rendered outside of this container. (If you use base5-ui's Portal or the built-in Modal component, this will be the case by default.) You can customise the rendered element using the `as` prop as seen below.
+
+```jsx
+function App() {
+	return (
+		<ModalManager>
+			<BodyScrollLock as="main">
+				{/* The rest of your app */}
+			</BodyScrollLock>
+		</ModalManager>
+	);
+}
+```
+
+#### BodyScrollLock styling requirements
+
+The `BodyScrollLock` component prevents the page body from being scrolled when a modal is open. The method it uses is very robust and works even if your app has elements with a fixed position, like navigation bars.
+
+One trade-off to make this work seamlessly is that we require the vertical scrollbar on your root element to be visible always (even if the page content isn't long enough to cause a scrollbar). Without the below CSS, opening a modal in your app may cause the page in the background to shift slightly as the scrollbar disappears.
+
+```css
+html {
+	overflow-y: scroll;
+}
+```
+
+(Btw: Having this CSS on your page may be a good idea anyway – it ensures that centered elements don't jump around ever so slightly when navigating between long pages with a vertical scrollbar and short pages without one.)
+
+### Rendering modals
+
+Once the above preparations are done, you can either use the built-in `Modal` component (built on styled-components) to render your modals, or build your own using the `useModalManager` hook.
+
+Keep in mind that you're responsible for opening & closing your modals. We recommend that you keep your modal display logic tied to a router location or React state, as shown below.
+
+#### Modal component example
+
+```jsx
+function MyPage() {
+	const [hasModal, setHasModal] = useState(false);
+
+	function toggleModal() {
+		setHasModal(prev => !prev);
+	}
+
+	return (
+		<>
+			<Button onClick={toggleModal}>Toggle Modal</Button>
+			{hasModal && (
+				<Modal
+					name="my-modal"
+					onRequestClose={toggleModal}
+					aria-labelledby="heading-id"
+				>
+					<Card>
+						<Heading id="heading-id">My first modal dialog</Heading>
+						<p>This is a modal.</p>
+						<Button onClick={toggleModal}>Got it.</Button>
+					</Card>
+				</Modal>
+			)}
+		</>
+	);
+}
+```
+
+#### Modal props
+
+<ArgsTable of={Modal} />
+
+#### Custom modal example
+
+The `Modal` component is a wrapper around the `useModalManager` hook and the external dependency [FocusLock](https://github.com/theKashey/react-focus-lock). If you want to customise how your modals are rendered, you can easily do so by re-composing its elements in a different way. The example below is a slightly simplified version of the built-in `Modal` component that you can use as a guide.
+
+Be sure to include the `role="dialog"` and `aria-modal="true"` attributes on your modal component, as well as `aria-label` or `aria-labelledby`.
+
+```jsx
+import React from 'react';
+import Portal from 'base5-ui/Portal';
+import CenterContent from 'base5-ui/CenterContent';
+import {useModalManager} from 'base5-ui/Modal';
+import FocusLock from 'react-focus-lock';
+
+const ModalWrapper = /* Your custom modal wrapper styling. */
+const Overlay = /* Your custom overlay styling. */
+
+function Modal({children, name, onRequestClose, ...otherProps}) {
+	/**
+	 * useModalManager returns a ref that must be
+	 * passed to the modal wrapper component, and
+	 * an `isAtTop` flag that's true when this modal
+	 * is at the top (when multiple modals are open).
+	 */
+	const {modalRef, isAtTop} = useModalManager({
+		name,
+		onRequestClose,
+	});
+
+	return (
+		<Portal>
+			<ModalWrapper
+				ref={modalRef}
+				id={name}
+				{...otherProps}
+				role="dialog"
+				aria-modal="true"
+			>
+				<CenterContent fillParent>
+					<FocusLock>
+						{isAtTop && <Overlay onClick={onRequestClose} />}
+						{children}
+					</FocusLock>
+				</CenterContent>
+			</ModalWrapper>
+		</Portal>
+	);
+}
+```
+
+### Preventing content outside of modals from being hidden to screen readers
+
+When a modal is open, the `aria-hidden` attribute will be applied to any elements outside of it. This is done to prevent users of screen reader software from accidentally navigating outside of the modal boundaries.
+
+If you want to prevent some elements (such as a live region used for accessible status updates) from being hidden in this way, you can wrap them in the `PreventModalAriaHidden` component:
+
+```jsx
+import {PreventModalAriaHidden} from 'base5-ui/Modal';
+
+<PreventModalAriaHidden>
+	<Status>...</Status>
+<PreventModalAriaHidden>
+```

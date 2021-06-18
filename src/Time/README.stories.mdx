@@ -1,0 +1,57 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Time from './';
+
+<Meta title="Components/Time" component={Time} />
+
+# Time
+
+```jsx
+import Time from 'base5-ui/Time';
+```
+
+`Time` is a helper component for providing a reading-friendly time relative to a given context.
+
+For example, for a provided timestamp from a few seconds ago, the output would be "less than a minute ago". Similarly, if the timestamp was today, the output will be "3pm" rather than the full date. The idea is to provide just as much information as necessary.
+
+The component auto-updates to keep the time accurate without requiring a page refresh. It renders a simple html `<time>` element with a `title` attribute that ensures that the full time is provided as a browser tooltip when holding a mouse cursor over it.
+
+## Examples
+
+<Canvas>
+	<Time dateTime="2019-08-29T11:59:45Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="2019-08-29T11:57:00Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="2019-08-29T11:30:00Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="2019-08-28T11:30:00Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="2019-08-24T13:30:00Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="2019-01-24T13:30:00Z" systemTime="2019-08-29T12:00:00Z" />
+</Canvas>
+
+<Canvas>
+	<Time dateTime="1981-05-12" />
+</Canvas>
+
+## Invalid examples
+
+<Canvas>
+	<Time dateTime="3017-13-32T25:61:00" />
+</Canvas>
+
+## Props
+
+<ArgsTable of={Time} />

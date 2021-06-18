@@ -186,6 +186,8 @@ Checkbox.defaultProps = {
 };
 
 Checkbox.propTypes = {
+	checked: PropTypes.bool,
+	indeterminate: PropTypes.bool,
 	/**
 	 * Control the size of the checkbox by passing in a size multiplier, i.e. `1.5`.
 	 * Set to `'auto'` to make the checkbox scale along with its surrounding text
@@ -193,5 +195,4 @@ Checkbox.propTypes = {
 	scale: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-// @component
 export default Checkbox;

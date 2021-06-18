@@ -1,0 +1,36 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Button from '../Button';
+import VisuallyHidden from './';
+
+<Meta title="Components/VisuallyHidden" component={VisuallyHidden} />
+
+# VisuallyHidden
+
+```jsx
+import VisuallyHidden from 'base5-ui/VisuallyHidden';
+```
+
+Visually hides content in a way that keeps it accessible to users of assistive technology, e.g. screen readers.
+
+If possible, content should be left visible to all users, but in cases when a design is easily understood without textual labels by sighted users, it may be necessary to add a hidden label.
+
+For example, to sighted users, the input field shown below is sufficiently labelled by the button next to it, but users of screen readers still require an explicit label that's read out when the input is focused. This is a good use case for the `VisuallyHidden` component.
+
+## Example
+
+<Canvas>
+	<Story name="VisuallyHidden">
+		<VisuallyHidden as="label" htmlFor="search-label">
+			Search
+		</VisuallyHidden>
+		<input type="search" id="search-label" defaultValue="" />
+		<Button icon="search" size="small">
+			Search
+		</Button>
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={VisuallyHidden} />

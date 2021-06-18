@@ -1,0 +1,37 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+<Meta title="base5-ui/Theming" />
+
+# Theming
+
+Being able to adapt the colours of base5-UI's components is a big focus of the library.
+
+This section is still a work in progress, we'll try to add documentation around our theme system as soon as possible.
+
+## Global theme
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import ThemeSection from 'base5-icons/ThemeSection';
+import Button from 'base5-icons/Button';
+
+import theme from 'base5-icons/theme';
+
+function App() {
+	return (
+		<ThemeSection name="page" baseTheme={theme}>
+			<Button>Hello world!</Button>
+		</ThemeSection>
+	);
+}
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.render(<App />, rootElement);
+```
+
+## Theme sections (local themes)
+
+Hoo ha

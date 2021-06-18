@@ -1,0 +1,53 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import Button from '../Button';
+import Tooltip from '../Tooltip';
+
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+# Tooltip
+
+```jsx
+import Tooltip from 'base5-ui/Tooltip';
+```
+
+Add a tooltip or dropdown menu to interactive elements. This component is a combination of the `Popover` component and the `usePopoverState` hook which provides the open/close state and functionality.
+
+## Example
+
+The below is a simplified implementation of the <LinkTo kind="Components/TooltipButton">TooltipButton</LinkTo> component.
+
+<Canvas>
+	<Story
+		name="Tooltip"
+		args={{
+			renderWhenClosed: true,
+			delay: 250,
+			placement: 'top',
+			content: 'Hi, I am a useful tooltip',
+			id: 'tooltip-id',
+		}}
+	>
+		{props => (
+			<Tooltip {...props}>
+				{popover => (
+					<Button
+						ref={popover.ref}
+						aria-describedby={props.id}
+						onMouseEnter={popover.open}
+						onMouseLeave={popover.close}
+						onFocus={popover.open}
+						onBlur={popover.close}
+					>
+						Hover or focus to show tooltip
+					</Button>
+				)}
+			</Tooltip>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story="Tooltip" />

@@ -1,0 +1,87 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+import LinkTo from '@storybook/addon-links/react';
+
+import Text from '../Text';
+import {NavMenu, NavMenuButton, NavMenuList, NavMenuItem} from './';
+
+<Meta title="Components/Menu (Nav)" component={NavMenu} />
+
+# NavMenu
+
+```jsx
+import {
+	NavMenu,
+	NavMenuButton,
+	NavMenuList,
+	NavMenuItem,
+} from 'base5-ui/NavMenu';
+```
+
+An accessible dropdown menu to be used when the regular menu button pattern (see <LinkTo kind="Components/Menu">Menu</LinkTo>) is not the right choice.
+This is the case when:
+
+-   Your menu contains regular navigation links, or both buttons and links
+-   Your menu contains other content besides menu items (e.g. hint text)
+
+Unlike the normal <LinkTo kind="Components/Menu">Menu</LinkTo> component, the items in this menu can be navigated using the Tab key in addition to the arrow keys. Focus will not be moved to the menu automatically, and tabbing away from the menu will not close it (but _clicking_ outside of it will).
+
+This component is inspired and based on patterns described in the following resources:
+
+-   [WAI-ARIA Authoring Practices 1.1: Disclosure for Navigation Menus](https://www.w3.org/TR/wai-aria-practices-1.1/examples/disclosure/disclosure-navigation.html)
+-   [Link + Disclosure Widget Navigation](https://adrianroselli.com/2019/06/link-disclosure-widget-navigation.html)
+-   [Menus & Menu Buttons (section "Navigation menu buttons")](https://inclusive-components.design/menus-menu-buttons/#navigationmenubuttons)
+
+<Canvas>
+	<Story
+		name="Menu (Nav)"
+		args={{id: 'demo-nav-menu', menuPlacement: 'bottom-start'}}
+	>
+		{props => (
+			<NavMenu {...props}>
+				<NavMenuButton icon="menu">Related links</NavMenuButton>
+				<NavMenuList>
+					<Text as="li" bold fontSize="s" px="s" py="xxs">
+						Open-source essentials:
+					</Text>
+					<NavMenuItem as="a" href="https://duckduckgo.com">
+						DuckDuckGo
+					</NavMenuItem>
+					<NavMenuItem as="a" href="https://firefox.com">
+						Firefox
+					</NavMenuItem>
+					<NavMenuItem as="a" href="https://bitwarden.com">
+						Bitwarden
+					</NavMenuItem>
+				</NavMenuList>
+			</NavMenu>
+		)}
+	</Story>
+</Canvas>
+
+### Note on non-string menu items
+
+When passing non-string children to `NavMenuItem`, please also provide a string-only representation of the item's label using the `text` prop:
+
+```jsx
+<NavMenuItem as={Link} to="notifications" text={`Notifications (${count})`}>
+	Notifications <Badge count={count} />
+</NavMenuItem>
+```
+
+This is needed to allow navigating the menu by typing the first letters of the item's label.
+
+## NavMenu Props
+
+<ArgsTable story="Menu (Nav)" />
+
+## NavMenuButton Props
+
+<ArgsTable of={NavMenuButton} />
+
+## NavMenuList Props
+
+<ArgsTable of={NavMenuList} />
+
+## NavMenuItem Props
+
+<ArgsTable of={NavMenuItem} />

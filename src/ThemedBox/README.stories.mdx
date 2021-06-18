@@ -1,0 +1,31 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import ThemedBox from './';
+
+<Meta title="Components/ThemedBox" component={ThemedBox} />
+
+# ThemedBox
+
+```jsx
+import ThemedBox from 'base5-ui/ThemedBox';
+```
+
+`ThemedBox` is a combination of the primitives `ThemeSection` and `Box`. While the `ThemeSection` is responsible for defining which theme colours can be used inside of it, the `Box` component actually picks up these theme colours and renders an element that uses them in its `color` and `background-color` declarations.
+
+All props other than `name` are passed on to the `Box` component, so this component is a great starting point for creating Card components.
+
+## Examples
+
+<Canvas>
+	<Story name="ThemedBox">
+		<ThemedBox name="page" p="l">
+			<ThemedBox name="card" borderRadius="small" boxShadow="soft" p="s">
+				Hello
+			</ThemedBox>
+		</ThemedBox>
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={ThemedBox} />

@@ -1,8 +1,8 @@
 import React, {createContext, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {useItemList} from '5app-use-item-list';
+import {useItemList} from 'use-item-list';
 
-import {KEY_CODES} from '../constants';
+import {KEY_CODES, POPPER_PLACEMENTS} from '../constants';
 
 import useEventListener from '../useEventListener';
 import usePopover from '../usePopover';
@@ -165,23 +165,7 @@ NavMenu.propTypes = {
 	 * Control the positioning of the popover menu relative to the button.
 	 * Takes a Popper.js placement string
 	 */
-	menuPlacement: PropTypes.oneOf([
-		'auto',
-		'top',
-		'bottom',
-		'left',
-		'right',
-		'auto-start',
-		'top-start',
-		'bottom-start',
-		'left-start',
-		'right-start',
-		'auto-end',
-		'top-end',
-		'bottom-end',
-		'left-end',
-		'right-end',
-	]),
+	menuPlacement: PropTypes.oneOf(POPPER_PLACEMENTS),
 	/*
 	 * Position the popover using position: fixed.
 	 * See the Popper.js docs about strategy: 'fixed' for details about this property
@@ -191,5 +175,4 @@ NavMenu.propTypes = {
 
 export {NavMenuContext};
 
-// @component
 export default NavMenu;

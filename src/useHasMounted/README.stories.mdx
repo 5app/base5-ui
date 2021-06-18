@@ -1,0 +1,13 @@
+import {Meta} from '@storybook/addon-docs/blocks';
+
+import useHasMounted from './';
+
+<Meta title="Hooks/useHasMounted" component={useHasMounted} />
+
+# useHasMounted
+
+```jsx
+import useHasMounted from 'base5-ui/useHasMounted';
+```
+
+A simple hook that will return `true` only when the host component is rendered on the client. Causes an instant double-render, so it may be best to use a third-party hook like [useIsMounted](https://usehooks-typescript.com/react-hook/use-is-mounted) instead.

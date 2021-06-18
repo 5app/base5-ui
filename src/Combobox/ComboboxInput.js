@@ -1,14 +1,10 @@
 import React, {useContext, forwardRef} from 'react';
+import PropTypes from 'prop-types';
 import useMergedRefs from '../useMergedRefs';
 import {ComboboxContext} from './Combobox';
 
 const ComboboxInput = forwardRef((props, outerRef) => {
-	const {
-		as: Component = 'input',
-		forwardedAs,
-		refKey = 'ref',
-		...otherProps
-	} = props;
+	const {as: Component, forwardedAs, refKey = 'ref', ...otherProps} = props;
 
 	const {
 		getInputProps,
@@ -42,5 +38,30 @@ const ComboboxInput = forwardRef((props, outerRef) => {
 });
 
 ComboboxInput.displayName = 'ComboboxInput';
+
+ComboboxInput.defaultProps = {
+	as: 'input',
+	refKey: 'ref',
+};
+
+ComboboxInput.propTypes = {
+	/**
+	 * Change the component that's rendered by this component.
+	 * The specified component must pass all common `input` props
+	 * (e.g. `value`, `id`, `onChange`) down to the rendered element.
+	 */
+	as: PropTypes.elementType,
+	/**
+	 * If the component passed to the `as` prop accepts an `as` prop
+	 * itself, `forwardedAs` can be used to pass another component
+	 * into it.
+	 */
+	forwardedAs: PropTypes.elementType,
+	/**
+	 * The name of the prop used to pass a ref to the component specified
+	 * in the `as` prop (e.g. "innerRef", "inputRef").
+	 */
+	refKey: PropTypes.string,
+};
 
 export default ComboboxInput;

@@ -14,7 +14,7 @@ describe('Popover', () => {
 		});
 	});
 
-	it.skip('renders its child inplace and appends its content prop to the document', () => {
+	it.skip('renders its child in place and appends its content prop to the document', () => {
 		const {container} = render(
 			<Wrapper>
 				<Popover

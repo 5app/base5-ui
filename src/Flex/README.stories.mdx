@@ -1,0 +1,48 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Flex, {Box} from './';
+
+<Meta title="Components/Flex" component={Flex} />
+
+# Flex
+
+```js
+import Flex from 'base5-ui/Flex';
+```
+
+`Flex` is a container component for building simple flexbox-based layouts using the `Box` component. It's especially useful when you want to lay out a small number of components with irregular widths in a row, and on opposing sides.
+
+If you don't need to align items to opposing sides, the `InlineList` component might be a better option, as `Flex` can't control the spacing between its children. Instead use style props to add margin or padding to nested `Box` components (see examples below).
+
+The component is built on top of `Box` and supports all its props. The props `align`, `column`, and `wrap` are aliases for the `Box` props `alignItems`, `stackItems`, and `wrapItems`.
+
+## Examples
+
+<Canvas>
+	<Story name="Example">
+		<Flex align="top" width="100%">
+			<Box grow shrink>
+				I take up all the free space and push other Boxes to the side!
+				👉
+			</Box>
+			<Box ml="m">👀 I'm smol.</Box>
+		</Flex>
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story name="Wrapping example">
+		<Flex wrap align="top" width="100%">
+			<Box grow shrink mr="m">
+				Still taking up as much space as possible.
+			</Box>
+			<Box shrink>
+				If there's no room for me I'll wrap onto a new line down below.
+			</Box>
+		</Flex>
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={Flex} />

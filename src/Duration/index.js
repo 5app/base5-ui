@@ -65,5 +65,4 @@ Duration.propTypes = {
 
 export {getDuration};
 
-// @component
 export default Duration;

@@ -1,3 +1,7 @@
-/*
-!/src
-!/test/*.js
+package-lock.json
+CHANGELOG.md
+
+*.html
+*.scss
+*.css
+*.yml

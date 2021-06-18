@@ -1,6 +1,7 @@
 import React, {forwardRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
 
+import {POPPER_PLACEMENTS} from '../constants';
 import {removeFalsyProps} from '../utils';
 
 import getArrowPosition, {getPlacements} from './getArrowPosition';
@@ -84,12 +85,13 @@ Arrow.propTypes = {
 	 * Add an optional suffix '-start' or '-end' to align the arrow to the
 	 * start or end of the chosen direction.
 	 */
-	placement: PropTypes.string,
+	placement: PropTypes.oneOf(
+		POPPER_PLACEMENTS.filter(position => !position.startsWith('auto'))
+	),
 	/**
 	 * Control the arrow size (length of side)
 	 */
 	size: PropTypes.number,
 };
 
-// @component
 export default Arrow;

@@ -1,0 +1,54 @@
+import {Meta, Canvas, Story} from '@storybook/addon-docs/blocks';
+
+import Box from '../Box';
+import Text from '../Text';
+import Popover from '../Popover';
+import usePopoverState from './';
+
+<Meta title="Hooks/usePopoverState" component={usePopoverState} />
+
+# usePopoverState
+
+```jsx
+import usePopoverState from 'base5-ui/usePopoverState';
+```
+
+Easily handle the state of popover menus or tooltips.
+
+Supports specifying a delay after which the popover is opened, and automatically closes the popover when the `Esc` key is pressed.
+
+## Example
+
+<Canvas>
+	<Story name="Example">
+		{() => {
+			const {isOpen, open, close} = usePopoverState({
+				openDelay: 200,
+				onOpen: () => console.log('Opening!'),
+				onClose: () => console.log('Closing!'),
+			});
+			return (
+				<Box p="l" textAlign="center">
+					<Popover
+						renderWhenClosed
+						isOpen={isOpen}
+						content="I'm a popover. I'll always stick to my reference element!"
+						placement="top"
+						p="s"
+						variant="inverted"
+					>
+						{popover => (
+							<Text
+								ref={popover.ref}
+								onMouseEnter={open}
+								onMouseLeave={close}
+							>
+								I'm a reference element
+							</Text>
+						)}
+					</Popover>
+				</Box>
+			);
+		}}
+	</Story>
+</Canvas>

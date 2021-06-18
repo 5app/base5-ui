@@ -1,0 +1,146 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import {Combobox, ComboboxInput, ComboboxMenu, ComboboxMenuItem} from './';
+
+<Meta
+	title="Components/Combobox"
+	component={Combobox}
+	argTypes={{
+		onSelect: {action: 'Select'},
+		onInputChange: {action: 'Input Change'},
+	}}
+/>
+
+# Combobox
+
+```js
+import {
+	Combobox,
+	ComboboxInput,
+	ComboboxMenu,
+	ComboboxMenuItem,
+} from 'base5-ui/Combobox';
+```
+
+An accessible combobox component that can be used with any input element.
+
+Implemented based on the recommendations from the [WAI-ARIA Authoring Practices 1.2 working draft](https://www.w3.org/TR/wai-aria-practices-1.2/#combobox).
+
+## Example code
+
+```jsx
+const DEFAULT_OPTIONS = [
+	'Apple',
+	'Apricot',
+	'Banana',
+	'Blueberry',
+	'Cherry',
+	'Fig',
+	'Feijoa',
+	'Gooseberry',
+	'Jackfruit',
+	'Jujube',
+	'Kiwi',
+	'Kumquat',
+	'Lingonberry',
+	'Lychee',
+	'Mandarin',
+	'Mango',
+	'Melon',
+	'Nectarine',
+	'Orange',
+	'Papaya',
+	'Passion Fruit',
+	'Pear',
+	'Persimmon',
+	'Physalis',
+	'Pineapple',
+	'Plum',
+	'Pomegranate',
+	'Pomelo',
+	'Raspberry',
+	'Starfruit',
+	'Strawberry',
+	'Watermelon',
+	'Wumpa',
+];
+
+function FruitPicker() {}
+	const inputRef = React.useRef();
+	const [inputValue, setInputValue] = React.useState('');
+	const [menuOptions, setMenuOptions] = React.useState(DEFAULT_OPTIONS);
+
+	React.useEffect(() => {
+		const filteredOptions = DEFAULT_OPTIONS.filter(option =>
+			option.toLowerCase().includes(inputValue.toLowerCase())
+		);
+		setMenuOptions(filteredOptions);
+	}, [inputValue]);
+
+	return (
+		<form>
+			<label htmlFor="fruit-selector">
+				Pick a fruit
+			</label>
+			<Combobox
+				id="fruit-selector"
+				inputValue={inputValue}
+				resultCount={menuOptions.length}
+				shouldShowStatusMessage={!menuOptions.length}
+				onSelect={selectedItem => {
+					setValue(selectedItem.value);
+					inputRef.current.focus();
+				}}
+				onInputChange={e => setValue(e.target.value)}
+			>
+				<ComboboxInput ref={inputRef} />
+				<ComboboxMenu aria-label="Fruits">
+					{menuOptions.map(item => (
+						<ComboboxMenuItem key={item}>
+							{item}
+						</ComboboxMenuItem>
+					))}
+				</ComboboxMenu>
+			</Combobox>
+		</form>
+	);
+}
+```
+
+<Canvas>
+	<Story name="Combobox" attrs={{inputValue: 'Apple'}}>
+		{props => (
+			<Combobox
+				{...props}
+				id="fruit-selector"
+				resultCount={5}
+				shouldShowStatusMessage={false}
+			>
+				<ComboboxInput />
+				<ComboboxMenu aria-label="Fruits">
+					<ComboboxMenuItem>Apple</ComboboxMenuItem>
+					<ComboboxMenuItem>Apricot</ComboboxMenuItem>
+					<ComboboxMenuItem>Banana</ComboboxMenuItem>
+					<ComboboxMenuItem>Blueberry</ComboboxMenuItem>
+					<ComboboxMenuItem>Cherry</ComboboxMenuItem>
+				</ComboboxMenu>
+			</Combobox>
+		)}
+	</Story>
+</Canvas>
+
+## Combobox Props
+
+<ArgsTable of={Combobox} />
+
+## ComboboxInput Props
+
+<ArgsTable of={ComboboxInput} />
+
+## ComboboxMenu Props
+
+<ArgsTable of={ComboboxMenu} />
+
+## ComboboxMenuItem Props
+
+<ArgsTable of={ComboboxMenuItem} />
