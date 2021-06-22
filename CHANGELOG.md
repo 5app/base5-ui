@@ -1,3 +1,10 @@
+## [13.2.2](https://github.com/5app/base5-ui/compare/v13.2.1...v13.2.2) (2021-06-22)
+
+
+### Bug Fixes
+
+* Fix broken Icons import, noissue ([31abf58](https://github.com/5app/base5-ui/commit/31abf5815cfc7b99c1d48600d7b99867812ea82c))
+
 ## [13.2.1](https://github.com/5app/base5-ui/compare/v13.2.0...v13.2.1) (2021-06-18)
 
 
