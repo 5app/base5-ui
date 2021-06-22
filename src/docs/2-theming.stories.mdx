@@ -46,7 +46,7 @@ However at 5App, each client can have their own branded 5App Hub, so the number 
 
 When we add a new feature or design element to our product, we can't go back to every existing client theme and add in new variables. After all, theme creation can't be automated well. Changes need to be manually checked by a designer to be not only readable and accessible, but also pleasing to the eye. So this approach would not be practical for us.
 
-Additionally, base5-ui is based on components. When you move a button from one place to another on your website, it shouldn't "break" – it needs to stay readable and fit in with its surroundings in a way that makes sense: A primary action button will do a great job on a contrasting background, but its impact changes when placed on a background that matches the button's own colour:
+Additionally, base5-ui is based on components. When you move a button from one place to another on your website, it shouldn't "break" – it needs to stay readable and fit in with its surroundings in a way that makes sense: A primary action button will do a great job on a contrasting background, but loses its impact when placed on a background that matches the button's own colour:
 
 <Canvas>
 	<Flex>
@@ -65,7 +65,7 @@ How do we avoid these pitfalls, and keep releasing new features and UI widgets w
 
 Here's a summary of our approach:
 
-1. We limit the number of theme variables that each design system component can _"know about"_ to a minimum.
+1. We limit the number of theme variables that each component can _"know about"_ to a minimum.
 2. We re-define those few variables depending on their context inside our app. We call these contexts "Theme Sections".
 
 ### Limiting what a component "knows about"
@@ -95,7 +95,7 @@ Each of these sections defines the same set of variables. This makes creating a 
 
 Theme Sections can't cover all requirements for colouring UI elements in a modern app UI. In the 5App Hub, we use colours and icons to differentiate between different file types, or traffic light colours to rate the strength of a user's password.
 
-For these use cases we came up with "Color Blocks": Simple mappings between a concept and a colour, e.g. `positive: 'green', negative: 'red', 'asset-video': 'yellow'`. Theese and can be used by UI components to add splashes of colour where necessary, and can also be customised for clients when needed.
+For these use cases we came up with "Color Blocks": Simple mappings between a name and a colour, e.g. `positive: 'green', negative: 'red', 'asset-video': 'yellow'`. These can be used by UI components to add splashes of colour where necessary, and can also be customised for clients when needed.
 
 <Canvas>
 	<Pill icon="asset-video">Video</Pill>
