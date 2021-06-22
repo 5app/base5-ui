@@ -7,7 +7,7 @@ import {Flex, Box, Button, Pill} from '../';
 
 # Theming
 
-Making the look and feel of the 5App Hub customisable has been an important part of its design from its early days. We didn't just want our clients to be able to add their own logo and maybe select a main colour for their hub, but instead make it possible to change the hub's look enough to fit in with their brand as seamlessly as possible.
+Making the 5App Hub fully themeable has been an important part of its design from the early days. We don't just add a logo for our clients' hubs, but change the colours to seamlessly fit in with their brands.
 
 In development, this flexibility has to be balanced with maintainability. This article explains how theming works in base5-ui, and how it's different from traditional theming approaches.
 
@@ -19,11 +19,11 @@ Not all of these can be customised by our clients – variables related to spaci
 
 The variables we expose for client branding were chosen based on their visual impact:
 
--   Colours
--   Corner radiuses (of buttons, cards, text inputs)
+-   All colours (backgrounds, text, you name it)
+-   Corner radiuses (buttons, cards, text inputs)
 -   Logos & background images
 
-It's these variables we're mainly interested about for the purpose of this article.
+It's these variables we're interested in for the purpose of this explainer.
 
 ## Why "traditional" theming doesn't work for multi-client branding
 
@@ -40,13 +40,13 @@ Theming is often implemented by directly defining colours for classes of UI elem
 }
 ```
 
-This approach works great if the number of themes you're working with is a fixed, low number, as is the case for most websites. In this scenario, when you add something to your site that requires a new colour variable, you just add it to each theme individually.
+This approach works great if the number of themes you're working with is a fixed, low number – as it is for most websites. In this scenario, when you add something to your site that requires a new colour variable, you just add it to each theme individually.
 
-However at 5App, each client can have their own branded 5App Hub, so the number of themes we're working with is practically ever-growing.
+However at 5App, each client can have their own branded 5App Hub, so the number of themes we're working with is potentially ever-growing.
 
-When we add a new feature or design element to our product, we can't go back to every existing client theme and add in new variables. After all, theme creation can't be automated well. Changes need to be manually checked by a designer to be not only readable and accessible, but also pleasing to the eye. So this approach would not be practical for us.
+When we add a new feature or design element to our product, we can't go back to every existing client theme and add in new variables. After all, theme creation can't be automated well: Changes need to be manually checked by a designer for readability and accessibility, but also for aesthetics. So this approach would not be practical for us.
 
-Additionally, base5-ui is based on components. When you move a button from one place to another on your website, it shouldn't "break" – it needs to stay readable and fit in with its surroundings in a way that makes sense: A primary action button will do a great job on a contrasting background, but loses its impact when placed on a background that matches the button's own colour:
+Additionally, base5-ui is based on components. When you move a button from one place to another on your website, it shouldn't "break" – it needs to stay readable and fit in with its surroundings in a way that makes sense: A primary action button will do a great job on a contrasting background, but loses its shape when placed on a background that matches the button's own colour:
 
 <Canvas>
 	<Flex>
@@ -61,7 +61,7 @@ Additionally, base5-ui is based on components. When you move a button from one p
 
 ## A different approach
 
-How do we avoid these pitfalls, and keep releasing new features and UI widgets without having to re-visit existing client themes?
+So how do we avoid these pitfalls, and keep releasing new features and UI widgets without having to re-visit existing client themes?
 
 Here's a summary of our approach:
 
@@ -93,7 +93,7 @@ Each of these sections defines the same set of variables. This makes creating a 
 
 ### Color Blocks
 
-Theme Sections can't cover all requirements for colouring UI elements in a modern app UI. In the 5App Hub, we use colours and icons to differentiate between different file types, or traffic light colours to rate the strength of a user's password.
+Theme Sections don't cover all requirements for colouring UI elements in our product. In the 5App Hub, we use colours and icons to differentiate between different file types, or traffic light colours to rate the strength of a user's password.
 
 For these use cases we came up with "Color Blocks": Simple mappings between a name and a colour, e.g. `positive: 'green', negative: 'red', 'asset-video': 'yellow'`. These can be used by UI components to add splashes of colour where necessary, and can also be customised for clients when needed.
 
@@ -101,7 +101,7 @@ For these use cases we came up with "Color Blocks": Simple mappings between a na
 	<Pill icon="asset-video">Video</Pill>
 </Canvas>
 
-When used with text or icons, the colour assigned to a Color Block is always used as a background colour, and a contrasting text colour (black or white) is calculated automatically. (Technically, Color Blocks are just Theme Sections, too, but should only be used for simple components due to the limited control they offer compared to regular Theme Sections.)
+When used with text or icons, the colour assigned to a Color Block is always used as a background colour, and a contrasting text colour (black or white) is calculated programmatically. (Technically, Color Blocks are just Theme Sections, too, but should only be used for simple components due to the limited control they offer compared to regular Theme Sections.)
 
 ## How to use Theme Sections
 
