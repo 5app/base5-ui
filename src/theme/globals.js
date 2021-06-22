@@ -87,6 +87,7 @@ const shadowStyles = {
 const colorBlocks = {
 	'alert-success': colors.blue,
 	'alert-fail': colors.pink,
+	'asset-video': colors.yellow,
 	positive: colors.green,
 	neutral: colors.yellow,
 	negative: colors.red,
