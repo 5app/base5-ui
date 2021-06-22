@@ -107,7 +107,7 @@ When used with text or icons, the colour assigned to a Color Block is always use
 
 To see an example of a Theme Section definition, check out the [default base5-ui theme in our GitHub repo](https://github.com/5app/base5-ui/blob/master/src/theme/sections.js). The themes we create for our clients look quite similar to this; you can find those in our (private) Github repo [themepark](https://github.com/5app/themepark/tree/master/src).
 
-You make a theme available to an app using the <LinkTo kind="Components/ThemeSection">ThemeSection</LinkTo> component as shown below. Throughout the app, you can then use the same component with just the `name` prop to control what nested components should look like.
+You make a theme available to an app using the <LinkTo kind="Components/ThemeSection">ThemeSection</LinkTo> component as shown below. Throughout the app, you can then use the same component with just the `name` prop to control what nested components should look like. Note that the `ThemeSection` component by itself will not apply any colours to its contents – it's up to nested components to pick and use colours from the Theme Section as needed. For example, the <LinkTo kind="Components/ThemedBox">ThemedBox</LinkTo> component combines a ThemeSection with a <LinkTo kind="Components/Box">Box</LinkTo> component to render an element with the defined text and background colour.
 
 ```jsx
 import ThemeSection from 'base5-icons/ThemeSection';
