@@ -4,7 +4,6 @@ export {default as AssetActivity} from './AssetActivity';
 export {default as AssetAudio} from './AssetAudio';
 export {default as AssetDefault} from './AssetDefault';
 export {default as AssetDiagram} from './AssetDiagram';
-export {default as AssetEbook} from './AssetEbook';
 export {default as AssetFluidbook} from './AssetFluidbook';
 export {default as AssetFolder} from './AssetFolder';
 export {default as AssetImage} from './AssetImage';
