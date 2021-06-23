@@ -110,13 +110,13 @@ To see an example of a Theme Section definition, check out the [default base5-ui
 You make a theme available to an app using the <LinkTo kind="Components/ThemeSection">ThemeSection</LinkTo> component as shown below. Throughout the app, you can then use the same component with just the `name` prop to control what nested components should look like. Note that the `ThemeSection` component by itself will not apply any colours to its contents – it's up to nested components to pick and use colours from the Theme Section as needed. For example, the <LinkTo kind="Components/ThemedBox">ThemedBox</LinkTo> component combines a ThemeSection with a <LinkTo kind="Components/Box">Box</LinkTo> component to render an element with the defined text and background colour.
 
 ```jsx
-import ThemeSection from 'base5-icons/ThemeSection';
+import ThemeSection from 'base5-ui/ThemeSection';
 
 // Design tokens: Spacing, font-sizes, colour blocks, etc
-import globals from 'base5-icons/theme/globals';
+import globals from 'base5-ui/theme/globals';
 
 // Theme Sections
-import sections from 'base5-icons/theme/sections';
+import sections from 'base5-ui/theme/sections';
 
 const baseTheme = {globals, sections};
 
