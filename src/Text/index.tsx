@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
 	createStyleFunction,
@@ -26,43 +25,29 @@ const shouldForwardProp = getPropFilter(
 	getPropNamesFromPropDefinition([...propDefs, ...textPropsDef])
 );
 
+interface ITextProps {
+	bold: boolean | unknown[];
+	caps: 'all' | 'first' | 'none' | unknown[];
+	dimmed: boolean | unknown[];
+	display: 'block' | 'inline' | 'inline-block' | unknown[];
+	fontSize: string | unknown[];
+	size: string | unknown[];
+	lineHeight: number | string | unknown[];
+	overflow: 'ellipsis' | 'wrap' | unknown[];
+	textAlign: 'left' | 'center' | 'right' | unknown[];
+	align: 'left' | 'center' | 'right' | unknown[];
+}
+
 const Text = styled('span').withConfig({
 	shouldForwardProp,
 })`
 	${styleProps}
-	${props =>
+	${(props: ITextProps) =>
 		textProps({
 			...props,
 			textAlign: props.align || props.textAlign,
 			fontSize: props.size || props.fontSize,
 		})}
 `;
-
-Text.propTypes = {
-	bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-	caps: PropTypes.oneOfType([
-		PropTypes.oneOf(['all', 'first', 'none']),
-		PropTypes.array,
-	]),
-	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-	display: PropTypes.oneOfType([
-		PropTypes.oneOf(['block', 'inline', 'inline-block']),
-		PropTypes.array,
-	]),
-	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-	lineHeight: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string,
-		PropTypes.array,
-	]),
-	overflow: PropTypes.oneOfType([
-		PropTypes.oneOf(['ellipsis', 'wrap']),
-		PropTypes.array,
-	]),
-	textAlign: PropTypes.oneOfType([
-		PropTypes.oneOf(['left', 'center', 'right']),
-		PropTypes.array,
-	]),
-};
 
 export default Text;

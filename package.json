@@ -2,10 +2,10 @@
 	"name": "base5-ui",
 	"version": "13.2.1",
 	"description": "5app's reusable UI component library",
-	"main": "index.js",
+	"main": "./src/index.js",
 	"scripts": {
 		"build-icons": "pixo src-icons/svg --out-dir src/icons --template src-icons/template.js",
-		"compile": "babel src --out-dir dist",
+		"compile": "tsc && babel src --out-dir dist --extensions '.js,j.jsx,.ts,.tsx'",
 		"copypackage": "cp -rf package.json README.md dist",
 		"predist": "npm run copypackage",
 		"dist": "cd dist && npm publish",
@@ -38,6 +38,7 @@
 		"@babel/plugin-proposal-optional-chaining": "^7.14.2",
 		"@babel/plugin-transform-react-jsx": "^7.14.3",
 		"@babel/preset-env": "^7.14.2",
+		"@babel/preset-typescript": "^7.14.5",
 		"@commitlint/cli": "^12.1.4",
 		"@commitlint/config-conventional": "^12.1.4",
 		"@semantic-release/changelog": "^5.0.0",
@@ -48,6 +49,9 @@
 		"@storybook/react": "^6.2.9",
 		"@testing-library/jest-dom": "^5.12.0",
 		"@testing-library/react": "^11.2.7",
+		"@types/styled-components": "^5.1.10",
+		"@typescript-eslint/eslint-plugin": "4.28.0",
+		"@typescript-eslint/parser": "4.28.0",
 		"babel-eslint": "^10.1.0",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-styled-components": "^1.10.7",
@@ -67,7 +71,8 @@
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
 		"semantic-release": "^17.4.3",
-		"styled-components": "^5.2.1"
+		"styled-components": "^5.2.1",
+		"typescript": "^4.3.4"
 	},
 	"peerDependencies": {
 		"react": "^17.0.0",
@@ -76,16 +81,16 @@
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.9.2",
-		"use-item-list": "0.1.2",
 		"aria-hidden": "^1.1.1",
 		"chartist": "^0.11.3",
-		"classnames": "^2.2.6",
+		"classnames": "^2.3.1",
 		"color2k": "^1.1.1",
 		"focus-visible": "^5.0.2",
 		"popper-max-size-modifier": "^0.2.0",
 		"react-focus-lock": "^2.3.1",
 		"react-merge-refs": "^1.0.0",
-		"react-popper": "^2.2.5"
+		"react-popper": "^2.2.5",
+		"use-item-list": "0.1.2"
 	},
 	"commitlint": {
 		"extends": [

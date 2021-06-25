@@ -12,6 +12,8 @@ import {
 	getPropFilter,
 	getPropNamesFromPropDefinition,
 } from '../utils';
+
+// @ts-expect-error: expected to error until TS migration for this module.
 import {fillParent, borderValue, ie11Hack} from '../mixins';
 
 import Box from '../Box';

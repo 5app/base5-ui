@@ -10,8 +10,8 @@ describe('Text', () => {
 
 	it('throws ThemeSectionError if rendered outside a <ThemeSection />', () => {
 		expect(() => {
-			render(<Text />).toThrow(ThemeSectionError);
-		});
+			render(<Text />);
+		}).toThrow(ThemeSectionError);
 	});
 
 	it('renders styled text', () => {

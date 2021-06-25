@@ -2,7 +2,7 @@ import {pxToRem} from './units';
 
 const passThroughValues = ['auto'];
 
-function getSpacing(shortCode, theme) {
+function getSpacing(shortCode: any, theme: any): string | undefined {
 	if (shortCode === undefined || shortCode === null || shortCode === false) {
 		return shortCode;
 	}

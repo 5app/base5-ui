@@ -1,4 +1,4 @@
-import {getSpacing} from '../utils';
+import getSpacing from '../utils/getSpacing';
 import {createStyleFunction} from '../utils/styleProps';
 
 export const marginPropsDef = [

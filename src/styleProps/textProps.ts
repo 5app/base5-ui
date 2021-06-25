@@ -7,37 +7,39 @@ const textTransformMap = {
 	none: 'none',
 };
 
+type TextTransformKey = keyof typeof textTransformMap;
+
 export const textPropsDef = [
 	{
 		styleProp: 'bold',
 		properties: ['fontWeight'],
-		getValue: bold => (bold ? 'bold' : 'normal'),
+		getValue: (bold: unknown) => (bold ? 'bold' : 'normal'),
 	},
 	{
 		styleProp: 'fontSize',
 		properties: ['fontSize'],
-		getValue: (size, theme) =>
+		getValue: (size: string, theme: any) =>
 			size ? theme.globals.typeScale[size] : undefined,
 	},
 	{
 		styleProp: 'textAlign',
 		properties: ['textAlign'],
-		getValue: value => value,
+		getValue: (value: unknown) => value,
 	},
 	{
 		styleProp: 'lineHeight',
 		properties: ['lineHeight'],
-		getValue: value => value,
+		getValue: (value: unknown) => value,
 	},
 	{
 		styleProp: 'caps',
 		properties: ['textTransform'],
-		getValue: caps => textTransformMap[caps],
+		getValue: (caps: string): string => textTransformMap[caps as TextTransformKey],
 	},
 	{
 		styleProp: 'dimmed',
 		properties: ['color'],
-		getValue: (dimmed, theme) =>
+		getValue: (dimmed: unknown, theme: any) =>
 			dimmed ? getDimmedTextColor(theme) : theme.text,
 	},
 ];

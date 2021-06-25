@@ -1,4 +1,5 @@
 import {createStyleFunction} from '../utils/styleProps';
+// @ts-expect-error: not a TS module yet.
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
 const supportedDisplayValues = [
@@ -10,12 +11,12 @@ const supportedDisplayValues = [
 	'none',
 ];
 
-const overflowStylesMap = {
+const overflowStylesMap: {[key: string]: any} = {
 	ellipsis,
 	wrap,
 };
 
-function getOverflowValue(value) {
+function getOverflowValue(value: string | number) {
 	if (overflowStylesMap[value]) {
 		return overflowStylesMap[value];
 	} else if (value) {
@@ -28,7 +29,7 @@ function getOverflowValue(value) {
 export const displayPropsDef = [
 	{
 		styleProp: 'display',
-		getValue: display =>
+		getValue: (display: string) =>
 			supportedDisplayValues.includes(display)
 				? display
 				: console.warn(
@@ -45,4 +46,5 @@ export const displayPropsDef = [
 	},
 ];
 
+// unsure what this issue is here. TODO: come back and figure this out
 export default createStyleFunction(displayPropsDef);
