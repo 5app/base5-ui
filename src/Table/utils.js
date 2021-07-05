@@ -12,7 +12,7 @@ import {Children} from 'react';
  * @returns {object} Table config as object
  */
 
-function getColumnConfigFromChildren(children) {
+export function getColumnConfigFromChildren(children) {
 	return Children.map(children, child => {
 		if (child && child.type.displayName === 'Column') {
 			return child.props;
@@ -24,4 +24,29 @@ function getColumnConfigFromChildren(children) {
 	}).filter(column => Boolean(column));
 }
 
-export default getColumnConfigFromChildren;
+/**
+ * Uses either the column's name or its cellRenderer
+ * to access a cell's data. If no cellRenderer is proviced,
+ * the name of the column is used.
+ *
+ * @param {object} item
+ * @param {string|Function} key
+ */
+
+export function getCellContent(item, key) {
+	if (typeof key === 'string') {
+		return item[key] || item[key.toLowerCase()] || null;
+	}
+	return key(item);
+}
+
+/**
+ * Returns the name or title of the passed column.
+ *
+ * @param {object} column
+ * @param {string} name
+ */
+
+export function getColumnName(column) {
+	return column.name || column.title;
+}

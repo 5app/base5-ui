@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {alpha, getBackgroundShade} from '../utils/colors';
-import ArrowIcon from '../icons/Arrow';
-import ButtonCore from '../ButtonCore';
+import {alpha, getBackgroundShade} from '../../utils/colors';
+import ArrowIcon from '../../icons/Arrow';
+import ButtonCore from '../../ButtonCore';
 
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from '../../VisuallyHidden';
 
 const HeaderButton = styled(ButtonCore)`
 	vertical-align: baseline;
@@ -99,9 +99,9 @@ function ClickableHeader({
 		if (typeof onRequestSort !== 'function') return null;
 
 		return () => {
-			// Only flip the order when the column to
-			// be ordered by changes. Otherwise use the
-			// column's `defaultOrder` prop
+			// Only flip the order when the column to be ordered by
+			// doesn't change.
+			// Otherwise use the column's `defaultOrder` prop
 			onRequestSort({
 				column: name || title,
 				order: isActive ? reverseOrder[order] : defaultOrder,
