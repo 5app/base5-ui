@@ -1,4 +1,7 @@
 import {Children} from 'react';
+import {css} from 'styled-components';
+
+import {getSolidBackgroundShade} from '../utils';
 
 /**
  * Get the table's column configuration via JSX from
@@ -49,4 +52,13 @@ export function getCellContent(item, key) {
 
 export function getColumnName(column) {
 	return column.name || column.title;
+}
+
+export const headerBackgroundColor = css`
+	background-color: ${p =>
+		p.shadedHeader ? getSolidBackgroundShade(p.theme) : p.theme.background};
+`;
+
+export function getBreakpoint(key) {
+	return p => p.theme.globals.breakpoints[p[key]];
 }

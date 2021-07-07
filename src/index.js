@@ -1,8 +1,8 @@
-export {default as styleProps} from './styleProps';
-export {default as icons} from './icons';
-export {default as mixins} from './mixins';
+export * as styleProps from './styleProps';
+export * as icons from './icons';
+export * as mixins from './mixins';
 export {default as theme} from './theme';
-export {default as utils} from './utils';
+export * as utils from './utils';
 
 export {default as Arrow} from './Arrow';
 export {default as Box} from './Box';

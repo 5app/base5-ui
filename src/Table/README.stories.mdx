@@ -2,7 +2,8 @@ import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 
 import Box from '../Box';
 import Icon from '../Icon';
-import Table from './';
+import Table from './Table';
+import SelectionTable from './SelectionTable';
 import Column from './Column';
 import CenterContent from '../CenterContent';
 import dummyData from './demo/dummyData';
@@ -179,6 +180,49 @@ The table below uses both modes – on medium sized screens, columns that don't 
 			<Column title="Type" />
 			<Column title="Time" />
 		</Table>
+	</Story>
+</Canvas>
+
+### Table row selection
+
+<Canvas>
+	<Story name="Selectable table rows">
+		{() => {
+			const [selectedItems, setSelectedItems] = React.useState([
+				'Dai Shepherd',
+			]);
+			return (
+				<SelectionTable
+					mobileViewBreakpoint="xxxs"
+					data={dummyData.slice(8, 24)}
+					itemKey="name"
+					rowHeader="Name"
+					selectedItems={selectedItems}
+					onChangeSelectedItems={setSelectedItems}
+					pl="xxl"
+				>
+					<Column
+						title="Name"
+						width="40%"
+						cellRenderer={item => (
+							<strong>
+								<Icon
+									vAlign
+									name={
+										item.role === 'manager'
+											? 'star'
+											: 'user'
+									}
+								/>{' '}
+								{item.name}
+							</strong>
+						)}
+					/>
+					<Column title="Type" />
+					<Column title="Time" />
+				</SelectionTable>
+			);
+		}}
 	</Story>
 </Canvas>
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Text from '../Text';
 import CenterContent from '../CenterContent';
+import Checkbox from '../Checkbox';
+import Text from '../Text';
 
 import {
 	getColumnName,
@@ -18,11 +19,29 @@ import {
 	TableBody,
 	TableRow,
 	TableBodyCell,
+	TableCheckboxCell,
 } from './shared';
 
 const defaultHeaderRenderer = column => <Text bold>{column.title}</Text>;
 
-function Table(props) {
+const NONE_SELECTED = 'none';
+const SOME_SELECTED = 'some';
+const ALL_SELECTED = 'all';
+
+function getSelectAllState(data, selectedItems, itemKey) {
+	if (selectedItems.length === 0) {
+		return NONE_SELECTED;
+	}
+	const itemIsSelected = item => selectedItems.includes(item[itemKey]);
+	const areAllSelected = data.every(itemIsSelected);
+	if (areAllSelected) {
+		return ALL_SELECTED;
+	}
+	const areSomeSelected = data.some(itemIsSelected);
+	return areSomeSelected ? SOME_SELECTED : NONE_SELECTED;
+}
+
+function SelectionTable(props) {
 	const {
 		children,
 		columns: columnsProp,
@@ -33,7 +52,10 @@ function Table(props) {
 		onRequestSort,
 		orderLabels,
 		rowHeader: rowHeaderProp,
+		selectedItems,
+		onChangeSelectedItems,
 		sort,
+		mobileViewBreakpoint,
 		...otherProps
 	} = props;
 
@@ -43,12 +65,50 @@ function Table(props) {
 
 	const hasData = data && data.length > 0;
 	const rowHeader = rowHeaderProp || getColumnName(columns[0]);
+	const selectAllState = getSelectAllState(data, selectedItems, itemKey);
+
+	function getIsItemSelected(item) {
+		return (
+			selectAllState === ALL_SELECTED ||
+			selectedItems.includes(item[itemKey])
+		);
+	}
+
+	function getSelectRowHandler(item) {
+		return e => {
+			const isSelected = e.target.checked;
+			if (isSelected) {
+				onChangeSelectedItems([...selectedItems, item[itemKey]]);
+			} else {
+				onChangeSelectedItems(
+					selectedItems.filter(
+						selectedItem => selectedItem !== item[itemKey]
+					)
+				);
+			}
+		};
+	}
+
+	function toggleSelectAll() {
+		if (selectAllState === NONE_SELECTED) {
+			onChangeSelectedItems(data.map(item => item[itemKey]));
+		} else {
+			onChangeSelectedItems([]);
+		}
+	}
 
 	return (
 		<TableContextProvider {...otherProps}>
 			<TableWrapper>
 				<TableHead>
-					<TableRow>
+					<TableRow mobileViewBreakpoint={mobileViewBreakpoint}>
+						<TableCheckboxCell isHeader>
+							<Checkbox
+								checked={selectAllState === ALL_SELECTED}
+								indeterminate={selectAllState === SOME_SELECTED}
+								onChange={toggleSelectAll}
+							/>
+						</TableCheckboxCell>
 						{columns.map(column => (
 							<TableColumnHeader
 								key={getColumnName(column)}
@@ -66,6 +126,12 @@ function Table(props) {
 					{hasData &&
 						data.map(item => (
 							<TableRow key={item[itemKey]}>
+								<TableCheckboxCell>
+									<Checkbox
+										checked={getIsItemSelected(item)}
+										onChange={getSelectRowHandler(item)}
+									/>
+								</TableCheckboxCell>
 								{columns.map(column => {
 									const {
 										cellRenderer,
@@ -104,7 +170,7 @@ function Table(props) {
 	);
 }
 
-Table.defaultProps = {
+SelectionTable.defaultProps = {
 	emptyContent: (
 		<CenterContent height={200}>No data to display</CenterContent>
 	),
@@ -119,7 +185,7 @@ Table.defaultProps = {
 	rowMinHeight: 45,
 };
 
-Table.propTypes = {
+SelectionTable.propTypes = {
 	columns: PropTypes.arrayOf(
 		PropTypes.shape({
 			cellRenderer: PropTypes.func,
@@ -133,6 +199,9 @@ Table.propTypes = {
 		})
 	),
 	data: PropTypes.array,
+	selectedItems: PropTypes.arrayOf(
+		PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+	),
 	/**
 	 * Content to be displayed when the passed data is empty
 	 */
@@ -201,4 +270,4 @@ Table.propTypes = {
 	shadedHeader: PropTypes.bool,
 };
 
-export default Table;
+export default SelectionTable;
