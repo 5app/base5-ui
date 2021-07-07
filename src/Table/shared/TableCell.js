@@ -1,20 +1,14 @@
 import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {pxToRem, getSpacing, getPropFilter} from '../../utils';
+import {pxToRem, getSpacing} from '../../utils';
 import {overflowWrap} from '../../mixins';
 
-import {withTableContext} from './TableContext';
+import {withTableContext, tableContextPropFilter} from './TableContext';
 
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
 }
-
-export const TABLE_CELL_PROPS = [
-	'hideBelowBreakpoint',
-	'mobileViewBreakpoint',
-	'rowMinHeight',
-];
 
 export const tableCellBaseStyles = css`
 	font-weight: inherit;
@@ -56,7 +50,7 @@ export const tableCellBaseStyles = css`
 `;
 
 const TableCell = styled('td').withConfig({
-	shouldForwardProp: getPropFilter(TABLE_CELL_PROPS),
+	shouldForwardProp: tableContextPropFilter,
 })`
 	${tableCellBaseStyles}
 

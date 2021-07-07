@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-import {alpha, getPropFilter} from '../../utils';
+import {alpha} from '../../utils';
 import {borderValue} from '../../mixins';
 
-import {withTableContext} from './TableContext';
+import {withTableContext, tableContextPropFilter} from './TableContext';
 
 import {getBreakpoint} from '../utils';
 
 const TableRow = styled('tr').withConfig({
-	shouldForwardProp: getPropFilter(['mobileViewBreakpoint']),
+	shouldForwardProp: tableContextPropFilter,
 })`
 	/* Non-mobile-view styles only */
 	@media (min-width: ${getBreakpoint('mobileViewBreakpoint')}) {

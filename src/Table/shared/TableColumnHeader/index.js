@@ -1,14 +1,14 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import {pxToRem, getSolidBackgroundShade, getPropFilter} from '../../../utils';
+import {pxToRem} from '../../../utils';
 import {borderValue, ie11Hack} from '../../../mixins';
 import Text from '../../../Text';
-import {getColumnName} from '../../utils';
+import {getColumnName, headerBackgroundColor} from '../../utils';
 
-import {tableCellBaseStyles, TABLE_CELL_PROPS} from '../TableCell';
-import {withTableContext} from '../TableContext';
+import {tableCellBaseStyles} from '../TableCell';
+import {withTableContext, tableContextPropFilter} from '../TableContext';
 
 import ClickableHeader from './ClickableHeader';
 
@@ -17,16 +17,8 @@ const ARIA_SORT_LABEL = {
 	desc: 'descending',
 };
 
-const headerBackgroundColor = css`
-	background-color: ${p =>
-		p.shadedHeader ? getSolidBackgroundShade(p.theme) : p.theme.background};
-`;
-
 export const Wrapper = withTableContext(styled('th').withConfig({
-	shouldForwardProp: getPropFilter([
-		...TABLE_CELL_PROPS,
-		'stickyHeaderOffset',
-	]),
+	shouldForwardProp: tableContextPropFilter,
 })`
 	${tableCellBaseStyles}
 

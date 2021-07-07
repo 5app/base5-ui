@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {borderValue} from '../../mixins';
-import {getPropFilter} from '../../utils';
 
 import {getBreakpoint, headerBackgroundColor} from '../utils';
 
-import {withTableContext} from './TableContext';
+import {withTableContext, tableContextPropFilter} from './TableContext';
 import {tableCellBaseStyles} from './TableCell';
 
 const Th = withTableContext(styled('th').withConfig({
-	shouldForwardProp: getPropFilter(['mobileViewBreakpoint']),
+	shouldForwardProp: tableContextPropFilter,
 })`
 	${tableCellBaseStyles}
 

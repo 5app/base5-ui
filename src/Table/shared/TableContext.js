@@ -1,6 +1,19 @@
 import React, {createContext, useContext, useMemo} from 'react';
 
+import {getPropFilter} from '../../utils';
+
 const TableContext = createContext({});
+
+export const TABLE_CONTEXT_PROP_NAMES = [
+	'mobileViewBreakpoint',
+	'stickyHeaderOffset',
+	'rowMinHeight',
+	'shadedHeader',
+	'pl',
+	'pr',
+];
+
+export const tableContextPropFilter = getPropFilter(TABLE_CONTEXT_PROP_NAMES);
 
 function TableContextProvider({
 	children,

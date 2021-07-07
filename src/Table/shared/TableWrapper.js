@@ -8,7 +8,7 @@ import {
 } from '../../styleProps';
 import {getPropFilter, getPropNamesFromPropDefinition} from '../../utils';
 
-import {withTableContext} from './TableContext';
+import {withTableContext, TABLE_CONTEXT_PROP_NAMES} from './TableContext';
 
 import {getBreakpoint} from '../utils';
 
@@ -17,10 +17,13 @@ const stylePropNames = getPropNamesFromPropDefinition([
 	...marginPropsDef,
 ]);
 
-const tablePropNames = [...stylePropNames, 'mobileViewBreakpoint'];
+const propFilter = getPropFilter([
+	...stylePropNames,
+	...TABLE_CONTEXT_PROP_NAMES,
+]);
 
 const TableWrapper = styled('table').withConfig({
-	shouldForwardProp: getPropFilter(tablePropNames),
+	shouldForwardProp: propFilter,
 })`
 	position: relative;
 	${positionProps}
