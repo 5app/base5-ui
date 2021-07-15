@@ -20,7 +20,16 @@ import {
 	TableBodyCell,
 } from './shared';
 
-const defaultHeaderRenderer = column => <Text bold>{column.title}</Text>;
+export const defaultHeaderRenderer = column => <Text bold>{column.title}</Text>;
+export const defaultEmptyContent = (
+	<CenterContent height={200}>No data to display</CenterContent>
+);
+export const defaultA11yLabels = {
+	sortedAsc: 'ascending',
+	sortedDesc: 'descending',
+	sortByColumn: (columnTitle, order) =>
+		`Sort by ${columnTitle} in ${order}ending order`,
+};
 
 function Table(props) {
 	const {
@@ -31,7 +40,7 @@ function Table(props) {
 		itemKey,
 		headerRenderer,
 		onRequestSort,
-		orderLabels,
+		a11yLabels,
 		rowHeader: rowHeaderProp,
 		sort,
 		...otherProps
@@ -46,7 +55,7 @@ function Table(props) {
 
 	return (
 		<TableContextProvider {...otherProps}>
-			<TableWrapper>
+			<TableWrapper aria-label={a11yLabels.label}>
 				<TableHead>
 					<TableRow>
 						{columns.map(column => (
@@ -54,7 +63,7 @@ function Table(props) {
 								key={getColumnName(column)}
 								column={column}
 								sort={sort}
-								orderLabels={orderLabels}
+								a11yLabels={a11yLabels}
 								onRequestSort={onRequestSort}
 							>
 								{headerRenderer(column)}
@@ -105,15 +114,10 @@ function Table(props) {
 }
 
 Table.defaultProps = {
-	emptyContent: (
-		<CenterContent height={200}>No data to display</CenterContent>
-	),
+	emptyContent: defaultEmptyContent,
 	itemKey: 'id',
 	headerRenderer: defaultHeaderRenderer,
-	orderLabels: {
-		asc: '(sorted ascending)',
-		desc: '(sorted descending)',
-	},
+	a11yLabels: defaultA11yLabels,
 	mobileViewBreakpoint: 'xs',
 	stickyHeaderOffset: 0,
 	rowMinHeight: 45,
@@ -132,16 +136,25 @@ Table.propTypes = {
 			width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 		})
 	),
-	data: PropTypes.array,
 	/**
-	 * Content to be displayed when the passed data is empty
+	 * The data for your table. Each object in the array must correspond to one row in the table
 	 */
-	emptyContent: PropTypes.element,
+	data: PropTypes.arrayOf(PropTypes.object),
 	/**
 	 * Specify a unique key by which each item in
 	 * the provided `data` array can be identified
 	 */
 	itemKey: PropTypes.string,
+	/**
+	 * The title or name of the column that you want to act as header of each **row**.
+	 * Usually you'd set this to the column that shows the name of the table row.
+	 * Especially important to set correctly for the mobile view. Defaults to the first column.
+	 */
+	rowHeader: PropTypes.string,
+	/**
+	 * Content to be displayed when the passed data is empty
+	 */
+	emptyContent: PropTypes.element,
 	/**
 	 * Specify how far from the top the sticky header should be placed.
 	 * Use to make sure it's not covered by a navigation bar
@@ -168,12 +181,14 @@ Table.propTypes = {
 		order: PropTypes.oneOf(['asc', 'desc']),
 	}),
 	/**
-	 * Object containing the labels that are used to announce
-	 * the order of a column to screen reader users.
+	 * Object containing labels used for accessibility.
+	 * Note that some fields are functions that are called with
+	 * data needed to customise the label.
 	 */
-	orderLabels: PropTypes.shape({
-		asc: PropTypes.string.isRequired,
-		desc: PropTypes.string.isRequired,
+	a11yLabels: PropTypes.shape({
+		sortedAsc: PropTypes.string.isRequired,
+		sortedDesc: PropTypes.string.isRequired,
+		sortByColumn: PropTypes.func.isRequired,
 	}),
 	/**
 	 * Padding left – indent the content of the first column by the
@@ -185,12 +200,6 @@ Table.propTypes = {
 	 * specified amount.
 	 */
 	pr: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	/**
-	 * The title or name of the column that you want to act as header of the row.
-	 * Especially important to set correctly for the mobile view.
-	 * Defaults to the first column.
-	 */
-	rowHeader: PropTypes.string,
 	/**
 	 * Minimum height of each row. Increase this for a more spacious design.
 	 */

@@ -1,7 +1,7 @@
 import {Children} from 'react';
 import {css} from 'styled-components';
 
-import {getSolidBackgroundShade} from '../utils';
+import {getSolidBackgroundShade, getLength, getSpacing} from '../utils';
 
 /**
  * Get the table's column configuration via JSX from
@@ -60,5 +60,14 @@ export const headerBackgroundColor = css`
 `;
 
 export function getBreakpoint(key) {
-	return p => p.theme.globals.breakpoints[p[key]];
+	return p => (p[key] ? p.theme.globals.breakpoints[p[key]] : '0px');
+}
+
+export const DEFAULT_LEFT_CELL_PADDING = 's';
+export const CHECKBOX_CELL_WIDTH = 20;
+
+export function getCheckboxColumnWidth(p) {
+	const width = getLength(CHECKBOX_CELL_WIDTH);
+	const padding = getSpacing(p.pl || DEFAULT_LEFT_CELL_PADDING, p.theme);
+	return `calc(${width} + ${padding})`;
 }

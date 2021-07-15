@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useMemo} from 'react';
+import React, {createContext, useContext, useMemo, forwardRef} from 'react';
 
 import {getPropFilter} from '../../utils';
 
@@ -54,10 +54,12 @@ function useTableContext() {
 }
 
 function withTableContext(Component) {
-	return function WrappedComponent(props) {
+	const WrappedComponent = forwardRef((props, ref) => {
 		const contextProps = useTableContext();
-		return <Component {...props} {...contextProps} />;
-	};
+		return <Component ref={ref} {...props} {...contextProps} />;
+	});
+	WrappedComponent.displayName = `${Component.displayName}WithTableContext`;
+	return WrappedComponent;
 }
 
 export {TableContextProvider, useTableContext, withTableContext};

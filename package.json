@@ -76,16 +76,17 @@
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.9.2",
-		"use-item-list": "0.1.2",
 		"aria-hidden": "^1.1.1",
 		"chartist": "^0.11.3",
 		"classnames": "^2.2.6",
 		"color2k": "^1.1.1",
 		"focus-visible": "^5.0.2",
+		"focusable-selectors": "^0.3.0",
 		"popper-max-size-modifier": "^0.2.0",
 		"react-focus-lock": "^2.3.1",
 		"react-merge-refs": "^1.0.0",
-		"react-popper": "^2.2.5"
+		"react-popper": "^2.2.5",
+		"use-item-list": "0.1.2"
 	},
 	"commitlint": {
 		"extends": [

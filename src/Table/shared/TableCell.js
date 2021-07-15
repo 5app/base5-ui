@@ -1,24 +1,42 @@
 import styled, {css} from 'styled-components';
-import PropTypes from 'prop-types';
 
-import {pxToRem, getSpacing} from '../../utils';
+import {pxToRem, getSpacing, getLength, getPropFilter} from '../../utils';
 import {overflowWrap} from '../../mixins';
 
-import {withTableContext, tableContextPropFilter} from './TableContext';
+import {DEFAULT_LEFT_CELL_PADDING} from '../utils';
+import {withTableContext, TABLE_CONTEXT_PROP_NAMES} from './TableContext';
 
 function getBreakpoint(key) {
 	return p => p.theme.globals.breakpoints[p[key]];
 }
 
+export const tableCellPropFilter = getPropFilter([
+	...TABLE_CONTEXT_PROP_NAMES,
+	'hideBelowBreakpoint',
+	'width',
+	'isCheckbox',
+]);
+
 export const tableCellBaseStyles = css`
+	position: relative;
 	font-weight: inherit;
 	text-align: left;
+	width: ${p => getLength(p.width)};
 	height: ${p => pxToRem(p.rowMinHeight)};
 	padding: ${p => p.theme.globals.spacing.xxs}
-		${p => p.theme.globals.spacing.s};
+		${p => p.theme.globals.spacing[DEFAULT_LEFT_CELL_PADDING]};
 	padding-right: 0;
 
 	${overflowWrap}
+
+	&:focus {
+		outline: none;
+	}
+
+	&.focus-visible {
+		outline: 3px solid ${p => p.theme.links};
+		outline-offset: -1px;
+	}
 
 	/* Non-mobile view */
 	@media (min-width: ${getBreakpoint('mobileViewBreakpoint')}) {
@@ -49,8 +67,8 @@ export const tableCellBaseStyles = css`
 		`}
 `;
 
-const TableCell = styled('td').withConfig({
-	shouldForwardProp: tableContextPropFilter,
+const TableCell = styled.td.withConfig({
+	shouldForwardProp: tableCellPropFilter,
 })`
 	${tableCellBaseStyles}
 
@@ -64,17 +82,26 @@ const TableCell = styled('td').withConfig({
 		/* Add columns headers as inline labels
 		 * The parent td's display: flex ensures clean
 		 * content line breaks */
-		&::before {
-			content: attr(data-columnheader) ': ';
-			margin-right: ${p => p.theme.globals.spacing.xs};
-			font-weight: normal;
-			white-space: nowrap;
-		}
+		${p =>
+			p.isCheckbox
+				? css`
+						position: absolute;
+						top: 0;
+						left: 0;
+						bottom: 0;
+						z-index: ${p => p.theme.globals.z.raised};
+						/* Visually align checkbox */
+						padding-top: ${pxToRem(13)};
+				  `
+				: css`
+						&::before {
+							content: attr(data-columnheader) ': ';
+							margin-right: ${p => p.theme.globals.spacing.xs};
+							font-weight: normal;
+							white-space: nowrap;
+						}
+				  `}
 	}
 `;
-
-TableCell.propTypes = {
-	hideBelowBreakpoint: PropTypes.string,
-};
 
 export default withTableContext(TableCell);

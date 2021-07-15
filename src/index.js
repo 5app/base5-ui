@@ -45,6 +45,7 @@ export {default as useMergedRefs} from './useMergedRefs';
 export {default as useOnClickOutside} from './useOnClickOutside';
 export {default as usePopover} from './usePopover';
 export {default as usePopoverState} from './usePopoverState';
+export {default as usePrevious} from './usePrevious';
 export {default as useHasMounted} from './useHasMounted';
 export {default as useInterval} from './useInterval';
 export {default as useReturnToInitEffect} from './useReturnToInitEffect';

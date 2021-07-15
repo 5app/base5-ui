@@ -1,23 +1,42 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import Box from '../../Box';
 
+import {useTableContext} from './TableContext';
 import TableCell from './TableCell';
 import {Wrapper as ColumnHeaderCell} from './TableColumnHeader';
 
-function TableCheckboxCell({children, isHeader, ...otherProps}) {
-	if (isHeader) {
+const TableCheckboxCell = forwardRef(
+	({children, isHeader, ...otherProps}, ref) => {
+		const {mobileViewBreakpoint} = useTableContext();
+		if (isHeader) {
+			return (
+				<ColumnHeaderCell
+					{...otherProps}
+					isCheckbox
+					ref={ref}
+					scope="col"
+					width={20}
+				>
+					<Box display="flex">{children}</Box>
+				</ColumnHeaderCell>
+			);
+		}
 		return (
-			<ColumnHeaderCell {...otherProps} scope="col" width={40}>
-				<Box display="flex">{children}</Box>
-			</ColumnHeaderCell>
+			<TableCell isCheckbox {...otherProps} ref={ref}>
+				<Box
+					display="flex"
+					alignItems={['top', 'center']}
+					height="100%"
+					breakpoints={mobileViewBreakpoint}
+				>
+					{children}
+				</Box>
+			</TableCell>
 		);
 	}
-	return (
-		<TableCell {...otherProps}>
-			<Box display="flex">{children}</Box>
-		</TableCell>
-	);
-}
+);
+
+TableCheckboxCell.displayName = 'TableCheckboxCell';
 
 export default TableCheckboxCell;

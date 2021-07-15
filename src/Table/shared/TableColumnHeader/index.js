@@ -5,10 +5,14 @@ import PropTypes from 'prop-types';
 import {pxToRem} from '../../../utils';
 import {borderValue, ie11Hack} from '../../../mixins';
 import Text from '../../../Text';
-import {getColumnName, headerBackgroundColor} from '../../utils';
+import {
+	getColumnName,
+	headerBackgroundColor,
+	getCheckboxColumnWidth,
+} from '../../utils';
 
-import {tableCellBaseStyles} from '../TableCell';
-import {withTableContext, tableContextPropFilter} from '../TableContext';
+import {tableCellBaseStyles, tableCellPropFilter} from '../TableCell';
+import {withTableContext} from '../TableContext';
 
 import ClickableHeader from './ClickableHeader';
 
@@ -17,17 +21,27 @@ const ARIA_SORT_LABEL = {
 	desc: 'descending',
 };
 
-export const Wrapper = withTableContext(styled('th').withConfig({
-	shouldForwardProp: tableContextPropFilter,
+export const Wrapper = withTableContext(styled.th.withConfig({
+	shouldForwardProp: tableCellPropFilter,
 })`
 	${tableCellBaseStyles}
+
+	/* For the checkbox header cell, we need to add any
+	 * left-hand-side padding to the width, otherwise the
+	 * padding would "eat in" to the width. */
+	${p =>
+		p.isCheckbox &&
+		`
+		width: ${getCheckboxColumnWidth(p)};
+	`}
 
 	position: relative;
 	position: sticky;
 	top: ${p => pxToRem(p.stickyHeaderOffset) || 0};
 	z-index: ${p => p.theme.globals.z.raised};
+	color: ${p => p.theme.text};
 
-	/**
+	/*
 	* MS Edge shows glitchy rendering when using a normal
 	* border on sticky table headers, so we're using a
 	* pseudo-element instead
@@ -35,10 +49,12 @@ export const Wrapper = withTableContext(styled('th').withConfig({
 	&::after {
 		content: '';
 		position: absolute;
-		top: 0;
+		/* Compensating for table element's transparent 1px border
+		 * which is needed for drawing a border around highlighted rows */
+		top: -1px;
 		bottom: 0;
-		left: 0;
-		right: 0;
+		left: -1px;
+		right: -1px;
 		z-index: ${p => p.theme.globals.z.below};
 		border-bottom: ${p => borderValue(p.theme)};
 		${headerBackgroundColor}
@@ -63,7 +79,7 @@ function TableColumnHeader({
 	children,
 	column,
 	sort,
-	orderLabels,
+	a11yLabels,
 	onRequestSort,
 }) {
 	const {hideBelowBreakpoint, subtitle, width} = column;
@@ -82,7 +98,7 @@ function TableColumnHeader({
 				isActive={isColumnOrderedBy}
 				column={column}
 				order={sort && sort.order}
-				orderLabels={orderLabels}
+				a11yLabels={a11yLabels}
 				onRequestSort={onRequestSort}
 			>
 				{children}

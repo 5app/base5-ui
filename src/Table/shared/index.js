@@ -10,3 +10,5 @@ export {default as TableRowHeader} from './TableRowHeader';
 export {default as TableCell} from './TableCell';
 export {default as TableBodyCell} from './TableBodyCell';
 export {default as TableCheckboxCell} from './TableCheckboxCell';
+export {default as RowSelectButton} from './RowSelectButton';
+export {default as InteractiveTableContent} from './InteractiveTableContent';

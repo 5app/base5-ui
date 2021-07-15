@@ -1,9 +1,13 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 
 import Box from '../Box';
+import Card from '../Card';
+import Flex from '../Flex';
+import Button from '../Button';
+import Pill from '../Pill';
 import Icon from '../Icon';
 import Table from './Table';
-import SelectionTable from './SelectionTable';
+import SelectionTable, {InteractiveTableContent} from './SelectionTable';
 import Column from './Column';
 import CenterContent from '../CenterContent';
 import dummyData from './demo/dummyData';
@@ -14,21 +18,31 @@ import DemoTableState from './demo/DemoTableState';
 # Table
 
 ```jsx
+// Regular table
 import Table, {Column} from 'base5-ui/Table';
+
+// Table with row selection
+import {SelectionTable, Column} from 'base5-ui/Table';
 ```
 
-A table component with a sticky header row and clickable headers for sorting.
+A (hopefully) accessible table component.
 
--   By default, all columns have an equal width
--   Control the width of columns by specifying a fixed or percentage width
--   Define a breakpoint under which a list-like **mobile view** will be enabled (by default this is "xs")
--   Columns can be defined in JSX using the `Column` component, or using the `columns` prop
+-   Ergonomic API
+-   Sticky header row
+-   Custom column widths (fixed width or percentage)
+-   No horizontal scrolling: When you run out of space, you can hide columns or switch to a list-like mobile view. This makes this table best suited for small to medium column counts.
+-   Optional: Clickable headers for sorting
+-   Optional: Selectable table rows with keyboard navigation and range selection
+
+Columns can be defined in JSX using the `Column` component, or using the `columns` prop
 
 ## Examples
 
 ### Simple example with JSX column config
 
-The table data is provided as an array of objects. The `title` given to each column will be used to select a field from the data row (i.e. the "Email" column will get its data from `item.email`). If you want to specify a field different from the title, you can do so either using the `name` prop (which must be a simple string like `title`), or using the `cellRenderer` prop for more complex cases (see "Country" column below).
+The table data is provided as an array of objects, where each object corresponds to one row in the table. Each object must have a field that uniquely identifies it. The name of this field should be passed to the `<Table itemKey />` prop. By default, it is `"id"`, so it only needs to be defined if your data uses a different key.
+
+The `<Column title />` prop will be used to select a field from the data row (i.e. the "Email" column will get its data from `item.email`). If you want to select a different field, you can do so either using the `name` prop (which must be a simple string like `title`), or using the `cellRenderer` prop for more complex cases (see "Domain" column below).
 
 `cellRenderer` is also used to generally customise the rendering of a table cell.
 
@@ -59,7 +73,7 @@ The table data is provided as an array of objects. The `title` given to each col
 
 ### Simple example with object column config
 
-You can also define your columns as an array of objects, if you prefer:
+You can also define your columns as an array of objects instead of JSX `<Column />` components, if you prefer:
 
 ```jsx
 <Table
@@ -77,18 +91,20 @@ You can also define your columns as an array of objects, if you prefer:
 
 ### Customisation example
 
--   Wrapped in a box with rounded corners (not part of component API)
+The table below has been customised using some of the available options. You can:
+
+-   Wrap it in a Card component – the table will inherit its direct parent's border radius
 -   Use `cellRenderer` to easily customise the way a cell's content is rendered
 -   Use the `rowHeader` prop to specify which column will be used as the header in the mobile view (only needs to be specified if it's not the first column)
 -   Use fixed or percentage `width` values to customise column sizes
 -   Use the `shadedHeader` prop for a shaded table header background
 -   Use the `subtitle` prop to add a subtitle to a column header
--   Use the `pl` or `pr` props to specify left and right inner padding on the table, to visually align the first and last columns with the rest of the design without affecting horizontal rules
+-   Use the `pl` or `pr` props to specify a left or right inner padding on the table
 -   Enable sortable columns by adding `<Column sortable />` props and passing `sort` and `onRequestSort` props to `Table`
 
 <Canvas>
 	<Story name="Customisation example">
-		<Box border="thin" borderRadius="large">
+		<Card variant="inverted">
 			<DemoTableState data={dummyData.slice(4, 8)}>
 				{({data, sort: {column, order}, handleSort}) => (
 					<Table
@@ -137,7 +153,7 @@ You can also define your columns as an array of objects, if you prefer:
 					</Table>
 				)}
 			</DemoTableState>
-		</Box>
+		</Card>
 	</Story>
 </Canvas>
 
@@ -145,9 +161,20 @@ You can also define your columns as an array of objects, if you prefer:
 
 To add clickable column headers to a table, first add the `sortable` prop to any columns that you want to be sortable.
 
-Then add a `sort` prop to `<Table />` that defines the current sort order via an object with the keys `order` ('asc' || 'desc') and `column` (`name` of the sorted column). If a column wasn't given a `name` prop, its `title` will be used instead.
+Then add a `sort` prop to `<Table />` that defines the current sort order via an object with the keys `order` (`'asc'` or `'desc'`) and `column` (`name || title` of the sorted column).
 
 Finally you'll need to tell the Table what to do when a header is clicked. That's what the `onRequestSort` prop is for – it's called with an object in the same shape as the `sort` prop to define the desired target sorting.
+
+```jsx
+<Table
+	sort={{
+		order: 'asc',
+		column: 'name',
+	}}
+	onRequestSort={handleSort}
+>
+...
+```
 
 ### Responsive example
 
@@ -185,6 +212,41 @@ The table below uses both modes – on medium sized screens, columns that don't 
 
 ### Table row selection
 
+You can make the rows of your table selectable. To do this, use the `SelectionTable` component instead of the regular `Table` component:
+
+```jsx
+import {SelectionTable, Column, InteractiveTableContent} from 'base5-ui/Table';
+```
+
+#### SelectionTable props
+
+The `SelectionTable` component is identical to the regular `Table` component, but has some extra props to facilitate selection. Its selection state is controlled, meaning that you have to pass in the selected items and a function to update it in response to changes. The keyboard navigation & highlighting state however is owned by `SelectionTable` and can't be controlled from the outside.
+
+-   `getItemLabel` - `func`: A function that's called with a row object and must return a human-readable string that identifies the row.
+-   `selectedItems` - `string[] | number[]`: An array of the keys/ids of all currently selected items. The keys must match those obtained using the `keyBy` prop (`data.item[keyBy]`).
+-   `onChangeSelectedItems` - `func`: Function that's called whenever the table selection changes. It's called with an array of all selected items in the shape of the `selectedItems` prop.
+
+The `SelectionTable` component also has additional accessibility labels. Those are detailed in the [Customise accessibility labels](#customise-accessibility-labels) section below.
+
+#### SelectionTable navigation and keyboard shortcuts
+
+You can click anywhere on a row to select it and de-select all other rows, or click the checkboxes to add or remove rows from the selection.
+
+Hold Cmd (Mac) or Ctrl (Windows) while clicking anywhere on a row to select or deselect it. Hold Shift while clicking on a row to select all rows between the row you clicked and the one you clicked before.
+
+`SelectionTable` also allows navigating the rows of your table via keyboard:
+
+-   When the table is focused, press up or down to highlight the previous or next row. Press left or right to focus the previous or next table cell. If the cell contains interactive elements (buttons, links), focus will be placed on the first focusable element.
+-   Press Home or End to highlight the first or last row of the table.
+-   Hold Shift while navigating up and down to select the current and the previous or next row.
+-   Press Ctrl + A to select or deselect all rows.
+
+#### Interactive nested content
+
+Because you can click anywhere on a table row to select it, you need to wrap any interactive elements that you want to render in the table with the `InteractiveTableContent` component. This will make sure that the nested elements can be interacted with without interfering with table selection.
+
+Note how the "Open" button in the "Name" column below is wrapped with `InteractiveTableContent`, and clicking it will not change the selected table row.
+
 <Canvas>
 	<Story name="Selectable table rows">
 		{() => {
@@ -193,32 +255,56 @@ The table below uses both modes – on medium sized screens, columns that don't 
 			]);
 			return (
 				<SelectionTable
-					mobileViewBreakpoint="xxxs"
+					shadedHeader
+					mobileViewBreakpoint="xxs"
 					data={dummyData.slice(8, 24)}
 					itemKey="name"
+					getItemLabel={item => item.name}
 					rowHeader="Name"
 					selectedItems={selectedItems}
 					onChangeSelectedItems={setSelectedItems}
-					pl="xxl"
+					pl="m"
 				>
 					<Column
 						title="Name"
 						width="40%"
 						cellRenderer={item => (
-							<strong>
-								<Icon
-									vAlign
-									name={
-										item.role === 'manager'
-											? 'star'
-											: 'user'
-									}
-								/>{' '}
-								{item.name}
-							</strong>
+							<Flex width="100%">
+								<Box grow shrink overflow="ellipsis">
+									<Icon
+										vAlign
+										name={
+											item.role === 'manager'
+												? 'star'
+												: 'user'
+										}
+									/>{' '}
+									{item.name}
+								</Box>
+								<Box>
+									<InteractiveTableContent>
+										<Button
+											size="small"
+											color="transparent"
+										>
+											Open
+										</Button>
+									</InteractiveTableContent>
+								</Box>
+							</Flex>
 						)}
 					/>
-					<Column title="Type" />
+					<Column
+						title="Type"
+						cellRenderer={item => (
+							<InteractiveTableContent>
+								<Pill onClick={() => console.log('Hi')}>
+									{item.type}
+								</Pill>
+							</InteractiveTableContent>
+						)}
+						hideBelowBreakpoint="s"
+					/>
 					<Column title="Time" />
 				</SelectionTable>
 			);
@@ -248,6 +334,25 @@ Use the `CenterContent` component to make the content appear centred and take up
 		</Table>
 	</Story>
 </Canvas>
+
+### Customise accessibility labels
+
+Use the `a11yLabels` prop to translate or tweak the labels provided by the table component to assistive technology.
+
+#### Table component
+
+-   `label` - `string`: Name of the table
+-   `sortedAsc` - `string`: Indicates which direction a column is sorted by. Default: "ascending"
+-   `sortedDesc` - `string`: Indicates which direction a column is sorted by. Default: "descending"
+-   `sortByColumn` - `func`: Label for the sort button in the header of sortable columns. This function is called with the parameters `(columnTitle, order)`. Default: `` (columnTitle, order) => `Sort by ${columnTitle} in ${order}ending order`  ``
+
+#### SelectionTable component
+
+All from the Table component, plus:
+
+-   `selectSingleRow` - `func`: Label for the (invisible) button that selects a single row and deselects all others. Called with the name of the row. Default: `` itemLabel => `Select only ${itemLabel}`  ``
+-   `selectAllRows` - `string`: Label for the "Select all" checkbox. Default: "Select all"
+-   `navigationHint` - `string`: Accessible hint for keyboard navigation. Default: "Use up and down arrow keys to navigate rows. Press Shift + Space to select or deselect rows."
 
 ## Table props
 

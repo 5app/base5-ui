@@ -2,40 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {alpha, getBackgroundShade} from '../../../utils/colors';
+import {pxToRem, getBackgroundShade} from '../../../utils';
+import {fillParent} from '../../../mixins';
 import ArrowIcon from '../../../icons/Arrow';
 import ButtonCore from '../../../ButtonCore';
 
 import VisuallyHidden from '../../../VisuallyHidden';
 
-const HeaderButton = styled(ButtonCore)`
+import {getColumnName} from '../../utils';
+
+const Wrapper = styled.span`
 	vertical-align: baseline;
 	padding-right: ${p => p.theme.globals.spacing.xxs};
 `;
 
 const shouldForwardProp = prop => prop !== 'isActive';
 
-const ClickabilityIndicator = styled.span.withConfig({shouldForwardProp})`
-	position: relative;
+const ClickabilityIndicator = styled(ButtonCore).withConfig({
+	shouldForwardProp,
+})`
 	margin-left: ${p => p.theme.globals.spacing.xxs};
+	vertical-align: 0;
 
-	&::after {
+	&::before {
 		content: '';
 		position: absolute;
-		width: 4px;
-		height: 4px;
-		top: calc(50% - 2px);
-		left: calc(50% - 2px);
+		width: ${pxToRem(4)};
+		height: ${pxToRem(4)};
+		margin-top: ${pxToRem(8)};
+		margin-left: ${pxToRem(5)};
 		background-color: currentcolor;
 		border-radius: 50%;
 		opacity: ${p => (p.isActive ? 0 : 0.5)};
 		transition: opacity 0.15s ease-in-out 0.15s;
 	}
 
-	${HeaderButton}:hover &::after,
-	${HeaderButton}.focus-visible &::after {
+	&:hover::before,
+	&.focus-visible::before {
 		opacity: 0;
 		transition-delay: 0s;
+	}
+
+	&::after {
+		content: '';
+		${fillParent}
 	}
 `;
 
@@ -49,24 +59,19 @@ const StyledSortArrow = styled(ArrowIcon).withConfig({shouldForwardProp})`
 			opacity: 0;
 		`}
 
-	${HeaderButton}:hover &,
-	${HeaderButton}.focus-visible & {
+	${ClickabilityIndicator}:hover &,
+	${ClickabilityIndicator}.focus-visible & {
 		fill: ${p => p.theme.links};
 		opacity: 1;
 		transition-delay: 0.15s;
-		${p =>
-			p.isActive &&
-			`
-				background-color: ${getBackgroundShade(p.theme)};
-				box-shadow: 0 0 0 3px
-					${alpha(p.theme.shade, p.isActive ? p.theme.shadeStrength : 0)};
-			`}
+		background-color: ${p => getBackgroundShade(p.theme)};
+		box-shadow: 0 0 0 3px ${p => getBackgroundShade(p.theme)};
 	}
 `;
 
-function SortArrow({isActive, orderDir}) {
+function SortArrow({isActive, orderDir, ...otherProps}) {
 	return (
-		<ClickabilityIndicator isActive={isActive}>
+		<ClickabilityIndicator {...otherProps} isActive={isActive}>
 			<StyledSortArrow
 				vAlign
 				dimmed
@@ -83,11 +88,16 @@ const reverseOrder = {
 	desc: 'asc',
 };
 
+const orderLabels = {
+	asc: 'sortedAsc',
+	desc: 'sortedDesc',
+};
+
 function ClickableHeader({
 	isActive,
 	column,
 	order,
-	orderLabels,
+	a11yLabels,
 	onRequestSort,
 	children,
 }) {
@@ -95,31 +105,41 @@ function ClickableHeader({
 		return children;
 	}
 
-	function getSortHandler({name, title, defaultOrder = 'asc'}) {
+	const columnName = getColumnName(column);
+	// Only flip the order when the column to be ordered by doesn't change.
+	// Otherwise use the column's `defaultOrder` prop
+	const newOrder = isActive
+		? reverseOrder[order]
+		: column.defaultOrder || 'asc';
+
+	function getSortHandler() {
 		if (typeof onRequestSort !== 'function') return null;
 
 		return () => {
-			// Only flip the order when the column to be ordered by
-			// doesn't change.
-			// Otherwise use the column's `defaultOrder` prop
 			onRequestSort({
-				column: name || title,
-				order: isActive ? reverseOrder[order] : defaultOrder,
+				column: column.name || column.title,
+				order: newOrder,
 			});
 		};
 	}
 
 	return (
-		<HeaderButton onClick={getSortHandler(column)}>
+		<Wrapper>
 			{children}
+			{isActive && (
+				<VisuallyHidden>
+					{`(${a11yLabels[orderLabels[order]]})`}
+				</VisuallyHidden>
+			)}
 			{column.sortable && (
 				<SortArrow
 					isActive={isActive}
 					orderDir={isActive ? order : column.defaultOrder}
+					onClick={getSortHandler()}
+					aria-label={a11yLabels.sortByColumn(columnName, newOrder)}
 				/>
 			)}
-			{isActive && <VisuallyHidden>{orderLabels[order]}</VisuallyHidden>}
-		</HeaderButton>
+		</Wrapper>
 	);
 }
 
@@ -128,9 +148,10 @@ ClickableHeader.propTypes = {
 	children: PropTypes.node,
 	column: PropTypes.object.isRequired,
 	order: PropTypes.oneOf(['asc', 'desc']),
-	orderLabels: PropTypes.shape({
-		asc: PropTypes.string.isRequired,
-		desc: PropTypes.string.isRequired,
+	a11yLabels: PropTypes.shape({
+		sortedAsc: PropTypes.string.isRequired,
+		sortedDesc: PropTypes.string.isRequired,
+		sortByColumn: PropTypes.func.isRequired,
 	}),
 	onClick: PropTypes.func,
 };
