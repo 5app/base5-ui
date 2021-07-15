@@ -5,6 +5,8 @@ import classNames from 'classnames';
 
 import 'focus-visible';
 
+import {useTabIndexContext} from '../TabIndexContext';
+
 const Clickable = styled.button`
 	display: inline-block;
 	margin: 0;
@@ -73,8 +75,11 @@ const ButtonCore = forwardRef((props, ref) => {
 		disabled,
 		onClick: onClickProp,
 		className,
+		tabIndex,
 		...otherProps
 	} = props;
+
+	const tabIndexContext = useTabIndexContext();
 
 	const isDisabled = isDisabledProp || disabled;
 
@@ -119,6 +124,7 @@ const ButtonCore = forwardRef((props, ref) => {
 					? 'false'
 					: null
 			}
+			tabIndex={tabIndex || tabIndexContext}
 			onClick={onClick}
 			className={classes}
 		/>

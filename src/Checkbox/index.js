@@ -12,6 +12,7 @@ import {
 } from '../utils';
 import {fillParent} from '../mixins';
 import Icon from '../Icon';
+import {useTabIndexContext} from '../TabIndexContext';
 
 const noop = () => {};
 
@@ -128,10 +129,12 @@ const Checkbox = forwardRef((props, ref) => {
 		onClick,
 		scale,
 		className,
+		tabIndex,
 		...otherProps
 	} = props;
 
 	const inputRef = useRef();
+	const tabIndexContext = useTabIndexContext();
 
 	useEffect(() => {
 		inputRef.current.indeterminate = indeterminate || false;
@@ -166,6 +169,7 @@ const Checkbox = forwardRef((props, ref) => {
 				indeterminate={indeterminate}
 				onChange={indeterminate ? noop : onChange}
 				onClick={handleClick}
+				tabIndex={tabIndex || tabIndexContext}
 				{...otherProps}
 			/>
 			<MockBox
