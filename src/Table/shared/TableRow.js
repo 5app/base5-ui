@@ -13,37 +13,37 @@ const Tr = withTableContext(styled.tr.withConfig({
 	shouldForwardProp: tableContextPropFilter,
 })`
 	/* Highlight NON-SELECTABLE table rows */
-	tbody &:not([data-selectable]):hover {
+	tbody &:not([aria-selected]):hover {
 		background-color: ${p =>
 			alpha(p.theme.shade, Math.max(0.05, +p.theme.shadeStrength / 2))};
 	}
 	/* We have to repeat this selector as browsers that don't support
 	* :focus-within would otherwise ignore the whole rule */
-	tbody &:not([data-selectable]):focus-within {
+	tbody &:not([aria-selected]):focus-within {
 		background-color: ${p =>
 			alpha(p.theme.shade, Math.max(0.05, +p.theme.shadeStrength / 2))};
 	}
 
-	&[data-selectable] {
+	&[aria-selected] {
 		cursor: pointer;
 	}
 
 	/* Highlight SELECTABLE table rows */
-	tbody:hover &[data-selectable][data-highlighted] {
+	tbody:hover &[data-highlighted] {
 		outline: 1px solid ${p => p.theme.links};
 		outline-offset: -1px;
 		background-color: ${p =>
 			alpha(p.theme.links, Math.max(0.05, +p.theme.shadeStrength / 2))};
 	}
-	tbody &[data-selectable][data-highlighted]:focus-within {
+	tbody &[data-highlighted]:focus-within {
 		outline: 1px solid ${p => p.theme.links};
 		outline-offset: -1px;
 		background-color: ${p =>
 			alpha(p.theme.links, Math.max(0.05, +p.theme.shadeStrength / 2))};
 	}
 
-	tbody &[data-selectable][aria-selected="true"],
-	tbody &[data-selectable][aria-selected="true"][data-highlighted] {
+	tbody &[aria-selected="true"],
+	tbody &[aria-selected="true"][data-highlighted] {
 		background-color: ${p =>
 			alpha(p.theme.links, Math.max(0.15, +p.theme.shadeStrength))}};
 	}
@@ -69,9 +69,8 @@ const TableRow = forwardRef(
 				<Tr
 					{...otherProps}
 					ref={ref}
-					data-selectable={selectable || null}
+					aria-selected={selectable ? isSelected : null}
 					data-highlighted={(selectable && isHighlighted) || null}
-					aria-selected={(selectable && isSelected) || null}
 				>
 					{children}
 				</Tr>
