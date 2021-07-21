@@ -1,14 +1,40 @@
 import React from 'react';
-import {render, cleanup, screen} from '@testing-library/react';
+import 'regenerator-runtime/runtime';
+import {render, cleanup, screen, waitFor} from '@testing-library/react';
 import {within} from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import Wrapper from '../../test/helper/wrapper';
-import {ThemeSectionError} from '../ThemeSection';
 
-import Table, {Column} from '.';
+import {ThemeSectionError} from '../ThemeSection';
+import Pill from '../Pill';
+
+import Table, {SelectionTable, InteractiveTableContent, Column} from '.';
 import dummyData from './demo/dummyData';
 import DemoTableState from './demo/DemoTableState';
+
+function getTableRow(element) {
+	return element.closest('tr');
+}
+
+// The helpers below are necessary because the
+// SelectionTable component doesn't rely on detecting
+// modifier keys using the 'click' event.
+// (Instead it tracks them using global 'keyup'/'keydown'
+// listeners.) This isn't compatible with the way user-events
+// triggers click events with modifier keys.
+
+function shiftClick(element) {
+	const keyboardState = userEvent.keyboard('{Shift>}');
+	userEvent.click(element);
+	userEvent.keyboard('{/Shift}', {keyboardState});
+}
+
+function ctrlClick(element) {
+	const keyboardState = userEvent.keyboard('{Ctrl>}');
+	userEvent.click(element);
+	userEvent.keyboard('{/Ctrl}', {keyboardState});
+}
 
 function SimpleTableExample(props) {
 	return (
@@ -124,5 +150,154 @@ describe('Table', () => {
 			{exact: false}
 		);
 		expect(timeColumnHeader).toHaveAttribute('aria-sort', 'descending');
+	});
+
+	it('allows selecting table rows', async () => {
+		render(
+			<Wrapper>
+				<DemoTableState initialSelectedItems={['Dai Shepherd']}>
+					{({selectedItems, handleSelectionChange}) => (
+						<SelectionTable
+							shadedHeader
+							mobileViewBreakpoint="xxs"
+							data={dummyData.slice(8, 24)}
+							itemKey="name"
+							getItemLabel={item => item.name}
+							rowHeader="Name"
+							selectedItems={selectedItems}
+							onChangeSelectedItems={handleSelectionChange}
+						>
+							<Column title="Name" />
+							<Column
+								title="Type"
+								cellRenderer={item => (
+									<InteractiveTableContent>
+										<Pill onClick={() => {}}>
+											Open {item.name}
+										</Pill>
+									</InteractiveTableContent>
+								)}
+							/>
+							<Column title="Time" />
+						</SelectionTable>
+					)}
+				</DemoTableState>
+			</Wrapper>
+		);
+
+		const initialSelectedRow = getTableRow(
+			screen.getByRole('rowheader', {
+				name: /Dai Shepherd/,
+			})
+		);
+		// Check initial selection status
+		expect(initialSelectedRow).toHaveAttribute('aria-selected', 'true');
+
+		// De-select the initial selection
+		userEvent.click(screen.getByRole('checkbox', {name: /Dai Shepherd/}));
+		expect(initialSelectedRow).toHaveAttribute('aria-selected', 'false');
+
+		// Select a range of 4 rows
+		shiftClick(
+			screen.getByRole('checkbox', {
+				name: /Vera Kirkland/,
+			})
+		);
+		let selectedRows = await screen.findAllByRole('row', {
+			selected: true,
+		});
+		expect(selectedRows).toHaveLength(4);
+		within(selectedRows[0]).getByRole('rowheader', {name: /Dai Shepherd/});
+		within(selectedRows[1]).getByRole('rowheader', {
+			name: /Cassidy Y. Leach/,
+		});
+		within(selectedRows[2]).getByRole('rowheader', {
+			name: /Tatum E. Cervantes/,
+		});
+		within(selectedRows[3]).getByRole('rowheader', {
+			name: /Vera Kirkland/,
+		});
+
+		// De-select a single row using a modifier key (ctrl/cmd)
+		const checkboxToDisable = screen.getByRole('checkbox', {
+			name: /Cassidy Y. Leach/,
+		});
+		ctrlClick(checkboxToDisable);
+		expect(checkboxToDisable).not.toHaveAttribute('checked');
+		selectedRows = await screen.findAllByRole('row', {
+			selected: true,
+		});
+		expect(selectedRows).toHaveLength(3);
+
+		// Select another, independent range further down
+		userEvent.click(
+			screen.getByRole('checkbox', {
+				name: /Noble Johns/,
+			})
+		);
+		const newCheckbox = screen.getByRole('checkbox', {
+			name: /Libby E. Bender/,
+		});
+		shiftClick(newCheckbox);
+
+		await waitFor(() => {
+			expect(newCheckbox).toBeChecked();
+		});
+
+		selectedRows = await screen.findAllByRole('row', {
+			selected: true,
+		});
+		expect(selectedRows).toHaveLength(6);
+		expect(
+			within(selectedRows[4]).getByRole('checkbox')
+		).toHaveAccessibleName(/Colin E. Williams/);
+
+		// De-select all
+		const selectAllCheckbox = screen.getByRole('checkbox', {
+			name: 'Select all',
+		});
+
+		expect(selectAllCheckbox).toHaveProperty('indeterminate', true);
+		userEvent.click(selectAllCheckbox);
+
+		const allRows = (selectedRows = await screen.findAllByRole('row'));
+		const deselectedRows = await screen.findAllByRole('row', {
+			selected: false,
+		});
+		// Compare all unselected rows with the number of all rows
+		// (except the table header)
+		expect(deselectedRows).toHaveLength(allRows.length - 1);
+
+		// Select all
+		userEvent.click(selectAllCheckbox);
+		selectedRows = await screen.findAllByRole('row', {
+			selected: true,
+		});
+		// Compare all selected rows with the number of all rows
+		// (except the table header)
+		expect(selectedRows).toHaveLength(allRows.length - 1);
+
+		// Select single row by clicking anywhere
+		userEvent.click(screen.getByRole('rowheader', {name: /Dai Shepherd/}));
+		selectedRows = await screen.findAllByRole('row', {
+			selected: true,
+		});
+		expect(selectedRows).toHaveLength(1);
+
+		// Clicking interactive elements wrapped with
+		// <InteractiveTableContent> should NOT change row selection
+		const firstRowOpenButton = screen.getByRole('button', {
+			name: /Open Mariam D. Fletcher/,
+		});
+		userEvent.click(firstRowOpenButton);
+		expect(firstRowOpenButton).toHaveFocus();
+		expect(getTableRow(firstRowOpenButton)).not.toHaveAttribute(
+			'aria-selected',
+			'true'
+		);
+
+		expect(
+			getTableRow(screen.getByRole('rowheader', {name: /Dai Shepherd/}))
+		).toHaveAttribute('aria-selected', 'true');
 	});
 });
