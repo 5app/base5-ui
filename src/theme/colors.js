@@ -9,7 +9,7 @@ const colors = {
 	pink: '#f55e7b',
 	blue: '#467ccd',
 	darkerBlue: '#3e6cb4',
-	babyBlue: '#7EA3DC',
+	babyBlue: '#86b6ff',
 	gloomyGrey: '#848C97',
 	orange: '#FF8763',
 	yellow: '#f7de2b',

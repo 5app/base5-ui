@@ -5,7 +5,6 @@ module.exports = {
 	testEnvironment: 'jsdom',
 	collectCoverageFrom: [
 		'**/*.{js}',
-		'!**/docz/**',
 		'!**/src-icons/**',
 		'!**/node_modules/**',
 		'!**/test/**',

@@ -11,6 +11,7 @@ import usePopover from '../usePopover';
 import usePopoverState from '../usePopoverState';
 import useUniqueId from '../useUniqueId';
 
+import {useTabIndexContext} from '../TabIndexContext';
 import Portal from '../Portal';
 import Status from '../Status';
 import VisuallyHidden from '../VisuallyHidden';
@@ -48,6 +49,7 @@ function Combobox({
 	const popoverRef = useRef();
 	const id = useUniqueId(idProp);
 	const statusMessage = getStatusMessage({resultCount, inputValue});
+	const tabIndexContext = useTabIndexContext();
 
 	const popover = usePopover({
 		ref: popoverRef,
@@ -141,7 +143,13 @@ function Combobox({
 
 	const highlightedItemId = itemList.useHighlightedItemId();
 
-	const getInputProps = ({onChange, onFocus, onKeyDown, ...otherProps}) => ({
+	const getInputProps = ({
+		onChange,
+		onFocus,
+		onKeyDown,
+		tabIndex,
+		...otherProps
+	}) => ({
 		...otherProps,
 		id,
 		value: inputValue,
@@ -153,6 +161,7 @@ function Combobox({
 		'aria-autocomplete': 'list',
 		autoComplete: 'off',
 		spellCheck: 'false',
+		tabIndex: tabIndex || tabIndexContext,
 		onKeyDown: mergeCallbacks(onKeyDown, handleInputKeyEvents),
 		onChange: mergeCallbacks(onChange, handleInputChange),
 		onFocus: mergeCallbacks(onFocus, () => {

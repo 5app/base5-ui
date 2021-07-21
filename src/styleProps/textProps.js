@@ -9,15 +9,20 @@ const textTransformMap = {
 
 export const textPropsDef = [
 	{
+		styleProp: 'fontSize',
+		properties: ['fontSize'],
+		getValue: (size, theme) =>
+			size ? theme.globals.typeScale[size] : undefined,
+	},
+	{
 		styleProp: 'bold',
 		properties: ['fontWeight'],
 		getValue: bold => (bold ? 'bold' : 'normal'),
 	},
 	{
-		styleProp: 'fontSize',
-		properties: ['fontSize'],
-		getValue: (size, theme) =>
-			size ? theme.globals.typeScale[size] : undefined,
+		styleProp: 'fontWeight',
+		properties: ['fontWeight'],
+		getValue: value => value,
 	},
 	{
 		styleProp: 'textAlign',

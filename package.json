@@ -42,13 +42,15 @@
 		"@commitlint/config-conventional": "^12.1.4",
 		"@semantic-release/changelog": "^5.0.0",
 		"@semantic-release/git": "^9.0.0",
-		"@storybook/addon-actions": "^6.2.9",
-		"@storybook/addon-essentials": "^6.2.9",
-		"@storybook/addon-links": "^6.2.9",
-		"@storybook/react": "^6.2.9",
+		"@storybook/addon-actions": "^6.3.4",
+		"@storybook/addon-essentials": "^6.3.4",
+		"@storybook/addon-links": "^6.3.4",
+		"@storybook/react": "^6.3.4",
 		"@testing-library/jest-dom": "^5.12.0",
 		"@testing-library/react": "^12.0.0",
+		"@testing-library/user-event": "^13.1.9",
 		"babel-eslint": "^10.1.0",
+		"babel-jest": "^27.0.6",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-styled-components": "^1.10.7",
 		"eslint": "^7.27.0",
@@ -66,6 +68,7 @@
 		"prop-types": "^15.7.2",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
+		"regenerator-runtime": "^0.13.7",
 		"semantic-release": "^17.4.3",
 		"styled-components": "^5.2.1"
 	},
@@ -76,16 +79,17 @@
 	},
 	"dependencies": {
 		"@popperjs/core": "^2.9.2",
-		"use-item-list": "0.1.2",
 		"aria-hidden": "^1.1.1",
 		"chartist": "^0.11.3",
 		"classnames": "^2.2.6",
 		"color2k": "^1.1.1",
 		"focus-visible": "^5.0.2",
+		"focusable-selectors": "^0.3.0",
 		"popper-max-size-modifier": "^0.2.0",
 		"react-focus-lock": "^2.3.1",
 		"react-merge-refs": "^1.0.0",
-		"react-popper": "^2.2.5"
+		"react-popper": "^2.2.5",
+		"use-item-list": "0.1.2"
 	},
 	"commitlint": {
 		"extends": [

@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, cleanup} from '@testing-library/react';
+import {render, cleanup, screen} from '@testing-library/react';
 import Wrapper from '../../test/helper/wrapper';
 import {ThemeSectionError} from '../ThemeSection';
 import ButtonCore from '.';
@@ -15,33 +15,67 @@ describe('ButtonCore', () => {
 		});
 	});
 
-	it('renders as a button by default', () => {
-		const {container} = render(
-			<Wrapper>
-				<ButtonCore id="ok">Ok</ButtonCore>
-			</Wrapper>
-		);
-
-		const ok = container.querySelector('#ok');
-		expect(ok.tagName).toBe('BUTTON');
-	});
-
-	it('can render as a RouterLink', () => {
+	it('renders as a button by default, but can render as a link', () => {
 		const path = 'path/to/whatever';
-		const {container} = render(
+
+		render(
 			<Wrapper>
-				<ButtonCore id="ok" as={RouterLink} to={path}>
-					Ok
+				<ButtonCore>Button label</ButtonCore>
+				<ButtonCore as="a" href={path} target="_blank">
+					Regular Link label
+				</ButtonCore>
+				<ButtonCore as={RouterLink} to={path}>
+					Router Link label
 				</ButtonCore>
 			</Wrapper>
 		);
 
-		const ok = container.querySelector('#ok');
-		expect(ok.tagName).toBe('A');
-		expect(ok.href).toContain(path);
+		screen.getByRole('button', {name: /Button label/});
+
+		const regularLink = screen.getByRole('link', {
+			name: /Regular Link label/,
+		});
+		expect(regularLink).toHaveAttribute('href', path);
+		expect(regularLink).toHaveAttribute('target', '_blank');
+
+		const routerLink = screen.getByRole('link', {
+			name: /Router Link label/,
+		});
+		expect(routerLink).toHaveAttribute('href', path);
 	});
 
-	it('can render as RouterLink', () => {
-		expect(true).toBe(true);
+	it('can be disabled both as a button and a link', () => {
+		render(
+			<Wrapper>
+				<ButtonCore isDisabled>Disabled button</ButtonCore>
+				<ButtonCore
+					isDisabled
+					download
+					as="a"
+					href="http://example.com/download"
+					target="_blank"
+				>
+					Disabled link
+				</ButtonCore>
+			</Wrapper>
+		);
+
+		const button = screen.getByRole('button', {name: /Disabled button/});
+
+		expect(button).toHaveAttribute('aria-disabled');
+		expect(button).not.toHaveAttribute('disabled');
+		expect(button).toHaveAttribute(
+			'class',
+			expect.stringContaining('is-disabled')
+		);
+
+		const regularLink = screen.getByText(/Disabled link/);
+		expect(regularLink).toHaveAttribute(
+			'class',
+			expect.stringContaining('is-disabled')
+		);
+		expect(regularLink).not.toHaveAttribute('href');
+		expect(regularLink).not.toHaveAttribute('target');
+		expect(regularLink).not.toHaveAttribute('download');
 	});
 });

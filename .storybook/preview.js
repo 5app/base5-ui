@@ -9,7 +9,7 @@ import theme from '../src/theme';
 import GlobalStyles from './GlobalStyles';
 
 const ThemeProvider = ({children}) => (
-	<ThemeSection name="page" baseTheme={theme}>
+	<ThemeSection name="card" baseTheme={theme}>
 		<GlobalStyles />
 		{children}
 	</ThemeSection>
