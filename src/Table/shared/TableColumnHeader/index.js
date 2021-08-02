@@ -49,12 +49,10 @@ export const Wrapper = withTableContext(styled.th.withConfig({
 	&::after {
 		content: '';
 		position: absolute;
-		/* Compensating for table element's transparent 1px border
-		 * which is needed for drawing a border around highlighted rows */
-		top: -1px;
+		top: 0;
 		bottom: 0;
-		left: -1px;
-		right: -1px;
+		left: 0;
+		right: 0;
 		z-index: ${p => p.theme.globals.z.below};
 		border-bottom: ${p => borderValue(p.theme)};
 		${headerBackgroundColor}
