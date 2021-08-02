@@ -5,6 +5,7 @@ import styled, {css} from 'styled-components';
 import {alpha, contrast, getDimmedTextColor, pxToRem} from '../utils';
 
 import useMergedRefs from '../useMergedRefs';
+import {useTabIndexContext} from '../TabIndexContext';
 import OkIcon from '../icons/Ok';
 
 const Input = styled.input`
@@ -81,30 +82,34 @@ const SwitchIcon = styled(OkIcon)`
 		`}
 `;
 
-const Switch = forwardRef(({checked, disabled, id, ...otherProps}, ref) => {
-	const inputRef = useRef();
-	const mergedRefs = useMergedRefs([ref, inputRef]);
+const Switch = forwardRef(
+	({checked, disabled, id, tabIndex, ...otherProps}, ref) => {
+		const inputRef = useRef();
+		const mergedRefs = useMergedRefs([ref, inputRef]);
+		const tabIndexContext = useTabIndexContext();
 
-	function forwardClick(e) {
-		inputRef.current.click(e);
+		function forwardClick(e) {
+			inputRef.current.click(e);
+		}
+
+		return (
+			<Wrapper disabled={disabled} onClick={forwardClick}>
+				<Input
+					type="checkbox"
+					ref={mergedRefs}
+					id={id}
+					checked={checked}
+					disabled={disabled}
+					tabIndex={tabIndex || tabIndexContext}
+					{...otherProps}
+				/>
+				<Handle>
+					<SwitchIcon scale={0.8} checked={checked} />
+				</Handle>
+			</Wrapper>
+		);
 	}
-
-	return (
-		<Wrapper disabled={disabled} onClick={forwardClick}>
-			<Input
-				type="checkbox"
-				ref={mergedRefs}
-				id={id}
-				checked={checked}
-				disabled={disabled}
-				{...otherProps}
-			/>
-			<Handle>
-				<SwitchIcon scale={0.8} checked={checked} />
-			</Handle>
-		</Wrapper>
-	);
-});
+);
 
 Switch.displayName = 'Switch';
 

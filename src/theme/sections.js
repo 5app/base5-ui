@@ -3,7 +3,7 @@ import colors from './colors';
 const commonProps = {
 	highlight: colors.pink,
 	textDimStrength: 0.75,
-	shadeStrength: 0.05,
+	shadeStrength: 0.08,
 	lineStrength: 0.2,
 };
 
@@ -26,7 +26,7 @@ const sections = {
 	invertedCard: {
 		text: colors.white,
 		background: colors.darkGrey,
-		links: colors.babyBlue,
+		links: colors.yellow,
 		shade: colors.white,
 		...commonProps,
 		shadeStrength: 0.12,
