@@ -26,7 +26,7 @@ const sections = {
 	invertedCard: {
 		text: colors.white,
 		background: colors.darkGrey,
-		links: colors.babyBlue,
+		links: colors.yellow,
 		shade: colors.white,
 		...commonProps,
 		shadeStrength: 0.12,

@@ -104,8 +104,8 @@ The table below has been customised using some of the available options. You can
 
 <Canvas>
 	<Story name="Customisation example">
-		<Card variant="inverted">
-			<DemoTableState data={dummyData.slice(4, 8)}>
+		<Card variant="inverted" overflow="visible">
+			<DemoTableState data={dummyData.slice(4, 32)}>
 				{({data, sort: {column, order}, handleSort}) => (
 					<Table
 						shadedHeader
