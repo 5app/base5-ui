@@ -1,3 +1,10 @@
+## [13.3.1](https://github.com/5app/base5-ui/compare/v13.3.0...v13.3.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* **Table:** Tweak Table checkbox size, noissue ([b1775d9](https://github.com/5app/base5-ui/commit/b1775d90277e9ca004a43cfeecce7f55cd84c7a9))
+
 # [13.3.0](https://github.com/5app/base5-ui/compare/v13.2.2...v13.3.0) (2021-08-02)
 
 
