@@ -117,6 +117,7 @@ function SelectionTable(props) {
 					<TableRow>
 						<TableCheckboxCell isHeader>
 							<Checkbox
+								scale={0.9}
 								checked={selectAllState === ALL_SELECTED}
 								indeterminate={selectAllState === SOME_SELECTED}
 								onChange={toggleSelectAll}
@@ -173,6 +174,7 @@ function SelectionTable(props) {
 										</RowSelectButton>
 										<InteractiveTableContent>
 											<Checkbox
+												scale={0.9}
 												checked={isSelected}
 												onChange={getSelectRowHandler(
 													rowId
