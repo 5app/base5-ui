@@ -1,3 +1,11 @@
+## [13.4.1](https://github.com/5app/base5-ui/compare/v13.4.0...v13.4.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ProgressCircle:** Style tweak & refactor, noissue ([4c9497a](https://github.com/5app/base5-ui/commit/4c9497a6951036d690961be241992357b299720e))
+* **ProgressCircle:** Tweak empty design style ([8c29113](https://github.com/5app/base5-ui/commit/8c29113835df69600b94dc7aebb621e46be6c3fa))
+
 # [13.4.0](https://github.com/5app/base5-ui/compare/v13.3.1...v13.4.0) (2021-08-03)
 
 
