@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
 import {fillParent} from '../mixins';
+import {alpha} from '../utils';
 
 import Box from '../Box';
 import VisuallyHidden from '../VisuallyHidden';
 import useUniqueId from '../useUniqueId';
 
 const Wrapper = styled(Box).withConfig({
-	shouldForwardProp: prop => prop !== 'scale',
+	shouldForwardProp: prop => !['value', 'scale'].includes(prop),
 })`
 	position: relative;
 	display: inline-block;
@@ -20,6 +21,15 @@ const Wrapper = styled(Box).withConfig({
 
 	font-size: calc(${p => p.scale || '1'} * 1rem);
 	border-radius: 100%;
+
+	${p =>
+		p.value < 0.25 &&
+		css`
+			background-color: ${alpha(
+				p.theme.shade,
+				p.theme.shadeStrength - p.theme.shadeStrength * p.value * 4
+			)};
+		`}
 `;
 
 const InnerHalf = styled.span.withConfig({
@@ -83,9 +93,14 @@ function ProgressCircle({
 			{...a11yProps}
 			color={color}
 			scale={scale}
+			value={value}
 		>
-			<InnerHalf value={value} />
-			<InnerHalf right value={value} />
+			{value > 0 && (
+				<>
+					<InnerHalf value={value} />
+					<InnerHalf right value={value} />
+				</>
+			)}
 			<VisuallyHidden id={labelId}>{a11yLabel}</VisuallyHidden>
 		</Wrapper>
 	);
