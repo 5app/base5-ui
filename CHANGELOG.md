@@ -1,3 +1,10 @@
+# [13.4.0](https://github.com/5app/base5-ui/compare/v13.3.1...v13.4.0) (2021-08-03)
+
+
+### Features
+
+* **ProgressCircle:** New ProgressCircle component ([8e1b41d](https://github.com/5app/base5-ui/commit/8e1b41d359e2552befb0f6800b2f3b5e2f932d17))
+
 ## [13.3.1](https://github.com/5app/base5-ui/compare/v13.3.0...v13.3.1) (2021-08-03)
 
 
