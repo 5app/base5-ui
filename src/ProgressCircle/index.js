@@ -13,11 +13,13 @@ const Wrapper = styled(Box).withConfig({
 })`
 	position: relative;
 	display: inline-block;
+	vertical-align: middle;
 	width: 1em;
 	height: 1em;
-	vertical-align: middle;
+	overflow: hidden;
 
 	font-size: calc(${p => p.scale || '1'} * 1rem);
+	border-radius: 100%;
 `;
 
 const InnerHalf = styled.span.withConfig({
@@ -35,7 +37,6 @@ const InnerHalf = styled.span.withConfig({
 	&::before {
 		content: '';
 		${fillParent}
-		border-radius: ${p => (p.right ? '0 20em 20em 0' : '20em 0 0 20em')};
 		background-color: currentColor;
 		transform-origin: center ${p => (p.right ? 'left' : 'right')};
 		transform: rotate(${getRotation});
@@ -65,13 +66,21 @@ function ProgressCircle({
 	...otherProps
 }) {
 	const labelId = useUniqueId(id);
+
+	let a11yProps;
+	if (role !== 'none') {
+		a11yProps = {
+			role,
+			'aria-valuenow': value * 100,
+			'aria-labelledby': labelId,
+		};
+	}
+
 	return (
 		<Wrapper
 			as="span"
 			{...otherProps}
-			role={role}
-			aria-valuenow={role !== 'none' ? value * 100 : null}
-			aria-labelledby={role !== 'none' ? labelId : null}
+			{...a11yProps}
 			color={color}
 			scale={scale}
 		>
