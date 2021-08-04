@@ -165,10 +165,11 @@ function getPropFilter(propNames: string[]): (prop: string | number) => boolean 
 	const propsToFilter = new Set(propNames);
 
 	return function shouldForwardProp(prop: string | number): boolean {
-		if (typeof prop === 'string') {
-			return !propsToFilter.has(prop);
+		let key = prop;
+		if (typeof key === 'number') {
+			key = prop.toString();
 		}
-		return false;
+		return !propsToFilter.has(key);
 	};
 }
 

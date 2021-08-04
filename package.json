@@ -2,10 +2,10 @@
 	"name": "base5-ui",
 	"version": "13.2.1",
 	"description": "5app's reusable UI component library",
-	"main": "./src/index.js",
+	"main": "index.js",
 	"scripts": {
 		"build-icons": "pixo src-icons/svg --out-dir src/icons --template src-icons/template.js",
-		"compile": "tsc && babel src --out-dir dist --extensions '.js,j.jsx,.ts,.tsx'",
+		"compile": "tsc && babel src --out-dir dist --extensions '.js,.jsx,.ts,.tsx'",
 		"copypackage": "cp -rf package.json README.md dist",
 		"predist": "npm run copypackage",
 		"dist": "cd dist && npm publish",
