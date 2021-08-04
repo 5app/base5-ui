@@ -1,3 +1,49 @@
+## [13.4.1](https://github.com/5app/base5-ui/compare/v13.4.0...v13.4.1) (2021-08-04)
+
+
+### Bug Fixes
+
+* **ProgressCircle:** Style tweak & refactor, noissue ([4c9497a](https://github.com/5app/base5-ui/commit/4c9497a6951036d690961be241992357b299720e))
+* **ProgressCircle:** Tweak empty design style ([8c29113](https://github.com/5app/base5-ui/commit/8c29113835df69600b94dc7aebb621e46be6c3fa))
+
+# [13.4.0](https://github.com/5app/base5-ui/compare/v13.3.1...v13.4.0) (2021-08-03)
+
+
+### Features
+
+* **ProgressCircle:** New ProgressCircle component ([8e1b41d](https://github.com/5app/base5-ui/commit/8e1b41d359e2552befb0f6800b2f3b5e2f932d17))
+
+## [13.3.1](https://github.com/5app/base5-ui/compare/v13.3.0...v13.3.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* **Table:** Tweak Table checkbox size, noissue ([b1775d9](https://github.com/5app/base5-ui/commit/b1775d90277e9ca004a43cfeecce7f55cd84c7a9))
+
+# [13.3.0](https://github.com/5app/base5-ui/compare/v13.2.2...v13.3.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **Table:** Fix table header rendering, [#143](https://github.com/5app/base5-ui/issues/143) ([a17639f](https://github.com/5app/base5-ui/commit/a17639f6029971bb3dbb75c18fd42602cb466a22))
+* **Table:** Remove data-selectable attribute ([c150b32](https://github.com/5app/base5-ui/commit/c150b3206ea1a3d26c18ecf9b35635afdf258f7d))
+* Fix passed through custom props, [#143](https://github.com/5app/base5-ui/issues/143) ([1fa9057](https://github.com/5app/base5-ui/commit/1fa90579a21cfd4128d3726e3e9ec4d33ad3c60d))
+
+
+### Features
+
+* **Table:** Add SelectionTable tests, [#143](https://github.com/5app/base5-ui/issues/143) ([06ae63b](https://github.com/5app/base5-ui/commit/06ae63bd6db187b1a2d1f58675754668b31fe3a4))
+* New SelectionTable component ([041fa0e](https://github.com/5app/base5-ui/commit/041fa0efa40b5b3200ec037fc27e93dd04869346))
+* New TabIndexContext helpers ([b8b4210](https://github.com/5app/base5-ui/commit/b8b421042a3aa034070a63db66c23f7c14cee4d6))
+* New usePrevious hook ([5024056](https://github.com/5app/base5-ui/commit/50240561f456456dbc2838f3329fab14b76e5be9))
+
+## [13.2.2](https://github.com/5app/base5-ui/compare/v13.2.1...v13.2.2) (2021-06-22)
+
+
+### Bug Fixes
+
+* Fix broken Icons import, noissue ([31abf58](https://github.com/5app/base5-ui/commit/31abf5815cfc7b99c1d48600d7b99867812ea82c))
+
 ## [13.2.1](https://github.com/5app/base5-ui/compare/v13.2.0...v13.2.1) (2021-06-18)
 
 

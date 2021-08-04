@@ -11,15 +11,20 @@ type TextTransformKey = keyof typeof textTransformMap;
 
 export const textPropsDef = [
 	{
+		styleProp: 'fontSize',
+		properties: ['fontSize'],
+		getValue: (size: string, theme: any) =>
+			size ? theme.globals.typeScale[size] : undefined,
+	},
+	{
 		styleProp: 'bold',
 		properties: ['fontWeight'],
 		getValue: (bold: unknown) => (bold ? 'bold' : 'normal'),
 	},
 	{
-		styleProp: 'fontSize',
-		properties: ['fontSize'],
-		getValue: (size: string, theme: any) =>
-			size ? theme.globals.typeScale[size] : undefined,
+		styleProp: 'fontWeight',
+		properties: ['fontWeight'],
+		getValue: (value: unknown) => value,
 	},
 	{
 		styleProp: 'textAlign',

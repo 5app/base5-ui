@@ -8,14 +8,14 @@ import theme from '../src/theme';
 
 import GlobalStyles from './GlobalStyles';
 
-export const decorators = [
-	Story => (
-		<ThemeSection name="page" baseTheme={theme}>
-			<GlobalStyles />
-			{Story()}
-		</ThemeSection>
-	),
-];
+const ThemeProvider = ({children}) => (
+	<ThemeSection name="card" baseTheme={theme}>
+		<GlobalStyles />
+		{children}
+	</ThemeSection>
+);
+
+export const decorators = [Story => <ThemeProvider>{Story()}</ThemeProvider>];
 
 export const parameters = {
 	actions: {argTypesRegex: '^on[A-Z].*'},
@@ -39,9 +39,9 @@ export const parameters = {
 	docs: {
 		components: {
 			Canvas: ({children, ...props}) => (
-				<ThemeSection name="page" baseTheme={theme}>
+				<ThemeProvider>
 					<Canvas {...props}>{children}</Canvas>
-				</ThemeSection>
+				</ThemeProvider>
 			),
 		},
 	},

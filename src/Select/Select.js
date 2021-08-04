@@ -10,6 +10,7 @@ import usePopover from '../usePopover';
 import usePopoverState from '../usePopoverState';
 import useUniqueId from '../useUniqueId';
 
+import {useTabIndexContext} from '../TabIndexContext';
 import Button from '../Button';
 import * as MenuListUI from '../MenuList';
 import PopoverCard from '../PopoverCard';
@@ -31,6 +32,7 @@ function Select({
 	const popoverRef = useRef();
 	const [selectedItem, setSelectedItem] = useState();
 	const id = useUniqueId(idProp);
+	const tabIndexContext = useTabIndexContext();
 
 	const popover = usePopover({
 		ref: popoverRef,
@@ -122,7 +124,7 @@ function Select({
 				role="combobox"
 				ref={popover.setReferenceRef}
 				id={itemList.controllerId}
-				tabIndex="0"
+				tabIndex={tabIndexContext || '0'}
 				aria-labelledby={`${labelledById} ${itemList.controllerId}`}
 				aria-haspopup="listbox"
 				aria-autocomplete="none"

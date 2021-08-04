@@ -14,16 +14,17 @@ function sortBy(property, order = 'asc') {
 	};
 }
 
-function DemoTableState({data, children}) {
+function DemoTableState({data, initialSelectedItems = [], children}) {
 	const [order, setOrder] = useState('asc');
 	const [sortedColumn, setSortedColumn] = useState('Name');
+	const [selectedItems, setSelectedItems] = useState(initialSelectedItems);
 
 	function handleSort(newOrder) {
 		setOrder(newOrder.order);
 		setSortedColumn(newOrder.column);
 	}
 
-	const orderedData = data.sort(sortBy(sortedColumn, order));
+	const orderedData = data?.sort(sortBy(sortedColumn, order)) || [];
 
 	return children({
 		data: orderedData,
@@ -32,6 +33,8 @@ function DemoTableState({data, children}) {
 			column: sortedColumn,
 		},
 		handleSort,
+		selectedItems,
+		handleSelectionChange: setSelectedItems,
 	});
 }
 

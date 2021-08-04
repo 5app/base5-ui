@@ -2,7 +2,7 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/5app/base5-ui.svg)](https://greenkeeper.io/)
 
-Welcome to base5-ui, 5app's library of reusable React components. base5-ui's focus lies on providing easy-to-use base & layout components for building highly themeable pages.
+Welcome to base5-ui, 5App's library of reusable React components. base5-ui's focus lies on providing easy-to-use base & layout components for building highly themeable pages.
 
 ## Installation
 
