@@ -121,8 +121,8 @@ const ButtonCore = forwardRef((props, ref) => {
 				isButton && isActive
 					? 'true'
 					: isActive === false
-					? 'false'
-					: null
+						? 'false'
+						: null
 			}
 			tabIndex={tabIndex || tabIndexContext}
 			onClick={onClick}
