@@ -7,11 +7,11 @@ import {pxToRem, fractionToPercent} from './units';
  * Strings without a unit (that can be converted to a number) will be treated like numbers
  * Other strings, e.g. those with a unit ('50%') will be passed through unchanged
  *
- * @param {number|string} inputLength - Value to be converted to a CSS length
- * @returns {string|undefined} - CSS length
+ * @param inputLength - Value to be converted to a CSS length
+ * @returns - CSS length
  */
 
-function getLength(inputLength: number | string): string | number | undefined {
+function getLength(inputLength: number | string): string | undefined {
 	const length = Number(inputLength);
 
 	if (!Number.isNaN(length)) {
@@ -21,8 +21,6 @@ function getLength(inputLength: number | string): string | number | undefined {
 
 		return pxToRem(length);
 	}
-
-	return inputLength;
 }
 
 export default getLength;

@@ -8,7 +8,7 @@ import {
 	getScale,
 } from 'color2k';
 
-const isValidColor = (color: string): [number, number, number, number] | boolean => {
+const isValidColor = (color: string): boolean => {
 	try {
 		parseToRgba(color);
 	} catch {

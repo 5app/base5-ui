@@ -1,4 +1,3 @@
-// @ts-expect-error: not a TS module yet.
 import {ThemeSectionError} from '../ThemeSection';
 
 function checkTheme(theme: any): void | never {
@@ -33,7 +32,7 @@ interface IStylePropConfig {
 	/** Name of the style prop */
 	styleProp: string;
 	/** Transforms the prop value into a valid CSS property value. */
-	getValue?: (val: string, props: {[key: string]: any}) => any;
+	getValue?: (val: string, theme: {[key: string]: any}) => any;
 	/** The CSS properties that the value should be applied to */
 	properties?: string[];
 	/** Use this instead of stylePropConfig.properties and stylePropConfig.getValue

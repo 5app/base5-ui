@@ -1,5 +1,4 @@
 import {createStyleFunction} from '../utils/styleProps';
-// @ts-expect-error: not a TS module yet.
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
 const supportedDisplayValues = [

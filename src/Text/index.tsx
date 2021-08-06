@@ -25,17 +25,23 @@ const shouldForwardProp = getPropFilter(
 	getPropNamesFromPropDefinition([...propDefs, ...textPropsDef])
 );
 
-interface ITextProps {
-	bold: boolean | unknown[];
-	caps: 'all' | 'first' | 'none' | unknown[];
-	dimmed: boolean | unknown[];
-	display: 'block' | 'inline' | 'inline-block' | unknown[];
-	fontSize: string | unknown[];
-	size: string | unknown[];
+type CapsValues = 'all' | 'first' | 'none';
+type DisplayValues = 'block' | 'inline' | 'inline-block';
+type OverflowValues = 'ellipsis' | 'wrap';
+type TextAlignValues = 'left' | 'center' | 'right';
+type AlignValues =  'left' | 'center' | 'right';
+
+export interface ITextProps {
+	bold: boolean | boolean[];
+	caps: CapsValues | CapsValues[];
+	dimmed: boolean | boolean[];
+	display: DisplayValues | DisplayValues[];
+	fontSize: string | string[];
+	size: string | string[];
 	lineHeight: number | string | unknown[];
-	overflow: 'ellipsis' | 'wrap' | unknown[];
-	textAlign: 'left' | 'center' | 'right' | unknown[];
-	align: 'left' | 'center' | 'right' | unknown[];
+	overflow: OverflowValues | string[];
+	textAlign: TextAlignValues | TextAlignValues[];
+	align: AlignValues | AlignValues[];
 }
 
 const Text = styled('span').withConfig({
