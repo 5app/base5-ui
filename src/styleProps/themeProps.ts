@@ -5,7 +5,7 @@ import {
 	getBackgroundShade,
 } from '../utils/colors';
 
-function getBackgroundColour(value, theme) {
+function getBackgroundColour(value: string, theme: any): string {
 	if (value === 'shaded') {
 		return getSolidBackgroundShade(theme);
 	}

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
 	createStyleFunction,
@@ -26,43 +25,35 @@ const shouldForwardProp = getPropFilter(
 	getPropNamesFromPropDefinition([...propDefs, ...textPropsDef])
 );
 
+type CapsValues = 'all' | 'first' | 'none';
+type DisplayValues = 'block' | 'inline' | 'inline-block';
+type OverflowValues = 'ellipsis' | 'wrap';
+type TextAlignValues = 'left' | 'center' | 'right';
+type AlignValues =  'left' | 'center' | 'right';
+
+export interface ITextProps {
+	bold: boolean | boolean[];
+	caps: CapsValues | CapsValues[];
+	dimmed: boolean | boolean[];
+	display: DisplayValues | DisplayValues[];
+	fontSize: string | string[];
+	size: string | string[];
+	lineHeight: number | string | unknown[];
+	overflow: OverflowValues | string[];
+	textAlign: TextAlignValues | TextAlignValues[];
+	align: AlignValues | AlignValues[];
+}
+
 const Text = styled('span').withConfig({
 	shouldForwardProp,
 })`
 	${styleProps}
-	${props =>
+	${(props: ITextProps) =>
 		textProps({
 			...props,
 			textAlign: props.align || props.textAlign,
 			fontSize: props.size || props.fontSize,
 		})}
 `;
-
-Text.propTypes = {
-	bold: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-	caps: PropTypes.oneOfType([
-		PropTypes.oneOf(['all', 'first', 'none']),
-		PropTypes.array,
-	]),
-	dimmed: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
-	display: PropTypes.oneOfType([
-		PropTypes.oneOf(['block', 'inline', 'inline-block']),
-		PropTypes.array,
-	]),
-	fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
-	lineHeight: PropTypes.oneOfType([
-		PropTypes.number,
-		PropTypes.string,
-		PropTypes.array,
-	]),
-	overflow: PropTypes.oneOfType([
-		PropTypes.oneOf(['ellipsis', 'wrap']),
-		PropTypes.array,
-	]),
-	textAlign: PropTypes.oneOfType([
-		PropTypes.oneOf(['left', 'center', 'right']),
-		PropTypes.array,
-	]),
-};
 
 export default Text;
