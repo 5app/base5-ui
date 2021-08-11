@@ -54,9 +54,9 @@ function useGridNavigation({rowIds, getInitialHighlightedRow} = {}) {
 	const [highlightedRowId, setHighlightedRowId] = useState();
 	const [highlightedCellIndex, setHighlightedCellIndex] = useState(0);
 	const previousHighlightedCellIndex = usePrevious(highlightedCellIndex);
-	if (!highlightedRowId) {
+	if (highlightedRowId === undefined) {
 		const fallbackRowId = getInitialHighlightedRow();
-		if (fallbackRowId) {
+		if (fallbackRowId !== null || fallbackRowId !== undefined) {
 			setHighlightedRowId(fallbackRowId);
 		}
 	}
