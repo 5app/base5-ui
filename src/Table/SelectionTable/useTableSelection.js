@@ -34,8 +34,17 @@ function useTableSelection({
 		shiftKeyPressedRef.current = event.shiftKey;
 	}
 
+	function resetModifierKeys() {
+		metaKeyPressedRef.current = false;
+		shiftKeyPressedRef.current = false;
+	}
+
 	useEventListener('keyup', captureModifierKeys);
 	useEventListener('keydown', captureModifierKeys);
+	// Reset modifier keys when the browser tab/window loses focus
+	useEventListener('blur', resetModifierKeys, {
+		targetElement: window,
+	});
 	useEventListener('selectstart', event => {
 		// Prevent range selection on Shift + Click
 		if (shiftKeyPressedRef.current) {
