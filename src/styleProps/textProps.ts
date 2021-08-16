@@ -13,28 +13,28 @@ export const textPropsDef = [
 	{
 		styleProp: 'fontSize',
 		properties: ['fontSize'],
-		getValue: (size: string, theme: any) =>
+		getValue: (size: string, theme: any): string =>
 			size ? theme.globals.typeScale[size] : undefined,
 	},
 	{
 		styleProp: 'bold',
 		properties: ['fontWeight'],
-		getValue: (bold: unknown) => (bold ? 'bold' : 'normal'),
+		getValue: (bold: boolean): string => (bold ? 'bold' : 'normal'),
 	},
 	{
 		styleProp: 'fontWeight',
 		properties: ['fontWeight'],
-		getValue: (value: unknown) => value,
+		getValue: (value: string | number): string | number => value,
 	},
 	{
 		styleProp: 'textAlign',
 		properties: ['textAlign'],
-		getValue: (value: unknown) => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'lineHeight',
 		properties: ['lineHeight'],
-		getValue: (value: unknown) => value,
+		getValue: (value: string | number): string | number => value,
 	},
 	{
 		styleProp: 'caps',
@@ -44,7 +44,7 @@ export const textPropsDef = [
 	{
 		styleProp: 'dimmed',
 		properties: ['color'],
-		getValue: (dimmed: unknown, theme: any) =>
+		getValue: (dimmed: boolean, theme: any): string =>
 			dimmed ? getDimmedTextColor(theme) : theme.text,
 	},
 ];

@@ -19,13 +19,13 @@ export const baseFlexRules = {
 export const flexPropsDef = [
 	{
 		styleProp: 'flexWrap',
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		// Boolean switch for flexWrap="wrap"
 		styleProp: 'wrapItems',
 		properties: ['flexWrap'],
-		getValue: value => (value ? 'wrap' : 'nowrap'),
+		getValue: (value: string): string => (value ? 'wrap' : 'nowrap'),
 	},
 	{
 		styleProp: 'basis',
@@ -35,35 +35,35 @@ export const flexPropsDef = [
 	{
 		styleProp: 'grow',
 		properties: ['flexGrow'],
-		getValue: value => Number(value),
+		getValue: (value: string): number => Number(value),
 	},
 	{
 		styleProp: 'shrink',
 		properties: ['flexShrink'],
-		getValue: value => Number(value),
+		getValue: (value: string): number => Number(value),
 	},
 	{
 		styleProp: 'flexAlign',
 		properties: ['alignSelf'],
-		getValue: value => alignMap[value] || value,
+		getValue: (value: string): string => alignMap[value] || value,
 	},
 	{
 		styleProp: 'alignItems',
-		getValue: value => alignMap[value] || value,
+		getValue: (value: string): string => alignMap[value] || value,
 	},
 	{
 		styleProp: 'justifyContent',
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'flexDirection',
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		// Boolean switch for flexDirection="column"
 		styleProp: 'stackItems',
 		properties: ['flexDirection'],
-		getValue: value => (value ? 'column' : 'initial'),
+		getValue: (value: string): string => (value ? 'column' : 'initial'),
 	},
 ];
 

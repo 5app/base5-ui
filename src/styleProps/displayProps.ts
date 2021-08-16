@@ -1,21 +1,20 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
-const supportedDisplayValues = [
-	'block',
-	'inline',
-	'inline-block',
-	'flex',
-	'inline-flex',
-	'none',
-];
+type SupportedDisplayValues =
+	| 'block'
+	| 'inline'
+	| 'inline-block'
+	| 'flex'
+	| 'inline-flex'
+	| 'none'
 
 const overflowStylesMap: {[key: string]: any} = {
 	ellipsis,
 	wrap,
 };
 
-function getOverflowValue(value: string | number) {
+function getOverflowValue(value: string | number): string | {[key: string]: any} {
 	if (overflowStylesMap[value]) {
 		return overflowStylesMap[value];
 	} else if (value) {
@@ -28,16 +27,7 @@ function getOverflowValue(value: string | number) {
 export const displayPropsDef = [
 	{
 		styleProp: 'display',
-		getValue: (display: string) =>
-			supportedDisplayValues.includes(display)
-				? display
-				: console.warn(
-						`Only ${supportedDisplayValues.join(
-							', '
-						)} are supported for
-			the 'display' styling prop. Please use custom CSS
-			for more complex styling.`
-				  ),
+		getValue: (display: SupportedDisplayValues): string => display
 	},
 	{
 		styleProp: 'overflow',

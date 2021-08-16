@@ -5,12 +5,12 @@ import {fillParent} from '../mixins';
 export const positionPropsDef = [
 	{
 		styleProp: 'position',
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'pos',
 		properties: ['position'],
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'top',
@@ -30,12 +30,12 @@ export const positionPropsDef = [
 	},
 	{
 		styleProp: 'fillParent',
-		getRules: value => (value ? fillParent : false),
+		getRules: (value: string): typeof fillParent | boolean => (value ? fillParent : false),
 	},
 	{
 		styleProp: 'z',
 		properties: ['zIndex'],
-		getValue: (z, theme) => theme.globals?.z?.[z] || z,
+		getValue: (z: string, theme): string => theme.globals?.z?.[z] || z,
 	},
 ];
 

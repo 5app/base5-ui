@@ -32,7 +32,7 @@ interface IStylePropConfig {
 	/** Name of the style prop */
 	styleProp: string;
 	/** Transforms the prop value into a valid CSS property value. */
-	getValue?: (val: string, theme: {[key: string]: any}) => any;
+	getValue?: (val: string | number | boolean, theme: {[key: string]: any}) => string | number;
 	/** The CSS properties that the value should be applied to */
 	properties?: string[];
 	/** Use this instead of stylePropConfig.properties and stylePropConfig.getValue
@@ -40,7 +40,7 @@ interface IStylePropConfig {
 	 * Will be called with any value, so you have to make sure to return a falsy
 	 * value if you don't want to add a rule.
 	 */
-	getRules?: (prop: string, theme?: any) => {[key: string]: any}
+	getRules?: (prop: string, theme?: any) => string | {[key: string]: any} | boolean
 }
 
 /**
