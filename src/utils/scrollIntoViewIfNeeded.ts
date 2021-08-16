@@ -8,12 +8,12 @@ import getScrollParent from './getScrollParent';
  * @param {object} element - The element to be scrolled into view
  */
 
-function scrollIntoViewIfNeeded(element) {
+function scrollIntoViewIfNeeded(element: HTMLElement): null | void {
 	if (!element) {
 		return null;
 	}
 
-	const scrollParent = getScrollParent(element);
+	const scrollParent = getScrollParent(element) as Element | HTMLElement;
 	const elementIsAbove = scrollParent.scrollTop > element.offsetTop;
 	const elementIsBelow =
 		scrollParent.clientHeight + scrollParent.scrollTop < element.offsetTop;
