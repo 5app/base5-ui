@@ -79,7 +79,8 @@ function useTableSelection({
 	}
 
 	function addToSelection(itemIds) {
-		onChange([...selectedItems, ...itemIds]);
+		const uniqueSelection = [...new Set([...selectedItems, ...itemIds])];
+		onChange(uniqueSelection);
 	}
 
 	function toggleSingleRow(itemId) {
