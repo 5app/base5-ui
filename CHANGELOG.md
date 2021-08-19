@@ -1,3 +1,11 @@
+## [13.4.4](https://github.com/5app/base5-ui/compare/v13.4.3...v13.4.4) (2021-08-16)
+
+
+### Bug Fixes
+
+* **SelectionTable:** Fix selection duplicates, [#151](https://github.com/5app/base5-ui/issues/151) ([8c0f732](https://github.com/5app/base5-ui/commit/8c0f7323e06f5e7c7d80e3e7a22269e134271740))
+* **SelectionTable:** Fix stuck modifier keys after switching tabs, noissue ([f3a57c6](https://github.com/5app/base5-ui/commit/f3a57c6108d4a3c7b34fd4ee665c8407cfa3899e))
+
 ## [13.4.3](https://github.com/5app/base5-ui/compare/v13.4.2...v13.4.3) (2021-08-11)
 
 
