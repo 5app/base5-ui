@@ -27,28 +27,29 @@ const shouldForwardProp = getPropFilter(
 
 type CapsValues = 'all' | 'first' | 'none';
 type DisplayValues = 'block' | 'inline' | 'inline-block';
+type FontSizeValue = string | number;
+type LineHeightValue = string | number;
 type OverflowValues = 'ellipsis' | 'wrap';
 type TextAlignValues = 'left' | 'center' | 'right';
-type AlignValues =  'left' | 'center' | 'right';
 
-export interface ITextProps {
+export interface TextProps {
 	bold: boolean | boolean[];
-	caps: CapsValues | CapsValues[];
 	dimmed: boolean | boolean[];
+	caps: CapsValues | CapsValues[];
 	display: DisplayValues | DisplayValues[];
-	fontSize: string | string[];
-	size: string | string[];
-	lineHeight: number | string | unknown[];
-	overflow: OverflowValues | string[];
+	fontSize: FontSizeValue | FontSizeValue[];
+	size: FontSizeValue | FontSizeValue[];
+	lineHeight: LineHeightValue | LineHeightValue[];
+	overflow: OverflowValues | OverflowValues[];
 	textAlign: TextAlignValues | TextAlignValues[];
-	align: AlignValues | AlignValues[];
+	align: TextAlignValues | TextAlignValues[];
 }
 
-const Text = styled('span').withConfig({
+const Text = styled.span.withConfig({
 	shouldForwardProp,
-})`
+})<TextProps>`
 	${styleProps}
-	${(props: ITextProps) =>
+	${props =>
 		textProps({
 			...props,
 			textAlign: props.align || props.textAlign,

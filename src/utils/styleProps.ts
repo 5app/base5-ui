@@ -6,7 +6,10 @@ interface SimplePropDefinition {
 	/** Name of the style prop */
 	styleProp: string;
 	/** Transforms the prop value into a valid CSS property value. */
-	getValue: (val: unknown, theme: LocalThemeSection) => string | number;
+	getValue: (
+		val: unknown,
+		theme: LocalThemeSection
+	) => string | number | undefined;
 	/** The CSS properties that the value should be applied to.
 	 * Will default to [styleProp] if not specified */
 	properties?: string[];
@@ -24,8 +27,12 @@ interface AdvancedPropDefinition {
 
 type StylePropDefinition = SimplePropDefinition | AdvancedPropDefinition;
 
+/**
+ * Throw an error if no theme is defined
+ */
+
 function checkTheme(theme: LocalThemeSection): void | never {
-	if (!theme || !theme.globals) {
+	if (!theme?.globals) {
 		throw new ThemeSectionError();
 	}
 }
@@ -50,18 +57,13 @@ function getValueByIndex<PropValue>(
 	return prop;
 }
 
-/**
- * Builds a CSS ruleset based on the props passed to the component.
- *
- * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {object} componentProps - Props that the component was called with
- * @param {number} breakpointIndex - If the passed prop is an array of responsive values, this number tells us which value to pick from the array
- *
- * @returns {object} - A CSS rule set
- */
 function getStylePropRules(
+	// Style prop configuration objects
 	stylePropConfig: StylePropDefinition[],
+	// Props that the component was called with
 	componentProps: StyledComponentProps,
+	// If the passed prop is an array of responsive values, this
+	// number tells us which value to pick from the array
 	breakpointIndex: number
 ) {
 	const rules: CSSObject = {};
@@ -135,11 +137,8 @@ function getResponsiveRules(
 }
 
 /**
- *
- * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {object} [baseRules] - Any static CSS rules to add before the dynamic styleProp rules
- *
- * @returns {Function} - A responsive style prop function that can be used directly in a styled component, e.g.
+ * Takes a style prop definition and creates a style prop function that
+ * can be used directly in a styled component, e.g.
  * ```
  * const MyLink = styled.a`
  *   ${myStyleProp}
@@ -166,8 +165,6 @@ function createStyleFunction(
 
 /**
  * Returns the names (keys) of all style props in a styleProp config array
- * @param {object[]} propDefinition - Array of style prop configuration objects
- * @returns {string[]} - Array of prop names
  */
 
 function getPropNamesFromPropDefinition(
@@ -179,16 +176,6 @@ function getPropNamesFromPropDefinition(
 /**
  * Returns a `shouldForwardProp` function to be used in styled-components
  * to prevent any custom props from ending up in the DOM
- *
- * @param {string[]} propNames - Array of prop names
- * @returns {Function} - shouldForwardProp function for styled-components, e.g.
- * ```
- * 		const Box = styled('div').withConfig({
- * 			shouldForwardProp: getPropFilter(['color', 'align'])
- * 		})`
- * 			...
- * 		`;
- * ```
  */
 
 function getPropFilter(

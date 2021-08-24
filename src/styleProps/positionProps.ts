@@ -1,6 +1,9 @@
+import {CSSObject} from 'styled-components';
+
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 import {fillParent} from '../mixins';
+import {LocalThemeSection} from '../theme/types';
 
 export const positionPropsDef = [
 	{
@@ -30,12 +33,14 @@ export const positionPropsDef = [
 	},
 	{
 		styleProp: 'fillParent',
-		getRules: (value: string): typeof fillParent | boolean => (value ? fillParent : false),
+		getRules: (value: boolean): CSSObject =>
+			value ? (fillParent as CSSObject) : undefined,
 	},
 	{
 		styleProp: 'z',
 		properties: ['zIndex'],
-		getValue: (z: string, theme): string => theme.globals?.z?.[z] || z,
+		getValue: (z, theme: LocalThemeSection): number =>
+			theme.globals.z?.[z] || z,
 	},
 ];
 

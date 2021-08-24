@@ -6,9 +6,9 @@ const PASS_THROUGH_VALUES = ['auto'];
 function getSpacing(
 	shortCode: unknown,
 	theme: LocalThemeSection
-): string | number | false | undefined {
+): string | number | undefined {
 	if (shortCode === undefined || shortCode === null || shortCode === false) {
-		return shortCode;
+		return undefined;
 	}
 
 	if (
