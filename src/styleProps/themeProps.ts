@@ -4,8 +4,9 @@ import {
 	getSolidBackgroundShade,
 	getBackgroundShade,
 } from '../utils/colors';
+import {LocalThemeSection} from '../theme/types';
 
-function getBackgroundColour(value: string, theme: any): string {
+function getBackgroundColour(value: string, theme: LocalThemeSection): string {
 	if (value === 'shaded') {
 		return getSolidBackgroundShade(theme);
 	}

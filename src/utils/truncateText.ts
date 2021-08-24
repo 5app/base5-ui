@@ -1,4 +1,4 @@
-function truncateText(str, length) {
+function truncateText(str: string, length: number | null): string | null {
 	if (!str) {
 		return null;
 	}

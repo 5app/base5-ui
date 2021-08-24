@@ -1,16 +1,19 @@
+import {CSSObject} from 'styled-components';
+
 import {getSpacing} from '../utils';
 import {createStyleFunction} from '../utils/styleProps';
 import {fillParent} from '../mixins';
+import {LocalThemeSection} from '../theme/types';
 
 export const positionPropsDef = [
 	{
 		styleProp: 'position',
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'pos',
 		properties: ['position'],
-		getValue: value => value,
+		getValue: (value: string): string => value,
 	},
 	{
 		styleProp: 'top',
@@ -30,12 +33,14 @@ export const positionPropsDef = [
 	},
 	{
 		styleProp: 'fillParent',
-		getRules: value => (value ? fillParent : false),
+		getRules: (value: boolean): CSSObject =>
+			value ? (fillParent as CSSObject) : undefined,
 	},
 	{
 		styleProp: 'z',
 		properties: ['zIndex'],
-		getValue: (z, theme) => theme.globals?.z?.[z] || z,
+		getValue: (z, theme: LocalThemeSection): number =>
+			theme.globals.z?.[z] || z,
 	},
 ];
 

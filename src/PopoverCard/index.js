@@ -49,7 +49,6 @@ const PopoverCard = forwardRef((props, ref) => {
 		ignorePointerEvents,
 		renderInPlace,
 		scrollContainerRef,
-		onUpdatePopover,
 		...otherProps
 	} = props;
 
@@ -153,11 +152,6 @@ PopoverCard.propTypes = {
 	 * to render it in place like a regular component instead.
 	 */
 	renderInPlace: PropTypes.bool,
-	/*
-	 * A function that will recalculate the popover's position.
-	 * Must return a promise.
-	 */
-	onUpdatePopover: PropTypes.func,
 	/*
 	 * Used to pass a React ref to the scrolling container within
 	 * the card.

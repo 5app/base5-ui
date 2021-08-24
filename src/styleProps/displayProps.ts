@@ -1,21 +1,16 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {ellipsis, overflowWrap as wrap} from '../mixins';
 
-const supportedDisplayValues = [
-	'block',
-	'inline',
-	'inline-block',
-	'flex',
-	'inline-flex',
-	'none',
-];
-
-const overflowStylesMap: {[key: string]: any} = {
+const overflowStylesMap = {
 	ellipsis,
 	wrap,
 };
 
-function getOverflowValue(value: string | number) {
+interface OverflowStyles {
+	[property: string]: string;
+}
+
+function getOverflowValue(value: string): OverflowStyles {
 	if (overflowStylesMap[value]) {
 		return overflowStylesMap[value];
 	} else if (value) {
@@ -25,19 +20,18 @@ function getOverflowValue(value: string | number) {
 	}
 }
 
+type SupportedDisplayValues =
+	| 'block'
+	| 'inline'
+	| 'inline-block'
+	| 'flex'
+	| 'inline-flex'
+	| 'none';
+
 export const displayPropsDef = [
 	{
 		styleProp: 'display',
-		getValue: (display: string) =>
-			supportedDisplayValues.includes(display)
-				? display
-				: console.warn(
-						`Only ${supportedDisplayValues.join(
-							', '
-						)} are supported for
-			the 'display' styling prop. Please use custom CSS
-			for more complex styling.`
-				  ),
+		getValue: (display: SupportedDisplayValues): string => display,
 	},
 	{
 		styleProp: 'overflow',
@@ -45,5 +39,4 @@ export const displayPropsDef = [
 	},
 ];
 
-// unsure what this issue is here. TODO: come back and figure this out
 export default createStyleFunction(displayPropsDef);

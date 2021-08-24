@@ -4,9 +4,9 @@ module.exports = {
 		'5app',
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
-		'prettier',
 		'plugin:@typescript-eslint/eslint-recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'prettier',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -22,7 +22,10 @@ module.exports = {
 		'no-unused-vars': ['error', {ignoreRestSiblings: true}],
 		'no-console': ['error', {allow: ['error', 'warn']}],
 		'prefer-template': 'off',
-		'react/jsx-no-bind': ['error', {allowArrowFunctions: true, ignoreRefs: true}],
+		'react/jsx-no-bind': [
+			'error',
+			{allowArrowFunctions: true, ignoreRefs: true},
+		],
 		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
@@ -52,13 +55,13 @@ module.exports = {
 				// more info here:
 				// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unused-vars.md
 				'no-unused-vars': 'off',
-				'@typescript-eslint/no-unused-vars': 'error'
+				'@typescript-eslint/no-unused-vars': 'error',
 			},
-		}
+		},
 	],
 	settings: {
 		react: {
-			version: 'detect'
-		}
-	}
+			version: 'detect',
+		},
+	},
 };

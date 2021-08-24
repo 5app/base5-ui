@@ -1,10 +1,14 @@
 import {pxToRem} from './units';
+import {LocalThemeSection} from '../theme/types';
 
-const passThroughValues = ['auto'];
+const PASS_THROUGH_VALUES = ['auto'];
 
-function getSpacing(shortCode: any, theme: any): string | undefined {
+function getSpacing(
+	shortCode: unknown,
+	theme: LocalThemeSection
+): string | number | undefined {
 	if (shortCode === undefined || shortCode === null || shortCode === false) {
-		return shortCode;
+		return undefined;
 	}
 
 	if (
@@ -18,7 +22,7 @@ function getSpacing(shortCode: any, theme: any): string | undefined {
 		return pxToRem(shortCode);
 	}
 
-	if (passThroughValues.indexOf(shortCode) > -1) {
+	if (PASS_THROUGH_VALUES.indexOf(shortCode) > -1) {
 		return shortCode;
 	}
 

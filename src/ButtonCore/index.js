@@ -52,12 +52,14 @@ const Clickable = styled.button`
 function filterLinkProps(props, isDisabled) {
 	if (isDisabled) {
 		const {
+			/* eslint-disable @typescript-eslint/no-unused-vars */
 			href,
 			to,
 			target,
 			rel,
 			referrerpolicy,
 			download,
+			/* eslint-enable */
 			...remainingProps
 		} = props;
 		return remainingProps;
@@ -121,8 +123,8 @@ const ButtonCore = forwardRef((props, ref) => {
 				isButton && isActive
 					? 'true'
 					: isActive === false
-						? 'false'
-						: null
+					? 'false'
+					: null
 			}
 			tabIndex={tabIndex || tabIndexContext}
 			onClick={onClick}

@@ -1,7 +1,38 @@
+import {InterpolationFunction, CSSObject} from 'styled-components';
 import {ThemeSectionError} from '../ThemeSection';
+import {LocalThemeSection, StyledComponentProps} from '../theme/types';
 
-function checkTheme(theme: any): void | never {
-	if (!theme || !theme.globals) {
+interface SimplePropDefinition {
+	/** Name of the style prop */
+	styleProp: string;
+	/** Transforms the prop value into a valid CSS property value. */
+	getValue: (
+		val: unknown,
+		theme: LocalThemeSection
+	) => string | number | undefined;
+	/** The CSS properties that the value should be applied to.
+	 * Will default to [styleProp] if not specified */
+	properties?: string[];
+}
+
+interface AdvancedPropDefinition {
+	/** Name of the style prop */
+	styleProp: string;
+	/** Use this instead of getValue to define more complex style props that
+	 * generate multiple CSS rules.
+	 * Will be called with any value, so you have to make sure to return a falsy
+	 * value if you don't want to add rules. */
+	getRules: (prop: unknown, theme: LocalThemeSection) => CSSObject;
+}
+
+type StylePropDefinition = SimplePropDefinition | AdvancedPropDefinition;
+
+/**
+ * Throw an error if no theme is defined
+ */
+
+function checkTheme(theme: LocalThemeSection): void | never {
+	if (!theme?.globals) {
 		throw new ThemeSectionError();
 	}
 }
@@ -11,14 +42,12 @@ function checkTheme(theme: any): void | never {
  * If prop is not an array, it means it's not responsive and only needs to be
  * set at the base breakpoint (i.e. index === 0), so we return undefined for
  * any index larger than 0.
- *
- * @param {string|Array} prop - Prop passed to the component
- * @param {number} index - index used to retrieve value if prop is an array
- *
- * @returns {string|number} - A CSS property value
  */
 
-function getValueByIndex(prop: string | string[], index = 0): string | undefined {
+function getValueByIndex<PropValue>(
+	prop: PropValue | PropValue[],
+	index = 0
+): PropValue | undefined {
 	if (Array.isArray(prop)) {
 		return prop[index];
 	}
@@ -28,51 +57,47 @@ function getValueByIndex(prop: string | string[], index = 0): string | undefined
 	return prop;
 }
 
-interface IStylePropConfig {
-	/** Name of the style prop */
-	styleProp: string;
-	/** Transforms the prop value into a valid CSS property value. */
-	getValue?: (val: string, theme: {[key: string]: any}) => any;
-	/** The CSS properties that the value should be applied to */
-	properties?: string[];
-	/** Use this instead of stylePropConfig.properties and stylePropConfig.getValue
-	 * to define more complex style props that need to generate multiple CSS rules.
-	 * Will be called with any value, so you have to make sure to return a falsy
-	 * value if you don't want to add a rule.
-	 */
-	getRules?: (prop: string, theme?: any) => {[key: string]: any}
-}
-
-/**
- * Builds a CSS ruleset based on the props passed to the component.
- *
- * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {object} componentProps - Props that the component was called with
- * @param {number} breakpointIndex - If the passed prop is an array of responsive values, this number tells us which value to pick from the array
- *
- * @returns {object} - A CSS rule set
- */
-function getStylePropRules(stylePropConfig: IStylePropConfig[], componentProps: {[key: string]: any}, breakpointIndex: number) {
-	const rules: {[key: string]: any} = {};
+function getStylePropRules(
+	// Style prop configuration objects
+	stylePropConfig: StylePropDefinition[],
+	// Props that the component was called with
+	componentProps: StyledComponentProps,
+	// If the passed prop is an array of responsive values, this
+	// number tells us which value to pick from the array
+	breakpointIndex: number
+) {
+	const rules: CSSObject = {};
 	stylePropConfig.forEach(
-		({styleProp: stylePropKey, properties, getValue, getRules}) => {
-			let styleProp = componentProps[stylePropKey];
+		// ({styleProp: stylePropKey, properties, getValue, getRules}) => {
+		(entry: StylePropDefinition) => {
+			let styleProp = componentProps[entry.styleProp];
 			if (styleProp && typeof styleProp === 'function') {
 				styleProp = styleProp(componentProps.theme);
 			}
-			const stylePropVal = getValueByIndex(styleProp, breakpointIndex);
+			const stylePropValue = getValueByIndex(styleProp, breakpointIndex);
 
-			if (getRules && typeof getRules === 'function' && stylePropVal !== undefined) {
-				const rulesToAdd = getRules(stylePropVal, componentProps.theme);
+			if (
+				'getRules' in entry &&
+				typeof entry.getRules === 'function' &&
+				stylePropValue !== undefined
+			) {
+				const rulesToAdd = entry.getRules(
+					stylePropValue,
+					componentProps.theme
+				);
 				if (rulesToAdd) {
 					Object.assign(rules, rulesToAdd);
 				}
 			} else {
-				if (stylePropVal !== undefined && stylePropVal !== null && getValue !== undefined) {
-					const props = properties || [stylePropKey];
+				if (
+					'getValue' in entry &&
+					stylePropValue !== undefined &&
+					stylePropValue !== null
+				) {
+					const props = entry.properties || [entry.styleProp];
 					props.forEach(prop => {
-						rules[prop] = getValue(
-							stylePropVal,
+						rules[prop] = entry.getValue(
+							stylePropValue,
 							componentProps.theme
 						);
 					});
@@ -83,7 +108,10 @@ function getStylePropRules(stylePropConfig: IStylePropConfig[], componentProps: 
 	return rules;
 }
 
-function getResponsiveRules(stylePropConfig: IStylePropConfig[], componentProps: {[key: string]: any}) {
+function getResponsiveRules(
+	stylePropConfig: StylePropDefinition[],
+	componentProps: StyledComponentProps
+) {
 	// Get baseline styles
 	const rules = getStylePropRules(stylePropConfig, componentProps, 0);
 
@@ -109,11 +137,8 @@ function getResponsiveRules(stylePropConfig: IStylePropConfig[], componentProps:
 }
 
 /**
- *
- * @param {object[]} stylePropConfig - Style prop configuration objects
- * @param {object} [baseRules] - Any static CSS rules to add before the dynamic styleProp rules
- *
- * @returns {Function} - A responsive style prop function that can be used directly in a styled component, e.g.
+ * Takes a style prop definition and creates a style prop function that
+ * can be used directly in a styled component, e.g.
  * ```
  * const MyLink = styled.a`
  *   ${myStyleProp}
@@ -121,8 +146,11 @@ function getResponsiveRules(stylePropConfig: IStylePropConfig[], componentProps:
  * ```
  */
 
-function createStyleFunction(stylePropConfig: IStylePropConfig[], baseRules?: {[key: string]: any}) {
-	return function styleFunction(props: any): {[key: string]: any} {
+function createStyleFunction(
+	stylePropConfig: StylePropDefinition[],
+	baseRules?: CSSObject
+): InterpolationFunction<StyledComponentProps> {
+	return function styleFunction(props: StyledComponentProps) {
 		checkTheme(props.theme);
 		const rules = getResponsiveRules(stylePropConfig, props);
 		if (baseRules) {
@@ -137,30 +165,22 @@ function createStyleFunction(stylePropConfig: IStylePropConfig[], baseRules?: {[
 
 /**
  * Returns the names (keys) of all style props in a styleProp config array
- * @param {object[]} propDefinition - Array of style prop configuration objects
- * @returns {string[]} - Array of prop names
  */
 
-function getPropNamesFromPropDefinition(propDefinition: IStylePropConfig[]): string[] {
+function getPropNamesFromPropDefinition(
+	propDefinition: StylePropDefinition[]
+): string[] {
 	return ['breakpoints', ...propDefinition.map(propDef => propDef.styleProp)];
 }
 
 /**
  * Returns a `shouldForwardProp` function to be used in styled-components
  * to prevent any custom props from ending up in the DOM
- *
- * @param {string[]} propNames - Array of prop names
- * @returns {Function} - shouldForwardProp function for styled-components, e.g.
- * ```
- * 		const Box = styled('div').withConfig({
- * 			shouldForwardProp: getPropFilter(['color', 'align'])
- * 		})`
- * 			...
- * 		`;
- * ```
  */
 
-function getPropFilter(propNames: string[]): (prop: string | number) => boolean  {
+function getPropFilter(
+	propNames: string[]
+): (prop: string | number) => boolean {
 	const propsToFilter = new Set(propNames);
 
 	return function shouldForwardProp(prop: string | number): boolean {
