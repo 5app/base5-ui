@@ -1,17 +1,17 @@
-interface IObjectProps {
-	[key: string]: any;
+interface Props {
+	[key: string]: unknown;
 }
 
-function removeFalsyProps(object: IObjectProps): null | IObjectProps {
+function removeFalsyProps(object: Props): null | Props {
 	if (!object) return null;
 
-	return Object.keys(object).reduce<IObjectProps>((acc, key) => {
-		const newObject = acc;
+	const result = {};
+	Object.keys(object).forEach(key => {
 		if (object[key]) {
-			newObject[key] = object[key]
+			result[key] = object[key];
 		}
-		return newObject;
-	}, {});
+	});
+	return result;
 }
 
 export default removeFalsyProps;

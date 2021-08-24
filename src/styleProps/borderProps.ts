@@ -1,8 +1,9 @@
 import {createStyleFunction} from '../utils/styleProps';
 import {pxToRem} from '../utils';
+import {LocalThemeSection} from '../theme/types';
 
 function getGlobalThemeValue(key: string) {
-	return (value: string, theme?: any): string => {
+	return (value: string, theme?: LocalThemeSection): string => {
 		const themeValue = theme.globals?.[key]?.[value] || value;
 
 		if (typeof themeValue === 'function') {

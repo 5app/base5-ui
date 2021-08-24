@@ -8,6 +8,8 @@ import {
 	getScale,
 } from 'color2k';
 
+import {LocalThemeSection} from '../theme/types';
+
 const isValidColor = (color: string): boolean => {
 	try {
 		parseToRgba(color);
@@ -17,10 +19,13 @@ const isValidColor = (color: string): boolean => {
 	return true;
 };
 
-const alpha = (color: string, amount: number): string => transparentize(color, 1 - amount);
+const alpha = (color: string, amount: number): string =>
+	transparentize(color, 1 - amount);
 
-const mix = (color: string) => (baseColor: string, amount: number): string =>
-	color2kMix(baseColor, color, amount);
+const mix =
+	(color: string) =>
+	(baseColor: string, amount: number): string =>
+		color2kMix(baseColor, color, amount);
 
 const isDark = (color: string): boolean => getLuminance(color) < 0.43;
 const isLight = (color: string): boolean => !isDark(color);
@@ -39,7 +44,11 @@ const contrast = (
 const highlight = (color: string, factor = 0.1): string =>
 	isDark(color) ? lighten(color, factor) : darken(color, factor);
 
-function getPalette(startColor: string, endColor: string, length: number): string[] {
+function getPalette(
+	startColor: string,
+	endColor: string,
+	length: number
+): string[] {
 	const scale = getScale(startColor, endColor);
 
 	return Array.from({length}, (x, i) => {
@@ -48,26 +57,29 @@ function getPalette(startColor: string, endColor: string, length: number): strin
 	});
 }
 
-function getColorBlock(color: string | ((theme: any) => string), theme: any): string {
+function getColorBlock(
+	color: string | ((theme: LocalThemeSection) => string),
+	theme: LocalThemeSection
+): string {
 	if (typeof color === 'function') {
 		return color(theme);
 	}
 	return theme[color] || theme.globals?.colorBlocks?.[color] || color;
 }
 
-function getDimmedTextColor(theme: any): string {
+function getDimmedTextColor(theme: LocalThemeSection): string {
 	return alpha(theme.text, theme.textDimStrength);
 }
 
-function getBackgroundShade(theme: any): string {
+function getBackgroundShade(theme: LocalThemeSection): string {
 	return alpha(theme.shade, theme.shadeStrength);
 }
 
-function getSolidBackgroundShade(theme: any): string {
+function getSolidBackgroundShade(theme: LocalThemeSection): string {
 	return color2kMix(theme.background, theme.shade, theme.shadeStrength);
 }
 
-function getBorderColor(theme: any): string {
+function getBorderColor(theme: LocalThemeSection): string {
 	return alpha(theme.shade, theme.lineStrength);
 }
 
