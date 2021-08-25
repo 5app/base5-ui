@@ -1,5 +1,7 @@
 import {pxToRem, fractionToPercent} from './units';
 
+type Length = string | number;
+
 /**
  * Turns a number or string into a CSS length value.
  * Numbers larger than 1 will be interpreted as pixels and converted to the 'rem' unit
@@ -11,7 +13,7 @@ import {pxToRem, fractionToPercent} from './units';
  * @returns - CSS length
  */
 
-function getLength(inputLength: number | string): string | undefined {
+function getLength(inputLength: Length): Length {
 	const length = Number(inputLength);
 
 	if (!Number.isNaN(length)) {
@@ -21,6 +23,8 @@ function getLength(inputLength: number | string): string | undefined {
 
 		return pxToRem(length);
 	}
+
+	return inputLength;
 }
 
 export default getLength;
