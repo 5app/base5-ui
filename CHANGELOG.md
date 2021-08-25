@@ -1,3 +1,10 @@
+## [13.4.6](https://github.com/5app/base5-ui/compare/v13.4.5...v13.4.6) (2021-08-25)
+
+
+### Bug Fixes
+
+* **SelectionTable:** Fix making IDs unique after TS compilation, noissue ([6199809](https://github.com/5app/base5-ui/commit/6199809dd92b02960e908aff0faef089022536bc))
+
 ## [13.4.5](https://github.com/5app/base5-ui/compare/v13.4.4...v13.4.5) (2021-08-25)
 
 
