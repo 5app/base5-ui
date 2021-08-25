@@ -1,3 +1,10 @@
+## [13.4.5](https://github.com/5app/base5-ui/compare/v13.4.4...v13.4.5) (2021-08-25)
+
+
+### Bug Fixes
+
+* **utils:** Fix getLength util, noissue ([7b6d74d](https://github.com/5app/base5-ui/commit/7b6d74dfa3bb2d8f0b069004a0f6ac48901caf16))
+
 ## [13.4.4](https://github.com/5app/base5-ui/compare/v13.4.3...v13.4.4) (2021-08-16)
 
 
