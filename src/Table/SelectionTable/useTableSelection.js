@@ -88,7 +88,9 @@ function useTableSelection({
 	}
 
 	function addToSelection(itemIds) {
-		const uniqueSelection = [...new Set([...selectedItems, ...itemIds])];
+		const uniqueSelection = Array.from(
+			new Set([...selectedItems, ...itemIds])
+		);
 		onChange(uniqueSelection);
 	}
 
