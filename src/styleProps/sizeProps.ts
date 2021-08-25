@@ -1,5 +1,4 @@
-import {createStyleFunction} from '../utils/styleProps';
-import getLength from '../utils/getLength';
+import {getLength, createStyleFunction} from '../utils';
 
 export const sizePropsDef = [
 	{

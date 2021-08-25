@@ -19,13 +19,12 @@ export const baseFlexRules = {
 export const flexPropsDef = [
 	{
 		styleProp: 'flexWrap',
-		getValue: (value: string): string => value,
+		getValue: <Type>(value: Type): Type => value,
 	},
 	{
-		// Boolean switch for flexWrap="wrap"
 		styleProp: 'wrapItems',
 		properties: ['flexWrap'],
-		getValue: (value: string): string => (value ? 'wrap' : 'nowrap'),
+		getValue: (value: boolean): string => (value ? 'wrap' : 'nowrap'),
 	},
 	{
 		styleProp: 'basis',
@@ -60,10 +59,9 @@ export const flexPropsDef = [
 		getValue: (value: string): string => value,
 	},
 	{
-		// Boolean switch for flexDirection="column"
 		styleProp: 'stackItems',
 		properties: ['flexDirection'],
-		getValue: (value: string): string => (value ? 'column' : 'initial'),
+		getValue: (value: boolean): string => (value ? 'column' : 'initial'),
 	},
 ];
 
