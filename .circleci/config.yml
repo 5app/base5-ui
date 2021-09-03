@@ -18,7 +18,7 @@ executors:
   default:
     working_directory: *dir
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
 
 
 ################################
