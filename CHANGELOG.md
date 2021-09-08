@@ -1,3 +1,10 @@
+## [13.4.7](https://github.com/5app/base5-ui/compare/v13.4.6...v13.4.7) (2021-09-08)
+
+
+### Bug Fixes
+
+* **Pill:** fix ConditionalFlexWrapper margin, noissue ([#156](https://github.com/5app/base5-ui/issues/156)) ([58427fd](https://github.com/5app/base5-ui/commit/58427fd31e57a2f11e1acc1d0707a1fe5ca5ac92))
+
 ## [13.4.6](https://github.com/5app/base5-ui/compare/v13.4.5...v13.4.6) (2021-08-25)
 
 
