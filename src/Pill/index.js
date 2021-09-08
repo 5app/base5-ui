@@ -211,13 +211,18 @@ const SideButton = styled(Button).withConfig({
 			: getBackgroundShade(p.theme)};
 `;
 
-function ConditionalFlexWrapper({wrap, children}) {
+function ConditionalFlexWrapper({wrap, children, ...otherProps}) {
 	if (!wrap) {
 		return children;
 	}
 
 	return (
-		<Box display="inline-flex" alignItems="center" maxWidth="100%">
+		<Box
+			{...otherProps}
+			display="inline-flex"
+			alignItems="center"
+			maxWidth="100%"
+		>
 			{children}
 		</Box>
 	);
@@ -235,6 +240,21 @@ function defaultIconRenderer({iconName, iconColor}) {
 			</IconWrapper>
 		</ThemeSection>
 	);
+}
+
+function splitMarginProps(props) {
+	const marginProps = {};
+	const filteredProps = {};
+
+	for (const propName in props) {
+		if (marginPropNames.includes(propName)) {
+			marginProps[propName] = props[propName];
+		} else {
+			filteredProps[propName] = props[propName];
+		}
+	}
+
+	return {marginProps, filteredProps};
 }
 
 const Pill = forwardRef((props, ref) => {
@@ -270,10 +290,12 @@ const Pill = forwardRef((props, ref) => {
 		);
 	}
 
+	const {marginProps, filteredProps} = splitMarginProps(otherProps);
+
 	return (
-		<ConditionalFlexWrapper wrap={hasSideButton}>
+		<ConditionalFlexWrapper wrap={hasSideButton} {...marginProps}>
 			<Wrapper
-				{...otherProps}
+				{...(hasSideButton ? filteredProps : otherProps)}
 				ref={ref}
 				as={isClickable ? ButtonCore : as}
 				forwardedAs={isClickable ? as : forwardedAs}
