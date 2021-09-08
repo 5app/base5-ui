@@ -18,7 +18,7 @@ executors:
   default:
     working_directory: *dir
     docker:
-      - image: circleci/node:lts
+      - image: cimg/node:lts
 
 
 ################################
@@ -42,19 +42,13 @@ jobs:
           keys:
             - *cache-key
             - *cache-key-fallback
-      - run:
-          name: install dependencies with npm
-          command: npm install
-      - run:
-          name: rebuild dependencies with npm -- in case node version changed
-          command: npm rebuild
+      - run: npm install
+      - run: npm rebuild
       - save_cache:
           key: *cache-key
           paths:
             - ./node_modules
-      - run:
-          name: Run tests
-          command: npm test
+      - run: npm test
       - run:
           name: Compile the files using Babel
           command: npm run compile
