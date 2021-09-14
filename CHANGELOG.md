@@ -1,3 +1,11 @@
+## [13.4.8](https://github.com/5app/base5-ui/compare/v13.4.7...v13.4.8) (2021-09-14)
+
+
+### Bug Fixes
+
+* **usePopover:** Update PopperJS to fix popover issues, hub[#10592](https://github.com/5app/base5-ui/issues/10592) ([4f27957](https://github.com/5app/base5-ui/commit/4f27957efbb16bb5ae57ba55ce868c2e994514e1))
+* Remove redundant onUpdatePopover calls, [#157](https://github.com/5app/base5-ui/issues/157) ([a7fd14d](https://github.com/5app/base5-ui/commit/a7fd14dd9296fb4243b0b40c35f1d26bfde4f2bd))
+
 ## [13.4.7](https://github.com/5app/base5-ui/compare/v13.4.6...v13.4.7) (2021-09-08)
 
 
