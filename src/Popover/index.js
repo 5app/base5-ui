@@ -43,7 +43,6 @@ const Popover = forwardRef((props, ref) => {
 				{...popover.props}
 				ref={popover.setRef}
 				arrow={popover.arrow}
-				onUpdatePopover={popover.update}
 			>
 				{content}
 			</PopoverCard>

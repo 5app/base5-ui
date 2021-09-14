@@ -18,7 +18,6 @@ function NavMenuList({children}) {
 			ref={popover.setRef}
 			id={itemList.listId}
 			arrow={popover.arrow}
-			onUpdatePopover={popover.update}
 		>
 			<MenuListUI.Wrapper>{children}</MenuListUI.Wrapper>
 		</PopoverCard>
