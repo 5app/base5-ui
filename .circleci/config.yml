@@ -8,8 +8,8 @@ aliases:
   - &attach_workspace
     attach_workspace:
       at: *dir
-  - &cache-key dependency-cache-lts-{{ checksum "package.json" }}
-  - &cache-key-fallback dependency-cache-
+  - &cache-key dependency-cache-lts-a-{{ checksum "package.json" }}
+  - &cache-key-fallback dependency-cache-lts-a-
 
 ################################
 # Executors
