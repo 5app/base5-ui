@@ -17,7 +17,6 @@ function MenuList({children}) {
 			{...popover.props}
 			ref={popover.setRef}
 			arrow={popover.arrow}
-			onUpdatePopover={popover.update}
 		>
 			<MenuListUI.Wrapper {...menuListProps}>
 				{children}

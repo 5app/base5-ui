@@ -19,7 +19,6 @@ function ComboboxMenu({children, 'aria-label': ariaLabel}) {
 			{...popover.props}
 			ref={popover.setRef}
 			arrow={popover.arrow}
-			onUpdatePopover={popover.update}
 		>
 			{shouldShowStatusMessage ? (
 				<Box px="s" py="xs">
