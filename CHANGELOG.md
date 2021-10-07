@@ -1,3 +1,5 @@
+## [13.4.9](https://github.com/5app/base5-ui/compare/v13.4.8...v13.4.9) (2021-10-07)
+
 ## [13.4.8](https://github.com/5app/base5-ui/compare/v13.4.7...v13.4.8) (2021-09-14)
 
 
