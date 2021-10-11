@@ -1,3 +1,10 @@
+# [13.5.0](https://github.com/5app/base5-ui/compare/v13.4.9...v13.5.0) (2021-10-11)
+
+
+### Features
+
+* New useCallbackRef hook, noissue ([b232306](https://github.com/5app/base5-ui/commit/b232306822560c88314d33a92e778c47f0f1d0cb))
+
 ## [13.4.9](https://github.com/5app/base5-ui/compare/v13.4.8...v13.4.9) (2021-10-07)
 
 ## [13.4.8](https://github.com/5app/base5-ui/compare/v13.4.7...v13.4.8) (2021-09-14)
