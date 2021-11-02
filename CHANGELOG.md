@@ -1,3 +1,10 @@
+## [13.5.2](https://github.com/5app/base5-ui/compare/v13.5.1...v13.5.2) (2021-11-02)
+
+
+### Bug Fixes
+
+* Don't hide live regions outside of modals, noissue ([a9a5446](https://github.com/5app/base5-ui/commit/a9a54461109098d310f1d9795195e75425556d50))
+
 ## [13.5.1](https://github.com/5app/base5-ui/compare/v13.5.0...v13.5.1) (2021-10-11)
 
 
