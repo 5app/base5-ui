@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 const PREVENT_ARIA_HIDDEN_ATTRIBUTE = 'data-prevent-aria-hidden';
 
-// hide everything except modalElement and elements with
-// the PREVENT_ARIA_HIDDEN_ATTRIBUTE
+// hide everything except modalElement, live regions, and
+// elements with the PREVENT_ARIA_HIDDEN_ATTRIBUTE
 function hideForModal(modalElement) {
 	return hideOthers([
 		modalElement,
+		...document.querySelectorAll(`[aria-live]`),
 		...document.querySelectorAll(`[${PREVENT_ARIA_HIDDEN_ATTRIBUTE}]`),
 	]);
 }
