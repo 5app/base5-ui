@@ -1,3 +1,10 @@
+## [13.5.3](https://github.com/5app/base5-ui/compare/v13.5.2...v13.5.3) (2021-11-02)
+
+
+### Bug Fixes
+
+* **Modal:** Fix live regions outside of modals ([3dbe001](https://github.com/5app/base5-ui/commit/3dbe001d0647aac559dc4f9fcb62066a708de46b))
+
 ## [13.5.2](https://github.com/5app/base5-ui/compare/v13.5.1...v13.5.2) (2021-11-02)
 
 
