@@ -42,10 +42,10 @@ export interface ThemeGlobals {
 		search?: number;
 	};
 	readonly borderStyles: {
-		[name: string]: string | ((LocalThemeSection) => string);
+		[name: string]: string | ((themeSection: LocalThemeSection) => string);
 	};
 	readonly shadowStyles: {
-		[name: string]: string | ((LocalThemeSection) => string);
+		[name: string]: string | ((themeSection: LocalThemeSection) => string);
 	};
 	readonly colorBlocks: {
 		[name: string]: ThemeColor;
