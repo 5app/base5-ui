@@ -1,3 +1,21 @@
+# [14.0.0](https://github.com/5app/base5-ui/compare/v13.5.3...v14.0.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* Small TS fix ([078807c](https://github.com/5app/base5-ui/commit/078807cf764c0d5df5aacc028eb29817b156323f))
+
+
+### Features
+
+* **useBackLink:** Big useBackLink refactor, [#164](https://github.com/5app/base5-ui/issues/164) ([ca9c459](https://github.com/5app/base5-ui/commit/ca9c45925e41b9119cb6351296cbcdb8f96c4da8))
+
+
+### BREAKING CHANGES
+
+* **useBackLink:** This changes the public API of useBackLink and
+BackLinkProvider.
+
 ## [13.5.3](https://github.com/5app/base5-ui/compare/v13.5.2...v13.5.3) (2021-11-02)
 
 
