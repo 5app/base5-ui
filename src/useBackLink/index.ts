@@ -19,9 +19,11 @@ function useBackLink(options: BackLinkOptions = {}): Location | null {
 	}
 
 	function getShouldSkipLocation(location) {
-		const ignoreSubpath = basePath?.startsWith(
-			stripSlashFromEnd(getLocationPathname(location))
-		);
+		const formattedLocation = basePath
+			? stripSlashFromEnd(getLocationPathname(location))
+			: null;
+
+		const ignoreSubpath = formattedLocation?.startsWith(basePath);
 
 		const skipLocation = shouldSkipLocation?.(location);
 
@@ -41,6 +43,8 @@ function useBackLink(options: BackLinkOptions = {}): Location | null {
 	}
 
 	const backLink = getBackLink();
+
+	console.log(basePath, historyStack);
 
 	return backLink || fallback;
 }
