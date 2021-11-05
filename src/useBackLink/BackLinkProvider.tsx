@@ -66,7 +66,6 @@ function BackLinkProvider({
 }: BackLinkProviderProps): React.ReactNode {
 	const [historyStack, setHistoryStack] = useState<HistoryEntry[]>([]);
 
-	const previousLocationIndex = useRef<number>(null);
 	const haveTrackedDependenciesChanged = useRef(false);
 
 	// We track dependencies in this separate effect because
@@ -83,11 +82,12 @@ function BackLinkProvider({
 			location,
 			id: getLocationId(track),
 		};
-		let locationIndex = historyStack.findIndex(
-			entry => entry.id === wrappedLocation.id
-		);
 
 		setHistoryStack(prevHistory => {
+			let locationIndex = prevHistory.findIndex(
+				entry => entry.id === wrappedLocation.id
+			);
+
 			let newHistory = [...prevHistory];
 
 			if (locationIndex === -1) {
@@ -109,21 +109,16 @@ function BackLinkProvider({
 				newHistory = newHistory.slice(0, locationIndex + 1);
 			}
 
-			const previousIndex = previousLocationIndex.current;
+			const previousIndex = newHistory.length - 2;
 
 			// If we were redirected to this location, discard
 			// the previous entry so we can skip the redirect
 			if (
 				wasRedirected &&
-				previousIndex !== null &&
+				previousIndex <= 0 &&
 				newHistory[previousIndex]
 			) {
 				newHistory.splice(previousIndex, 1);
-
-				// Set to null so we don't try to remove it again
-				previousLocationIndex.current = null;
-			} else {
-				previousLocationIndex.current = locationIndex;
 			}
 
 			return newHistory;
