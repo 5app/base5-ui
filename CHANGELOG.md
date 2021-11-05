@@ -1,3 +1,12 @@
+## [14.0.1](https://github.com/5app/base5-ui/compare/v14.0.0...v14.0.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **BackLinkProvider:** Fix slice/splice mixup, [#164](https://github.com/5app/base5-ui/issues/164) ([5ab21b8](https://github.com/5app/base5-ui/commit/5ab21b8902646ccabc36285d9eee66171f15742c))
+* **BackLinkProvider:** Simplify redirect handling, [#164](https://github.com/5app/base5-ui/issues/164) ([72485ca](https://github.com/5app/base5-ui/commit/72485cadea51bd7629efd31b3a7ddd473502b879))
+* **useBackLink:** Fix inverted subpath logic, [#164](https://github.com/5app/base5-ui/issues/164) ([41648a8](https://github.com/5app/base5-ui/commit/41648a84d2552c0a6ed63c0dab2c27aebbfd805a))
+
 # [14.0.0](https://github.com/5app/base5-ui/compare/v13.5.3...v14.0.0) (2021-11-04)
 
 
