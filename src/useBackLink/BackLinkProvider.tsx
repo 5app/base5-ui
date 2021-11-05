@@ -118,7 +118,7 @@ function BackLinkProvider({
 				previousIndex !== null &&
 				newHistory[previousIndex]
 			) {
-				newHistory = newHistory.slice(previousIndex, previousIndex + 1);
+				newHistory.splice(previousIndex, 1);
 
 				// Set to null so we don't try to remove it again
 				previousLocationIndex.current = null;

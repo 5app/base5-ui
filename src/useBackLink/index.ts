@@ -44,8 +44,6 @@ function useBackLink(options: BackLinkOptions = {}): Location | null {
 
 	const backLink = getBackLink();
 
-	console.log(basePath, historyStack);
-
 	return backLink || fallback;
 }
 
