@@ -35,13 +35,13 @@ const Th = withTableContext(styled.th.withConfig({
 		border-bottom: ${p => borderValue(p.theme)};
 		${headerBackgroundColor}
 
-		tr[aria-selected] & {
+		tr[aria-selected] && {
 			padding-left: ${getCheckboxColumnWidth};
 		}
 
 		/* Highlight SELECTABLE table rows */
-		tr[data-highlighted] &,
-		tr[data-highlighted]:focus-within & {
+		tr[data-highlighted] &&,
+		tr[data-highlighted]:focus-within && {
 			background-color: ${p =>
 				alpha(
 					p.theme.links,
@@ -49,8 +49,8 @@ const Th = withTableContext(styled.th.withConfig({
 				)};
 		}
 
-		tr[aria-selected='true'] &,
-		tr[aria-selected='true'][data-highlighted] & {
+		tr[aria-selected='true'] &&,
+		tr[aria-selected='true'][data-highlighted] && {
 			background-color: ${p =>
 				alpha(p.theme.links, Math.max(0.15, +p.theme.shadeStrength))};
 		}

@@ -31,10 +31,14 @@ const Item = styled.li`
 	display: block;
 `;
 
-const Link = styled(ButtonCore).withConfig({
-	shouldForwardProp: prop =>
-		![...textLinkProps, 'isHighlighted'].includes(prop),
-})`
+const Link = styled(ButtonCore)
+	.attrs(({isHighlighted}) => ({
+		className: isHighlighted ? 'is-highlighted' : '',
+	}))
+	.withConfig({
+		shouldForwardProp: prop =>
+			![...textLinkProps, 'isHighlighted'].includes(prop),
+	})`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -57,7 +61,8 @@ const Link = styled(ButtonCore).withConfig({
 		outline: none;
 	}
 
-	&.focus-visible:focus {
+	${Wrapper}[data-focus-visible-added] &&.is-highlighted,
+	&[data-focus-visible-added]:focus {
 		outline: none;
 
 		&::after {
@@ -106,9 +111,9 @@ const IconWrapper = styled.span`
 
 	opacity: ${p => p.theme.textDimStrength};
 
-	${Link}:hover:not(.is-disabled) > &,
-	.is-focused:not(.is-disabled) > &,
-	.is-active:not(.is-disabled) > & {
+	${Link}:hover:not(.is-disabled) > &&,
+	${Link}[data-focus-visible-added]:not(.is-disabled) > &&,
+	.is-active:not(.is-disabled) > && {
 		opacity: 1;
 	}
 `;
