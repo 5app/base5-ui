@@ -1,3 +1,15 @@
+# [14.1.0](https://github.com/5app/base5-ui/compare/v14.0.1...v14.1.0) (2021-11-09)
+
+
+### Bug Fixes
+
+* Work around styles-components parent selector issue, noissue ([75247dc](https://github.com/5app/base5-ui/commit/75247dc632530db2c07cbdce7aac20fa097c216e)), closes [#3265](https://github.com/5app/base5-ui/issues/3265)
+
+
+### Features
+
+* **Switch:** More consistent and visible focus indicator, noissue ([eadb184](https://github.com/5app/base5-ui/commit/eadb184cb95e4d0be31ee15a3e65527f6202a813))
+
 ## [14.0.1](https://github.com/5app/base5-ui/compare/v14.0.0...v14.0.1) (2021-11-05)
 
 
