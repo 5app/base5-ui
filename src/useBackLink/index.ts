@@ -5,7 +5,7 @@ import {stripSlashFromEnd} from '../utils';
 
 interface BackLinkOptions {
 	fallback?: Location;
-	basePath?: string;
+	basePath?: string | string[];
 	shouldSkipLocation?: (location: Location) => boolean;
 }
 
@@ -23,7 +23,9 @@ function useBackLink(options: BackLinkOptions = {}): Location | null {
 			? stripSlashFromEnd(getLocationPathname(location))
 			: null;
 
-		const ignoreSubpath = formattedLocation?.startsWith(basePath);
+		const ignoreSubpath = Array.isArray(basePath)
+			? basePath.some(path => formattedLocation?.startsWith(path))
+			: formattedLocation?.startsWith(basePath);
 
 		const skipLocation = shouldSkipLocation?.(location);
 

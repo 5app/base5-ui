@@ -102,12 +102,15 @@ function ProductsPage() {
 }
 ```
 
-There's also an option for more complex cases that can't be solved by a static base path. `shouldSkipLocation` is a function that's called for any "back link candidate", and if you return `true` from it, that candidate will be skipped, and an earlier history entry (or the fallback) will be returned instead.
+The `basePath` option also accepts an array of paths if there is more than one possible subroute.
+
+There's an additional option for more complex cases that can't be solved by a static base path. `shouldSkipLocation` is a function that's called for any "back link candidate", and if you return `true` from it, that candidate will be skipped, and an earlier history entry (or the fallback) will be returned instead.
 
 ```jsx
 const backLink = useBackLink({
 	fallback: '/home',
-	shouldSkipLocation: location => location.startsWith('/products'),
+	basePath: ['/products', '/article'],
+	shouldSkipLocation: location => location.state.quickview,
 });
 ```
 
