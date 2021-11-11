@@ -1,3 +1,10 @@
+# [14.2.0](https://github.com/5app/base5-ui/compare/v14.1.0...v14.2.0) (2021-11-10)
+
+
+### Features
+
+* **useBackLink:** Accept array of basePaths, [#164](https://github.com/5app/base5-ui/issues/164) ([4200de3](https://github.com/5app/base5-ui/commit/4200de32638c4aa1683344959bccacad719977ab))
+
 # [14.1.0](https://github.com/5app/base5-ui/compare/v14.0.1...v14.1.0) (2021-11-09)
 
 
