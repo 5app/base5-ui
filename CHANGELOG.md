@@ -1,3 +1,10 @@
+# [14.3.0](https://github.com/5app/base5-ui/compare/v14.2.0...v14.3.0) (2021-11-11)
+
+
+### Features
+
+* **icons:** New icons 'section' and 'trash', noissue ([caeeb0a](https://github.com/5app/base5-ui/commit/caeeb0af40d5eba87c2d4d521e8b247639575258))
+
 # [14.2.0](https://github.com/5app/base5-ui/compare/v14.1.0...v14.2.0) (2021-11-10)
 
 
