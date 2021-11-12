@@ -84,6 +84,11 @@ const shadowStyles = {
 	raised: `0 ${pxToRem(2)} 0 0 rgba(0, 0, 0, 0.15)`,
 };
 
+const modalWidths = {
+	default: 460,
+	wide: 540,
+};
+
 const colorBlocks = {
 	'alert-success': colors.blue,
 	'alert-fail': colors.pink,
@@ -104,6 +109,7 @@ export default {
 	borderRadius,
 	borderStyles,
 	shadowStyles,
+	modalWidths,
 	colorBlocks,
 	buttons,
 };

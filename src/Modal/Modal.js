@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
+import {getGlobalThemeValue} from '../utils';
+
 import Box from '../Box';
 import Portal from '../Portal';
 import CenterContent from '../CenterContent';
@@ -60,7 +62,7 @@ function CenterOrFullscreen({
 		<CenterContent
 			fillParent
 			p={spacing}
-			contentWidth={width}
+			contentWidth={getGlobalThemeValue('modalWidths', width)}
 			breakpoints={breakpoints}
 			disableIE11Hack={disableIE11Hack}
 		>
@@ -124,6 +126,7 @@ function Modal({
 
 Modal.defaultProps = {
 	disableIE11Hack: false,
+	width: 'default',
 };
 
 Modal.propTypes = {
@@ -172,6 +175,7 @@ Modal.propTypes = {
 	 * Can be a responsive array when used with the breakpoints prop.
 	 *
 	 * The width is not applied when the fullscreen prop is active.
+	 * You can use keys from the 'modalWidths' property in your global theme config.
 	 */
 	width: PropTypes.oneOfType([
 		PropTypes.number,
