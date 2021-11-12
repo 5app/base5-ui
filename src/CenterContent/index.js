@@ -26,7 +26,7 @@ const wrapperPropsToFilter = [
 	'width',
 	'height',
 	'spacing',
-	'disableIE11Hack',
+	'enableRiskyIE11CenteringHack',
 ];
 
 const paddingPropsToFilter = getPropNamesFromPropDefinition(paddingPropsDef);
@@ -64,7 +64,7 @@ const Wrapper = styled('div').withConfig({
 			min-height: 100%;
 
 			${p =>
-				!p.disableIE11Hack &&
+				p.enableRiskyIE11CenteringHack &&
 				`
 				@media ${ie11Hack} {
 					height: 100%;
@@ -75,7 +75,7 @@ const Wrapper = styled('div').withConfig({
 	box-sizing: border-box;
 
 	${p =>
-		!p.disableIE11Hack &&
+		p.enableRiskyIE11CenteringHack &&
 		`
 		/*
 		* On IE11 we're using this method of centering
@@ -129,7 +129,7 @@ function CenterContent(props) {
 
 CenterContent.defaultProps = {
 	spacing: 'm',
-	disableIE11Hack: false,
+	enableRiskyIE11CenteringHack: false,
 };
 
 CenterContent.propTypes = {
@@ -143,13 +143,14 @@ CenterContent.propTypes = {
 		PropTypes.array,
 	]),
 	/**
-	 * Disable the vertical centering method used for IE11, as it can lead
+	 * In IE11, content will be aligned to the top of the screen by default.
+	 * You can enable risky vertical centering in IE11. This can lead
 	 * to cut-off/inaccessible content when the height of the centred content
 	 * increases beyond the height of the parent container.
-	 * Use this whenever the content is known to be long enough to cause scrolling,
-	 * or when the content is dynamic and may grow.
+	 * Use this only whenever the content is known to be short enough not to
+	 * cause scrolling. Never use when the content is dynamic and may grow.
 	 */
-	disableIE11Hack: PropTypes.bool,
+	enableRiskyIE11CenteringHack: PropTypes.bool,
 	/**
 	 * Make the component grow to match the width and height of its direct parent.
 	 * When using this, make sure the container has a position other than static

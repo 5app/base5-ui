@@ -43,7 +43,7 @@ function CenterOrFullscreen({
 	fullscreen,
 	spacing,
 	width,
-	disableIE11Hack,
+	enableRiskyIE11CenteringHack,
 }) {
 	if (fullscreen) {
 		return (
@@ -64,7 +64,7 @@ function CenterOrFullscreen({
 			p={spacing}
 			contentWidth={getGlobalThemeValue('modalWidths', width)}
 			breakpoints={breakpoints}
-			disableIE11Hack={disableIE11Hack}
+			enableRiskyIE11CenteringHack={enableRiskyIE11CenteringHack}
 		>
 			{children}
 		</CenterContent>
@@ -79,7 +79,7 @@ function Modal({
 	onRequestClose,
 	spacing,
 	width,
-	disableIE11Hack,
+	enableRiskyIE11CenteringHack,
 	...otherProps
 }) {
 	const {modalRef, isAtTop} = useModalManager({
@@ -114,7 +114,7 @@ function Modal({
 					spacing={spacing}
 					width={width}
 					breakpoints={breakpoints}
-					disableIE11Hack={disableIE11Hack}
+					enableRiskyIE11CenteringHack={enableRiskyIE11CenteringHack}
 				>
 					{isAtTop && <Overlay onClick={onRequestClose} />}
 					<FocusLock as={ContentWrapper}>{children}</FocusLock>
@@ -125,7 +125,7 @@ function Modal({
 }
 
 Modal.defaultProps = {
-	disableIE11Hack: false,
+	enableRiskyIE11CenteringHack: false,
 	width: 'default',
 };
 
@@ -183,13 +183,14 @@ Modal.propTypes = {
 		PropTypes.array,
 	]),
 	/**
-	 * Disable the vertical centering method used for IE11, as it can lead
+	 * In IE11, modals will be aligned to the top of the screen by default.
+	 * You can enable risky vertical centering in IE11. This can lead
 	 * to cut-off/inaccessible content when the height of the centred content
 	 * increases beyond the height of the parent container.
-	 * Use this whenever the modal content is known to be long enough to cause
-	 * scrolling or when the content is dynamic and may grow.
+	 * Use this only whenever the content is known to be short enough not to
+	 * cause scrolling. Never use when the content is dynamic and may grow.
 	 */
-	disableIE11Hack: PropTypes.bool,
+	enableRiskyIE11CenteringHack: PropTypes.bool,
 };
 
 export default Modal;
