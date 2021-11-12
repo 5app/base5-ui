@@ -85,7 +85,7 @@ function MyPage() {
 			<Button onClick={toggleModal}>Toggle Modal</Button>
 			{hasModal && (
 				<Modal
-					name="my-modal"
+					id="my-modal"
 					onRequestClose={toggleModal}
 					aria-labelledby="heading-id"
 				>
@@ -121,7 +121,7 @@ import FocusLock from 'react-focus-lock';
 const ModalWrapper = /* Your custom modal wrapper styling. */
 const Overlay = /* Your custom overlay styling. */
 
-function Modal({children, name, onRequestClose, ...otherProps}) {
+function Modal({children, id, onRequestClose, ...otherProps}) {
 	/**
 	 * useModalManager returns a ref that must be
 	 * passed to the modal wrapper component, and
@@ -129,7 +129,7 @@ function Modal({children, name, onRequestClose, ...otherProps}) {
 	 * is at the top (when multiple modals are open).
 	 */
 	const {modalRef, isAtTop} = useModalManager({
-		name,
+		name: id,
 		onRequestClose,
 	});
 
@@ -137,7 +137,7 @@ function Modal({children, name, onRequestClose, ...otherProps}) {
 		<Portal>
 			<ModalWrapper
 				ref={modalRef}
-				id={name}
+				id={id}
 				{...otherProps}
 				role="dialog"
 				aria-modal="true"

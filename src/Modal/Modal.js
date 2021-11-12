@@ -9,6 +9,7 @@ import Box from '../Box';
 import Portal from '../Portal';
 import CenterContent from '../CenterContent';
 import {useModalManager} from './ModalManager';
+import useUniqueId from '../useUniqueId';
 
 const ModalWrapper = styled.div`
 	position: absolute;
@@ -75,6 +76,7 @@ function Modal({
 	breakpoints,
 	children,
 	fullscreen,
+	id,
 	name,
 	onRequestClose,
 	spacing,
@@ -82,8 +84,10 @@ function Modal({
 	enableRiskyIE11CenteringHack,
 	...otherProps
 }) {
+	const uniqueId = useUniqueId(id || name);
+
 	const {modalRef, isAtTop} = useModalManager({
-		name,
+		name: uniqueId,
 		onRequestClose,
 	});
 
@@ -98,7 +102,7 @@ function Modal({
 		<Portal>
 			<ModalWrapper
 				ref={modalRef}
-				id={name}
+				id={uniqueId}
 				{...otherProps}
 				role="dialog"
 				// We don't need the aria-modal property here,
@@ -134,7 +138,11 @@ Modal.propTypes = {
 	 * A unique ID for your modal. (Only needs to be unique among modals
 	 * that are expected to be open at the same time.)
 	 */
-	name: PropTypes.string.isRequired,
+	id: PropTypes.string,
+	/**
+	 * Deprecated alias for the id prop
+	 */
+	name: PropTypes.string,
 	/**
 	 * A function that, when called, will cause the modal to close.
 	 * This is needed to support closing the modal when the Esc key
