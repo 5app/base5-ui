@@ -67,44 +67,41 @@ function getStylePropRules(
 	breakpointIndex: number
 ) {
 	const rules: CSSObject = {};
-	stylePropConfig.forEach(
-		// ({styleProp: stylePropKey, properties, getValue, getRules}) => {
-		(entry: StylePropDefinition) => {
-			let styleProp = componentProps[entry.styleProp];
-			if (styleProp && typeof styleProp === 'function') {
-				styleProp = styleProp(componentProps.theme);
-			}
-			const stylePropValue = getValueByIndex(styleProp, breakpointIndex);
+	stylePropConfig.forEach((entry: StylePropDefinition) => {
+		let styleProp = componentProps[entry.styleProp];
+		if (styleProp && typeof styleProp === 'function') {
+			styleProp = styleProp(componentProps.theme);
+		}
+		const stylePropValue = getValueByIndex(styleProp, breakpointIndex);
 
+		if (
+			'getRules' in entry &&
+			typeof entry.getRules === 'function' &&
+			stylePropValue !== undefined
+		) {
+			const rulesToAdd = entry.getRules(
+				stylePropValue,
+				componentProps.theme
+			);
+			if (rulesToAdd) {
+				Object.assign(rules, rulesToAdd);
+			}
+		} else {
 			if (
-				'getRules' in entry &&
-				typeof entry.getRules === 'function' &&
-				stylePropValue !== undefined
+				'getValue' in entry &&
+				stylePropValue !== undefined &&
+				stylePropValue !== null
 			) {
-				const rulesToAdd = entry.getRules(
-					stylePropValue,
-					componentProps.theme
-				);
-				if (rulesToAdd) {
-					Object.assign(rules, rulesToAdd);
-				}
-			} else {
-				if (
-					'getValue' in entry &&
-					stylePropValue !== undefined &&
-					stylePropValue !== null
-				) {
-					const props = entry.properties || [entry.styleProp];
-					props.forEach(prop => {
-						rules[prop] = entry.getValue(
-							stylePropValue,
-							componentProps.theme
-						);
-					});
-				}
+				const props = entry.properties || [entry.styleProp];
+				props.forEach(prop => {
+					rules[prop] = entry.getValue(
+						stylePropValue,
+						componentProps.theme
+					);
+				});
 			}
 		}
-	);
+	});
 	return rules;
 }
 
