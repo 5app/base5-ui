@@ -178,7 +178,7 @@ const FocusRing = styled.span.withConfig({
 	transition: opacity 250ms linear;
 	will-change: opacity;
 
-	${Wrapper}.focus-visible > & {
+	${Wrapper}.focus-visible > && {
 		top: -${_3px};
 		left: -${_3px};
 		bottom: -${_3px};
@@ -194,7 +194,7 @@ const FocusRing = styled.span.withConfig({
 		transition-duration: 50ms;
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > & {
+	${Wrapper}:not(.is-disabled):active > && {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
@@ -216,12 +216,12 @@ const HoverShade = styled.span`
 		box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.5);
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):hover > & {
+	${Wrapper}:not(.is-disabled):hover > && {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > & {
+	${Wrapper}:not(.is-disabled):active > && {
 		opacity: 0;
 		transition-duration: 250ms;
 	}
@@ -235,7 +235,7 @@ const Content = styled.span`
 `;
 
 /**
- * The button label should just have some horinzontal spacing.
+ * The button label should just have some horizontal spacing.
  * But if `textOverflow="ellipsis" is set, the Button label
  * will have overflow set to "hidden", which can cause the
  * descenders of some characters (g, y, j) to be cut off.

@@ -42,10 +42,10 @@ export interface ThemeGlobals {
 		search?: number;
 	};
 	readonly borderStyles: {
-		[name: string]: string | ((LocalThemeSection) => string);
+		[name: string]: string | ((themeSection: LocalThemeSection) => string);
 	};
 	readonly shadowStyles: {
-		[name: string]: string | ((LocalThemeSection) => string);
+		[name: string]: string | ((themeSection: LocalThemeSection) => string);
 	};
 	readonly colorBlocks: {
 		[name: string]: ThemeColor;
@@ -63,14 +63,13 @@ export interface ConfigThemeSection {
 	readonly lineStrength: OpacityValue;
 }
 
-export interface LocalThemeSection extends ConfigThemeSection {
-	globals: ThemeGlobals;
-	currentThemeSectionName?: string;
-	parentThemeSectionName?: string;
-	parent?: ConfigThemeSection;
+export interface LocalThemeSection extends ThemeConfig, ConfigThemeSection {
+	readonly currentThemeSectionName?: string;
+	readonly parentThemeSectionName?: string;
+	readonly parent?: ConfigThemeSection;
 }
 
 export interface StyledComponentProps {
-	theme: LocalThemeSection;
-	[prop: string]: unknown;
+	readonly theme: LocalThemeSection;
+	readonly [prop: string]: unknown;
 }

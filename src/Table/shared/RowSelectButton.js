@@ -17,11 +17,11 @@ const ButtonWrapper = styled(ButtonCore)`
 		outline: none;
 	}
 
-	tr[aria-selected='true'] & {
+	tr[aria-selected='true'] && {
 		opacity: 1;
 	}
 
-	tr[data-highlighted] &.focus-visible {
+	tr[data-highlighted] &&[data-focus-visible-added] {
 		opacity: 1;
 	}
 `;

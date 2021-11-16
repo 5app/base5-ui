@@ -1,6 +1,7 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 
 import Box from '../Box';
+import TextLink from '../TextLink';
 import ThemeSection from './';
 
 <Meta
@@ -9,12 +10,10 @@ import ThemeSection from './';
 	argTypes={{
 		name: {
 			control: {type: 'radio'},
-			options: ['page', 'card', 'invertedCard', 'colorBlock'],
-		},
-		colorBlock: {
-			control: {type: 'select'},
 			options: [
-				undefined,
+				'page',
+				'card',
+				'invertedCard',
 				'alert-success',
 				'alert-fail',
 				'positive',
@@ -34,21 +33,54 @@ import ThemeSection from 'base5-ui/ThemeSection';
 The `ThemeSection` component has two main functions:
 
 -   When used at the top of the app, it provides your app with a global theme object via the `baseTheme` prop
--   When used throughout the app, it assigns "theme sections" from your global theme to all children of the component.
+-   When used throughout the app, it defines a "theme section" from your global theme for all children of the component.
 
-To assign a theme section, set the `name` prop to a valid key from `theme.sections`. Any components inside of a ThemeSection will then use the colours defined for this section, until overwritten by a more deeply nested ThemeSection.
+To assign a theme section, set the `name` prop to a valid key from `theme.sections` or `theme.globals.colorBlocks`. Any components inside of a ThemeSection will then use the colours defined for this section, until overwritten by a more deeply nested `ThemeSection`.
 
-You can also select a "color block" from the theme, as defined in `theme.globals.colorBlocks`. Color blocks are single colour values mapped to semantic names, e.g. `positive: 'green', negative: 'red'`. The mapped colour will be used as the background colour of the theme section, while the text and link colours will be automatically computed to be as contrasting/readable as possible.
+Note that the `ThemeSection` component by itself will not apply any colours to its contents – it's up to nested components to pick and use colours from the Theme Section as needed. For example, the <LinkTo kind="Components/ThemedBox">ThemedBox</LinkTo> component combines a ThemeSection with a <LinkTo kind="Components/Box">Box</LinkTo> component to render an element with the defined text and background colour.
 
-## Examples
+## Example
 
 <Canvas>
-	<Story name="ThemeSection" args={{name: 'card'}}>
+	<Story
+		name="ThemeSection"
+		args={{name: 'page', withBackgroundImage: false}}
+	>
 		{props => (
 			<ThemeSection {...props}>
-				<Box background="background" color="text" p="s" m="m">
-					This is a simple box picking up its parent ThemeSection's
-					text and background colours.
+				<Box
+					background="background"
+					color="text"
+					m="m"
+					style={{
+						backgroundImage: props.withBackgroundImage
+							? 'url(http://placekitten.com/600/300)'
+							: null,
+					}}
+				>
+					{!props.withBackgroundImage && (
+						<Box p="m">
+							This is a simple box picking up its parent
+							ThemeSection's text and background colours.{' '}
+							<TextLink>Example link</TextLink>
+						</Box>
+					)}
+					<Box
+						background="transparently-shaded"
+						color="text"
+						p="m"
+						borderTop="thin"
+						height={props.withBackgroundImage ? 200 : null}
+					>
+						<p>This is a shaded area within a theme section.</p>
+						{props.withBackgroundImage && (
+							<p>
+								When using a background image, make sure to
+								always place text or interactive content on a
+								shaded background.
+							</p>
+						)}
+					</Box>
 				</Box>
 			</ThemeSection>
 		)}

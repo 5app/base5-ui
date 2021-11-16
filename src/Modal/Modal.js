@@ -99,7 +99,13 @@ function Modal({
 				id={name}
 				{...otherProps}
 				role="dialog"
-				aria-modal="true"
+				// We don't need the aria-modal property here,
+				// because we're "polyfilling" its effect (hiding
+				// background content) using the 'aria-hidden' library,
+				// which also gives us more control over it and allows
+				// us to exclude certain elements from being hidden.
+				// This solves issue https://github.com/5app/hub/issues/10949
+				// aria-modal="true"
 			>
 				<CenterOrFullscreen
 					fullscreen={fullscreen}

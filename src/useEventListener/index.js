@@ -1,4 +1,5 @@
-import {useEffect, useRef} from 'react';
+import {useEffect} from 'react';
+import useCallbackRef from '../useCallbackRef';
 
 /**
  * Add a (global) event listener to your component.
@@ -12,13 +13,9 @@ import {useEffect, useRef} from 'react';
  */
 
 function useEventListener(eventName, callback, options = {}) {
-	const callbackRef = useRef(callback);
+	const callbackRef = useCallbackRef(callback);
 
 	const {isEnabled = true, capture = false, targetElement} = options;
-
-	useEffect(() => {
-		callbackRef.current = callback;
-	}, [callback]);
 
 	useEffect(() => {
 		const element = targetElement || document;
@@ -33,7 +30,7 @@ function useEventListener(eventName, callback, options = {}) {
 		return function cleanUp() {
 			element.removeEventListener(eventName, currentCallback, capture);
 		};
-	}, [isEnabled, eventName, targetElement, capture]);
+	}, [callbackRef, isEnabled, eventName, targetElement, capture]);
 }
 
 export default useEventListener;

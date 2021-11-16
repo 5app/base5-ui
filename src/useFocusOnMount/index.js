@@ -1,4 +1,5 @@
 import {useRef, useEffect} from 'react';
+import useCallbackRef from '../useCallbackRef';
 
 function useFocusOnMount({
 	onFocus,
@@ -9,16 +10,12 @@ function useFocusOnMount({
 	const innerRef = useRef();
 	const previouslyFocusedElementRef = useRef();
 
-	const onFocusRef = useRef(onFocus);
-	const onRestoreFocusRef = useRef(onRestoreFocus);
-
-	useEffect(() => {
-		onFocusRef.current = onFocus;
-		onRestoreFocusRef.current = onRestoreFocus;
-	}, [onFocus, onRestoreFocus]);
+	const onFocusRef = useCallbackRef(onFocus);
+	const onRestoreFocusRef = useCallbackRef(onRestoreFocus);
 
 	useEffect(() => {
 		const ref = userRef || innerRef;
+		const restoreFocus = onRestoreFocusRef.current;
 
 		if (!disabled) {
 			previouslyFocusedElementRef.current = document.activeElement;
@@ -31,14 +28,12 @@ function useFocusOnMount({
 		return () => {
 			if (!disabled) {
 				previouslyFocusedElementRef.current?.focus();
-				if (onRestoreFocusRef.current) {
-					onRestoreFocusRef.current(
-						previouslyFocusedElementRef.current
-					);
+				if (restoreFocus) {
+					restoreFocus(previouslyFocusedElementRef.current);
 				}
 			}
 		};
-	}, [disabled, userRef]);
+	}, [disabled, onFocusRef, onRestoreFocusRef, userRef]);
 
 	return innerRef;
 }

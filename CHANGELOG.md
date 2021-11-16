@@ -1,3 +1,106 @@
+## [14.3.2](https://github.com/5app/base5-ui/compare/v14.3.1...v14.3.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **ThemeSection:** Add fallback for localThemeSection, noissue ([051e1c3](https://github.com/5app/base5-ui/commit/051e1c3a808ca33aad3810fc731debfefc2e9584))
+
+## [14.3.1](https://github.com/5app/base5-ui/compare/v14.3.0...v14.3.1) (2021-11-16)
+
+
+### Code Refactoring
+
+* **ThemeSection:** Improve bg image handling, noissue ([3541f58](https://github.com/5app/base5-ui/commit/3541f58381f652460351151d6873fa9e95013e28))
+
+
+### BREAKING CHANGES
+
+* **ThemeSection:** Removes the  prop, just use  now.
+Renames  to .
+
+# [14.3.0](https://github.com/5app/base5-ui/compare/v14.2.0...v14.3.0) (2021-11-11)
+
+
+### Features
+
+* **icons:** New icons 'section' and 'trash', noissue ([caeeb0a](https://github.com/5app/base5-ui/commit/caeeb0af40d5eba87c2d4d521e8b247639575258))
+
+# [14.2.0](https://github.com/5app/base5-ui/compare/v14.1.0...v14.2.0) (2021-11-10)
+
+
+### Features
+
+* **useBackLink:** Accept array of basePaths, [#164](https://github.com/5app/base5-ui/issues/164) ([4200de3](https://github.com/5app/base5-ui/commit/4200de32638c4aa1683344959bccacad719977ab))
+
+# [14.1.0](https://github.com/5app/base5-ui/compare/v14.0.1...v14.1.0) (2021-11-09)
+
+
+### Bug Fixes
+
+* Work around styles-components parent selector issue, noissue ([75247dc](https://github.com/5app/base5-ui/commit/75247dc632530db2c07cbdce7aac20fa097c216e)), closes [#3265](https://github.com/5app/base5-ui/issues/3265)
+
+
+### Features
+
+* **Switch:** More consistent and visible focus indicator, noissue ([eadb184](https://github.com/5app/base5-ui/commit/eadb184cb95e4d0be31ee15a3e65527f6202a813))
+
+## [14.0.1](https://github.com/5app/base5-ui/compare/v14.0.0...v14.0.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **BackLinkProvider:** Fix slice/splice mixup, [#164](https://github.com/5app/base5-ui/issues/164) ([5ab21b8](https://github.com/5app/base5-ui/commit/5ab21b8902646ccabc36285d9eee66171f15742c))
+* **BackLinkProvider:** Simplify redirect handling, [#164](https://github.com/5app/base5-ui/issues/164) ([72485ca](https://github.com/5app/base5-ui/commit/72485cadea51bd7629efd31b3a7ddd473502b879))
+* **useBackLink:** Fix inverted subpath logic, [#164](https://github.com/5app/base5-ui/issues/164) ([41648a8](https://github.com/5app/base5-ui/commit/41648a84d2552c0a6ed63c0dab2c27aebbfd805a))
+
+# [14.0.0](https://github.com/5app/base5-ui/compare/v13.5.3...v14.0.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* Small TS fix ([078807c](https://github.com/5app/base5-ui/commit/078807cf764c0d5df5aacc028eb29817b156323f))
+
+
+### Features
+
+* **useBackLink:** Big useBackLink refactor, [#164](https://github.com/5app/base5-ui/issues/164) ([ca9c459](https://github.com/5app/base5-ui/commit/ca9c45925e41b9119cb6351296cbcdb8f96c4da8))
+
+
+### BREAKING CHANGES
+
+* **useBackLink:** This changes the public API of useBackLink and
+BackLinkProvider.
+
+## [13.5.3](https://github.com/5app/base5-ui/compare/v13.5.2...v13.5.3) (2021-11-02)
+
+
+### Bug Fixes
+
+* **Modal:** Fix live regions outside of modals ([3dbe001](https://github.com/5app/base5-ui/commit/3dbe001d0647aac559dc4f9fcb62066a708de46b))
+
+## [13.5.2](https://github.com/5app/base5-ui/compare/v13.5.1...v13.5.2) (2021-11-02)
+
+
+### Bug Fixes
+
+* Don't hide live regions outside of modals, noissue ([a9a5446](https://github.com/5app/base5-ui/commit/a9a54461109098d310f1d9795195e75425556d50))
+
+## [13.5.1](https://github.com/5app/base5-ui/compare/v13.5.0...v13.5.1) (2021-10-11)
+
+
+### Bug Fixes
+
+* **useCallbackRef:** Add missing export, noissue ([7e20065](https://github.com/5app/base5-ui/commit/7e20065a4cf959c2d40bf28565bd4d7764e882d1))
+
+# [13.5.0](https://github.com/5app/base5-ui/compare/v13.4.9...v13.5.0) (2021-10-11)
+
+
+### Features
+
+* New useCallbackRef hook, noissue ([b232306](https://github.com/5app/base5-ui/commit/b232306822560c88314d33a92e778c47f0f1d0cb))
+
+## [13.4.9](https://github.com/5app/base5-ui/compare/v13.4.8...v13.4.9) (2021-10-07)
+
 ## [13.4.8](https://github.com/5app/base5-ui/compare/v13.4.7...v13.4.8) (2021-09-14)
 
 

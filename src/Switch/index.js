@@ -82,6 +82,27 @@ const SwitchIcon = styled(OkIcon)`
 		`}
 `;
 
+const _3px = pxToRem(3);
+
+const FocusRing = styled.span`
+	opacity: 0;
+
+	input.focus-visible ~ & {
+		position: absolute;
+		top: -${_3px};
+		left: -${_3px};
+		bottom: -${_3px};
+		right: -${_3px};
+
+		border-radius: inherit;
+
+		box-shadow: 0 0 0 ${_3px} ${p => p.theme.links};
+
+		opacity: 1;
+		transition: opacity 100ms linear;
+	}
+`;
+
 const Switch = forwardRef(
 	({checked, disabled, id, tabIndex, ...otherProps}, ref) => {
 		const inputRef = useRef();
@@ -106,6 +127,7 @@ const Switch = forwardRef(
 				<Handle>
 					<SwitchIcon scale={0.8} checked={checked} />
 				</Handle>
+				<FocusRing />
 			</Wrapper>
 		);
 	}

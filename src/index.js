@@ -38,6 +38,7 @@ export {
 	BackLinkContext,
 } from './useBackLink';
 export {default as useBreakpoints} from './useBreakpoints';
+export {default as useCallbackRef} from './useCallbackRef';
 export {default as useChartist} from './useChartist';
 export {default as useEventListener} from './useEventListener';
 export {default as useFocusOnMount} from './useFocusOnMount';

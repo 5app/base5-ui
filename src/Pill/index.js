@@ -136,12 +136,12 @@ const HoverShade = styled.span`
 	will-change: opacity;
 
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):hover > & {
+	${Wrapper}:not(.is-disabled):hover > && {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > & {
+	${Wrapper}:not(.is-disabled):active > && {
 		opacity: 0;
 		transition-duration: 250ms;
 	}
@@ -160,7 +160,7 @@ const FocusRing = styled.span.withConfig({
 	transition: opacity 250ms linear;
 	will-change: opacity;
 
-	${Wrapper}.focus-visible > & {
+	${Wrapper}.focus-visible > && {
 		top: -${_3px};
 		left: -${_3px};
 		bottom: -${_3px};
@@ -173,7 +173,7 @@ const FocusRing = styled.span.withConfig({
 	}
 
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > & {
+	${Wrapper}:not(.is-disabled):active > && {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
@@ -234,7 +234,7 @@ function defaultIconRenderer({iconName, iconColor}) {
 	}
 
 	return (
-		<ThemeSection name="colorBlock" colorBlock={iconColor || iconName}>
+		<ThemeSection name={iconColor || iconName}>
 			<IconWrapper>
 				<Icon name={iconName} data-iconname={iconName} />
 			</IconWrapper>

@@ -59,8 +59,8 @@ const StyledSortArrow = styled(ArrowIcon).withConfig({shouldForwardProp})`
 			opacity: 0;
 		`}
 
-	${ClickabilityIndicator}:hover &,
-	${ClickabilityIndicator}.focus-visible & {
+	${ClickabilityIndicator}:hover &&,
+	${ClickabilityIndicator}.focus-visible && {
 		fill: ${p => p.theme.links};
 		opacity: 1;
 		transition-delay: 0.15s;

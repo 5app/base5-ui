@@ -33,11 +33,13 @@ const Clickable = styled.button`
 		cursor: pointer;
 	}
 
-	&:focus:not(.focus-visible) {
+	&:focus:not(.focus-visible),
+	&:focus:not([data-focus-visible-added]) {
 		outline: none;
 	}
 
-	&.focus-visible {
+	&.focus-visible,
+	&[data-focus-visible-added] {
 		outline: 3px solid currentColor;
 		outline-offset: 3px;
 	}
