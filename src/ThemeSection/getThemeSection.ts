@@ -41,7 +41,7 @@ function getThemeSection({
 		: theme.sections[theme.currentThemeSectionName];
 
 	if (withBackgroundImage) {
-		let background = localThemeSection.background;
+		let background = localThemeSection?.background || 'grey';
 		if (!isThemeSection) {
 			const colorBlockBackground = getColorBlock(name, theme);
 			if (isValidColor(colorBlockBackground)) {
