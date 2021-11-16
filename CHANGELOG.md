@@ -1,3 +1,10 @@
+## [14.3.2](https://github.com/5app/base5-ui/compare/v14.3.1...v14.3.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **ThemeSection:** Add fallback for localThemeSection, noissue ([051e1c3](https://github.com/5app/base5-ui/commit/051e1c3a808ca33aad3810fc731debfefc2e9584))
+
 ## [14.3.1](https://github.com/5app/base5-ui/compare/v14.3.0...v14.3.1) (2021-11-16)
 
 
