@@ -234,7 +234,7 @@ function defaultIconRenderer({iconName, iconColor}) {
 	}
 
 	return (
-		<ThemeSection name="colorBlock" colorBlock={iconColor || iconName}>
+		<ThemeSection name={iconColor || iconName}>
 			<IconWrapper>
 				<Icon name={iconName} data-iconname={iconName} />
 			</IconWrapper>
