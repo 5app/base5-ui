@@ -1,3 +1,16 @@
+## [14.3.1](https://github.com/5app/base5-ui/compare/v14.3.0...v14.3.1) (2021-11-16)
+
+
+### Code Refactoring
+
+* **ThemeSection:** Improve bg image handling, noissue ([3541f58](https://github.com/5app/base5-ui/commit/3541f58381f652460351151d6873fa9e95013e28))
+
+
+### BREAKING CHANGES
+
+* **ThemeSection:** Removes the  prop, just use  now.
+Renames  to .
+
 # [14.3.0](https://github.com/5app/base5-ui/compare/v14.2.0...v14.3.0) (2021-11-11)
 
 
