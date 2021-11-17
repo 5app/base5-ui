@@ -21,6 +21,7 @@ import Button from '../Button';
 import Text from '../Text';
 import Icon from '../Icon';
 import ThemeSection from '../ThemeSection';
+import useUniqueId from '../useUniqueId';
 
 import {marginPropsDef} from '../styleProps/marginProps';
 
@@ -263,8 +264,6 @@ const Pill = forwardRef((props, ref) => {
 		background,
 		children,
 		deleteLabel,
-		getDeleteLabel = (children, deleteLabel) =>
-			`${deleteLabel} "${children}"`,
 		dimmed,
 		forwardedAs,
 		icon,
@@ -274,6 +273,10 @@ const Pill = forwardRef((props, ref) => {
 		onDelete,
 		...otherProps
 	} = props;
+
+	const uniqueId = useUniqueId(id);
+	const wrapperId = `${uniqueId}_wrapper`;
+	const sideButtonId = `${uniqueId}_side_button`;
 
 	const isClickable =
 		otherProps.onClick ||
@@ -293,7 +296,6 @@ const Pill = forwardRef((props, ref) => {
 	}
 
 	const {marginProps, filteredProps} = splitMarginProps(otherProps);
-	const uniqueDeleteLabel = getDeleteLabel(children, deleteLabel);
 	return (
 		<ConditionalFlexWrapper wrap={hasSideButton} {...marginProps}>
 			<Wrapper
@@ -301,7 +303,7 @@ const Pill = forwardRef((props, ref) => {
 				ref={ref}
 				as={isClickable ? ButtonCore : as}
 				forwardedAs={isClickable ? as : forwardedAs}
-				id={id ? `${id}_wrapper` : null}
+				id={wrapperId}
 				isClickable={isClickable}
 				dimmed={dimmed}
 				hasIcon={Boolean(token)}
@@ -327,12 +329,12 @@ const Pill = forwardRef((props, ref) => {
 				<SideButton
 					round
 					icon="x"
-					id={id ? `${id}_side_button` : null}
+					id={sideButtonId}
 					size="small"
 					color="shaded"
 					background={background}
 					onClick={onDelete}
-					aria-label={uniqueDeleteLabel}
+					aria-label={`${deleteLabel} ${children}`}
 				/>
 			)}
 		</ConditionalFlexWrapper>
@@ -346,6 +348,10 @@ Pill.defaultProps = {
 };
 
 Pill.propTypes = {
+	/**
+	 * Label of the pill to be shown
+	 */
+	children: PropTypes.string,
 	/**
 	 * Name of the icon to be shown
 	 */
@@ -387,11 +393,6 @@ Pill.propTypes = {
 	 * Accessible label for the delete button.
 	 */
 	deleteLabel: PropTypes.string,
-	/**
-	 * Customise the accessible label for the delete button.
-	 * Uses the children and the `deleteLabel`property.
-	 */
-	getDeleteLabel: PropTypes.func,
 };
 
 export default Pill;
