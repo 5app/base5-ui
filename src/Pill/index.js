@@ -263,6 +263,8 @@ const Pill = forwardRef((props, ref) => {
 		background,
 		children,
 		deleteLabel,
+		getDeleteLabel = (children, deleteLabel) =>
+			`${deleteLabel} "${children}"`,
 		dimmed,
 		forwardedAs,
 		icon,
@@ -291,7 +293,7 @@ const Pill = forwardRef((props, ref) => {
 	}
 
 	const {marginProps, filteredProps} = splitMarginProps(otherProps);
-
+	const uniqueDeleteLabel = getDeleteLabel(children, deleteLabel);
 	return (
 		<ConditionalFlexWrapper wrap={hasSideButton} {...marginProps}>
 			<Wrapper
@@ -330,7 +332,7 @@ const Pill = forwardRef((props, ref) => {
 					color="shaded"
 					background={background}
 					onClick={onDelete}
-					aria-label={deleteLabel}
+					aria-label={uniqueDeleteLabel}
 				/>
 			)}
 		</ConditionalFlexWrapper>
@@ -385,6 +387,11 @@ Pill.propTypes = {
 	 * Accessible label for the delete button.
 	 */
 	deleteLabel: PropTypes.string,
+	/**
+	 * Customise the accessible label for the delete button.
+	 * Uses the children and the `deleteLabel`property.
+	 */
+	getDeleteLabel: PropTypes.func,
 };
 
 export default Pill;
