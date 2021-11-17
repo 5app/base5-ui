@@ -1,3 +1,10 @@
+## [14.3.3](https://github.com/5app/base5-ui/compare/v14.3.2...v14.3.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **ThemeSection:** Make "name" prop optional, noissue ([8d912d2](https://github.com/5app/base5-ui/commit/8d912d2058dd2a21e4d7549a9402b3d2e91fffba))
+
 ## [14.3.2](https://github.com/5app/base5-ui/compare/v14.3.1...v14.3.2) (2021-11-16)
 
 
