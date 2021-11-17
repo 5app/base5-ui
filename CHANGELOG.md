@@ -1,3 +1,11 @@
+## [14.3.4](https://github.com/5app/base5-ui/compare/v14.3.3...v14.3.4) (2021-11-17)
+
+
+### Bug Fixes
+
+* expand delete label for Pill, #noissue ([069f041](https://github.com/5app/base5-ui/commit/069f041e71b5d2fd27384589554f2f5b4cdf2619))
+* expand delete label for Pill, #noissue ([6f92029](https://github.com/5app/base5-ui/commit/6f92029017a6bac0002f07eb0be2522beb3e8810))
+
 ## [14.3.3](https://github.com/5app/base5-ui/compare/v14.3.2...v14.3.3) (2021-11-17)
 
 
