@@ -23,7 +23,7 @@ import {ConfigThemeSection, LocalThemeSection} from '../theme/types';
 
 interface SectionGetterOptions {
 	theme: LocalThemeSection;
-	name: string;
+	name?: string;
 	withBackgroundImage?: boolean;
 }
 
@@ -31,7 +31,7 @@ function getThemeSection({
 	theme,
 	name,
 	withBackgroundImage,
-}: SectionGetterOptions): ConfigThemeSection {
+}: SectionGetterOptions): ConfigThemeSection | undefined {
 	// If the passed in name isn't the name of a section,
 	// we treat it as a "color block"
 	const isThemeSection = Boolean(theme.sections?.[name]);
@@ -68,8 +68,9 @@ function getThemeSection({
 	// and we need to dynamically construct a readable section
 	const background = getColorBlock(name, theme);
 
+	// If this turns out not to be a valid colour, we give up
 	if (!isValidColor(background)) {
-		return localThemeSection;
+		return undefined;
 	}
 
 	const [contrastingText, contrastingShade] = isDark(background)

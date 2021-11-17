@@ -13,7 +13,7 @@ interface ThemeSectionProps {
 	 * The key (name) of the theme section, as defined in `baseTheme.sections`,
 	 * or a color block from e.g. `baseTheme.globals.colorBlocks`
 	 */
-	name: ThemeSectionName;
+	name?: ThemeSectionName;
 	/**
 	 * Theme object to use as the base for all nested
 	 * ThemeSections. Usually this prop only needs to be
@@ -34,11 +34,20 @@ function ThemeSection(props: ThemeSectionProps): React.ReactElement {
 
 	const constructLocalTheme = useCallback(
 		(parentTheme = baseTheme): LocalThemeSection => {
+			if (!name && !withBackgroundImage) {
+				return parentTheme;
+			}
+
 			const localThemeSection = getThemeSection({
 				theme: parentTheme,
 				name,
 				withBackgroundImage,
 			});
+
+			if (!localThemeSection) {
+				return parentTheme;
+			}
+
 			const parentThemeSectionName = parentTheme.currentThemeSectionName;
 
 			return {
