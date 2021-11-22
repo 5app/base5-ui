@@ -1,64 +1,64 @@
 import React, {useCallback} from 'react';
 import {ThemeProvider} from 'styled-components';
-import ThemeSectionError from './error';
 
-import getReadableColorblock from './getReadableColorblock';
+import ThemeSectionError from './error';
+import getThemeSection from './getThemeSection';
 
 import {ThemeConfig, LocalThemeSection} from '../theme/types';
 
+type ThemeSectionName = string;
+
 interface ThemeSectionProps {
+	/**
+	 * The key (name) of the theme section, as defined in `baseTheme.sections`,
+	 * or a color block from e.g. `baseTheme.globals.colorBlocks`
+	 */
+	name?: ThemeSectionName;
 	/**
 	 * Theme object to use as the base for all nested
 	 * ThemeSections. Usually this prop only needs to be
 	 * used once per app, to define its global theme.
 	 */
-	baseTheme: ThemeConfig;
+	baseTheme?: ThemeConfig;
 	/**
-	 * The key (name) of the theme section, as defined in `baseTheme.sections`
+	 * Enable this to make theme section properties safe for use with a
+	 * background image. It will set text and link colours to white, and shade
+	 * to black, with a high shadeStrength value.
 	 */
-	name: string;
-	/**
-	 * The key (name) of a colorBlock that you want to use
-	 * to define foreground and background colours for the section.
-	 * Your colorBlock definitions must be located at `baseTheme.globals.colorBlock`
-	 */
-	colorBlock?: string;
-	/**
-	 * Enable this prop when defining a color block with a background
-	 * image. This will force its text colour to white, instead of a
-	 * calculated colour that contrasts with the color block (as that
-	 * colour will be covered by the image).
-	 * Make sure to give your images a dark wash or gradient to ensure
-	 * readability
-	 */
-	hasBgImage: boolean;
+	withBackgroundImage?: boolean;
 	children: React.ReactNode;
 }
 
 function ThemeSection(props: ThemeSectionProps): React.ReactElement {
-	const {baseTheme, children, colorBlock, hasBgImage, name} = props;
+	const {name, baseTheme, withBackgroundImage, children} = props;
 
 	const constructLocalTheme = useCallback(
 		(parentTheme = baseTheme): LocalThemeSection => {
-			const usedName = colorBlock ? 'colorBlock' : name;
-			const localThemeSection = parentTheme.sections[usedName];
+			if (!name && !withBackgroundImage) {
+				return parentTheme;
+			}
+
+			const localThemeSection = getThemeSection({
+				theme: parentTheme,
+				name,
+				withBackgroundImage,
+			});
+
+			if (!localThemeSection) {
+				return parentTheme;
+			}
+
 			const parentThemeSectionName = parentTheme.currentThemeSectionName;
-			const colorBlockOverrides = getReadableColorblock(
-				colorBlock,
-				parentTheme,
-				hasBgImage
-			);
 
 			return {
 				...parentTheme,
 				...localThemeSection,
-				...colorBlockOverrides,
-				currentThemeSectionName: usedName,
+				currentThemeSectionName: name,
 				parent: parentTheme.sections[parentThemeSectionName],
 				parentThemeSectionName,
 			};
 		},
-		[baseTheme, colorBlock, hasBgImage, name]
+		[baseTheme, name, withBackgroundImage]
 	);
 
 	return (

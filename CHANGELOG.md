@@ -1,3 +1,45 @@
+## [14.3.4](https://github.com/5app/base5-ui/compare/v14.3.3...v14.3.4) (2021-11-17)
+
+
+### Bug Fixes
+
+* expand delete label for Pill, #noissue ([069f041](https://github.com/5app/base5-ui/commit/069f041e71b5d2fd27384589554f2f5b4cdf2619))
+* expand delete label for Pill, #noissue ([6f92029](https://github.com/5app/base5-ui/commit/6f92029017a6bac0002f07eb0be2522beb3e8810))
+
+## [14.3.3](https://github.com/5app/base5-ui/compare/v14.3.2...v14.3.3) (2021-11-17)
+
+
+### Bug Fixes
+
+* **ThemeSection:** Make "name" prop optional, noissue ([8d912d2](https://github.com/5app/base5-ui/commit/8d912d2058dd2a21e4d7549a9402b3d2e91fffba))
+
+## [14.3.2](https://github.com/5app/base5-ui/compare/v14.3.1...v14.3.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **ThemeSection:** Add fallback for localThemeSection, noissue ([051e1c3](https://github.com/5app/base5-ui/commit/051e1c3a808ca33aad3810fc731debfefc2e9584))
+
+## [14.3.1](https://github.com/5app/base5-ui/compare/v14.3.0...v14.3.1) (2021-11-16)
+
+
+### Code Refactoring
+
+* **ThemeSection:** Improve bg image handling, noissue ([3541f58](https://github.com/5app/base5-ui/commit/3541f58381f652460351151d6873fa9e95013e28))
+
+
+### BREAKING CHANGES
+
+* **ThemeSection:** Removes the  prop, just use  now.
+Renames  to .
+
+# [14.3.0](https://github.com/5app/base5-ui/compare/v14.2.0...v14.3.0) (2021-11-11)
+
+
+### Features
+
+* **icons:** New icons 'section' and 'trash', noissue ([caeeb0a](https://github.com/5app/base5-ui/commit/caeeb0af40d5eba87c2d4d521e8b247639575258))
+
 # [14.2.0](https://github.com/5app/base5-ui/compare/v14.1.0...v14.2.0) (2021-11-10)
 
 

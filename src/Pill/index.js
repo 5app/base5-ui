@@ -21,6 +21,7 @@ import Button from '../Button';
 import Text from '../Text';
 import Icon from '../Icon';
 import ThemeSection from '../ThemeSection';
+import useUniqueId from '../useUniqueId';
 
 import {marginPropsDef} from '../styleProps/marginProps';
 
@@ -234,7 +235,7 @@ function defaultIconRenderer({iconName, iconColor}) {
 	}
 
 	return (
-		<ThemeSection name="colorBlock" colorBlock={iconColor || iconName}>
+		<ThemeSection name={iconColor || iconName}>
 			<IconWrapper>
 				<Icon name={iconName} data-iconname={iconName} />
 			</IconWrapper>
@@ -273,6 +274,10 @@ const Pill = forwardRef((props, ref) => {
 		...otherProps
 	} = props;
 
+	const uniqueId = useUniqueId(id);
+	const wrapperId = `${uniqueId}_wrapper`;
+	const sideButtonId = `${uniqueId}_side_button`;
+
 	const isClickable =
 		otherProps.onClick ||
 		otherProps.to ||
@@ -291,7 +296,6 @@ const Pill = forwardRef((props, ref) => {
 	}
 
 	const {marginProps, filteredProps} = splitMarginProps(otherProps);
-
 	return (
 		<ConditionalFlexWrapper wrap={hasSideButton} {...marginProps}>
 			<Wrapper
@@ -299,7 +303,7 @@ const Pill = forwardRef((props, ref) => {
 				ref={ref}
 				as={isClickable ? ButtonCore : as}
 				forwardedAs={isClickable ? as : forwardedAs}
-				id={id ? `${id}_wrapper` : null}
+				id={wrapperId}
 				isClickable={isClickable}
 				dimmed={dimmed}
 				hasIcon={Boolean(token)}
@@ -325,12 +329,12 @@ const Pill = forwardRef((props, ref) => {
 				<SideButton
 					round
 					icon="x"
-					id={id ? `${id}_side_button` : null}
+					id={sideButtonId}
 					size="small"
 					color="shaded"
 					background={background}
 					onClick={onDelete}
-					aria-label={deleteLabel}
+					aria-label={`${deleteLabel} ${children}`}
 				/>
 			)}
 		</ConditionalFlexWrapper>
@@ -344,6 +348,10 @@ Pill.defaultProps = {
 };
 
 Pill.propTypes = {
+	/**
+	 * Label of the pill to be shown
+	 */
+	children: PropTypes.string,
 	/**
 	 * Name of the icon to be shown
 	 */
