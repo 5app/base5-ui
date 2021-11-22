@@ -1,6 +1,7 @@
 export * from './colors';
 export {default as mergeRefs} from './mergeRefs';
 export {default as mergeCallbacks} from './mergeCallbacks';
+export {default as getGlobalThemeValue} from './getGlobalThemeValue';
 export {default as getLength} from './getLength';
 export {default as getScrollParent} from './getScrollParent';
 export {default as getSpacing} from './getSpacing';

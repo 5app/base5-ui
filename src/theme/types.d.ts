@@ -47,6 +47,9 @@ export interface ThemeGlobals {
 	readonly shadowStyles: {
 		[name: string]: string | ((themeSection: LocalThemeSection) => string);
 	};
+	readonly modalWidths: {
+		[value: string]: string | number;
+	};
 	readonly colorBlocks: {
 		[name: string]: ThemeColor;
 	};

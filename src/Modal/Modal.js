@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import FocusLock from 'react-focus-lock';
 
+import {getGlobalThemeValue} from '../utils';
+
 import Box from '../Box';
 import Portal from '../Portal';
 import CenterContent from '../CenterContent';
 import {useModalManager} from './ModalManager';
+import useUniqueId from '../useUniqueId';
 
 const ModalWrapper = styled.div`
 	position: absolute;
@@ -41,7 +44,7 @@ function CenterOrFullscreen({
 	fullscreen,
 	spacing,
 	width,
-	disableIE11Hack,
+	enableRiskyIE11CenteringHack,
 }) {
 	if (fullscreen) {
 		return (
@@ -60,9 +63,9 @@ function CenterOrFullscreen({
 		<CenterContent
 			fillParent
 			p={spacing}
-			contentWidth={width}
+			contentWidth={getGlobalThemeValue('modalWidths', width)}
 			breakpoints={breakpoints}
-			disableIE11Hack={disableIE11Hack}
+			enableRiskyIE11CenteringHack={enableRiskyIE11CenteringHack}
 		>
 			{children}
 		</CenterContent>
@@ -73,15 +76,18 @@ function Modal({
 	breakpoints,
 	children,
 	fullscreen,
+	id,
 	name,
 	onRequestClose,
 	spacing,
 	width,
-	disableIE11Hack,
+	enableRiskyIE11CenteringHack,
 	...otherProps
 }) {
+	const uniqueId = useUniqueId(id || name);
+
 	const {modalRef, isAtTop} = useModalManager({
-		name,
+		name: uniqueId,
 		onRequestClose,
 	});
 
@@ -96,7 +102,7 @@ function Modal({
 		<Portal>
 			<ModalWrapper
 				ref={modalRef}
-				id={name}
+				id={uniqueId}
 				{...otherProps}
 				role="dialog"
 				// We don't need the aria-modal property here,
@@ -112,7 +118,7 @@ function Modal({
 					spacing={spacing}
 					width={width}
 					breakpoints={breakpoints}
-					disableIE11Hack={disableIE11Hack}
+					enableRiskyIE11CenteringHack={enableRiskyIE11CenteringHack}
 				>
 					{isAtTop && <Overlay onClick={onRequestClose} />}
 					<FocusLock as={ContentWrapper}>{children}</FocusLock>
@@ -123,7 +129,8 @@ function Modal({
 }
 
 Modal.defaultProps = {
-	disableIE11Hack: false,
+	enableRiskyIE11CenteringHack: false,
+	width: 'default',
 };
 
 Modal.propTypes = {
@@ -131,7 +138,11 @@ Modal.propTypes = {
 	 * A unique ID for your modal. (Only needs to be unique among modals
 	 * that are expected to be open at the same time.)
 	 */
-	name: PropTypes.string.isRequired,
+	id: PropTypes.string,
+	/**
+	 * Deprecated alias for the id prop
+	 */
+	name: PropTypes.string,
 	/**
 	 * A function that, when called, will cause the modal to close.
 	 * This is needed to support closing the modal when the Esc key
@@ -172,6 +183,7 @@ Modal.propTypes = {
 	 * Can be a responsive array when used with the breakpoints prop.
 	 *
 	 * The width is not applied when the fullscreen prop is active.
+	 * You can use keys from the 'modalWidths' property in your global theme config.
 	 */
 	width: PropTypes.oneOfType([
 		PropTypes.number,
@@ -179,13 +191,14 @@ Modal.propTypes = {
 		PropTypes.array,
 	]),
 	/**
-	 * Disable the vertical centering method used for IE11, as it can lead
+	 * In IE11, modals will be aligned to the top of the screen by default.
+	 * You can enable risky vertical centering in IE11. This can lead
 	 * to cut-off/inaccessible content when the height of the centred content
 	 * increases beyond the height of the parent container.
-	 * Use this whenever the modal content is known to be long enough to cause
-	 * scrolling or when the content is dynamic and may grow.
+	 * Use this only whenever the content is known to be short enough not to
+	 * cause scrolling. Never use when the content is dynamic and may grow.
 	 */
-	disableIE11Hack: PropTypes.bool,
+	enableRiskyIE11CenteringHack: PropTypes.bool,
 };
 
 export default Modal;
