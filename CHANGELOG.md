@@ -1,3 +1,10 @@
+# [14.4.0](https://github.com/5app/base5-ui/compare/v14.3.5...v14.4.0) (2021-11-23)
+
+
+### Features
+
+* **utils:** New utility hasReactChildren, noissue ([da65a64](https://github.com/5app/base5-ui/commit/da65a64f4edad338301a200e035ad409413e9a0a))
+
 ## [14.3.5](https://github.com/5app/base5-ui/compare/v14.3.4...v14.3.5) (2021-11-22)
 
 ## [14.3.4](https://github.com/5app/base5-ui/compare/v14.3.3...v14.3.4) (2021-11-17)
