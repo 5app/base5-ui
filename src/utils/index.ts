@@ -5,6 +5,7 @@ export {default as getGlobalThemeValue} from './getGlobalThemeValue';
 export {default as getLength} from './getLength';
 export {default as getScrollParent} from './getScrollParent';
 export {default as getSpacing} from './getSpacing';
+export {default as hasReactChildren} from './hasReactChildren';
 export {default as scrollIntoViewIfNeeded} from './scrollIntoViewIfNeeded';
 export {
 	default as slicePathSegments,
