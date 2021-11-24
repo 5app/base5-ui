@@ -16,6 +16,7 @@ import {alignMap} from '../styleProps/flexProps';
 
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
+import VisuallyHidden from '../VisuallyHidden';
 
 import 'focus-visible';
 
@@ -254,6 +255,7 @@ const ButtonText = styled.span.withConfig({
 
 const Button = forwardRef((props, ref) => {
 	const {
+		iconOnly,
 		align,
 		as,
 		children,
@@ -285,11 +287,14 @@ const Button = forwardRef((props, ref) => {
 				{icon && iconRight !== true && (
 					<Icon disablePointerEvents name={icon} />
 				)}
-				{children && (
-					<ButtonText textOverflow={textOverflow}>
-						{children}
-					</ButtonText>
-				)}
+				{children &&
+					(iconOnly ? (
+						<VisuallyHidden>{children}</VisuallyHidden>
+					) : (
+						<ButtonText textOverflow={textOverflow}>
+							{children}
+						</ButtonText>
+					))}
 				{iconRight && (
 					<Icon
 						disablePointerEvents
@@ -314,6 +319,10 @@ Button.propTypes = {
 	 * Adds the ARIA attribute `aria-pressed="true"`
 	 */
 	isActive: PropTypes.bool,
+	/**
+	 * Visually hides the label but uses it for accessibility.
+	 */
+	iconOnly: PropTypes.bool,
 	/**
 	 * Renders the button in its disabled state. Uses
 	 * `aria-disabled` to make sure the button label
