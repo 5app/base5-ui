@@ -1,3 +1,10 @@
+## [14.4.1](https://github.com/5app/base5-ui/compare/v14.4.0...v14.4.1) (2021-11-24)
+
+
+### Bug Fixes
+
+* add iconOnly prop to button, #noissue ([8174087](https://github.com/5app/base5-ui/commit/8174087e9de59b4f92b1f9a80d62701c232dc4b5))
+
 # [14.4.0](https://github.com/5app/base5-ui/compare/v14.3.5...v14.4.0) (2021-11-23)
 
 
