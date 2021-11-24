@@ -141,6 +141,7 @@ CenterContent.propTypes = {
 		PropTypes.number,
 		PropTypes.string,
 		PropTypes.array,
+		PropTypes.func,
 	]),
 	/**
 	 * In IE11, content will be aligned to the top of the screen by default.

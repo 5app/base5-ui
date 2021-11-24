@@ -327,15 +327,18 @@ const Pill = forwardRef((props, ref) => {
 			</Wrapper>
 			{hasSideButton && (
 				<SideButton
+					iconOnly
 					round
-					icon="x"
 					id={sideButtonId}
+					icon="x"
 					size="small"
 					color="shaded"
 					background={background}
 					onClick={onDelete}
-					aria-label={`${deleteLabel} ${children}`}
-				/>
+					aria-labelledby={[sideButtonId, wrapperId].join(' ')}
+				>
+					{deleteLabel}
+				</SideButton>
 			)}
 		</ConditionalFlexWrapper>
 	);
