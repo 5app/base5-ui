@@ -75,17 +75,17 @@ To make a Pill's body clickable, simply attach an `onClick` handler. You can als
 				iconColor="neutral"
 				onClick={() => console.log('Hello world!')}
 			>
-				Pill with icon but no visible label which can be deleted
+				Pill with icon but no visible label
 			</Pill>
 			<Pill
 				iconOnly
 				icon="star"
 				iconColor="positive"
-				onClick={() => console.log('Hello world!')}
+				onClick={() => console.log('You get a star!')}
 				onDelete={() => console.log('Delete')}
 				deleteLabel="Delete"
 			>
-				Pill with icon but no visible label
+				Pill with icon but no visible label which can be deleted
 			</Pill>
 			<Pill
 				onClick={() => console.log('Hello!')}
