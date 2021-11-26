@@ -22,6 +22,7 @@ import Text from '../Text';
 import Icon from '../Icon';
 import ThemeSection from '../ThemeSection';
 import useUniqueId from '../useUniqueId';
+import VisuallyHidden from '../VisuallyHidden';
 
 import {marginPropsDef} from '../styleProps/marginProps';
 
@@ -39,6 +40,7 @@ const customWrapperProps = [
 	'isClickable',
 	'hasIcon',
 	'hasSideButton',
+	'iconOnly',
 ];
 
 const Wrapper = styled.div.withConfig({
@@ -61,9 +63,10 @@ const Wrapper = styled.div.withConfig({
 
 	${marginProps}
 
-	padding: 0 ${p => p.theme.globals.spacing.xs};
+	padding: 0 ${p => (p.iconOnly ? 0 : p.theme.globals.spacing.xs)};
 	${p =>
 		p.hasIcon &&
+		!p.iconOnly &&
 		`
 			padding-left: ${iconSpacing};
 		`}
@@ -89,7 +92,7 @@ const Wrapper = styled.div.withConfig({
 		`
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
-			border-right: ${borderValue(p.theme)};
+			border-right: ${p.iconOnly ? 0 : borderValue(p.theme)};
 		`}
 
 	${p =>
@@ -260,11 +263,12 @@ function splitMarginProps(props) {
 
 const Pill = forwardRef((props, ref) => {
 	const {
+		iconOnly = false,
+		dimmed,
 		as,
 		background,
 		children,
 		deleteLabel,
-		dimmed,
 		forwardedAs,
 		icon,
 		iconColor,
@@ -309,6 +313,7 @@ const Pill = forwardRef((props, ref) => {
 				hasIcon={Boolean(token)}
 				hasSideButton={hasSideButton}
 				background={background}
+				iconOnly={iconOnly}
 			>
 				{isClickable && (
 					<>
@@ -316,14 +321,21 @@ const Pill = forwardRef((props, ref) => {
 						<FocusRing />
 					</>
 				)}
-				{token && (
-					<Box position="absolute" top left>
-						{token}
-					</Box>
+				{token &&
+					(iconOnly ? (
+						token
+					) : (
+						<Box position="absolute" top left>
+							{token}
+						</Box>
+					))}
+				{iconOnly ? (
+					<VisuallyHidden>{children}</VisuallyHidden>
+				) : (
+					<Text display="block" overflow="ellipsis">
+						{children}
+					</Text>
 				)}
-				<Text display="block" overflow="ellipsis">
-					{children}
-				</Text>
 			</Wrapper>
 			{hasSideButton && (
 				<SideButton
@@ -354,7 +366,7 @@ Pill.propTypes = {
 	/**
 	 * Label of the pill to be shown
 	 */
-	children: PropTypes.string,
+	children: PropTypes.node.isRequired,
 	/**
 	 * Name of the icon to be shown
 	 */
@@ -378,6 +390,10 @@ Pill.propTypes = {
 	 * indicate e.g. partial matches in a group of items.
 	 */
 	dimmed: PropTypes.bool,
+	/**
+	 * Visually hides the label but uses it for accessibility.
+	 */
+	iconOnly: PropTypes.bool,
 	/**
 	 * When an ID is passed, it will be applied to the main pill element with the suffix
 	 * "_wrapper", and to the delete button with the suffix "_side_button"
