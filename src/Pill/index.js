@@ -22,6 +22,7 @@ import Text from '../Text';
 import Icon from '../Icon';
 import ThemeSection from '../ThemeSection';
 import useUniqueId from '../useUniqueId';
+import VisuallyHidden from '../VisuallyHidden';
 
 import {marginPropsDef} from '../styleProps/marginProps';
 
@@ -260,11 +261,12 @@ function splitMarginProps(props) {
 
 const Pill = forwardRef((props, ref) => {
 	const {
+		iconOnly = false,
+		dimmed,
 		as,
 		background,
 		children,
 		deleteLabel,
-		dimmed,
 		forwardedAs,
 		icon,
 		iconColor,
@@ -321,9 +323,13 @@ const Pill = forwardRef((props, ref) => {
 						{token}
 					</Box>
 				)}
-				<Text display="block" overflow="ellipsis">
-					{children}
-				</Text>
+				{iconOnly ? (
+					<VisuallyHidden>{children}</VisuallyHidden>
+				) : (
+					<Text display="block" overflow="ellipsis">
+						{children}
+					</Text>
+				)}
 			</Wrapper>
 			{hasSideButton && (
 				<SideButton
@@ -354,7 +360,7 @@ Pill.propTypes = {
 	/**
 	 * Label of the pill to be shown
 	 */
-	children: PropTypes.string,
+	children: PropTypes.node.isRequired,
 	/**
 	 * Name of the icon to be shown
 	 */
@@ -378,6 +384,10 @@ Pill.propTypes = {
 	 * indicate e.g. partial matches in a group of items.
 	 */
 	dimmed: PropTypes.bool,
+	/**
+	 * Visually hides the label but uses it for accessibility.
+	 */
+	iconOnly: PropTypes.bool,
 	/**
 	 * When an ID is passed, it will be applied to the main pill element with the suffix
 	 * "_wrapper", and to the delete button with the suffix "_side_button"
