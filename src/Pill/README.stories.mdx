@@ -33,6 +33,9 @@ Pills can be made clickable, but should never be used as action buttons (think "
 			<Pill icon="tag" iconColor="neutral">
 				Pill with icon
 			</Pill>
+			<Pill iconOnly icon="globe" iconColor="neutral">
+				Pill with icon but no visible label
+			</Pill>
 			<Pill dimmed icon="user" iconColor="negative">
 				Dimmed pill with icon
 			</Pill>
@@ -66,6 +69,24 @@ To make a Pill's body clickable, simply attach an `onClick` handler. You can als
 				Delete-able Pill with icon
 			</Pill>
 			<Pill onClick={() => console.log('Hello!')}>Clickable pill</Pill>
+			<Pill
+				iconOnly
+				icon="globe"
+				iconColor="neutral"
+				onClick={() => console.log('Hello world!')}
+			>
+				Pill with icon but no visible label which can be deleted
+			</Pill>
+			<Pill
+				iconOnly
+				icon="star"
+				iconColor="positive"
+				onClick={() => console.log('Hello world!')}
+				onDelete={() => console.log('Delete')}
+				deleteLabel="Delete"
+			>
+				Pill with icon but no visible label
+			</Pill>
 			<Pill
 				onClick={() => console.log('Hello!')}
 				icon="external"

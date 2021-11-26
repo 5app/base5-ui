@@ -40,6 +40,7 @@ const customWrapperProps = [
 	'isClickable',
 	'hasIcon',
 	'hasSideButton',
+	'iconOnly',
 ];
 
 const Wrapper = styled.div.withConfig({
@@ -62,9 +63,10 @@ const Wrapper = styled.div.withConfig({
 
 	${marginProps}
 
-	padding: 0 ${p => p.theme.globals.spacing.xs};
+	padding: 0 ${p => (p.iconOnly ? 0 : p.theme.globals.spacing.xs)};
 	${p =>
 		p.hasIcon &&
+		!p.iconOnly &&
 		`
 			padding-left: ${iconSpacing};
 		`}
@@ -90,7 +92,7 @@ const Wrapper = styled.div.withConfig({
 		`
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
-			border-right: ${borderValue(p.theme)};
+			border-right: ${p.iconOnly ? 0 : borderValue(p.theme)};
 		`}
 
 	${p =>
@@ -311,6 +313,7 @@ const Pill = forwardRef((props, ref) => {
 				hasIcon={Boolean(token)}
 				hasSideButton={hasSideButton}
 				background={background}
+				iconOnly={iconOnly}
 			>
 				{isClickable && (
 					<>
@@ -318,11 +321,14 @@ const Pill = forwardRef((props, ref) => {
 						<FocusRing />
 					</>
 				)}
-				{token && (
-					<Box position="absolute" top left>
-						{token}
-					</Box>
-				)}
+				{token &&
+					(iconOnly ? (
+						token
+					) : (
+						<Box position="absolute" top left>
+							{token}
+						</Box>
+					))}
 				{iconOnly ? (
 					<VisuallyHidden>{children}</VisuallyHidden>
 				) : (
