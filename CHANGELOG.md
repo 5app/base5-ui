@@ -1,3 +1,12 @@
+## [14.4.2](https://github.com/5app/base5-ui/compare/v14.4.1...v14.4.2) (2021-11-26)
+
+
+### Bug Fixes
+
+* fix border & update readme, #noissue ([fc5d665](https://github.com/5app/base5-ui/commit/fc5d665b87c1f1e08776de80fa7b073a50a41e12))
+* fix pill label, #noissue ([699e58f](https://github.com/5app/base5-ui/commit/699e58fb96e45dd32140b9be875a744a98d838d6))
+* make children required, #noissue ([ee8fc04](https://github.com/5app/base5-ui/commit/ee8fc044cf4230495ef6a29943b862b3b84bfe61))
+
 ## [14.4.1](https://github.com/5app/base5-ui/compare/v14.4.0...v14.4.1) (2021-11-24)
 
 
