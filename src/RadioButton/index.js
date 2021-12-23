@@ -44,7 +44,7 @@ const MockBox = styled.span.withConfig({
 	width: ${pxToEm(16)};
 	height: ${pxToEm(16)};
 
-	font-size: ${p => (p.scale === 'auto' ? '1em' : pxToRem(19 * p.scale))};
+	font-size: ${p => (p.scale === 'auto' ? '1em' : pxToRem(20 * p.scale))};
 
 	color: ${p => (p.isChecked ? p.theme.links : p.theme.background)};
 	background: ${p => contrast(p.theme.links)};
@@ -181,22 +181,25 @@ const RadioButton = forwardRef((props, ref) => {
 				isChecked={isChecked || indeterminate}
 				scale={scale}
 			>
-				<Icon name={indeterminate ? 'minus' : 'dot'} scale={0.9} />
+				<Icon
+					name={indeterminate ? 'minus' : 'dot'}
+					scale={indeterminate ? 0.8 : 0.9}
+				/>
 			</MockBox>
 		</Wrapper>
 	);
 });
 
-Checkbox.defaultProps = {
+RadioButton.defaultProps = {
 	scale: 1,
 };
 
-Checkbox.propTypes = {
+RadioButton.propTypes = {
 	checked: PropTypes.bool,
 	indeterminate: PropTypes.bool,
 	/**
-	 * Control the size of the checkbox by passing in a size multiplier, i.e. `1.5`.
-	 * Set to `'auto'` to make the checkbox scale along with its surrounding text
+	 * Control the size of the radiobutton by passing in a size multiplier, i.e. `1.5`.
+	 * Set to `'auto'` to make the radiobutton scale along with its surrounding text
 	 */
 	scale: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
