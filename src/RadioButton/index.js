@@ -191,7 +191,7 @@ const RadioButton = forwardRef((props, ref) => {
 	);
 });
 
-Checkbox.displayName = 'RadioButton';
+RadioButton.displayName = 'RadioButton';
 
 RadioButton.defaultProps = {
 	scale: 1,
