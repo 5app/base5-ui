@@ -60,22 +60,23 @@ const MockBox = styled.span.withConfig({
 		opacity: 0.5;
 
 		${p => {
-			if (!p.isChecked) {
-				const textColor = getDimmedTextColor(p.theme);
-				return css`
-					background-image: linear-gradient(
-						45deg,
-						white 25%,
-						${textColor} 25%,
-						${textColor} 50%,
-						white 50%,
-						white 75%,
-						${textColor} 75%,
-						${textColor} 100%
-					);
-					background-size: 4px 4px;
-				`;
-			}
+			const textColor = getDimmedTextColor(p.theme);
+			return css`
+				color: ${p =>
+					p.isChecked ? p.theme.background : p.theme.background};
+				border: none;
+				background-image: linear-gradient(
+					45deg,
+					white 25%,
+					${textColor} 25%,
+					${textColor} 50%,
+					white 50%,
+					white 75%,
+					${textColor} 75%,
+					${textColor} 100%
+				);
+				background-size: 4px 4px;
+			`;
 		}};
 	}
 
