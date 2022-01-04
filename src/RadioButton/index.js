@@ -1,14 +1,7 @@
-import React, {forwardRef, useCallback, useEffect, useRef} from 'react';
+import React, {forwardRef} from 'react';
 import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
-import {
-	mergeRefs,
-	pxToEm,
-	pxToRem,
-	alpha,
-	contrast,
-	getDimmedTextColor,
-} from '../utils';
+import {pxToEm, pxToRem, alpha, contrast, getDimmedTextColor} from '../utils';
 import {fillParent} from '../mixins';
 import Icon from '../Icon';
 import {useTabIndexContext} from '../TabIndexContext';
