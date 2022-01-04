@@ -15,8 +15,6 @@ import {useTabIndexContext} from '../TabIndexContext';
 
 const EXTEND_TAP_AREA_SPACING = pxToRem(6);
 
-const noop = () => {};
-
 const Wrapper = styled.span`
 	position: relative;
 	display: inline-flex;
@@ -129,7 +127,6 @@ const MockBox = styled.span.withConfig({
 const RadioButton = forwardRef((props, ref) => {
 	const {
 		checked,
-		indeterminate,
 		onChange,
 		onClick,
 		scale,
@@ -138,30 +135,7 @@ const RadioButton = forwardRef((props, ref) => {
 		...otherProps
 	} = props;
 
-	const inputRef = useRef();
 	const tabIndexContext = useTabIndexContext();
-
-	useEffect(() => {
-		inputRef.current.indeterminate = indeterminate || false;
-	}, [indeterminate]);
-
-	const handleClick = useCallback(
-		e => {
-			if (onClick) onClick(e);
-
-			/**
-			 * IE 11 and Edge don't fire onChange for indeterminate checkboxes,
-			 * therefore we're (ab)using the click handler to do so instead.
-			 *
-			 * Surprisingly, this even works with keyboard navigation
-			 * (i.e. when pressing Space when the input is focused).
-			 */
-			if (indeterminate && onChange) {
-				onChange(e);
-			}
-		},
-		[onClick, onChange, indeterminate]
-	);
 
 	const isChecked = Boolean(checked);
 
@@ -169,23 +143,15 @@ const RadioButton = forwardRef((props, ref) => {
 		<Wrapper className={className}>
 			<Input
 				type="radio"
-				ref={mergeRefs([inputRef, ref])}
+				ref={ref}
 				checked={isChecked}
-				indeterminate={indeterminate}
-				onChange={indeterminate ? noop : onChange}
-				onClick={handleClick}
+				onChange={onChange}
+				onClick={onClick}
 				tabIndex={tabIndex || tabIndexContext}
 				{...otherProps}
 			/>
-			<MockBox
-				aria-hidden="true"
-				isChecked={isChecked || indeterminate}
-				scale={scale}
-			>
-				<Icon
-					name={indeterminate ? 'minus' : 'dot'}
-					scale={indeterminate ? 0.8 : 0.9}
-				/>
+			<MockBox aria-hidden="true" isChecked={isChecked} scale={scale}>
+				<Icon name={'dot'} scale={0.9} />
 			</MockBox>
 		</Wrapper>
 	);
@@ -199,7 +165,6 @@ RadioButton.defaultProps = {
 
 RadioButton.propTypes = {
 	checked: PropTypes.bool,
-	indeterminate: PropTypes.bool,
 	/**
 	 * Control the size of the radiobutton by passing in a size multiplier, i.e. `1.5`.
 	 * Set to `'auto'` to make the radiobutton scale along with its surrounding text
