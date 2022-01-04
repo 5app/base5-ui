@@ -1,0 +1,82 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import RadioButton from './';
+import Text from '../Text';
+
+<Meta title="Components/RadioButton" component={RadioButton} />
+
+# RadioButton
+
+```js
+import RadioButton from 'base5-ui/RadioButton';
+```
+
+Pretty and accessible RadioButton that'll match your theme colours.
+
+## Examples
+
+<Canvas>
+	<Story name="Default" args={{checked: false}}>
+		{props => (
+			<label>
+				<RadioButton {...props} /> Regular unchecked option
+			</label>
+		)}
+	</Story>
+	<Story name="Checked" args={{checked: true}}>
+		{props => (
+			<label>
+				<RadioButton {...props} /> Regular checked option
+			</label>
+		)}
+	</Story>
+	<Story name="Disabled" args={{disabled: true}}>
+		{props => (
+			<label>
+				<RadioButton {...props} /> Disabled option
+			</label>
+		)}
+	</Story>
+	<Story name="Disabled & Checked" args={{checked: true, disabled: true}}>
+		{props => (
+			<label>
+				<RadioButton {...props} /> Disabled & checked option
+			</label>
+		)}
+	</Story>
+	<Story name="Scaled-down" args={{scale: 0.75, checked: 'true'}}>
+		{props => (
+			<label>
+				<RadioButton {...props} /> Scaled-down RadioButton
+			</label>
+		)}
+	</Story>
+	<Story name="Auto-sizing S" args={{scale: 'auto'}}>
+		{props => (
+			<Text as="label" size="s">
+				<RadioButton {...props} /> RadioButton that scales along with
+				text (size "s")
+			</Text>
+		)}
+	</Story>
+	<Story name="Auto-sizing XL" args={{scale: 'auto', disabled: 'true'}}>
+		{props => (
+			<Text as="label" size="xl">
+				<RadioButton {...props} /> RadioButton that scales along with
+				text (size "xl")
+			</Text>
+		)}
+	</Story>
+	<Story name="Auto-sizing XXL" args={{scale: 'auto', checked: 'true'}}>
+		{props => (
+			<Text as="label" size="xxl">
+				<RadioButton {...props} /> RadioButton that scales along with
+				text (size "xxl")
+			</Text>
+		)}
+	</Story>
+</Canvas>
+
+## Props
+
+<ArgsTable of={RadioButton} />

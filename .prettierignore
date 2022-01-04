@@ -5,3 +5,4 @@ CHANGELOG.md
 *.scss
 *.css
 *.yml
+*.eslintrc.js

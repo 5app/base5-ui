@@ -19,6 +19,7 @@ export * as MenuList from './MenuList';
 export {default as Pill} from './Pill';
 export {default as Popover} from './Popover';
 export {default as Portal} from './Portal';
+export {default as RadioButton} from './RadioButton';
 export {default as SimpleChart} from './SimpleChart';
 export {default as SimpleGauge} from './SimpleGauge';
 export {default as Stack} from './Stack';
