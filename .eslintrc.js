@@ -1,6 +1,6 @@
 module.exports = {
-  plugins: ['react-hooks', 'jsx-a11y', '@typescript-eslint'],
-  extends: [
+	plugins: ['react-hooks', 'jsx-a11y', '@typescript-eslint'],
+	extends: [
 		'5app',
 		'plugin:react/recommended',
 		'plugin:jsx-a11y/recommended',
