@@ -13,7 +13,7 @@ import {fillParent} from '../mixins';
 import Icon from '../Icon';
 import {useTabIndexContext} from '../TabIndexContext';
 
-const EXTEND_TAP_AREA_SPACING = pxToRem(9);
+const EXTEND_TAP_AREA_SPACING = pxToRem(6);
 
 const noop = () => {};
 
@@ -37,7 +37,7 @@ const MockBox = styled.span.withConfig({
 	position: relative;
 	pointer-events: none;
 
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 
