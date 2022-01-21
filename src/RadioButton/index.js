@@ -33,7 +33,9 @@ const MockBox = styled.span.withConfig({
 	justify-content: center;
 
 	width: ${pxToEm(16)};
+	min-width: ${pxToEm(16)};
 	height: ${pxToEm(16)};
+	min-height: ${pxToEm(16)};
 
 	font-size: ${p => (p.scale === 'auto' ? '1em' : pxToRem(20 * p.scale))};
 
