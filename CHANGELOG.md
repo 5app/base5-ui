@@ -1,3 +1,10 @@
+# [14.5.0](https://github.com/5app/base5-ui/compare/v14.4.3...v14.5.0) (2022-01-21)
+
+
+### Features
+
+* add adjustments for ie11, [#11298](https://github.com/5app/base5-ui/issues/11298) ([562cf02](https://github.com/5app/base5-ui/commit/562cf02b3c89a9d769f1c2660203e4bedaa7286f))
+
 ## [14.4.3](https://github.com/5app/base5-ui/compare/v14.4.2...v14.4.3) (2022-01-04)
 
 
