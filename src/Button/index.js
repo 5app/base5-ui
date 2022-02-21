@@ -4,7 +4,7 @@ import styled, {css} from 'styled-components';
 
 import {alpha} from '../utils/colors';
 import {pxToRem} from '../utils/units';
-import {fillParent, ellipsis, overflowWrap} from '../mixins';
+import {fillParent} from '../mixins';
 import {
 	getPropFilter,
 	getPropNamesFromPropDefinition,
@@ -16,22 +16,8 @@ import {alignMap} from '../styleProps/flexProps';
 
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
-import VisuallyHidden from '../VisuallyHidden';
 
 import 'focus-visible';
-
-export const VALID_SIZE_PROPS = ['small', 'medium', 'default', 'large'];
-
-export const VALID_COLOR_PROPS = [
-	'default',
-	'primary',
-	'important',
-	'transparent',
-	'shaded',
-];
-
-export const VALID_ALIGN_PROPS = ['left', 'right', 'center'];
-export const VALID_OVERFLOW_PROPS = ['wrap', 'ellipsis'];
 
 const stylePropNames = getPropNamesFromPropDefinition([
 	...positionPropsDef,
@@ -164,7 +150,7 @@ const Wrapper = styled(ButtonCore).withConfig({
 	}
 `;
 
-const _3px = pxToRem(3);
+const ThreePx = pxToRem(3);
 
 const FocusRing = styled.span.withConfig({
 	shouldForwardProp: prop => prop !== 'color',
@@ -172,20 +158,20 @@ const FocusRing = styled.span.withConfig({
 	${fillParent}
 	border-radius: inherit;
 
-	box-shadow: 0 0 0 ${_3px}
+	box-shadow: 0 0 0 ${ThreePx}
 		${p => alpha(p.theme.shade, p.theme.lineStrength + 0.05)};
 
 	opacity: 0;
 	transition: opacity 250ms linear;
 	will-change: opacity;
 
-	${Wrapper}.focus-visible > && {
-		top: -${_3px};
-		left: -${_3px};
-		bottom: -${_3px};
-		right: -${_3px};
+	${Wrapper}.focus-visible > & {
+		top: -${ThreePx};
+		left: -${ThreePx};
+		bottom: -${ThreePx};
+		right: -${ThreePx};
 
-		box-shadow: 0 0 0 ${_3px}
+		box-shadow: 0 0 0 ${ThreePx}
 			${p =>
 				p.color === 'primary' || p.color === 'important'
 					? p.theme.globals.buttons[p.color].background
@@ -195,7 +181,7 @@ const FocusRing = styled.span.withConfig({
 		transition-duration: 50ms;
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > && {
+	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
@@ -217,12 +203,12 @@ const HoverShade = styled.span`
 		box-shadow: inset 0 0 0.25rem rgba(0, 0, 0, 0.5);
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):hover > && {
+	${Wrapper}:not(.is-disabled):hover > & {
 		opacity: 1;
 		transition-duration: 50ms;
 	}
 	/* prettier-ignore */
-	${Wrapper}:not(.is-disabled):active > && {
+	${Wrapper}:not(.is-disabled):active > & {
 		opacity: 0;
 		transition-duration: 250ms;
 	}
@@ -235,36 +221,20 @@ const Content = styled.span`
 	justify-content: ${p => (p.align ? alignMap[p.align] : 'center')};
 `;
 
-/**
- * The button label should just have some horizontal spacing.
- * But if `textOverflow="ellipsis" is set, the Button label
- * will have overflow set to "hidden", which can cause the
- * descenders of some characters (g, y, j) to be cut off.
- * To avoid this, we also give the text label some vertical
- * padding and visually remove it using negative margins.
- */
-
-const ButtonText = styled.span.withConfig({
-	shouldForwardProp: prop => prop !== 'textOverflow',
-})`
-	padding: ${p => p.theme.globals.spacing.xxs};
-	margin: -${p => p.theme.globals.spacing.xxs} 0;
+const ButtonText = styled.span`
+	padding: 0 ${p => p.theme.globals.spacing.xxs};
 	vertical-align: middle;
-	${p => (p.textOverflow === 'ellipsis' ? ellipsis : overflowWrap)}
 `;
 
 const Button = forwardRef((props, ref) => {
 	const {
-		iconOnly,
 		align,
 		as,
 		children,
-		color,
+		color = 'default',
 		icon,
 		iconRight,
-		fullWidth,
 		title,
-		textOverflow,
 		...otherProps
 	} = props;
 
@@ -278,28 +248,15 @@ const Button = forwardRef((props, ref) => {
 			aria-label={props['aria-label'] || title}
 			color={color}
 			align={align}
-			fullWidth={fullWidth || textOverflow === 'ellipsis'}
 			{...otherProps}
 		>
 			<HoverShade />
 			<FocusRing color={color} />
 			<Content align={align}>
-				{icon && iconRight !== true && (
-					<Icon disablePointerEvents name={icon} />
-				)}
-				{children &&
-					(iconOnly ? (
-						<VisuallyHidden>{children}</VisuallyHidden>
-					) : (
-						<ButtonText textOverflow={textOverflow}>
-							{children}
-						</ButtonText>
-					))}
+				{icon && iconRight !== true && <Icon name={icon} />}
+				{children && <ButtonText>{children}</ButtonText>}
 				{iconRight && (
-					<Icon
-						disablePointerEvents
-						name={hasSeparateRightIcon ? iconRight : icon}
-					/>
+					<Icon name={hasSeparateRightIcon ? iconRight : icon} />
 				)}
 			</Content>
 		</Wrapper>
@@ -308,21 +265,12 @@ const Button = forwardRef((props, ref) => {
 
 Button.displayName = 'Button';
 
-Button.defaultProps = {
-	color: 'default',
-	textOverflow: 'wrap',
-};
-
 Button.propTypes = {
 	/**
 	 * Renders the button in a "pressed" state.
 	 * Adds the ARIA attribute `aria-pressed="true"`
 	 */
 	isActive: PropTypes.bool,
-	/**
-	 * Visually hides the label but uses it for accessibility.
-	 */
-	iconOnly: PropTypes.bool,
 	/**
 	 * Renders the button in its disabled state. Uses
 	 * `aria-disabled` to make sure the button label
@@ -340,6 +288,7 @@ Button.propTypes = {
 	 * on the right.
 	 */
 	iconRight: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+
 	/**
 	 * Render the button with fully rounded corners, useful for
 	 * circular icon-only buttons.
@@ -357,23 +306,22 @@ Button.propTypes = {
 	/**
 	 * Choose between one of 5 available theme variants
 	 */
-	color: PropTypes.oneOf(VALID_COLOR_PROPS),
+	color: PropTypes.oneOf([
+		'default',
+		'primary',
+		'important',
+		'transparent',
+		'shaded',
+	]),
 	/**
 	 * Choose between one of 4 available theme variants
 	 */
-	size: PropTypes.oneOf(VALID_SIZE_PROPS),
+	size: PropTypes.oneOf(['small', 'medium', 'default', 'large']),
 	/**
 	 * Align the button text
 	 */
-	align: PropTypes.oneOf(VALID_ALIGN_PROPS),
-	/**
-	 * Control whether long text labels wrap to a new line
-	 * or are truncated with an ellipsis
-	 * When set to 'ellipsis', the button will automatically
-	 * enable the `fullWidth` prop and render as a block-level
-	 * element that takes up all available width.
-	 */
-	textOverflow: PropTypes.oneOf(VALID_OVERFLOW_PROPS),
+	align: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
+// @component
 export default Button;
