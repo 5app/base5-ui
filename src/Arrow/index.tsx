@@ -13,10 +13,11 @@ const transformMap = {
 	left: 'translateX(-50%) rotate(45deg)',
 };
 
-function useArrowStyles(primaryPlacement, arrowSize) {
+function useArrowStyles(primaryPlacement: string, arrowSize: Number) {
 	const arrowStyles = useMemo(
 		() => ({
-			position: 'absolute',
+			// casting field to itself to enforce type as valid
+			position: 'absolute' as 'absolute',
 
 			display: 'inline-block',
 			width: arrowSize + 'px',
@@ -37,7 +38,7 @@ function useArrowStyles(primaryPlacement, arrowSize) {
 	return arrowStyles;
 }
 
-const Arrow = forwardRef((props, ref) => {
+const Arrow = forwardRef((props: {placement: string, size: number, distanceFromEdge: number, style}, ref: React.RefObject<HTMLElement>) => {
 	const {placement, size, distanceFromEdge, style} = props;
 
 	const [primaryPlacement] = getPlacements(placement);
@@ -78,7 +79,7 @@ Arrow.propTypes = {
 	 * Controls how far the arrow is placed from the container's edge when
 	 * the placement contains a '-start' or '-end' suffix.
 	 */
-	distanceFromEdge: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	distanceFromEdge: PropTypes.number,
 	/**
 	 * The arrow will be placed on the opposing side of the defined direction:
 	 * 'top', 'bottom', 'left', or 'right'.
