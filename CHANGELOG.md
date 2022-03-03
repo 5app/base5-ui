@@ -1,3 +1,17 @@
+# [14.6.0](https://github.com/5app/base5-ui/compare/v14.5.0...v14.6.0) (2022-03-03)
+
+
+### Bug Fixes
+
+* fix default locale, [#185](https://github.com/5app/base5-ui/issues/185) ([65da95e](https://github.com/5app/base5-ui/commit/65da95e1859b84ff96daf8003fce69b4eecbbe61))
+* revert readout functions, [#185](https://github.com/5app/base5-ui/issues/185) ([7a45229](https://github.com/5app/base5-ui/commit/7a4522932fcc261c9cee5122336b2ed0b2dac075))
+
+
+### Features
+
+* add functions for label customisation, [#185](https://github.com/5app/base5-ui/issues/185) ([4caa673](https://github.com/5app/base5-ui/commit/4caa673bfc2d117da65f336f70eaa618943109bf))
+* adjust hourcycle for locale, [#185](https://github.com/5app/base5-ui/issues/185) ([4acde23](https://github.com/5app/base5-ui/commit/4acde23692586a6f0c6825315330360267e94bb1))
+
 # [14.5.0](https://github.com/5app/base5-ui/compare/v14.4.3...v14.5.0) (2022-01-21)
 
 
