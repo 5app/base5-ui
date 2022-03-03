@@ -16,11 +16,19 @@ function date(d) {
 
 function getDateString({
 	dateTime,
-	locale,
+	locale = 'en-GB',
 	systemOffset = 0,
 	readoutFunctions = {},
 }) {
+	let hourCycle = 'h24';
+	// Set of languages for which we want to display AM / PM
+	const hourCycle12Languages = ['en-GB', 'en-US', 'es-ES'];
+	if (hourCycle12Languages.includes(locale)) {
+		hourCycle = 'h12';
+	}
+
 	// Set default readout functions
+	// TODO: add localisation
 	const {
 		secondsAgoReadout = count =>
 			`${count} second${count > 1 ? 's' : ''} ago`,
@@ -61,12 +69,12 @@ function getDateString({
 		const mins = parseInt(offset / ONE_MINUTE);
 		dateString = minutesAgoReadout(mins);
 	}
-	// Occcured today...
+	// Occured today...
 	else if (offset < ms_today) {
 		// Number of ms until end of the day...
 		delay = ONE_DAY - ms_today;
 		dateString = new Intl.DateTimeFormat(locale, {
-			hourCycle: 'h12',
+			hourCycle,
 			hour: 'numeric',
 			minute: 'numeric',
 		}).format(time);
@@ -78,7 +86,7 @@ function getDateString({
 		// Get day
 		dateString = new Intl.DateTimeFormat(locale, {
 			weekday: 'short',
-			hourCycle: 'h12',
+			hourCycle,
 			hour: 'numeric',
 		}).format(time);
 	} else if (time.getYear() === systemtime.getYear()) {
