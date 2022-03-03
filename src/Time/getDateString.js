@@ -16,7 +16,7 @@ function date(d) {
 
 function getDateString({
 	dateTime,
-	locale = 'en-GB',
+	locale = navigator.language,
 	systemOffset = 0,
 	readoutFunctions = {},
 }) {
