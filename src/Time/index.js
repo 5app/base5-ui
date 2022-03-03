@@ -9,15 +9,7 @@ function useForceUpdate() {
 	return forceUpdate;
 }
 
-function Time({
-	dateTime,
-	systemTime,
-	readoutFunctions,
-	locale,
-	getMinReadoutLabel,
-	getSecReadoutLabel,
-	...otherProps
-}) {
+function Time({dateTime, systemTime, readoutFunctions, locale, ...otherProps}) {
 	const forceUpdate = useForceUpdate();
 
 	// Offset system time with local time...
@@ -31,8 +23,6 @@ function Time({
 		dateTime,
 		locale,
 		systemOffset: systemOffset.current,
-		getMinReadoutLabel,
-		getSecReadoutLabel,
 	});
 
 	// Set the datestring
@@ -81,10 +71,6 @@ Time.propTypes = {
 		secondsAgoReadout: PropTypes.func,
 		minutesAgoReadout: PropTypes.func,
 	}),
-	/** Customise the minutes label, i.e. for localisation */
-	getMinReadoutLabel: PropTypes.func,
-	/** Customise the seconds label, i.e. for localisation */
-	getSecReadoutLabel: PropTypes.func,
 };
 
 export default Time;

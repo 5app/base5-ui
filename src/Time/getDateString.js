@@ -19,8 +19,6 @@ function getDateString({
 	locale = 'en-GB',
 	systemOffset = 0,
 	readoutFunctions = {},
-	getMinReadoutLabel,
-	getSecReadoutLabel,
 }) {
 	// Default hourCycle value
 	let hourCycle = 'h24';
@@ -33,13 +31,9 @@ function getDateString({
 	// Set default readout functions
 	const {
 		secondsAgoReadout = count =>
-			getSecReadoutLabel
-				? getSecReadoutLabel(count)
-				: `${count} second${count > 1 ? 's' : ''} ago`,
+			`${count} second${count > 1 ? 's' : ''} ago`,
 		minutesAgoReadout = count =>
-			getMinReadoutLabel
-				? getMinReadoutLabel(count)
-				: `${count} minute${count > 1 ? 's' : ''} ago`,
+			`${count} minute${count > 1 ? 's' : ''} ago`,
 	} = readoutFunctions;
 
 	// Define the offset, how old is this...
