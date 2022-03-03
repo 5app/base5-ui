@@ -19,21 +19,27 @@ function getDateString({
 	locale = 'en-GB',
 	systemOffset = 0,
 	readoutFunctions = {},
+	getMinReadoutLabel,
+	getSecReadoutLabel,
 }) {
+	// Default hourCycle value
 	let hourCycle = 'h24';
-	// Set of languages for which we want to display AM / PM
 	const hourCycle12Languages = ['en-GB', 'en-US', 'es-ES'];
 	if (hourCycle12Languages.includes(locale)) {
+		// Set hourCycle to 12 for languages for which we want to display AM / PM
 		hourCycle = 'h12';
 	}
 
 	// Set default readout functions
-	// TODO: add localisation
 	const {
 		secondsAgoReadout = count =>
-			`${count} second${count > 1 ? 's' : ''} ago`,
+			getSecReadoutLabel
+				? getSecReadoutLabel(count)
+				: `${count} second${count > 1 ? 's' : ''} ago`,
 		minutesAgoReadout = count =>
-			`${count} minute${count > 1 ? 's' : ''} ago`,
+			getMinReadoutLabel
+				? getMinReadoutLabel(count)
+				: `${count} minute${count > 1 ? 's' : ''} ago`,
 	} = readoutFunctions;
 
 	// Define the offset, how old is this...
