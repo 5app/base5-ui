@@ -41,10 +41,23 @@ function useArrowStyles(primaryPlacement: string, arrowSize: number) {
 }
 
 interface ArrowProps {
+	/**
+	 * The arrow will be placed on the opposing side of the defined direction:
+	 * 'top', 'bottom', 'left', or 'right'.
+	 * Add an optional suffix '-start' or '-end' to align the arrow to the
+	 * start or end of the chosen direction.
+	 */
 	placement?: string,
+	/**
+	 * Control the arrow size (length of side)
+	 */
 	size?: number,
+	/**
+	 * Controls how far the arrow is placed from the container's edge when
+	 * the placement contains a '-start' or '-end' suffix.
+	 */
 	distanceFromEdge?: number,
-	style: Props
+	style?: Props
 }
 
 const Arrow = forwardRef((props: ArrowProps, ref: React.RefObject<HTMLElement>) => {
