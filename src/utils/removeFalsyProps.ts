@@ -2,7 +2,7 @@ export interface Props {
 	[key: string]: unknown;
 }
 
-export function removeFalsyProps(object: Props): null | Props {
+export default function removeFalsyProps(object: Props): null | Props {
 	if (!object) return null;
 
 	const result = {};
