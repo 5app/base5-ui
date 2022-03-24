@@ -1,3 +1,18 @@
+# [14.7.0](https://github.com/5app/base5-ui/compare/v14.6.0...v14.7.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* imports/exports shenanigans noissue ([e921d01](https://github.com/5app/base5-ui/commit/e921d0190a5dad70dcb83ce5008ea65066fe72a7))
+* interface for proptypes [#175](https://github.com/5app/base5-ui/issues/175) ([15acbde](https://github.com/5app/base5-ui/commit/15acbdeb6f8e79a2b9af7126f25aec61282b77cc))
+* ts exporting noissue; ([7e5a837](https://github.com/5app/base5-ui/commit/7e5a837921ba31496ebbdc6cd14f821fc0818281))
+* Update comments - [@dion](https://github.com/dion) [#175](https://github.com/5app/base5-ui/issues/175) ([717e85a](https://github.com/5app/base5-ui/commit/717e85a8336eefdf088b50cdcfd3a670822bc4cf))
+
+
+### Features
+
+* refactor arrow to typescript [#175](https://github.com/5app/base5-ui/issues/175) ([217ede5](https://github.com/5app/base5-ui/commit/217ede5bdcb8cf0028f39cd070dd553c0f1a7865))
+
 # [14.6.0](https://github.com/5app/base5-ui/compare/v14.5.0...v14.6.0) (2022-03-03)
 
 
