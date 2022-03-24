@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {pxToRem, pxToEm} from '../utils/units';
@@ -29,7 +28,17 @@ function shouldForwardProp(prop) {
 	].includes(prop);
 }
 
-const Svg = styled.svg.withConfig({shouldForwardProp})`
+interface StyledIconBase {
+	spacingLeft?: string,
+	spacingRight?: string,
+	scale?: number,
+	vAlign?: string, // not sure about this one
+	dimmed?: boolean,
+	disablePointerEvents?: boolean,
+	flip?: number // also not sure about this one
+}
+
+const Svg = styled.svg.withConfig({shouldForwardProp})<StyledIconBase>`
 	display: inline-block;
 	vertical-align: middle;
 
@@ -83,15 +92,6 @@ const Svg = styled.svg.withConfig({shouldForwardProp})`
 
 Svg.defaultProps = {
 	scale: 1,
-};
-
-Svg.propTypes = {
-	dimmed: PropTypes.bool,
-	scale: PropTypes.number,
-	vAlign: PropTypes.bool,
-	disablePointerEvents: PropTypes.bool,
-	spacingLeft: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-	spacingRight: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 export default Svg;

@@ -6,7 +6,7 @@ const iconMap = {
 	'asset-article': require('../icons/AssetText.tsx').default,
 	'asset-default': require('../icons/AssetDefault.tsx').default,
 	'asset-diagram': require('../icons/AssetDiagram.tsx').default,
-	'asset-fluidbook': require('../icons/AssetFluidboo.tsx').default,
+	'asset-fluidbook': require('../icons/AssetFluidbook.tsx').default,
 	'asset-folder': require('../icons/AssetFolder.tsx').default,
 	'asset-image': require('../icons/AssetImage.tsx').default,
 	'asset-infographic': require('../icons/AssetInfographic.tsx').default,
