@@ -5,8 +5,9 @@ module.exports = ({
 }) => `import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
+import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef((props, ref) => {
+const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually

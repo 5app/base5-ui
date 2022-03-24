@@ -6,7 +6,7 @@
 	"types": "dist/index.d.ts",
 	"sideEffects": false,
 	"scripts": {
-		"build-icons": "pixo src-icons/svg --out-dir src/icons --template src-icons/template.js",
+		"build-icons": "pixo src-icons/svg --out-dir src/icons --template src-icons/template.js -f .tsx",
 		"compile": "tsc",
 		"copypackage": "cp -rf package.json README.md dist",
 		"predist": "npm run copypackage",
