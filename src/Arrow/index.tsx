@@ -1,10 +1,9 @@
 import React, {forwardRef, useMemo} from 'react';
-import PropTypes from 'prop-types';
 
-import {POPPER_PLACEMENTS} from '../constants';
-import {removeFalsyProps} from '../utils';
+import removeFalsyProps, {Props} from '../utils/removeFalsyProps';
 
 import getArrowPosition, {getPlacements} from './getArrowPosition';
+import { CSSProperties } from 'styled-components';
 
 const transformMap = {
 	top: 'translateY(-50%) rotate(135deg)',
@@ -13,31 +12,55 @@ const transformMap = {
 	left: 'translateX(-50%) rotate(45deg)',
 };
 
-function useArrowStyles(primaryPlacement, arrowSize) {
+
+function useArrowStyles(primaryPlacement: string, arrowSize: number) {
 	const arrowStyles = useMemo(
-		() => ({
-			position: 'absolute',
+		() => {
+			const properties: CSSProperties = {
+				position: 'absolute',
 
-			display: 'inline-block',
-			width: arrowSize + 'px',
-			height: arrowSize + 'px',
+				display: 'inline-block',
+				width: arrowSize + 'px',
+				height: arrowSize + 'px',
 
-			backgroundColor: 'inherit',
-			border: 'inherit',
-			borderLeftColor: 'transparent',
-			borderBottomColor: 'transparent',
+				backgroundColor: 'inherit',
+				border: 'inherit',
+				borderLeftColor: 'transparent',
+				borderBottomColor: 'transparent',
 
-			transform: transformMap[primaryPlacement],
-			transformOrigin: '50%',
-			clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
-		}),
+				transform: transformMap[primaryPlacement],
+				transformOrigin: '50%',
+				clipPath: 'polygon(0 0, 100% 0, 100% 100%)',
+			}
+			return properties;
+	},
 		[arrowSize, primaryPlacement]
 	);
 
 	return arrowStyles;
 }
 
-const Arrow = forwardRef((props, ref) => {
+interface ArrowProps {
+	/**
+	 * The arrow will be placed on the opposing side of the defined direction:
+	 * 'top', 'bottom', 'left', or 'right'.
+	 * Add an optional suffix '-start' or '-end' to align the arrow to the
+	 * start or end of the chosen direction.
+	 */
+	placement?: string,
+	/**
+	 * Control the arrow size (length of side)
+	 */
+	size?: number,
+	/**
+	 * Controls how far the arrow is placed from the container's edge when
+	 * the placement contains a '-start' or '-end' suffix.
+	 */
+	distanceFromEdge?: number,
+	style?: Props
+}
+
+const Arrow = forwardRef((props: ArrowProps, ref: React.RefObject<HTMLElement>) => {
 	const {placement, size, distanceFromEdge, style} = props;
 
 	const [primaryPlacement] = getPlacements(placement);
@@ -71,27 +94,6 @@ Arrow.defaultProps = {
 	placement: 'top',
 	size: 8,
 	distanceFromEdge: 8,
-};
-
-Arrow.propTypes = {
-	/**
-	 * Controls how far the arrow is placed from the container's edge when
-	 * the placement contains a '-start' or '-end' suffix.
-	 */
-	distanceFromEdge: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-	/**
-	 * The arrow will be placed on the opposing side of the defined direction:
-	 * 'top', 'bottom', 'left', or 'right'.
-	 * Add an optional suffix '-start' or '-end' to align the arrow to the
-	 * start or end of the chosen direction.
-	 */
-	placement: PropTypes.oneOf(
-		POPPER_PLACEMENTS.filter(position => !position.startsWith('auto'))
-	),
-	/**
-	 * Control the arrow size (length of side)
-	 */
-	size: PropTypes.number,
 };
 
 export default Arrow;
