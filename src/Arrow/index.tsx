@@ -1,6 +1,6 @@
 import React, {forwardRef, useMemo} from 'react';
 
-import {removeFalsyProps, Props} from '../utils/removeFalsyProps';
+import removeFalsyProps, {Props} from '../utils/removeFalsyProps';
 
 import getArrowPosition, {getPlacements} from './getArrowPosition';
 import { CSSProperties } from 'styled-components';

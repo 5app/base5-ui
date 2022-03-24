@@ -19,4 +19,4 @@ export {
 	getPropFilter,
 	getPropNamesFromPropDefinition,
 } from './styleProps';
-export {removeFalsyProps} from './removeFalsyProps';
+export {default as removeFalsyProps} from './removeFalsyProps';
