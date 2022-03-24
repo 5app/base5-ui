@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react';
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const CollectionIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const TopicIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -29,11 +29,11 @@ const CollectionIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	);
 });
 
-CollectionIcon.displayName = 'CollectionIcon';
+TopicIcon.displayName = 'TopicIcon';
 
-CollectionIcon.defaultProps = {
+TopicIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default CollectionIcon;
+export default TopicIcon;

@@ -3,7 +3,7 @@ import React, {forwardRef} from 'react';
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const GandalfIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const ForbiddenIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -29,11 +29,11 @@ const GandalfIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	);
 });
 
-GandalfIcon.displayName = 'GandalfIcon';
+ForbiddenIcon.displayName = 'ForbiddenIcon';
 
-GandalfIcon.defaultProps = {
+ForbiddenIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default GandalfIcon;
+export default ForbiddenIcon;

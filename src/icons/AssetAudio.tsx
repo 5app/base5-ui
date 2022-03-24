@@ -1,8 +1,7 @@
 import React, {forwardRef} from 'react';
 
-import Svg from './BaseSvg'
+import Svg from './BaseSvg';
 import { SVGRProps } from './util';
-
 
 const AssetAudioIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;

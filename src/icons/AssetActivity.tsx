@@ -1,7 +1,6 @@
 import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
-
 import { SVGRProps } from './util';
 
 const AssetActivityIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
