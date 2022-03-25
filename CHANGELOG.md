@@ -1,3 +1,20 @@
+# [14.8.0](https://github.com/5app/base5-ui/compare/v14.7.0...v14.8.0) (2022-03-25)
+
+
+### Bug Fixes
+
+* apply Dion type suggestions [#182](https://github.com/5app/base5-ui/issues/182) ([c6aabed](https://github.com/5app/base5-ui/commit/c6aabedaec1132326e352d4c87ceedbbaf54fef6))
+* icons refactor typescript [#182](https://github.com/5app/base5-ui/issues/182) ([f82c8cc](https://github.com/5app/base5-ui/commit/f82c8cc1a6bb07127fa6f55b6f0371038fd46012))
+* mistaken file name [#182](https://github.com/5app/base5-ui/issues/182) ([ed91f1e](https://github.com/5app/base5-ui/commit/ed91f1e19ff5352907ec27ebecf1e225bdbea204))
+* remove superflous props [#182](https://github.com/5app/base5-ui/issues/182) ([15db782](https://github.com/5app/base5-ui/commit/15db7823cc73f75b9081d98fa8b61535c49cbf81))
+
+
+### Features
+
+* few more ts refactor bits [#182](https://github.com/5app/base5-ui/issues/182) ([7dd5a18](https://github.com/5app/base5-ui/commit/7dd5a183f3ec36b63cb1b700141979eadd42d5c5))
+* modified icons noissue ([f8ff619](https://github.com/5app/base5-ui/commit/f8ff619af5bed3829f9e17b8d18347fbe6142171))
+* update scripts and template noissue ([1830e32](https://github.com/5app/base5-ui/commit/1830e32570dd3e4e4c76757ac5074f7a32a2a00b))
+
 # [14.7.0](https://github.com/5app/base5-ui/compare/v14.6.0...v14.7.0) (2022-03-24)
 
 
