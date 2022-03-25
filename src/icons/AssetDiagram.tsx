@@ -1,13 +1,9 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData,
-}) => `import React, {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const AssetDiagramIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -19,7 +15,7 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 		<Svg
 			{...otherProps}
 			ref={ref}
-			viewBox="${viewBox}"
+			viewBox="0 0 18 18"
 			width={size}
 			height={size}
 			fill={color}
@@ -28,17 +24,16 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 			focusable="false"
 			aria-hidden={ariaHidden}
 		>
-			<path d="${pathData}" />
+			<path d="M 5 13 H 7 V 15 H 5 z M 2 9 H 4 V 15 H 2 z M 8 5 H 10 V 15 H 8 z M 11 3 H 13 V 15 H 11 z M 14 7 H 16 V 15 H 14 z" />
 		</Svg>
 	);
 });
 
-${name}Icon.displayName = '${name}Icon';
+AssetDiagramIcon.displayName = 'AssetDiagramIcon';
 
-${name}Icon.defaultProps = {
+AssetDiagramIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default ${name}Icon;
-`;
+export default AssetDiagramIcon;

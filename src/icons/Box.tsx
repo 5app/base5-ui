@@ -1,13 +1,9 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData,
-}) => `import React, {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const BoxIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -19,7 +15,7 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 		<Svg
 			{...otherProps}
 			ref={ref}
-			viewBox="${viewBox}"
+			viewBox="0 0 18 18"
 			width={size}
 			height={size}
 			fill={color}
@@ -28,17 +24,16 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 			focusable="false"
 			aria-hidden={ariaHidden}
 		>
-			<path d="${pathData}" />
+			<path d="M15,6l0,6.473c0,1.395 -1.132,2.527 -2.527,2.527c-2.043,0 -4.903,0 -6.946,0c-1.395,0 -2.527,-1.132 -2.527,-2.527l0,-6.473l12,0ZM10,7.938l-2,0l0,1.124l2,0l0,-1.124Z M 2 3 H 16 V 5 H 2 z" />
 		</Svg>
 	);
 });
 
-${name}Icon.displayName = '${name}Icon';
+BoxIcon.displayName = 'BoxIcon';
 
-${name}Icon.defaultProps = {
+BoxIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default ${name}Icon;
-`;
+export default BoxIcon;

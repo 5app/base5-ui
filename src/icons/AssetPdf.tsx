@@ -1,13 +1,9 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData,
-}) => `import React, {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const AssetPdfIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -19,7 +15,7 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 		<Svg
 			{...otherProps}
 			ref={ref}
-			viewBox="${viewBox}"
+			viewBox="0 0 18 18"
 			width={size}
 			height={size}
 			fill={color}
@@ -28,17 +24,16 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 			focusable="false"
 			aria-hidden={ariaHidden}
 		>
-			<path d="${pathData}" />
+			<path d="M15,13l0,2l-12,0l0,-2l12,0Zm-7,-3l0,2l-5,0l0,-2l5,0Zm7,-3l0,5l-6,0l0,-5l6,0Zm-7,0l0,2l-5,0l0,-2l5,0Zm7,-4l0,3l-12,0l0,-3l12,0Z" />
 		</Svg>
 	);
 });
 
-${name}Icon.displayName = '${name}Icon';
+AssetPdfIcon.displayName = 'AssetPdfIcon';
 
-${name}Icon.defaultProps = {
+AssetPdfIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default ${name}Icon;
-`;
+export default AssetPdfIcon;

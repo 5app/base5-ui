@@ -1,13 +1,9 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData,
-}) => `import React, {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const NavDownIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -19,7 +15,7 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 		<Svg
 			{...otherProps}
 			ref={ref}
-			viewBox="${viewBox}"
+			viewBox="0 0 18 18"
 			width={size}
 			height={size}
 			fill={color}
@@ -28,17 +24,16 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 			focusable="false"
 			aria-hidden={ariaHidden}
 		>
-			<path d="${pathData}" />
+			<path d="M14,5l-5,9l-5,-9l10,0Z" />
 		</Svg>
 	);
 });
 
-${name}Icon.displayName = '${name}Icon';
+NavDownIcon.displayName = 'NavDownIcon';
 
-${name}Icon.defaultProps = {
+NavDownIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default ${name}Icon;
-`;
+export default NavDownIcon;

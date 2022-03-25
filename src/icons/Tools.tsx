@@ -1,13 +1,9 @@
-module.exports = ({
-	name,
-	viewBox,
-	pathData,
-}) => `import React, {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 
 import Svg from './BaseSvg';
 import { SVGRProps } from './util';
 
-const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
+const ToolsIcon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 	const {size, color, ...otherProps} = props;
 
 	// Unless the icon has an explicit ARIA label, we'll hide it visually
@@ -19,7 +15,7 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 		<Svg
 			{...otherProps}
 			ref={ref}
-			viewBox="${viewBox}"
+			viewBox="0 0 18 18"
 			width={size}
 			height={size}
 			fill={color}
@@ -28,17 +24,16 @@ const ${name}Icon = forwardRef<SVGSVGElement, SVGRProps>((props, ref) => {
 			focusable="false"
 			aria-hidden={ariaHidden}
 		>
-			<path d="${pathData}" />
+			<path d="M9,5c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M9,11c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z M9,17c-1.105,0 -2,-0.895 -2,-2c0,-1.105 0.895,-2 2,-2c1.105,0 2,0.895 2,2c0,1.105 -0.895,2 -2,2Z" />
 		</Svg>
 	);
 });
 
-${name}Icon.displayName = '${name}Icon';
+ToolsIcon.displayName = 'ToolsIcon';
 
-${name}Icon.defaultProps = {
+ToolsIcon.defaultProps = {
 	size: 18,
 	color: 'currentcolor',
 };
 
-export default ${name}Icon;
-`;
+export default ToolsIcon;
