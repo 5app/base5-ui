@@ -32,10 +32,11 @@ interface StyledIconBase {
 	spacingLeft?: string,
 	spacingRight?: string,
 	scale?: number,
-	vAlign?: string, // not sure about this one
+	vAlign?: boolean,
 	dimmed?: boolean,
 	disablePointerEvents?: boolean,
-	flip?: number // also not sure about this one
+	flip?: 'x' | 'y',
+	rotate?: number,
 }
 
 const Svg = styled.svg.withConfig({shouldForwardProp})<StyledIconBase>`

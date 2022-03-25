@@ -24,8 +24,8 @@ interface CustomIconProps {
 	name: string,
 	scale: number,
 	size: string,
-	spacingLeft: any, // seems this can take a string or a number, not good!
-	spacingRight: any,
+	spacingLeft: string | number,
+	spacingRight: string | number,
 	theme: LocalThemeSection
 }
 
