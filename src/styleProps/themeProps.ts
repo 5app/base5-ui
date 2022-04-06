@@ -3,6 +3,8 @@ import {
 	getColorBlock,
 	getSolidBackgroundShade,
 	getBackgroundShade,
+	getBorderColor,
+	getDimmedTextColor,
 } from '../utils/colors';
 import {LocalThemeSection} from '../theme/types';
 
@@ -12,6 +14,12 @@ function getBackgroundColour(value: string, theme: LocalThemeSection): string {
 	}
 	if (value === 'transparently-shaded') {
 		return getBackgroundShade(theme);
+	}
+	if (value === 'border') {
+		return getBorderColor(theme);
+	}
+	if (value === 'dimmed') {
+		return getDimmedTextColor(theme);
 	}
 	return getColorBlock(value, theme);
 }
