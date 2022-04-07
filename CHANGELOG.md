@@ -1,3 +1,17 @@
+# [14.9.0](https://github.com/5app/base5-ui/compare/v14.8.0...v14.9.0) (2022-04-07)
+
+
+### Bug Fixes
+
+* **Icon:** Generic imports for iconMap, noissue ([eb1bde2](https://github.com/5app/base5-ui/commit/eb1bde242dd67f8bdccfece5ca8959feb357128f))
+
+
+### Features
+
+* **Stack:** New `withDividers` prop, noissue ([9cfac3f](https://github.com/5app/base5-ui/commit/9cfac3ff4312f18a801c3061d542e8a44f269e12))
+* Add new background values 'dimmed' and 'border', noissue ([0e10b5c](https://github.com/5app/base5-ui/commit/0e10b5c103238a0feaf7b0f6e37e44b052718aa0))
+* New simple Divider component, noissue ([f247a5a](https://github.com/5app/base5-ui/commit/f247a5a1520e6ce91e9534a70c076c37651833eb))
+
 # [14.8.0](https://github.com/5app/base5-ui/compare/v14.7.0...v14.8.0) (2022-03-25)
 
 
