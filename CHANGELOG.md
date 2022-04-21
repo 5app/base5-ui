@@ -1,3 +1,10 @@
+## [14.9.1](https://github.com/5app/base5-ui/compare/v14.9.0...v14.9.1) (2022-04-21)
+
+
+### Bug Fixes
+
+* **Stack:** Fix unkown prop warning, noissue ([424a404](https://github.com/5app/base5-ui/commit/424a404305d47ad57c229f17433c66a5018a6d80))
+
 # [14.9.0](https://github.com/5app/base5-ui/compare/v14.8.0...v14.9.0) (2022-04-07)
 
 
