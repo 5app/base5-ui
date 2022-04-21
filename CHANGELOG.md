@@ -1,3 +1,10 @@
+# [14.10.0](https://github.com/5app/base5-ui/compare/v14.9.1...v14.10.0) (2022-04-21)
+
+
+### Features
+
+* **Button:** Improve disabled button state, noissue ([2dc8b27](https://github.com/5app/base5-ui/commit/2dc8b2786c563df9d54ca3cfd4533ef78fa13daf))
+
 ## [14.9.1](https://github.com/5app/base5-ui/compare/v14.9.0...v14.9.1) (2022-04-21)
 
 
