@@ -22,10 +22,6 @@ module.exports = {
 		'no-unused-vars': ['error', {ignoreRestSiblings: true}],
 		'no-console': ['error', {allow: ['error', 'warn']}],
 		'prefer-template': 'off',
-		'react/jsx-no-bind': [
-			'error',
-			{allowArrowFunctions: true, ignoreRefs: true},
-		],
 		'react/prop-types': 'off',
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'warn',
