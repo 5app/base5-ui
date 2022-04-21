@@ -2,7 +2,7 @@ import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import styled, {css} from 'styled-components';
 
-import {alpha} from '../utils/colors';
+import {alpha, mix, getSolidBackgroundShade, isDark} from '../utils/colors';
 import {pxToRem} from '../utils/units';
 import {fillParent, ellipsis, overflowWrap} from '../mixins';
 import {
@@ -129,7 +129,7 @@ const Wrapper = styled(ButtonCore).withConfig({
 	${p =>
 		p.color === 'default' &&
 		css`
-			&::before {
+			&:not(.is-disabled)::before {
 				content: '';
 				${fillParent}
 				border-radius: inherit;
@@ -146,20 +146,36 @@ const Wrapper = styled(ButtonCore).withConfig({
 	}
 
 	&.is-disabled {
-		color: white;
-		background-color: ${alpha('black', 0.3)};
-		border-color: transparent;
-		opacity: 0.3;
-		text-shadow: 0 1px 3px black;
+		${p => {
+			const darkColor = mix(p.theme.text)(
+				'white',
+				p.theme.textDimStrength * 0.75
+			);
+			const lightColor = getSolidBackgroundShade(p.theme);
+
+			if (p.color === 'primary' || p.color === 'important') {
+				const isTextDark = isDark(
+					p.theme.globals.buttons[p.color].text
+				);
+				return `
+				color: ${isTextDark ? darkColor : lightColor};
+				background-color: ${isTextDark ? lightColor : darkColor};
+				`;
+			} else {
+				return `
+				color: ${darkColor};
+				background-color: ${lightColor};
+				`;
+			}
+		}}
+
 		cursor: not-allowed;
 
 		${p =>
 			(p.color === 'transparent' || p.color === 'shaded') &&
 			css`
-				color: ${p => p.theme.text};
 				background-color: transparent;
 				border-color: transparent;
-				text-shadow: none;
 			`}
 	}
 `;
