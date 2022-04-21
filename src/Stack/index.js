@@ -1,7 +1,7 @@
 import React, {createContext, useContext, forwardRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {getSpacing, createStyleFunction} from '../utils';
+import {getSpacing, createStyleFunction, getPropFilter} from '../utils';
 
 import Box from '../Box';
 import Divider from '../Divider';
@@ -39,7 +39,7 @@ const dividerCompensationProp = createStyleFunction([
  */
 
 const Wrapper = styled(Box).withConfig({
-	shouldForwardProp: prop => prop !== 'compensateSpacing',
+	shouldForwardProp: getPropFilter(['compensateSpacing', 'withDividers']),
 })`
 	${p =>
 		p.withDividers &&
