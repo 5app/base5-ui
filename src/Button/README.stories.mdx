@@ -48,8 +48,10 @@ The base5-ui button component. Built on top of ButtonCore.
 
 ## Examples
 
+Basic button types and sizes:
+
 <Canvas>
-	<InlineList spacing="s">
+	<InlineList spacing="s" width="100%">
 		<Button color="primary" icon="ok">
 			Save
 		</Button>
@@ -68,11 +70,35 @@ The base5-ui button component. Built on top of ButtonCore.
 		<Button isActive size="medium">
 			Done
 		</Button>
-		<Button isDisabled size="medium">
-			Mark as done
+	</InlineList>
+</Canvas>
+
+Disabled:
+
+<Canvas>
+	<InlineList spacing="s">
+		<Button isDisabled color="primary" icon="ok">
+			Save
+		</Button>
+		<Button isDisabled> Cancel</Button>
+		<Button isDisabled size="medium" color="important">
+			Delete
+		</Button>
+		<Button isDisabled size="medium" icon="send">
+			Share
+		</Button>
+		<Button isDisabled icon="tools" size="medium" color="shaded" />
+		<Button isDisabled size="small" color="transparent">
+			Forgot password?
+		</Button>
+		<Button isDisabled round icon="plus" color="important" />
+		<Button isDisabled isActive size="medium">
+			Done
 		</Button>
 	</InlineList>
 </Canvas>
+
+Full-width button:
 
 <Canvas>
 	<Button fullWidth color="primary" icon="ok">
@@ -80,11 +106,15 @@ The base5-ui button component. Built on top of ButtonCore.
 	</Button>
 </Canvas>
 
+Large, left-aligned button:
+
 <Canvas>
-	<Button fullWidth align="left" size="large" color="shaded" icon="plus">
+	<Button fullWidth align="left" size="large" color="transparent" icon="plus">
 		Add to My learning
 	</Button>
 </Canvas>
+
+Button with text overflow:
 
 <Canvas>
 	<Box width={285}>

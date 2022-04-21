@@ -14,14 +14,16 @@ import Stack, {StackWrapper, StackItem} from './';
 import Stack from 'base5-ui/Stack';
 ```
 
-Control vertical spacing between Stack items. Supports all `Box` style props.
+Control vertical spacing and dividers between Stack items. Supports all `Box` style props.
 
-## Examples
+## Spacing
+
+Use the `spacing` prop with responsive theme tokens to control the distance between each list item.
 
 <Canvas>
 	<Story
 		name="Simple"
-		args={{spacing: 'xxs'}}
+		args={{spacing: 's', withDividers: false}}
 		argTypes={{
 			spacing: {
 				control: {type: 'radio'},
@@ -33,6 +35,35 @@ Control vertical spacing between Stack items. Supports all `Box` style props.
 			<Stack {...props}>
 				<TextLink href="#">Home</TextLink>
 				<TextLink href="#">Projects</TextLink>
+				<TextLink href="#">Pricing</TextLink>
+				<TextLink href="#">About us</TextLink>
+			</Stack>
+		)}
+	</Story>
+</Canvas>
+
+## Dividers
+
+Use the `withDividers` prop to add a simple divider between each list item.
+
+> Note that this also adds `overflow: hidden` to the `Stack` container.
+
+<Canvas>
+	<Story
+		name="With dividers"
+		args={{spacing: 's', withDividers: true}}
+		argTypes={{
+			spacing: {
+				control: {type: 'radio'},
+				options: [0, 'xxs', 'xs', 's', 'm', 'xl', 'xxl'],
+			},
+		}}
+	>
+		{props => (
+			<Stack {...props}>
+				<TextLink href="#">Home</TextLink>
+				<TextLink href="#">Projects</TextLink>
+				<TextLink href="#">Pricing</TextLink>
 				<TextLink href="#">About us</TextLink>
 			</Stack>
 		)}
@@ -70,7 +101,12 @@ The following list has a third list item that will be hidden on larger screens.
 <Canvas>
 	<Story
 		name="Hiding items"
-		args={{as: 'list', spacing: [0, 's', 'xl'], breakpoints: ['m', 'l']}}
+		args={{
+			as: 'list',
+			spacing: [0, 's', 'xl'],
+			withDividers: false,
+			breakpoints: ['m', 'l'],
+		}}
 	>
 		{props => (
 			<Stack {...props}>
@@ -101,7 +137,12 @@ Instead of using the `Hidden` component to responsively hide items, you can pass
 <Canvas>
 	<Story
 		name="Granular rendering"
-		args={{as: 'list', spacing: [0, 's', 'xl'], breakpoints: ['m', 'l']}}
+		args={{
+			as: 'list',
+			spacing: [0, 's', 'xl'],
+			withDividers: false,
+			breakpoints: ['m', 'l'],
+		}}
 	>
 		{props => (
 			<StackWrapper {...props}>

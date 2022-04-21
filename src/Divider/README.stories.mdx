@@ -1,0 +1,20 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
+
+import Text from '../Text';
+import Divider from './';
+
+<Meta title="Components/Divider" component={Divider} />
+
+# Divider
+
+```js
+import Divider from 'base5-ui/Divider';
+```
+
+A simple horizontal rule or divider that can be used to visually separate sections.
+
+## Example
+
+<Canvas>
+	<Story name="Divider">{props => <Divider {...props} />}</Story>
+</Canvas>

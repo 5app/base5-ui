@@ -1,16 +1,32 @@
 import React, {createContext, useContext, forwardRef} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {getSpacing, createStyleFunction} from '../utils';
+import {getSpacing, createStyleFunction, getPropFilter} from '../utils';
 
 import Box from '../Box';
+import Divider from '../Divider';
 import Hidden from '../Hidden';
 
-export const spacingCompensationProp = createStyleFunction([
+const spacingCompensationProp = createStyleFunction([
 	{
 		styleProp: 'compensateSpacing',
 		properties: ['marginBottom'],
 		getValue: (value, theme) => `-${getSpacing(value, theme)}`,
+	},
+]);
+
+const dividerCompensationProp = createStyleFunction([
+	{
+		styleProp: 'compensateSpacing',
+		properties: ['marginBottom'],
+		getValue: (value, theme) => {
+			const spacing = getSpacing(value, theme);
+			if (Number(spacing) === 0) {
+				return '-1px';
+			} else {
+				return `calc(-${spacing} * 2 - 1px)`;
+			}
+		},
 	},
 ]);
 
@@ -21,14 +37,22 @@ export const spacingCompensationProp = createStyleFunction([
  * E.g., if a negative margin-top was used instead, it would
  * clash with the `mt` prop.
  */
+
 const Wrapper = styled(Box).withConfig({
-	shouldForwardProp: prop => prop !== 'compensateSpacing',
+	shouldForwardProp: getPropFilter(['compensateSpacing', 'withDividers']),
 })`
+	${p =>
+		p.withDividers &&
+		`
+		overflow: hidden;
+	`}
+
 	&::before {
 		content: '';
 		display: block;
 		height: 0;
-		${spacingCompensationProp}
+		${p =>
+			p.withDividers ? dividerCompensationProp : spacingCompensationProp}
 	}
 `;
 
@@ -49,12 +73,20 @@ function getHiddenChildProps(child) {
 	} else return null;
 }
 
-function Stack({children, spacing, breakpoints, as, ...otherProps}) {
+function Stack({
+	children,
+	spacing,
+	withDividers,
+	breakpoints,
+	as,
+	...otherProps
+}) {
 	const [wrapperAs, itemAs] = getRoles(as);
 
 	return (
 		<Wrapper
 			{...otherProps}
+			withDividers={withDividers}
 			compensateSpacing={spacing}
 			as={wrapperAs}
 			breakpoints={breakpoints}
@@ -80,6 +112,7 @@ function Stack({children, spacing, breakpoints, as, ...otherProps}) {
 						pt={spacing}
 						breakpoints={breakpoints}
 					>
+						{withDividers && <Divider mb={spacing} />}
 						{hiddenChildProps ? hiddenChildProps.children : child}
 					</Component>
 				);
@@ -103,6 +136,10 @@ Stack.propTypes = {
 		PropTypes.array,
 	]),
 	/**
+	 * Add dividers between each Stack item
+	 */
+	withDividers: PropTypes.bool,
+	/**
 	 * Breakpoints to use when responsive spacing values are provided
 	 */
 	breakpoints: PropTypes.oneOfType([
@@ -120,7 +157,10 @@ Stack.propTypes = {
 const StandaloneStackContext = createContext();
 
 const StackWrapper = forwardRef(
-	({children, as, spacing, breakpoints, ...otherProps}, ref) => {
+	(
+		{children, as, spacing, withDividers, breakpoints, ...otherProps},
+		ref
+	) => {
 		const [wrapperAs, itemAs] = getRoles(as);
 		return (
 			<Wrapper
@@ -128,10 +168,11 @@ const StackWrapper = forwardRef(
 				ref={ref}
 				as={wrapperAs}
 				compensateSpacing={spacing}
+				withDividers={withDividers}
 				breakpoints={breakpoints}
 			>
 				<StandaloneStackContext.Provider
-					value={{as: itemAs, spacing, breakpoints}}
+					value={{as: itemAs, spacing, breakpoints, withDividers}}
 				>
 					{children}
 				</StandaloneStackContext.Provider>
@@ -147,7 +188,9 @@ const StackItem = forwardRef(
 		{children, hiddenAbove, hiddenBelow, allowUnknownProps, ...otherProps},
 		ref
 	) => {
-		const {as, spacing, breakpoints} = useContext(StandaloneStackContext);
+		const {as, spacing, withDividers, breakpoints} = useContext(
+			StandaloneStackContext
+		);
 
 		const Component = hiddenAbove || hiddenBelow ? Hidden : Box;
 
@@ -161,6 +204,7 @@ const StackItem = forwardRef(
 				above={hiddenAbove}
 				breakpoints={breakpoints}
 			>
+				{withDividers && <Divider mb={spacing} />}
 				{children}
 			</Component>
 		);
