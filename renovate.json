@@ -1,5 +1,9 @@
 {
-	"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-	"automerge": true,
-	"extends": ["config:base", ":preserveSemverRanges"]
+	"extends": ["config:base", ":preserveSemverRanges"],
+	"packageRules": [
+		{
+			"matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+			"automerge": true
+		}
+	]
 }
