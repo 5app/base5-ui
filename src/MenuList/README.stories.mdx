@@ -9,7 +9,7 @@ import * as MenuList from './';
 # MenuList
 
 ```jsx
-import {Wrapper, Item, ItemIcon, Link, MenuItemDivider} from 'base5-ui/MenuList';
+import {Wrapper, Item, ItemIcon, Link, ItemDivider, GroupLabel} from 'base5-ui/MenuList';
 // or
 import * as MenuList from 'base5-ui/MenuList';
 ```
@@ -20,7 +20,8 @@ MenuList is a set of components used for building dropdown menus:
 -   MenuList.Item
 -   MenuList.ItemIcon
 -   MenuList.Link
--   MenuList.MenuItemDivider
+-   MenuList.ItemDivider
+-   MenuList.GroupLabel
 
 They don't come with any built-in behaviour. Check out the <LinkTo kind="Components/Menu">Menu</LinkTo> and <LinkTo kind="Components/Menu (Nav)">NavMenu</LinkTo> components to see the MenuList component in use.
 
@@ -32,12 +33,13 @@ They don't come with any built-in behaviour. Check out the <LinkTo kind="Compone
 			const menuItems = [
 				{id: 0, label: 'Insert', icon: 'plus'},
 				{id: 1, label: 'Favourite', icon: 'star'},
-				{id: 2, label: 'Insights', icon: 'trending', isDisabled: true},
-				{id: 3, label: 'Download', icon: 'download'},
+				{id: 3, label: 'Download', icon: 'download', isDisabled: true},
+				{id: 2, label: 'Insights', icon: 'trending'},
 			];
 			return (
 				<PopoverCard isOpen renderInPlace>
 					<MenuList.Wrapper>
+						<MenuList.GroupLabel>Actions</MenuList.GroupLabel>
 						{menuItems.map((item, index) => (
 							<>
 								<MenuList.Item key={item.id}>
@@ -53,7 +55,7 @@ They don't come with any built-in behaviour. Check out the <LinkTo kind="Compone
 										{item.label}
 									</MenuList.Link>
 								</MenuList.Item>
-								{index <= menuItems.length-2 && <MenuList.MenuItemDivider/> }
+								{index === 2 && <MenuList.ItemDivider/> }
 							</>
 						))}
 					</MenuList.Wrapper>

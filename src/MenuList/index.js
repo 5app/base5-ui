@@ -9,6 +9,7 @@ import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 import {textLinkStyles, textLinkProps} from '../TextLink';
 import Divider from '../Divider';
+import Text from '../Text';
 
 const Wrapper = styled.ul`
 	display: block;
@@ -129,8 +130,29 @@ const ItemIcon = forwardRef((props, ref) => {
 
 ItemIcon.displayName = 'ItemIcon';
 
-const MenuItemDivider = () => {
+const ItemDivider = () => {
 	return <Divider mb="xs" mt="xs" />;
 };
 
-export {Wrapper, Item, ItemIcon, Link, MenuItemDivider};
+ItemDivider.displayName = 'ItemDivider';
+
+const GroupLabelWrapper = styled.div`
+	margin: ${p => p.theme.globals.spacing.xxs}
+		${p => p.theme.globals.spacing.s};
+`;
+
+const GroupLabel = ({children}) => {
+	return (
+		<GroupLabelWrapper>
+			<Text dimmed bold size="xxs">
+				{children}
+			</Text>
+		</GroupLabelWrapper>
+	);
+};
+
+GroupLabel.propTypes = {
+	children: PropTypes.string.isRequired,
+};
+
+export {Wrapper, Item, ItemIcon, Link, ItemDivider, GroupLabel};

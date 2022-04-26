@@ -1,7 +1,7 @@
 import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs/blocks';
 import LinkTo from '@storybook/addon-links/react';
 
-import {Menu, MenuButton, MenuList, MenuItem} from './';
+import {Menu, MenuButton, MenuList, MenuItem, MenuItemGroup, MenuItemDivider} from './';
 import Status from '../Status';
 
 <Meta title="Components/Menu" component={Menu} />
@@ -9,7 +9,7 @@ import Status from '../Status';
 # Menu
 
 ```jsx
-import {Menu, MenuButton, MenuList, MenuItem} from 'base5-ui/Menu';
+import {Menu, MenuButton, MenuList, MenuItem, MenuItemDivider, MenuItemGroup, MenuItemDivider} from 'base5-ui/Menu';
 ```
 
 An implementation of the menu button pattern as described in the [WAI-ARIA guidelines](https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton).
@@ -23,17 +23,21 @@ This component doesn't support the `menuitemradio` or `menuitemcheckbox` roles a
 	<Story name="Menu" args={{id: 'demo-menu', menuPlacement: 'bottom'}}>
 		{props => {
 			const [lastSelectedItem, setLastSelectedItem] = React.useState();
-			const menuItems = [
+			const menuItemsGroupOne = [
 				{id: 0, label: 'Insert', icon: 'plus'},
-				{id: 1, label: 'Favourite', icon: 'star'},
 				{
-					id: 2,
+					id: 1,
 					label: 'Reset progress',
 					icon: 'trending',
 					isDisabled: true,
 				},
-				{id: 3, label: 'Download', icon: 'download'},
+				{id: 2, label: 'Download', icon: 'download'},
 			];
+			const menuItemsGroupTwo = [
+				{id: 3, label: 'Favourites', icon: 'star'},
+				{id: 4, label: 'Liked', icon: 'like'},
+			];
+			
 			return (
 				<>
 					<Menu {...props}>
@@ -41,18 +45,35 @@ This component doesn't support the `menuitemradio` or `menuitemcheckbox` roles a
 							More actions
 						</MenuButton>
 						<MenuList>
-							{menuItems.map(item => (
-								<MenuItem
-									key={item.id}
-									icon={item.icon}
-									isDisabled={item.isDisabled}
-									onClick={() =>
-										setLastSelectedItem(item.label)
-									}
-								>
-									{item.label}
-								</MenuItem>
-							))}
+							<MenuItemGroup label="Actions" id="actions">
+								{menuItemsGroupOne.map(item => (
+									<MenuItem
+										key={item.id}
+										icon={item.icon}
+										isDisabled={item.isDisabled}
+										onClick={() =>
+											setLastSelectedItem(item.label)
+										}
+									>
+										{item.label}
+									</MenuItem>
+								))}
+							</MenuItemGroup>
+							<MenuItemDivider/>
+							<MenuItemGroup label="Stats" id="stats">
+								{menuItemsGroupTwo.map(item => (
+									<MenuItem
+										key={item.id}
+										icon={item.icon}
+										isDisabled={item.isDisabled}
+										onClick={() =>
+											setLastSelectedItem(item.label)
+										}
+									>
+										{item.label}
+									</MenuItem>
+								))}
+							</MenuItemGroup>
 						</MenuList>
 					</Menu>
 					<Status mt={lastSelectedItem ? 's' : null}>
@@ -82,3 +103,7 @@ This component doesn't support the `menuitemradio` or `menuitemcheckbox` roles a
 Note that unlike the `NavMenuItem` component, `MenuItem` doesn't support the `as` prop, i.e. its rendered element can not be changed. If you need to include a link in the menu, you might want to use the `NavMenu` component instead, or trigger the navigation programmatically.
 
 <ArgsTable of={MenuItem} />
+
+## MenuItemGroup Props
+
+<ArgsTable of={MenuItemGroup} />
