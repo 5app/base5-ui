@@ -1,18 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Text from '../Text';
 
-function GroupLabel({subtitle}) {
+const Wrapper = styled.div`
+	margin: ${p => p.theme.globals.spacing.xxs}
+		${p => p.theme.globals.spacing.s};
+`;
+function GroupLabel({children}) {
 	return (
-		<Text dimmed bold size="xxs">
-			{subtitle}
-		</Text>
+		<Wrapper>
+			<Text dimmed bold size="xxs">
+				{children}
+			</Text>
+		</Wrapper>
 	);
 }
 
 GroupLabel.propTypes = {
-	subtitle: PropTypes.string.isRequired,
+	children: PropTypes.string.isRequired,
 };
 
 export default GroupLabel;
