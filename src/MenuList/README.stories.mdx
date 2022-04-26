@@ -9,7 +9,7 @@ import * as MenuList from './';
 # MenuList
 
 ```jsx
-import {Wrapper, Item, ItemIcon, Link} from 'base5-ui/MenuList';
+import {Wrapper, Item, ItemIcon, Link, MenuItemDivider} from 'base5-ui/MenuList';
 // or
 import * as MenuList from 'base5-ui/MenuList';
 ```
@@ -20,6 +20,7 @@ MenuList is a set of components used for building dropdown menus:
 -   MenuList.Item
 -   MenuList.ItemIcon
 -   MenuList.Link
+-   MenuList.MenuItemDivider
 
 They don't come with any built-in behaviour. Check out the <LinkTo kind="Components/Menu">Menu</LinkTo> and <LinkTo kind="Components/Menu (Nav)">NavMenu</LinkTo> components to see the MenuList component in use.
 
@@ -38,19 +39,22 @@ They don't come with any built-in behaviour. Check out the <LinkTo kind="Compone
 				<PopoverCard isOpen renderInPlace>
 					<MenuList.Wrapper>
 						{menuItems.map((item, index) => (
-							<MenuList.Item key={item.id}>
-								<MenuList.Link
-									isActive={item.id === selectedItem}
-									isHighlighted={item.id === highlightedItem}
-									isDisabled={item.isDisabled}
-									onMouseEnter={() =>
-										setHighlightedItem(item.id)
-									}
-								>
-									<MenuList.ItemIcon name={item.icon} />
-									{item.label}
-								</MenuList.Link>
-							</MenuList.Item>
+							<>
+								<MenuList.Item key={item.id}>
+									<MenuList.Link
+										isActive={item.id === selectedItem}
+										isHighlighted={item.id === highlightedItem}
+										isDisabled={item.isDisabled}
+										onMouseEnter={() =>
+											setHighlightedItem(item.id)
+										}
+									>
+										<MenuList.ItemIcon name={item.icon} />
+										{item.label}
+									</MenuList.Link>
+								</MenuList.Item>
+								{index <= menuItems.length-2 && <MenuList.MenuItemDivider/> }
+							</>
 						))}
 					</MenuList.Wrapper>
 				</PopoverCard>

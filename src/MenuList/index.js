@@ -8,6 +8,7 @@ import {overflowWrap} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 import {textLinkStyles, textLinkProps} from '../TextLink';
+import Divider from '../Divider';
 
 const Wrapper = styled.ul`
 	display: block;
@@ -128,4 +129,8 @@ const ItemIcon = forwardRef((props, ref) => {
 
 ItemIcon.displayName = 'ItemIcon';
 
-export {Wrapper, Item, ItemIcon, Link};
+const MenuItemDivider = () => {
+	return <Divider mb="xs" mt="xs" />;
+};
+
+export {Wrapper, Item, ItemIcon, Link, MenuItemDivider};
