@@ -1,3 +1,10 @@
+# [14.11.0](https://github.com/5app/base5-ui/compare/v14.10.0...v14.11.0) (2022-04-27)
+
+
+### Features
+
+* add divider & group label to menu & menu list, [#198](https://github.com/5app/base5-ui/issues/198) ([#199](https://github.com/5app/base5-ui/issues/199)) ([3a04bb6](https://github.com/5app/base5-ui/commit/3a04bb658a6a3d0af7f600551359e7fb13d02805))
+
 # [14.10.0](https://github.com/5app/base5-ui/compare/v14.9.1...v14.10.0) (2022-04-21)
 
 
