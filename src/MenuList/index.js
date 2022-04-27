@@ -11,7 +11,7 @@ import {textLinkStyles, textLinkProps} from '../TextLink';
 import Divider from '../Divider';
 import Text from '../Text';
 
-const Wrapper = styled.ul`
+const Wrapper = styled.div`
 	display: block;
 	padding: ${p => p.theme.globals.spacing.xs} 0;
 	list-style: none;
@@ -28,7 +28,7 @@ const Wrapper = styled.ul`
 	}
 `;
 
-const Item = styled.li`
+const Item = styled.div`
 	position: relative;
 	display: block;
 `;
@@ -130,24 +130,28 @@ const ItemIcon = forwardRef((props, ref) => {
 
 ItemIcon.displayName = 'ItemIcon';
 
-const ItemDivider = () => {
-	return <Divider mb="xs" mt="xs" />;
+const ItemDivider = props => {
+	return <Divider {...props} my="xs" role="separator" />;
 };
 
 ItemDivider.displayName = 'ItemDivider';
 
-const GroupLabelWrapper = styled.div`
-	margin: ${p => p.theme.globals.spacing.xxs}
-		${p => p.theme.globals.spacing.s};
-`;
+const GroupLabel = props => {
+	const {children, ...otherProps} = props;
 
-const GroupLabel = ({children}) => {
 	return (
-		<GroupLabelWrapper>
-			<Text dimmed bold size="xxs">
-				{children}
-			</Text>
-		</GroupLabelWrapper>
+		<Text
+			as="div"
+			{...otherProps}
+			dimmed
+			bold
+			size="xxs"
+			mx="s"
+			mb="xxs"
+			lineHeight={1.2}
+		>
+			{children}
+		</Text>
 	);
 };
 

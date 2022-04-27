@@ -1,21 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import {GroupLabel} from '../MenuList';
+import useUniqueId from '../useUniqueId';
 
-const Wrapper = styled.span`
-	width: 100%;
-`;
+const MenuItemGroup = ({label, id, children}) => {
+	const uniqueId = useUniqueId(id);
 
-const MenuItemGroup = ({label, id = label, children}) => {
 	return (
-		<Wrapper aria-labelledby={id} role="group">
-			<GroupLabel id={id} role="separator">
-				{label}
-			</GroupLabel>
+		<div aria-labelledby={uniqueId} role="group">
+			<GroupLabel id={uniqueId}>{label}</GroupLabel>
 			{children}
-		</Wrapper>
+		</div>
 	);
 };
 
@@ -31,7 +27,7 @@ MenuItemGroup.propTypes = {
 	/**
 	 *Define an id for the menu item group
 	 */
-	id: PropTypes.string.isRequired,
+	id: PropTypes.string,
 };
 
 export default MenuItemGroup;
