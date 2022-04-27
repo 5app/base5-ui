@@ -8,6 +8,8 @@ import {overflowWrap} from '../mixins';
 import ButtonCore from '../ButtonCore';
 import Icon from '../Icon';
 import {textLinkStyles, textLinkProps} from '../TextLink';
+import Divider from '../Divider';
+import Text from '../Text';
 
 const Wrapper = styled.ul`
 	display: block;
@@ -128,4 +130,33 @@ const ItemIcon = forwardRef((props, ref) => {
 
 ItemIcon.displayName = 'ItemIcon';
 
-export {Wrapper, Item, ItemIcon, Link};
+const ItemDivider = props => {
+	return <Divider {...props} my="xs" role="separator" />;
+};
+
+ItemDivider.displayName = 'ItemDivider';
+
+const GroupLabel = props => {
+	const {children, ...otherProps} = props;
+
+	return (
+		<Text
+			as="div"
+			{...otherProps}
+			dimmed
+			bold
+			size="xxs"
+			mx="s"
+			mb="xxs"
+			lineHeight={1.2}
+		>
+			{children}
+		</Text>
+	);
+};
+
+GroupLabel.propTypes = {
+	children: PropTypes.string.isRequired,
+};
+
+export {Wrapper, Item, ItemIcon, Link, ItemDivider, GroupLabel};
