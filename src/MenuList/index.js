@@ -11,7 +11,7 @@ import {textLinkStyles, textLinkProps} from '../TextLink';
 import Divider from '../Divider';
 import Text from '../Text';
 
-const Wrapper = styled.div`
+const Wrapper = styled.ul`
 	display: block;
 	padding: ${p => p.theme.globals.spacing.xs} 0;
 	list-style: none;
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 	}
 `;
 
-const Item = styled.div`
+const Item = styled.li`
 	position: relative;
 	display: block;
 `;

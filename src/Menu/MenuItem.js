@@ -22,6 +22,7 @@ function MenuItem({icon, isDisabled, onClick, children}) {
 		<MenuListUI.Item
 			ref={itemRef}
 			id={id}
+			as="div"
 			role="menuitem"
 			aria-disabled={isDisabled ? 'true' : null}
 			onClick={mergeCallbacks(select, onClick)}

@@ -18,7 +18,7 @@ function MenuList({children}) {
 			ref={popover.setRef}
 			arrow={popover.arrow}
 		>
-			<MenuListUI.Wrapper role="menu" {...menuListProps}>
+			<MenuListUI.Wrapper as="div" {...menuListProps}>
 				{children}
 			</MenuListUI.Wrapper>
 		</PopoverCard>
