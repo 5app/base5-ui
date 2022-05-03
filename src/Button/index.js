@@ -287,6 +287,9 @@ const SpinnerDot = () => (
 	<SpinningIcon name="spinnerdot" disablePointerEvents />
 );
 
+const IconButton = ({isLoading, name}) =>
+	isLoading ? <SpinnerDot /> : <Icon disablePointerEvents name={name} />;
+
 const Button = forwardRef((props, ref) => {
 	const {
 		iconOnly,
@@ -324,13 +327,12 @@ const Button = forwardRef((props, ref) => {
 			<HoverShade />
 			<FocusRing color={color} />
 			<Content align={align}>
-				{icon &&
-					iconRight !== true &&
-					(isLoading && (!iconRight || iconOnly) ? (
-						<SpinnerDot />
-					) : (
-						<Icon disablePointerEvents name={icon} />
-					))}
+				{icon && iconRight !== true && (
+					<IconButton
+						isLoading={isLoading && (!iconRight || iconOnly)}
+						name={icon}
+					/>
+				)}
 				{children &&
 					(iconOnly ? (
 						<VisuallyHidden>
@@ -348,16 +350,13 @@ const Button = forwardRef((props, ref) => {
 							{!icon && isLoading && <SpinnerDot />}
 						</>
 					))}
-				{!iconOnly &&
-					iconRight &&
-					(isLoading ? (
-						<SpinnerDot />
-					) : (
-						<Icon
-							disablePointerEvents
-							name={hasSeparateRightIcon ? iconRight : icon}
-						/>
-					))}
+
+				{!iconOnly && iconRight && (
+					<IconButton
+						isLoading={isLoading}
+						name={hasSeparateRightIcon ? iconRight : icon}
+					/>
+				)}
 			</Content>
 		</Wrapper>
 	);
