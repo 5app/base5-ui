@@ -1,5 +1,7 @@
 const iconMap = {
 	arrow: require('../icons/Arrow').default,
+	'arrow-left': require('../icons/Arrow').default,
+	'arrow-right': require('../icons/ArrowRight').default,
 	asset: require('../icons/AssetDefault').default,
 	'asset-activity': require('../icons/AssetActivity').default,
 	'asset-audio': require('../icons/AssetAudio').default,

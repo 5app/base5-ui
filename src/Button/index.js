@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import styled, {css} from 'styled-components';
+import styled, {css, keyframes} from 'styled-components';
 
 import {alpha, mix, getSolidBackgroundShade, isDark} from '../utils/colors';
 import {pxToRem} from '../utils/units';
@@ -42,6 +42,7 @@ const shouldForwardProp = getPropFilter([
 	'round',
 	'square',
 	'fullWidth',
+	'isLoading',
 	'color',
 	'size',
 	'align',
@@ -169,7 +170,7 @@ const Wrapper = styled(ButtonCore).withConfig({
 			}
 		}}
 
-		cursor: not-allowed;
+		cursor: ${p => (p.isLoading ? 'wait' : 'not-allowed')};
 
 		${p =>
 			(p.color === 'transparent' || p.color === 'shaded') &&
@@ -269,6 +270,26 @@ const ButtonText = styled.span.withConfig({
 	${p => (p.textOverflow === 'ellipsis' ? ellipsis : overflowWrap)}
 `;
 
+const spin = keyframes`
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+`;
+
+const SpinningIcon = styled(Icon)`
+	animation: ${spin} 0.6s infinite linear both;
+`;
+
+const SpinnerDot = () => (
+	<SpinningIcon name="spinnerdot" disablePointerEvents />
+);
+
+const IconButton = ({isLoading, name}) =>
+	isLoading ? <SpinnerDot /> : <Icon disablePointerEvents name={name} />;
+
 const Button = forwardRef((props, ref) => {
 	const {
 		iconOnly,
@@ -281,6 +302,9 @@ const Button = forwardRef((props, ref) => {
 		fullWidth,
 		title,
 		textOverflow,
+		isLoading,
+		isDisabled,
+		loadingLabel,
 		...otherProps
 	} = props;
 
@@ -296,24 +320,40 @@ const Button = forwardRef((props, ref) => {
 			align={align}
 			fullWidth={fullWidth || textOverflow === 'ellipsis'}
 			{...otherProps}
+			aria-live={isLoading !== undefined ? 'polite' : undefined}
+			isDisabled={isDisabled || isLoading}
+			isLoading={isLoading}
 		>
 			<HoverShade />
 			<FocusRing color={color} />
 			<Content align={align}>
 				{icon && iconRight !== true && (
-					<Icon disablePointerEvents name={icon} />
+					<IconButton
+						isLoading={isLoading && (!iconRight || iconOnly)}
+						name={icon}
+					/>
 				)}
 				{children &&
 					(iconOnly ? (
-						<VisuallyHidden>{children}</VisuallyHidden>
-					) : (
-						<ButtonText textOverflow={textOverflow}>
+						<VisuallyHidden>
 							{children}
-						</ButtonText>
+							{isLoading && loadingLabel}
+						</VisuallyHidden>
+					) : (
+						<>
+							<ButtonText textOverflow={textOverflow}>
+								{children}
+							</ButtonText>
+							{isLoading && (
+								<VisuallyHidden>{loadingLabel}</VisuallyHidden>
+							)}
+							{!icon && isLoading && <SpinnerDot />}
+						</>
 					))}
-				{iconRight && (
-					<Icon
-						disablePointerEvents
+
+				{!iconOnly && iconRight && (
+					<IconButton
+						isLoading={isLoading}
 						name={hasSeparateRightIcon ? iconRight : icon}
 					/>
 				)}
@@ -327,6 +367,7 @@ Button.displayName = 'Button';
 Button.defaultProps = {
 	color: 'default',
 	textOverflow: 'wrap',
+	loadingLabel: 'Loading…',
 };
 
 Button.propTypes = {
@@ -345,6 +386,14 @@ Button.propTypes = {
 	 * can still be read out by screen readers.
 	 */
 	isDisabled: PropTypes.bool,
+	/**
+	 * Renders the button in its loading state.
+	 */
+	isLoading: PropTypes.bool,
+	/**
+	 * Renders the hidden loading  label for the button in its loading state.
+	 */
+	loadingLabel: PropTypes.string,
 	/**
 	 * Choose an icon to display next to the button's label
 	 */

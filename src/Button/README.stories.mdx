@@ -70,6 +70,9 @@ Basic button types and sizes:
 		<Button isActive size="medium">
 			Done
 		</Button>
+		<Button  iconRight icon="arrow-right" isActive size="medium">
+			Let's go
+		</Button>
 	</InlineList>
 </Canvas>
 
@@ -94,6 +97,37 @@ Disabled:
 		<Button isDisabled round icon="plus" color="important" />
 		<Button isDisabled isActive size="medium">
 			Done
+		</Button>
+		<Button isDisabled iconRight icon="arrow-right" isActive size="medium">
+			Let's go
+		</Button>
+	</InlineList>
+</Canvas>
+
+Loading:
+
+<Canvas>
+	<InlineList spacing="s">
+		<Button isLoading color="primary" icon="ok">
+			Save
+		</Button>
+		<Button isLoading> Cancel</Button>
+		<Button isLoading size="medium" color="important">
+			Delete
+		</Button>
+		<Button isLoading size="medium" icon="send">
+			Share
+		</Button>
+		<Button isLoading icon="tools" size="medium" color="shaded" />
+		<Button isLoading size="small" color="transparent">
+			Forgot password?
+		</Button>
+		<Button isLoading round icon="plus" color="important" />
+		<Button isLoading isActive size="medium">
+			Done
+		</Button>
+		<Button isLoading iconRight icon="arrow-right" isActive size="medium">
+			Let's go
 		</Button>
 	</InlineList>
 </Canvas>
@@ -134,6 +168,32 @@ Change the props in the table below to adjust the Button to your needs.
 		args={{children: 'Default button', size: 'default', icon: 'ok'}}
 	>
 		{props => <Button {...props} />}
+	</Story>
+</Canvas>
+
+Test the button loading state.
+
+<Canvas>
+	<Story name="Loading example">
+	{() => {
+		const [isLoading, setIsLoading] = React.useState(false);
+		const buttonClick = () => {
+			setIsLoading(true);
+			setTimeout(() => {
+ 			 setIsLoading(false);
+			}, "3000")
+		};
+		return (
+				<Button
+					iconRight
+					icon="arrow-right"
+					onClick={buttonClick}
+					isLoading={isLoading}
+				>
+					Next
+				</Button>
+			);
+		}}
 	</Story>
 </Canvas>
 
