@@ -1,3 +1,10 @@
+# [14.12.0](https://github.com/5app/base5-ui/compare/v14.11.0...v14.12.0) (2022-05-03)
+
+
+### Features
+
+* add button loading state and right arrow icon, [#163](https://github.com/5app/base5-ui/issues/163) ([#200](https://github.com/5app/base5-ui/issues/200)) ([3dc590a](https://github.com/5app/base5-ui/commit/3dc590ae4171bdc8eedc3d0a2d13f03d8c0323ff))
+
 # [14.11.0](https://github.com/5app/base5-ui/compare/v14.10.0...v14.11.0) (2022-04-27)
 
 
