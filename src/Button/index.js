@@ -343,6 +343,7 @@ const Button = forwardRef((props, ref) => {
 							<VisuallyHidden>
 								{isLoading && loadingLabel}
 							</VisuallyHidden>
+							{!icon && isLoading && <SpinnerDot />}
 						</>
 					))}
 				{!iconOnly &&
