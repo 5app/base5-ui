@@ -42,6 +42,7 @@ const shouldForwardProp = getPropFilter([
 	'round',
 	'square',
 	'fullWidth',
+	'isLoading',
 	'color',
 	'size',
 	'align',
@@ -169,7 +170,7 @@ const Wrapper = styled(ButtonCore).withConfig({
 			}
 		}}
 
-		cursor: not-allowed;
+		cursor: ${p => (p.isLoading ? 'wait' : 'not-allowed')};
 
 		${p =>
 			(p.color === 'transparent' || p.color === 'shaded') &&
@@ -283,7 +284,7 @@ const SpinningIcon = styled(Icon)`
 `;
 
 const SpinnerDot = () => (
-	<SpinningIcon name="spinnerdot" size="small" disablePointerEvents />
+	<SpinningIcon name="spinnerdot" disablePointerEvents />
 );
 
 const Button = forwardRef((props, ref) => {
@@ -316,8 +317,9 @@ const Button = forwardRef((props, ref) => {
 			align={align}
 			fullWidth={fullWidth || textOverflow === 'ellipsis'}
 			{...otherProps}
-			aria-live={isLoading !== undefined ? 'polite' : 'off'}
+			aria-live={isLoading !== undefined ? 'polite' : undefined}
 			isDisabled={isDisabled || isLoading}
+			isLoading={isLoading}
 		>
 			<HoverShade />
 			<FocusRing color={color} />
@@ -340,9 +342,9 @@ const Button = forwardRef((props, ref) => {
 							<ButtonText textOverflow={textOverflow}>
 								{children}
 							</ButtonText>
-							<VisuallyHidden>
-								{isLoading && loadingLabel}
-							</VisuallyHidden>
+							{isLoading && (
+								<VisuallyHidden>{loadingLabel}</VisuallyHidden>
+							)}
 							{!icon && isLoading && <SpinnerDot />}
 						</>
 					))}

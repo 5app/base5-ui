@@ -70,7 +70,7 @@ Basic button types and sizes:
 		<Button isActive size="medium">
 			Done
 		</Button>
-				<Button  iconRight icon="arrow-right" isActive size="medium">
+		<Button  iconRight icon="arrow-right" isActive size="medium">
 			Let's go
 		</Button>
 	</InlineList>
@@ -168,6 +168,32 @@ Change the props in the table below to adjust the Button to your needs.
 		args={{children: 'Default button', size: 'default', icon: 'ok'}}
 	>
 		{props => <Button {...props} />}
+	</Story>
+</Canvas>
+
+Test the button loading state.
+
+<Canvas>
+	<Story name="Loading example">
+	{() => {
+		const [isLoading, setIsLoading] = React.useState(false);
+		const buttonClick = () => {
+			setIsLoading(true);
+			setTimeout(() => {
+ 			 setIsLoading(false);
+			}, "3000")
+		};
+		return (
+				<Button
+					iconRight
+					icon="arrow-right"
+					onClick={buttonClick}
+					isLoading={isLoading}
+				>
+					Next
+				</Button>
+			);
+		}}
 	</Story>
 </Canvas>
 
