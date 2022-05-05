@@ -347,7 +347,9 @@ const Button = forwardRef((props, ref) => {
 							{isLoading && (
 								<VisuallyHidden>{loadingLabel}</VisuallyHidden>
 							)}
-							{!icon && isLoading && <SpinnerDot />}
+							{!icon && !hasSeparateRightIcon && isLoading && (
+								<SpinnerDot />
+							)}
 						</>
 					))}
 
