@@ -1,3 +1,10 @@
+## [14.12.1](https://github.com/5app/base5-ui/compare/v14.12.0...v14.12.1) (2022-05-05)
+
+
+### Bug Fixes
+
+* fix duplicate loader for iconright, #noissue ([#201](https://github.com/5app/base5-ui/issues/201)) ([9f68035](https://github.com/5app/base5-ui/commit/9f680359fd8deeb7f38ed1b0db8709ab6720240a))
+
 # [14.12.0](https://github.com/5app/base5-ui/compare/v14.11.0...v14.12.0) (2022-05-03)
 
 
