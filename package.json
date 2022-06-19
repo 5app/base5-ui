@@ -90,7 +90,7 @@
 		"focusable-selectors": "^0.3.1",
 		"popper-max-size-modifier": "^0.2.0",
 		"react-focus-lock": "^2.8.1",
-		"react-merge-refs": "^1.1.0",
+		"react-merge-refs": "^2.0.0",
 		"react-popper": "^2.2.5",
 		"use-item-list": "0.1.2"
 	},
